@@ -4,7 +4,7 @@ import Footer from "@/shared/layout/Footer";
 
 function App() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="">
       <Navbar />
       <main className="flex-1">
         <AppRoutes />
