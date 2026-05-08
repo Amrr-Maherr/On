@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import bgImage from "@/assets/hero-bg.png";
 function Hero() {
   return (
-    <section className="relative flex min-h-150 items-center overflow-hidden">
+    <section className="relative flex h-screen items-center overflow-hidden">
       <img
         src={bgImage}
         alt=""
-        className="h-full w-full object-cover absolute top-0 "
+        className="h-full w-full object-contain absolute top-0 "
       />
 
       <div className="container-layout relative z-10">
