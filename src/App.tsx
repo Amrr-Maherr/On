@@ -1,8 +1,12 @@
+import AppRoutes from "./app/routes";
+import Navbar from "./components/layout/Navbar";
+
 function App() {
   return (
-    <div className="container-layout">
-      <p>test</p>
-    </div>
+    <>
+      <Navbar />
+      <AppRoutes />
+    </>
   );
 }
 
