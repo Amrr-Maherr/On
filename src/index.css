@@ -80,6 +80,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --color-primary: #111827;
+  --color-text: #4B5563;
+  --color-accent: #0EA5E9;
+  --color-border: #E5E7EB;
+  --color-bg: #FFFFFF;
+  --color-bg-gray: #F8F8F8;
 }
 
 .dark {
@@ -114,6 +121,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --color-primary: #F9FAFB;
+  --color-text: #D1D5DB;
+  --color-accent: #38BDF8;
+  --color-border: #374151;
+  --color-bg: #111827;
+  --color-bg-gray: #1F2937;
 }
 
 @layer base {
