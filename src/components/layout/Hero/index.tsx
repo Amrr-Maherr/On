@@ -1,15 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import bgImage from "@/assets/hero-bg.png";
 function Hero() {
   return (
-    <section className="relative flex min-h-[80vh] items-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=80)",
-        }}
+    <section className="relative flex h-screen items-center overflow-hidden">
+      <img
+        src={bgImage}
+        alt=""
+        className="h-full w-full object-contain absolute top-0 "
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
 
