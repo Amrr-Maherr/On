@@ -134,11 +134,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", sans-serif;
+    font-family: sans-serif;
   }
+
   html {
     @apply font-sans;
+  }
+}
+
+@utility container-layout {
+  padding-inline: 24px;
+
+  @media (width >=theme(--breakpoint-lg)) {
+    padding-inline: 120px;
   }
 }
