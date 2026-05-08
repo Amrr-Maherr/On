@@ -3,7 +3,7 @@ import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
-    <div className="container-layout">
+    <div className="">
       <Navbar />
       <Hero />
     </div>

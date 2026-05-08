@@ -8,7 +8,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b bg-background">
+    <nav className="sticky top-0 z-50 bg-background container-layout">
       <div className="flex h-16 items-center justify-between gap-4">
         <Link to="/" className="text-xl font-bold tracking-tight">
           <img src={Logo} alt="Logo" className="w-auto" />
