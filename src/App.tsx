@@ -4,13 +4,13 @@ import Footer from "@/shared/layout/Footer";
 
 function App() {
   return (
-    <div className="">
+    <>
       <Navbar />
       <main className="flex-1">
         <AppRoutes />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
