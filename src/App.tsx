@@ -1,12 +1,12 @@
-import Hero from "./components/layout/Hero";
+import AppRoutes from "./app/routes";
 import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
-    <div className="">
+    <>
       <Navbar />
-      <Hero />
-    </div>
+      <AppRoutes />
+    </>
   );
 }
 
