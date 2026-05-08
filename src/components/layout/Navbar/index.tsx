@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart, Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Logo from "../../../../public/icon.svg";
@@ -25,6 +26,7 @@ function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           <Button variant="ghost" size="icon" aria-label="Account">
             <User className="h-5 w-5" />
           </Button>
@@ -61,6 +63,7 @@ function Navbar() {
             />
           </div>
           <div className="flex items-center justify-around">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" aria-label="Account">
               <User className="mr-2 h-4 w-4" />
               Account
