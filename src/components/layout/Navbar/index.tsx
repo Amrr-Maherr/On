@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import Logo from "../../../../public/icon.svg";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 border-b bg-background">
-      <div className="container-layout flex h-16 items-center justify-between gap-4">
+      <div className="flex h-16 items-center justify-between gap-4">
         <Link to="/" className="text-xl font-bold tracking-tight">
-          Store
+          <img src={Logo} alt="Logo" className="w-auto" />
         </Link>
 
         <div className="hidden flex-1 items-center justify-center px-8 md:flex">
@@ -43,7 +43,11 @@ function Navbar() {
           aria-label="Toggle menu"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isMenuOpen ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Menu className="h-5 w-5" />
+          )}
         </Button>
       </div>
 
