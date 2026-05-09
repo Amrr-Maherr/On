@@ -18,6 +18,18 @@ export interface Brand extends MongoDoc {
   image: string;
 }
 
+export interface Review {
+  _id: string;
+  review?: string;
+  rating: number;
+  user: {
+    _id: string;
+    name: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Product extends MongoDoc {
   title: string;
   slug: string;
@@ -35,4 +47,5 @@ export interface Product extends MongoDoc {
   sold: number;
   createdAt: string;
   updatedAt: string;
+  reviews?: Review[];
 }
