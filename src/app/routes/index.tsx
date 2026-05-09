@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "@/features/home/pages/HomePage";
 import AuthPage from "@/features/auth/pages/AuthPage";
 import ProductsPage from "@/features/products/pages/ProductsPage";
+import CategoriesPage from "@/features/categories/pages/CategoriesPage";
 import CartPage from "@/features/cart/pages/CartPage";
 import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
@@ -14,6 +15,7 @@ export default function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/categories" element={<CategoriesPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/orders" element={<OrdersPage />} />
