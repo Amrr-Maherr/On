@@ -60,6 +60,7 @@ function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Logo />
+
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Discover premium products with a seamless shopping experience.
               Quality curated for modern living.

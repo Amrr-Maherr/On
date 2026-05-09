@@ -2,19 +2,29 @@ import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface ErrorProps {
+interface ErrorStateProps {
   title?: string;
   message?: string;
+  error?: unknown;
   onRetry?: () => void;
   className?: string;
 }
 
-function Error({
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string") return error;
+  return "An unexpected error occurred. Please try again.";
+}
+
+function ErrorState({
   title = "Something went wrong",
-  message = "An unexpected error occurred. Please try again.",
+  message,
+  error,
   onRetry,
   className,
-}: ErrorProps) {
+}: ErrorStateProps) {
+  const displayMessage = message || (error ? getErrorMessage(error) : undefined);
+
   return (
     <div
       className={cn(
@@ -25,7 +35,9 @@ function Error({
       <AlertTriangle className="h-12 w-12 text-destructive" />
       <div>
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">{message}</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {displayMessage || "An unexpected error occurred. Please try again."}
+        </p>
       </div>
       {onRetry && (
         <Button variant="outline" size="sm" onClick={onRetry} className="gap-2">
@@ -37,4 +49,4 @@ function Error({
   );
 }
 
-export default Error;
+export default ErrorState;
