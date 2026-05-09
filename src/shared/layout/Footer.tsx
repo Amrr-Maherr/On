@@ -1,31 +1,31 @@
-import { Link } from "react-router-dom";
+import Logo from "@/components/shared/logo/Logo";
 
 const linkSections = [
   {
-    title: "Getting Started",
+    title: "Shop",
     links: [
-      { label: "Release Notes", href: "#" },
-      { label: "Upgrade Guide", href: "#" },
-      { label: "Browser Support", href: "#" },
-      { label: "Dark Mode", href: "#" },
+      { label: "New Arrivals", href: "#" },
+      { label: "Best Sellers", href: "#" },
+      { label: "Deals & Offers", href: "#" },
+      { label: "All Products", href: "#" },
     ],
   },
   {
-    title: "Explore",
+    title: "Customer Service",
     links: [
-      { label: "Prototyping", href: "#" },
-      { label: "Design Systems", href: "#" },
-      { label: "Pricing", href: "#" },
-      { label: "Security", href: "#" },
+      { label: "About Us", href: "#" },
+      { label: "Contact Us", href: "#" },
+      { label: "FAQs", href: "#" },
+      { label: "Shipping & Returns", href: "#" },
     ],
   },
   {
-    title: "Community",
+    title: "Policies",
     links: [
-      { label: "Discussion Forums", href: "#" },
-      { label: "Code of Conduct", href: "#" },
-      { label: "Contributing", href: "#" },
-      { label: "API Reference", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms & Conditions", href: "#" },
+      { label: "Return Policy", href: "#" },
+      { label: "Size Guide", href: "#" },
     ],
   },
 ];
@@ -59,9 +59,7 @@ function Footer() {
       <div className="container-layout py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/">
-              <img src="/icon.svg" alt="Store" className="h-9 w-auto" />
-            </Link>
+            <Logo />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Discover premium products with a seamless shopping experience.
               Quality curated for modern living.
