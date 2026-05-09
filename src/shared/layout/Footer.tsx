@@ -1,32 +1,31 @@
 import Logo from "@/components/shared/logo/Logo";
-import { Link } from "react-router-dom";
 
 const linkSections = [
   {
-    title: "Getting Started",
+    title: "Shop",
     links: [
-      { label: "Release Notes", href: "#" },
-      { label: "Upgrade Guide", href: "#" },
-      { label: "Browser Support", href: "#" },
-      { label: "Dark Mode", href: "#" },
+      { label: "New Arrivals", href: "#" },
+      { label: "Best Sellers", href: "#" },
+      { label: "Deals & Offers", href: "#" },
+      { label: "All Products", href: "#" },
     ],
   },
   {
-    title: "Explore",
+    title: "Customer Service",
     links: [
-      { label: "Prototyping", href: "#" },
-      { label: "Design Systems", href: "#" },
-      { label: "Pricing", href: "#" },
-      { label: "Security", href: "#" },
+      { label: "About Us", href: "#" },
+      { label: "Contact Us", href: "#" },
+      { label: "FAQs", href: "#" },
+      { label: "Shipping & Returns", href: "#" },
     ],
   },
   {
-    title: "Community",
+    title: "Policies",
     links: [
-      { label: "Discussion Forums", href: "#" },
-      { label: "Code of Conduct", href: "#" },
-      { label: "Contributing", href: "#" },
-      { label: "API Reference", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms & Conditions", href: "#" },
+      { label: "Return Policy", href: "#" },
+      { label: "Size Guide", href: "#" },
     ],
   },
 ];
