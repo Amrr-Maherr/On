@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Search, User, ShoppingCart, Heart, Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Logo from "../../../../public/icon.svg";
+import { useTheme } from "@/shared/providers/theme-provider";
+import Logo from "@/components/shared/logo/Logo";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme } = useTheme();
+  console.log(theme);
 
   return (
     <nav className="sticky top-0 z-50 bg-background container-layout">
       <div className="flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="text-xl font-bold tracking-tight">
-          <img src={Logo} alt="Logo" className="w-auto" />
-        </Link>
+        <Logo />
 
         <div className="hidden flex-1 items-center justify-center px-8 md:flex">
           <div className="relative w-full max-w-md">
