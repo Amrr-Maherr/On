@@ -1,6 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/features/home/pages/HomePage";
 import AuthPage from "@/features/auth/pages/AuthPage";
+import LoginPage from "@/features/auth/pages/LoginPage";
+import RegisterPage from "@/features/auth/pages/RegisterPage";
+import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
+import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
 import ProductsPage from "@/features/products/pages/ProductsPage";
 import ProductDetailsPage from "@/features/product-details/pages/ProductDetailsPage";
 import CategoriesPage from "@/features/categories/pages/CategoriesPage";
@@ -15,6 +19,10 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/auth" element={<AuthPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:slug/:id" element={<ProductDetailsPage />} />
       <Route path="/categories" element={<CategoriesPage />} />
