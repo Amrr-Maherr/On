@@ -16,6 +16,17 @@ import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
 import UserProfilePage from "@/features/user-profile/pages/UserProfilePage";
 import WishlistPage from "@/features/wishlist/pages/WishlistPage";
+import AboutPage from "@/features/footer-pages/pages/AboutPage";
+import ContactPage from "@/features/footer-pages/pages/ContactPage";
+import PrivacyPage from "@/features/footer-pages/pages/PrivacyPage";
+import TermsPage from "@/features/footer-pages/pages/TermsPage";
+import FaqPage from "@/features/footer-pages/pages/FaqPage";
+import ShippingPage from "@/features/footer-pages/pages/ShippingPage";
+import ReturnsPage from "@/features/footer-pages/pages/ReturnsPage";
+import SizeGuidePage from "@/features/footer-pages/pages/SizeGuidePage";
+import HelpPage from "@/features/footer-pages/pages/HelpPage";
+import SupportPolicyPage from "@/features/footer-pages/pages/SupportPolicyPage";
+import PoliciesPage from "@/features/footer-pages/pages/PoliciesPage";
 
 export default function AppRoutes() {
   return (
@@ -37,6 +48,17 @@ export default function AppRoutes() {
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/wishlist" element={<WishlistPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/faq" element={<FaqPage />} />
+      <Route path="/shipping" element={<ShippingPage />} />
+      <Route path="/returns" element={<ReturnsPage />} />
+      <Route path="/size-guide" element={<SizeGuidePage />} />
+      <Route path="/help" element={<HelpPage />} />
+      <Route path="/support-policy" element={<SupportPolicyPage />} />
+      <Route path="/policies" element={<PoliciesPage />} />
     </Routes>
   );
 }
