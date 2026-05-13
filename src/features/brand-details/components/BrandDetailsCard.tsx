@@ -1,6 +1,4 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import type { Brand } from "@/features/brands/types";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { Calendar, Tag } from "lucide-react";
 
 interface BrandDetailsCardProps {
@@ -17,11 +15,11 @@ export default function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
   return (
     <div className="grid gap-10 md:grid-cols-2">
       <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
-        <LazyLoadImage
+        <img
           src={brand.image}
           alt={brand.name}
+          loading="lazy"
           className="h-full w-full object-contain p-8"
-          effect="blur"
         />
       </div>
 
