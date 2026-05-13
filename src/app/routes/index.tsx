@@ -9,6 +9,7 @@ import AllProductsPage from "@/features/all-products/pages/AllProductsPage";
 import ProductDetailsPage from "@/features/product-details/pages/ProductDetailsPage";
 import AllCategoriesPage from "@/features/all-categories/pages/AllCategoriesPage";
 import CategoryDetailsPage from "@/features/category-details/pages/CategoryDetailsPage";
+import AllBrandsPage from "@/features/all-brands/pages/AllBrandsPage";
 import BrandDetailsPage from "@/features/brand-details/pages/BrandDetailsPage";
 import CartPage from "@/features/cart/pages/CartPage";
 import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
@@ -29,6 +30,7 @@ export default function AppRoutes() {
       <Route path="/products/:slug/:id" element={<ProductDetailsPage />} />
       <Route path="/categories" element={<AllCategoriesPage />} />
       <Route path="/categories/:slug/:id" element={<CategoryDetailsPage />} />
+      <Route path="/brands" element={<AllBrandsPage />} />
       <Route path="/brands/:slug/:id" element={<BrandDetailsPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
