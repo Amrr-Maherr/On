@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 
@@ -45,6 +46,7 @@ const policies = [
 export default function PoliciesPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Store Policies" description="A central hub for all our store policies." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Store Policies" },

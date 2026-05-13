@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -20,6 +21,7 @@ const steps = [
 export default function ShippingPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Shipping &amp; Delivery" description="Shipping methods, rates, delivery times, and tracking information." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Shipping & Delivery" },

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import { Link } from "react-router-dom";
@@ -69,6 +70,7 @@ export default function FaqPage() {
 
   return (
     <PageLayout>
+      <PageHelmet title="FAQ" description="Frequently asked questions about shopping, shipping, returns, and more." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "FAQ" },

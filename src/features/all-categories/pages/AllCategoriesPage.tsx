@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PageHelmet from "@/shared/components/PageHelmet";
 import CategoryCard from "@/features/categories/components/CategoryCard";
 import { useAllCategories } from "@/features/all-categories/hooks/useAllCategories";
 import CategoriesLoader from "@/features/all-categories/components/CategoriesLoader";
@@ -47,6 +48,7 @@ export default function AllCategoriesPage() {
 
   return (
     <div className="container-layout py-8">
+      <PageHelmet title="All Categories" description="Explore our product categories." />
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold md:text-3xl">All Categories</h1>

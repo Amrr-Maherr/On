@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
@@ -29,6 +30,7 @@ export default function BrandDetailsPage() {
 
   return (
     <div className="container-layout py-8">
+      <PageHelmet title={brand.name} description={`Explore products from ${brand.name}`} />
       <Breadcrumb
         className="mb-6"
         items={[

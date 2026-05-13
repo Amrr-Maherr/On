@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -37,6 +38,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Privacy Policy" description="How we collect, use, and protect your personal information." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Privacy Policy" },

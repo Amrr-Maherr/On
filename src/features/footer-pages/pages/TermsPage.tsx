@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -41,6 +42,7 @@ const sections = [
 export default function TermsPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Terms &amp; Conditions" description="Terms and conditions for using our website and services." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Terms & Conditions" },

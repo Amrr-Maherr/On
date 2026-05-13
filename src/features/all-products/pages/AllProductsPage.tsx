@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PageHelmet from "@/shared/components/PageHelmet";
 import ProductCard from "@/features/products/components/ProductCard";
 import { useAllProducts } from "@/features/all-products/hooks/useAllProducts";
 import ProductsLoader from "@/features/all-products/components/ProductsLoader";
@@ -60,6 +61,7 @@ export default function AllProductsPage() {
 
   return (
     <div className="container-layout py-8">
+      <PageHelmet title="All Products" description="Browse our complete collection of products." />
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold md:text-3xl">All Products</h1>

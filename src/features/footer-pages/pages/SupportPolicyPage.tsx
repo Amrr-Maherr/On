@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -8,6 +9,7 @@ import ContentSection from "@/features/footer-pages/components/ContentSection";
 export default function SupportPolicyPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Customer Support Policy" description="Our commitment to providing timely, helpful support." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Customer Support Policy" },

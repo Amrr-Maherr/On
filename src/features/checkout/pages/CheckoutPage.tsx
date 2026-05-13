@@ -1,5 +1,12 @@
+import PageHelmet from "@/shared/components/PageHelmet";
+
 function CheckoutPage() {
-  return <p>Checkout Page</p>;
+  return (
+    <>
+      <PageHelmet title="Checkout" />
+      <p>Checkout Page</p>
+    </>
+  );
 }
 
 export default CheckoutPage;

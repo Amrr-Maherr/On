@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 
@@ -57,6 +58,7 @@ const topics = [
 export default function HelpPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Help Center" description="Find answers, manage your account, and get support." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Help Center" },

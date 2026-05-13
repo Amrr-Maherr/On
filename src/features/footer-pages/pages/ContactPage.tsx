@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContactInfo from "@/features/footer-pages/components/ContactInfo";
@@ -7,6 +8,7 @@ import ContactInfo from "@/features/footer-pages/components/ContactInfo";
 export default function ContactPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Contact Us" description="Get in touch with our support team." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Contact Us" },

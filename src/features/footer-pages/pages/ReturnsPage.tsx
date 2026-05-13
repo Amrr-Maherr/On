@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -24,6 +25,7 @@ const nonReturnable = [
 export default function ReturnsPage() {
   return (
     <PageLayout>
+      <PageHelmet title="Returns &amp; Refunds" description="Our return policy, refund timeline, and how to initiate a return." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Returns & Refund Policy" },

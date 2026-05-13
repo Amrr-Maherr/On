@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -52,6 +53,7 @@ const measuringTips = [
 export default function SizeGuidePage() {
   return (
     <PageLayout>
+      <PageHelmet title="Size Guide" description="Find your perfect fit with our detailed size charts and measuring tips." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "Size Guide" },

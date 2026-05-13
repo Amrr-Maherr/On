@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
@@ -32,6 +33,7 @@ const values = [
 export default function AboutPage() {
   return (
     <PageLayout>
+      <PageHelmet title="About Us" description="Learn about our story, values, and team." />
       <Breadcrumb className="mb-6" items={[
         { label: "Home", href: "/" },
         { label: "About Us" },

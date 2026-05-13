@@ -1,5 +1,12 @@
+import PageHelmet from "@/shared/components/PageHelmet";
+
 function WishlistPage() {
-  return <p>Wishlist Page</p>;
+  return (
+    <>
+      <PageHelmet title="My Wishlist" />
+      <p>Wishlist Page</p>
+    </>
+  );
 }
 
 export default WishlistPage;
