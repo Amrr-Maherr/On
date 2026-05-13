@@ -7,7 +7,7 @@ import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
 import ProductsPage from "@/features/products/pages/ProductsPage";
 import ProductDetailsPage from "@/features/product-details/pages/ProductDetailsPage";
-import CategoriesPage from "@/features/categories/pages/CategoriesPage";
+import AllCategoriesPage from "@/features/all-categories/pages/AllCategoriesPage";
 import CartPage from "@/features/cart/pages/CartPage";
 import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
@@ -25,7 +25,7 @@ export default function AppRoutes() {
       <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:slug/:id" element={<ProductDetailsPage />} />
-      <Route path="/categories" element={<CategoriesPage />} />
+      <Route path="/categories" element={<AllCategoriesPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/orders" element={<OrdersPage />} />
