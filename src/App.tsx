@@ -1,6 +1,7 @@
 import AppRoutes from "./app/routes";
 import Navbar from "./components/layout/Navbar";
 import Footer from "@/shared/layout/Footer";
+import ScrollToTopButton from "@/shared/components/ScrollToTopButton";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <AppRoutes />
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }
