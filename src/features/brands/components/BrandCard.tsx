@@ -9,7 +9,7 @@ export default function BrandCard({ brand }: { brand: Brand }) {
       <LazyLoadImage
         src={brand.image}
         alt={brand.name}
-        className="h-100 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="h-100 w-full object-contain transition-transform duration-500 group-hover:scale-105"
         wrapperClassName="w-full"
         effect="blur"
       />
