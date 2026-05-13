@@ -10,6 +10,10 @@ import ProductQuantity from "./ProductQuantity";
 import ProductActions from "./ProductActions";
 import ProductReviews from "./ProductReviews";
 import ProductQA from "./ProductQA";
+import ProductSubcategories from "./ProductSubcategories";
+import ProductCategory from "./ProductCategory";
+import ProductBrand from "./ProductBrand";
+import ProductStockStatus from "./ProductStockStatus";
 
 interface ProductDetailsProps {
   product: Product;
@@ -77,20 +81,30 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <ProductActions />
               </div>
             </div>
+
+            <div className="rounded-xl border bg-card p-5 md:p-6 space-y-6">
+              <ProductStockStatus
+                quantity={product.quantity}
+                sold={product.sold}
+              />
+            </div>
+
+            <div className="rounded-xl border bg-card p-5 md:p-6 space-y-6">
+              {product.subcategory && product.subcategory.length > 0 && (
+                <ProductSubcategories subcategories={product.subcategory} />
+              )}
+              <ProductCategory category={product.category} />
+              <ProductBrand brand={product.brand} />
+            </div>
           </div>
         </div>
 
-        {product.reviews && product.reviews.length > 0 && (
-          <div className="mt-12">
-            <ProductReviews
-              reviews={product.reviews}
-              showAll={showAllReviews}
-              onToggleShowAll={() => setShowAllReviews(!showAllReviews)}
-            />
-          </div>
-        )}
-
-        <div className="mt-12">
+        <div className="mt-12 space-y-12">
+          <ProductReviews
+            reviews={product.reviews ?? []}
+            showAll={showAllReviews}
+            onToggleShowAll={() => setShowAllReviews(!showAllReviews)}
+          />
           <ProductQA />
         </div>
       </div>
