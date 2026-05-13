@@ -33,7 +33,7 @@ export default function BrandDetailsPage() {
         className="mb-6"
         items={[
           { label: "Home", href: "/" },
-          { label: "Brands", href: "/" },
+          { label: "Brands", href: "/brands" },
           { label: brand.name },
         ]}
       />
