@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import type { Category } from "@/features/categories/types";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -5,7 +6,10 @@ import { ArrowRight } from "lucide-react";
 
 export default function CategoryCard({ category }: { category: Category }) {
   return (
-    <div className="group relative w-full cursor-pointer overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <Link
+      to={`/categories/${category.slug}/${category._id}`}
+      className="group relative block w-full overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+    >
       <LazyLoadImage
         src={category.image}
         alt={category.name}
@@ -20,6 +24,6 @@ export default function CategoryCard({ category }: { category: Category }) {
           <ArrowRight className="h-4 w-4 text-white" />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
