@@ -1,12 +1,12 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import Loader from "@/components/shared/Loader";
 import HomePage from "@/features/home/pages/HomePage";
 import AuthPage from "@/features/auth/pages/AuthPage";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
-import AllProductsPage from "@/features/all-products/pages/AllProductsPage";
-import ProductDetailsPage from "@/features/product-details/pages/ProductDetailsPage";
 import CategoryDetailsPage from "@/features/category-details/pages/CategoryDetailsPage";
 import AllBrandsPage from "@/features/all-brands/pages/AllBrandsPage";
 import BrandDetailsPage from "@/features/brand-details/pages/BrandDetailsPage";
@@ -29,9 +29,13 @@ import SupportPolicyPage from "@/features/footer-pages/pages/SupportPolicyPage";
 import PoliciesPage from "@/features/footer-pages/pages/PoliciesPage";
 import NotFoundPage from "@/features/not-found/pages/NotFoundPage";
 
+const AllProductsPage = lazy(() => import("@/features/all-products/pages/AllProductsPage"));
+const ProductDetailsPage = lazy(() => import("@/features/product-details/pages/ProductDetailsPage"));
+
 export default function AppRoutes() {
   return (
-    <Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/login" element={<LoginPage />} />
@@ -63,5 +67,6 @@ export default function AppRoutes() {
       <Route path="/policies" element={<PoliciesPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </Suspense>
   );
 }

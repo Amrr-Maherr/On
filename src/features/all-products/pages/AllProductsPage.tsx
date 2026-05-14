@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -70,18 +70,6 @@ export default function AllProductsPage() {
     staleTime: 1_000 * 60 * 10,
   });
 
-  const categories =
-    categoriesData?.data.map((cat) => ({
-      label: cat.name,
-      value: cat._id,
-    })) ?? [];
-
-  const brands =
-    brandsData?.data.map((b) => ({
-      label: b.name,
-      value: b._id,
-    })) ?? [];
-
   const products = data?.data ?? [];
   const metadata = data?.metadata;
 
@@ -89,18 +77,66 @@ export default function AllProductsPage() {
 
   const searchQuery = urlQuery || localQuery;
 
-  const displayProducts = searchQuery ? filtered : products;
+  const categories = useMemo(
+    () =>
+      categoriesData?.data.map((cat) => ({
+        label: cat.name,
+        value: cat._id,
+      })) ?? [],
+    [categoriesData?.data],
+  );
 
-  const resultsCount = (searchQuery ? filtered.length : data?.results) ?? products.length;
+  const brands = useMemo(
+    () =>
+      brandsData?.data.map((b) => ({
+        label: b.name,
+        value: b._id,
+      })) ?? [],
+    [brandsData?.data],
+  );
 
-  const handleReset = () => {
+  const displayProducts = useMemo(
+    () => (searchQuery ? filtered : products),
+    [searchQuery, filtered, products],
+  );
+
+  const resultsCount = useMemo(
+    () => (searchQuery ? filtered.length : data?.results) ?? products.length,
+    [searchQuery, filtered.length, data?.results, products.length],
+  );
+
+  const handleSortChange = useCallback((value: string) => {
+    setSort(value);
+  }, []);
+
+  const handleCategoryChange = useCallback((values: string[]) => {
+    setCategoryIn(values);
+    setPage(1);
+  }, []);
+
+  const handleBrandChange = useCallback((values: string[]) => {
+    setBrandIn(values);
+    setPage(1);
+  }, []);
+
+  const handlePriceChange = useCallback((min: number, max: number) => {
+    setPriceGte(min);
+    setPriceLte(max);
+    setPage(1);
+  }, []);
+
+  const handlePageChange = useCallback((p: number) => {
+    setPage(p);
+  }, []);
+
+  const handleReset = useCallback(() => {
     setSort("");
     setPriceGte(0);
     setPriceLte(10000);
     setCategoryIn([]);
     setBrandIn([]);
     setPage(1);
-  };
+  }, []);
 
   if (isLoading) return <ProductsLoader />;
 
@@ -138,21 +174,21 @@ export default function AllProductsPage() {
         </div>
         <div className="flex items-center gap-3">
           <div className="w-full sm:w-56">
-            <FilterSortDropdown value={sort} onChange={setSort} />
+            <FilterSortDropdown value={sort} onChange={handleSortChange} />
           </div>
           <div className="lg:hidden">
             <MobileFilterSheet
               sort={sort}
-              onSortChange={setSort}
+              onSortChange={handleSortChange}
               categories={categories}
               categoryIn={categoryIn}
-              onCategoryChange={(v) => { setCategoryIn(v); setPage(1); }}
+              onCategoryChange={handleCategoryChange}
               brands={brands}
               brandIn={brandIn}
-              onBrandChange={(v) => { setBrandIn(v); setPage(1); }}
+              onBrandChange={handleBrandChange}
               priceGte={priceGte}
               priceLte={priceLte}
-              onPriceChange={(min, max) => { setPriceGte(min); setPriceLte(max); setPage(1); }}
+              onPriceChange={handlePriceChange}
               onReset={handleReset}
             />
           </div>
@@ -166,7 +202,7 @@ export default function AllProductsPage() {
               <FilterCheckboxGroup
                 options={categories}
                 selectedValues={categoryIn}
-                onChange={(v) => { setCategoryIn(v); setPage(1); }}
+                onChange={handleCategoryChange}
               />
             </FilterSection>
 
@@ -174,7 +210,7 @@ export default function AllProductsPage() {
               <FilterCheckboxGroup
                 options={brands}
                 selectedValues={brandIn}
-                onChange={(v) => { setBrandIn(v); setPage(1); }}
+                onChange={handleBrandChange}
               />
             </FilterSection>
 
@@ -184,7 +220,7 @@ export default function AllProductsPage() {
                 max={10000}
                 minValue={priceGte}
                 maxValue={priceLte}
-                onChange={(min, max) => { setPriceGte(min); setPriceLte(max); setPage(1); }}
+                onChange={handlePriceChange}
               />
             </FilterSection>
           </FiltersPanel>
@@ -206,7 +242,7 @@ export default function AllProductsPage() {
                   <ProductsPagination
                     currentPage={metadata.currentPage}
                     totalPages={metadata.numberOfPages}
-                    onPageChange={setPage}
+                    onPageChange={handlePageChange}
                   />
                 </div>
               )}

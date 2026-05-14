@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { cn } from "@/lib/utils";
 
 interface FilterSortDropdownProps {
@@ -14,7 +15,7 @@ const defaultOptions = [
   { label: "Name: Z-A", value: "-title" },
 ];
 
-export default function FilterSortDropdown({
+function FilterSortDropdown({
   options = defaultOptions,
   value = "",
   onChange,
@@ -43,3 +44,5 @@ export default function FilterSortDropdown({
     </div>
   );
 }
+
+export default memo(FilterSortDropdown);

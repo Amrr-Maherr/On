@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { FilterSection, FilterCheckboxGroup, FilterPriceRange, FilterSortDropdown } from "@/components/shared/filters";
@@ -23,7 +24,7 @@ interface MobileFilterSheetProps {
   onReset: () => void;
 }
 
-export default function MobileFilterSheet({
+function MobileFilterSheet({
   sort,
   onSortChange,
   categories,
@@ -101,3 +102,5 @@ export default function MobileFilterSheet({
     </Sheet>
   );
 }
+
+export default memo(MobileFilterSheet);

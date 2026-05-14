@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import { useCallback, type MouseEvent } from "react";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ interface AddToCartProps {
 export default function AddToCart({ productId }: AddToCartProps) {
   const { mutate: addToCart, isPending } = useAddToCart();
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = useCallback((e: MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     addToCart(
@@ -20,7 +20,7 @@ export default function AddToCart({ productId }: AddToCartProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  };
+  }, [addToCart]);
 
   return (
     <button
