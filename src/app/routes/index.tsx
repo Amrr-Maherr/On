@@ -27,6 +27,7 @@ import SizeGuidePage from "@/features/footer-pages/pages/SizeGuidePage";
 import HelpPage from "@/features/footer-pages/pages/HelpPage";
 import SupportPolicyPage from "@/features/footer-pages/pages/SupportPolicyPage";
 import PoliciesPage from "@/features/footer-pages/pages/PoliciesPage";
+import NotFoundPage from "@/features/not-found/pages/NotFoundPage";
 
 export default function AppRoutes() {
   return (
@@ -60,6 +61,7 @@ export default function AppRoutes() {
       <Route path="/help" element={<HelpPage />} />
       <Route path="/support-policy" element={<SupportPolicyPage />} />
       <Route path="/policies" element={<PoliciesPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
