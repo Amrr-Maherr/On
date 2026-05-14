@@ -20,7 +20,7 @@ export default function AddToFav({ productId }: AddToFavProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  }, [addToWishlist]);
+  }, [addToWishlist, productId]);
 
   return (
     <button

@@ -20,7 +20,7 @@ export default function AddToCart({ productId }: AddToCartProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  }, [addToCart]);
+  }, [addToCart, productId]);
 
   return (
     <button

@@ -6,6 +6,7 @@ export interface User extends MongoDoc {
   phone?: string;
   role: string;
   active: boolean;
+  createdAt?: string;
 }
 
 export interface ProfileResponse {
