@@ -47,8 +47,8 @@ export default function AppRoutes() {
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/fave" element={<WishlistPage />} />
+      <Route path="/wishlist" element={<WishlistPage />} />
+      <Route path="/fave" element={<WishlistPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />

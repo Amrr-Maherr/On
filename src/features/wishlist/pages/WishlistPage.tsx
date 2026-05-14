@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
@@ -16,6 +16,14 @@ function getErrorMessage(error: unknown): string {
 
 export default function WishlistPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const { data, isLoading, error, refetch } = useWishlist();
   const { mutate: removeItem, isPending: isRemoving } = useRemoveWishlistItem();
   const [removingId, setRemovingId] = useState<string | null>(null);

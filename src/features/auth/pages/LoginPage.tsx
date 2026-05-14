@@ -48,7 +48,11 @@ export default function LoginPage() {
           description="Sign in to your account to continue"
         />
 
-        <form className="space-y-4" noValidate onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="space-y-4"
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <AuthInput
             label="Email"
             type="email"
