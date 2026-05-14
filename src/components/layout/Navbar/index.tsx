@@ -7,12 +7,18 @@ import { Input } from "@/components/ui/input";
 import { useTheme } from "@/shared/providers/theme-provider";
 import Logo from "@/components/shared/logo/Logo";
 import { useCart } from "@/features/cart/hooks/useCart";
+import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
+import { useOrders } from "@/features/orders/hooks/useOrders";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { theme } = useTheme();
   const { data: cartData } = useCart();
+  const { data: wishlistData } = useWishlist();
+  const { data: ordersData } = useOrders(1);
   const cartCount = cartData?.numOfCartItems ?? 0;
+  const favCount = wishlistData?.count ?? 0;
+  const ordersCount = ordersData?.results ?? 0;
   const isLoggedIn = !!localStorage.getItem("token");
   const navigate = useNavigate();
   console.log(theme);
@@ -41,13 +47,23 @@ function Navbar() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <Link to="/fave">
-            <Button variant="ghost" size="icon" aria-label="Wishlist">
+            <Button variant="ghost" size="icon" aria-label="Wishlist" className="relative">
               <Heart className="h-5 w-5" />
+              {favCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                  {favCount > 99 ? "99+" : favCount}
+                </span>
+              )}
             </Button>
           </Link>
           <Link to="/orders">
-            <Button variant="ghost" size="icon" aria-label="Orders">
+            <Button variant="ghost" size="icon" aria-label="Orders" className="relative">
               <Package className="h-5 w-5" />
+              {ordersCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                  {ordersCount > 99 ? "99+" : ordersCount}
+                </span>
+              )}
             </Button>
           </Link>
           <Link to="/cart">
@@ -149,15 +165,25 @@ function Navbar() {
           <div className="flex flex-wrap items-center justify-center gap-2">
             <ThemeToggle />
             <Link to="/fave" onClick={() => setIsMenuOpen(false)}>
-              <Button variant="ghost" size="sm" aria-label="Wishlist">
-                <Heart className="mr-2 h-4 w-4" />
+              <Button variant="ghost" size="sm" aria-label="Wishlist" className="gap-1.5">
+                <Heart className="h-4 w-4" />
                 Wishlist
+                {favCount > 0 && (
+                  <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                    {favCount > 99 ? "99+" : favCount}
+                  </span>
+                )}
               </Button>
             </Link>
             <Link to="/orders" onClick={() => setIsMenuOpen(false)}>
-              <Button variant="ghost" size="sm" aria-label="Orders">
-                <Package className="mr-2 h-4 w-4" />
+              <Button variant="ghost" size="sm" aria-label="Orders" className="gap-1.5">
+                <Package className="h-4 w-4" />
                 Orders
+                {ordersCount > 0 && (
+                  <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                    {ordersCount > 99 ? "99+" : ordersCount}
+                  </span>
+                )}
               </Button>
             </Link>
             <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
