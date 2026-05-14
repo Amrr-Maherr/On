@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
 import AuthHeader from "@/features/auth/components/auth-header";
@@ -9,6 +10,7 @@ import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
 export default function ForgotPasswordPage() {
   return (
     <AuthLayout>
+      <PageHelmet title="Forgot Password" />
       <AuthFormWrapper>
         <AuthHeader
           title="Forgot password?"

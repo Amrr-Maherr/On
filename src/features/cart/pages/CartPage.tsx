@@ -1,5 +1,12 @@
+import PageHelmet from "@/shared/components/PageHelmet";
+
 function CartPage() {
-  return <p>Cart Page</p>;
+  return (
+    <>
+      <PageHelmet title="Cart" />
+      <p>Cart Page</p>
+    </>
+  );
 }
 
 export default CartPage;

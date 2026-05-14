@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
 import AuthHeader from "@/features/auth/components/auth-header";
@@ -9,6 +10,7 @@ import SocialLoginButtons from "@/features/auth/components/social-login-buttons"
 export default function LoginPage() {
   return (
     <AuthLayout>
+      <PageHelmet title="Sign In" description="Sign in to your account." />
       <AuthFormWrapper>
         <AuthHeader
           title="Welcome back"

@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import PageHelmet from "@/shared/components/PageHelmet";
 import { useProductDetails } from "@/features/product-details/hooks/useGetProductDetails";
 import ProductDetails from "@/features/product-details/components/ProductDetails";
 import ProductDetailsLoader from "@/features/product-details/components/ProductDetailsLoader";
@@ -27,5 +28,10 @@ export default function ProductDetailsPage() {
     return <ProductDetailsError message="Product not found." />;
   }
 
-  return <ProductDetails product={product} />;
+  return (
+    <>
+      <PageHelmet title={product.title} description={product.description} />
+      <ProductDetails product={product} />
+    </>
+  );
 }

@@ -5,14 +5,28 @@ import LoginPage from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import ForgotPasswordPage from "@/features/auth/pages/ForgotPasswordPage";
 import ResetPasswordPage from "@/features/auth/pages/ResetPasswordPage";
-import ProductsPage from "@/features/products/pages/ProductsPage";
+import AllProductsPage from "@/features/all-products/pages/AllProductsPage";
 import ProductDetailsPage from "@/features/product-details/pages/ProductDetailsPage";
-import CategoriesPage from "@/features/categories/pages/CategoriesPage";
+import CategoryDetailsPage from "@/features/category-details/pages/CategoryDetailsPage";
+import AllBrandsPage from "@/features/all-brands/pages/AllBrandsPage";
+import BrandDetailsPage from "@/features/brand-details/pages/BrandDetailsPage";
+import AllCategoriesPage from "@/features/all-categories/pages/AllCategoriesPage";
 import CartPage from "@/features/cart/pages/CartPage";
 import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
 import UserProfilePage from "@/features/user-profile/pages/UserProfilePage";
 import WishlistPage from "@/features/wishlist/pages/WishlistPage";
+import AboutPage from "@/features/footer-pages/pages/AboutPage";
+import ContactPage from "@/features/footer-pages/pages/ContactPage";
+import PrivacyPage from "@/features/footer-pages/pages/PrivacyPage";
+import TermsPage from "@/features/footer-pages/pages/TermsPage";
+import FaqPage from "@/features/footer-pages/pages/FaqPage";
+import ShippingPage from "@/features/footer-pages/pages/ShippingPage";
+import ReturnsPage from "@/features/footer-pages/pages/ReturnsPage";
+import SizeGuidePage from "@/features/footer-pages/pages/SizeGuidePage";
+import HelpPage from "@/features/footer-pages/pages/HelpPage";
+import SupportPolicyPage from "@/features/footer-pages/pages/SupportPolicyPage";
+import PoliciesPage from "@/features/footer-pages/pages/PoliciesPage";
 
 export default function AppRoutes() {
   return (
@@ -23,14 +37,28 @@ export default function AppRoutes() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
-      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/products" element={<AllProductsPage />} />
       <Route path="/products/:slug/:id" element={<ProductDetailsPage />} />
-      <Route path="/categories" element={<CategoriesPage />} />
+      <Route path="/categories" element={<AllCategoriesPage />} />
+      <Route path="/categories/:slug/:id" element={<CategoryDetailsPage />} />
+      <Route path="/brands" element={<AllBrandsPage />} />
+      <Route path="/brands/:slug/:id" element={<BrandDetailsPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/profile" element={<UserProfilePage />} />
       <Route path="/wishlist" element={<WishlistPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/faq" element={<FaqPage />} />
+      <Route path="/shipping" element={<ShippingPage />} />
+      <Route path="/returns" element={<ReturnsPage />} />
+      <Route path="/size-guide" element={<SizeGuidePage />} />
+      <Route path="/help" element={<HelpPage />} />
+      <Route path="/support-policy" element={<SupportPolicyPage />} />
+      <Route path="/policies" element={<PoliciesPage />} />
     </Routes>
   );
 }
