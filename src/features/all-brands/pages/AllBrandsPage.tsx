@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PageHelmet from "@/shared/components/PageHelmet";
 import BrandCard from "@/features/brands/components/BrandCard";
 import { useAllBrands } from "@/features/all-brands/hooks/useAllBrands";
 import BrandsLoader from "@/features/all-brands/components/BrandsLoader";
@@ -36,6 +37,7 @@ export default function AllBrandsPage() {
 
   return (
     <div className="container-layout py-8">
+      <PageHelmet title="All Brands" description="Discover our curated brands." />
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold md:text-3xl">All Brands</h1>

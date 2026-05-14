@@ -1,18 +1,25 @@
+import { memo } from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface FilterSearchInputProps {
   placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
-export default function FilterSearchInput({
+function FilterSearchInput({
   placeholder = "Search...",
+  value = "",
+  onChange,
 }: FilterSearchInputProps) {
   return (
     <div className="relative">
       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
       <input
         type="text"
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
         className={cn(
           "h-9 w-full rounded-lg border border-input bg-transparent pl-9 pr-3 text-sm outline-none",
@@ -24,3 +31,5 @@ export default function FilterSearchInput({
     </div>
   );
 }
+
+export default memo(FilterSearchInput);

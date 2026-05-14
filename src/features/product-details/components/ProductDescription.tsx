@@ -5,10 +5,12 @@ interface ProductDescriptionProps {
 export default function ProductDescription({ description }: ProductDescriptionProps) {
   return (
     <div>
-      <h3 className="mb-2 text-sm font-semibold">Description</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line">
+      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        Description
+      </h3>
+      <div className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line md:text-base">
         {description}
-      </p>
+      </div>
     </div>
   );
 }

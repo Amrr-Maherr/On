@@ -1,6 +1,4 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import type { Category } from "@/features/categories/types";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { Calendar, Tag } from "lucide-react";
 
 interface CategoryDetailsCardProps {
@@ -19,11 +17,11 @@ export default function CategoryDetailsCard({
   return (
     <div className="grid gap-10 md:grid-cols-2">
       <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
-        <LazyLoadImage
+        <img
           src={category.image}
           alt={category.name}
+          loading="lazy"
           className="h-full w-full object-cover"
-          effect="blur"
         />
       </div>
 

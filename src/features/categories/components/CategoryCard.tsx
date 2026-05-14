@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import type { Category } from "@/features/categories/types";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { ArrowRight } from "lucide-react";
 
 export default function CategoryCard({ category }: { category: Category }) {
@@ -10,12 +8,11 @@ export default function CategoryCard({ category }: { category: Category }) {
       to={`/categories/${category.slug}/${category._id}`}
       className="group relative block w-full overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
-      <LazyLoadImage
+      <img
         src={category.image}
         alt={category.name}
+        loading="lazy"
         className="h-100 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        wrapperClassName="w-full"
-        effect="blur"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-5">
