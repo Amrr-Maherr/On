@@ -1,6 +1,5 @@
-import { useRef, useMemo, memo, useCallback } from "react";
-import * as React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useRef, useMemo, memo, useCallback, Children } from "react";
+import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import {
   Pagination,
   Autoplay,
@@ -28,11 +27,13 @@ const Slider = memo(function Slider({
   useFadeEffect = false,
   hideNavigation = true,
 }: SliderProps) {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef>(null);
+
   const effect = useMemo(
     () => (useFadeEffect ? "fade" : "slide"),
     [useFadeEffect],
   );
+
   const activeModules = useMemo(
     () =>
       useFadeEffect
@@ -45,6 +46,7 @@ const Slider = memo(function Slider({
     () => ({
       delay: 4000,
       disableOnInteraction: false,
+      pauseOnMouseEnter: true,
     }),
     [],
   );
@@ -59,15 +61,25 @@ const Slider = memo(function Slider({
     [slidesPerView, spaceBetween, swiperOptions.breakpoints],
   );
 
+  const slides = useMemo(
+    () =>
+      Children.map(children, (child, index) => (
+        <SwiperSlide key={index} virtualIndex={index}>
+          {child}
+        </SwiperSlide>
+      )),
+    [children],
+  );
+
   const handlePrev = useCallback(() => {
-    const swiper = swiperRef.current as any;
+    const swiper = swiperRef.current;
     if (swiper?.swiper) {
       swiper.swiper.slidePrev();
     }
   }, []);
 
   const handleNext = useCallback(() => {
-    const swiper = swiperRef.current as any;
+    const swiper = swiperRef.current;
     if (swiper?.swiper) {
       swiper.swiper.slideNext();
     }
@@ -94,11 +106,7 @@ const Slider = memo(function Slider({
         className={`mySwiper ${className || ""}`}
         {...swiperOptions}
       >
-        {React.Children.map(children, (child, index) => (
-          <SwiperSlide key={index} virtualIndex={index}>
-            {child}
-          </SwiperSlide>
-        ))}
+        {slides}
       </Swiper>
 
       {!hideNavigation && (

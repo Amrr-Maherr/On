@@ -1,31 +1,40 @@
 import { Link } from "react-router-dom";
+import Logo from "@/components/shared/logo/Logo";
 
 const linkSections = [
   {
-    title: "Getting Started",
+    title: "Shop",
     links: [
-      { label: "Release Notes", href: "#" },
-      { label: "Upgrade Guide", href: "#" },
-      { label: "Browser Support", href: "#" },
-      { label: "Dark Mode", href: "#" },
+      { label: "All Products", href: "/products" },
+      { label: "Categories", href: "/categories" },
+      { label: "Brands", href: "/brands" },
     ],
   },
   {
-    title: "Explore",
+    title: "Account",
     links: [
-      { label: "Prototyping", href: "#" },
-      { label: "Design Systems", href: "#" },
-      { label: "Pricing", href: "#" },
-      { label: "Security", href: "#" },
+      { label: "Login", href: "/login" },
+      { label: "Register", href: "/register" },
     ],
   },
   {
-    title: "Community",
+    title: "Customer Service",
     links: [
-      { label: "Discussion Forums", href: "#" },
-      { label: "Code of Conduct", href: "#" },
-      { label: "Contributing", href: "#" },
-      { label: "API Reference", href: "#" },
+      { label: "Help Center", href: "/help" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQs", href: "/faq" },
+      { label: "Shipping & Returns", href: "/shipping" },
+    ],
+  },
+  {
+    title: "Policies",
+    links: [
+      { label: "Store Policies", href: "/policies" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Return Policy", href: "/returns" },
+      { label: "Size Guide", href: "/size-guide" },
     ],
   },
 ];
@@ -57,11 +66,10 @@ function Footer() {
   return (
     <footer className="bg-muted/30">
       <div className="container-layout py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
-            <Link to="/">
-              <img src="/icon.svg" alt="Store" className="h-9 w-auto" />
-            </Link>
+            <Logo />
+
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Discover premium products with a seamless shopping experience.
               Quality curated for modern living.
@@ -94,14 +102,14 @@ function Footer() {
             <div key={section.title}>
               <h4 className="mb-4 text-sm font-semibold">{section.title}</h4>
               <ul className="space-y-3">
-                {section.links.map((link) => (
+                  {section.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
