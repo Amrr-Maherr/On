@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -7,7 +8,7 @@ interface FilterSearchInputProps {
   onChange?: (value: string) => void;
 }
 
-export default function FilterSearchInput({
+function FilterSearchInput({
   placeholder = "Search...",
   value = "",
   onChange,
@@ -30,3 +31,5 @@ export default function FilterSearchInput({
     </div>
   );
 }
+
+export default memo(FilterSearchInput);

@@ -1,10 +1,12 @@
+import { memo } from "react";
+
 interface FilterCheckboxGroupProps {
   options: { label: string; value: string; count?: number }[];
   selectedValues?: string[];
   onChange?: (values: string[]) => void;
 }
 
-export default function FilterCheckboxGroup({
+function FilterCheckboxGroup({
   options,
   selectedValues = [],
   onChange,
@@ -42,3 +44,5 @@ export default function FilterCheckboxGroup({
     </div>
   );
 }
+
+export default memo(FilterCheckboxGroup);

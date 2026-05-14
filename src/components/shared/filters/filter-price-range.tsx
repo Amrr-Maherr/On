@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface FilterPriceRangeProps {
   min?: number;
   max?: number;
@@ -6,7 +8,7 @@ interface FilterPriceRangeProps {
   onChange?: (min: number, max: number) => void;
 }
 
-export default function FilterPriceRange({
+function FilterPriceRange({
   min = 0,
   max = 10000,
   minValue = min,
@@ -37,3 +39,5 @@ export default function FilterPriceRange({
     </div>
   );
 }
+
+export default memo(FilterPriceRange);
