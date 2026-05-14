@@ -70,7 +70,7 @@ export default function AllProductsPage() {
     staleTime: 1_000 * 60 * 10,
   });
 
-  const products = data?.data ?? [];
+  const products = useMemo(() => data?.data ?? [], [data?.data]);
   const metadata = data?.metadata;
 
   const { query: localQuery, filtered } = useLocalSearch(products);
