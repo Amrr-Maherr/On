@@ -14,7 +14,7 @@ import AllCategoriesPage from "@/features/all-categories/pages/AllCategoriesPage
 import CartPage from "@/features/cart/pages/CartPage";
 import CheckoutPage from "@/features/checkout/pages/CheckoutPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
-import UserProfilePage from "@/features/user-profile/pages/UserProfilePage";
+import ProfilePage from "@/features/profile/pages/ProfilePage";
 import WishlistPage from "@/features/wishlist/pages/WishlistPage";
 import AboutPage from "@/features/footer-pages/pages/AboutPage";
 import ContactPage from "@/features/footer-pages/pages/ContactPage";
@@ -51,7 +51,7 @@ export default function AppRoutes() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/orders" element={<OrdersPage />} />
-      <Route path="/profile" element={<UserProfilePage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/wishlist" element={<WishlistPage />} />
       <Route path="/fave" element={<WishlistPage />} />
       <Route path="/about" element={<AboutPage />} />
