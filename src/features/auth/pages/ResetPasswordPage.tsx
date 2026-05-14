@@ -37,7 +37,10 @@ export default function ResetPasswordPage() {
             autoComplete="new-password"
           />
 
-          <AuthSubmitButton label="Reset Password" loadingLabel="Resetting..." />
+          <AuthSubmitButton
+            label="Reset Password"
+            loadingLabel="Resetting..."
+          />
         </form>
 
         <div className="mt-6 text-center">
