@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/features/products/types";
 
@@ -8,11 +8,37 @@ interface ProductReviewsProps {
   onToggleShowAll: () => void;
 }
 
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 export default function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
   const displayed = showAll ? reviews : reviews.slice(0, 3);
 
+  if (reviews.length === 0) {
+    return (
+      <section>
+        <h2 className="mb-6 text-xl font-bold">Customer Reviews</h2>
+        <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card py-12 text-center">
+          <MessageSquare className="h-10 w-10 text-muted-foreground/50" />
+          <div>
+            <p className="font-medium">No reviews yet</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Be the first to review this product.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="mt-16">
+    <section>
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-bold">Customer Reviews</h2>
         <span className="text-sm text-muted-foreground">{reviews.length} reviews</span>
@@ -45,7 +71,7 @@ export default function ProductReviews({ reviews, showAll, onToggleShowAll }: Pr
                 </div>
               </div>
               <span className="text-xs text-muted-foreground">
-                {new Date(review.createdAt).toLocaleDateString()}
+                {formatDate(review.createdAt)}
               </span>
             </div>
             {review.review && (

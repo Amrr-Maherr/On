@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
 import AuthHeader from "@/features/auth/components/auth-header";
@@ -9,6 +10,7 @@ import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
 export default function ResetPasswordPage() {
   return (
     <AuthLayout>
+      <PageHelmet title="Reset Password" />
       <AuthFormWrapper>
         <AuthHeader
           title="Reset password"
@@ -35,7 +37,10 @@ export default function ResetPasswordPage() {
             autoComplete="new-password"
           />
 
-          <AuthSubmitButton label="Reset Password" loadingLabel="Resetting..." />
+          <AuthSubmitButton
+            label="Reset Password"
+            loadingLabel="Resetting..."
+          />
         </form>
 
         <div className="mt-6 text-center">
