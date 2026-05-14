@@ -1,31 +1,40 @@
+import { Link } from "react-router-dom";
 import Logo from "@/components/shared/logo/Logo";
 
 const linkSections = [
   {
     title: "Shop",
     links: [
-      { label: "New Arrivals", href: "#" },
-      { label: "Best Sellers", href: "#" },
-      { label: "Deals & Offers", href: "#" },
-      { label: "All Products", href: "#" },
+      { label: "All Products", href: "/products" },
+      { label: "Categories", href: "/categories" },
+      { label: "Brands", href: "/brands" },
+    ],
+  },
+  {
+    title: "Account",
+    links: [
+      { label: "Login", href: "/login" },
+      { label: "Register", href: "/register" },
     ],
   },
   {
     title: "Customer Service",
     links: [
-      { label: "About Us", href: "#" },
-      { label: "Contact Us", href: "#" },
-      { label: "FAQs", href: "#" },
-      { label: "Shipping & Returns", href: "#" },
+      { label: "Help Center", href: "/help" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "FAQs", href: "/faq" },
+      { label: "Shipping & Returns", href: "/shipping" },
     ],
   },
   {
     title: "Policies",
     links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
-      { label: "Return Policy", href: "#" },
-      { label: "Size Guide", href: "#" },
+      { label: "Store Policies", href: "/policies" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Return Policy", href: "/returns" },
+      { label: "Size Guide", href: "/size-guide" },
     ],
   },
 ];
@@ -57,7 +66,7 @@ function Footer() {
   return (
     <footer className="bg-muted/30">
       <div className="container-layout py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <Logo />
 
@@ -93,14 +102,14 @@ function Footer() {
             <div key={section.title}>
               <h4 className="mb-4 text-sm font-semibold">{section.title}</h4>
               <ul className="space-y-3">
-                {section.links.map((link) => (
+                  {section.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
