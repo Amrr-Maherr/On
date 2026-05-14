@@ -17,8 +17,8 @@ export default function ProductCard({ product }: { product: Product }) {
             className="h-60 w-full rounded-t-xl object-cover"
           />
           <div className="absolute left-3 right-3 top-3 flex items-start justify-between">
-            <AddToCart />
-            <AddToFav />
+            <AddToCart productId={product.id} />
+            <AddToFav productId={product.id} />
           </div>
         </div>
         <CardHeader>
