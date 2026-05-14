@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,12 +12,12 @@ interface CartItemCardProps {
   isUpdating?: boolean;
 }
 
-export default function CartItemCard({
+const CartItemCard = memo(({
   item,
   onUpdate,
   onRemove,
   isUpdating,
-}: CartItemCardProps) {
+}: CartItemCardProps) => {
   const { product, count, price } = item;
   const itemTotal = price;
 
@@ -86,4 +87,6 @@ export default function CartItemCard({
       </div>
     </Card>
   );
-}
+});
+
+export default CartItemCard;
