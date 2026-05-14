@@ -85,7 +85,7 @@ export default function CartPage() {
               item={item}
               onUpdate={handleUpdate}
               onRemove={handleRemove}
-              isUpdating={isMutating && updatingItemId === item._id}
+              isUpdating={isMutating && updatingItemId === item.product.id}
             />
           ))}
         </div>

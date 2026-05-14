@@ -1,7 +1,6 @@
-import type { ApiResponse } from "@/shared/types/api";
-
 export interface OrderProduct {
   _id: string;
+  id: string;
   title: string;
   imageCover: string;
   price: number;
@@ -22,9 +21,17 @@ export interface ShippingAddress {
 
 export interface Order {
   _id: string;
-  user: string;
+  id: number;
+  user: {
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+  };
   cartItems: OrderCartItem[];
   totalOrderPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
   shippingAddress: ShippingAddress;
   paymentMethodType: string;
   isPaid: boolean;
@@ -35,4 +42,4 @@ export interface Order {
   updatedAt: string;
 }
 
-export type OrdersResponse = ApiResponse<Order>;
+export type OrdersResponse = Order[];

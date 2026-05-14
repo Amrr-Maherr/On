@@ -1,25 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ShoppingBag, CreditCard, MapPin, User } from "lucide-react";
+import { ShoppingBag, CreditCard, MapPin, Wallet } from "lucide-react";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { useCart } from "@/features/cart/hooks/useCart";
+import { useCheckoutCash } from "@/features/checkout/hooks/useCheckoutCash";
+import { useCheckoutSession } from "@/features/checkout/hooks/useCheckoutSession";
 
 interface CheckoutFormFields {
-  name: string;
-  email: string;
   phone: string;
   address: string;
   city: string;
-  zip: string;
 }
+
+const PAYMENT_METHODS = [
+  { value: "cash", label: "Cash on Delivery", icon: Wallet },
+  { value: "card", label: "Pay Online", icon: CreditCard },
+] as const;
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
+  const [paymentMethod, setPaymentMethod] = useState<string>("cash");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -29,6 +35,9 @@ export default function CheckoutPage() {
   }, [navigate]);
 
   const { data: cartData, isLoading } = useCart();
+  const { mutate: placeOrder, isPending: isCashing } = useCheckoutCash();
+  const { mutate: createSession, isPending: isSessionLoading } = useCheckoutSession();
+  const isPending = isCashing || isSessionLoading;
 
   const {
     register,
@@ -36,12 +45,9 @@ export default function CheckoutPage() {
     formState: { errors },
   } = useForm<CheckoutFormFields>({
     defaultValues: {
-      name: "",
-      email: "",
       phone: "",
       address: "",
       city: "",
-      zip: "",
     },
   });
 
@@ -50,9 +56,44 @@ export default function CheckoutPage() {
   const numOfCartItems = cartData?.numOfCartItems ?? 0;
   const totalPrice = cart?.totalCartPrice ?? 0;
 
-  const onSubmit = () => {
-    toast.success("Order placed successfully!");
-    navigate("/orders");
+  const onSubmit = (formData: CheckoutFormFields) => {
+    const cartId = cartData?.data._id;
+    if (!cartId) {
+      toast.error("Cart not found");
+      return;
+    }
+
+    if (paymentMethod === "card") {
+      createSession(cartId, {
+        onSuccess: (res) => {
+          window.location.href = res.session.url;
+        },
+        onError: (err) => {
+          toast.error(err.message);
+        },
+      });
+      return;
+    }
+
+    placeOrder(
+      {
+        cartId,
+        shippingAddress: {
+          details: formData.address,
+          phone: formData.phone,
+          city: formData.city,
+        },
+      },
+      {
+        onSuccess: () => {
+          toast.success("Order placed successfully!");
+          navigate("/orders");
+        },
+        onError: (err) => {
+          toast.error(err.message);
+        },
+      },
+    );
   };
 
   if (isLoading) {
@@ -88,62 +129,17 @@ export default function CheckoutPage() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(() => onSubmit())}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
             <div className="space-y-6">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    Contact Information
+                    <MapPin className="h-4 w-4" />
+                    Shipping Address
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-foreground"
-                    >
-                      Full Name
-                    </label>
-                    <Input
-                      id="name"
-                      placeholder="John Doe"
-                      {...register("name", { required: "Name is required" })}
-                      aria-invalid={!!errors.name}
-                    />
-                    {errors.name && (
-                      <p className="text-xs text-destructive" role="alert">
-                        {errors.name.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-foreground"
-                    >
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      {...register("email", {
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Invalid email",
-                        },
-                      })}
-                      aria-invalid={!!errors.email}
-                    />
-                    {errors.email && (
-                      <p className="text-xs text-destructive" role="alert">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
                   <div className="space-y-1.5">
                     <label
                       htmlFor="phone"
@@ -170,17 +166,6 @@ export default function CheckoutPage() {
                       </p>
                     )}
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    Shipping Address
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
                   <div className="space-y-1.5">
                     <label
                       htmlFor="address"
@@ -202,47 +187,24 @@ export default function CheckoutPage() {
                       </p>
                     )}
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label
-                        htmlFor="city"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        City
-                      </label>
-                      <Input
-                        id="city"
-                        placeholder="Cairo"
-                        {...register("city", { required: "City is required" })}
-                        aria-invalid={!!errors.city}
-                      />
-                      {errors.city && (
-                        <p className="text-xs text-destructive" role="alert">
-                          {errors.city.message}
-                        </p>
-                      )}
-                    </div>
-                    <div className="space-y-1.5">
-                      <label
-                        htmlFor="zip"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        ZIP Code
-                      </label>
-                      <Input
-                        id="zip"
-                        placeholder="12345"
-                        {...register("zip", {
-                          required: "ZIP code is required",
-                        })}
-                        aria-invalid={!!errors.zip}
-                      />
-                      {errors.zip && (
-                        <p className="text-xs text-destructive" role="alert">
-                          {errors.zip.message}
-                        </p>
-                      )}
-                    </div>
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="city"
+                      className="text-sm font-medium text-foreground"
+                    >
+                      City
+                    </label>
+                    <Input
+                      id="city"
+                      placeholder="Cairo"
+                      {...register("city", { required: "City is required" })}
+                      aria-invalid={!!errors.city}
+                    />
+                    {errors.city && (
+                      <p className="text-xs text-destructive" role="alert">
+                        {errors.city.message}
+                      </p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -318,10 +280,43 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                 </CardContent>
-                <div className="px-4 pb-4">
-                  <Button type="submit" size="lg" className="w-full gap-2">
-                    <CreditCard className="h-4 w-4" />
-                    Place Order
+                <div className="space-y-3 px-4 pb-4">
+                  <div className="grid grid-cols-2 gap-2">
+                    {PAYMENT_METHODS.map((method) => {
+                      const Icon = method.icon;
+                      return (
+                        <button
+                          key={method.value}
+                          type="button"
+                          onClick={() => setPaymentMethod(method.value)}
+                          className={cn(
+                            "flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors",
+                            paymentMethod === method.value
+                              ? "border-primary bg-primary/10 text-primary"
+                              : "border-foreground/20 text-muted-foreground hover:border-foreground/40",
+                          )}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {method.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <Button type="submit" size="lg" className="w-full gap-2" disabled={isPending}>
+                    {isPending ? (
+                      <>Processing...</>
+                    ) : (
+                      <>
+                        {paymentMethod === "card" ? (
+                          <CreditCard className="h-4 w-4" />
+                        ) : (
+                          <Wallet className="h-4 w-4" />
+                        )}
+                        {paymentMethod === "card"
+                          ? "Pay with Stripe"
+                          : "Place Order"}
+                      </>
+                    )}
                   </Button>
                 </div>
               </Card>

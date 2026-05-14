@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useOrders } from "@/features/orders/hooks/useOrders";
@@ -6,7 +6,6 @@ import OrderCard from "@/features/orders/components/OrderCard";
 import OrdersLoader from "@/features/orders/components/OrdersLoader";
 import OrdersEmpty from "@/features/orders/components/OrdersEmpty";
 import OrdersError from "@/features/orders/components/OrdersError";
-import OrdersPagination from "@/features/orders/components/OrdersPagination";
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -16,7 +15,6 @@ function getErrorMessage(error: unknown): string {
 
 export default function OrdersPage() {
   const navigate = useNavigate();
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -25,7 +23,7 @@ export default function OrdersPage() {
     }
   }, [navigate]);
 
-  const { data, isLoading, error, refetch } = useOrders(page);
+  const { data, isLoading, error, refetch } = useOrders();
 
   if (isLoading) return <OrdersLoader />;
 
@@ -38,8 +36,7 @@ export default function OrdersPage() {
     );
   }
 
-  const orders = data?.data ?? [];
-  const metadata = data?.metadata;
+  const orders = data ?? [];
 
   if (orders.length === 0) {
     return <OrdersEmpty />;
@@ -52,8 +49,7 @@ export default function OrdersPage() {
       <div className="mb-8">
         <h1 className="text-2xl font-bold md:text-3xl">My Orders</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          {data?.results ?? 0}{" "}
-          {(data?.results ?? 0) === 1 ? "order" : "orders"} total
+          {orders.length} {orders.length === 1 ? "order" : "orders"} total
         </p>
       </div>
 
@@ -62,14 +58,6 @@ export default function OrdersPage() {
           <OrderCard key={order._id} order={order} />
         ))}
       </div>
-
-      {metadata && (
-        <OrdersPagination
-          currentPage={metadata.currentPage}
-          totalPages={metadata.numberOfPages}
-          onPageChange={setPage}
-        />
-      )}
     </div>
   );
 }

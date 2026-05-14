@@ -17,7 +17,7 @@ export default function CartItemCard({
   onRemove,
   isUpdating,
 }: CartItemCardProps) {
-  const { product, count, price, _id } = item;
+  const { product, count, price } = item;
   const itemTotal = price;
 
   return (
@@ -48,7 +48,7 @@ export default function CartItemCard({
           <Button
             variant="ghost"
             size="icon-xs"
-            onClick={() => onRemove(_id)}
+            onClick={() => onRemove(product.id)}
             aria-label="Remove item"
             className="shrink-0 text-muted-foreground hover:text-destructive"
           >
@@ -61,7 +61,7 @@ export default function CartItemCard({
             <Button
               variant="outline"
               size="icon-xs"
-              onClick={() => onUpdate(_id, count - 1)}
+              onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
               aria-label="Decrease quantity"
             >
@@ -73,7 +73,7 @@ export default function CartItemCard({
             <Button
               variant="outline"
               size="icon-xs"
-              onClick={() => onUpdate(_id, count + 1)}
+              onClick={() => onUpdate(product.id, count + 1)}
               aria-label="Increase quantity"
             >
               <Plus className="h-3 w-3" />

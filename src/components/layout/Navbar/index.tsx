@@ -15,16 +15,17 @@ function Navbar() {
   const { theme } = useTheme();
   const { data: cartData } = useCart();
   const { data: wishlistData } = useWishlist();
-  const { data: ordersData } = useOrders(1);
+  const { data: ordersData } = useOrders();
   const cartCount = cartData?.numOfCartItems ?? 0;
   const favCount = wishlistData?.count ?? 0;
-  const ordersCount = ordersData?.results ?? 0;
+  const ordersCount = ordersData?.length ?? 0;
   const isLoggedIn = !!localStorage.getItem("token");
   const navigate = useNavigate();
   console.log(theme);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     setIsDropdownOpen(false);
     navigate("/login");
   };
@@ -211,6 +212,7 @@ function Navbar() {
                   aria-label="Logout"
                   onClick={() => {
                     localStorage.removeItem("token");
+                    localStorage.removeItem("userId");
                     setIsMenuOpen(false);
                     navigate("/login");
                   }}
