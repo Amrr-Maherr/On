@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -12,13 +13,13 @@ interface WishlistItemCardProps {
   isAddingToCart?: boolean;
 }
 
-export default function WishlistItemCard({
+const WishlistItemCard = memo(({
   product,
   onRemove,
   onAddToCart,
   isRemoving,
   isAddingToCart,
-}: WishlistItemCardProps) {
+}: WishlistItemCardProps) => {
   const displayPrice = product.priceAfterDiscount ?? product.price;
   const hasDiscount = !!product.priceAfterDiscount;
 
@@ -56,7 +57,7 @@ export default function WishlistItemCard({
               </span>
               {hasDiscount && (
                 <span className="text-sm font-semibold text-primary">
-                  {displayPrice.toLocaleString()} EGP
+                   {displayPrice.toLocaleString()} EGP
                 </span>
               )}
             </div>
@@ -101,4 +102,6 @@ export default function WishlistItemCard({
       </div>
     </Card>
   );
-}
+});
+
+export default WishlistItemCard;

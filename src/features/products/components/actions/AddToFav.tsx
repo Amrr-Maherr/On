@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import { useCallback, type MouseEvent } from "react";
 import { Heart, Loader2 } from "lucide-react";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ interface AddToFavProps {
 export default function AddToFav({ productId }: AddToFavProps) {
   const { mutate: addToWishlist, isPending } = useAddToWishlist();
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = useCallback((e: MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     addToWishlist(
@@ -20,7 +20,7 @@ export default function AddToFav({ productId }: AddToFavProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  };
+  }, [addToWishlist, productId]);
 
   return (
     <button

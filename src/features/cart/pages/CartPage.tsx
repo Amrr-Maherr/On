@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useCart } from "@/features/cart/hooks/useCart";
@@ -18,6 +18,14 @@ function getErrorMessage(error: unknown): string {
 
 export default function CartPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const { data, isLoading, error, refetch } = useCart();
   const { mutate: updateItem, isPending: isUpdating } = useUpdateCartItem();
   const { mutate: removeItem, isPending: isRemoving } = useRemoveCartItem();
@@ -77,7 +85,7 @@ export default function CartPage() {
               item={item}
               onUpdate={handleUpdate}
               onRemove={handleRemove}
-              isUpdating={isMutating && updatingItemId === item._id}
+              isUpdating={isMutating && updatingItemId === item.product.id}
             />
           ))}
         </div>

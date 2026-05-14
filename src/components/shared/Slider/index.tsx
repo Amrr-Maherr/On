@@ -1,5 +1,5 @@
 import { useRef, useMemo, memo, useCallback, Children } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import {
   Pagination,
   Autoplay,
@@ -27,7 +27,7 @@ const Slider = memo(function Slider({
   useFadeEffect = false,
   hideNavigation = true,
 }: SliderProps) {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperRef>(null);
 
   const effect = useMemo(
     () => (useFadeEffect ? "fade" : "slide"),
@@ -72,14 +72,14 @@ const Slider = memo(function Slider({
   );
 
   const handlePrev = useCallback(() => {
-    const swiper = swiperRef.current as any;
+    const swiper = swiperRef.current;
     if (swiper?.swiper) {
       swiper.swiper.slidePrev();
     }
   }, []);
 
   const handleNext = useCallback(() => {
-    const swiper = swiperRef.current as any;
+    const swiper = swiperRef.current;
     if (swiper?.swiper) {
       swiper.swiper.slideNext();
     }

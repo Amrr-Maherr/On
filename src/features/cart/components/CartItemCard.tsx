@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,13 +12,13 @@ interface CartItemCardProps {
   isUpdating?: boolean;
 }
 
-export default function CartItemCard({
+const CartItemCard = memo(({
   item,
   onUpdate,
   onRemove,
   isUpdating,
-}: CartItemCardProps) {
-  const { product, count, price, _id } = item;
+}: CartItemCardProps) => {
+  const { product, count, price } = item;
   const itemTotal = price;
 
   return (
@@ -42,13 +43,13 @@ export default function CartItemCard({
           <div className="min-w-0">
             <h3 className="truncate text-sm font-medium">{product.title}</h3>
             <p className="mt-0.5 text-sm text-muted-foreground">
-              {product.price.toLocaleString()} EGP
+              {product.price} EGP
             </p>
           </div>
           <Button
             variant="ghost"
             size="icon-xs"
-            onClick={() => onRemove(_id)}
+            onClick={() => onRemove(product.id)}
             aria-label="Remove item"
             className="shrink-0 text-muted-foreground hover:text-destructive"
           >
@@ -61,7 +62,7 @@ export default function CartItemCard({
             <Button
               variant="outline"
               size="icon-xs"
-              onClick={() => onUpdate(_id, count - 1)}
+              onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
               aria-label="Decrease quantity"
             >
@@ -73,7 +74,7 @@ export default function CartItemCard({
             <Button
               variant="outline"
               size="icon-xs"
-              onClick={() => onUpdate(_id, count + 1)}
+              onClick={() => onUpdate(product.id, count + 1)}
               aria-label="Increase quantity"
             >
               <Plus className="h-3 w-3" />
@@ -86,4 +87,6 @@ export default function CartItemCard({
       </div>
     </Card>
   );
-}
+});
+
+export default CartItemCard;
