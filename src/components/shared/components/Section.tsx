@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import Slider from "../Slider";
 
 interface SectionProps {
@@ -19,7 +20,8 @@ export default function Section({
   hideNavigation,
 }: SectionProps) {
   return (
-    <section className="container-layout md:py-22">
+    <ScrollReveal>
+      <section className="container-layout md:py-22">
       <div className="flex items-center justify-start gap-[5px]">
         <h2 className="text-[36px] font-semibold md:mb-[40px]">{title}</h2>
         {description && (
@@ -35,6 +37,7 @@ export default function Section({
       >
         {children}
       </Slider>
-    </section>
+      </section>
+    </ScrollReveal>
   );
 }
