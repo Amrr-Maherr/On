@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Search, User, ShoppingCart, Heart, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/shared/providers/theme-provider";
 import Logo from "@/components/shared/logo/Logo";
+import { useCart } from "@/features/cart/hooks/useCart";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useTheme();
+  const { data: cartData } = useCart();
+  const cartCount = cartData?.numOfCartItems ?? 0;
   console.log(theme);
 
   return (
@@ -27,15 +31,26 @@ function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
-          <Button variant="ghost" size="icon" aria-label="Account">
-            <User className="h-5 w-5" />
-          </Button>
-          <Button variant="ghost" size="icon" aria-label="Wishlist">
-            <Heart className="h-5 w-5" />
-          </Button>
-          <Button variant="ghost" size="icon" aria-label="Cart">
-            <ShoppingCart className="h-5 w-5" />
-          </Button>
+          <Link to="/login">
+            <Button variant="ghost" size="icon" aria-label="Account">
+              <User className="h-5 w-5" />
+            </Button>
+          </Link>
+          <Link to="/fave">
+            <Button variant="ghost" size="icon" aria-label="Wishlist">
+              <Heart className="h-5 w-5" />
+            </Button>
+          </Link>
+          <Link to="/cart">
+            <Button variant="ghost" size="icon" aria-label="Cart" className="relative">
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </span>
+              )}
+            </Button>
+          </Link>
         </div>
 
         <Button
@@ -64,18 +79,29 @@ function Navbar() {
           </div>
           <div className="flex items-center justify-around">
             <ThemeToggle />
-            <Button variant="ghost" size="sm" aria-label="Account">
-              <User className="mr-2 h-4 w-4" />
-              Account
-            </Button>
-            <Button variant="ghost" size="sm" aria-label="Wishlist">
-              <Heart className="mr-2 h-4 w-4" />
-              Wishlist
-            </Button>
-            <Button variant="ghost" size="sm" aria-label="Cart">
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              Cart
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost" size="sm" aria-label="Account">
+                <User className="mr-2 h-4 w-4" />
+                Account
+              </Button>
+            </Link>
+            <Link to="/fave">
+              <Button variant="ghost" size="sm" aria-label="Wishlist">
+                <Heart className="mr-2 h-4 w-4" />
+                Wishlist
+              </Button>
+            </Link>
+            <Link to="/cart">
+              <Button variant="ghost" size="sm" aria-label="Cart" className="gap-1.5">
+                <ShoppingCart className="h-4 w-4" />
+                Cart
+                {cartCount > 0 && (
+                  <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground">
+                    {cartCount > 99 ? "99+" : cartCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
           </div>
         </div>
       )}
