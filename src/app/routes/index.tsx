@@ -33,12 +33,6 @@ const SupportPolicyPage = lazy(() => import("@/features/footer-pages/pages/Suppo
 const PoliciesPage = lazy(() => import("@/features/footer-pages/pages/PoliciesPage"));
 const NotFoundPage = lazy(() => import("@/features/not-found/pages/NotFoundPage"));
 
-const AllProductsPage = lazy(() => import("@/features/all-products/pages/AllProductsPage"));
-const ProductDetailsPage = lazy(() => import("@/features/product-details/pages/ProductDetailsPage"));
-
-const AllProductsPage = lazy(() => import("@/features/all-products/pages/AllProductsPage"));
-const ProductDetailsPage = lazy(() => import("@/features/product-details/pages/ProductDetailsPage"));
-
 export default function AppRoutes() {
   return (
     <Suspense fallback={<Loader />}>
