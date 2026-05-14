@@ -30,6 +30,7 @@ export default function LoginPage() {
     mutate(data, {
       onSuccess: (response) => {
         localStorage.setItem("token", response.token);
+        localStorage.setItem("userId", response.user._id);
         toast.success("Logged in successfully!");
         navigate("/");
       },
@@ -48,7 +49,11 @@ export default function LoginPage() {
           description="Sign in to your account to continue"
         />
 
-        <form className="space-y-4" noValidate onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="space-y-4"
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <AuthInput
             label="Email"
             type="email"

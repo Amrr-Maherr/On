@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
@@ -5,7 +6,7 @@ import AddToFav from "./actions/AddToFav";
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product }: { product: Product }) {
   return (
     <Link to={`/products/${product.title}/${product.id}`}>
       <Card className="group relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -17,8 +18,8 @@ export default function ProductCard({ product }: { product: Product }) {
             className="h-60 w-full rounded-t-xl object-cover"
           />
           <div className="absolute left-3 right-3 top-3 flex items-start justify-between">
-            <AddToCart />
-            <AddToFav />
+            <AddToCart productId={product.id} />
+            <AddToFav productId={product.id} />
           </div>
         </div>
         <CardHeader>
@@ -48,3 +49,5 @@ export default function ProductCard({ product }: { product: Product }) {
     </Link>
   );
 }
+
+export default memo(ProductCard);

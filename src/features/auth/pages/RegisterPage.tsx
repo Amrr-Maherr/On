@@ -36,6 +36,7 @@ export default function RegisterPage() {
     mutate(data, {
       onSuccess: (response) => {
         localStorage.setItem("token", response.token);
+        localStorage.setItem("userId", response.user._id);
         toast.success("Account created successfully!");
         navigate("/");
       },

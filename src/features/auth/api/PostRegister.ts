@@ -4,7 +4,7 @@ import type { AuthResponse, RegisterFormFields } from "@/features/auth/types/aut
 export async function postRegister(
   data: RegisterFormFields,
 ): Promise<AuthResponse> {
-  const response = await api.post<AuthResponse>("/api/v2/auth/register", {
+  const response = await api.post<AuthResponse>("/api/v1/auth/signup", {
     name: data.name,
     email: data.email,
     password: data.password,
