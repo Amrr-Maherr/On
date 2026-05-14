@@ -10,6 +10,6 @@ export interface WishlistProduct {
 
 export interface WishlistResponse {
   status: string;
-  count: number;
+  count?: number;
   data: WishlistProduct[];
 }

@@ -78,7 +78,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 onIncrease={() => setQuantity(Math.min(product.quantity, quantity + 1))}
               />
               <div className="mt-5">
-                <ProductActions />
+                <ProductActions productId={product.id} />
               </div>
             </div>
 

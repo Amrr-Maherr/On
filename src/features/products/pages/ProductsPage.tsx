@@ -9,19 +9,19 @@ import {
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 const categories = [
-  { label: "Electronics", count: 42 },
-  { label: "Clothing", count: 28 },
-  { label: "Home & Garden", count: 15 },
-  { label: "Sports", count: 22 },
-  { label: "Books", count: 34 },
+  { label: "Electronics", value: "electronics", count: 42 },
+  { label: "Clothing", value: "clothing", count: 28 },
+  { label: "Home & Garden", value: "home-garden", count: 15 },
+  { label: "Sports", value: "sports", count: 22 },
+  { label: "Books", value: "books", count: 34 },
 ];
 
 const brands = [
-  { label: "Nike", count: 18 },
-  { label: "Apple", count: 12 },
-  { label: "Samsung", count: 9 },
-  { label: "Sony", count: 7 },
-  { label: "Adidas", count: 14 },
+  { label: "Nike", value: "nike", count: 18 },
+  { label: "Apple", value: "apple", count: 12 },
+  { label: "Samsung", value: "samsung", count: 9 },
+  { label: "Sony", value: "sony", count: 7 },
+  { label: "Adidas", value: "adidas", count: 14 },
 ];
 
 const placeholderProducts = Array.from({ length: 8 }, (_, i) => ({

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishlistItem";
+import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
 import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
 import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
@@ -16,9 +18,19 @@ function getErrorMessage(error: unknown): string {
 
 export default function WishlistPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const { data, isLoading, error, refetch } = useWishlist();
   const { mutate: removeItem, isPending: isRemoving } = useRemoveWishlistItem();
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart();
   const [removingId, setRemovingId] = useState<string | null>(null);
+  const [addingToCartId, setAddingToCartId] = useState<string | null>(null);
 
   if (isLoading) return <WishlistLoader />;
 
@@ -40,11 +52,23 @@ export default function WishlistPage() {
 
   const handleRemove = (productId: string) => {
     setRemovingId(productId);
-    removeItem(productId, { onSettled: () => setRemovingId(null) });
+    removeItem(productId, {
+      onSettled: () => setRemovingId(null),
+      onSuccess: () => toast.success("Removed from wishlist"),
+      onError: (err) => toast.error(err.message),
+    });
   };
 
-  const handleAddToCart = () => {
-    navigate("/products");
+  const handleAddToCart = (productId: string) => {
+    setAddingToCartId(productId);
+    addToCart(
+      { productId },
+      {
+        onSettled: () => setAddingToCartId(null),
+        onSuccess: () => toast.success("Added to cart!"),
+        onError: (err) => toast.error(err.message),
+      },
+    );
   };
 
   return (
@@ -66,6 +90,7 @@ export default function WishlistPage() {
             onRemove={handleRemove}
             onAddToCart={handleAddToCart}
             isRemoving={isRemoving && removingId === product._id}
+            isAddingToCart={isAddingToCart && addingToCartId === product._id}
           />
         ))}
       </div>

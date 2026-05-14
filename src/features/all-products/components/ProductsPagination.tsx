@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -8,7 +9,7 @@ interface ProductsPaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export default function ProductsPagination({
+function ProductsPagination({
   currentPage,
   totalPages,
   onPageChange,
@@ -67,3 +68,5 @@ export default function ProductsPagination({
     </nav>
   );
 }
+
+export default memo(ProductsPagination);

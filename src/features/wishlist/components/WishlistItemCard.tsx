@@ -1,4 +1,5 @@
-import { Heart, ShoppingCart } from "lucide-react";
+import { memo } from "react";
+import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -7,16 +8,18 @@ import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
 interface WishlistItemCardProps {
   product: WishlistProduct;
   onRemove: (productId: string) => void;
-  onAddToCart: () => void;
+  onAddToCart: (productId: string) => void;
   isRemoving?: boolean;
+  isAddingToCart?: boolean;
 }
 
-export default function WishlistItemCard({
+const WishlistItemCard = memo(({
   product,
   onRemove,
   onAddToCart,
   isRemoving,
-}: WishlistItemCardProps) {
+  isAddingToCart,
+}: WishlistItemCardProps) => {
   const displayPrice = product.priceAfterDiscount ?? product.price;
   const hasDiscount = !!product.priceAfterDiscount;
 
@@ -25,7 +28,7 @@ export default function WishlistItemCard({
       data-size="sm"
       className={cn(
         "flex-row gap-4 p-4",
-        isRemoving && "pointer-events-none opacity-60",
+        (isRemoving || isAddingToCart) && "pointer-events-none opacity-60",
       )}
     >
       <div className="h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-muted md:h-28 md:w-28">
@@ -45,14 +48,16 @@ export default function WishlistItemCard({
               <span
                 className={cn(
                   "text-sm",
-                  hasDiscount ? "text-muted-foreground line-through" : "text-muted-foreground",
+                  hasDiscount
+                    ? "text-muted-foreground line-through"
+                    : "text-muted-foreground",
                 )}
               >
                 {product.price.toLocaleString()} EGP
               </span>
               {hasDiscount && (
                 <span className="text-sm font-semibold text-primary">
-                  {displayPrice.toLocaleString()} EGP
+                   {displayPrice.toLocaleString()} EGP
                 </span>
               )}
             </div>
@@ -61,10 +66,15 @@ export default function WishlistItemCard({
             variant="ghost"
             size="icon-xs"
             onClick={() => onRemove(product._id)}
+            disabled={isRemoving}
             aria-label="Remove from wishlist"
             className="shrink-0 text-muted-foreground hover:text-destructive"
           >
-            <Heart className="h-4 w-4" fill="currentColor" />
+            {isRemoving ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Heart className="h-4 w-4" fill="currentColor" />
+            )}
           </Button>
         </div>
 
@@ -78,13 +88,20 @@ export default function WishlistItemCard({
             size="xs"
             variant="outline"
             className="gap-1.5"
-            onClick={onAddToCart}
+            onClick={() => onAddToCart(product._id)}
+            disabled={isAddingToCart}
           >
-            <ShoppingCart className="h-3.5 w-3.5" />
-            Add to Cart
+            {isAddingToCart ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <ShoppingCart className="h-3.5 w-3.5" />
+            )}
+            {isAddingToCart ? "Adding..." : "Add to Cart"}
           </Button>
         </div>
       </div>
     </Card>
   );
-}
+});
+
+export default WishlistItemCard;
