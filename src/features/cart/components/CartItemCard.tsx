@@ -42,7 +42,7 @@ export default function CartItemCard({
           <div className="min-w-0">
             <h3 className="truncate text-sm font-medium">{product.title}</h3>
             <p className="mt-0.5 text-sm text-muted-foreground">
-              {product.price.toLocaleString()} EGP
+              {product.price} EGP
             </p>
           </div>
           <Button
