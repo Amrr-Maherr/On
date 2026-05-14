@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
@@ -24,7 +25,9 @@ function AppProviders({ children }: AppProvidersProps) {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={i18n}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <HelmetProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </HelmetProvider>
         </I18nextProvider>
       </QueryClientProvider>
     </Provider>

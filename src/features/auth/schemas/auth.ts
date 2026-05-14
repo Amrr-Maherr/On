@@ -12,6 +12,7 @@ export const registerFields: (keyof RegisterFormFields)[] = [
   "email",
   "password",
   "confirmPassword",
+  "phone",
 ];
 
 export const forgotPasswordFields: (keyof ForgotPasswordFormFields)[] = [

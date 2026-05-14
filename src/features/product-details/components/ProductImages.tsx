@@ -1,6 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 interface ProductImagesProps {
   images: string[];
   selectedImage: string;
@@ -11,11 +8,11 @@ export default function ProductImages({ images, selectedImage, onSelectImage }: 
   return (
     <div className="space-y-4">
       <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
-        <LazyLoadImage
+        <img
           src={selectedImage}
           alt=""
+          loading="lazy"
           className="aspect-square w-full object-cover"
-          effect="blur"
         />
       </div>
       {images.length > 1 && (
@@ -30,11 +27,11 @@ export default function ProductImages({ images, selectedImage, onSelectImage }: 
                   : "ring-foreground/10"
               }`}
             >
-              <LazyLoadImage
+              <img
                 src={img}
                 alt=""
+                loading="lazy"
                 className="h-20 w-20 object-cover"
-                effect="blur"
               />
             </button>
           ))}
