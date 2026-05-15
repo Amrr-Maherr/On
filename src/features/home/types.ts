@@ -22,3 +22,17 @@ export interface BlogPost {
   date: string;
   description: string;
 }
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  avatar: string;
+  quote: string;
+  rating: number;
+}
+
+export interface Value {
+  image: string;
+  title: string;
+  description: string;
+}

@@ -22,4 +22,18 @@ export const blogData: BlogPost[] = [
     description:
       "Simplify your style with versatile pieces that transition seamlessly from work to weekend.",
   },
+  {
+    coverImage: "https://images.pexels.com/photos/994234/pexels-photo-994234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "How We Curate Our Product Selection",
+    date: "2026-01-01",
+    description:
+      "Learn about the standards, research, and passion behind every product we choose to feature.",
+  },
+  {
+    coverImage: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    title: "The Art of Minimalist Living",
+    date: "2025-12-28",
+    description:
+      "Embrace simplicity with thoughtfully designed spaces and curated essentials for a calmer everyday life.",
+  },
 ];
