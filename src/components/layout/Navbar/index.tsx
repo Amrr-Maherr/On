@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Search, User, ShoppingCart, Heart, Package, Menu, X, LogOut, LogIn, UserCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useTheme } from "@/shared/providers/theme-provider";
 import Logo from "@/components/shared/logo/Logo";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
@@ -12,7 +11,6 @@ import { useOrders } from "@/features/orders/hooks/useOrders";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { theme } = useTheme();
   const { data: cartData } = useCart();
   const { data: wishlistData } = useWishlist();
   const { data: ordersData } = useOrders();
@@ -21,14 +19,36 @@ function Navbar() {
   const ordersCount = ordersData?.length ?? 0;
   const isLoggedIn = !!localStorage.getItem("token");
   const navigate = useNavigate();
-  console.log(theme);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     setIsDropdownOpen(false);
     navigate("/login");
-  };
+  }, [navigate]);
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+  const toggleDropdown = useCallback(() => {
+    setIsDropdownOpen((prev) => !prev);
+  }, []);
+
+  const closeDropdown = useCallback(() => {
+    setIsDropdownOpen(false);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  const mobileLogout = useCallback(() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    setIsMenuOpen(false);
+    navigate("/login");
+  }, [navigate]);
 
   return (
     <nav className="sticky top-0 z-50 bg-background container-layout">
@@ -82,7 +102,7 @@ function Navbar() {
               variant="ghost"
               size="icon"
               aria-label="Account"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              onClick={toggleDropdown}
             >
               <User className="h-5 w-5" />
             </Button>
@@ -93,7 +113,7 @@ function Navbar() {
                     <Link
                       to="/orders"
                       className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-muted"
-                      onClick={() => setIsDropdownOpen(false)}
+                      onClick={closeDropdown}
                     >
                       <Package className="h-4 w-4" />
                       My Orders
@@ -101,7 +121,7 @@ function Navbar() {
                     <Link
                       to="/profile"
                       className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-muted"
-                      onClick={() => setIsDropdownOpen(false)}
+                      onClick={closeDropdown}
                     >
                       <UserCircle className="h-4 w-4" />
                       Profile
@@ -119,7 +139,7 @@ function Navbar() {
                     <Link
                       to="/login"
                       className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-muted"
-                      onClick={() => setIsDropdownOpen(false)}
+                      onClick={closeDropdown}
                     >
                       <LogIn className="h-4 w-4" />
                       Login
@@ -127,7 +147,7 @@ function Navbar() {
                     <Link
                       to="/register"
                       className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-muted"
-                      onClick={() => setIsDropdownOpen(false)}
+                      onClick={closeDropdown}
                     >
                       <UserCircle className="h-4 w-4" />
                       Register
@@ -144,7 +164,7 @@ function Navbar() {
           size="icon"
           className="md:hidden"
           aria-label="Toggle menu"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={toggleMenu}
         >
           {isMenuOpen ? (
             <X className="h-5 w-5" />
@@ -165,7 +185,7 @@ function Navbar() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <ThemeToggle />
-            <Link to="/fave" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/fave" onClick={closeMenu}>
               <Button variant="ghost" size="sm" aria-label="Wishlist" className="gap-1.5">
                 <Heart className="h-4 w-4" />
                 Wishlist
@@ -176,7 +196,7 @@ function Navbar() {
                 )}
               </Button>
             </Link>
-            <Link to="/orders" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/orders" onClick={closeMenu}>
               <Button variant="ghost" size="sm" aria-label="Orders" className="gap-1.5">
                 <Package className="h-4 w-4" />
                 Orders
@@ -187,7 +207,7 @@ function Navbar() {
                 )}
               </Button>
             </Link>
-            <Link to="/cart" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/cart" onClick={closeMenu}>
               <Button variant="ghost" size="sm" aria-label="Cart" className="gap-1.5">
                 <ShoppingCart className="h-4 w-4" />
                 Cart
@@ -200,7 +220,7 @@ function Navbar() {
             </Link>
             {isLoggedIn ? (
               <>
-                <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/profile" onClick={closeMenu}>
                   <Button variant="ghost" size="sm" aria-label="Profile">
                     <UserCircle className="mr-2 h-4 w-4" />
                     Profile
@@ -210,19 +230,14 @@ function Navbar() {
                   variant="ghost"
                   size="sm"
                   aria-label="Logout"
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userId");
-                    setIsMenuOpen(false);
-                    navigate("/login");
-                  }}
+                  onClick={mobileLogout}
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
                 </Button>
               </>
             ) : (
-              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/login" onClick={closeMenu}>
                 <Button variant="ghost" size="sm" aria-label="Account">
                   <LogIn className="mr-2 h-4 w-4" />
                   Login
