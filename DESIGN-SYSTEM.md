@@ -246,39 +246,70 @@ transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 
 ### Home
 - **Personality**: Cinematic, spacious, editorial landing
-- **Hero**: Full-viewport, large typography, atmospheric imagery
-- **Sections**: Large vertical rhythm, alternating layouts
-- **Content**: Story-driven, magazine-like editorial feel
+- **Hero**: Full-viewport with gradient overlay, 80px+ light font weight headings, two CTAs
+- **Sections**: `section-py` (py-20 md:py-32), label + editorial heading pattern
+- **Content**: ScrollReveal animations, generous whitespace, magazine-like editorial feel
 
-### Products (Coming)
+### Products (All Products)
 - **Personality**: Clean, editorial product grid
-- **Grid**: Generous gutters, gallery-style presentation
-- **Cards**: Minimal, image-forward, price as typography
+- **Layout**: Sidebar filters (desktop) + product grid, `gap-8` grid spacing
+- **Header**: Editorial `text-4xl font-light tracking-tight md:text-5xl` with lighter subtitle
+- **Cards**: Image-forward with `rounded-2xl`, hover scale effect, minimal info
 
-### Product Details (Coming)
-- **Personality**: Premium showcase
-- **Layout**: Two-column, large image + refined details
-- **Content**: Editorial description, elegant options
+### Product Details
+- **Personality**: Premium showcase layout
+- **Layout**: Two-column grid `gap-10 lg:gap-16` with sticky image gallery
+- **Info cards**: `rounded-2xl border border-border/50 bg-card p-6 md:p-8`
+- **Content**: Breadcrumb, gallery, rating/price card, description, quantity/actions, reviews
 
-### Auth (Coming)
-- **Personality**: Centered, calm, minimal
-- **Layout**: Single-column, focused, distraction-free
-- **Design**: Soft card, large inputs, clear hierarchy
+### Auth
+- **Personality**: Centered, calm, elegant minimal
+- **Layout**: Two-column (form + decorative panel), single-column on mobile
+- **Form**: No card wrapper, clean unboxed layout with `max-w-sm`
+- **Inputs**: `h-12 rounded-2xl border border-border/60` with soft focus
+- **Header**: Centered `text-3xl font-light md:text-4xl` with muted description
 
-### Cart (Coming)
-- **Personality**: Clean utility
-- **Layout**: List-based with clear totals
-- **Design**: Minimal rows, prominent checkout CTA
+### Cart
+- **Personality**: Clean utility with refined details
+- **Layout**: Two-column (items + summary sidebar, `gap-12`)
+- **Items**: `rounded-2xl border border-border/50` cards with minimal controls
+- **CTAs**: Full-width premium checkout button, ghost delete action
 
-### Checkout (Coming)
+### Checkout
 - **Personality**: Ultra-clean, distraction-free flow
-- **Layout**: Step-based, wide and airy
-- **Design**: Focus on form clarity
+- **Layout**: Two-column (shipping form + order summary)
+- **Inputs**: Premium `h-12 rounded-2xl border-border/60` to match auth
+- **Payment**: Toggle buttons with `rounded-2xl`, clear active state
+- **Summary**: Sticky sidebar card with clean typography
 
-### Profile / Orders (Coming)
+### Profile
 - **Personality**: Refined dashboard
-- **Layout**: Card-based summaries, list details
-- **Design**: Clean table/list patterns
+- **Layout**: Centered `max-w-4xl` with `section-py pt-8`
+- **Header**: Editorial heading with user info
+- **Content**: Profile info card, action buttons (logout/edit)
+
+### Orders
+- **Personality**: Clean list-based history
+- **Layout**: Single column order cards
+- **Cards**: `rounded-2xl border border-border/50` with order details, items, status
+- **Status**: Color-coded indicators (paid/unpaid, delivered/processing)
+
+### Wishlist
+- **Personality**: Clean item grid/list
+- **Layout**: Single-column wishlist item cards
+- **Cards**: `rounded-2xl border border-border/50` with image, info, actions
+- **Actions**: Ghost remove button + bordered "Add to Cart" button
+
+### Categories & Brands
+- **Personality**: Spacious gallery grid
+- **Layout**: Filter sidebar + grid with `gap-8`
+- **Cards**: `rounded-2xl`, aspect-ratio containers, gradient overlays on hover
+- **Header**: Editorial style matching All Products
+
+### Footer Pages (About, Contact, Privacy, etc.)
+- **Personality**: Clean content presentation
+- **Layout**: Centered `max-w-3xl` editorial container
+- **Typography**: Large headings, comfortable reading line-height
 
 ---
 
