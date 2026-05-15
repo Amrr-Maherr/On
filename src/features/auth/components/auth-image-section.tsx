@@ -5,10 +5,8 @@ import { Zap, ArrowRight } from "lucide-react";
 const AuthImageSection = memo(function AuthImageSection() {
   return (
     <div className="relative hidden overflow-hidden bg-neutral-950 md:block">
-      <div
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-20"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-950/95 to-neutral-950/90" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-20" />
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-950/95 to-neutral-950/90" /> */}
 
       <div className="flex h-full w-full items-center justify-center p-16">
         <motion.div
@@ -30,17 +28,20 @@ const AuthImageSection = memo(function AuthImageSection() {
             Train harder. Go further.
           </p>
           <div className="mt-12 grid grid-cols-2 gap-3">
-            {["Free Shipping", "Easy Returns", "Premium Quality", "24/7 Support"].map(
-              (label) => (
-                <div
-                  key={label}
-                  className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
-                >
-                  <ArrowRight className="h-3 w-3 text-white/40" />
-                  <p className="text-xs text-white/50">{label}</p>
-                </div>
-              ),
-            )}
+            {[
+              "Free Shipping",
+              "Easy Returns",
+              "Premium Quality",
+              "24/7 Support",
+            ].map((label) => (
+              <div
+                key={label}
+                className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+              >
+                <ArrowRight className="h-3 w-3 text-white/40" />
+                <p className="text-xs text-white/50">{label}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

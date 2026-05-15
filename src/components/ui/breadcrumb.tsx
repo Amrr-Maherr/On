@@ -1,4 +1,5 @@
 import { Fragment, memo } from "react"
+import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 
@@ -26,13 +27,13 @@ const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProp
                     {item.label}
                   </span>
                 ) : item.href ? (
-                  <a
+                  <Link
                     data-slot="breadcrumb-link"
-                    href={item.href}
+                    to={item.href}
                     className="text-sm font-medium transition-colors hover:text-foreground"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ) : (
                   <span className="text-sm font-medium transition-colors hover:text-foreground">{item.label}</span>
                 )}
