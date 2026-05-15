@@ -37,7 +37,8 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
 
           <ScrollReveal direction="up" distance={40} delay={0.3}>
             <p className="mt-8 max-w-md text-lg font-medium leading-relaxed text-white/80 md:text-xl">
-              Engineered for the elite. The new performance collection is here to redefine your limits.
+              Designed with intention. <br />
+              Engineered for the Extraordinary.
             </p>
           </ScrollReveal>
 

@@ -16,14 +16,13 @@ const CtaSection = memo(function CtaSection() {
               <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
                 Get Started
               </span>
-              <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-foreground md:text-5xl lg:text-7xl">
                 Ready to elevate
                 <br />
                 your style?
               </h2>
-              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-muted-foreground/70">
-                Explore our curated collection and discover pieces that
-                define modern living.
+              <p className="mx-auto mt-5 max-w-md text-base font-bold uppercase tracking-widest text-muted-foreground/40">
+                Start exploring.
               </p>
               <div className="mt-8 flex items-center justify-center gap-4">
                 <Button

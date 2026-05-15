@@ -69,7 +69,12 @@ const ProductsSection = memo(function ProductsSection() {
       slidesPerViewMobile={1.5}
       hideNavigation={false}
       title="Featured."
-      description="Curated for modern living"
+      description={
+        <>
+          New season. <br />
+          Clean lines, lasting quality. Discover our latest arrivals.
+        </>
+      }
     >
       {products.slice(0, 10).map((product) => (
         <ProductCard key={product.id} product={product} />
