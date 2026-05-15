@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -8,7 +9,9 @@ interface BannerContentProps {
   data: BannerData;
 }
 
-function BannerContent({ data }: BannerContentProps) {
+const BannerContent = memo(function BannerContent({ data }: BannerContentProps) {
+  const navigate = useNavigate();
+  const handleClick = useCallback(() => navigate(data.ctaHref), [navigate, data.ctaHref]);
   const navigate = useNavigate();
 
   return (
@@ -27,13 +30,13 @@ function BannerContent({ data }: BannerContentProps) {
       <Button
         size="lg"
         className="mt-2 cursor-pointer gap-2 rounded-full px-8 py-6 text-base shadow-md"
-        onClick={() => navigate(data.ctaHref)}
+        onClick={handleClick}
       >
         {data.ctaLabel}
         <ArrowRight className="h-5 w-5" />
       </Button>
     </motion.div>
   );
-}
+});
 
 export default BannerContent;

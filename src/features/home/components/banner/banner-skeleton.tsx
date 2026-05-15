@@ -1,4 +1,6 @@
-function BannerSkeleton() {
+import { memo } from "react";
+
+const BannerSkeleton = memo(function BannerSkeleton() {
   return (
     <div className="flex flex-col items-center gap-8 lg:flex-row">
       <div className="flex flex-col gap-4 lg:w-1/2">
@@ -12,6 +14,6 @@ function BannerSkeleton() {
       </div>
     </div>
   );
-}
+});
 
 export default BannerSkeleton;

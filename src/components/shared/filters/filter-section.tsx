@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { memo, useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,7 @@ interface FilterSectionProps {
   defaultOpen?: boolean;
 }
 
-export default function FilterSection({
+const FilterSection = memo(function FilterSection({
   title,
   children,
   defaultOpen = true,
@@ -49,4 +49,6 @@ export default function FilterSection({
       </AnimatePresence>
     </div>
   );
-}
+});
+
+export default FilterSection;

@@ -1,13 +1,14 @@
+import { memo, useCallback } from "react"
 import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/shared/providers/theme-provider"
 
-function ThemeToggle() {
+const ThemeToggle = memo(function ThemeToggle() {
   const { theme, setTheme } = useTheme()
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark")
-  }
+  }, [theme, setTheme])
 
   return (
     <Button
@@ -20,6 +21,6 @@ function ThemeToggle() {
       <Moon className="absolute h-5 w-5 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
     </Button>
   )
-}
+})
 
 export default ThemeToggle

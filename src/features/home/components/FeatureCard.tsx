@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { FeatureItem } from "../types";
 import {
   Card,
@@ -6,7 +7,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
-export default function FeatureCard({ title, description, icon }: FeatureItem) {
+const FeatureCard = memo(function FeatureCard({ title, description, icon }: FeatureItem) {
   const Icon = icon;
 
   return (
@@ -22,4 +23,6 @@ export default function FeatureCard({ title, description, icon }: FeatureItem) {
       </CardHeader>
     </Card>
   );
-}
+});
+
+export default FeatureCard;

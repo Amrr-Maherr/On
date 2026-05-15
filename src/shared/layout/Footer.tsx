@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/shared/logo/Logo";
 
@@ -62,7 +63,7 @@ const socialLinks = [
   },
 ];
 
-function Footer() {
+const Footer = memo(function Footer() {
   return (
     <footer className="bg-muted/30">
       <div className="container-layout py-12">
@@ -150,6 +151,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+});
 
 export default Footer;

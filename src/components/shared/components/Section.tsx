@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Slider from "../Slider";
 
@@ -11,7 +11,7 @@ interface SectionProps {
   children: ReactNode;
 }
 
-export default function Section({
+const Section = memo(function Section({
   title,
   description,
   children,
@@ -40,4 +40,6 @@ export default function Section({
       </section>
     </ScrollReveal>
   );
-}
+});
+
+export default Section;
