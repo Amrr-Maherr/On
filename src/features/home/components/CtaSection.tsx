@@ -13,24 +13,24 @@ const CtaSection = memo(function CtaSection() {
         <div className="container-layout">
           <div className="relative overflow-hidden rounded-none bg-muted/30 px-8 py-20 text-center md:px-16 md:py-28">
             <div className="relative z-10 mx-auto max-w-2xl">
-              <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-                Get Started
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
+                Join the Movement
               </span>
-              <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-foreground md:text-5xl lg:text-7xl">
+              <h2 className="font-heading mt-6 text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground md:text-7xl lg:text-8xl">
                 Ready to elevate
                 <br />
                 your style?
               </h2>
-              <p className="mx-auto mt-5 max-w-md text-base font-bold uppercase tracking-widest text-muted-foreground/40">
-                Start exploring.
+              <p className="mx-auto mt-8 max-w-md text-sm font-bold uppercase tracking-widest text-muted-foreground/40">
+                Push your limits.
               </p>
-              <div className="mt-8 flex items-center justify-center gap-4">
+              <div className="mt-10 flex items-center justify-center gap-4">
                 <Button
                   onClick={() => navigate("/products")}
-                  className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+                  className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
                   Shop the collection
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
               </div>
             </div>

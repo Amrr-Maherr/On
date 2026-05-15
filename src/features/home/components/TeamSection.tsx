@@ -32,11 +32,11 @@ const TeamSection = memo(function TeamSection() {
       <ScrollReveal>
         <div className="container-layout">
           <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
-              Team
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/70">
+              The Crew
             </span>
-            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              Meet the people behind your store
+            <h2 className="font-heading mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              Behind the performance
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -70,24 +70,24 @@ const TeamSection = memo(function TeamSection() {
                       {member.role}
                     </p>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex gap-4">
                     <a
                       href={member.socials.website}
-                      className="rounded-full p-1.5 text-muted-foreground/50 transition-colors duration-200 hover:text-foreground"
+                      className="rounded-none border-2 border-transparent p-1.5 text-muted-foreground/50 transition-all duration-300 hover:border-foreground hover:text-foreground"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${member.name} website`}
                     >
-                      <Globe size={15} />
+                      <Globe size={16} />
                     </a>
                     <a
                       href={member.socials.linkedin}
-                      className="rounded-full p-1.5 text-muted-foreground/50 transition-colors duration-200 hover:text-foreground"
+                      className="rounded-none border-2 border-transparent p-1.5 text-muted-foreground/50 transition-all duration-300 hover:border-foreground hover:text-foreground"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${member.name} LinkedIn`}
                     >
-                      <LinkedinIcon size={15} />
+                      <LinkedinIcon size={16} />
                     </a>
                   </div>
                 </div>

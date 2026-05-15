@@ -128,6 +128,32 @@
   --campaign-foreground: oklch(0.985 0.003 85);
 }
 
+/* Swiper Custom Pagination (Adidas/Nike Style) */
+.swiper-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 24px !important;
+  height: 2px !important;
+  border-radius: 0 !important;
+  background: var(--foreground) !important;
+  opacity: 0.1 !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  margin: 0 !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 64px !important;
+  opacity: 1 !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

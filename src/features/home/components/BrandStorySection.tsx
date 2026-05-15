@@ -60,36 +60,44 @@ const BrandStorySection = memo(function BrandStorySection() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" distance={60}>
-            <div className="border-l-4 border-foreground pl-8">
+            <div className="border-l-8 border-foreground pl-10">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-                Builder
+                The Story
               </span>
-              <h2 className="mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              <h2 className="font-heading mt-4 text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground md:text-7xl">
                 ENGINEERED FOR<br />THE EXTRAORDINARY.
               </h2>
-              <p className="mt-8 text-lg font-medium leading-relaxed text-muted-foreground/70">
+              <p className="mt-8 text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
                 Born from a passion for performance, we set out to create
                 sportswear that doesn't just look good — it pushes boundaries.
-                Every stitch, every fabric, every design decision is made with
-                one goal: to help you perform at your best.
               </p>
-              <p className="mt-4 text-lg font-medium leading-relaxed text-muted-foreground/70">
+              <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
                 From the track to the gym, from the studio to the street, our
                 gear is built for those who refuse to settle. Join thousands of
                 athletes worldwide who trust us to deliver excellence.
               </p>
 
-              <div className="mt-10 grid grid-cols-3 gap-6 border-y border-border/50 py-8">
+              <div className="mt-12 grid grid-cols-3 gap-6 border-y-2 border-border/40 py-10">
                 {stats.map((stat) => (
                   <div key={stat.label}>
-                    <div className="text-2xl font-black text-foreground">
+                    <div className="text-3xl font-black tracking-tighter text-foreground">
                       {stat.value}
                     </div>
-                    <div className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground/60">
+                    <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                       {stat.label}
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
+                <Button
+                  onClick={() => navigate("/products")}
+                  className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
+                >
+                  Our Gear
+                  <ArrowRight className="ml-3 h-5 w-5" />
+                </Button>
               </div>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">

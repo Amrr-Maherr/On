@@ -23,22 +23,22 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
     <section className="section-py bg-background">
       <div className="container-layout">
         <ScrollReveal>
-          <div className="mb-12 flex items-end justify-between">
+          <div className="mb-12 flex items-end justify-between border-l-8 border-foreground pl-6">
             <div>
               <div className="flex items-center gap-3">
-                <TrendingUp className="h-5 w-5 text-primary" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+                <TrendingUp className="h-5 w-5 text-foreground" />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
                   Hot Right Now
                 </span>
               </div>
-              <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+              <h2 className="font-heading mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
                 Trending Now.
               </h2>
             </div>
             <Button
               onClick={handleViewAll}
               variant="ghost"
-              className="hidden cursor-pointer items-center gap-2 text-sm font-semibold md:flex"
+              className="hidden cursor-pointer items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] md:flex"
             >
               Shop All
               <ArrowRight className="h-4 w-4" />
@@ -84,13 +84,13 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
             </div>
 
             <ScrollReveal direction="up" delay={0.4}>
-              <div className="mt-10 flex justify-center">
+              <div className="mt-12 flex justify-center">
                 <Button
                   onClick={handleViewAll}
-                  className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+                  className="h-16 w-full cursor-pointer rounded-none bg-foreground px-12 text-xs font-black uppercase tracking-[0.4em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
                   View All Products
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-4 h-5 w-5" />
                 </Button>
               </div>
             </ScrollReveal>
