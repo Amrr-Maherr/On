@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Mail, Phone, Shield, Calendar } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { User } from "../types";
@@ -6,7 +7,7 @@ interface ProfileInfoCardProps {
   user: User;
 }
 
-export default function ProfileInfoCard({ user }: ProfileInfoCardProps) {
+const ProfileInfoCard = memo(function ProfileInfoCard({ user }: ProfileInfoCardProps) {
   const infoItems = [
     {
       icon: Mail,
@@ -52,4 +53,6 @@ export default function ProfileInfoCard({ user }: ProfileInfoCardProps) {
       </CardContent>
     </Card>
   );
-}
+});
+
+export default ProfileInfoCard;

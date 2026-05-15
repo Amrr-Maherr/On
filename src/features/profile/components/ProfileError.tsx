@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertCircle, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface ProfileErrorProps {
   onRetry: () => void;
 }
 
-export default function ProfileError({ message, onRetry }: ProfileErrorProps) {
+const ProfileError = memo(function ProfileError({ message, onRetry }: ProfileErrorProps) {
   return (
     <div className="flex min-h-[400px] flex-col items-center justify-center gap-4 text-center">
       <div className="rounded-full bg-destructive/10 p-4">
@@ -22,4 +23,6 @@ export default function ProfileError({ message, onRetry }: ProfileErrorProps) {
       </Button>
     </div>
   );
-}
+});
+
+export default ProfileError;

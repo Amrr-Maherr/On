@@ -1,10 +1,11 @@
+import { memo } from "react";
 import type { User } from "../types";
 
 interface ProfileHeaderProps {
   user: User;
 }
 
-export default function ProfileHeader({ user }: ProfileHeaderProps) {
+const ProfileHeader = memo(function ProfileHeader({ user }: ProfileHeaderProps) {
   const initials = user.name
     .split(" ")
     .map((n) => n[0])
@@ -26,4 +27,6 @@ export default function ProfileHeader({ user }: ProfileHeaderProps) {
       </div>
     </div>
   );
-}
+});
+
+export default ProfileHeader;

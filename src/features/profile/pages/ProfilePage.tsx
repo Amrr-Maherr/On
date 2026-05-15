@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -20,16 +20,16 @@ export default function ProfilePage() {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     toast.success("Logged out successfully");
     navigate("/login");
-  };
+  }, [navigate]);
 
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     toast.error("Edit profile functionality is not implemented yet.");
-  };
+  }, []);
 
   if (isLoading) {
     return <ProfileSkeleton />;

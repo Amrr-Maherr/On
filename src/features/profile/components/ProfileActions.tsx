@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { LogOut, UserPen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface ProfileActionsProps {
   onEdit: () => void;
 }
 
-export default function ProfileActions({ onLogout, onEdit }: ProfileActionsProps) {
+const ProfileActions = memo(function ProfileActions({ onLogout, onEdit }: ProfileActionsProps) {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <Button onClick={onEdit} className="gap-2">
@@ -19,4 +20,6 @@ export default function ProfileActions({ onLogout, onEdit }: ProfileActionsProps
       </Button>
     </div>
   );
-}
+});
+
+export default ProfileActions;

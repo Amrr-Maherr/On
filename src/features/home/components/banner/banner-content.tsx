@@ -9,10 +9,14 @@ interface BannerContentProps {
   data: BannerData;
 }
 
-const BannerContent = memo(function BannerContent({ data }: BannerContentProps) {
+const BannerContent = memo(function BannerContent({
+  data,
+}: BannerContentProps) {
   const navigate = useNavigate();
-  const handleClick = useCallback(() => navigate(data.ctaHref), [navigate, data.ctaHref]);
-  const navigate = useNavigate();
+  const handleClick = useCallback(
+    () => navigate(data.ctaHref),
+    [navigate, data.ctaHref],
+  );
 
   return (
     <motion.div
