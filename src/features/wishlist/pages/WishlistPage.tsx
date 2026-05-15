@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -50,16 +50,16 @@ export default function WishlistPage() {
     return <WishlistEmpty />;
   }
 
-  const handleRemove = (productId: string) => {
+  const handleRemove = useCallback((productId: string) => {
     setRemovingId(productId);
     removeItem(productId, {
       onSettled: () => setRemovingId(null),
       onSuccess: () => toast.success("Removed from wishlist"),
       onError: (err) => toast.error(err.message),
     });
-  };
+  }, [removeItem]);
 
-  const handleAddToCart = (productId: string) => {
+  const handleAddToCart = useCallback((productId: string) => {
     setAddingToCartId(productId);
     addToCart(
       { productId },
@@ -69,7 +69,7 @@ export default function WishlistPage() {
         onError: (err) => toast.error(err.message),
       },
     );
-  };
+  }, [addToCart]);
 
   return (
     <div className="container-layout py-8">

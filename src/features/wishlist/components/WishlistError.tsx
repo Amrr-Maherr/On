@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface WishlistErrorProps {
   onRetry?: () => void;
 }
 
-export default function WishlistError({ message, onRetry }: WishlistErrorProps) {
+const WishlistError = memo(function WishlistError({ message, onRetry }: WishlistErrorProps) {
   return (
     <div className="container-layout flex flex-col items-center justify-center gap-4 py-24 text-center">
       <AlertTriangle className="h-12 w-12 text-destructive" />
@@ -24,4 +25,6 @@ export default function WishlistError({ message, onRetry }: WishlistErrorProps) 
       )}
     </div>
   );
-}
+});
+
+export default WishlistError;

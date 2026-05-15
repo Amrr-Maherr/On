@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-export default function WishlistEmpty() {
+const WishlistEmpty = memo(function WishlistEmpty() {
   return (
     <div className="container-layout flex flex-col items-center justify-center gap-4 py-24 text-center">
       <Heart className="h-16 w-16 text-muted-foreground/50" />
@@ -20,4 +21,6 @@ export default function WishlistEmpty() {
       </Link>
     </div>
   );
-}
+});
+
+export default WishlistEmpty;

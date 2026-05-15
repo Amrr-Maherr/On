@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Card } from "@/components/ui/card";
 
-export default function WishlistLoader() {
+const WishlistLoader = memo(function WishlistLoader() {
   return (
     <div className="container-layout py-8">
       <div className="mb-8 h-8 w-56 animate-pulse rounded bg-muted" />
@@ -20,4 +21,6 @@ export default function WishlistLoader() {
       </div>
     </div>
   );
-}
+});
+
+export default WishlistLoader;
