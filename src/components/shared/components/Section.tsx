@@ -4,7 +4,7 @@ import Slider from "../Slider";
 
 interface SectionProps {
   title: string;
-  description?: string;
+  description?: ReactNode;
   slidesPerView: number;
   slidesPerViewMobile: number;
   hideNavigation: boolean;

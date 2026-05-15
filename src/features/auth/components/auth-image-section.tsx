@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Zap, ArrowRight } from "lucide-react";
 
 const AuthImageSection = memo(function AuthImageSection() {
   return (

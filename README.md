@@ -1,31 +1,46 @@
-# On — Production-Grade eCommerce Rebuild
+# On — Production-Grade High-Performance eCommerce Platform
 
-A high-performance, production-ready eCommerce front-end built with **React 19**, **TypeScript**, and **Vite**. This project represents a **full systematic frontend transformation** inspired by the commercial design language of **Adidas** and **Nike**.
-
----
-
-## 📌 The Mission: Production-Grade Rebuild
-
-This application has undergone a **complete UI/UX rebuild** using the **Motion Commerce Performance Design System (MCPDS)**. Every page and component has been systematically redesigned to provide a bold, athletic, and conversion-optimized experience while preserving all existing backend logic and features.
-
-### Core Objectives
-- ✔ **Full Redesign**: 100% UI coverage across all pages and components.
-- ✔ **Performance First**: Lazy loading, optimized asset delivery, and minimized re-renders.
-- ✔ **Consistency**: A unified design language (MCPDS) as the single source of truth.
-- ✔ **Production Ready**: Scalable architecture, clean code, and production-grade UI/UX.
+**On** is a comprehensive, high-performance eCommerce application built with **React 19**, **TypeScript**, and **Vite**. This project represents a radical frontend transformation, designed to mirror the bold and powerful visual identity of global sports brands like **Adidas** and **Nike**.
 
 ---
 
-## 🎨 Design System: MCPDS
+## 🧐 Deep Analysis
 
-**Motion Commerce Performance Design System (MCPDS)** is the exclusive design system for this project.
+The **On** project is more than just an online store; it is a visual and engineering experience aimed at merging "Power" with "Technical Efficiency." We analyzed the needs of athletes and high-performance seekers to build a unique design system called **MCPDS** (Motion Commerce Performance Design System).
 
-- **Inspiration**: Adidas & Nike digital platforms.
-- **Visual Identity**: Bold, high-contrast, grid-based, and athletic.
-- **Single Source of Truth**: All design tokens are centralized in `src/index.css` using CSS variables.
-- **Full Documentation**: See [DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md) for detailed design specifications.
+### Visual Philosophy: Brutalist Athletic Design
+- **Sharp Edges (Zero Radius)**: We intentionally removed all curves from buttons, images, and cards to provide a sharp, direct, and powerful feel that conveys precision and professionalism.
+- **High Contrast**: A color palette based on White, Black, and Amber with thick borders (2px) ensures element clarity and readability under any lighting conditions (full Dark Mode support).
+- **Typography**: Utilization of heavy fonts (Bold/Black) and wide letter spacing (Tracking) gives visual weight to headings and Calls to Action (CTAs).
 
-> **Note on the "Team" Section**: As per architectural constraints, the "Team" section remains exactly as it was, integrated visually into the new system without structural changes.
+---
+
+## ✨ Key Features
+
+### 🔐 Advanced Auth System
+- Seamless sign-in and sign-up experience with a bold "Brutalist" design.
+- Social Login support.
+- Full password recovery flow (Forgot/Reset Password).
+- Real-time interactive validation messages.
+
+### 🛍️ Dynamic Storefront
+- **Hero Section**: High-definition video background with full audio control, designed to capture user attention immediately.
+- **Smart Discovery**: Advanced filtering system (Search, Price Range, Categories, Brands) with instant result updates.
+- **Product Gallery**: Professional image gallery supporting Lightbox, Zoom, and smooth slider navigation.
+
+### 🛒 Cart & Wishlist Management
+- Quick product addition with instant quantity updates.
+- Wishlist for saving favorite products.
+- Full synchronization with Local Storage and API to ensure no data loss.
+
+### 📊 Social Proof & Engagement
+- Integrated review system with star ratings.
+- Q&A section for direct interaction.
+- "What our customers say" and "Our Ethos" sliders with attractive interactive designs.
+
+### 👤 User Profile & Orders
+- User dashboard to track order status and purchase history.
+- Ability to edit personal data (Name, Phone, Email) via interactive sheets.
 
 ---
 
@@ -33,40 +48,65 @@ This application has undergone a **complete UI/UX rebuild** using the **Motion C
 
 | Layer | Technology |
 |---|---|
-| **UI Library** | React 19 |
-| **Language** | TypeScript 6 |
-| **Build Tool** | Vite 8 |
+| **Core Library** | React 19 (Latest) |
+| **Language** | TypeScript 6 (Type Safety) |
+| **Build Tool** | Vite 8 (Ultra-fast performance) |
 | **Styling** | Tailwind CSS v4 |
-| **UI Primitives** | shadcn/ui + @base-ui/react |
-| **Icons** | lucide-react |
-| **Animations** | framer-motion |
-| **Carousels** | swiper |
+| **Data Management** | TanStack Query (React Query) |
+| **Form Management** | React Hook Form + Zod |
+| **Animations** | Framer Motion |
+| **Carousels** | Swiper.js |
+| **Icons** | Lucide React |
 
 ---
 
 ## 🏗 Project Architecture
 
-The project follows a **feature-based architecture** designed for scalability and clear separation of concerns.
+The project follows a **Feature-Based Architecture**, making it scalable and easy to maintain:
 
 ```
 src/
-├── app/                      # App-level configuration (Routes, Store, i18n)
-├── components/               # UI components
-│   ├── layout/               # Global layout (Navbar, Hero)
-│   ├── shared/               # Reusable feature-agnostic components
-│   └── ui/                   # shadcn/ui primitives (styled for MCPDS)
-├── features/                 # Self-contained feature modules (Cart, Products, Auth, etc.)
-├── hooks/                    # Global React hooks
-├── lib/                      # Core library configuration (Axios, Utils)
-├── shared/                   # Domain-agnostic code (Theme, Global Types)
-└── assets/                   # Static assets
+├── app/                      # Global configurations (Router, State)
+├── components/               # General UI components
+│   ├── layout/               # Global structure (Navbar, Footer, Hero)
+│   ├── shared/               # Reusable components
+│   └── ui/                   # Primitive components (Buttons, Inputs)
+├── features/                 # Functional modules (each feature in a separate folder)
+│   ├── auth/                 # Authentication system
+│   ├── cart/                 # Shopping cart
+│   ├── products/             # Product display and filtering
+│   └── profile/              # User profile
+├── hooks/                    # General custom hooks
+├── lib/                      # External library configurations (Axios)
+└── shared/                   # Global styles and types
 ```
 
 ---
 
 ## 🚀 Performance & UX
 
-- **Stage-based Rendering**: Critical paths are optimized for instant feel.
-- **Lazy Loading**: All features and heavy sections are loaded on demand.
-- **Conversion-Focused**: UX is engineered to drive users toward checkout with minimal friction.
-- **Responsive**: Mobile-first approach ensuring a premium experience on all devices.
+- **Lazy Loading**: Heavy features and sections are loaded only when needed to reduce initial load time.
+- **Scroll Reveal**: Element appearance effects on scroll to increase engagement.
+- **Mobile First**: Fully responsive design ensuring a premium experience on all devices.
+- **Optimized Assets**: Compressed and optimized images and videos for fast browsing.
+
+---
+
+## 🛠 Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Run development server:
+   ```bash
+   npm run dev
+   ```
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+---
+
+This project was developed to be a benchmark for quality in athletic eCommerce applications. 🚀🏁
