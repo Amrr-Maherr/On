@@ -6,6 +6,8 @@ import FeaturesSection from "../components/FeaturesSection";
 import CategoriesSection from "../components/CategoriesSection";
 import BrandsSection from "../components/BrandsSection";
 import ProductsSection from "../components/ProductsSection";
+import BlogSection from "../components/BlogSection";
+import TeamSection from "../components/TeamSection";
 
 const HomePage = memo(function HomePage() {
   return (
@@ -17,6 +19,8 @@ const HomePage = memo(function HomePage() {
       <CategoriesSection />
       <BrandsSection />
       <ProductsSection />
+      <BlogSection />
+      <TeamSection />
     </>
   );
 });

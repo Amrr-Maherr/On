@@ -15,3 +15,10 @@ export interface TeamMember {
     linkedin: string;
   };
 }
+
+export interface BlogPost {
+  coverImage: string;
+  title: string;
+  date: string;
+  description: string;
+}
