@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { bannerData, type BannerData } from "./constants";
 import BannerContent from "./banner-content";
 import BannerImage from "./banner-image";
@@ -8,7 +9,7 @@ interface BannerProps {
   loading?: boolean;
 }
 
-function Banner({ data = bannerData, loading = false }: BannerProps) {
+const Banner = memo(function Banner({ data = bannerData, loading = false }: BannerProps) {
   if (loading) {
     return (
       <section className="py-12" aria-label="Loading banner">
@@ -31,6 +32,6 @@ function Banner({ data = bannerData, loading = false }: BannerProps) {
       </div>
     </section>
   );
-}
+});
 
 export default Banner;

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { memo, useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ interface FiltersPanelProps {
   className?: string;
 }
 
-export default function FiltersPanel({
+const FiltersPanel = memo(function FiltersPanel({
   children,
   className,
 }: FiltersPanelProps) {
@@ -75,4 +75,6 @@ export default function FiltersPanel({
       </AnimatePresence>
     </>
   );
-}
+});
+
+export default FiltersPanel;
