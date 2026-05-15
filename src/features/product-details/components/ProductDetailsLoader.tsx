@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Card } from "@/components/ui/card";
 
-export default function ProductDetailsLoader() {
+const ProductDetailsLoader = memo(function ProductDetailsLoader() {
   return (
     <div className="container-layout py-8">
       <div className="mx-auto max-w-7xl">
@@ -54,4 +55,6 @@ export default function ProductDetailsLoader() {
       </div>
     </div>
   );
-}
+});
+
+export default ProductDetailsLoader;

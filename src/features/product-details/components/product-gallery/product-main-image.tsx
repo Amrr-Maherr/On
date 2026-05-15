@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/thumbs";
@@ -6,7 +7,7 @@ interface ProductMainImageProps {
   images: string[];
 }
 
-export default function ProductMainImage({ images }: ProductMainImageProps) {
+const ProductMainImage = memo(function ProductMainImage({ images }: ProductMainImageProps) {
   return (
     <Swiper
       grabCursor
@@ -26,4 +27,6 @@ export default function ProductMainImage({ images }: ProductMainImageProps) {
       ))}
     </Swiper>
   );
-}
+});
+
+export default ProductMainImage;

@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function ProductQA() {
+const ProductQA = memo(function ProductQA() {
   return (
     <section className="mt-16">
       <h2 className="mb-6 text-xl font-bold">Questions & Answers</h2>
@@ -48,4 +49,6 @@ export default function ProductQA() {
       </div>
     </section>
   );
-}
+});
+
+export default ProductQA;

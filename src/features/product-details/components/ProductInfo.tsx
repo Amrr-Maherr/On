@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
 interface ProductInfoProps {
@@ -7,7 +8,7 @@ interface ProductInfoProps {
   brandId?: string;
 }
 
-export default function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
+const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   return (
     <div>
       <h1 className="text-2xl font-bold leading-tight md:text-3xl lg:text-4xl">
@@ -30,4 +31,6 @@ export default function ProductInfo({ title, brandName, brandSlug, brandId }: Pr
       )}
     </div>
   );
-}
+});
+
+export default ProductInfo;

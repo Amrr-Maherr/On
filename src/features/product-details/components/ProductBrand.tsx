@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import type { Brand } from "@/features/products/types";
 
@@ -5,7 +6,7 @@ interface ProductBrandProps {
   brand: Brand;
 }
 
-export default function ProductBrand({ brand }: ProductBrandProps) {
+const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
   return (
     <div>
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
@@ -32,4 +33,6 @@ export default function ProductBrand({ brand }: ProductBrandProps) {
       </Link>
     </div>
   );
-}
+});
+
+export default ProductBrand;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import type { Category } from "@/features/products/types";
 
@@ -5,7 +6,7 @@ interface ProductCategoryProps {
   category: Category;
 }
 
-export default function ProductCategory({ category }: ProductCategoryProps) {
+const ProductCategory = memo(function ProductCategory({ category }: ProductCategoryProps) {
   return (
     <div>
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
@@ -32,4 +33,6 @@ export default function ProductCategory({ category }: ProductCategoryProps) {
       </Link>
     </div>
   );
-}
+});
+
+export default ProductCategory;

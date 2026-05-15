@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface ProductDetailsErrorProps {
   onRetry?: () => void;
 }
 
-export default function ProductDetailsError({ message, onRetry }: ProductDetailsErrorProps) {
+const ProductDetailsError = memo(function ProductDetailsError({ message, onRetry }: ProductDetailsErrorProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
       <AlertTriangle className="h-12 w-12 text-destructive" />
@@ -24,4 +25,6 @@ export default function ProductDetailsError({ message, onRetry }: ProductDetails
       )}
     </div>
   );
-}
+});
+
+export default ProductDetailsError;

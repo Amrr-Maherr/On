@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Minus, Plus } from "lucide-react";
 
 interface ProductQuantityProps {
@@ -7,7 +8,7 @@ interface ProductQuantityProps {
   onIncrease: () => void;
 }
 
-export default function ProductQuantity({ quantity, available, onDecrease, onIncrease }: ProductQuantityProps) {
+const ProductQuantity = memo(function ProductQuantity({ quantity, available, onDecrease, onIncrease }: ProductQuantityProps) {
   return (
     <div className="flex items-center gap-3">
       <span className="text-sm text-muted-foreground">Quantity:</span>
@@ -31,4 +32,6 @@ export default function ProductQuantity({ quantity, available, onDecrease, onInc
       <span className="text-xs text-muted-foreground">{available} available</span>
     </div>
   );
-}
+});
+
+export default ProductQuantity;

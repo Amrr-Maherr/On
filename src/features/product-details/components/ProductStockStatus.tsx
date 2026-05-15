@@ -1,13 +1,15 @@
+import { memo, useMemo } from "react";
+
 interface ProductStockStatusProps {
   quantity: number;
   sold: number;
 }
 
-export default function ProductStockStatus({ quantity, sold }: ProductStockStatusProps) {
-  const total = quantity + sold;
-  const soldPercent = total > 0 ? (sold / total) * 100 : 0;
-  const inStock = quantity > 0;
-  const lowStock = quantity > 0 && quantity <= 10;
+const ProductStockStatus = memo(function ProductStockStatus({ quantity, sold }: ProductStockStatusProps) {
+  const total = useMemo(() => quantity + sold, [quantity, sold]);
+  const soldPercent = useMemo(() => total > 0 ? (sold / total) * 100 : 0, [total, sold]);
+  const inStock = useMemo(() => quantity > 0, [quantity]);
+  const lowStock = useMemo(() => quantity > 0 && quantity <= 10, [quantity]);
 
   return (
     <div>
@@ -43,4 +45,6 @@ export default function ProductStockStatus({ quantity, sold }: ProductStockStatu
       </div>
     </div>
   );
-}
+});
+
+export default ProductStockStatus;

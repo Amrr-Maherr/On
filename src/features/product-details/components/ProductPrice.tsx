@@ -1,9 +1,11 @@
+import { memo } from "react";
+
 interface ProductPriceProps {
   price: number;
   priceAfterDiscount?: number;
 }
 
-export default function ProductPrice({ price, priceAfterDiscount }: ProductPriceProps) {
+const ProductPrice = memo(function ProductPrice({ price, priceAfterDiscount }: ProductPriceProps) {
   return (
     <div className="flex items-baseline gap-3">
       <span className="text-3xl font-bold">
@@ -16,4 +18,6 @@ export default function ProductPrice({ price, priceAfterDiscount }: ProductPrice
       )}
     </div>
   );
-}
+});
+
+export default ProductPrice;

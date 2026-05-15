@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface ProductDescriptionProps {
   description: string;
 }
 
-export default function ProductDescription({ description }: ProductDescriptionProps) {
+const ProductDescription = memo(function ProductDescription({ description }: ProductDescriptionProps) {
   return (
     <div>
       <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
@@ -13,4 +15,6 @@ export default function ProductDescription({ description }: ProductDescriptionPr
       </div>
     </div>
   );
-}
+});
+
+export default ProductDescription;

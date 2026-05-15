@@ -1,10 +1,11 @@
+import { memo } from "react";
 import type { Subcategory } from "@/features/products/types";
 
 interface ProductSubcategoriesProps {
   subcategories: Subcategory[];
 }
 
-export default function ProductSubcategories({ subcategories }: ProductSubcategoriesProps) {
+const ProductSubcategories = memo(function ProductSubcategories({ subcategories }: ProductSubcategoriesProps) {
   if (!subcategories || subcategories.length === 0) return null;
 
   return (
@@ -24,4 +25,6 @@ export default function ProductSubcategories({ subcategories }: ProductSubcatego
       </div>
     </div>
   );
-}
+});
+
+export default ProductSubcategories;

@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import { memo, useCallback, type MouseEvent } from "react";
 import { ShoppingCart, Heart, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
@@ -9,12 +9,12 @@ interface ProductActionsProps {
   productId: string;
 }
 
-export default function ProductActions({ productId }: ProductActionsProps) {
+const ProductActions = memo(function ProductActions({ productId }: ProductActionsProps) {
   const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart();
   const { mutate: addToWishlist, isPending: isAddingToWishlist } =
     useAddToWishlist();
 
-  const handleAddToCart = (e: MouseEvent) => {
+  const handleAddToCart = useCallback((e: MouseEvent) => {
     e.preventDefault();
     addToCart(
       { productId },
@@ -23,9 +23,9 @@ export default function ProductActions({ productId }: ProductActionsProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  };
+  }, [addToCart, productId]);
 
-  const handleAddToFav = (e: MouseEvent) => {
+  const handleAddToFav = useCallback((e: MouseEvent) => {
     e.preventDefault();
     addToWishlist(
       { productId },
@@ -34,7 +34,7 @@ export default function ProductActions({ productId }: ProductActionsProps) {
         onError: (err) => toast.error(err.message),
       },
     );
-  };
+  }, [addToWishlist, productId]);
 
   const isPending = isAddingToCart || isAddingToWishlist;
 
@@ -69,4 +69,6 @@ export default function ProductActions({ productId }: ProductActionsProps) {
       </Button>
     </div>
   );
-}
+});
+
+export default ProductActions;

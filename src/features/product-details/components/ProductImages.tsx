@@ -1,10 +1,12 @@
+import { memo } from "react";
+
 interface ProductImagesProps {
   images: string[];
   selectedImage: string;
   onSelectImage: (image: string) => void;
 }
 
-export default function ProductImages({ images, selectedImage, onSelectImage }: ProductImagesProps) {
+const ProductImages = memo(function ProductImages({ images, selectedImage, onSelectImage }: ProductImagesProps) {
   return (
     <div className="space-y-4">
       <div className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10">
@@ -39,4 +41,6 @@ export default function ProductImages({ images, selectedImage, onSelectImage }: 
       )}
     </div>
   );
-}
+});
+
+export default ProductImages;

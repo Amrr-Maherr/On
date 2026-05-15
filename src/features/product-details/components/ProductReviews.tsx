@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import { Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/features/products/types";
@@ -17,8 +18,8 @@ function formatDate(dateString: string): string {
   });
 }
 
-export default function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
-  const displayed = showAll ? reviews : reviews.slice(0, 3);
+const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
+  const displayed = useMemo(() => showAll ? reviews : reviews.slice(0, 3), [reviews, showAll]);
 
   if (reviews.length === 0) {
     return (
@@ -91,4 +92,6 @@ export default function ProductReviews({ reviews, showAll, onToggleShowAll }: Pr
       )}
     </section>
   );
-}
+});
+
+export default ProductReviews;

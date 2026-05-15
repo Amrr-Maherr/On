@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -7,7 +8,7 @@ interface ProductThumbnailsProps {
   onThumbClick: (index: number) => void;
 }
 
-export default function ProductThumbnails({
+const ProductThumbnails = memo(function ProductThumbnails({
   images,
   activeIndex,
   onThumbClick,
@@ -43,4 +44,6 @@ export default function ProductThumbnails({
       </Swiper>
     </div>
   );
-}
+});
+
+export default ProductThumbnails;
