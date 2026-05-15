@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { memo, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 
 const SCROLL_THRESHOLD = 300;
 
-export default function ScrollToTopButton() {
+const ScrollToTopButton = memo(function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -13,9 +13,9 @@ export default function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <AnimatePresence>
@@ -34,4 +34,6 @@ export default function ScrollToTopButton() {
       )}
     </AnimatePresence>
   );
-}
+});
+
+export default ScrollToTopButton;

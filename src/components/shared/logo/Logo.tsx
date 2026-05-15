@@ -1,5 +1,6 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
-export default function Logo() {
+const Logo = memo(function Logo() {
   return (
     <Link to="/" className="text-xl font-bold tracking-tight">
       <svg
@@ -16,4 +17,6 @@ export default function Logo() {
       </svg>
     </Link>
   );
-}
+});
+
+export default Logo;

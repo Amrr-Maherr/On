@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
@@ -13,7 +14,7 @@ const sizeMap = {
   lg: "h-12 w-12",
 };
 
-function Loader({ size = "md", className, text }: LoaderProps) {
+const Loader = memo(function Loader({ size = "md", className, text }: LoaderProps) {
   return (
     <div
       className={cn(
@@ -27,6 +28,6 @@ function Loader({ size = "md", className, text }: LoaderProps) {
       {text && <p className="text-sm text-muted-foreground">{text}</p>}
     </div>
   );
-}
+});
 
 export default Loader;

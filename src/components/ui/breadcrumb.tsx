@@ -1,4 +1,4 @@
-import * as React from "react"
+import { Fragment, memo } from "react"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 
@@ -12,14 +12,14 @@ interface BreadcrumbProps {
   className?: string
 }
 
-function Breadcrumb({ items, className }: BreadcrumbProps) {
+const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
     <nav aria-label="breadcrumb" data-slot="breadcrumb" className={cn(className)}>
       <ol data-slot="breadcrumb-list" className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
           return (
-            <React.Fragment key={`${item.label}-${index}`}>
+            <Fragment key={`${item.label}-${index}`}>
               <li data-slot="breadcrumb-item" className="inline-flex items-center gap-1.5">
                 {isLast ? (
                   <span data-slot="breadcrumb-current" className="text-foreground" aria-current="page">
@@ -48,7 +48,7 @@ function Breadcrumb({ items, className }: BreadcrumbProps) {
       </ol>
     </nav>
   )
-}
+})
 
 export { Breadcrumb }
 export type { BreadcrumbItem }

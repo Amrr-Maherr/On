@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,7 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
-function ErrorState({
+const ErrorState = memo(function ErrorState({
   title = "Something went wrong",
   message,
   error,
@@ -47,6 +48,6 @@ function ErrorState({
       )}
     </div>
   );
-}
+});
 
 export default ErrorState;
