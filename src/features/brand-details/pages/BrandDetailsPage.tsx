@@ -60,7 +60,7 @@ export default function BrandDetailsPage() {
               Brand Products.
             </h2>
           </div>
-          <BrandProducts brandId={brand._id || brand.id!} />
+          <BrandProducts brandId={brand._id} />
         </section>
       </div>
     </div>

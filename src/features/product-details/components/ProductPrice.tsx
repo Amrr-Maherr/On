@@ -7,12 +7,15 @@ interface ProductPriceProps {
 
 const ProductPrice = memo(function ProductPrice({ price, priceAfterDiscount }: ProductPriceProps) {
   return (
-    <div className="flex items-baseline gap-3">
-      <span className="text-4xl font-black tracking-tight">
-        ${priceAfterDiscount ?? price}
-      </span>
+    <div className="flex items-end gap-4">
+      <div className="flex flex-col">
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">Price</span>
+        <span className="text-5xl font-black tracking-tighter text-foreground">
+          ${priceAfterDiscount ?? price}
+        </span>
+      </div>
       {priceAfterDiscount && (
-        <span className="text-lg text-muted-foreground/40 line-through">
+        <span className="mb-1 text-xl font-bold text-muted-foreground/30 line-through decoration-destructive decoration-2">
           ${price}
         </span>
       )}

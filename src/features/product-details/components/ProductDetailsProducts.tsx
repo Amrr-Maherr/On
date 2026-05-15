@@ -75,6 +75,7 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
     );
   }
 
+  return (
     <section className="section-py border-t border-border/30">
       <div className="mb-12">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">

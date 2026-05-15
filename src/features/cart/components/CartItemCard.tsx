@@ -23,7 +23,7 @@ const CartItemCard = memo(({
   return (
     <div
       className={cn(
-        "flex gap-5 rounded-2xl border border-border/30 bg-card p-5 transition-all duration-200",
+        "group flex gap-6 border-b border-border/40 pb-8 transition-all duration-200",
         isUpdating && "pointer-events-none opacity-60",
       )}
     >
@@ -31,59 +31,64 @@ const CartItemCard = memo(({
         to={`/products/${product.title}/${product.id}`}
         className="shrink-0"
       >
-        <div className="h-28 w-28 overflow-hidden rounded-xl bg-muted/30 md:h-32 md:w-32">
+        <div className="h-32 w-32 overflow-hidden bg-muted/30 md:h-40 md:w-40">
           <img
             src={product.imageCover}
             alt={product.title}
-            className="h-full w-full object-cover transition-all duration-300 hover:scale-105"
+            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
             loading="lazy"
           />
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col justify-between gap-3 min-w-0">
-        <div className="flex items-start justify-between gap-2">
+      <div className="flex flex-1 flex-col justify-between py-1">
+        <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <Link to={`/products/${product.title}/${product.id}`} className="hover:underline">
-              <h3 className="truncate text-base font-semibold text-foreground">{product.title}</h3>
+            <Link to={`/products/${product.title}/${product.id}`} className="group/title">
+              <h3 className="text-lg font-black uppercase tracking-tight text-foreground transition-colors group-hover/title:text-foreground/70">
+                {product.title}
+              </h3>
             </Link>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {product.price} EGP
+            <p className="mt-1 text-sm font-bold text-muted-foreground/60">
+              UNIT PRICE: {product.price?.toLocaleString()} EGP
             </p>
           </div>
           <button
             onClick={() => onRemove(product.id)}
             aria-label="Remove item"
-            className="shrink-0 rounded-lg p-1.5 text-muted-foreground/40 transition-all duration-200 hover:bg-destructive/10 hover:text-destructive"
+            className="shrink-0 rounded-full border border-border/40 p-2 text-muted-foreground transition-all duration-200 hover:bg-destructive hover:text-white"
           >
             <Trash2 className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
+        <div className="mt-6 flex items-end justify-between">
+          <div className="flex items-center rounded-full border border-border/60 p-1">
             <button
               onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
               aria-label="Decrease quantity"
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-border/50 text-muted-foreground transition-all duration-200 hover:border-foreground/20 hover:bg-muted/50 active:scale-90 disabled:pointer-events-none disabled:opacity-40"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all duration-200 hover:bg-muted active:scale-90 disabled:pointer-events-none disabled:opacity-20"
             >
-              <Minus className="h-3.5 w-3.5" />
+              <Minus className="h-4 w-4" />
             </button>
-            <span className="flex h-9 w-12 items-center justify-center text-sm font-bold tabular-nums text-foreground">
+            <span className="flex h-10 w-12 items-center justify-center text-sm font-black tabular-nums text-foreground">
               {count}
             </span>
             <button
               onClick={() => onUpdate(product.id, count + 1)}
               aria-label="Increase quantity"
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-border/50 text-muted-foreground transition-all duration-200 hover:border-foreground/20 hover:bg-muted/50 active:scale-90"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all duration-200 hover:bg-muted active:scale-90"
             >
-              <Plus className="h-3.5 w-3.5" />
+              <Plus className="h-4 w-4" />
             </button>
           </div>
-          <p className="text-base font-bold tabular-nums text-foreground">
-            {itemTotal.toLocaleString()} EGP
-          </p>
+          <div className="text-right">
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Total</p>
+            <p className="text-xl font-black tabular-nums text-foreground">
+              {itemTotal.toLocaleString()} EGP
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -41,24 +41,20 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
   );
 
   return (
-    <section className="section-py bg-muted/30">
+    <section className="section-py bg-muted/50">
       <div className="container-layout">
         <ScrollReveal>
-          <div className="mb-12 text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-              Find Your Sport
+          <div className="mb-14">
+            <span className="text-xs font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+              Activity
             </span>
-            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-              Shop by Activity.
+            <h2 className="mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              FIND YOUR<br />PERFORMANCE.
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-muted-foreground/70">
-              Performance gear designed for every discipline. From track to
-              trail, we have you covered.
-            </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, index) => (
             <ScrollReveal
               key={item.name}
@@ -68,19 +64,24 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
             >
               <button
                 onClick={() => handleNavigate(item.slug)}
-                className="group relative flex h-[320px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl text-left transition-all duration-500 hover:scale-[1.03] active:scale-[0.98]"
+                className="group relative flex h-[400px] w-full cursor-pointer flex-col justify-end overflow-hidden"
               >
                 <img
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-                <div className="relative z-10 p-6">
-                  <h3 className="text-xl font-bold text-white">{item.name}</h3>
-                  <p className="mt-1 text-sm text-white/60">{item.count}</p>
-                  <div className="mt-3 h-px w-0 bg-white/40 transition-all duration-300 group-hover:w-full" />
+                <div className="absolute inset-0 bg-neutral-950/10 transition-colors group-hover:bg-neutral-950/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                
+                <div className="relative z-10 p-8 transition-transform duration-500 group-hover:-translate-y-2">
+                  <h3 className="text-2xl font-black uppercase tracking-tighter text-white">{item.name}</h3>
+                  <div className="mt-4 flex h-10 w-10 items-center justify-center bg-white text-neutral-950 transition-transform duration-300 group-hover:translate-x-1">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3">
+                      <path d="M5 12h14m-7-7l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
               </button>
             </ScrollReveal>

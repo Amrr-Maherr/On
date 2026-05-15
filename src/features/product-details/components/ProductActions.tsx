@@ -1,6 +1,5 @@
 import { memo, useCallback, type MouseEvent } from "react";
 import { ShoppingCart, Heart, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
@@ -39,32 +38,31 @@ const ProductActions = memo(function ProductActions({ productId }: ProductAction
   const isPending = isAddingToCart || isAddingToWishlist;
 
   return (
-    <div className="flex gap-3">
-      <Button
-        className="flex-1 gap-2 rounded-full bg-foreground px-8 py-6 text-sm font-bold uppercase tracking-wider text-background hover:opacity-90 transition-all duration-200 active:scale-[0.98]"
+    <div className="flex flex-col gap-4">
+      <button
+        className="flex h-16 w-full items-center justify-center gap-3 bg-foreground px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98] disabled:opacity-50"
         onClick={handleAddToCart}
         disabled={isPending}
       >
         {isAddingToCart ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Loader2 className="h-5 w-5 animate-spin" />
         ) : (
-          <ShoppingCart className="h-4 w-4" />
+          <ShoppingCart className="h-5 w-5" strokeWidth={2.5} />
         )}
-        {isAddingToCart ? "Adding..." : "Add to Cart"}
-      </Button>
-      <Button
-        variant="outline"
-        className="rounded-full h-12 w-12 border-border/50"
+        {isAddingToCart ? "Adding..." : "Add to Bag"}
+      </button>
+      <button
+        className="flex h-16 w-full items-center justify-center gap-3 border-2 border-foreground bg-transparent px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-foreground hover:text-background active:scale-[0.98] disabled:opacity-50"
         onClick={handleAddToFav}
         disabled={isPending}
-        aria-label="Add to wishlist"
       >
         {isAddingToWishlist ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Loader2 className="h-5 w-5 animate-spin" />
         ) : (
-          <Heart className="h-4 w-4" />
+          <Heart className="h-5 w-5" strokeWidth={2.5} />
         )}
-      </Button>
+        Favorite
+      </button>
     </div>
   );
 });

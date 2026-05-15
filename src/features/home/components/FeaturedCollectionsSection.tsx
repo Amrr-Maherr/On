@@ -43,63 +43,58 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
   );
 
   return (
-    <section className="section-py bg-background">
+    <section className="section-py border-y border-border/40 bg-background">
       <div className="container-layout">
         <ScrollReveal>
-          <div className="mb-14 flex items-end justify-between">
+          <div className="mb-14 flex items-end justify-between border-l-4 border-foreground pl-6">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-                Curated For You
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+                Collections
               </span>
-              <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-                Featured Collections.
+              <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+                CHOOSE YOUR<br />DISCIPLINE.
               </h2>
             </div>
-            <Button
+            <button
               onClick={handleViewAll}
-              variant="ghost"
-              className="hidden cursor-pointer items-center gap-2 text-sm font-semibold md:flex"
+              className="hidden cursor-pointer items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-foreground transition-all hover:translate-x-1 md:flex"
             >
               View All
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+              <ArrowRight className="h-5 w-5" strokeWidth={3} />
+            </button>
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-2 md:grid-cols-3">
           {collections.map((collection, index) => (
             <ScrollReveal
               key={collection.title}
               direction="up"
               distance={40}
-              delay={index * 0.15}
+              delay={index * 0.1}
             >
               <button
                 onClick={() => handleNavigate(collection.slug)}
-                className="group relative flex h-[500px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl text-left transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative flex h-[600px] w-full cursor-pointer flex-col justify-end overflow-hidden text-left"
               >
                 <img
                   src={collection.image}
                   alt={collection.title}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${collection.gradient}`}
-                />
-                <div className="relative z-10 p-8">
-                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-white/60">
+                <div className="absolute inset-0 bg-neutral-950/20 transition-colors group-hover:bg-neutral-950/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                
+                <div className="relative z-10 p-10 transition-transform duration-500 group-hover:-translate-y-2">
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">
                     {collection.subtitle}
                   </span>
-                  <h3 className="mt-2 text-3xl font-black text-white">
+                  <h3 className="mt-4 text-4xl font-black uppercase tracking-tighter text-white">
                     {collection.title}
                   </h3>
-                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/70">
-                    {collection.description}
-                  </p>
-                  <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-white">
-                    Explore Collection
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <div className="mt-6 inline-flex h-12 items-center justify-center bg-white px-8 text-[10px] font-black uppercase tracking-[0.3em] text-neutral-950 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    Shop Now
                   </div>
                 </div>
               </button>

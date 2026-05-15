@@ -188,45 +188,26 @@ export default function ProductsPage() {
         </div>
       )}
 
-      <div className="mb-8">
-        <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-          Products
+      <div className="mb-12 border-l-4 border-foreground pl-6">
+        <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+          Catalog
         </span>
-        <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Products</h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-full sm:w-56">
-              <FilterSortDropdown value={sort} onChange={handleSortChange} />
-            </div>
-            <div className="lg:hidden">
-              <MobileFilterSheet
-                sort={sort}
-                onSortChange={handleSortChange}
-                categories={categories}
-                categoryIn={categoryIn}
-                onCategoryChange={handleCategoryChange}
-                brands={brands}
-                brandIn={brandIn}
-                onBrandChange={handleBrandChange}
-                priceGte={priceGte}
-                priceLte={priceLte}
-                onPriceChange={handlePriceChange}
-                onReset={handleReset}
-              />
-            </div>
-          </div>
-        </div>
-        <p className="mt-1.5 text-sm text-muted-foreground/60">
-          {resultsCount} {resultsCount === 1 ? "product" : "products"} found
+        <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+          ALL GEAR.
+        </h1>
+        <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+          {resultsCount} {resultsCount === 1 ? "product" : "products"} available
         </p>
       </div>
 
-      <div className="mt-8 flex gap-8">
-        <div className="hidden lg:block">
-          <FiltersPanel>
-            <FilterSection title="Category">
+      <div className="flex gap-16">
+        <div className="hidden w-64 shrink-0 lg:block">
+          <FiltersPanel className="sticky top-24 border-0 bg-transparent p-0">
+            <FilterSection title="Sort By">
+              <FilterSortDropdown value={sort} onChange={handleSortChange} />
+            </FilterSection>
+
+            <FilterSection title="Categories">
               <FilterCheckboxGroup
                 options={categories}
                 selectedValues={categoryIn}
@@ -234,7 +215,7 @@ export default function ProductsPage() {
               />
             </FilterSection>
 
-            <FilterSection title="Brand">
+            <FilterSection title="Brands">
               <FilterCheckboxGroup
                 options={brands}
                 selectedValues={brandIn}
@@ -242,7 +223,7 @@ export default function ProductsPage() {
               />
             </FilterSection>
 
-            <FilterSection title="Price Range">
+            <FilterSection title="Price">
               <FilterPriceRange
                 min={0}
                 max={10000}
@@ -251,22 +232,46 @@ export default function ProductsPage() {
                 onChange={handlePriceChange}
               />
             </FilterSection>
+            
+            <button
+              onClick={handleReset}
+              className="mt-8 w-full border-2 border-foreground bg-transparent py-4 text-[10px] font-black uppercase tracking-widest text-foreground transition-all hover:bg-foreground hover:text-background"
+            >
+              Reset Filters
+            </button>
           </FiltersPanel>
         </div>
 
         <div className="min-w-0 flex-1">
+          <div className="mb-8 lg:hidden">
+            <MobileFilterSheet
+              sort={sort}
+              onSortChange={handleSortChange}
+              categories={categories}
+              categoryIn={categoryIn}
+              onCategoryChange={handleCategoryChange}
+              brands={brands}
+              brandIn={brandIn}
+              onBrandChange={handleBrandChange}
+              priceGte={priceGte}
+              priceLte={priceLte}
+              onPriceChange={handlePriceChange}
+              onReset={handleReset}
+            />
+          </div>
+
           {displayProducts.length === 0 ? (
             <ProductsEmpty />
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {displayProducts.map((product) => (
                   <ProductCard key={product.id || product._id} product={product} />
                 ))}
               </div>
 
               {!searchQuery && metadata && (
-                <div className="mt-8">
+                <div className="mt-16 border-t border-border/40 pt-12">
                   <ProductsPagination
                     currentPage={metadata.currentPage}
                     totalPages={metadata.numberOfPages}

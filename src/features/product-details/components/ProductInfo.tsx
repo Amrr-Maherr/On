@@ -10,24 +10,24 @@ interface ProductInfoProps {
 
 const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   return (
-    <div>
-      <h1 className="text-3xl font-black leading-tight tracking-tight md:text-4xl lg:text-5xl">
+    <div className="border-l-4 border-foreground pl-6">
+      <h1 className="text-4xl font-black uppercase leading-[0.9] tracking-tighter md:text-5xl lg:text-6xl">
         {title}
       </h1>
       {brandName && (
-        <p className="mt-2 text-sm text-muted-foreground">
-          by{" "}
+        <div className="mt-4 flex items-center gap-3">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">Brand</span>
           {brandSlug && brandId ? (
             <Link
               to={`/brands/${brandSlug}/${brandId}`}
-              className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
+              className="text-xs font-black uppercase tracking-widest text-foreground transition-all hover:translate-x-1"
             >
               {brandName}
             </Link>
           ) : (
-            <span className="font-semibold text-foreground">{brandName}</span>
+            <span className="text-xs font-black uppercase tracking-widest text-foreground">{brandName}</span>
           )}
-        </p>
+        </div>
       )}
     </div>
   );

@@ -117,5 +117,6 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
       </div>
     </div>
   );
-}
+});
+
 export default ProductDetails;

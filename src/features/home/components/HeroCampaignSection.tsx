@@ -1,7 +1,5 @@
 import { memo, useCallback } from "react";
-import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const HeroCampaignSection = memo(function HeroCampaignSection() {
@@ -15,51 +13,48 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=1920&q=80")',
+            'url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1920&q=80")',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/70 to-neutral-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent md:bg-gradient-to-r md:from-neutral-950/80 md:via-neutral-950/40 md:to-transparent" />
       </div>
 
-      <div className="container-layout relative z-10 flex min-h-[80vh] items-center">
-        <div className="max-w-3xl">
+      <div className="container-layout relative z-10 flex min-h-[80vh] items-center pt-20 md:pt-0">
+        <div className="max-w-4xl">
           <ScrollReveal direction="up" distance={40}>
-            <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-              New Collection
+            <span className="inline-block border-l-4 border-white pl-4 text-xs font-black uppercase tracking-[0.3em] text-white">
+              Limited Edition
             </span>
           </ScrollReveal>
 
           <ScrollReveal direction="up" distance={40} delay={0.15}>
-            <h1 className="mt-6 text-6xl font-black leading-none tracking-tight text-white md:text-8xl lg:text-9xl">
-              YOU GOT
+            <h1 className="mt-8 text-7xl font-black leading-[0.85] tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem]">
+              MOVE
               <br />
-              <span className="text-white/90">THIS.</span>
+              <span className="text-white/40">FASTER.</span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal direction="up" distance={40} delay={0.3}>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70 md:text-xl">
-              Pushing limits. Breaking barriers. The latest performance gear
-              engineered for those who never settle.
+            <p className="mt-8 max-w-md text-lg font-medium leading-relaxed text-white/80 md:text-xl">
+              Engineered for the elite. The new performance collection is here to redefine your limits.
             </p>
           </ScrollReveal>
 
           <ScrollReveal direction="up" distance={40} delay={0.45}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button
+            <div className="mt-12 flex flex-wrap gap-5">
+              <button
                 onClick={handleShopNow}
-                className="h-14 cursor-pointer rounded-full bg-white px-10 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all duration-300 hover:bg-white/90 active:scale-[0.97]"
+                className="flex h-16 items-center justify-center bg-white px-12 text-sm font-black uppercase tracking-[0.2em] text-neutral-950 transition-all duration-300 hover:bg-neutral-200 active:scale-[0.97]"
               >
                 Shop Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
+              </button>
+              <button
                 onClick={handleExploreCollections}
-                variant="outline"
-                className="h-14 cursor-pointer rounded-full border-white/30 bg-transparent px-10 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white/10 active:scale-[0.97]"
+                className="flex h-16 items-center justify-center border-2 border-white/40 bg-transparent px-12 text-sm font-black uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white/10 active:scale-[0.97]"
               >
-                Explore Collections
-              </Button>
+                Explore
+              </button>
             </div>
           </ScrollReveal>
 

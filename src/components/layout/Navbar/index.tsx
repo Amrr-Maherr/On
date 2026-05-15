@@ -46,20 +46,40 @@ function Navbar() {
       setSearchQuery("");
     }
   }, [navigate, searchQuery]);
+
+  const navLinks = [
+    { label: "Products", href: "/products" },
+    { label: "Categories", href: "/categories" },
+    { label: "Brands", href: "/brands" },
+  ];
+
   return (
     <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-xl">
       <div className="container-layout flex h-16 items-center justify-between gap-4 md:h-20">
-        <Logo />
+        <div className="flex items-center gap-8 lg:gap-12">
+          <Logo />
+          <div className="hidden items-center gap-6 md:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-bold uppercase tracking-widest text-foreground/70 transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
 
-        <div className="hidden flex-1 items-center justify-center px-8 md:flex">
-          <div className="relative w-full max-w-md">
+        <div className="hidden flex-1 items-center justify-end px-8 md:flex">
+          <div className="relative w-full max-w-xs">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/40" />
             <Input
-              placeholder="Search products..."
+              placeholder="Search..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearch}
-              className="h-11 w-full rounded-full border-border/50 bg-muted/50 pl-11 text-sm placeholder:text-muted-foreground/50 focus:border-foreground/40"
+              className="h-10 w-full rounded-full border-border/50 bg-muted/50 pl-11 text-sm placeholder:text-muted-foreground/50 focus:border-foreground/40"
             />
           </div>
         </div>

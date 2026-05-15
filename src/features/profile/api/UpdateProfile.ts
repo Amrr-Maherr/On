@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import type { ProfileResponse, User } from "../types";
+import type { ProfileResponse } from "../types";
 
 export interface UpdateProfileData {
   name?: string;

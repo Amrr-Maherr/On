@@ -76,15 +76,15 @@ const Footer = memo(function Footer() {
 
           {linkSections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60">
+              <h4 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-foreground">
                 {section.title}
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {section.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className="text-sm text-muted-foreground/60 transition-colors duration-200 hover:text-foreground"
+                      className="text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
                     >
                       {link.label}
                     </Link>

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -69,9 +68,9 @@ const EditProfileSheet = memo(function EditProfileSheet({
           <SheetTitle className="text-2xl font-black uppercase tracking-tight">
             Edit Profile.
           </SheetTitle>
-          <SheetDescription>
+          <div className="text-sm text-muted-foreground">
             Update your personal information below.
-          </SheetDescription>
+          </div>
         </SheetHeader>
 
         <form

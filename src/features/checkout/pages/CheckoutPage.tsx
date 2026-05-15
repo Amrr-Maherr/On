@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ShoppingBag, CreditCard, MapPin, Wallet } from "lucide-react";
+import { CreditCard, Wallet, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 import { cn } from "@/lib/utils";
 import { useCart } from "@/features/cart/hooks/useCart";
@@ -54,10 +52,9 @@ export default function CheckoutPage() {
 
   const cart = cartData?.data;
   const items = cart?.products ?? [];
-  const numOfCartItems = cartData?.numOfCartItems ?? 0;
   const totalPrice = cart?.totalCartPrice ?? 0;
 
-  const onSubmit = (formData: CheckoutFormFields) => {
+  const onSubmit = useCallback((formData: CheckoutFormFields) => {
     const cartId = cartData?.data._id;
     if (!cartId) {
       toast.error("Cart not found");
@@ -95,7 +92,7 @@ export default function CheckoutPage() {
         },
       },
     );
-  };
+  }, [cartData?.data._id, paymentMethod, createSession, placeOrder, navigate]);
 
   if (isLoading) {
     return (
@@ -143,39 +140,72 @@ export default function CheckoutPage() {
       <div className="container-layout py-8">
         <div className="mx-auto max-w-5xl">
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Checkout" }]} className="mb-6" />
-          <div className="mb-8">
-            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-              Checkout
-            </span>
-            <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">Checkout</h1>
-            <p className="mt-1.5 text-sm text-muted-foreground/60">
-              Review your order and enter shipping details
-            </p>
-          </div>
+        <div className="mb-12 border-l-4 border-foreground pl-6">
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+            Secure Process
+          </span>
+          <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+            CHECKOUT.
+          </h1>
+          <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+            Complete your order and join the movement
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-            <div className="space-y-6">
-              <div className="rounded-2xl border border-border/30 bg-card">
-                <div className="border-b border-border/30 px-6 py-4">
-                  <h3 className="flex items-center gap-2 text-base font-bold tracking-tight">
-                    <MapPin className="h-4 w-4 text-muted-foreground/50" />
-                    Shipping Address
-                  </h3>
+          <div className="grid gap-16 lg:grid-cols-[1fr_420px]">
+            <div className="space-y-12">
+              <div>
+                <div className="mb-8 flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center bg-foreground text-background font-black text-sm">1</div>
+                  <h3 className="text-xl font-black uppercase tracking-tight">Shipping Details</h3>
                 </div>
-                <div className="space-y-4 p-6">
-                  <div className="space-y-1.5">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2 sm:col-span-2">
+                    <label
+                      htmlFor="address"
+                      className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60"
+                    >
+                      Street Address
+                    </label>
+                    <input
+                      id="address"
+                      placeholder="Street name, building number"
+                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
+                      {...register("address", { required: "Address is required" })}
+                    />
+                    {errors.address && (
+                      <p className="text-[10px] font-black uppercase tracking-widest text-destructive" role="alert">
+                        {errors.address.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="city"
+                      className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60"
+                    >
+                      City
+                    </label>
+                    <input
+                      id="city"
+                      placeholder="Your City"
+                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
+                      {...register("city", { required: "City is required" })}
+                    />
+                  </div>
+                  <div className="space-y-2">
                     <label
                       htmlFor="phone"
-                      className="text-sm text-muted-foreground/70"
+                      className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60"
                     >
-                      Phone
+                      Phone Number
                     </label>
-                    <Input
+                    <input
                       id="phone"
                       type="tel"
                       placeholder="01000000000"
-                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
+                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
                       {...register("phone", {
                         required: "Phone is required",
                         pattern: {
@@ -183,168 +213,101 @@ export default function CheckoutPage() {
                           message: "Enter a valid phone number",
                         },
                       })}
-                      aria-invalid={!!errors.phone}
                     />
                     {errors.phone && (
-                      <p className="text-xs text-destructive" role="alert">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-destructive" role="alert">
                         {errors.phone.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="address"
-                      className="text-sm text-muted-foreground/70"
-                    >
-                      Address
-                    </label>
-                    <Input
-                      id="address"
-                      placeholder="123 Main St"
-                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
-                      {...register("address", {
-                        required: "Address is required",
-                      })}
-                      aria-invalid={!!errors.address}
-                    />
-                    {errors.address && (
-                      <p className="text-xs text-destructive" role="alert">
-                        {errors.address.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="city"
-                      className="text-sm text-muted-foreground/70"
-                    >
-                      City
-                    </label>
-                    <Input
-                      id="city"
-                      placeholder="Cairo"
-                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
-                      {...register("city", { required: "City is required" })}
-                      aria-invalid={!!errors.city}
-                    />
-                    {errors.city && (
-                      <p className="text-xs text-destructive" role="alert">
-                        {errors.city.message}
                       </p>
                     )}
                   </div>
                 </div>
               </div>
+
+              <div>
+                <div className="mb-8 flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center bg-foreground text-background font-black text-sm">2</div>
+                  <h3 className="text-xl font-black uppercase tracking-tight">Payment Method</h3>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {PAYMENT_METHODS.map((method) => {
+                    const Icon = method.icon;
+                    const isSelected = paymentMethod === method.value;
+                    return (
+                      <button
+                        key={method.value}
+                        type="button"
+                        onClick={() => setPaymentMethod(method.value)}
+                        className={cn(
+                          "group relative flex flex-col items-center justify-center gap-4 border-2 p-8 transition-all duration-300",
+                          isSelected
+                            ? "border-foreground bg-foreground text-background"
+                            : "border-border/60 bg-transparent text-foreground hover:border-foreground/40",
+                        )}
+                      >
+                        <Icon className={cn("h-8 w-8 transition-transform duration-300 group-hover:scale-110", isSelected ? "text-background" : "text-foreground/40")} strokeWidth={1.5} />
+                        <span className="text-xs font-black uppercase tracking-widest">{method.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="sticky top-24 rounded-2xl border border-border/30 bg-card">
-                <div className="border-b border-border/30 px-6 py-4">
-                  <h3 className="flex items-center gap-2 text-base font-bold tracking-tight">
-                    <ShoppingBag className="h-4 w-4 text-muted-foreground/50" />
-                    Order Summary
-                  </h3>
-                </div>
-                <div className="space-y-4 p-6">
-                  <p className="text-sm font-semibold text-muted-foreground">
-                    {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
-                  </p>
-
-                  {items.length > 0 && (
-                    <div className="space-y-3">
-                      {items.slice(0, 3).map((item) => (
-                        <div key={item._id} className="flex items-center gap-3">
-                          <div className="h-12 w-12 shrink-0 overflow-hidden rounded-md bg-muted">
-                            <img
-                              src={item.product.imageCover}
-                              alt={item.product.title}
-                              className="h-full w-full object-cover"
-                              loading="lazy"
-                            />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <p className="truncate text-sm font-medium">
-                              {item.product.title}
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              Qty: {item?.count} x{" "}
-                              {item?.product?.price?.toLocaleString()} EGP
-                            </p>
-                          </div>
-                          <p className="text-sm font-medium tabular-nums">
-                            {item.price.toLocaleString()} EGP
-                          </p>
+            <div className="relative">
+              <div className="sticky top-24 border border-border/60 bg-card p-8">
+                <h3 className="text-xl font-black uppercase tracking-tight">Your Order</h3>
+                
+                <div className="mt-8 space-y-6">
+                  <div className="max-h-60 overflow-y-auto pr-2 space-y-4">
+                    {items.map((item) => (
+                      <div key={item._id} className="flex gap-4">
+                        <div className="h-16 w-16 shrink-0 overflow-hidden bg-muted/30">
+                          <img src={item.product.imageCover} alt={item.product.title} className="h-full w-full object-cover" />
                         </div>
-                      ))}
-                      {items.length > 3 && (
-                        <p className="text-xs text-muted-foreground">
-                          +{items.length - 3} more{" "}
-                          {items.length - 3 === 1 ? "item" : "items"}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                        <div className="flex flex-1 flex-col justify-center min-w-0">
+                          <p className="text-xs font-black uppercase tracking-tight truncate">{item.product.title}</p>
+                          <div className="mt-1 flex justify-between">
+                            <span className="text-[10px] font-bold text-muted-foreground/60">QTY: {item.count}</span>
+                            <span className="text-xs font-black">{item.price.toLocaleString()} EGP</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-                  <hr className="border-border/40" />
-
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Subtotal</span>
-                      <span className="font-semibold tabular-nums">
-                        {totalPrice.toLocaleString()} EGP
-                      </span>
+                  <div className="border-t border-dashed border-border/60 pt-6 space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Subtotal</span>
+                      <span className="text-xs font-black uppercase tracking-widest">{totalPrice.toLocaleString()} EGP</span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span className="text-xs font-medium text-muted-foreground/70">Calculated at delivery</span>
+                    <div className="flex justify-between">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Shipping</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40">Free</span>
                     </div>
-                    <hr className="border-border/40" />
-                    <div className="flex items-center justify-between">
-                      <span className="text-base font-bold">Total</span>
-                      <span className="text-2xl font-black tracking-tight tabular-nums">
-                        {totalPrice.toLocaleString()} EGP
-                      </span>
+                    <div className="flex justify-between pt-4">
+                      <span className="text-lg font-black uppercase tracking-tight">Total</span>
+                      <div className="text-right">
+                        <span className="text-3xl font-black tracking-tighter tabular-nums">{totalPrice.toLocaleString()} EGP</span>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">Including VAT</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="space-y-3 px-6 pb-6">
-                  <div className="grid grid-cols-2 gap-2">
-                    {PAYMENT_METHODS.map((method) => {
-                      const Icon = method.icon;
-                      return (
-                        <button
-                          key={method.value}
-                          type="button"
-                          onClick={() => setPaymentMethod(method.value)}
-                          className={cn(
-                            "flex items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-sm font-medium transition-all duration-200 active:scale-[0.98]",
-                            paymentMethod === method.value
-                              ? "border-foreground bg-foreground text-background"
-                              : "border-border/60 text-muted-foreground/70 hover:border-foreground/40 hover:text-foreground",
-                          )}
-                        >
-                          <Icon className="h-4 w-4" />
-                          {method.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <Button type="submit" size="lg" className="w-full gap-2 rounded-full bg-foreground py-6 text-sm font-bold uppercase tracking-wider text-background hover:opacity-90 active:scale-[0.98]" disabled={isPending}>
-                    {isPending ? (
-                      <>Processing...</>
-                    ) : (
-                      <>
-                        {paymentMethod === "card" ? (
-                          <CreditCard className="h-4 w-4" />
-                        ) : (
-                          <Wallet className="h-4 w-4" />
-                        )}
-                        {paymentMethod === "card"
-                          ? "Pay with Stripe"
-                          : "Place Order"}
-                      </>
-                    )}
-                  </Button>
+
+                <div className="mt-10">
+                    <button
+                      type="submit"
+                      disabled={isPending}
+                      className="flex h-16 w-full items-center justify-center gap-3 bg-foreground px-8 text-sm font-black uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98] disabled:opacity-50"
+                    >
+                      {isPending ? (
+                        <Loader2 className="h-5 w-5 animate-spin" strokeWidth={3} />
+                      ) : null}
+                      {isPending ? "PROCESSING..." : "PLACE ORDER"}
+                    </button>
+                  <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
+                    By placing an order you agree to our Terms
+                  </p>
                 </div>
               </div>
             </div>

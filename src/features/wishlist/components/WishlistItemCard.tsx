@@ -59,7 +59,7 @@ const WishlistItemCard = memo(({
                     : "text-muted-foreground/70",
                 )}
               >
-                {product.price.toLocaleString()} EGP
+                {product.price?.toLocaleString()} EGP
               </span>
               {hasDiscount && (
                 <span className="text-lg font-bold text-foreground">

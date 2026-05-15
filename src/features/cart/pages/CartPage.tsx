@@ -133,49 +133,49 @@ export default function CartPage() {
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} className="mb-6" />
 
-        <div className="mb-8 flex items-start justify-between">
+        <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
           <div>
-            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-              Cart
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              Your Selection
             </span>
-            <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">Shopping Cart</h1>
-            <p className="mt-1 text-sm text-muted-foreground/60">
-              {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
+            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              SHOPPING BAG.
+            </h1>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60">
+              {numOfCartItems} {numOfCartItems === 1 ? "ITEM" : "ITEMS"} READY FOR PERFORMANCE
             </p>
+          </div>
+          <button
+            className="hidden items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-destructive/60 transition-colors hover:text-destructive md:flex"
+            onClick={handleClearCart}
+            disabled={isClearing}
+          >
+            <Trash2 className="h-4 w-4" />
+            {isClearing ? "CLEARING..." : "CLEAR BAG"}
+          </button>
         </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="gap-2 rounded-full text-destructive/60 hover:text-destructive"
-          onClick={handleClearCart}
-          disabled={isClearing}
-        >
-          <Trash2 className="h-4 w-4" />
-          {isClearing ? "Clearing..." : "Delete All"}
-        </Button>
-      </div>
 
-      <div className="grid gap-12 lg:grid-cols-[1fr_320px]">
-        <div className="space-y-4">
-          {items.map((item) => (
-            <CartItemCard
-              key={item._id}
-              item={item}
-              onUpdate={handleUpdate}
-              onRemove={handleRemove}
-              isUpdating={isMutating && updatingItemId === item.product.id}
+        <div className="grid gap-16 lg:grid-cols-[1fr_400px]">
+          <div className="space-y-8">
+            {items.map((item) => (
+              <CartItemCard
+                key={item._id}
+                item={item}
+                onUpdate={handleUpdate}
+                onRemove={handleRemove}
+                isUpdating={isMutating && updatingItemId === item.product.id}
+              />
+            ))}
+          </div>
+
+          <div className="relative">
+            <CartSummary
+              totalCartPrice={cart.totalCartPrice}
+              numOfCartItems={numOfCartItems}
+              onCheckout={handleCheckout}
             />
-          ))}
+          </div>
         </div>
-
-        <div>
-          <CartSummary
-            totalCartPrice={cart.totalCartPrice}
-            numOfCartItems={numOfCartItems}
-            onCheckout={handleCheckout}
-          />
-        </div>
-      </div>
       </div>
     </>
   );

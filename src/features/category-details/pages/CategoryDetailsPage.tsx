@@ -60,7 +60,7 @@ export default function CategoryDetailsPage() {
               Category Products.
             </h2>
           </div>
-          <CategoryProducts categoryId={category._id || category.id!} />
+          <CategoryProducts categoryId={category._id} />
         </section>
       </div>
     </div>
