@@ -35,18 +35,18 @@ export default function ShippingPage() {
         <p>We offer a range of shipping options to suit your needs and budget. All orders are shipped from our warehouses within the continental US.</p>
       </ContentSection>
 
-      <div className="mb-8 mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {shippingMethods.map((method) => (
-          <div key={method.name} className="rounded-xl border bg-card p-5">
-            <h3 className="mb-1 text-lg font-semibold">{method.name}</h3>
-            <p className="mb-1 text-sm text-muted-foreground">{method.delivery}</p>
-            <p className="mb-2 font-medium text-primary">{method.cost}</p>
-            <p className="text-xs text-muted-foreground">{method.note}</p>
+          <div key={method.name} className="border border-border/60 bg-card p-8 transition-all hover:border-foreground">
+            <h3 className="mb-2 text-xl font-black uppercase tracking-tight">{method.name}</h3>
+            <p className="mb-2 text-xs font-black uppercase tracking-widest text-muted-foreground/60">{method.delivery}</p>
+            <p className="mb-4 text-lg font-black tracking-tighter text-foreground">{method.cost}</p>
+            <p className="text-xs font-bold leading-relaxed text-muted-foreground/40">{method.note}</p>
           </div>
         ))}
       </div>
 
-      <div className="mb-8 space-y-6">
+      <div className="mb-12 space-y-12">
         <ContentSection title="Processing Time" variant="card">
           <p>
             Orders are processed within 1–2 business days after payment confirmation. During peak periods
@@ -55,18 +55,23 @@ export default function ShippingPage() {
           </p>
         </ContentSection>
 
-        <ContentSection title="Order Journey" variant="card">
-          <p>Here is what happens after you place your order:</p>
-        </ContentSection>
+        <div className="border-l-4 border-foreground pl-6">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+            Timeline
+          </span>
+          <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
+            ORDER JOURNEY.
+          </h2>
+        </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div key={s.step} className="rounded-xl border bg-card p-5">
-              <span className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+            <div key={s.step} className="border border-border/60 bg-card p-8">
+              <span className="mb-6 flex h-12 w-12 items-center justify-center bg-foreground text-sm font-black text-background">
                 {s.step}
               </span>
-              <h3 className="mb-1.5 font-semibold">{s.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{s.description}</p>
+              <h3 className="mb-4 text-lg font-black uppercase tracking-tight">{s.title}</h3>
+              <p className="text-sm font-bold leading-relaxed text-muted-foreground/60">{s.description}</p>
             </div>
           ))}
         </div>

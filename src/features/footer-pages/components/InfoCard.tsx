@@ -8,14 +8,14 @@ interface InfoCardProps {
 
 const InfoCard = memo(function InfoCard({ icon, title, description }: InfoCardProps) {
   return (
-    <div className="rounded-2xl border border-border/30 bg-card p-6 text-center">
+    <div className="border border-border/60 bg-card p-8">
       {icon && (
-        <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-background mx-auto">
+        <span className="mb-6 flex h-16 w-16 items-center justify-center bg-foreground text-background">
           {icon}
         </span>
       )}
-      <h3 className="mb-2 text-lg font-bold tracking-tight">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+      <h3 className="mb-4 text-xl font-black uppercase tracking-tight">{title}</h3>
+      <p className="text-sm font-bold leading-relaxed text-muted-foreground/60">{description}</p>
     </div>
   );
 });

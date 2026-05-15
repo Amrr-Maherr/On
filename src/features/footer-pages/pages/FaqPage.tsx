@@ -80,39 +80,39 @@ export default function FaqPage() {
         description="Find answers to the most common questions about shopping with us. Browse by topic or search the list below."
       />
 
-      <div className="mb-8 flex flex-wrap gap-3">
+      <div className="mb-12 flex flex-wrap gap-4">
         {categories.map((cat) => (
           <Link
             key={cat.label}
             to={cat.href}
-            className="rounded-full border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+            className="border-2 border-foreground/10 bg-card px-6 py-3 text-[10px] font-black uppercase tracking-widest text-muted-foreground transition-all hover:border-foreground hover:text-foreground"
           >
             {cat.label}
           </Link>
         ))}
       </div>
 
-      <div className="rounded-xl border bg-card p-6 md:p-8">
-        <dl className="divide-y divide-border">
+      <div className="border border-border/60 bg-card p-8 md:p-10">
+        <dl className="divide-y divide-border/40">
           {faqs.map((faq, index) => (
-            <div key={index} className="py-4 first:pt-0 last:pb-0">
+            <div key={index} className="py-6 first:pt-0 last:pb-0">
               <dt>
                 <button
                   type="button"
                   onClick={() => toggle(index)}
-                  className="flex w-full items-center justify-between gap-4 text-left text-base font-medium transition-colors hover:text-primary"
+                  className="flex w-full items-center justify-between gap-6 text-left text-lg font-black uppercase tracking-tight transition-colors hover:text-foreground/70"
                 >
                   <span>{faq.question}</span>
                   <motion.svg
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5 shrink-0 text-muted-foreground"
+                    strokeWidth="3"
+                    strokeLinecap="square"
+                    strokeLinejoin="inherit"
+                    className="h-5 w-5 shrink-0 text-foreground/40"
                   >
                     <path d="m6 9 6 6 6-6" />
                   </motion.svg>
@@ -125,10 +125,10 @@ export default function FaqPage() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-2 pt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="pb-2 pt-6 text-base font-medium leading-relaxed text-muted-foreground/70 md:text-lg">
                       {faq.answer}
                     </p>
                   </motion.dd>
@@ -139,14 +139,14 @@ export default function FaqPage() {
         </dl>
       </div>
 
-      <div className="mt-8 rounded-xl border bg-muted/30 p-6 text-center md:p-8">
-        <h2 className="mb-2 text-lg font-semibold">Still have questions?</h2>
-        <p className="mb-4 text-sm text-muted-foreground">
-          Our support team is ready to help.
+      <div className="mt-12 border border-border/60 bg-muted/50 p-10 text-center md:p-16">
+        <h2 className="text-3xl font-black uppercase tracking-tighter">Still have questions?</h2>
+        <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/60">
+          Our performance support team is ready to help.
         </p>
         <Link
           to="/contact"
-          className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          className="mt-10 inline-flex h-16 items-center justify-center bg-foreground px-12 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
         >
           Contact Support
         </Link>

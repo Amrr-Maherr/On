@@ -86,8 +86,15 @@ export default function AboutPage() {
       </div>
 
       <div>
-        <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">Our Values</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-12 border-l-4 border-foreground pl-6">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+            Principles
+          </span>
+          <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
+            OUR VALUES.
+          </h2>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value) => (
             <InfoCard key={value.title} icon={value.icon} title={value.title} description={value.description} />
           ))}

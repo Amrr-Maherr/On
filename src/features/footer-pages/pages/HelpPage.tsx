@@ -68,30 +68,30 @@ export default function HelpPage() {
         description="Find answers, manage your account, and get the support you need — all in one place."
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {topics.map((topic) => (
           <Link
             key={topic.title}
             to={topic.href}
-            className="group rounded-xl border bg-card p-6 transition-shadow hover:shadow-md"
+            className="group border border-border/60 bg-card p-8 transition-all hover:border-foreground"
           >
-            <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+            <span className="mb-6 flex h-16 w-16 items-center justify-center bg-foreground text-background transition-transform group-hover:scale-110">
               {topic.icon}
             </span>
-            <h3 className="mb-1.5 text-base font-semibold">{topic.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{topic.description}</p>
+            <h3 className="mb-4 text-xl font-black uppercase tracking-tight">{topic.title}</h3>
+            <p className="text-sm font-bold leading-relaxed text-muted-foreground/60">{topic.description}</p>
           </Link>
         ))}
       </div>
 
-      <div className="mt-10 rounded-xl border bg-muted/30 p-6 text-center md:p-8">
-        <h2 className="mb-2 text-lg font-semibold">Can't find what you're looking for?</h2>
-        <p className="mb-4 text-sm text-muted-foreground">
+      <div className="mt-12 border border-border/60 bg-muted/50 p-10 text-center md:p-16">
+        <h2 className="text-3xl font-black uppercase tracking-tighter">Can't find what you're looking for?</h2>
+        <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/60">
           Our support team is available Monday to Friday, 9 AM to 6 PM EST.
         </p>
         <Link
           to="/contact"
-          className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          className="mt-10 inline-flex h-16 items-center justify-center bg-foreground px-12 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
         >
           Contact Support
         </Link>

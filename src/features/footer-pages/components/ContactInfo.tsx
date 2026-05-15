@@ -8,13 +8,13 @@ interface ContactInfoProps {
 
 const ContactInfo = memo(function ContactInfo({ icon, label, value }: ContactInfoProps) {
   return (
-    <div className="flex items-start gap-3">
-      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-foreground text-background">
+    <div className="flex items-center gap-5">
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center bg-foreground text-background">
         {icon}
       </span>
       <div>
-        <p className="text-sm font-bold text-foreground">{label}</p>
-        <p className="text-sm text-muted-foreground">{value}</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">{label}</p>
+        <p className="text-sm font-black uppercase tracking-tight text-foreground">{value}</p>
       </div>
     </div>
   );

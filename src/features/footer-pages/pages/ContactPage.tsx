@@ -1,5 +1,4 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
@@ -18,46 +17,46 @@ export default function ContactPage() {
         description="We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible."
       />
 
-      <div className="grid gap-8 lg:grid-cols-5">
+      <div className="grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <div className="rounded-xl border bg-card p-6 md:p-8">
-            <h2 className="mb-6 text-xl font-semibold">Send Us a Message</h2>
+          <div className="border border-border/60 bg-card p-8 md:p-10">
+            <h2 className="mb-10 text-3xl font-black uppercase tracking-tighter">Send Us a Message</h2>
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="space-y-5"
+              className="space-y-8"
               noValidate
             >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
+              <div className="grid gap-8 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                     Full Name
                   </label>
                   <input
                     id="name"
                     type="text"
-                    placeholder="John Doe"
-                    className="w-full rounded-lg border bg-background px-4 py-2.5 text-sm outline-none ring-1 ring-foreground/10 transition focus:ring-2 focus:ring-primary"
+                    placeholder="Your name"
+                    className="h-14 w-full border-x-0 border-t-0 border-b-2 border-border/40 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0"
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                     Email Address
                   </label>
                   <input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
-                    className="w-full rounded-lg border bg-background px-4 py-2.5 text-sm outline-none ring-1 ring-foreground/10 transition focus:ring-2 focus:ring-primary"
+                    placeholder="your@email.com"
+                    className="h-14 w-full border-x-0 border-t-0 border-b-2 border-border/40 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0"
                   />
                 </div>
               </div>
-              <div>
-                <label htmlFor="subject" className="mb-1.5 block text-sm font-medium">
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                   Subject
                 </label>
                 <select
                   id="subject"
-                  className="w-full rounded-lg border bg-background px-4 py-2.5 text-sm outline-none ring-1 ring-foreground/10 transition focus:ring-2 focus:ring-primary"
+                  className="h-14 w-full border-x-0 border-t-0 border-b-2 border-border/40 bg-transparent px-0 text-base font-bold text-foreground focus:border-foreground focus:outline-none focus:ring-0"
                 >
                   <option value="">Select a topic</option>
                   <option value="order">Order Inquiry</option>
@@ -67,28 +66,31 @@ export default function ContactPage() {
                   <option value="other">Other</option>
                 </select>
               </div>
-              <div>
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                   Message
                 </label>
                 <textarea
                   id="message"
-                  rows={5}
+                  rows={4}
                   placeholder="How can we help you?"
-                  className="w-full rounded-lg border bg-background px-4 py-2.5 text-sm outline-none ring-1 ring-foreground/10 transition focus:ring-2 focus:ring-primary"
+                  className="w-full border-x-0 border-t-0 border-b-2 border-border/40 bg-transparent px-0 py-4 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 resize-none"
                 />
               </div>
-              <Button type="submit" className="w-full sm:w-auto">
+              <button 
+                type="submit" 
+                className="flex h-16 w-full items-center justify-center bg-foreground px-12 text-sm font-black uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
+              >
                 Send Message
-              </Button>
+              </button>
             </form>
           </div>
         </div>
 
         <div className="lg:col-span-2">
-          <div className="rounded-xl border bg-card p-6 md:p-8">
-            <h2 className="mb-6 text-xl font-semibold">Contact Information</h2>
-            <div className="space-y-5">
+          <div className="border border-border/60 bg-card p-8 md:p-10">
+            <h2 className="mb-10 text-3xl font-black uppercase tracking-tighter">Information</h2>
+            <div className="space-y-8">
               <ContactInfo
                 icon={
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
