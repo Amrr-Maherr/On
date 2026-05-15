@@ -1,51 +1,46 @@
 import { memo } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
-import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <Link to={`/products/${product.title}/${product.id}`}>
-      <Card className="group relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-        <div className="relative">
-          <img
-            src={product.imageCover}
-            alt={product.title}
-            loading="lazy"
-            className="h-60 w-full rounded-t-xl object-cover"
-          />
-          <div className="absolute left-3 right-3 top-3 flex items-start justify-between">
-            <AddToCart productId={product.id} />
-            <AddToFav productId={product.id} />
-          </div>
+    <Link
+      to={`/products/${product.title}/${product.id}`}
+      className="group flex flex-col"
+    >
+      <div className="relative overflow-hidden rounded-2xl bg-muted/30">
+        <img
+          src={product.imageCover}
+          alt={product.title}
+          loading="lazy"
+          className="h-72 w-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
+        />
+        <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+          <AddToFav productId={product.id} />
+          <AddToCart productId={product.id} />
         </div>
-        <CardHeader>
-          <CardTitle className="line-clamp-1">{product.title}</CardTitle>
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-semibold">
-              ${product.priceAfterDiscount ?? product.price}
+      </div>
+      <div className="mt-4 flex flex-col gap-1.5">
+        <h3 className="text-sm font-medium text-foreground/90 line-clamp-1">
+          {product.title}
+        </h3>
+        <div className="flex items-baseline gap-2">
+          <span className="text-lg font-medium tracking-tight text-foreground">
+            ${product.priceAfterDiscount ?? product.price}
+          </span>
+          {product.priceAfterDiscount && (
+            <span className="text-sm text-muted-foreground/60 line-through">
+              ${product.price}
             </span>
-            {product.priceAfterDiscount && (
-              <span className="text-sm text-muted-foreground line-through">
-                ${product.price}
-              </span>
-            )}
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="flex items-center justify-center gap-1">
-              <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              {product.ratingsAverage}
-            </span>
-            <span>({product.ratingsQuantity})</span>
-            <span className="ml-auto">{product.sold} sold</span>
-          </div>
-        </CardContent>
-      </Card>
+          )}
+        </div>
+        <div className="flex items-center gap-3 text-xs text-muted-foreground/60">
+          <span>{product.ratingsAverage || "—"} / 5</span>
+          <span>{product.sold} sold</span>
+        </div>
+      </div>
     </Link>
   );
 }

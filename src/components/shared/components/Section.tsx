@@ -21,22 +21,33 @@ const Section = memo(function Section({
 }: SectionProps) {
   return (
     <ScrollReveal>
-      <section className="container-layout md:py-22">
-      <div className="flex items-center justify-start gap-[5px]">
-        <h2 className="text-[36px] font-semibold md:mb-[40px]">{title}</h2>
-        {description && (
-          <p className="text-[36px] font-semibold md:mb-[40px] text-[#4B5563]">
-            {description}
-          </p>
-        )}
-      </div>
-      <Slider
-        hideNavigation={hideNavigation}
-        slidesPerView={slidesPerView}
-        slidesPerViewMobile={slidesPerViewMobile}
-      >
-        {children}
-      </Slider>
+      <section className="section-py">
+        <div className="container-layout">
+          <div className="mb-12 md:mb-16">
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
+                Collection
+              </span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+                <h2 className="text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                  {title}
+                </h2>
+                {description && (
+                  <p className="text-lg text-muted-foreground/80 md:text-xl">
+                    {description}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+          <Slider
+            hideNavigation={hideNavigation}
+            slidesPerView={slidesPerView}
+            slidesPerViewMobile={slidesPerViewMobile}
+          >
+            {children}
+          </Slider>
+        </div>
       </section>
     </ScrollReveal>
   );

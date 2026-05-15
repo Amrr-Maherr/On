@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { cn } from "@/lib/utils";
-import { Loader2 } from "lucide-react";
 
 interface LoaderProps {
   size?: "sm" | "md" | "lg";
@@ -9,23 +8,28 @@ interface LoaderProps {
 }
 
 const sizeMap = {
-  sm: "h-4 w-4",
-  md: "h-8 w-8",
-  lg: "h-12 w-12",
+  sm: "h-6 w-6 border-2",
+  md: "h-10 w-10 border-[2.5px]",
+  lg: "h-14 w-14 border-[3px]",
 };
 
 const Loader = memo(function Loader({ size = "md", className, text }: LoaderProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-3 h-screen w-full",
+        "flex flex-col items-center justify-center gap-5 min-h-[60vh] w-full",
         className,
       )}
     >
-      <Loader2
-        className={cn("animate-spin text-muted-foreground", sizeMap[size])}
+      <div
+        className={cn(
+          "rounded-full border-foreground/10 border-t-foreground/40 animate-spin",
+          sizeMap[size],
+        )}
       />
-      {text && <p className="text-sm text-muted-foreground">{text}</p>}
+      {text && (
+        <p className="text-sm text-muted-foreground/70 tracking-wide">{text}</p>
+      )}
     </div>
   );
 });

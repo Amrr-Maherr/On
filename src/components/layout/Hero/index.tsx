@@ -1,35 +1,57 @@
 import { memo } from "react";
-import { Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import bgImage from "@/assets/hero-bg.png";
-const Hero = memo(function Hero() {
-  return (
-    <ScrollReveal className="relative flex min-h-150 items-center overflow-hidden">
-      <img
-        src={bgImage}
-        alt=""
-        className="h-full w-full object-cover absolute top-0 "
-      />
 
-      <div className="container-layout relative z-10">
-        <div className="max-w-[632px]">
-          <p className="text-[20px] dark:text-color-primary">
-            Starting from: $49.99
-          </p>
-          <h1 className="mb-4 font-bold leading-tight dark:text-color-primary text-[64px]">
-            Exclusive collection for everyone
-          </h1>
-          <Button
-            size="lg"
-            className="gap-2 cursor-pointer dark:bg-color-primary rounded-full px-[30px] py-[20px] shadow-2xl"
-          >
-            Explore now
-            <Search className="h-6 w-6" />
-          </Button>
-        </div>
+const Hero = memo(function Hero() {
+  const navigate = useNavigate();
+
+  return (
+    <section className="relative flex min-h-[90vh] items-center overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src={bgImage}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-background/10" />
       </div>
-    </ScrollReveal>
+
+      <ScrollReveal className="container-layout relative z-10 w-full" distance={40}>
+        <div className="max-w-2xl">
+          <span className="inline-block text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground/70 mb-6">
+            Starting from $49.99
+          </span>
+          <h1 className="text-5xl font-light leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+            Exclusive collection
+            <br />
+            <span className="font-medium">for everyone</span>
+          </h1>
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground/80 md:text-xl">
+            Discover premium products curated for modern living. Quality meets
+            elegance in every piece.
+          </p>
+          <div className="mt-10 flex items-center gap-4">
+            <Button
+              onClick={() => navigate("/products")}
+              className="h-14 cursor-pointer rounded-full bg-foreground px-10 text-base font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+            >
+              Explore the collection
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/categories")}
+              className="h-14 cursor-pointer rounded-full px-8 text-base font-medium text-foreground/70 hover:text-foreground"
+            >
+              Browse categories
+            </Button>
+          </div>
+        </div>
+      </ScrollReveal>
+    </section>
   );
 });
 

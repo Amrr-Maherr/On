@@ -2,7 +2,6 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { Badge } from "@/components/ui/badge";
 import { teamData } from "../utils/team";
 
 const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
@@ -29,70 +28,66 @@ const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
 
 const TeamSection = memo(function TeamSection() {
   return (
-    <ScrollReveal>
-      <section className="container-layout md:py-22">
-        <div className="mx-auto flex w-full flex-col items-center justify-center gap-8 md:gap-16">
-          <motion.div
-            initial={{ y: -40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              ease: [0.21, 0.47, 0.32, 0.98] as const,
-            }}
-            className="mx-auto flex max-w-xl flex-col items-center justify-center gap-4 text-center"
-          >
-            <Badge variant="outline" className="h-auto px-3 py-1 text-sm">
+    <section className="section-py">
+      <ScrollReveal>
+        <div className="container-layout">
+          <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
               Team
-            </Badge>
-            <h2 className="text-3xl font-semibold text-foreground md:text-5xl">
+            </span>
+            <h2 className="mt-3 text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Meet the people behind your store
             </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          </div>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {teamData.map((member, index) => (
               <motion.div
                 key={member.name}
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.8,
+                  duration: 0.7,
                   delay: index * 0.1,
-                  ease: [0.21, 0.47, 0.32, 0.98] as const,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className="group flex flex-col items-center justify-center gap-6"
+                className="group flex flex-col items-center gap-6"
               >
-                <img
-                  className="h-full w-full transition-all duration-300 group-hover:grayscale"
-                  src={member.image}
-                  alt={member.name}
-                />
-                <div className="flex w-full flex-col items-center justify-center gap-4">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <h3 className="text-2xl font-medium text-foreground">
+                <div className="w-full overflow-hidden rounded-2xl bg-muted/30">
+                  <img
+                    className="w-full transition-all duration-500 group-hover:scale-[1.02]"
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="text-center">
+                    <h3 className="text-lg font-medium text-foreground">
                       {member.name}
                     </h3>
-                    <p className="text-sm font-normal text-muted-foreground">
+                    <p className="mt-0.5 text-sm text-muted-foreground/70">
                       {member.role}
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     <a
                       href={member.socials.website}
-                      className="rounded-full p-2 hover:bg-accent/80"
+                      className="rounded-full p-1.5 text-muted-foreground/50 transition-colors duration-200 hover:text-foreground"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${member.name} website`}
                     >
-                      <Globe size={16} />
+                      <Globe size={15} />
                     </a>
                     <a
                       href={member.socials.linkedin}
-                      className="rounded-full p-2 hover:bg-accent/80"
+                      className="rounded-full p-1.5 text-muted-foreground/50 transition-colors duration-200 hover:text-foreground"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${member.name} LinkedIn`}
                     >
-                      <LinkedinIcon size={16} />
+                      <LinkedinIcon size={15} />
                     </a>
                   </div>
                 </div>
@@ -100,8 +95,8 @@ const TeamSection = memo(function TeamSection() {
             ))}
           </div>
         </div>
-      </section>
-    </ScrollReveal>
+      </ScrollReveal>
+    </section>
   );
 });
 
