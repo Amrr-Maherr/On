@@ -48,15 +48,35 @@ export default function AllCategoriesPage() {
   }
 
   return (
-    <div className="container-layout section-py pt-8">
+    <>
       <PageHelmet title="All Categories" description="Explore our product categories." />
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Categories" }]} className="mb-6" />
-      <div className="mb-10">
-        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Categories</h1>
-        <p className="mt-2 text-sm text-muted-foreground/70">
-          {data?.results ?? categories.length} categories
-        </p>
-      </div>
+
+      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+        <div
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+        <div className="container-layout relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+            Browse
+          </p>
+          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+            Categories.
+          </h1>
+          <p className="mt-4 max-w-lg text-lg text-white/70">
+            Find your discipline. Every sport, every season, every goal.
+          </p>
+        </div>
+      </section>
+
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Categories" }]} className="mb-6" />
+        <div className="mb-10">
+          <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Categories</h1>
+          <p className="mt-2 text-sm text-muted-foreground/70">
+            {data?.results ?? categories.length} categories
+          </p>
+        </div>
 
       <div className="flex gap-8">
         <FiltersPanel>
@@ -99,6 +119,7 @@ export default function AllCategoriesPage() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

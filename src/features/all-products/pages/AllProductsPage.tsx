@@ -155,10 +155,29 @@ export default function AllProductsPage() {
   }
 
   return (
-    <div className="container-layout section-py pt-8">
+    <>
       <PageHelmet title="All Products" description="Browse our complete collection of products." />
 
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
+      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+        <div
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+        <div className="container-layout relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+            Explore
+          </p>
+          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+            Products.
+          </h1>
+          <p className="mt-4 max-w-lg text-lg text-white/70">
+            High-performance gear engineered for those who push boundaries.
+          </p>
+        </div>
+      </section>
+
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
 
       {searchQuery && (
         <div className="mb-6">
@@ -174,7 +193,7 @@ export default function AllProductsPage() {
         </span>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Products</h1>
+            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Products</h1>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-full sm:w-56">
@@ -258,6 +277,7 @@ export default function AllProductsPage() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

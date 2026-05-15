@@ -41,7 +41,7 @@ const ProductActions = memo(function ProductActions({ productId }: ProductAction
   return (
     <div className="flex gap-3">
       <Button
-        className="flex-1 gap-2 rounded-full bg-foreground px-6 text-background hover:opacity-90 h-11 md:h-9 md:bg-primary md:text-primary-foreground md:hover:bg-primary/80 md:[a]:hover:bg-primary/80"
+        className="flex-1 gap-2 rounded-full bg-foreground px-8 py-6 text-sm font-bold uppercase tracking-wider text-background hover:opacity-90 transition-all duration-200 active:scale-[0.98]"
         onClick={handleAddToCart}
         disabled={isPending}
       >
@@ -54,7 +54,7 @@ const ProductActions = memo(function ProductActions({ productId }: ProductAction
       </Button>
       <Button
         variant="outline"
-        className="rounded-full h-11 w-11 md:size-8"
+        className="rounded-full h-12 w-12 border-border/50"
         onClick={handleAddToFav}
         disabled={isPending}
         aria-label="Add to wishlist"

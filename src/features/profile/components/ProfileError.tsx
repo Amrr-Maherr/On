@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { AlertCircle, RefreshCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface ProfileErrorProps {
   message: string;
@@ -9,18 +8,21 @@ interface ProfileErrorProps {
 
 const ProfileError = memo(function ProfileError({ message, onRetry }: ProfileErrorProps) {
   return (
-    <div className="flex min-h-[400px] flex-col items-center justify-center gap-4 text-center">
-      <div className="rounded-full bg-destructive/10 p-4">
-        <AlertCircle className="h-10 w-10 text-destructive" />
+    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-6 px-6 text-center">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+        <AlertCircle className="h-8 w-8 text-destructive" />
       </div>
       <div className="space-y-2">
-        <h2 className="text-xl font-bold">Failed to load profile</h2>
-        <p className="max-w-md text-muted-foreground">{message}</p>
+        <h2 className="text-xl font-bold text-foreground">Failed to load profile</h2>
+        <p className="max-w-md text-sm text-muted-foreground/70">{message}</p>
       </div>
-      <Button onClick={onRetry} variant="outline" className="mt-2 gap-2">
+      <button
+        onClick={onRetry}
+        className="inline-flex items-center gap-2 rounded-full border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
+      >
         <RefreshCcw className="h-4 w-4" />
         Try Again
-      </Button>
+      </button>
     </div>
   );
 });

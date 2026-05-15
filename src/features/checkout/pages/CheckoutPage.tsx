@@ -119,16 +119,35 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <>
       <PageHelmet title="Checkout" description="Complete your order." />
 
-      <div className="mx-auto max-w-5xl">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Checkout" }]} className="mb-6" />
-        <div className="mb-8">
-          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-            Checkout
-          </span>
-          <h1 className="mt-2 text-4xl font-light tracking-tight text-foreground md:text-5xl">Checkout</h1>
+      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+        <div
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553729459-afe8f2e2e065?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+        <div className="container-layout relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+            Secure Checkout
+          </p>
+          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+            Checkout.
+          </h1>
+          <p className="mt-4 max-w-lg text-lg text-white/70">
+            Fast and secure. Your order is just a few steps away.
+          </p>
+        </div>
+      </section>
+
+      <div className="container-layout py-8">
+        <div className="mx-auto max-w-5xl">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Checkout" }]} className="mb-6" />
+          <div className="mb-8">
+            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+              Checkout
+            </span>
+            <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">Checkout</h1>
           <p className="mt-1.5 text-sm text-muted-foreground/60">
             Review your order and enter shipping details
           </p>
@@ -137,14 +156,14 @@ export default function CheckoutPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
             <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg font-light tracking-tight">
-                    <MapPin className="h-4 w-4 text-muted-foreground/70" />
+              <div className="rounded-2xl border border-border/30 bg-card">
+                <div className="border-b border-border/30 px-6 py-4">
+                  <h3 className="flex items-center gap-2 text-base font-bold tracking-tight">
+                    <MapPin className="h-4 w-4 text-muted-foreground/50" />
                     Shipping Address
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
+                  </h3>
+                </div>
+                <div className="space-y-4 p-6">
                   <div className="space-y-1.5">
                     <label
                       htmlFor="phone"
@@ -214,20 +233,20 @@ export default function CheckoutPage() {
                       </p>
                     )}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
-              <Card className="sticky top-24">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg font-light tracking-tight">
-                    <ShoppingBag className="h-4 w-4 text-muted-foreground/70" />
+              <div className="sticky top-24 rounded-2xl border border-border/30 bg-card">
+                <div className="border-b border-border/30 px-6 py-4">
+                  <h3 className="flex items-center gap-2 text-base font-bold tracking-tight">
+                    <ShoppingBag className="h-4 w-4 text-muted-foreground/50" />
                     Order Summary
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
+                  </h3>
+                </div>
+                <div className="space-y-4 p-6">
+                  <p className="text-sm font-semibold text-muted-foreground">
                     {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
                   </p>
 
@@ -266,29 +285,29 @@ export default function CheckoutPage() {
                     </div>
                   )}
 
-                  <hr className="border-foreground/10" />
+                  <hr className="border-border/40" />
 
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-3 text-sm">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Subtotal</span>
-                      <span className="tabular-nums">
+                      <span className="font-semibold tabular-nums">
                         {totalPrice.toLocaleString()} EGP
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Shipping</span>
-                      <span>Calculated at delivery</span>
+                      <span className="text-xs font-medium text-muted-foreground/70">Calculated at delivery</span>
                     </div>
-                    <hr className="border-foreground/10" />
-                    <div className="flex items-center justify-between text-base">
-                      <span className="font-semibold">Total</span>
-                      <span className="font-bold tabular-nums">
+                    <hr className="border-border/40" />
+                    <div className="flex items-center justify-between">
+                      <span className="text-base font-bold">Total</span>
+                      <span className="text-2xl font-black tracking-tight tabular-nums">
                         {totalPrice.toLocaleString()} EGP
                       </span>
                     </div>
                   </div>
-                </CardContent>
-                <div className="space-y-3 px-4 pb-4">
+                </div>
+                <div className="space-y-3 px-6 pb-6">
                   <div className="grid grid-cols-2 gap-2">
                     {PAYMENT_METHODS.map((method) => {
                       const Icon = method.icon;
@@ -310,7 +329,7 @@ export default function CheckoutPage() {
                       );
                     })}
                   </div>
-                  <Button type="submit" size="lg" className="w-full gap-2 rounded-full" disabled={isPending}>
+                  <Button type="submit" size="lg" className="w-full gap-2 rounded-full bg-foreground py-6 text-sm font-bold uppercase tracking-wider text-background hover:opacity-90 active:scale-[0.98]" disabled={isPending}>
                     {isPending ? (
                       <>Processing...</>
                     ) : (
@@ -327,11 +346,12 @@ export default function CheckoutPage() {
                     )}
                   </Button>
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
         </form>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

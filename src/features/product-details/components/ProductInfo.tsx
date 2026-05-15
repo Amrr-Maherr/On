@@ -11,7 +11,7 @@ interface ProductInfoProps {
 const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   return (
     <div>
-      <h1 className="text-3xl font-light leading-tight tracking-tight md:text-4xl lg:text-5xl">
+      <h1 className="text-3xl font-black leading-tight tracking-tight md:text-4xl lg:text-5xl">
         {title}
       </h1>
       {brandName && (
@@ -20,12 +20,12 @@ const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, bra
           {brandSlug && brandId ? (
             <Link
               to={`/brands/${brandSlug}/${brandId}`}
-              className="font-medium text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
+              className="font-semibold text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
             >
               {brandName}
             </Link>
           ) : (
-            <span className="font-medium text-foreground">{brandName}</span>
+            <span className="font-semibold text-foreground">{brandName}</span>
           )}
         </p>
       )}

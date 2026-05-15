@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { motion } from "framer-motion";
 
 interface PageHeroProps {
   title: string;
@@ -8,19 +7,20 @@ interface PageHeroProps {
 
 const PageHero = memo(function PageHero({ title, description }: PageHeroProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="mb-10 border-b border-border pb-8"
-    >
-      <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">{title}</h1>
+    <div className="mb-10">
+      <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
+        Information
+      </span>
+      <h1 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
+        {title}
+      </h1>
       {description && (
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
           {description}
         </p>
       )}
-    </motion.div>
+      <hr className="mt-8 border-border/40" />
+    </div>
   );
 });
 

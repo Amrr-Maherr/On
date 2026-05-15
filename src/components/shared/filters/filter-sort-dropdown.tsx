@@ -22,7 +22,7 @@ function FilterSortDropdown({
 }: FilterSortDropdownProps) {
   return (
     <div className="flex items-center gap-2">
-      <label htmlFor="sort-select" className="whitespace-nowrap text-sm text-muted-foreground">
+      <label htmlFor="sort-select" className="whitespace-nowrap text-sm font-semibold text-muted-foreground">
         Sort by:
       </label>
       <select
@@ -30,9 +30,9 @@ function FilterSortDropdown({
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         className={cn(
-          "h-9 w-full rounded-lg border border-input bg-transparent px-3 text-sm outline-none",
+          "h-9 w-full rounded-xl border border-border/50 bg-transparent px-3 text-sm font-medium outline-none",
           "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-          "transition-colors",
+          "transition-colors cursor-pointer",
         )}
       >
         {options.map((option) => (

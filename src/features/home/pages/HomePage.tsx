@@ -11,17 +11,29 @@ import ValuesSection from "../components/ValuesSection";
 import TeamSection from "../components/TeamSection";
 import CtaSection from "../components/CtaSection";
 import BlogSection from "../components/BlogSection";
+import HeroCampaignSection from "../components/HeroCampaignSection";
+import FeaturedCollectionsSection from "../components/FeaturedCollectionsSection";
+import CategoryHighlightsSection from "../components/CategoryHighlightsSection";
+import TrendingProductsSection from "../components/TrendingProductsSection";
+import PromotionalBannerSection from "../components/PromotionalBannerSection";
+import BrandStorySection from "../components/BrandStorySection";
 
 const HomePage = memo(function HomePage() {
   return (
     <>
       <PageHelmet title="Home" />
       <Hero />
+      <HeroCampaignSection />
       <ProductsSection />
+      <FeaturedCollectionsSection />
       <CategoriesSection />
+      <CategoryHighlightsSection />
       <Banner />
+      <TrendingProductsSection />
       <BrandsSection />
+      <PromotionalBannerSection />
       <TestimonialsSection />
+      <BrandStorySection />
       <ValuesSection />
       <FeaturesSection />
       <TeamSection />

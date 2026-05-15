@@ -55,8 +55,8 @@ const Footer = memo(function Footer() {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground/60">
-              Discover premium products with a seamless shopping experience.
-              Quality curated for modern living.
+              Performance gear engineered for champions. Shop the latest in
+              sportswear, training equipment, and athletic lifestyle.
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
@@ -76,7 +76,7 @@ const Footer = memo(function Footer() {
 
           {linkSections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/50">
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -102,8 +102,8 @@ const Footer = memo(function Footer() {
             &copy; {new Date().getFullYear()} On Store. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            {["Visa", "Mastercard", "PayPal"].map((method) => (
-              <span key={method} className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/20">
+            {["Visa", "Mastercard", "PayPal", "Stripe"].map((method) => (
+              <span key={method} className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/20">
                 {method}
               </span>
             ))}

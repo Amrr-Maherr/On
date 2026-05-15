@@ -28,7 +28,7 @@ const Loader = memo(function Loader({ size = "md", className, text }: LoaderProp
         )}
       />
       {text && (
-        <p className="text-sm text-muted-foreground/50 tracking-wide">{text}</p>
+        <p className="text-sm font-semibold text-muted-foreground/50 uppercase tracking-wider">{text}</p>
       )}
     </div>
   );

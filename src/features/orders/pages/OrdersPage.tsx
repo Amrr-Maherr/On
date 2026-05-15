@@ -14,6 +14,24 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
+function CampaignHeader() {
+  return (
+    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+      <div
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553729459-afe8f2e2e065?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+      <div className="container-layout relative z-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">Track</p>
+        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">Orders.</h1>
+        <p className="mt-4 max-w-lg text-lg text-white/70">
+          Your complete order history, all in one place.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function OrdersPage() {
   const navigate = useNavigate();
 
@@ -26,41 +44,56 @@ export default function OrdersPage() {
 
   const { data, isLoading, error, refetch } = useOrders();
 
-  if (isLoading) return <OrdersLoader />;
+  if (isLoading) {
+    return (
+      <>
+        <CampaignHeader />
+        <OrdersLoader />
+      </>
+    );
+  }
 
   if (error) {
     return (
-      <OrdersError
-        message={getErrorMessage(error)}
-        onRetry={() => refetch()}
-      />
+      <>
+        <CampaignHeader />
+        <OrdersError message={getErrorMessage(error)} onRetry={() => refetch()} />
+      </>
     );
   }
 
   const orders = data ?? [];
 
   if (orders.length === 0) {
-    return <OrdersEmpty />;
+    return (
+      <>
+        <CampaignHeader />
+        <OrdersEmpty />
+      </>
+    );
   }
 
   return (
-    <div className="container-layout py-8">
+    <>
+      <CampaignHeader />
       <PageHelmet title="My Orders" description="View your order history." />
-
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Orders" }]} className="mb-6" />
-
-      <div className="mb-8">
-        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">My Orders</h1>
-        <p className="mt-1 text-sm text-muted-foreground/70">
-          {orders.length} {orders.length === 1 ? "order" : "orders"} total
-        </p>
+      <div className="container-layout py-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Orders" }]} className="mb-6" />
+        <div className="mb-8">
+          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+            History
+          </span>
+          <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">My Orders</h1>
+          <p className="mt-1 text-sm text-muted-foreground/70">
+            {orders.length} {orders.length === 1 ? "order" : "orders"} total
+          </p>
+        </div>
+        <div className="space-y-4">
+          {orders.map((order) => (
+            <OrderCard key={order._id} order={order} />
+          ))}
+        </div>
       </div>
-
-      <div className="space-y-4">
-        {orders.map((order) => (
-          <OrderCard key={order._id} order={order} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }

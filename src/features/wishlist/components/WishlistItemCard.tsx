@@ -24,11 +24,11 @@ const WishlistItemCard = memo(({
   return (
     <div
       className={cn(
-        "flex gap-4 rounded-2xl border border-border/50 p-4",
+        "flex gap-5 rounded-2xl border border-border/30 bg-card p-5 transition-all duration-200",
         (isRemoving || isAddingToCart) && "pointer-events-none opacity-60",
       )}
     >
-      <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted/50 md:h-28 md:w-28">
+      <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl bg-muted/50 md:h-32 md:w-32">
         <img
           src={product.imageCover}
           alt={product.title}
@@ -37,24 +37,24 @@ const WishlistItemCard = memo(({
         />
       </div>
 
-      <div className="flex flex-1 flex-col justify-between gap-2 min-w-0">
+      <div className="flex flex-1 flex-col justify-between gap-3 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <h3 className="truncate text-sm font-medium text-foreground/90">{product.title}</h3>
-            <div className="mt-0.5 flex items-center gap-2">
+            <h3 className="truncate text-base font-semibold text-foreground">{product.title}</h3>
+            <div className="mt-1 flex items-center gap-2">
               <span
                 className={cn(
                   "text-sm",
                   hasDiscount
-                    ? "text-muted-foreground/50 line-through"
+                    ? "text-muted-foreground/40 line-through"
                     : "text-muted-foreground/70",
                 )}
               >
                 {product.price.toLocaleString()} EGP
               </span>
               {hasDiscount && (
-                <span className="text-sm font-medium text-foreground">
-                   {displayPrice.toLocaleString()} EGP
+                <span className="text-lg font-bold text-foreground">
+                  {displayPrice.toLocaleString()} EGP
                 </span>
               )}
             </div>
@@ -63,7 +63,7 @@ const WishlistItemCard = memo(({
             onClick={() => onRemove(product._id)}
             disabled={isRemoving}
             aria-label="Remove from wishlist"
-            className="flex shrink-0 items-center justify-center rounded-xl p-1.5 text-muted-foreground/50 transition-colors duration-200 hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
+            className="flex shrink-0 items-center justify-center rounded-xl p-1.5 text-muted-foreground/40 transition-all duration-200 hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
           >
             {isRemoving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -75,19 +75,19 @@ const WishlistItemCard = memo(({
 
         <div className="flex items-center justify-between">
           {product.ratingsAverage && (
-            <span className="text-xs text-muted-foreground/50">
-              {product.ratingsAverage.toFixed(1)} / 5
+            <span className="text-xs font-medium text-muted-foreground">
+              &#9733; {product.ratingsAverage.toFixed(1)} / 5
             </span>
           )}
           <button
             onClick={() => onAddToCart(product._id)}
             disabled={isAddingToCart}
-            className="flex items-center gap-1.5 rounded-xl border border-border/50 px-3.5 py-1.5 text-xs text-muted-foreground/80 transition-all duration-200 hover:border-border hover:bg-muted/30 hover:text-foreground active:scale-[0.97] disabled:opacity-50"
+            className="flex items-center gap-2 rounded-full bg-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.97] disabled:opacity-50"
           >
             {isAddingToCart ? (
-              <Loader2 className="h-3 w-3 animate-spin" />
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
             ) : (
-              <ShoppingCart className="h-3 w-3" />
+              <ShoppingCart className="h-3.5 w-3.5" />
             )}
             {isAddingToCart ? "Adding..." : "Add to Cart"}
           </button>

@@ -33,19 +33,19 @@ const ProfileInfoCard = memo(function ProfileInfoCard({ user }: ProfileInfoCardP
   return (
     <div className="rounded-2xl border border-border/30 bg-card">
       <div className="border-b border-border/30 px-6 py-4">
-        <h3 className="text-sm font-medium tracking-tight">Account Information</h3>
+        <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Account Information</h3>
       </div>
       <div className="grid gap-6 p-6 md:grid-cols-2">
         {infoItems.map((item, index) => (
           <div key={index} className="flex items-start gap-3">
-            <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-xl bg-muted/50">
-              <item.icon className="h-4 w-4 text-muted-foreground/60" />
+            <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-xl bg-foreground text-background">
+              <item.icon className="h-4 w-4" />
             </div>
             <div className="space-y-0.5">
-              <p className="text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground/60">
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">
                 {item.label}
               </p>
-              <p className="text-sm font-medium text-foreground">{item.value}</p>
+              <p className="text-sm font-semibold text-foreground">{item.value}</p>
             </div>
           </div>
         ))}

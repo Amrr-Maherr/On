@@ -22,7 +22,7 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "h-12 w-full rounded-2xl border border-border/60 bg-transparent px-4 text-sm text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-foreground/40 focus:outline-none",
+            "h-12 w-full rounded-2xl border border-border/60 bg-transparent px-4 text-sm font-medium text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-foreground/40 focus:outline-none",
             error && "border-destructive/60",
             className,
           )}

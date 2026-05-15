@@ -17,6 +17,24 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
+function CampaignHeader() {
+  return (
+    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+      <div
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+      <div className="container-layout relative z-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">Saved</p>
+        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">Wishlist.</h1>
+        <p className="mt-4 max-w-lg text-lg text-white/70">
+          Your most-wanted gear, ready when you are.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function WishlistPage() {
   const navigate = useNavigate();
 
@@ -33,14 +51,21 @@ export default function WishlistPage() {
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [addingToCartId, setAddingToCartId] = useState<string | null>(null);
 
-  if (isLoading) return <WishlistLoader />;
+  if (isLoading) {
+    return (
+      <>
+        <CampaignHeader />
+        <WishlistLoader />
+      </>
+    );
+  }
 
   if (error) {
     return (
-      <WishlistError
-        message={getErrorMessage(error)}
-        onRetry={() => refetch()}
-      />
+      <>
+        <CampaignHeader />
+        <WishlistError message={getErrorMessage(error)} onRetry={() => refetch()} />
+      </>
     );
   }
 
@@ -48,7 +73,12 @@ export default function WishlistPage() {
   const count = data?.count ?? 0;
 
   if (items.length === 0) {
-    return <WishlistEmpty />;
+    return (
+      <>
+        <CampaignHeader />
+        <WishlistEmpty />
+      </>
+    );
   }
 
   const handleRemove = useCallback((productId: string) => {
@@ -73,30 +103,33 @@ export default function WishlistPage() {
   }, [addToCart]);
 
   return (
-    <div className="container-layout py-8">
+    <>
+      <CampaignHeader />
       <PageHelmet title="My Wishlist" description="View your saved items." />
-
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} className="mb-6" />
-
-      <div className="mb-8">
-        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">My Wishlist</h1>
-        <p className="mt-1 text-sm text-muted-foreground/70">
-          {count} {count === 1 ? "item" : "items"}
-        </p>
+      <div className="container-layout py-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} className="mb-6" />
+        <div className="mb-8">
+          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+            Saved Items
+          </span>
+          <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">My Wishlist</h1>
+          <p className="mt-1 text-sm text-muted-foreground/70">
+            {count} {count === 1 ? "item" : "items"}
+          </p>
+        </div>
+        <div className="space-y-4">
+          {items.map((product) => (
+            <WishlistItemCard
+              key={product._id}
+              product={product}
+              onRemove={handleRemove}
+              onAddToCart={handleAddToCart}
+              isRemoving={isRemoving && removingId === product._id}
+              isAddingToCart={isAddingToCart && addingToCartId === product._id}
+            />
+          ))}
+        </div>
       </div>
-
-      <div className="space-y-4">
-        {items.map((product) => (
-          <WishlistItemCard
-            key={product._id}
-            product={product}
-            onRemove={handleRemove}
-            onAddToCart={handleAddToCart}
-            isRemoving={isRemoving && removingId === product._id}
-            isAddingToCart={isAddingToCart && addingToCartId === product._id}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }

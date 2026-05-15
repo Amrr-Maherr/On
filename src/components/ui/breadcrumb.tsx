@@ -22,24 +22,24 @@ const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProp
             <Fragment key={`${item.label}-${index}`}>
               <li data-slot="breadcrumb-item" className="inline-flex items-center gap-1.5">
                 {isLast ? (
-                  <span data-slot="breadcrumb-current" className="text-foreground" aria-current="page">
+                  <span data-slot="breadcrumb-current" className="text-sm font-semibold text-foreground" aria-current="page">
                     {item.label}
                   </span>
                 ) : item.href ? (
                   <a
                     data-slot="breadcrumb-link"
                     href={item.href}
-                    className="transition-colors hover:text-foreground"
+                    className="text-sm font-medium transition-colors hover:text-foreground"
                   >
                     {item.label}
                   </a>
                 ) : (
-                  <span className="transition-colors hover:text-foreground">{item.label}</span>
+                  <span className="text-sm font-medium transition-colors hover:text-foreground">{item.label}</span>
                 )}
               </li>
               {!isLast && (
                 <li data-slot="breadcrumb-separator" className="[&>svg]:size-4" role="presentation">
-                  <ChevronRight className="text-muted-foreground/40" strokeWidth={1.5} />
+                  <ChevronRight className="text-muted-foreground/30" strokeWidth={2} />
                 </li>
               )}
             </Fragment>

@@ -22,7 +22,7 @@ const AuthSubmitButton = memo(function AuthSubmitButton({
       <button
         type="submit"
         disabled={isLoading}
-        className="h-12 w-full cursor-pointer rounded-full bg-foreground text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
+        className="h-12 w-full cursor-pointer rounded-full bg-foreground text-sm font-bold uppercase tracking-wider text-background transition-all duration-300 hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
       >
         {isLoading && <Loader2 className="mr-2 inline-block h-4 w-4 animate-spin" />}
         {isLoading ? loadingLabel : label}

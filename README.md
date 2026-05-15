@@ -2,6 +2,8 @@
 
 A modern, feature-rich e-commerce front-end built with **React 19**, **TypeScript**, and **Vite**. It connects to a headless e-commerce API to provide a complete shopping experience including product browsing, cart management, wishlist, checkout, order tracking, and user authentication.
 
+**Design System: Motion Commerce Performance Design System (MCPDS)** — Adidas/Nike-inspired bold performance commerce UI. See [DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md) for the full system documentation.
+
 ---
 
 ## Tech Stack
@@ -359,13 +361,17 @@ API functions are called by React Query hooks, never directly from components.
 - **Dark Mode**: Class-based strategy (`.dark` class on `<html>`).
 - **Icon Library**: lucide-react.
 
+### Design System
+
+This project uses the **Motion Commerce Performance Design System (MCPDS)** — an Adidas/Nike-inspired bold performance commerce UI documented in [DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md). MCPDS replaces the previous Liquid Glass Commerce Design System (LGCDS).
+
 ### Custom Theme Variables
 
 Defined in `src/index.css` using CSS custom properties in the `oklch` color space:
 
 ```css
 @theme inline {
-  --font-sans: "Geist Variable", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -401,6 +407,85 @@ export function cn(...inputs: ClassValue[]) {
 - Toggles the `.dark` class on `<html>`.
 
 ---
+
+---
+
+## UI Enhancement Layers (Safe Enhancement)
+
+This project follows a **Safe Enhancement** approach — all UI improvements are additive only, never destructive.
+
+### Full Application Enhancement Scope
+
+#### Product Card Redesign (Adidas Style)
+Complete redesign of the `ProductCard` component with:
+- `aspect-[4/5]` image ratio for bold product focus
+- Full-width "Add to Cart" overlay CTA appearing on hover at image bottom
+- `text-base font-semibold` product titles
+- `text-xl font-bold tracking-tight` pricing
+- Hover zoom animation (`group-hover:scale-[1.05]`)
+- Enhanced `AddToCart` component with `variant="overlay"` support for full-width button mode
+
+#### Cart Redesign (Conversion-Focused)
+Complete redesign of all Cart components:
+- **CartItemCard**: Larger images (`h-28 md:h-32`), `text-base font-semibold` titles, bold item totals, improved quantity controls
+- **CartSummary**: `text-2xl font-black` total pricing, `text-sm font-bold uppercase tracking-wider` checkout CTA
+- **CartEmpty**: Bold centered layout with "Shop Now" CTA
+- **CartLoader**: Matching skeleton layout with rounded corners
+- **CartError**: Bold heading with retry button
+
+#### Campaign Header Enhancement (All Commerce Pages)
+`bg-neutral-950` campaign headers added to:
+- Products, Categories, Brands pages (existing)
+- Cart, Checkout, Profile pages (existing)
+- **Orders page** (new — with "Track" label + "Orders." headline)
+- **Wishlist page** (new — with "Saved" label + "Wishlist." headline)
+
+#### Empty / Loader / Error State Enhancement
+All empty, loading, and error components across Orders and Wishlist features enhanced with MCPDS styling:
+- Consistent `min-h-[40vh]` centered layouts
+- `text-2xl font-bold` empty state headings
+- Bold CTAs with arrow icons
+- Rounded skeleton loaders matching component layout
+- Consistent error state with icon + retry button
+
+#### Auth Component Enhancement
+- AuthSubmitButton: `font-bold uppercase tracking-wider` for stronger CTA presence
+- AuthInput: `font-medium` text for better readability
+
+#### Global Color Variables (index.css)
+Added MCPDS-specific CSS variables:
+- `--brand-accent` / `--brand-accent-foreground`: Brand accent color
+- `--campaign` / `--campaign-foreground`: Campaign section colors
+
+### Home Page Sections (17 total)
+The Home page has been enhanced with **6 new Adidas-inspired sections** layered on top of existing content:
+
+| Section | Type | Source |
+|---------|------|--------|
+| Hero | Existing | Video + gradient |
+| **Hero Campaign** | **New** | Bold commercial banner with stats |
+| Products | Existing | Featured products carousel |
+| **Featured Collections** | **New** | Grid-based collection cards |
+| Categories | Existing | Categories carousel |
+| **Category Highlights** | **New** | Visual sport category tiles |
+| Banner | Existing | Promotional banner |
+| **Trending Products** | **New** | Bold product grid |
+| Brands | Existing | Brands carousel |
+| **Promotional Banner** | **New** | Full-width sale banner |
+| Testimonials | Existing | Customer reviews |
+| **Brand Story** | **New** | Editorial split layout |
+| Values | Existing | Brand values |
+| Features | Existing | Store features |
+| Team | Existing | Team section |
+| CTA | Existing | Call to action |
+| Blog | Existing | Latest stories |
+
+All new sections use:
+- CDN images (Unsplash) for high-quality visuals
+- `ScrollReveal` for entry animations
+- MCPDS styling (bold typography, high contrast, structured grids)
+- Existing utilities (`container-layout`, `section-py`)
+- Zero modifications to existing components or logic
 
 ## Styling and Design Patterns
 

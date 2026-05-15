@@ -1,81 +1,50 @@
-# Liquid Glass Commerce Design System (LGCDS)
+# Motion Commerce Performance Design System (MCPDS)
 
-> **Single Source of Truth** for the On Storefront UI system.
-> Apple Store-inspired · Premium minimal · Editorial layout · Subtle glass enhancement
+> **SINGLE SOURCE OF TRUTH** — The ONLY design system for this project.
+> Adidas/Nike-inspired · Bold performance commerce · High-contrast UI · Conversion-focused
 
 ---
 
 ## 1. Design Philosophy
 
-### LGCDS Vision
-A premium, calm, and sophisticated eCommerce experience inspired by Apple's design language and modern SaaS dashboards. The UI should feel spacious, elegant, and refined — never loud, cluttered, or aggressive. Glassmorphism is used as a **subtle enhancement layer**, not the dominant design choice.
+### MCPDS Vision
+A bold, energetic, and conversion-driven eCommerce experience inspired by Adidas and Nike's commercial design language. The UI commands attention through strong typography, high contrast, structured grids, and impactful visual storytelling. Every pixel is engineered for performance — both in aesthetics and conversion.
 
 ### Core Values
-- **Clarity over complexity** — Every element has purpose
-- **Whitespace as luxury** — Generous spacing communicates premium quality
-- **Typography-led hierarchy** — Content is the hero
-- **Subtle motion** — Animation enhances, never distracts
-- **Neutral calmness** — Color recedes, content advances
-- **Glass as accent** — Used sparingly for depth, never for decoration
+- **Bold typography** — Type is the primary visual weapon. Large, heavy weights, tight tracking.
+- **High contrast** — Light/dark extremes. No muddy mid-tones. Black and white dominance.
+- **Structured grids** — Clean, muscular layouts. No floating ambiguity.
+- **Conversion-focused** — Every section drives action. CTAs are prominent and plentiful.
+- **Energetic commercial feel** — Campaign-driven, sport/lifestyle aesthetic.
+- **Sharp and modern** — Clean edges, intentional whitespace, no decorative fluff.
+
+### What MCPDS is NOT
+- ❌ NOT Apple-like minimalism — we don't hide in soft whitespace
+- ❌ NOT glassmorphism-heavy — no frosted layers or heavy blur
+- ❌ NOT weak contrast — no washed-out pastels or timid grays
+- ❌ NOT soft or quiet — this is a performance brand, not a meditation app
 
 ### Emotional Target
-The interface should make users feel: **calm, sophisticated, confident, and comfortable** — like browsing the Apple Store online.
-
-### Apple Store-Inspired Direction
-- Product-first design philosophy
-- Large whitespace sections
-- Strong visual hierarchy
-- Minimal text density
-- Grid-based clean layouts
-- Story-driven sections
-- Smooth scroll experience
-- Focus on product imagery
+The interface should make users feel: **energized, confident, driven, and ready to perform** — like walking into an Adidas flagship store or seeing a Nike campaign.
 
 ---
 
-## 2. Spacing System
-
-### Section Spacing
-| Token | Value | Usage |
-|-------|-------|-------|
-| `section-py` | `py-24 md:py-32` | Major page sections |
-| `section-px` | `px-6 md:px-10 lg:px-16` | Container padding |
-| `max-w-content` | `max-w-7xl` | Default content container |
-| `gap-section` | `gap-16 md:gap-24` | Between sections |
-| `gap-grid` | `gap-6 md:gap-8` | Grid item gaps |
-| `gap-stack` | `space-y-4` | Vertical text rhythm |
-| `gap-inline` | `gap-3 md:gap-4` | Horizontal element spacing |
-
-### Container Widths
-- **Default**: `max-w-7xl mx-auto px-6 md:px-10 lg:px-16`
-- **Narrow**: `max-w-4xl` (editorial content, auth)
-- **Wide**: `max-w-[90rem]` (full product grids)
-- **Full**: edge-to-edge (hero backgrounds)
-
-### Responsive Spacing
-| Screen | Padding-X | Section Py | Grid Columns |
-|--------|-----------|------------|--------------|
-| Mobile | `px-6` | `py-16` | 1 col |
-| Tablet | `px-10` | `py-20` | 2 cols |
-| Desktop | `px-16` | `py-32` | 3-4 cols |
-
----
-
-## 3. Typography System
+## 2. Typography System
 
 ### Font Stack
-- **Primary**: `"Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
-- **Unified across entire app** — No mixed font systems
+- **Body (Primary)**: `"Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif` — Clean, readable sans-serif for all body text
+- **Headings**: `"Oswald Variable", "Inter", system-ui, sans-serif` — Bold, condensed sport font (Adidas-inspired) applied globally to all `h1`–`h4` elements
+- **No mixed font systems** — Dual-font strategy: Oswald for display/headings, Inter for body
 
-### Heading Hierarchy
+### Heading Hierarchy (MCPDS Bold)
 | Level | Size (Desktop) | Weight | Line Height | Letter Spacing |
 |-------|---------------|--------|-------------|----------------|
-| `h1` | `text-5xl md:text-6xl lg:text-7xl` | `font-light` | `leading-[1.05]` | `tracking-tight` |
-| `h2` | `text-4xl md:text-5xl` | `font-light` | `leading-[1.1]` | `tracking-tight` |
-| `h3` | `text-2xl md:text-3xl` | `font-medium` | `leading-[1.2]` | `tracking-normal` |
-| `h4` | `text-xl md:text-2xl` | `font-medium` | `leading-[1.3]` | `tracking-normal` |
-| `h5` | `text-lg md:text-xl` | `font-medium` | `leading-[1.4]` | — |
-| `h6` | `text-base md:text-lg` | `font-medium` | `leading-[1.4]` | — |
+| `h1` (Campaign) | `text-6xl md:text-8xl lg:text-9xl` | `font-black (900)` | `leading-none` | `tracking-tight` |
+| `h2` (Section) | `text-4xl md:text-5xl` | `font-black (900)` | `leading-none` | `tracking-tight` |
+| `h3` (Card) | `text-2xl md:text-3xl` | `font-bold (700)` | `leading-tight` | `tracking-normal` |
+| `h4` | `text-xl md:text-2xl` | `font-bold (700)` | `leading-tight` | `tracking-normal` |
+| `h5` | `text-lg md:text-xl` | `font-semibold (600)` | `leading-snug` | — |
+| `h6` | `text-base md:text-lg` | `font-semibold (600)` | `leading-snug` | — |
 
 ### Body Text
 | Usage | Size | Weight | Line Height |
@@ -83,344 +52,393 @@ The interface should make users feel: **calm, sophisticated, confident, and comf
 | Body large | `text-lg` | `font-normal (400)` | `leading-relaxed` |
 | Body default | `text-base` | `font-normal (400)` | `leading-relaxed` |
 | Body small | `text-sm` | `font-normal (400)` | `leading-normal` |
-| Caption | `text-xs` | `font-normal (400)` | `leading-normal` |
-| Meta | `text-xs` | `font-medium (500)` | — |
+| Caption | `text-xs` | `font-medium (500)` | `leading-normal` |
+| Meta/Label | `text-xs` | `font-semibold (600)` | `uppercase tracking-[0.2em]` |
 
-### Editorial Text
-- Pull quotes: `text-2xl md:text-3xl font-light italic`
-- Section labels: `text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60`
-- Price: `text-2xl font-medium tracking-tight`
-- Feature headings: `text-3xl md:text-4xl font-light tracking-tight`
+### Editorial / Campaign Text
+- **Campaign headline**: `text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight`
+- **Section label**: `text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60`
+- **Price display**: `text-2xl font-bold tracking-tight`
+- **Stat numbers**: `text-2xl md:text-4xl font-black`
+- **Campaign subtext**: `text-lg md:text-xl leading-relaxed text-white/70`
 
 ---
 
-## 4. Color System
+## 3. Color System
 
 ### Light Mode
 | Token | Value (oklch) | Usage |
 |-------|---------------|-------|
-| `--background` | `oklch(0.985 0.003 85)` | Page background (warm off-white) |
+| `--background` | `oklch(0.985 0.003 85)` | Page background |
 | `--foreground` | `oklch(0.12 0.008 85)` | Primary text (near-black) |
-| `--card` | `oklch(1 0 0)` | Card surface (pure white) |
+| `--card` | `oklch(1 0 0)` | Card surface |
 | `--card-foreground` | `oklch(0.12 0.008 85)` | Card text |
-| `--muted` | `oklch(0.955 0.004 85)` | Muted background |
-| `--muted-foreground` | `oklch(0.55 0.01 85)` | Secondary text (warm gray) |
-| `--border` | `oklch(0.92 0.004 85)` | Borders, dividers (ultra-light) |
+| `--muted` | `oklch(0.955 0.004 85)` | Muted bg (section alternation) |
+| `--muted-foreground` | `oklch(0.55 0.01 85)` | Secondary text |
 | `--primary` | `oklch(0.12 0.008 85)` | Primary (near-black) |
 | `--primary-foreground` | `oklch(0.985 0.003 85)` | Primary text on dark |
 | `--accent` | `oklch(0.94 0.005 85)` | Subtle accent bg |
 | `--accent-foreground` | `oklch(0.12 0.008 85)` | Accent text |
+| `--border` | `oklch(0.92 0.004 85)` | Borders, dividers |
+| `--destructive` | `oklch(0.577 0.245 27.325)` | Destructive actions |
+| `--radius` | `0.75rem` | Border radius base |
 
 ### Dark Mode
 | Token | Value (oklch) | Usage |
 |-------|---------------|-------|
 | `--background` | `oklch(0.13 0.004 85)` | Soft dark surface |
 | `--foreground` | `oklch(0.96 0.003 85)` | Primary text (off-white) |
-| `--card` | `oklch(0.16 0.004 85)` | Card surface (dark) |
-| `--border` | `oklch(1 0 0 / 6%)` | Subtle border |
+| `--card` | `oklch(0.16 0.004 85)` | Card surface |
+| `--card-foreground` | `oklch(0.96 0.003 85)` | Card text |
+| `--border` | `oklch(1 0 0 / 6%)` | Subtle borders |
 
 ### Usage Guidelines
-- **Backgrounds**: Warm off-white for main sections, pure white for cards
-- **Text**: Near-black for headings, muted-foreground for body/secondary
-- **Borders**: Ultra-light gray, 1px or 0.5px
-- **Accent**: Use sparingly — only for primary CTAs and key interactive elements
-- **Never use**: Fully saturated colors, heavy gradients, or high-contrast borders
-- **Consistency**: Use existing CSS variable tokens ONLY — no inline hex/rgb colors
+- **High contrast** is the default — dark text on light backgrounds, light text on dark sections
+- **Campaign sections** use `bg-neutral-950` (fixed near-black, NOT theme-dependent) with white text for maximum impact in both light and dark modes
+- **Section alternation**: `bg-background` ↔ `bg-muted/30` for rhythm
+- **CTAs on dark**: `rounded-full bg-white text-neutral-950 text-sm font-bold uppercase tracking-widest`
+- **CTAs on light**: `rounded-full bg-foreground text-background text-sm font-bold uppercase tracking-wider`
+- **Always use CSS variable tokens** — no inline hex/rgb colors (except campaign dark sections which use Tailwind fixed tokens)
 
 ---
 
-## 5. Glassmorphism Rules (LGCDS Enhancement)
+## 4. Spacing & Layout System
 
-### Where to Use Glass
-- **Navbar backdrop**: `bg-background/80 backdrop-blur-xl` — subtle blur
-- **Modals/Overlays**: Soft backdrop blur for depth
-- **Hero overlays**: Gradient transparency overlays
-- **Mobile menus**: Backdrop blur for context preservation
+### Section Spacing
+| Token | Value | Usage |
+|-------|-------|-------|
+| `section-py` | `py-24 md:py-32` | Major page sections |
+| `container-layout` | `max-w-1440px`, `px-6 md:px-10 lg:px-16` | Content container |
+| `gap-6 md:gap-8` | Grid gaps | Between grid items |
 
-### Where NOT to Use Glass
-- **Product cards**: Keep clean and solid (Apple Store style)
-- **Buttons**: Solid or outline only
-- **Input fields**: Clean bordered fields
-- **Main content areas**: Solid backgrounds
-- **Footers**: Solid clean backgrounds
+### Campaign Section Spacing
+- **Hero campaign**: `min-h-[80vh]` with full-width backgrounds
+- **Banner sections**: `py-28 md:py-36` for promotional banners
+- **Card height**: `h-[500px]` for collection cards, `h-[320px]` for category tiles
 
-### Blur Limitations
-- Max blur: `backdrop-blur-xl` (24px)
-- Standard blur: `backdrop-blur-lg` (16px)
-- Light blur: `backdrop-blur-sm` (8px)
-- Glass opacity: never below 80% background visibility
-- Glass should enhance readability, never reduce it
+### Responsive Behavior
+| Screen | Padding-X | Section Py | Grid Columns |
+|--------|-----------|------------|--------------|
+| Mobile (<640px) | `px-6` | `py-24` | 1 col / 2 cols |
+| Tablet (768px) | `px-10` | `py-32` | 2-3 cols |
+| Desktop (1024px+) | `px-16` | `py-32` | 3-4 cols |
+
+---
+
+## 5. Grid System
+
+### Multi-Column Grids
+- **3-col grid**: `.grid gap-6 md:grid-cols-3` — Featured collections
+- **4-col grid**: `.grid gap-6 sm:grid-cols-2 lg:grid-cols-4` — Trending products grid
+- **2-col editorial**: `.grid items-center gap-12 lg:grid-cols-2 lg:gap-16` — Brand story
+- **2-col categories**: `.grid gap-5 sm:grid-cols-2 lg:grid-cols-4` — Category highlights
+
+### Card Ratios & Sizes
+- Collection cards: `h-[500px]` with `object-cover` images
+- Category tiles: `h-[320px]` with `object-cover` images
+- Product cards: Aspect-ratio containers (handled by ProductCard)
 
 ---
 
 ## 6. Component System
 
-### Buttons
+### Buttons (ShadCN + MCPDS Extensions)
 | Variant | Style | Usage |
 |---------|-------|-------|
-| Primary | `bg-foreground text-background rounded-full px-8 py-3 text-sm font-medium` | Main CTAs |
-| Outline | `border border-border bg-transparent rounded-full px-8 py-3 text-sm font-medium` | Secondary actions |
-| Ghost | `hover:bg-muted/50 rounded-xl` | Icon buttons |
-| Link | `text-foreground underline-offset-4 hover:underline` | Text links |
-| Destructive | `text-destructive bg-destructive/10 hover:bg-destructive/20 rounded-full` | Delete actions |
+| Campaign Primary | `h-14 rounded-full bg-white text-foreground px-10 md:px-12 text-sm font-bold uppercase tracking-widest` | Hero CTAs on dark bg |
+| Campaign Outline | `h-14 rounded-full border-white/30 bg-transparent text-white px-10 text-sm font-bold uppercase tracking-widest` | Secondary CTAs on dark |
+| Default Primary | `h-12 rounded-full bg-foreground text-background px-8 text-sm font-semibold` | Standard CTAs |
+| Default ShadCN | ShadCN button variants as-is | UI actions, forms |
+| Ghost | ShadCN ghost variant | Icon buttons, subtle actions |
 
-**States**: `hover:opacity-80`, `active:scale-[0.97]`, `focus-visible:ring-2`
-**Transitions**: `duration-300 ease-out`
-**Sizing**: `h-8` (default), `h-7` (sm), `h-9` (lg), `size-8` (icon)
+### Cards (MCPDS Visual)
+- **Collection cards**: Full-bleed image with gradient overlay + text
+- **Category tiles**: Full-bleed image with bottom gradient + label
+- **Product cards**: See Product Card section below
 
-### Cards
-- **Border radius**: `rounded-2xl` or `rounded-xl`
-- **Background**: `bg-card`
-- **Border**: `ring-1 ring-foreground/10` or `border border-border/50`
-- **Padding**: `p-6 md:p-8`
-- **Hover**: `hover:-translate-y-0.5` with `duration-500`
-
-### Product Cards (Apple-Style)
-- Clean image presentation with subtle zoom on hover (`group-hover:scale-105`)
-- Minimal info: image, name, price, quick-add
-- No badges or ribbons unless necessary
-- `group` pattern for hover interactions
-- Aspect-ratio container for images
-
-### Inputs
-- **Border**: `border border-input rounded-2xl`
-- **Height**: `h-12`
-- **Padding**: `px-4 py-3`
-- **Focus**: `focus:border-foreground/40 focus:ring-0`
-- **Placeholder**: `placeholder:text-muted-foreground/40`
-- **Background**: `bg-transparent`
-
-### Modals / Dialogs
-- Centered clean overlays
-- Soft backdrop blur
-- Minimal padding, clean typography
-- Close button: top-right ghost icon
-
-### Navbar (Apple-Style)
-- Sticky top, `backdrop-blur-xl` with background transparency
-- Height: `h-16 md:h-20`
-- Border bottom: `border-border/40`
-- Clean dividers, minimal color
-- Icon buttons with badge indicators (round, bg-foreground/text-background)
-- Search: subtle bordered field, centered
-
-### Footer (Apple-Style)
-- Clean structured layout with border-top
-- `bg-muted/20` background
-- Multi-column grid `gap-12`
-- Small meta text for links
-- Clean bottom bar with copyright + payment methods
-
-### Loaders
-- **Preferred**: Skeleton approach (shimmer animation)
-- **Fallback**: Minimal spinner for page-level loading
-- **Transitions**: Fade in/out for content changes
-
-### Empty States
-- Centered layout with icon
-- Clear heading + description
-- Single CTA button (clean ghost or outline)
-- No excessive illustration
+### Image Treatments
+- **Campaign images**: `object-cover` with gradient overlays (`from-foreground/90` → `to-transparent`)
+- **Collection cards**: Gradient overlays per theme (`from-emerald-900/80`, `from-orange-900/80`, etc.)
+- **Category tiles**: `bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent`
+- **Hover effects**: `group-hover:scale-110` on images, `group-hover:scale-[1.02]` on cards
 
 ---
 
-## 7. Feature-Specific UI Rules
+## 7. Motion & Animation
 
-### Home → Storytelling Editorial Landing
-- Full-viewport hero with gradient overlay
-- Editorial section pattern: label + spacious heading + description
-- ScrollReveal animations throughout
-- Generous whitespace between sections
-- Product carousel with clean card design
-- Testimonial section with subtle card design
-- **Apple Store vibe**: Cinematic, spacious, story-driven
-
-### Products → Clean Product Grid Browsing
-- Sidebar filters (desktop) + product grid
-- `gap-8` grid spacing, 4 columns max
-- Editorial header with count
-- Clean pagination
-- Mobile filter sheet (bottom drawer)
-- **Apple Store vibe**: Browse-focused, image-forward
-
-### Product Details → Immersive Product Showcase
-- Two-column layout: sticky gallery + product info
-- Image gallery with thumbnails and lightbox
-- Clean info card: price, rating, description
-- Quantity selector + add to cart actions
-- Reviews section with rating breakdown
-- **Apple Store vibe**: Premium showcase, detailed
-
-### Categories & Brands → Spacious Gallery Grid
-- Gallery grid with `gap-8`
-- Aspect-ratio card containers
-- Gradient overlays on hover (subtle)
-- Clean grid layout, minimal text
-- **Apple Store vibe**: Visual discovery
-
-### Cart → Clean Utility
-- Two-column: items + summary sidebar
-- Item cards: image, details, quantity controls, price
-- Summary: subtotal, total, checkout CTA
-- Clear cart option (ghost destructive)
-- **Apple Store vibe**: Clean, functional, minimal
-
-### Checkout → Ultra-Minimal Distraction-Free
-- Two-column: form + order summary
-- Large clean input fields
-- Payment method toggle buttons
-- Sticky order summary sidebar
-- Single primary CTA
-- **Apple Store vibe**: Focused, trust-building
-
-### Profile → Structured Dashboard
-- Centered `max-w-4xl` layout
-- Editorial header with user info
-- Info card with clean data display
-- Action buttons (logout/edit) as clean links
-- **Apple Store vibe**: Personal, organized
-
-### Auth → Centered Clean Minimal Panel
-- Centered single-column form
-- No card wrapper — clean unboxed layout
-- `max-w-sm` form width
-- Large elegant heading
-- Muted description text
-- Clean inputs with labels
-- **Apple Store vibe**: Minimal, welcoming
-
-### Orders → Clean List History
-- Single column order cards
-- Clean card per order with status badge
-- Status color-coded indicators
-- Minimal actions per order
-- **Apple Store vibe**: Straightforward, organized
-
----
-
-## 8. Dark Mode Rules (Apple-Level Quality)
-
-### Principles
-- **Soft dark surfaces**: `oklch(0.13 0.004 85)` — never pure black `#000`
-- **Eye-friendly contrast**: Text at `oklch(0.96 0.003 85)` on dark surfaces
-- **Smooth transitions**: CSS `transition` on color properties
-- **Consistent tokens**: Same variable names as light mode, just different values
-
-### Dark Mode Specifics
-- Background: Soft charcoal (not black)
-- Cards: Slightly lighter than background (`oklch(0.16 0.004 85)`)
-- Borders: Semi-transparent white (`oklch(1 0 0 / 6%)`)
-- Muted text: Warm gray at `oklch(0.65 0.005 85)`
-- No pure white elements (reduces eye strain)
-- All components must support both modes seamlessly
-
-### Implementation
-- Use Tailwind's `dark:` variant for overrides
-- CSS variables handle the heavy lifting
-- Components automatically adapt via variable-based classes
-- Theme toggle must animate smoothly (no instant flash)
-
----
-
-## 9. Motion & Animation System
-
-### Transition Defaults
-```css
-transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
-```
+### ScrollReveal (Existing Component)
+- **Direction**: `"up"` for most sections, `"left"` / `"right"` for editorial splits
+- **Distance**: `40` for standard, `60` for editorial
+- **Stagger delay**: `0.1s` - `0.15s` between items
+- **Duration**: `0.7s`
+- **Easing**: `[0.25, 0.1, 0.25, 1]`
 
 ### Hover Behaviors
-- **Buttons**: Opacity shift + subtle scale (`active:scale-[0.97]`)
-- **Cards**: Slight translateY (`hover:-translate-y-0.5`) + shadow elevation
-- **Images**: Gentle scale (`group-hover:scale-105` on product images)
-- **Links**: Opacity or underline transition
-
-### Fade Animations (ScrollReveal)
-- **Initial**: `opacity: 0, y: 24`
-- **Animate**: `opacity: 1, y: 0`
-- **Duration**: `0.6s`
-- **Easing**: `easeOut`
-- **Stagger delay**: `0.1s` between elements
+- **Cards**: `hover:scale-[1.02]`, `active:scale-[0.98]`
+- **Images (inside cards)**: `group-hover:scale-110` with `duration-700`
+- **Buttons**: `active:scale-[0.97]`
+- **Links**: Underline or arrow translation (`group-hover:translate-x-1`)
+- **Gradient underlines**: `h-px w-0 bg-white/40 group-hover:w-full transition-all duration-300`
 
 ### Performance Rules
 - Use `transform` and `opacity` only (GPU-accelerated)
 - Never animate `width`, `height`, `top`, `left`
-- `will-change: transform` on animated elements
-- Respect `prefers-reduced-motion`
+- `loading="lazy"` on all below-fold images
+- Respect `prefers-reduced-motion` via ScrollReveal
 
 ---
 
-## 10. Consistency Rules
+## 8. ShadCN Usage Guidelines
 
-### Naming Conventions
-- Components: PascalCase
-- Files: kebab-case
-- CSS: Tailwind utility classes only
-- Variant props: descriptive strings
+### Allowed Components
+- **Button** — Primary CTA system, form actions
+- **Card** — Content containers
+- **Sheet** — Mobile menus, filter panels
+- **Badge** — Status indicators
+- **Breadcrumb** — Navigation hierarchy
+- **Input** — Form fields, search
 
-### Reusable Patterns
-- `Section` wrapper for consistent section structure
-- `ScrollReveal` for entry animations
-- `cn()` utility for conditional class merging
-- `memo` for pure presentation components
-- `useCallback` for event handlers passed as props
-- `useMemo` for computed values
-
-### Tailwind Conventions
-- Always use Tailwind utility classes over custom CSS
-- Custom CSS only for: keyframes, complex animations
-- Group related utilities logically
-- Never use `@apply` in component files
-
-### Import Order
-1. React/external libraries
-2. Internal components (`@/`)
-3. Hooks
-4. Utilities
-5. Types
-6. Assets/styles
-
-### Quality Checklist
-- [ ] Dark mode supported and polished
-- [ ] Responsive (mobile → desktop)
-- [ ] Smooth hover/active states
-- [ ] No hardcoded colors
-- [ ] Uses CSS variable tokens
-- [ ] Accessible (focus-visible, aria-labels)
-- [ ] Proper spacing per LGCDS
-- [ ] Inter font used consistently
+### Customization Rules
+- ShadCN is a **tool**, not the design authority — MCPDS overrides when needed
+- Custom button variants (campaign styles) use direct Tailwind classes
+- Existing ShadCN primitives remain as-is
+- New ShadCN components can be added when useful
 
 ---
 
-## 11. Responsive Rules
+## 9. Home Page Section Strategy
 
-### Breakpoints (Tailwind Default)
-- `sm`: 640px
-- `md`: 768px
-- `lg`: 1024px
-- `xl`: 1280px
-- `2xl`: 1536px
+### Section Architecture
+The Home page uses a campaign-driven storytelling structure with clear hierarchy:
 
-### Mobile-First Approach
-- Single-column on mobile
-- Two-column on tablet
-- Multi-column on desktop
-- Never horizontal scroll (except carousels)
-- Stack gracefully, never compress
+```
+1. HERO (video)              → Existing: Full-viewport brand intro
+2. HERO CAMPAIGN (new)       → Bold commercial banner, stats, CTAs
+3. PRODUCTS                  → Existing: Featured products carousel
+4. FEATURED COLLECTIONS (new)→ Grid-based collection cards
+5. CATEGORIES                → Existing: Categories carousel
+6. CATEGORY HIGHLIGHTS (new) → Visual sport category tiles
+7. BANNER                    → Existing: Promotional banner
+8. TRENDING PRODUCTS (new)   → Bold product grid
+9. BRANDS                    → Existing: Brands carousel
+10. PROMOTIONAL BANNER (new) → Full-width sale banner
+11. TESTIMONIALS             → Existing: Customer reviews
+12. BRAND STORY (new)        → Editorial split layout
+13. VALUES                   → Existing: Brand values
+14. FEATURES                 → Existing: Store features
+15. TEAM                     → Existing: Team section
+16. CTA                      → Existing: Call to action
+17. BLOG                     → Existing: Latest stories
+```
 
-### Typography Scaling
-- Mobile: headings ~75% of desktop size
-- Fluid via responsive classes
-- Line-height increases on mobile for readability
+### Placement Rules
+- New sections interleave BETWEEN existing sections
+- Never remove, replace, or hide existing sections
+- New sections use the same `section-py` / `container-layout` utilities
+- ScrollReveal animations applied to all new sections
+
+---
+
+## 10. CDN Image Rules
+
+### Image Sources
+- All new visual sections use **high-quality external CDN images only**
+- No local assets (unless already existing)
+- Preferred source: `images.unsplash.com` with `auto=format&fit=crop` params
+
+### Image Requirements
+- Sport / athletic / fashion commercial style
+- Adidas/Nike campaign-like visuals
+- High-end product photography
+- Minimum width: 800px for cards, 1920px for banners
+
+### Loading Strategy
+- `loading="lazy"` on all images
+- `object-cover` for consistent cropping
+- Responsive sizes via CDN `w=` parameter:
+  - Cards: `w=800&q=80`
+  - Banners: `w=1920&q=80`
+  - Editorial: `w=1200&q=80`
+
+---
+
+## 11. Safe Enhancement Rules
+
+### Cardinal Rules
+1. **NEVER delete** existing pages, components, or sections
+2. **NEVER remove or replace** existing functionality
+3. **NEVER break** routing, API calls, or state management
+4. **NEVER refactor** backend logic
+5. **ALWAYS keep** existing features intact
+
+### Adding New Sections
+- Place above or between existing sections
+- Use same utilities (`section-py`, `container-layout`, `ScrollReveal`)
+- Follow existing code patterns for consistency
+- Import at top of HomePage, render in sequence
+- All new components use `memo` for performance
+
+### What To Do When in Doubt
+- ADD rather than modify
+- EXTEND rather than replace
+- ENHANCE rather than refactor
+
+---
+
+## 12. Product Card Design (Adidas Style)
+
+### Visual Identity
+Product cards follow an Adidas/Nike commercial eCommerce style with bold imagery, clear pricing, and minimal but powerful information display.
+
+### Card Structure
+```
+┌──────────────────────┐
+│                      │
+│     [Product Image]  │  ← aspect-[4/5], object-cover, group-hover:scale-[1.05]
+│                      │
+│  ┌────────────────┐  │  ← overlay CTA (opacity-0 → group-hover:opacity-100)
+│  │  Add to Cart   │  │
+│  └────────────────┘  │
+│  ★ Favorites (top-R) │  ← always visible heart icon
+└──────────────────────┘
+│ Product Title         │  ← text-base font-semibold line-clamp-1
+│ $89.99  $129.99       │  ← text-xl font-bold + line-through discount
+│ ★ 4.5  ·  234 sold    │  ← text-xs text-muted-foreground
+└───────────────────────┘
+```
+
+### Design Rules
+| Element | Class | Rule |
+|---------|-------|------|
+| Image ratio | `aspect-[4/5]` | Vertical product focus |
+| Image hover | `group-hover:scale-[1.05] duration-700` | Subtle zoom |
+| Overlay CTA | `rounded-full bg-white text-neutral-950 text-xs font-bold uppercase tracking-wider` | Appears on hover at image bottom |
+| Wishlist icon | `rounded-full bg-white/90 shadow-sm h-8 w-8` | Always visible, top-right corner |
+| Title | `text-base font-semibold leading-tight` | Single line, truncated |
+| Price (current) | `text-xl font-bold tracking-tight` | Always bold, highest hierarchy |
+| Price (original) | `text-sm text-muted-foreground/40 line-through` | Only shown when discounted |
+| Rating | `text-xs font-medium text-muted-foreground` | Star + numeric value |
+| Sold count | `text-xs text-muted-foreground/50` | Meta information |
+
+### CTA Overlay Animation
+- `opacity-0` → `opacity-100` on `group-hover`
+- Duration: `duration-300`
+- The CTA uses the "overlay" variant of AddToCart, which renders as a full-width button with text
+
+### Grid Layout
+- 4-column grid on `lg`, 2-column on `sm`, 1-column on mobile
+- `gap-6` between cards
+- Cards wrapped in a `<Link>` for navigation to product details
+
+---
+
+## 13. Cart Design (Conversion-Focused)
+
+### Visual Identity
+The Cart is designed as a modern Adidas-style checkout experience — clean, structured, with bold pricing and a clear conversion path.
+
+### Cart Layout
+```
+┌──────────────────────────────────────┬────────────────┐
+│  Campaign Header                     │                │
+│  "Your Cart." / "Review"             │                │
+├──────────────────────────────────────┤                │
+│  Breadcrumb                          │                │
+│  "Cart" label                        │                │
+│  "Shopping Cart" h1                  │                │
+│  Items count + Delete All            │                │
+│                                      │  CartSummary   │
+│  ┌──────────────────────────┐        │  ┌──────────┐  │
+│  │ CartItemCard             │        │  │Total:    │  │
+│  │ [img] Title              │        │  │$299.97   │  │
+│  │       $89.99 EGP         │        │  │          │  │
+│  │       [-] 3 [+] $269.97  │        │  │[Checkout]│  │
+│  └──────────────────────────┘        │  └──────────┘  │
+│                                      │                │
+│  (repeat for each item)              │                │
+└──────────────────────────────────────┴────────────────┘
+```
+
+### CartItemCard Design Rules
+| Element | Class | Rule |
+|---------|-------|------|
+| Container | `rounded-2xl border border-border/30 bg-card p-5` | Card-like appearance |
+| Image | `h-28 w-28 rounded-xl md:h-32 md:w-32` | Large product thumbnail |
+| Title | `text-base font-semibold truncate` | Bold product name |
+| Price/unit | `text-sm text-muted-foreground` | Unit price reference |
+| Quantity controls | `border border-border/50 rounded-xl h-9 w-9 hover:border-foreground/20` | Clear +/- buttons |
+| Quantity display | `text-sm font-bold tabular-nums w-12 text-center` | Bold count |
+| Item total | `text-base font-bold tabular-nums` | Right-aligned, bold |
+| Remove button | `text-muted-foreground/40 hover:bg-destructive/10 hover:text-destructive` | Clean trash icon |
+
+### CartSummary Design Rules
+| Element | Class | Rule |
+|---------|-------|------|
+| Container | `sticky top-24 rounded-2xl border border-border/30 bg-card` | Sidebar card |
+| Title | `text-lg font-bold tracking-tight` | Bold section heading |
+| Item count | `text-muted-foreground text-sm` + `font-semibold tabular-nums` | Clean row |
+| Subtotal | `text-muted-foreground text-sm` + `font-semibold tabular-nums` | Clean row |
+| Shipping | `text-muted-foreground text-sm` + `text-xs font-medium` | Informational |
+| Divider | `border-border/40` | Subtle split |
+| Total label | `text-base font-bold` | Strong label |
+| Total price | `text-2xl font-black tracking-tight tabular-nums` | Highest visual weight |
+| Checkout CTA | `rounded-full bg-foreground text-background w-full py-3.5 text-sm font-bold uppercase tracking-wider` | Full-width, bold |
+
+### Empty Cart Design
+- Centered layout with shopping cart icon in circle
+- `text-2xl font-bold` heading
+- "Shop Now" CTA with arrow icon
+
+### Loading / Error States
+- Loading: Animated pulse skeleton matching exact component layout
+- Error: Icon + bold heading + retry button
+
+---
+
+## 15. Feature Differentiation
+
+| Page | MCPDS Approach |
+|------|----------------|
+| **Home** | Campaign-driven landing + storytelling sections |
+| **Products** | Structured high-performance product grid |
+| **Product Details** | Strong commercial showcase page |
+| **Categories** | Visual discovery gallery |
+| **Brands** | Clean brand grid |
+| **Cart** | Fast utility with clear checkout path |
+| **Checkout** | Conversion-focused flow |
+| **Auth** | Minimal but bold login experience |
+| **Profile** | Structured dashboard layout |
+| **Orders** | Clean order history |
+
+---
+
+## 16. Dark Mode
+
+### Principles
+- Soft dark surfaces (never pure black `#000`)
+- High contrast remains — text is `oklch(0.96 0.003 85)` on `oklch(0.13 0.004 85)`
+- All components support both modes seamlessly
+- CSS variables handle the heavy lifting
+
+### Dark Mode Specifics
+- Background: `oklch(0.13 0.004 85)` — soft charcoal
+- Cards: `oklch(0.16 0.004 85)` — slightly lighter
+- Borders: `oklch(1 0 0 / 6%)` — semi-transparent white
+- Campaign dark sections: Use `bg-neutral-950` (fixed near-black) to stay dark in both modes — NOT `bg-foreground` which would flip to white in dark mode
 
 ---
 
 ## Maintenance
 
-This document should be updated whenever:
-- A new component pattern is established
+This document must be updated whenever:
+- A new section type is added to the Home page
+- New component patterns are established
 - Spacing/typography/color tokens change
-- A feature gets redesigned
-- New motion patterns are introduced
+- New ShadCN components are integrated
+- Image sourcing strategy changes
 
-**Keep this as the single source of truth.**
+**MCPDS is the ONLY design system. All UI must conform.**
+
+---
+
+*Last updated: May 2026*

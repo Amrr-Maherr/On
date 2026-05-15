@@ -38,47 +38,47 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-xl">
       <div className="container-layout flex h-16 items-center justify-between gap-4 md:h-20">
         <Logo />
 
         <div className="hidden flex-1 items-center justify-center px-8 md:flex">
-          <div className="relative w-full max-w-sm">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
+          <div className="relative w-full max-w-md">
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/40" />
             <Input
               placeholder="Search products..."
-              className="h-10 w-full rounded-2xl border-border/60 bg-muted/30 pl-11 text-sm placeholder:text-muted-foreground/50 focus:border-foreground/30"
+              className="h-11 w-full rounded-full border-border/50 bg-muted/50 pl-11 text-sm placeholder:text-muted-foreground/50 focus:border-foreground/40"
             />
           </div>
         </div>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-0.5 md:flex">
           <ThemeToggle />
           <Link to="/fave">
-            <Button variant="ghost" size="icon" aria-label="Wishlist" className="relative rounded-xl text-muted-foreground/70 hover:text-foreground">
+            <Button variant="ghost" size="icon" aria-label="Wishlist" className="relative rounded-xl text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground">
               <Heart className="h-5 w-5" />
               {favCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-bold text-background">
                   {favCount > 99 ? "99+" : favCount}
                 </span>
               )}
             </Button>
           </Link>
           <Link to="/orders">
-            <Button variant="ghost" size="icon" aria-label="Orders" className="relative rounded-xl text-muted-foreground/70 hover:text-foreground">
+            <Button variant="ghost" size="icon" aria-label="Orders" className="relative rounded-xl text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground">
               <Package className="h-5 w-5" />
               {ordersCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-bold text-background">
                   {ordersCount > 99 ? "99+" : ordersCount}
                 </span>
               )}
             </Button>
           </Link>
           <Link to="/cart">
-            <Button variant="ghost" size="icon" aria-label="Cart" className="relative rounded-xl text-muted-foreground/70 hover:text-foreground">
+            <Button variant="ghost" size="icon" aria-label="Cart" className="relative rounded-xl text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground">
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-bold text-background">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -90,19 +90,19 @@ function Navbar() {
               size="icon"
               aria-label="Account"
               onClick={toggleDropdown}
-              className="rounded-xl text-muted-foreground/70 hover:text-foreground"
+              className="rounded-xl text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground"
             >
               <User className="h-5 w-5" />
             </Button>
             {isDropdownOpen && (
               <>
                 <div className="fixed inset-0 z-10" onClick={closeDropdown} />
-                <div className="absolute right-0 top-full mt-2 w-48 origin-top-right rounded-2xl border border-border/50 bg-card p-1.5 shadow-sm">
+                <div className="absolute right-0 top-full mt-2 w-52 origin-top-right rounded-2xl border border-border/40 bg-card p-1.5 shadow-lg">
                   {isLoggedIn ? (
                     <div className="flex flex-col gap-0.5">
                       <Link
                         to="/orders"
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
                         <Package className="h-4 w-4" />
@@ -110,7 +110,7 @@ function Navbar() {
                       </Link>
                       <Link
                         to="/profile"
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
                         <UserCircle className="h-4 w-4" />
@@ -118,30 +118,30 @@ function Navbar() {
                       </Link>
                       <hr className="my-1 border-border/40" />
                       <button
-                        className="flex w-full items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
+                        className="flex w-full items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-destructive/70 transition-all hover:bg-destructive/10 hover:text-destructive"
                         onClick={handleLogout}
                       >
                         <LogOut className="h-4 w-4" />
-                        Logout
+                        Sign Out
                       </button>
                     </div>
                   ) : (
                     <div className="flex flex-col gap-0.5">
                       <Link
                         to="/login"
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
                         <LogIn className="h-4 w-4" />
-                        Login
+                        Sign In
                       </Link>
                       <Link
                         to="/register"
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-muted-foreground/80 transition-colors hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
                         <UserCircle className="h-4 w-4" />
-                        Register
+                        Create Account
                       </Link>
                     </div>
                   )}
