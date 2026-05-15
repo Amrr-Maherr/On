@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
@@ -10,7 +11,7 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
-export default function ProductsSection() {
+const ProductsSection = memo(function ProductsSection() {
   const { data, isLoading, error, refetch } = useAllProducts(1);
 
   if (isLoading) {
@@ -75,4 +76,6 @@ export default function ProductsSection() {
       ))}
     </Section>
   );
-}
+});
+
+export default ProductsSection;

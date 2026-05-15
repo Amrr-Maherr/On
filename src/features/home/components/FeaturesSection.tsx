@@ -1,8 +1,9 @@
+import { memo } from "react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { featuresData } from "../utils/features";
 import FeatureCard from "./FeatureCard";
 
-export default function FeaturesSection() {
+const FeaturesSection = memo(function FeaturesSection() {
   return (
     <ScrollReveal>
       <section className="container-layout md:py-22">
@@ -22,4 +23,6 @@ export default function FeaturesSection() {
       </section>
     </ScrollReveal>
   );
-}
+});
+
+export default FeaturesSection;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useAllCategories } from "@/features/categories/hooks/useGetAllCategories";
 import CategoryCard from "@/features/categories/components/CategoryCard";
 import CategoriesLoader from "@/features/categories/components/CategoriesLoader";
@@ -10,7 +11,7 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
-export default function CategoriesSection() {
+const CategoriesSection = memo(function CategoriesSection() {
   const { data, isLoading, error, refetch } = useAllCategories(1);
 
   if (isLoading) {
@@ -75,4 +76,6 @@ export default function CategoriesSection() {
       ))}
     </Section>
   );
-}
+});
+
+export default CategoriesSection;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 import BrandCard from "@/features/brands/components/BrandCard";
 import BrandsLoader from "@/features/brands/components/BrandsLoader";
@@ -10,7 +11,7 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
-export default function BrandsSection() {
+const BrandsSection = memo(function BrandsSection() {
   const { data, isLoading, error, refetch } = useAllBrands(1);
 
   if (isLoading) {
@@ -75,4 +76,6 @@ export default function BrandsSection() {
       ))}
     </Section>
   );
-}
+});
+
+export default BrandsSection;

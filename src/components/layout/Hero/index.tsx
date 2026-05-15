@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import bgImage from "@/assets/hero-bg.png";
-function Hero() {
+const Hero = memo(function Hero() {
   return (
     <ScrollReveal className="relative flex min-h-150 items-center overflow-hidden">
       <img
@@ -30,6 +31,8 @@ function Hero() {
       </div>
     </ScrollReveal>
   );
-}
+});
+
+export default Hero;
 
 export default Hero;
