@@ -5,3 +5,13 @@ export interface FeatureItem {
   description: string;
   icon?: LucideIcon;
 }
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  socials: {
+    website: string;
+    linkedin: string;
+  };
+}

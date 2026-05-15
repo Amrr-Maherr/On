@@ -42,7 +42,7 @@ const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProp
                   <ChevronRight />
                 </li>
               )}
-            </React.Fragment>
+            </Fragment>
           )
         })}
       </ol>
