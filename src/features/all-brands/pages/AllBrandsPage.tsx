@@ -36,29 +36,29 @@ export default function AllBrandsPage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <div className="container-layout section-py pt-8">
       <PageHelmet title="All Brands" description="Discover our curated brands." />
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold md:text-3xl">All Brands</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {data?.results ?? brands.length} brands
-          </p>
-        </div>
+      <div className="mb-10">
+        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Brands</h1>
+        <p className="mt-2 text-sm text-muted-foreground/70">
+          {data?.results ?? brands.length} brands
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {brands.map((brand) => (
           <BrandCard key={brand._id} brand={brand} />
         ))}
       </div>
 
       {metadata && (
-        <BrandsPagination
-          currentPage={metadata.currentPage}
-          totalPages={metadata.numberOfPages}
-          onPageChange={setPage}
-        />
+        <div className="mt-10">
+          <BrandsPagination
+            currentPage={metadata.currentPage}
+            totalPages={metadata.numberOfPages}
+            onPageChange={setPage}
+          />
+        </div>
       )}
     </div>
   );

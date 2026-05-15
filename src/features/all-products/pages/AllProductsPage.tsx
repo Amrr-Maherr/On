@@ -154,7 +154,7 @@ export default function AllProductsPage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <div className="container-layout section-py pt-8">
       <PageHelmet title="All Products" description="Browse our complete collection of products." />
 
       {searchQuery && (
@@ -167,8 +167,8 @@ export default function AllProductsPage() {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold md:text-3xl">All Products</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Products</h1>
+          <p className="mt-1 text-sm text-muted-foreground/70">
             {resultsCount} {resultsCount === 1 ? "product" : "products"} found
           </p>
         </div>
@@ -231,7 +231,7 @@ export default function AllProductsPage() {
             <ProductsEmpty />
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {displayProducts.map((product) => (
                   <ProductCard key={product.id || product._id} product={product} />
                 ))}

@@ -47,18 +47,16 @@ export default function AllCategoriesPage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <div className="container-layout section-py pt-8">
       <PageHelmet title="All Categories" description="Explore our product categories." />
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold md:text-3xl">All Categories</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {data?.results ?? categories.length} categories
-          </p>
-        </div>
+      <div className="mb-10">
+        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Categories</h1>
+        <p className="mt-2 text-sm text-muted-foreground/70">
+          {data?.results ?? categories.length} categories
+        </p>
       </div>
 
-      <div className="mt-8 flex gap-8">
+      <div className="flex gap-8">
         <FiltersPanel>
           <FilterSearchInput placeholder="Search categories..." />
 
@@ -67,12 +65,12 @@ export default function AllCategoriesPage() {
               {sortOptions.map((option) => (
                 <label
                   key={option.value}
-                  className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground/70 transition-colors hover:text-foreground"
                 >
                   <input
                     type="radio"
                     name="category-sort"
-                    className="h-4 w-4 border-border text-foreground accent-foreground"
+                    className="h-4 w-4 border-border/60 text-foreground accent-foreground"
                   />
                   <span>{option.label}</span>
                 </label>
@@ -82,14 +80,14 @@ export default function AllCategoriesPage() {
         </FiltersPanel>
 
         <div className="min-w-0 flex-1">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((category) => (
               <CategoryCard key={category._id} category={category} />
             ))}
           </div>
 
           {metadata && (
-            <div className="mt-8">
+            <div className="mt-10">
               <CategoriesPagination
                 currentPage={metadata.currentPage}
                 totalPages={metadata.numberOfPages}

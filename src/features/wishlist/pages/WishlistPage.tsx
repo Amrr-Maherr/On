@@ -76,8 +76,8 @@ export default function WishlistPage() {
       <PageHelmet title="My Wishlist" description="View your saved items." />
 
       <div className="mb-8">
-        <h1 className="text-2xl font-bold md:text-3xl">My Wishlist</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">My Wishlist</h1>
+        <p className="mt-1 text-sm text-muted-foreground/70">
           {count} {count === 1 ? "item" : "items"}
         </p>
       </div>

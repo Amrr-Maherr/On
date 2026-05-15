@@ -113,15 +113,15 @@ export default function CartPage() {
 
       <div className="mb-8 flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold md:text-3xl">Shopping Cart</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">Shopping Cart</h1>
+          <p className="mt-1 text-sm text-muted-foreground/70">
             {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
           </p>
         </div>
         <Button
-          variant="outline"
+          variant="ghost"
           size="sm"
-          className="gap-2 text-destructive"
+          className="gap-2 text-destructive/80 hover:text-destructive"
           onClick={handleClearCart}
           disabled={isClearing}
         >
@@ -130,7 +130,7 @@ export default function CartPage() {
         </Button>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+      <div className="grid gap-12 lg:grid-cols-[1fr_320px]">
         <div className="space-y-4">
           {items.map((item) => (
             <CartItemCard

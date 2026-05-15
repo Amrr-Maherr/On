@@ -37,7 +37,7 @@ export default function ProfilePage() {
 
   if (error) {
     return (
-      <div className="container-layout py-8">
+      <div className="container-layout section-py pt-8">
         <ProfileError 
           message={error.message || "Could not fetch profile data"} 
           onRetry={() => refetch()} 
@@ -50,7 +50,7 @@ export default function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="container-layout py-8">
+      <div className="container-layout section-py pt-8">
         <ProfileError 
           message="User data not found" 
           onRetry={() => refetch()} 
@@ -60,7 +60,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <div className="container-layout section-py pt-8">
       <PageHelmet title="My Profile" description="Manage your account information." />
       
       <div className="mx-auto max-w-4xl space-y-8">

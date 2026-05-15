@@ -29,7 +29,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     <div className="container-layout py-8">
       <div className="mx-auto max-w-7xl">
         <Breadcrumb
-          className="mb-6"
+          className="mb-8"
           items={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
@@ -37,7 +37,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           ]}
         />
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="lg:sticky lg:top-24 lg:self-start">
             <ProductGallery images={allImages} />
           </div>
@@ -50,7 +50,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               brandId={product.brand?._id || product.brand?.id}
             />
 
-            <div className="rounded-xl border bg-card p-5 md:p-6">
+            <div className="rounded-2xl border border-border/50 bg-card p-6 md:p-8">
               <ProductRating
                 rating={product.ratingsAverage}
                 ratingCount={product.ratingsQuantity}
@@ -65,12 +65,12 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </div>
 
             {product.description && (
-              <div className="rounded-xl border bg-card p-5 md:p-6">
+              <div className="rounded-2xl border border-border/50 bg-card p-6 md:p-8">
                 <ProductDescription description={product.description} />
               </div>
             )}
 
-            <div className="rounded-xl border bg-card p-5 md:p-6">
+            <div className="rounded-2xl border border-border/50 bg-card p-6 md:p-8">
               <ProductQuantity
                 quantity={quantity}
                 available={product.quantity}
@@ -82,14 +82,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               </div>
             </div>
 
-            <div className="rounded-xl border bg-card p-5 md:p-6 space-y-6">
+            <div className="rounded-2xl border border-border/50 bg-card p-6 md:p-8 space-y-6">
               <ProductStockStatus
                 quantity={product.quantity}
                 sold={product.sold}
               />
             </div>
 
-            <div className="rounded-xl border bg-card p-5 md:p-6 space-y-6">
+            <div className="rounded-2xl border border-border/50 bg-card p-6 md:p-8 space-y-6">
               {product.subcategory && product.subcategory.length > 0 && (
                 <ProductSubcategories subcategories={product.subcategory} />
               )}

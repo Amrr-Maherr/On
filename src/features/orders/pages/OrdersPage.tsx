@@ -47,8 +47,8 @@ export default function OrdersPage() {
       <PageHelmet title="My Orders" description="View your order history." />
 
       <div className="mb-8">
-        <h1 className="text-2xl font-bold md:text-3xl">My Orders</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">My Orders</h1>
+        <p className="mt-1 text-sm text-muted-foreground/70">
           {orders.length} {orders.length === 1 ? "order" : "orders"} total
         </p>
       </div>

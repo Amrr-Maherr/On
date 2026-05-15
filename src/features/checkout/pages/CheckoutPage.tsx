@@ -123,7 +123,7 @@ export default function CheckoutPage() {
 
       <div className="mx-auto max-w-5xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold md:text-3xl">Checkout</h1>
+          <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">Checkout</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Review your order and enter shipping details
           </p>
@@ -134,8 +134,8 @@ export default function CheckoutPage() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-lg font-light tracking-tight">
+                    <MapPin className="h-4 w-4 text-muted-foreground/70" />
                     Shipping Address
                   </CardTitle>
                 </CardHeader>
@@ -143,7 +143,7 @@ export default function CheckoutPage() {
                   <div className="space-y-1.5">
                     <label
                       htmlFor="phone"
-                      className="text-sm font-medium text-foreground"
+                      className="text-sm text-muted-foreground/70"
                     >
                       Phone
                     </label>
@@ -151,6 +151,7 @@ export default function CheckoutPage() {
                       id="phone"
                       type="tel"
                       placeholder="01000000000"
+                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
                       {...register("phone", {
                         required: "Phone is required",
                         pattern: {
@@ -169,13 +170,14 @@ export default function CheckoutPage() {
                   <div className="space-y-1.5">
                     <label
                       htmlFor="address"
-                      className="text-sm font-medium text-foreground"
+                      className="text-sm text-muted-foreground/70"
                     >
                       Address
                     </label>
                     <Input
                       id="address"
                       placeholder="123 Main St"
+                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
                       {...register("address", {
                         required: "Address is required",
                       })}
@@ -190,13 +192,14 @@ export default function CheckoutPage() {
                   <div className="space-y-1.5">
                     <label
                       htmlFor="city"
-                      className="text-sm font-medium text-foreground"
+                      className="text-sm text-muted-foreground/70"
                     >
                       City
                     </label>
                     <Input
                       id="city"
                       placeholder="Cairo"
+                      className="h-12 rounded-2xl border-border/60 bg-transparent px-4 text-sm placeholder:text-muted-foreground/40 focus:border-foreground/40"
                       {...register("city", { required: "City is required" })}
                       aria-invalid={!!errors.city}
                     />
@@ -213,8 +216,8 @@ export default function CheckoutPage() {
             <div className="space-y-6">
               <Card className="sticky top-24">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <ShoppingBag className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-lg font-light tracking-tight">
+                    <ShoppingBag className="h-4 w-4 text-muted-foreground/70" />
                     Order Summary
                   </CardTitle>
                 </CardHeader>
@@ -290,10 +293,10 @@ export default function CheckoutPage() {
                           type="button"
                           onClick={() => setPaymentMethod(method.value)}
                           className={cn(
-                            "flex items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors",
+                            "flex items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-sm font-medium transition-all duration-200 active:scale-[0.98]",
                             paymentMethod === method.value
-                              ? "border-primary bg-primary/10 text-primary"
-                              : "border-foreground/20 text-muted-foreground hover:border-foreground/40",
+                              ? "border-foreground bg-foreground text-background"
+                              : "border-border/60 text-muted-foreground/70 hover:border-foreground/40 hover:text-foreground",
                           )}
                         >
                           <Icon className="h-4 w-4" />

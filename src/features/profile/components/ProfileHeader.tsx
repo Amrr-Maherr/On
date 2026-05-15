@@ -19,7 +19,7 @@ const ProfileHeader = memo(function ProfileHeader({ user }: ProfileHeaderProps) 
         {initials}
       </div>
       <div className="space-y-1.5">
-        <h1 className="text-2xl font-bold tracking-tight md:text-3xl">{user.name}</h1>
+        <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">{user.name}</h1>
         <p className="text-muted-foreground">{user.email}</p>
         <div className="mt-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
           {user.role}
