@@ -8,7 +8,7 @@ interface WishlistErrorProps {
 
 const WishlistError = memo(function WishlistError({ message, onRetry }: WishlistErrorProps) {
   return (
-    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center">
+    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center">
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
         <AlertTriangle className="h-8 w-8 text-destructive" />
       </div>

@@ -28,7 +28,7 @@ const BannerContent = memo(function BannerContent({
       <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
         Featured
       </span>
-      <h2 className="text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+      <h2 className="text-4xl font-black leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
         {data.headline}
       </h2>
       <p className="text-base leading-relaxed text-muted-foreground/70 sm:text-lg">

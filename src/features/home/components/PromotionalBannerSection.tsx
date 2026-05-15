@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArrowRight, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const PromotionalBannerSection = memo(function PromotionalBannerSection() {
   const navigate = useNavigate();
+  const handleShopSale = useCallback(() => navigate("/products"), [navigate]);
 
   return (
     <section className="relative overflow-hidden bg-neutral-950">
@@ -40,7 +41,7 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
             </div>
             <div className="mt-10">
               <Button
-                onClick={() => navigate("/products")}
+                onClick={handleShopSale}
                 className="h-14 cursor-pointer rounded-full bg-white px-12 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all duration-300 hover:bg-white/90 active:scale-[0.97]"
               >
                 Shop the Sale

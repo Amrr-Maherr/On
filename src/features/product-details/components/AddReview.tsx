@@ -13,7 +13,12 @@ const AddReview = memo(function AddReview() {
 
   return (
     <section>
-      <h2 className="mb-6 text-xl font-light tracking-tight">Write a Review</h2>
+      <div className="mb-8">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+          Your Feedback
+        </span>
+        <h2 className="mt-2 text-2xl font-black tracking-tight">Write a Review.</h2>
+      </div>
       <form onSubmit={handleSubmit} className="rounded-2xl bg-card p-6 ring-1 ring-foreground/5 md:p-8">
         <div className="flex flex-col gap-2">
           <span className="text-sm font-medium text-foreground">Your Rating</span>

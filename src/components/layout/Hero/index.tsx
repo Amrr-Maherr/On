@@ -17,10 +17,10 @@ const Hero = memo(function Hero() {
           <span className="inline-block text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60 mb-6">
             Starting from $49.99
           </span>
-          <h1 className="text-5xl font-light leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
-            Exclusive collection
+          <h1 className="text-6xl font-black uppercase leading-none tracking-tight text-foreground md:text-8xl lg:text-9xl">
+            Exclusive
             <br />
-            <span className="font-medium">for everyone</span>
+            Collection.
           </h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground/70 md:text-lg">
             Discover premium products curated for modern living. Quality meets

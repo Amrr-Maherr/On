@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,11 @@ const collections = [
 
 const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
   const navigate = useNavigate();
+  const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
+  const handleNavigate = useCallback(
+    (slug: string) => navigate(slug),
+    [navigate],
+  );
 
   return (
     <section className="section-py bg-background">
@@ -51,7 +56,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
               </h2>
             </div>
             <Button
-              onClick={() => navigate("/products")}
+              onClick={handleViewAll}
               variant="ghost"
               className="hidden cursor-pointer items-center gap-2 text-sm font-semibold md:flex"
             >
@@ -70,7 +75,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
               delay={index * 0.15}
             >
               <button
-                onClick={() => navigate(collection.slug)}
+                onClick={() => handleNavigate(collection.slug)}
                 className="group relative flex h-[500px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl text-left transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <img
@@ -105,7 +110,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
         <ScrollReveal direction="up" delay={0.4}>
           <div className="mt-8 flex justify-center md:hidden">
             <Button
-              onClick={() => navigate("/products")}
+              onClick={handleViewAll}
               variant="outline"
               className="cursor-pointer"
             >

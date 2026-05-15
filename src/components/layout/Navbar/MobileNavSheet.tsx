@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Store,
@@ -55,6 +55,16 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
     setTheme(theme === "dark" ? "light" : "dark");
   }, [theme, setTheme]);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+      onOpenChange(false);
+    }
+  }, [navigate, searchQuery, onOpenChange]);
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="flex w-full max-w-sm flex-col p-0">
@@ -75,7 +85,10 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
             <Input
               placeholder="Search products..."
-              className="h-11 w-full rounded-full border-0 bg-white/10 pl-11 text-sm text-white placeholder:text-white/40 focus:ring-2 focus:ring-white/20"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearch}
+              className="h-11 w-full border-0 bg-white/10 pl-11 text-sm text-white placeholder:text-white/40 focus:ring-2 focus:ring-white/20 rounded-full"
             />
           </div>
         </div>

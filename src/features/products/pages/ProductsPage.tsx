@@ -1,175 +1,284 @@
-import { useState, useMemo, memo } from "react";
+import { useState, useCallback, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
+import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import ProductCard from "../components/ProductCard";
+import { useAllProducts } from "../hooks/useGetAllProducts";
+import { useLocalSearch } from "@/shared/hooks/useLocalSearch";
+import ProductsLoader from "../components/ProductsLoader";
+import ProductsError from "../components/ProductsError";
+import ProductsEmpty from "../components/ProductsEmpty";
+import ProductsPagination from "../components/ProductsPagination";
+import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
   FiltersPanel,
   FilterSection,
   FilterCheckboxGroup,
   FilterPriceRange,
   FilterSortDropdown,
-  FilterSearchInput,
 } from "@/components/shared/filters";
-import { useAllProducts } from "../hooks/useGetAllProducts";
-import ProductCard from "../components/ProductCard";
-import type { Category } from "@/features/products/types";
+import { api } from "@/lib";
+import type { ApiResponse } from "@/shared/types/api";
+import type { Category } from "@/features/categories/types";
+import type { Brand } from "@/features/brands/types";
 
-const categories: Category[] = [
-  { _id: "1", name: "Electronics", slug: "electronics", image: "", id: "1" },
-  { _id: "2", name: "Clothing", slug: "clothing", image: "", id: "2" },
-  { _id: "3", name: "Home & Garden", slug: "home-garden", image: "", id: "3" },
-  { _id: "4", name: "Sports", slug: "sports", image: "", id: "4" },
-  { _id: "5", name: "Books", slug: "books", image: "", id: "5" },
-];
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string") return error;
+  return "An unexpected error occurred. Please try again.";
+}
 
-const SkeletonGrid = memo(function SkeletonGrid() {
-  return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {Array.from({ length: 8 }, (_, i) => (
-        <div key={i} className="flex flex-col">
-          <div className="aspect-[3/4] animate-pulse rounded-3xl bg-muted/50" />
-          <div className="mt-5 flex flex-col gap-2">
-            <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
-            <div className="h-6 w-1/4 animate-pulse rounded bg-muted/50" />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-});
+export default function ProductsPage() {
+  const [searchParams] = useSearchParams();
+  const urlQuery = searchParams.get("q") || "";
 
-const ProductsPage = memo(function ProductsPage() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error } = useAllProducts(page);
+  const [sort, setSort] = useState("");
+  const [priceGte, setPriceGte] = useState<number>(0);
+  const [priceLte, setPriceLte] = useState<number>(10000);
+  const [categoryIn, setCategoryIn] = useState<string[]>([]);
+  const [brandIn, setBrandIn] = useState<string[]>([]);
 
-  const totalPages = useMemo(
-    () => data?.metadata?.numberOfPages ?? 1,
-    [data],
+  const { data, isLoading, error, refetch } = useAllProducts({
+    page,
+    keyword: urlQuery || undefined,
+    sort: sort || undefined,
+    priceGte: priceGte > 0 ? priceGte : undefined,
+    priceLte: priceLte < 10000 ? priceLte : undefined,
+    categoryIn: categoryIn.length > 0 ? categoryIn : undefined,
+    brandIn: brandIn.length > 0 ? brandIn : undefined,
+  });
+
+  const { data: categoriesData } = useQuery<ApiResponse<Category>>({
+    queryKey: ["categories", "all"],
+    queryFn: () =>
+      api
+        .get<ApiResponse<Category>>("/api/v1/categories", {
+          params: { limit: 100, page: 1 },
+        })
+        .then((r) => r.data),
+    staleTime: 1_000 * 60 * 10,
+  });
+
+  const { data: brandsData } = useQuery<ApiResponse<Brand>>({
+    queryKey: ["brands", "all"],
+    queryFn: () =>
+      api
+        .get<ApiResponse<Brand>>("/api/v1/brands", {
+          params: { limit: 100, page: 1 },
+        })
+        .then((r) => r.data),
+    staleTime: 1_000 * 60 * 10,
+  });
+
+  const products = useMemo(() => data?.data ?? [], [data?.data]);
+  const metadata = data?.metadata;
+
+  const { query: localQuery, filtered } = useLocalSearch(products);
+
+  const searchQuery = urlQuery || localQuery;
+
+  const categories = useMemo(
+    () =>
+      categoriesData?.data.map((cat) => ({
+        label: cat.name,
+        value: cat._id,
+      })) ?? [],
+    [categoriesData?.data],
   );
 
-  if (isError) {
+  const brands = useMemo(
+    () =>
+      brandsData?.data.map((b) => ({
+        label: b.name,
+        value: b._id,
+      })) ?? [],
+    [brandsData?.data],
+  );
+
+  const displayProducts = useMemo(
+    () => (searchQuery ? filtered : products),
+    [searchQuery, filtered, products],
+  );
+
+  const resultsCount = useMemo(
+    () => (searchQuery ? filtered.length : data?.results) ?? products.length,
+    [searchQuery, filtered.length, data?.results, products.length],
+  );
+
+  const handleSortChange = useCallback((value: string) => {
+    setSort(value);
+  }, []);
+
+  const handleCategoryChange = useCallback((values: string[]) => {
+    setCategoryIn(values);
+    setPage(1);
+  }, []);
+
+  const handleBrandChange = useCallback((values: string[]) => {
+    setBrandIn(values);
+    setPage(1);
+  }, []);
+
+  const handlePriceChange = useCallback((min: number, max: number) => {
+    setPriceGte(min);
+    setPriceLte(max);
+    setPage(1);
+  }, []);
+
+  const handlePageChange = useCallback((p: number) => {
+    setPage(p);
+  }, []);
+
+  const handleReset = useCallback(() => {
+    setSort("");
+    setPriceGte(0);
+    setPriceLte(10000);
+    setCategoryIn([]);
+    setBrandIn([]);
+    setPage(1);
+  }, []);
+
+  if (isLoading) return <ProductsLoader />;
+
+  if (error) {
     return (
-      <div className="container-layout flex min-h-[60vh] flex-col items-center justify-center gap-4">
-        <div className="rounded-full bg-destructive/10 p-4">
-          <span className="text-2xl">!</span>
-        </div>
-        <p className="text-lg font-medium text-foreground">
-          Something went wrong
-        </p>
-        <p className="text-sm text-muted-foreground/60">
-          {(error as Error)?.message || "Failed to load products"}
-        </p>
-        <button
-          onClick={() => setPage(1)}
-          className="mt-2 h-10 cursor-pointer rounded-full bg-foreground px-6 text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
-        >
-          Try again
-        </button>
-      </div>
+      <ProductsError
+        message={getErrorMessage(error)}
+        onRetry={() => refetch()}
+      />
     );
   }
 
+  if (!products || products.length === 0) {
+    return <ProductsEmpty />;
+  }
+
   return (
-    <div className="section-py">
-      <div className="container-layout">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products" }]} className="mb-6" />
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <>
+      <PageHelmet title="All Products" description="Browse our complete collection of products." />
+
+      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
+        <div
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+        <div className="container-layout relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+            Explore
+          </p>
+          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+            Products.
+          </h1>
+          <p className="mt-4 max-w-lg text-lg text-white/70">
+            High-performance gear engineered for those who push boundaries.
+          </p>
+        </div>
+      </section>
+
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
+
+      {searchQuery && (
+        <div className="mb-6">
+          <p className="text-sm text-muted-foreground">
+            Search results for &ldquo;{searchQuery}&rdquo;
+          </p>
+        </div>
+      )}
+
+      <div className="mb-8">
+        <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+          Products
+        </span>
+        <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl">
-              Products
-            </h1>
-            {data && (
-              <p className="mt-2 text-sm text-muted-foreground/60">
-                {data.results} {data.results === 1 ? "product" : "products"} found
-              </p>
-            )}
+            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Products</h1>
           </div>
-          <div className="w-full sm:w-56">
-            <FilterSortDropdown />
+          <div className="flex items-center gap-3">
+            <div className="w-full sm:w-56">
+              <FilterSortDropdown value={sort} onChange={handleSortChange} />
+            </div>
+            <div className="lg:hidden">
+              <MobileFilterSheet
+                sort={sort}
+                onSortChange={handleSortChange}
+                categories={categories}
+                categoryIn={categoryIn}
+                onCategoryChange={handleCategoryChange}
+                brands={brands}
+                brandIn={brandIn}
+                onBrandChange={handleBrandChange}
+                priceGte={priceGte}
+                priceLte={priceLte}
+                onPriceChange={handlePriceChange}
+                onReset={handleReset}
+              />
+            </div>
           </div>
         </div>
+        <p className="mt-1.5 text-sm text-muted-foreground/60">
+          {resultsCount} {resultsCount === 1 ? "product" : "products"} found
+        </p>
+      </div>
 
-        <div className="flex gap-8">
+      <div className="mt-8 flex gap-8">
+        <div className="hidden lg:block">
           <FiltersPanel>
-            <FilterSearchInput placeholder="Search products..." />
-
             <FilterSection title="Category">
               <FilterCheckboxGroup
-                options={categories.map((c) => ({
-                  label: c.name,
-                  value: c.slug,
-                  count: 0,
-                }))}
+                options={categories}
+                selectedValues={categoryIn}
+                onChange={handleCategoryChange}
+              />
+            </FilterSection>
+
+            <FilterSection title="Brand">
+              <FilterCheckboxGroup
+                options={brands}
+                selectedValues={brandIn}
+                onChange={handleBrandChange}
               />
             </FilterSection>
 
             <FilterSection title="Price Range">
-              <FilterPriceRange min={0} max={1000} />
+              <FilterPriceRange
+                min={0}
+                max={10000}
+                minValue={priceGte}
+                maxValue={priceLte}
+                onChange={handlePriceChange}
+              />
             </FilterSection>
           </FiltersPanel>
+        </div>
 
-          <div className="flex-1">
-            {isLoading ? (
-              <SkeletonGrid />
-            ) : data && data.data?.length > 0 ? (
-              <>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {data.data.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-
-                {totalPages > 1 && (
-                  <div className="mt-12 flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => setPage((p) => Math.max(1, p - 1))}
-                      disabled={page <= 1}
-                      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-sm text-muted-foreground/60 transition-all duration-200 hover:bg-muted/50 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30"
-                    >
-                      ←
-                    </button>
-
-                    <div className="flex items-center gap-2">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                        (p) => (
-                          <button
-                            key={p}
-                            onClick={() => setPage(p)}
-                            className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-sm transition-all duration-200 ${
-                              p === page
-                                ? "bg-foreground text-background"
-                                : "text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground"
-                            }`}
-                          >
-                            {p}
-                          </button>
-                        ),
-                      )}
-                    </div>
-
-                    <button
-                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                      disabled={page >= totalPages}
-                      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-sm text-muted-foreground/60 transition-all duration-200 hover:bg-muted/50 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30"
-                    >
-                      →
-                    </button>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3">
-                <p className="text-base font-medium text-foreground">
-                  No products found
-                </p>
-                <p className="text-sm text-muted-foreground/60">
-                  Try adjusting your search or filter criteria
-                </p>
+        <div className="min-w-0 flex-1">
+          {displayProducts.length === 0 ? (
+            <ProductsEmpty />
+          ) : (
+            <>
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {displayProducts.map((product) => (
+                  <ProductCard key={product.id || product._id} product={product} />
+                ))}
               </div>
-            )}
-          </div>
+
+              {!searchQuery && metadata && (
+                <div className="mt-8">
+                  <ProductsPagination
+                    currentPage={metadata.currentPage}
+                    totalPages={metadata.numberOfPages}
+                    onPageChange={handlePageChange}
+                  />
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
-});
-
-export default ProductsPage;
+}

@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { CartItem } from "@/features/cart/types/cart";
@@ -26,19 +27,26 @@ const CartItemCard = memo(({
         isUpdating && "pointer-events-none opacity-60",
       )}
     >
-      <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl bg-muted/30 md:h-32 md:w-32">
-        <img
-          src={product.imageCover}
-          alt={product.title}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
+      <Link
+        to={`/products/${product.title}/${product.id}`}
+        className="shrink-0"
+      >
+        <div className="h-28 w-28 overflow-hidden rounded-xl bg-muted/30 md:h-32 md:w-32">
+          <img
+            src={product.imageCover}
+            alt={product.title}
+            className="h-full w-full object-cover transition-all duration-300 hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+      </Link>
 
       <div className="flex flex-1 flex-col justify-between gap-3 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <h3 className="truncate text-base font-semibold text-foreground">{product.title}</h3>
+            <Link to={`/products/${product.title}/${product.id}`} className="hover:underline">
+              <h3 className="truncate text-base font-semibold text-foreground">{product.title}</h3>
+            </Link>
             <p className="mt-1 text-sm text-muted-foreground">
               {product.price} EGP
             </p>

@@ -13,7 +13,7 @@ const FeaturesSection = memo(function FeaturesSection() {
               Why choose us
             </span>
             <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
-              <h2 className="text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h2 className="text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Start exploring.
               </h2>
               <p className="text-base text-muted-foreground/70 md:text-lg">

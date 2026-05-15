@@ -108,13 +108,13 @@ export default function WishlistPage() {
       <PageHelmet title="My Wishlist" description="View your saved items." />
       <div className="container-layout py-8">
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} className="mb-6" />
-        <div className="mb-8">
-          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+        <div className="mb-10">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
             Saved Items
           </span>
-          <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">My Wishlist</h1>
-          <p className="mt-1 text-sm text-muted-foreground/70">
-            {count} {count === 1 ? "item" : "items"}
+          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">Total Items.</h2>
+          <p className="mt-1 text-sm font-medium text-muted-foreground/60">
+            {count} {count === 1 ? "item" : "items"} currently in your wishlist
           </p>
         </div>
         <div className="space-y-4">

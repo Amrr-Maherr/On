@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ProductCard({ product }: { product: Product }) {
   return (
     <Link
-      to={`/products/${product.title}/${product.id}`}
+      to={`/products/${product.slug}/${product.id}`}
       className="group flex flex-col"
     >
       <div className="relative overflow-hidden rounded-2xl bg-muted/20">
@@ -29,7 +29,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.title}
         </h3>
         <div className="flex items-baseline gap-2">
-          <span className="text-xl font-bold tracking-tight text-foreground">
+          <span className="text-xl font-black tracking-tight text-foreground">
             ${product.priceAfterDiscount ?? product.price}
           </span>
           {product.priceAfterDiscount && (

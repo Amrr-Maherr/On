@@ -18,7 +18,7 @@ const ProfileActions = memo(function ProfileActions({ onLogout, onEdit }: Profil
       </button>
       <button
         onClick={onLogout}
-        className="inline-flex items-center gap-2 rounded-full border border-border/50 px-6 py-2.5 text-sm font-semibold text-destructive/70 transition-all duration-200 hover:bg-destructive/10 hover:text-destructive active:scale-[0.98]"
+        className="inline-flex items-center gap-2 rounded-full border border-border/50 px-6 py-2.5 text-sm font-semibold text-destructive transition-all duration-200 hover:bg-destructive/10 active:scale-[0.98]"
       >
         <LogOut className="h-4 w-4" />
         Sign Out

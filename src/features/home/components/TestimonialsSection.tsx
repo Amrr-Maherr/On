@@ -13,7 +13,7 @@ const TestimonialsSection = memo(function TestimonialsSection() {
             <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
               Testimonials
             </span>
-            <h2 className="mt-3 text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
               What our customers say
             </h2>
           </div>
@@ -57,7 +57,7 @@ const TestimonialsSection = memo(function TestimonialsSection() {
                     ))}
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-foreground">
+                    <h3 className="text-sm font-bold text-foreground">
                       {item.name}
                     </h3>
                     <p className="text-xs text-muted-foreground/60">

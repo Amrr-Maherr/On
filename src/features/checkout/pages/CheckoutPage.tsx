@@ -148,10 +148,10 @@ export default function CheckoutPage() {
               Checkout
             </span>
             <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">Checkout</h1>
-          <p className="mt-1.5 text-sm text-muted-foreground/60">
-            Review your order and enter shipping details
-          </p>
-        </div>
+            <p className="mt-1.5 text-sm text-muted-foreground/60">
+              Review your order and enter shipping details
+            </p>
+          </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">

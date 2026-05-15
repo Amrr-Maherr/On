@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
@@ -17,6 +17,7 @@ function getErrorMessage(error: unknown): string {
 const TrendingProductsSection = memo(function TrendingProductsSection() {
   const navigate = useNavigate();
   const { data, isLoading, error, refetch } = useAllProducts(1);
+  const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
 
   return (
     <section className="section-py bg-background">
@@ -35,7 +36,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
               </h2>
             </div>
             <Button
-              onClick={() => navigate("/products")}
+              onClick={handleViewAll}
               variant="ghost"
               className="hidden cursor-pointer items-center gap-2 text-sm font-semibold md:flex"
             >
@@ -85,7 +86,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
             <ScrollReveal direction="up" delay={0.4}>
               <div className="mt-10 flex justify-center">
                 <Button
-                  onClick={() => navigate("/products")}
+                  onClick={handleViewAll}
                   className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
                 >
                   View All Products

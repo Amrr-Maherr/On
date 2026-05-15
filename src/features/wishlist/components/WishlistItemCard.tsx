@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
 import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
@@ -28,19 +29,27 @@ const WishlistItemCard = memo(({
         (isRemoving || isAddingToCart) && "pointer-events-none opacity-60",
       )}
     >
-      <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl bg-muted/50 md:h-32 md:w-32">
+      <Link
+        to={`/products/${product.title}/${product._id}`}
+        className="h-28 w-28 shrink-0 overflow-hidden rounded-xl bg-muted/50 transition-opacity hover:opacity-80 md:h-32 md:w-32"
+      >
         <img
           src={product.imageCover}
           alt={product.title}
           className="h-full w-full object-cover"
           loading="lazy"
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col justify-between gap-3 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <h3 className="truncate text-base font-semibold text-foreground">{product.title}</h3>
+            <Link
+              to={`/products/${product.title}/${product._id}`}
+              className="truncate text-base font-semibold text-foreground transition-colors hover:text-muted-foreground/80"
+            >
+              {product.title}
+            </Link>
             <div className="mt-1 flex items-center gap-2">
               <span
                 className={cn(

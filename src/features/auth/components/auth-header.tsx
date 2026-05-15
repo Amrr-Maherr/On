@@ -14,7 +14,7 @@ const AuthHeader = memo(function AuthHeader({ title, description }: AuthHeaderPr
       transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
       className="mb-10 text-center"
     >
-      <h1 className="text-3xl font-light tracking-tight text-foreground md:text-4xl">
+      <h1 className="text-3xl font-black tracking-tight text-foreground md:text-4xl">
         {title}
       </h1>
       {description && (

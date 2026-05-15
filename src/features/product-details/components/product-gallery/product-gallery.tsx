@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Thumbs } from "swiper/modules";
 import { Expand } from "lucide-react";
@@ -14,7 +12,7 @@ interface ProductGalleryProps {
   images: string[];
 }
 
-export default function ProductGallery({ images }: ProductGalleryProps) {
+const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -120,4 +118,6 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
       />
     </>
   );
-}
+});
+
+export default ProductGallery;

@@ -12,7 +12,7 @@ const ValuesSection = memo(function ValuesSection() {
             <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
               Our Ethos
             </span>
-            <h2 className="mt-3 text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Designed with intention
             </h2>
           </div>

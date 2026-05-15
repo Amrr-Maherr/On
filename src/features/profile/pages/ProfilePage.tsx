@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -9,9 +9,11 @@ import ProfileInfoCard from "../components/ProfileInfoCard";
 import ProfileActions from "../components/ProfileActions";
 import ProfileSkeleton from "../components/ProfileSkeleton";
 import ProfileError from "../components/ProfileError";
+import EditProfileSheet from "../components/EditProfileSheet";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const { data, isLoading, error, refetch } = useProfile();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function ProfilePage() {
   }, [navigate]);
 
   const handleEdit = useCallback(() => {
-    toast.error("Edit profile functionality is not implemented yet.");
+    setIsEditOpen(true);
   }, []);
 
   if (isLoading) {
@@ -96,6 +98,11 @@ export default function ProfilePage() {
         <ProfileInfoCard user={user} />
       </div>
       </div>
+      <EditProfileSheet
+        user={user}
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+      />
     </>
   );
 }

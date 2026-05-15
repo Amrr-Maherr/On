@@ -5,6 +5,7 @@ import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetai
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
 import BrandDetailsLoader from "@/features/brand-details/components/BrandDetailsLoader";
 import BrandDetailsError from "@/features/brand-details/components/BrandDetailsError";
+import BrandProducts from "@/features/brand-details/components/BrandProducts";
 
 export default function BrandDetailsPage() {
   const { id } = useParams<{ id: string }>();
@@ -49,6 +50,18 @@ export default function BrandDetailsPage() {
           ]}
         />
         <BrandDetailsCard brand={brand} />
+
+        <section className="section-py mt-8 border-t border-border/30">
+          <div className="mb-12">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+              Collection
+            </span>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+              Brand Products.
+            </h2>
+          </div>
+          <BrandProducts brandId={brand._id || brand.id!} />
+        </section>
       </div>
     </div>
   );

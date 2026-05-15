@@ -5,6 +5,7 @@ import { useCategoryDetails } from "@/features/category-details/hooks/useGetCate
 import CategoryDetailsCard from "@/features/category-details/components/CategoryDetailsCard";
 import CategoryDetailsLoader from "@/features/category-details/components/CategoryDetailsLoader";
 import CategoryDetailsError from "@/features/category-details/components/CategoryDetailsError";
+import CategoryProducts from "@/features/category-details/components/CategoryProducts";
 
 export default function CategoryDetailsPage() {
   const { id } = useParams<{ id: string }>();
@@ -49,6 +50,18 @@ export default function CategoryDetailsPage() {
           ]}
         />
         <CategoryDetailsCard category={category} />
+
+        <section className="section-py mt-8 border-t border-border/30">
+          <div className="mb-12">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+              Explore
+            </span>
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+              Category Products.
+            </h2>
+          </div>
+          <CategoryProducts categoryId={category._id || category.id!} />
+        </section>
       </div>
     </div>
   );

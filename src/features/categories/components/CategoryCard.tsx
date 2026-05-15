@@ -18,7 +18,7 @@ const CategoryCard = memo(function CategoryCard({ category }: { category: Catego
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="text-lg font-medium text-white">{category.name}</h3>
+        <h3 className="text-lg font-bold text-white">{category.name}</h3>
       </div>
     </Link>
   );

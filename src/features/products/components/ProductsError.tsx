@@ -12,7 +12,7 @@ const ProductsError = memo(function ProductsError({ message, onRetry }: Products
     <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
       <AlertTriangle className="h-12 w-12 text-destructive" />
       <div>
-        <h3 className="text-lg font-semibold">Something went wrong</h3>
+        <h3 className="text-lg font-semibold tracking-tight">Something went wrong</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           {message || "An unexpected error occurred. Please try again."}
         </p>

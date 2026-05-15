@@ -35,7 +35,7 @@ const TeamSection = memo(function TeamSection() {
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
               Team
             </span>
-            <h2 className="mt-3 text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Meet the people behind your store
             </h2>
           </div>

@@ -16,8 +16,15 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
 
   if (isLoading) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">You May Also Like</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Recommendations
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            You May Also Like.
+          </h2>
+        </div>
         <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation>
           {Array.from({ length: 5 }, (_, i) => (
             <ProductsLoader key={i} />
@@ -29,8 +36,15 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
 
   if (error) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">You May Also Like</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Recommendations
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            You May Also Like.
+          </h2>
+        </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
           <ProductsError
             message={getErrorMessage(error)}
@@ -45,8 +59,15 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
 
   if (!products || products.length === 0) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">You May Also Like</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Recommendations
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            You May Also Like.
+          </h2>
+        </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
           <ProductsError message="No products available at the moment." />
         </Slider>
@@ -54,9 +75,15 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
     );
   }
 
-  return (
-    <section>
-      <h2 className="mb-8 text-2xl font-light tracking-tight">You May Also Like</h2>
+    <section className="section-py border-t border-border/30">
+      <div className="mb-12">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+          Recommendations
+        </span>
+        <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+          You May Also Like.
+        </h2>
+      </div>
       <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation={false}>
         {products.slice(0, 10).map((product) => (
           <ProductCard key={product.id} product={product} />

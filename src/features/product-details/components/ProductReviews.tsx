@@ -24,7 +24,12 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
   if (reviews.length === 0) {
     return (
       <section>
-        <h2 className="mb-6 text-xl font-light tracking-tight">Customer Reviews</h2>
+        <div className="mb-8">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Social Proof
+          </span>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
+        </div>
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/40 bg-card py-10 text-center md:py-16">
           <MessageSquare className="h-8 w-8 text-muted-foreground/30" />
           <div>
@@ -40,9 +45,14 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
 
   return (
     <section>
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-xl font-light tracking-tight">Customer Reviews</h2>
-        <span className="text-sm text-muted-foreground">{reviews.length} reviews</span>
+      <div className="mb-8 flex items-end justify-between border-b border-border/30 pb-6">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Social Proof
+          </span>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
+        </div>
+        <span className="text-sm font-semibold tabular-nums text-muted-foreground">{reviews.length} reviews</span>
       </div>
       <div className="grid gap-4">
         {displayed.map((review) => (

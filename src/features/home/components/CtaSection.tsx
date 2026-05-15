@@ -16,7 +16,7 @@ const CtaSection = memo(function CtaSection() {
               <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
                 Get Started
               </span>
-              <h2 className="mt-5 text-4xl font-light leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Ready to elevate
                 <br />
                 your style?

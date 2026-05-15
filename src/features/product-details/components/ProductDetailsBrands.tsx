@@ -16,8 +16,15 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
 
   if (isLoading) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">Shop by Brand</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Partners
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            Shop by Brand.
+          </h2>
+        </div>
         <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation>
           {Array.from({ length: 5 }, (_, i) => (
             <BrandsLoader key={i} />
@@ -29,8 +36,15 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
 
   if (error) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">Shop by Brand</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Partners
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            Shop by Brand.
+          </h2>
+        </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
           <BrandsError
             message={getErrorMessage(error)}
@@ -45,8 +59,15 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
 
   if (!brands || brands.length === 0) {
     return (
-      <section>
-        <h2 className="mb-8 text-2xl font-light tracking-tight">Shop by Brand</h2>
+      <section className="section-py border-t border-border/30">
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            Partners
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+            Shop by Brand.
+          </h2>
+        </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
           <BrandsError message="No brands available at the moment." />
         </Slider>
@@ -55,8 +76,15 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
   }
 
   return (
-    <section>
-      <h2 className="mb-8 text-2xl font-light tracking-tight">Shop by Brand</h2>
+    <section className="section-py border-t border-border/30">
+      <div className="mb-12">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+          Partners
+        </span>
+        <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
+          Shop by Brand.
+        </h2>
+      </div>
       <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation={false}>
         {brands.map((brand) => (
           <BrandCard key={brand._id} brand={brand} />

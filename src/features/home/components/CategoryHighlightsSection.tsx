@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
@@ -7,34 +7,38 @@ const highlights = [
     name: "Running",
     image:
       "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
-    slug: "/categories",
+    slug: "/products?category=running",
     count: "42 Products",
   },
   {
     name: "Training & Gym",
     image:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
-    slug: "/categories",
+    slug: "/products?category=training",
     count: "38 Products",
   },
   {
     name: "Yoga & Wellness",
     image:
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
-    slug: "/categories",
+    slug: "/products?category=yoga-wellness",
     count: "27 Products",
   },
   {
     name: "Outdoor & Trail",
     image:
       "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80",
-    slug: "/categories",
+    slug: "/products?category=outdoor-trail",
     count: "35 Products",
   },
 ];
 
 const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
   const navigate = useNavigate();
+  const handleNavigate = useCallback(
+    (slug: string) => navigate(slug),
+    [navigate],
+  );
 
   return (
     <section className="section-py bg-muted/30">
@@ -63,7 +67,7 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
               delay={index * 0.1}
             >
               <button
-                onClick={() => navigate(item.slug)}
+                onClick={() => handleNavigate(item.slug)}
                 className="group relative flex h-[320px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl text-left transition-all duration-500 hover:scale-[1.03] active:scale-[0.98]"
               >
                 <img

@@ -42,6 +42,7 @@ export default function AllProductsPage() {
 
   const { data, isLoading, error, refetch } = useAllProducts({
     page,
+    keyword: urlQuery || undefined,
     sort: sort || undefined,
     priceGte: priceGte > 0 ? priceGte : undefined,
     priceLte: priceLte < 10000 ? priceLte : undefined,

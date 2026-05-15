@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button";
 const ProductQA = memo(function ProductQA() {
   return (
     <section>
-      <h2 className="mb-6 text-xl font-light tracking-tight">Questions & Answers</h2>
+      <div className="mb-8">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+          Support
+        </span>
+        <h2 className="mt-2 text-2xl font-black tracking-tight">Questions & Answers.</h2>
+      </div>
       <div className="grid gap-4">
         <div className="rounded-2xl bg-card p-6 ring-1 ring-foreground/5">
           <div className="flex items-start gap-3">

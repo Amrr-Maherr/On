@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,8 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const HeroCampaignSection = memo(function HeroCampaignSection() {
   const navigate = useNavigate();
+  const handleShopNow = useCallback(() => navigate("/products"), [navigate]);
+  const handleExploreCollections = useCallback(() => navigate("/categories"), [navigate]);
 
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-neutral-950 md:mt-[50px]">
@@ -45,14 +47,14 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
           <ScrollReveal direction="up" distance={40} delay={0.45}>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button
-                onClick={() => navigate("/products")}
+                onClick={handleShopNow}
                 className="h-14 cursor-pointer rounded-full bg-white px-10 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all duration-300 hover:bg-white/90 active:scale-[0.97]"
               >
                 Shop Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
-                onClick={() => navigate("/categories")}
+                onClick={handleExploreCollections}
                 variant="outline"
                 className="h-14 cursor-pointer rounded-full border-white/30 bg-transparent px-10 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white/10 active:scale-[0.97]"
               >

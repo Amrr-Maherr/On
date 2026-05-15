@@ -18,7 +18,7 @@ const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="text-lg font-medium text-white">{brand.name}</h3>
+        <h3 className="text-lg font-bold text-white">{brand.name}</h3>
       </div>
     </Link>
   );

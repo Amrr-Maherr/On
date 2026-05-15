@@ -11,7 +11,7 @@ const FeatureCard = memo(function FeatureCard({ title, description, icon }: Feat
           <Icon className="h-5 w-5 text-foreground/50" aria-hidden="true" />
         </div>
       )}
-      <h3 className="text-base font-medium text-foreground">{title}</h3>
+      <h3 className="text-base font-semibold text-foreground">{title}</h3>
       <p className="mt-1.5 text-sm text-muted-foreground/70">{description}</p>
     </div>
   );

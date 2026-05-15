@@ -20,7 +20,7 @@ const BlogSection = memo(function BlogSection() {
               Journal
             </span>
             <div className="mt-3 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-              <h2 className="text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h2 className="text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Latest stories
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground/60 lg:mt-0 lg:text-right">
@@ -59,10 +59,10 @@ const BlogSection = memo(function BlogSection() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <span className="text-sm text-muted-foreground/60">
+                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground/60">
                     {formatDate(post.date)}
                   </span>
-                  <h3 className="text-xl font-medium leading-snug text-foreground transition-colors duration-300 group-hover:text-foreground/70">
+                  <h3 className="text-xl font-black leading-tight tracking-tight text-foreground transition-colors duration-300 group-hover:text-foreground/70 md:text-2xl">
                     {post.title}
                   </h3>
                 </div>

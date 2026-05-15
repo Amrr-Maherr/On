@@ -139,9 +139,9 @@ export default function CartPage() {
               Cart
             </span>
             <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">Shopping Cart</h1>
-          <p className="mt-1 text-sm text-muted-foreground/60">
-            {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
-          </p>
+            <p className="mt-1 text-sm text-muted-foreground/60">
+              {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
+            </p>
         </div>
         <Button
           variant="ghost"
