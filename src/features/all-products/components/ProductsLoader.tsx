@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
-export default function ProductsLoader() {
+const ProductsLoader = memo(function ProductsLoader() {
   return (
     <div className="container-layout py-8">
       <div className="mb-8 h-8 w-48 animate-pulse rounded bg-muted" />
@@ -20,4 +21,6 @@ export default function ProductsLoader() {
       </div>
     </div>
   );
-}
+});
+
+export default ProductsLoader;

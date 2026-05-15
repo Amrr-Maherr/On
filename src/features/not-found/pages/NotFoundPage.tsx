@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import { FileQuestion } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import PageHelmet from "@/shared/components/PageHelmet";
 
-export default function NotFoundPage() {
+const NotFoundPage = memo(function NotFoundPage() {
   return (
     <div className="flex flex-col items-center justify-center gap-6 py-24 text-center">
       <PageHelmet title="404 - Page Not Found" />
@@ -18,4 +19,6 @@ export default function NotFoundPage() {
       <Link to="/" className={buttonVariants()}>Go Home</Link>
     </div>
   );
-}
+});
+
+export default NotFoundPage;

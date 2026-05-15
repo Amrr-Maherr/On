@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 
 interface PageHeroProps {
@@ -5,7 +6,7 @@ interface PageHeroProps {
   description?: string;
 }
 
-export default function PageHero({ title, description }: PageHeroProps) {
+const PageHero = memo(function PageHero({ title, description }: PageHeroProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,4 +22,6 @@ export default function PageHero({ title, description }: PageHeroProps) {
       )}
     </motion.div>
   );
-}
+});
+
+export default PageHero;

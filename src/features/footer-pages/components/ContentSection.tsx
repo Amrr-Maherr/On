@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface ContentSectionProps {
@@ -8,7 +8,7 @@ interface ContentSectionProps {
   variant?: "default" | "card";
 }
 
-export default function ContentSection({
+const ContentSection = memo(function ContentSection({
   title,
   children,
   className = "",
@@ -35,4 +35,6 @@ export default function ContentSection({
       </div>
     </motion.section>
   );
-}
+});
+
+export default ContentSection;

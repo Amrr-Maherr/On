@@ -1,9 +1,12 @@
+import { memo } from "react";
 import { Card } from "@/components/ui/card";
 
-export default function BrandsLoader() {
+const BrandsLoader = memo(function BrandsLoader() {
   return (
     <Card className="animate-pulse">
       <div className="h-60 w-full bg-muted" />
     </Card>
   );
-}
+});
+
+export default BrandsLoader;

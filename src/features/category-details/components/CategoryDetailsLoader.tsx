@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Card } from "@/components/ui/card";
 
-export default function CategoryDetailsLoader() {
+const CategoryDetailsLoader = memo(function CategoryDetailsLoader() {
   return (
     <div className="container-layout py-8">
       <div className="grid gap-10 md:grid-cols-2">
@@ -15,4 +16,6 @@ export default function CategoryDetailsLoader() {
       </div>
     </div>
   );
-}
+});
+
+export default CategoryDetailsLoader;

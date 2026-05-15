@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface InfoCardProps {
@@ -7,7 +7,7 @@ interface InfoCardProps {
   description: string;
 }
 
-export default function InfoCard({ icon, title, description }: InfoCardProps) {
+const InfoCard = memo(function InfoCard({ icon, title, description }: InfoCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -25,4 +25,6 @@ export default function InfoCard({ icon, title, description }: InfoCardProps) {
       <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
     </motion.div>
   );
-}
+});
+
+export default InfoCard;

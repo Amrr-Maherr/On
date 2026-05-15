@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { Brand } from "@/features/brands/types";
 import { Calendar, Tag } from "lucide-react";
 
@@ -5,12 +6,12 @@ interface BrandDetailsCardProps {
   brand: Brand;
 }
 
-export default function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
-  const createdDate = new Date(brand.createdAt).toLocaleDateString("en-US", {
+const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
+  const createdDate = useMemo(() => new Date(brand.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  });
+  }), [brand.createdAt]);
 
   return (
     <div className="grid gap-10 md:grid-cols-2">
@@ -47,4 +48,6 @@ export default function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
       </div>
     </div>
   );
-}
+});
+
+export default BrandDetailsCard;

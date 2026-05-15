@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
 
-export default function AuthImageSection() {
+const AuthImageSection = memo(function AuthImageSection() {
   return (
     <div className="relative hidden overflow-hidden bg-muted md:block">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
@@ -36,4 +37,6 @@ export default function AuthImageSection() {
       </div>
     </div>
   );
-}
+});
+
+export default AuthImageSection;

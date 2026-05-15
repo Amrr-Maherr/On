@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface CategoryDetailsErrorProps {
   onRetry?: () => void;
 }
 
-export default function CategoryDetailsError({
+const CategoryDetailsError = memo(function CategoryDetailsError({
   message,
   onRetry,
 }: CategoryDetailsErrorProps) {
@@ -27,4 +28,6 @@ export default function CategoryDetailsError({
       )}
     </div>
   );
-}
+});
+
+export default CategoryDetailsError;

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface AuthFormWrapperProps {
@@ -6,7 +6,7 @@ interface AuthFormWrapperProps {
   className?: string;
 }
 
-export default function AuthFormWrapper({
+const AuthFormWrapper = memo(function AuthFormWrapper({
   children,
   className,
 }: AuthFormWrapperProps) {
@@ -20,4 +20,6 @@ export default function AuthFormWrapper({
       {children}
     </div>
   );
-}
+});
+
+export default AuthFormWrapper;

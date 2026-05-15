@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface CategoriesErrorProps {
   onRetry?: () => void;
 }
 
-export default function CategoriesError({ message, onRetry }: CategoriesErrorProps) {
+const CategoriesError = memo(function CategoriesError({ message, onRetry }: CategoriesErrorProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
       <AlertTriangle className="h-12 w-12 text-destructive" />
@@ -24,4 +25,6 @@ export default function CategoriesError({ message, onRetry }: CategoriesErrorPro
       )}
     </div>
   );
-}
+});
+
+export default CategoriesError;

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 
 interface ContactInfoProps {
@@ -6,7 +7,7 @@ interface ContactInfoProps {
   value: string;
 }
 
-export default function ContactInfo({ icon, label, value }: ContactInfoProps) {
+const ContactInfo = memo(function ContactInfo({ icon, label, value }: ContactInfoProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -24,4 +25,6 @@ export default function ContactInfo({ icon, label, value }: ContactInfoProps) {
       </div>
     </motion.div>
   );
-}
+});
+
+export default ContactInfo;

@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
-export default function ProductsLoader() {
+const ProductsLoader = memo(function ProductsLoader() {
   return (
     <Card className="animate-pulse">
       <div className="h-60 w-full bg-muted" />
@@ -13,5 +14,7 @@ export default function ProductsLoader() {
       </CardContent>
     </Card>
   );
-}
+});
+
+export default ProductsLoader;
 

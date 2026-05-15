@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,7 @@ interface AuthSubmitButtonProps {
   loadingLabel?: string;
 }
 
-export default function AuthSubmitButton({
+const AuthSubmitButton = memo(function AuthSubmitButton({
   isLoading = false,
   label = "Submit",
   loadingLabel = "Submitting...",
@@ -30,4 +31,6 @@ export default function AuthSubmitButton({
       </Button>
     </motion.div>
   );
-}
+});
+
+export default AuthSubmitButton;

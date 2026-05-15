@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import type { Category } from "@/features/categories/types";
 import { Calendar, Tag } from "lucide-react";
 
@@ -5,14 +6,14 @@ interface CategoryDetailsCardProps {
   category: Category;
 }
 
-export default function CategoryDetailsCard({
+const CategoryDetailsCard = memo(function CategoryDetailsCard({
   category,
 }: CategoryDetailsCardProps) {
-  const createdDate = new Date(category.createdAt).toLocaleDateString("en-US", {
+  const createdDate = useMemo(() => new Date(category.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  });
+  }), [category.createdAt]);
 
   return (
     <div className="grid gap-10 md:grid-cols-2">
@@ -49,4 +50,6 @@ export default function CategoryDetailsCard({
       </div>
     </div>
   );
-}
+});
+
+export default CategoryDetailsCard;

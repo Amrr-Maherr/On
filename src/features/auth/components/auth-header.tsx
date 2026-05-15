@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 
 interface AuthHeaderProps {
@@ -5,7 +6,7 @@ interface AuthHeaderProps {
   description?: string;
 }
 
-export default function AuthHeader({ title, description }: AuthHeaderProps) {
+const AuthHeader = memo(function AuthHeader({ title, description }: AuthHeaderProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -21,4 +22,6 @@ export default function AuthHeader({ title, description }: AuthHeaderProps) {
       )}
     </motion.div>
   );
-}
+});
+
+export default AuthHeader;
