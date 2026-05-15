@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, memo } from "react";
+import { useState, useMemo, memo } from "react";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   FiltersPanel,
@@ -38,7 +38,7 @@ const SkeletonGrid = memo(function SkeletonGrid() {
 
 const ProductsPage = memo(function ProductsPage() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error, isFetching } = useAllProducts(page);
+  const { data, isLoading, isError, error } = useAllProducts(page);
 
   const totalPages = useMemo(
     () => data?.metadata?.numberOfPages ?? 1,
