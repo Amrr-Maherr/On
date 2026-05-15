@@ -7,8 +7,8 @@ interface AuthLayoutProps {
 
 const AuthLayout = memo(function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="grid min-h-[calc(100vh-4rem)] md:grid-cols-2">
-      <div className="flex items-center justify-center px-4 py-12 sm:px-8 lg:px-16">
+    <div className="grid min-h-[calc(100vh-5rem)] md:grid-cols-2">
+      <div className="flex items-center justify-center px-6 py-16 sm:px-10 lg:px-20">
         {children}
       </div>
       <AuthImageSection />

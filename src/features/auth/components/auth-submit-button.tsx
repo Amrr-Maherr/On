@@ -1,8 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 interface AuthSubmitButtonProps {
   isLoading?: boolean;
@@ -19,16 +17,16 @@ const AuthSubmitButton = memo(function AuthSubmitButton({
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+      transition={{ duration: 0.3, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <Button
+      <button
         type="submit"
         disabled={isLoading}
-        className={cn("h-9 w-full cursor-pointer rounded-lg")}
+        className="h-12 w-full cursor-pointer rounded-2xl bg-foreground text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
       >
-        {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {isLoading && <Loader2 className="mr-2 inline-block h-4 w-4 animate-spin" />}
         {isLoading ? loadingLabel : label}
-      </Button>
+      </button>
     </motion.div>
   );
 });
