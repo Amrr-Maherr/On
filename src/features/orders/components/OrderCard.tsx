@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Package, CreditCard, Truck, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -7,7 +8,7 @@ interface OrderCardProps {
   order: Order;
 }
 
-export default function OrderCard({ order }: OrderCardProps) {
+const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
   const date = new Date(order.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -91,4 +92,6 @@ export default function OrderCard({ order }: OrderCardProps) {
       </div>
     </Card>
   );
-}
+});
+
+export default OrderCard;

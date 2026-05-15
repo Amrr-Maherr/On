@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import type { Brand } from "@/features/brands/types";
 import { ArrowRight } from "lucide-react";
 
-export default function BrandCard({ brand }: { brand: Brand }) {
+const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
   return (
     <Link
       to={`/brands/${brand.slug}/${brand._id}`}
@@ -23,4 +24,6 @@ export default function BrandCard({ brand }: { brand: Brand }) {
       </div>
     </Link>
   );
-}
+});
+
+export default BrandCard;

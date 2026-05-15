@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import type { Category } from "@/features/categories/types";
 import { ArrowRight } from "lucide-react";
 
-export default function CategoryCard({ category }: { category: Category }) {
+const CategoryCard = memo(function CategoryCard({ category }: { category: Category }) {
   return (
     <Link
       to={`/categories/${category.slug}/${category._id}`}
@@ -23,4 +24,6 @@ export default function CategoryCard({ category }: { category: Category }) {
       </div>
     </Link>
   );
-}
+});
+
+export default CategoryCard;
