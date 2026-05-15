@@ -26,10 +26,10 @@ const ProductThumbnails = memo(function ProductThumbnails({
             <button
               type="button"
               onClick={() => onThumbClick(index)}
-              className={`overflow-hidden rounded-lg ring-1 transition-all duration-200 ${
+              className={`overflow-hidden rounded-none transition-all duration-300 ${
                 index === activeIndex
-                  ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
-                  : "ring-foreground/10 opacity-60 hover:opacity-100"
+                  ? "border-2 border-foreground"
+                  : "border-2 border-transparent opacity-60 hover:opacity-100"
               }`}
             >
               <img

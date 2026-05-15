@@ -25,13 +25,13 @@ const WishlistItemCard = memo(({
   return (
     <div
       className={cn(
-        "flex gap-5 rounded-2xl border border-border/30 bg-card p-5 transition-all duration-200",
+        "flex gap-5 rounded-none border-2 border-border/30 bg-card p-5 transition-all duration-300",
         (isRemoving || isAddingToCart) && "pointer-events-none opacity-60",
       )}
     >
       <Link
         to={`/products/${product.title}/${product._id}`}
-        className="h-28 w-28 shrink-0 overflow-hidden rounded-xl bg-muted/50 transition-opacity hover:opacity-80 md:h-32 md:w-32"
+        className="h-28 w-28 shrink-0 overflow-hidden rounded-none bg-muted/50 transition-opacity hover:opacity-80 md:h-32 md:w-32"
       >
         <img
           src={product.imageCover}
@@ -72,7 +72,7 @@ const WishlistItemCard = memo(({
             onClick={() => onRemove(product._id)}
             disabled={isRemoving}
             aria-label="Remove from wishlist"
-            className="flex shrink-0 items-center justify-center rounded-xl p-1.5 text-muted-foreground/40 transition-all duration-200 hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
+            className="flex shrink-0 items-center justify-center rounded-none border-2 border-transparent p-1.5 text-muted-foreground/40 transition-all duration-300 hover:border-destructive/20 hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
           >
             {isRemoving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -84,14 +84,14 @@ const WishlistItemCard = memo(({
 
         <div className="flex items-center justify-between">
           {product.ratingsAverage && (
-            <span className="text-xs font-medium text-muted-foreground">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
               &#9733; {product.ratingsAverage.toFixed(1)} / 5
             </span>
           )}
           <button
             onClick={() => onAddToCart(product._id)}
             disabled={isAddingToCart}
-            className="flex items-center gap-2 rounded-full bg-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.97] disabled:opacity-50"
+            className="flex h-10 items-center gap-3 rounded-none bg-foreground px-6 text-[10px] font-black uppercase tracking-[0.2em] text-background transition-all duration-300 hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
           >
             {isAddingToCart ? (
               <Loader2 className="h-3.5 w-3.5 animate-spin" />

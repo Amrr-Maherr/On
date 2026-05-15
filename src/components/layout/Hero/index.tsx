@@ -14,32 +14,31 @@ const Hero = memo(function Hero() {
 
       <ScrollReveal className="container-layout relative z-10 w-full" distance={40}>
         <div className="max-w-2xl">
-          <span className="inline-block text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60 mb-6">
-            Starting from $49.99
+          <span className="mb-6 inline-block text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
+            Performance Redefined
           </span>
-          <h1 className="text-6xl font-black uppercase leading-none tracking-tight text-foreground md:text-8xl lg:text-9xl">
-            Exclusive
+          <h1 className="font-heading text-7xl font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-9xl lg:text-[10rem]">
+            UNLEASH
             <br />
-            Collection.
+            POWER.
           </h1>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground/70 md:text-lg">
-            Discover premium products curated for modern living. Quality meets
-            elegance in every piece.
+          <p className="mt-8 max-w-md text-base font-bold uppercase tracking-widest text-muted-foreground/70 md:text-lg">
+            Premium gear engineered for those who never settle.
           </p>
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Button
               onClick={() => navigate("/products")}
-              className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+              className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
             >
-              Explore the collection
-              <ArrowRight className="ml-2 h-4 w-4" />
+              Shop Collection
+              <ArrowRight className="ml-3 h-5 w-5" />
             </Button>
             <Button
-              variant="ghost"
+              variant="outline"
               onClick={() => navigate("/categories")}
-              className="h-12 cursor-pointer rounded-full px-6 text-sm font-medium text-foreground/60 hover:text-foreground"
+              className="h-16 w-full cursor-pointer rounded-none border-2 border-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-foreground transition-all duration-500 hover:bg-foreground hover:text-background active:scale-[0.98] sm:w-auto"
             >
-              Browse categories
+              View All
             </Button>
           </div>
         </div>

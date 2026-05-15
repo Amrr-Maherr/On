@@ -37,7 +37,7 @@ const BrandStorySection = memo(function BrandStorySection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <ScrollReveal direction="left" distance={60}>
             <div className="relative">
-              <div className="overflow-hidden rounded-2xl">
+              <div className="overflow-hidden rounded-none">
                 <img
                   src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80"
                   alt="Our brand story"
@@ -45,7 +45,7 @@ const BrandStorySection = memo(function BrandStorySection() {
                   className="h-[500px] w-full object-cover transition-all duration-700 hover:scale-105 md:h-[600px]"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-background p-6 shadow-2xl lg:block">
+              <div className="absolute -bottom-6 -right-6 hidden rounded-none bg-background p-6 shadow-2xl lg:block">
                 <div className="flex items-center gap-4">
                   <div className="text-4xl font-black text-foreground">
                     50K+

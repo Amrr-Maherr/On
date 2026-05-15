@@ -27,9 +27,9 @@ const SocialLoginButtons = memo(function SocialLoginButtons() {
           <button
             key={provider.name}
             type="button"
-            className="flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-2xl border border-border/50 bg-transparent text-sm text-muted-foreground/70 transition-all duration-200 hover:border-border hover:bg-muted/30 hover:text-foreground active:scale-[0.98]"
+            className="flex h-14 cursor-pointer items-center justify-center gap-3 rounded-none border-2 border-border/40 bg-transparent text-xs font-black uppercase tracking-widest text-foreground/70 transition-all duration-300 hover:border-foreground hover:bg-muted/30 hover:text-foreground active:scale-[0.98]"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-foreground/10 text-[10px] font-semibold text-foreground/60">
+            <span className="flex h-6 w-6 items-center justify-center bg-foreground text-[10px] font-black text-background">
               {provider.icon}
             </span>
             {provider.name}

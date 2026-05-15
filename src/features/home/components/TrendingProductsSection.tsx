@@ -74,7 +74,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
                   delay={index * 0.1}
                 >
                   <div className="group relative">
-                    <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-b from-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute -inset-0.5 rounded-none bg-gradient-to-b from-foreground/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     <div className="relative">
                       <ProductCard product={product} />
                     </div>

@@ -23,7 +23,7 @@ function FilterPriceRange({
           value={minValue}
           onChange={(e) => onChange?.(Number(e.target.value), maxValue)}
           placeholder="Min"
-          className="h-9 w-full rounded-xl border border-border/50 bg-transparent px-3 text-center text-xs font-medium outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="h-10 w-full rounded-none border-2 border-border/40 bg-transparent px-3 text-center text-xs font-bold outline-none transition-all duration-300 placeholder:text-muted-foreground/30 focus-visible:border-foreground [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
           aria-label="Minimum price"
         />
         <span className="text-xs font-bold text-muted-foreground/50">—</span>
@@ -32,7 +32,7 @@ function FilterPriceRange({
           value={maxValue}
           onChange={(e) => onChange?.(minValue, Number(e.target.value))}
           placeholder="Max"
-          className="h-9 w-full rounded-xl border border-border/50 bg-transparent px-3 text-center text-xs font-medium outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="h-10 w-full rounded-none border-2 border-border/40 bg-transparent px-3 text-center text-xs font-bold outline-none transition-all duration-300 placeholder:text-muted-foreground/30 focus-visible:border-foreground [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
           aria-label="Maximum price"
         />
       </div>

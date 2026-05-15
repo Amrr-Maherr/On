@@ -10,7 +10,7 @@ interface ProductInfoProps {
 
 const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   return (
-    <div className="border-l-4 border-foreground pl-6">
+    <div className="border-l-8 border-foreground pl-6">
       <h1 className="text-4xl font-black uppercase leading-[0.9] tracking-tighter md:text-5xl lg:text-6xl">
         {title}
       </h1>

@@ -13,13 +13,13 @@ export default function ResetPasswordPage() {
       <PageHelmet title="Reset Password" />
       <AuthFormWrapper>
         <AuthHeader
-          title="Reset password"
+          title="New Password"
           description="Enter the code sent to your email and your new password"
         />
 
-        <form className="space-y-4" noValidate>
+        <form className="space-y-6" noValidate>
           <AuthInput
-            label="Reset Code"
+            label="Recovery Code"
             type="text"
             placeholder="Enter the code"
             autoComplete="off"
@@ -33,22 +33,22 @@ export default function ResetPasswordPage() {
           <AuthInput
             label="Confirm Password"
             type="password"
-            placeholder="Re-enter new password"
+            placeholder="Confirm your password"
             autoComplete="new-password"
           />
 
           <AuthSubmitButton
-            label="Reset Password"
-            loadingLabel="Resetting..."
+            label="Update Password"
+            loadingLabel="Updating..."
           />
         </form>
 
-        <div className="mt-6 text-center">
+        <div className="mt-8 text-center">
           <Link
             to="/login"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to sign in
           </Link>
         </div>

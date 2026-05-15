@@ -25,7 +25,7 @@ const Banner = memo(function Banner({ data = bannerData, loading = false }: Bann
       <ScrollReveal>
         <div className="container-layout">
           <div
-            className="relative overflow-hidden rounded-3xl bg-muted/50"
+            className="relative overflow-hidden rounded-none bg-muted/50"
             style={{
               backgroundImage: `url(${data.imageSrc})`,
               backgroundSize: "cover",

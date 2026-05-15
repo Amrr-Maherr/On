@@ -20,21 +20,21 @@ const ProductStockStatus = memo(function ProductStockStatus({ quantity, sold }: 
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-2">
             <span
-              className={`inline-block h-2.5 w-2.5 rounded-full ${
+              className={`inline-block h-3 w-3 rounded-none ${
                 inStock ? (lowStock ? "bg-amber-500" : "bg-green-500") : "bg-red-500"
               }`}
             />
-            <span className="font-bold text-foreground">
+            <span className="font-black uppercase tracking-tight text-foreground">
               {inStock ? (lowStock ? "Low Stock" : "In Stock") : "Out of Stock"}
             </span>
           </div>
-          <span className="font-medium text-muted-foreground">
+          <span className="font-bold text-muted-foreground/60">
             {quantity} / {total} available
           </span>
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+        <div className="h-2 w-full overflow-hidden rounded-none bg-muted/30">
           <div
-            className="h-full rounded-full bg-foreground/20 transition-all"
+            className="h-full rounded-none bg-foreground transition-all duration-1000"
             style={{ width: `${Math.min(soldPercent, 100)}%` }}
           />
         </div>

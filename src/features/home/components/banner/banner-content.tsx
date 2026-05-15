@@ -25,21 +25,21 @@ const BannerContent = memo(function BannerContent({
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="flex max-w-xl flex-col items-start gap-5"
     >
-      <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-        Featured
+      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
+        New Arrival
       </span>
-      <h2 className="text-4xl font-black leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+      <h2 className="font-heading text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-6xl lg:text-7xl">
         {data.headline}
       </h2>
-      <p className="text-base leading-relaxed text-muted-foreground/70 sm:text-lg">
+      <p className="max-w-md text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
         {data.description}
       </p>
       <Button
-        className="mt-2 h-12 cursor-pointer rounded-full bg-foreground px-8 text-base font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+        className="mt-4 h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
         onClick={handleClick}
       >
         {data.ctaLabel}
-        <ArrowRight className="ml-2 h-4 w-4" />
+        <ArrowRight className="ml-3 h-5 w-5" />
       </Button>
     </motion.div>
   );

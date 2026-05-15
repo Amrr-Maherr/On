@@ -85,7 +85,7 @@ const EditProfileSheet = memo(function EditProfileSheet({
               <Input
                 {...register("name", { required: "Name is required" })}
                 placeholder="Your name"
-                className="h-12 rounded-xl border-border/40 bg-background"
+                className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
               {errors.name && (
                 <p className="text-xs text-destructive">{errors.name.message}</p>
@@ -105,8 +105,8 @@ const EditProfileSheet = memo(function EditProfileSheet({
                   },
                 })}
                 type="email"
-                placeholder="your@email.com"
-                className="h-12 rounded-xl border-border/40 bg-background"
+                placeholder="you@example.com"
+                className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
               {errors.email && (
                 <p className="text-xs text-destructive">{errors.email.message}</p>
@@ -118,28 +118,38 @@ const EditProfileSheet = memo(function EditProfileSheet({
                 Phone Number
               </label>
               <Input
-                {...register("phone")}
-                placeholder="0123456789"
-                className="h-12 rounded-xl border-border/40 bg-background"
+                {...register("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^01[0-9]{9}$/,
+                    message: "Enter a valid Egyptian phone number",
+                  },
+                })}
+                type="tel"
+                placeholder="01000000000"
+                className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
+              {errors.phone && (
+                <p className="text-xs text-destructive">{errors.phone.message}</p>
+              )}
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 pt-4">
+          <div className="flex gap-3 pt-4">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClose}
+              className="flex-1 rounded-none border-2 border-border/40 text-xs font-black uppercase tracking-widest"
+            >
+              Cancel
+            </Button>
             <Button
               type="submit"
               disabled={isPending}
-              className="h-12 rounded-full bg-foreground font-bold uppercase tracking-widest text-background transition-all hover:opacity-90"
+              className="flex-1 rounded-none bg-foreground text-xs font-black uppercase tracking-widest text-background"
             >
               {isPending ? "Saving..." : "Save Changes"}
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={onClose}
-              className="h-12 rounded-full font-semibold uppercase tracking-widest"
-            >
-              Cancel
             </Button>
           </div>
         </form>

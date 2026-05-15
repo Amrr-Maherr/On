@@ -15,21 +15,21 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
   });
 
   return (
-    <div className="rounded-2xl border border-border/50 bg-card p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
+    <div className="rounded-none border-2 border-border/40 bg-card p-6 transition-all duration-300 hover:border-foreground/20">
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
           <Package className="h-4 w-4 text-muted-foreground/50" />
-          <span className="text-xs text-muted-foreground/60">
-            {order._id.slice(-8).toUpperCase()}
+          <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
+            ORDER: {order._id.slice(-8).toUpperCase()}
           </span>
         </div>
-        <span className="text-xs text-muted-foreground/60">{date}</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{date}</span>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {order.cartItems.slice(0, 3).map((item) => (
-          <div key={item._id} className="flex items-center gap-3">
-            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-muted/40">
+          <div key={item._id} className="flex items-center gap-4">
+            <div className="h-16 w-16 shrink-0 overflow-hidden rounded-none bg-muted/40 border border-border/20">
               <img
                 src={item.product.imageCover}
                 alt={item.product.title}

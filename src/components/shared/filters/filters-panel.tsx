@@ -22,7 +22,7 @@ const FiltersPanel = memo(function FiltersPanel({
           variant="outline"
           size="sm"
           onClick={() => setMobileOpen(true)}
-          className="gap-2 rounded-full"
+          className="gap-2 rounded-none border-2"
         >
           <SlidersHorizontal className="h-4 w-4" />
           Filters
@@ -35,7 +35,7 @@ const FiltersPanel = memo(function FiltersPanel({
           className,
         )}
       >
-        <div className="sticky top-24 space-y-1 rounded-2xl border border-border/30 bg-card p-5">
+        <div className="sticky top-24 space-y-1 rounded-none border-2 border-border/40 bg-card p-5">
           {children}
         </div>
       </aside>
@@ -64,7 +64,7 @@ const FiltersPanel = memo(function FiltersPanel({
                   size="icon"
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close filters"
-                  className="rounded-xl"
+                  className="rounded-none border-2 border-transparent hover:border-border/40"
                 >
                   <X className="h-4 w-4" />
                 </Button>

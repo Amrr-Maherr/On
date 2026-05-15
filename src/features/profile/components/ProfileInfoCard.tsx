@@ -31,21 +31,21 @@ const ProfileInfoCard = memo(function ProfileInfoCard({ user }: ProfileInfoCardP
   ];
 
   return (
-    <div className="rounded-2xl border border-border/30 bg-card">
-      <div className="border-b border-border/30 px-6 py-4">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Account Information</h3>
+    <div className="rounded-none border-2 border-border/40 bg-card">
+      <div className="border-b-2 border-border/40 px-6 py-5">
+        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">Account Information</h3>
       </div>
-      <div className="grid gap-6 p-6 md:grid-cols-2">
+      <div className="grid gap-8 p-6 md:grid-cols-2">
         {infoItems.map((item, index) => (
-          <div key={index} className="flex items-start gap-3">
-            <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-xl bg-foreground text-background">
-              <item.icon className="h-4 w-4" />
+          <div key={index} className="flex items-start gap-4">
+            <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-foreground text-background">
+              <item.icon className="h-5 w-5" />
             </div>
-            <div className="space-y-0.5">
-              <p className="text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground/60">
+            <div className="space-y-1">
+              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                 {item.label}
               </p>
-              <p className="text-sm font-semibold text-foreground">{item.value}</p>
+              <p className="text-sm font-black uppercase tracking-tight text-foreground">{item.value}</p>
             </div>
           </div>
         ))}

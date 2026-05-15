@@ -51,82 +51,88 @@ export default function RegisterPage() {
       <PageHelmet title="Create Account" description="Create your account." />
       <AuthFormWrapper>
         <AuthHeader
-          title="Create an account"
-          description="Fill in your details to get started"
+          title="Join Us"
+          description="Enter your details to start your journey"
         />
 
-        <form className="space-y-4" noValidate onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-6" noValidate onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <AuthInput
+              label="Full Name"
+              type="text"
+              placeholder="John Doe"
+              autoComplete="name"
+              error={errors.name?.message}
+              {...register("name", {
+                required: "Name is required",
+                minLength: {
+                  value: 3,
+                  message: "Name must be at least 3 characters",
+                },
+              })}
+            />
+            <AuthInput
+              label="Email Address"
+              type="email"
+              placeholder="example@mail.com"
+              autoComplete="email"
+              error={errors.email?.message}
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+          </div>
+
           <AuthInput
-            label="Full Name"
-            type="text"
-            placeholder="John Doe"
-            autoComplete="name"
-            error={errors.name?.message}
-            {...register("name", {
-              required: "Name is required",
-              minLength: {
-                value: 3,
-                message: "Name must be at least 3 characters",
-              },
-            })}
-          />
-          <AuthInput
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            error={errors.email?.message}
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
-              },
-            })}
-          />
-          <AuthInput
-            label="Phone"
+            label="Phone Number"
             type="tel"
-            placeholder="01000000000"
+            placeholder="01xxxxxxxxx"
             autoComplete="tel"
             error={errors.phone?.message}
             {...register("phone", {
               required: "Phone number is required",
               pattern: {
                 value: /^01[0-9]{9}$/,
-                message: "Enter a valid Egyptian phone number",
+                message: "Enter a valid phone number",
               },
-            })}
-          />
-          <AuthInput
-            label="Password"
-            type="password"
-            placeholder="Create a password"
-            autoComplete="new-password"
-            error={errors.password?.message}
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
-              },
-            })}
-          />
-          <AuthInput
-            label="Confirm Password"
-            type="password"
-            placeholder="Re-enter your password"
-            autoComplete="new-password"
-            error={errors.confirmPassword?.message}
-            {...register("confirmPassword", {
-              required: "Please confirm your password",
-              validate: (value) =>
-                value === password || "Passwords do not match",
             })}
           />
 
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <AuthInput
+              label="Password"
+              type="password"
+              placeholder="Enter your password"
+              autoComplete="new-password"
+              error={errors.password?.message}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+            />
+            <AuthInput
+              label="Confirm Password"
+              type="password"
+              placeholder="Confirm your password"
+              autoComplete="new-password"
+              error={errors.confirmPassword?.message}
+              {...register("confirmPassword", {
+                required: "Please confirm your password",
+                validate: (value) =>
+                  value === password || "Passwords do not match",
+              })}
+            />
+          </div>
+
           {error && (
-            <p className="text-xs text-destructive" role="alert">
+            <p className="text-xs font-bold text-destructive" role="alert">
               {error.message}
             </p>
           )}
@@ -140,11 +146,11 @@ export default function RegisterPage() {
           <SocialLoginButtons />
         </form>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-medium text-foreground transition-colors hover:text-primary"
+            className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
             Sign in
           </Link>

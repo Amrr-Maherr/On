@@ -30,11 +30,11 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
           </span>
           <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
         </div>
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/40 bg-card py-10 text-center md:py-16">
-          <MessageSquare className="h-8 w-8 text-muted-foreground/30" />
+        <div className="flex flex-col items-center gap-4 rounded-none border-2 border-border/40 bg-card py-12 text-center md:py-20">
+          <MessageSquare className="h-10 w-10 text-muted-foreground/30" />
           <div>
-            <p className="text-sm font-medium text-foreground">No reviews yet</p>
-            <p className="mt-1 text-sm text-muted-foreground/70">
+            <p className="text-sm font-black uppercase tracking-widest text-foreground">No reviews yet</p>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60">
               Be the first to review this product.
             </p>
           </div>
@@ -45,48 +45,49 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
 
   return (
     <section>
-      <div className="mb-8 flex items-end justify-between border-b border-border/30 pb-6">
+      <div className="mb-8 flex items-end justify-between border-b-2 border-border/40 pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
             Social Proof
           </span>
           <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
         </div>
-        <span className="text-sm font-semibold tabular-nums text-muted-foreground">{reviews.length} reviews</span>
+        <span className="text-[10px] font-black uppercase tracking-widest tabular-nums text-muted-foreground/60">{reviews.length} reviews</span>
       </div>
       <div className="grid gap-4">
         {displayed.map((review) => (
           <div
             key={review._id}
-            className="rounded-2xl bg-card p-6 ring-1 ring-foreground/5"
+            className="rounded-none border-2 border-border/40 bg-card p-6 transition-all duration-300 hover:border-foreground/20"
           >
             <div className="flex items-start justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-sm font-medium">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-none bg-muted text-sm font-black">
                   {review.user.name.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                  <p className="text-sm font-medium">{review.user.name}</p>
-                  <div className="flex items-center gap-0.5 mt-0.5">
+                  <p className="text-sm font-black uppercase tracking-tight">{review.user.name}</p>
+                  <div className="flex items-center gap-0.5 mt-1.5">
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`h-3 w-3 ${
+                        className={`h-3.5 w-3.5 ${
                           i < Math.round(review.rating)
                             ? "fill-amber-400 text-amber-400"
                             : "text-muted-foreground/20"
                         }`}
+                        strokeWidth={i < Math.round(review.rating) ? 0 : 2}
                       />
                     ))}
                   </div>
                 </div>
               </div>
-              <span className="text-xs text-muted-foreground/50">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
                 {formatDate(review.createdAt)}
               </span>
             </div>
             {review.review && (
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground/80">
+              <p className="mt-4 text-sm font-bold leading-relaxed text-muted-foreground/80">
                 {review.review}
               </p>
             )}
@@ -94,8 +95,8 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
         ))}
       </div>
       {reviews.length > 3 && (
-        <div className="mt-6 text-center">
-          <Button variant="outline" className="rounded-full" onClick={onToggleShowAll}>
+        <div className="mt-8 text-center">
+          <Button variant="outline" className="h-14 px-10 text-[10px] font-black uppercase tracking-[0.2em]" onClick={onToggleShowAll}>
             {showAll ? "Show Less" : `Show all ${reviews.length} reviews`}
           </Button>
         </div>

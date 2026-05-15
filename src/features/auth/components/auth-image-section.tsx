@@ -5,41 +5,39 @@ import { Zap, ArrowRight } from "lucide-react";
 const AuthImageSection = memo(function AuthImageSection() {
   return (
     <div className="relative hidden overflow-hidden bg-neutral-950 md:block">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-20" />
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-950/95 to-neutral-950/90" /> */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-40 grayscale transition-transform duration-700 hover:scale-110" />
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
 
-      <div className="flex h-full w-full items-center justify-center p-16">
+      <div className="flex h-full w-full items-end justify-start p-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="max-w-sm text-center"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-md"
         >
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-white/10">
-            <Zap className="h-9 w-9 text-white/60" />
-          </div>
-          <h2 className="text-3xl font-black tracking-tight text-white">
-            Performance
+          <div className="mb-6 flex h-1 w-20 bg-white" />
+          <h2 className="font-heading text-6xl font-black uppercase leading-[0.85] tracking-tighter text-white md:text-8xl">
+            Unleash
             <br />
-            Starts Here.
+            Your
+            <br />
+            Power.
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-white/60">
-            Join thousands of athletes who trust us for premium sportswear.
-            Train harder. Go further.
+          <p className="mt-8 text-lg font-bold uppercase tracking-widest text-white/70">
+            Premium Performance Gear.
           </p>
-          <div className="mt-12 grid grid-cols-2 gap-3">
+          <div className="mt-12 grid grid-cols-1 gap-4">
             {[
-              "Free Shipping",
-              "Easy Returns",
-              "Premium Quality",
-              "24/7 Support",
+              "Engineered for speed",
+              "Built for endurance",
+              "Trusted by champions",
             ].map((label) => (
               <div
                 key={label}
-                className="flex items-center justify-center gap-1.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                className="flex items-center gap-4 group"
               >
-                <ArrowRight className="h-3 w-3 text-white/40" />
-                <p className="text-xs text-white/50">{label}</p>
+                <div className="h-px w-8 bg-white/30 transition-all duration-300 group-hover:w-12 group-hover:bg-white" />
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors">{label}</p>
               </div>
             ))}
           </div>

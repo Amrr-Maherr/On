@@ -13,27 +13,27 @@ export default function ForgotPasswordPage() {
       <PageHelmet title="Forgot Password" />
       <AuthFormWrapper>
         <AuthHeader
-          title="Forgot password?"
+          title="Recover Access"
           description="Enter your email and we'll send you a reset code"
         />
 
-        <form className="space-y-4" noValidate>
+        <form className="space-y-6" noValidate>
           <AuthInput
-            label="Email"
+            label="Email Address"
             type="email"
-            placeholder="you@example.com"
+            placeholder="example@mail.com"
             autoComplete="email"
           />
 
           <AuthSubmitButton label="Send Reset Code" loadingLabel="Sending..." />
         </form>
 
-        <div className="mt-6 text-center">
+        <div className="mt-8 text-center">
           <Link
             to="/login"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to sign in
           </Link>
         </div>

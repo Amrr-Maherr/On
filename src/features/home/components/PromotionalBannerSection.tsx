@@ -23,7 +23,7 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
       <div className="container-layout relative z-10 py-28 md:py-36">
         <ScrollReveal>
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-none bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80">
               <Zap className="h-3.5 w-3.5 text-amber-400" />
               Limited Offer
             </div>
@@ -35,9 +35,9 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
               without breaking the bank.
             </p>
             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/50">
-              <span className="inline-block h-2 w-2 rounded-full bg-amber-400" />
+              <span className="inline-block h-2 w-2 bg-amber-400" />
               Offer ends soon
-              <span className="inline-block h-2 w-2 rounded-full bg-amber-400" />
+              <span className="inline-block h-2 w-2 bg-amber-400" />
             </div>
             <div className="mt-10">
               <Button

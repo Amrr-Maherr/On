@@ -117,9 +117,9 @@ const Footer = memo(function Footer() {
               <input 
                 type="email" 
                 placeholder="Email Address" 
-                className="h-14 flex-1 bg-white/5 px-6 text-sm font-bold outline-none ring-1 ring-white/10 transition-all focus:ring-white/30"
+                className="h-14 flex-1 border-2 border-white/10 bg-white/5 px-6 text-sm font-bold outline-none transition-all focus:border-white/40"
               />
-              <button className="bg-white px-8 text-[10px] font-black uppercase tracking-widest text-neutral-950 transition-all hover:bg-neutral-200">
+              <button className="h-14 bg-white px-8 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 transition-all hover:bg-neutral-200">
                 Join
               </button>
             </div>
@@ -135,14 +135,14 @@ const Footer = memo(function Footer() {
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">App Support</h4>
               <div className="flex flex-wrap gap-4">
                 <div className="flex h-12 items-center gap-3 border border-white/10 bg-white/5 px-5 transition-all hover:bg-white/10 cursor-pointer">
-                  <div className="h-6 w-6 rounded-full bg-white/10" />
+                  <div className="h-6 w-6 rounded-none bg-white/10" />
                   <div className="text-left">
                     <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">Download on</p>
                     <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">App Store</p>
                   </div>
                 </div>
                 <div className="flex h-12 items-center gap-3 border border-white/10 bg-white/5 px-5 transition-all hover:bg-white/10 cursor-pointer">
-                  <div className="h-6 w-6 rounded-full bg-white/10" />
+                  <div className="h-6 w-6 rounded-none bg-white/10" />
                   <div className="text-left">
                     <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">Get it on</p>
                     <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">Google Play</p>

@@ -11,10 +11,10 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
     const inputId = id || label.toLowerCase().replace(/\s+/g, "-");
 
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         <label
           htmlFor={inputId}
-          className="text-sm text-muted-foreground/80"
+          className="text-xs font-black uppercase tracking-widest text-foreground/70"
         >
           {label}
         </label>
@@ -22,15 +22,15 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "h-12 w-full rounded-2xl border border-border/60 bg-transparent px-4 text-sm font-medium text-foreground transition-all duration-200 placeholder:text-muted-foreground/40 focus:border-foreground/40 focus:outline-none",
-            error && "border-destructive/60",
+            "h-14 w-full rounded-none border-2 border-border/40 bg-transparent px-4 text-sm font-bold text-foreground transition-all duration-300 placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none",
+            error && "border-destructive",
             className,
           )}
           aria-invalid={!!error}
           {...props}
         />
         {error && (
-          <p className="mt-1 text-xs text-destructive/80" role="alert">
+          <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-destructive" role="alert">
             {error}
           </p>
         )}

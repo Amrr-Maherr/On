@@ -18,9 +18,9 @@ const NotFoundPage = memo(function NotFoundPage() {
       </div>
       <Link
         to="/"
-        className="relative z-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-wider text-neutral-950 transition-all duration-200 hover:bg-white/90 active:scale-[0.98]"
+        className="relative z-10 inline-flex h-14 items-center gap-3 rounded-none bg-white px-10 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 transition-all duration-300 hover:bg-neutral-200 active:scale-[0.98]"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
         Back Home
       </Link>
     </div>

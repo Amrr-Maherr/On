@@ -33,14 +33,14 @@ function ProductsPagination({
         disabled={currentPage <= 1}
         onClick={() => onPageChange(currentPage - 1)}
         aria-label="Previous page"
-        className="rounded-full"
+        className="rounded-none border-2"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
 
       {pages.map((page, i) =>
         page === "..." ? (
-          <span key={`ellipsis-${i}`} className="flex h-8 w-8 items-center justify-center text-sm text-muted-foreground">
+          <span key={`ellipsis-${i}`} className="flex h-10 w-10 items-center justify-center text-sm font-bold text-muted-foreground">
             ...
           </span>
         ) : (
@@ -49,7 +49,7 @@ function ProductsPagination({
             variant={currentPage === page ? "default" : "outline"}
             size="icon"
             onClick={() => onPageChange(page as number)}
-            className={cn("h-8 w-8 rounded-full", currentPage === page && "cursor-default")}
+            className={cn("h-10 w-10 rounded-none border-2", currentPage === page && "cursor-default border-foreground")}
             aria-current={currentPage === page ? "page" : undefined}
           >
             {page}
@@ -63,7 +63,7 @@ function ProductsPagination({
         disabled={currentPage >= totalPages}
         onClick={() => onPageChange(currentPage + 1)}
         aria-label="Next page"
-        className="rounded-full"
+        className="rounded-none border-2"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>

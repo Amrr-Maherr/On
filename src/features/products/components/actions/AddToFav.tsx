@@ -28,7 +28,7 @@ export default function AddToFav({ productId }: AddToFavProps) {
       onClick={handleClick}
       disabled={isPending}
       aria-label="Add to wishlist"
-      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-200 hover:bg-white hover:shadow-md active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:opacity-50"
+      className="flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-white/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-white active:scale-90 disabled:opacity-50"
     >
       {isPending ? (
         <Loader2 className="h-3.5 w-3.5 animate-spin text-foreground/70" />

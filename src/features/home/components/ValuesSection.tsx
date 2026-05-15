@@ -30,7 +30,7 @@ const ValuesSection = memo(function ValuesSection() {
                 }}
                 className="group flex flex-col gap-6"
               >
-                <div className="overflow-hidden rounded-2xl bg-muted/20">
+                <div className="overflow-hidden rounded-none bg-muted/20">
                   <img
                     className="aspect-[4/3] w-full object-cover transition-all duration-500 group-hover:scale-[1.02]"
                     src={value.image}

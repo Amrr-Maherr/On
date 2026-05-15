@@ -13,7 +13,7 @@ const AuthFormWrapper = memo(function AuthFormWrapper({
   return (
     <div
       className={cn(
-        "w-full max-w-sm",
+        "w-full max-w-[440px]",
         className,
       )}
     >

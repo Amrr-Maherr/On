@@ -14,9 +14,9 @@ const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
       </h3>
       <Link
         to={`/brands/${brand.slug}/${brand._id}`}
-        className="group inline-flex items-center gap-3 rounded-xl border border-border/40 bg-card p-3 transition-colors hover:bg-muted/50"
+        className="group inline-flex items-center gap-4 rounded-none border-2 border-border/40 bg-card p-4 transition-all duration-300 hover:border-foreground/20 hover:bg-muted/30"
       >
-        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-muted">
+        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-none bg-muted">
           <img
             src={brand.image}
             alt={brand.name}

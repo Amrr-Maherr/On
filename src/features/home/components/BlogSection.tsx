@@ -43,7 +43,7 @@ const BlogSection = memo(function BlogSection() {
                 }`}
               >
                 <div
-                  className={`overflow-hidden rounded-2xl bg-muted/30 ${
+                  className={`overflow-hidden rounded-none bg-muted/30 ${
                     index === 0 ? "aspect-[4/3] sm:h-full" : "aspect-video"
                   }`}
                 >

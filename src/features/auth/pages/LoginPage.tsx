@@ -45,19 +45,19 @@ export default function LoginPage() {
       <PageHelmet title="Sign In" description="Sign in to your account." />
       <AuthFormWrapper>
         <AuthHeader
-          title="Welcome back"
+          title="Welcome Back"
           description="Sign in to your account to continue"
         />
 
         <form
-          className="space-y-4"
+          className="space-y-6"
           noValidate
           onSubmit={handleSubmit(onSubmit)}
         >
           <AuthInput
-            label="Email"
+            label="Email Address"
             type="email"
-            placeholder="you@example.com"
+            placeholder="example@mail.com"
             autoComplete="email"
             error={errors.email?.message}
             {...register("email", {
@@ -68,7 +68,7 @@ export default function LoginPage() {
               },
             })}
           />
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <AuthInput
               label="Password"
               type="password"
@@ -86,7 +86,7 @@ export default function LoginPage() {
             <div className="flex justify-end">
               <Link
                 to="/forgot-password"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="text-xs font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
               >
                 Forgot password?
               </Link>
@@ -94,27 +94,27 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <p className="text-xs text-destructive" role="alert">
+            <p className="text-xs font-bold text-destructive" role="alert">
               {error.message}
             </p>
           )}
 
           <AuthSubmitButton
             label="Sign In"
-            loadingLabel="Signing in..."
+            loadingLabel="Verifying..."
             isLoading={isPending}
           />
 
           <SocialLoginButtons />
         </form>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
           Don&apos;t have an account?{" "}
           <Link
             to="/register"
-            className="font-medium text-foreground transition-colors hover:text-primary"
+            className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
-            Create one
+            Create account
           </Link>
         </p>
       </AuthFormWrapper>

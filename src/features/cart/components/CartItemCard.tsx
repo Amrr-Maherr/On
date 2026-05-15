@@ -56,19 +56,19 @@ const CartItemCard = memo(({
           <button
             onClick={() => onRemove(product.id)}
             aria-label="Remove item"
-            className="shrink-0 rounded-full border border-border/40 p-2 text-muted-foreground transition-all duration-200 hover:bg-destructive hover:text-white"
+            className="shrink-0 rounded-none border-2 border-border/40 p-2.5 text-muted-foreground transition-all duration-300 hover:border-destructive hover:bg-destructive hover:text-white"
           >
             <Trash2 className="h-4 w-4" />
           </button>
         </div>
 
         <div className="mt-6 flex items-end justify-between">
-          <div className="flex items-center rounded-full border border-border/60 p-1">
+          <div className="flex items-center rounded-none border-2 border-border/60 p-1">
             <button
               onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
               aria-label="Decrease quantity"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all duration-200 hover:bg-muted active:scale-90 disabled:pointer-events-none disabled:opacity-20"
+              className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90 disabled:pointer-events-none disabled:opacity-20"
             >
               <Minus className="h-4 w-4" />
             </button>
@@ -78,7 +78,7 @@ const CartItemCard = memo(({
             <button
               onClick={() => onUpdate(product.id, count + 1)}
               aria-label="Increase quantity"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all duration-200 hover:bg-muted active:scale-90"
+              className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90"
             >
               <Plus className="h-4 w-4" />
             </button>

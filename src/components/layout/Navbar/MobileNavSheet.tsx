@@ -28,9 +28,11 @@ interface MobileNavSheetProps {
 }
 
 const shopLinks = [
-  { label: "Products", href: "/products", icon: Store },
-  { label: "Categories", href: "/categories", icon: Grid3X3 },
-  { label: "Brands", href: "/brands", icon: Tag },
+  { label: "Men", href: "/categories/men", icon: UserCircle },
+  { label: "Women", href: "/categories/women", icon: UserCircle },
+  { label: "Kids", href: "/categories/kids", icon: UserCircle },
+  { label: "Sale", href: "/products?onSale=true", icon: Tag },
+  { label: "Brands", href: "/brands", icon: Grid3X3 },
 ] as const;
 
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
@@ -74,21 +76,21 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             <SheetClose asChild>
               <button
                 type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                className="flex h-12 w-12 items-center justify-center rounded-none bg-white/10 text-white transition-colors hover:bg-white/20"
                 aria-label="Close menu"
               >
-                <span className="text-2xl leading-none">&times;</span>
+                <span className="text-3xl leading-none">&times;</span>
               </button>
             </SheetClose>
           </div>
-          <div className="relative mt-8">
+          <div className="relative mt-10">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
             <Input
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearch}
-              className="h-12 w-full border-0 bg-white/10 pl-11 text-sm text-white placeholder:text-white/40 focus:ring-2 focus:ring-white/20 rounded-full font-medium"
+              className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/30 focus:border-white/40 focus:ring-0"
             />
           </div>
         </div>
@@ -100,16 +102,22 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               {shopLinks.map((link) => (
-                <SheetClose key={link.href} asChild>
-                  <Link
-                    to={link.href}
-                    className="group flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-bold uppercase tracking-tight text-foreground transition-all duration-200 hover:bg-muted/50 active:scale-[0.98]"
-                  >
-                    <link.icon className="h-5 w-5 text-foreground/40 transition-colors group-hover:text-foreground" strokeWidth={2} />
-                    {link.label}
-                    <ChevronRight className="ml-auto h-4 w-4 text-muted-foreground/30 transition-all group-hover:translate-x-0.5 group-hover:text-foreground/50" />
-                  </Link>
-                </SheetClose>
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  onClick={() => onOpenChange(false)}
+                  className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                      <link.icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-widest text-foreground">
+                      {link.label}
+                    </span>
+                  </div>
+                  <ChevronRight className="h-4 w-4 text-muted-foreground/30" />
+                </Link>
               ))}
             </div>
           </div>
@@ -119,114 +127,132 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               Account
             </p>
             <div className="space-y-1">
-              <SheetClose asChild>
-                <Link
-                  to="/fave"
-                  className="group flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-bold uppercase tracking-tight text-foreground transition-all duration-200 hover:bg-muted/50 active:scale-[0.98]"
-                >
-                  <Heart className="h-5 w-5 text-foreground/40 transition-colors group-hover:text-foreground" strokeWidth={2} />
-                  <span className="flex-1">Wishlist</span>
-                  {favCount > 0 && (
-                    <span className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-foreground px-2 text-[11px] font-black text-background">
-                      {favCount > 99 ? "99+" : favCount}
-                    </span>
-                  )}
-                </Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <Link
-                  to="/orders"
-                  className="group flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-bold uppercase tracking-tight text-foreground transition-all duration-200 hover:bg-muted/50 active:scale-[0.98]"
-                >
-                  <Package className="h-5 w-5 text-foreground/40 transition-colors group-hover:text-foreground" strokeWidth={2} />
-                  <span className="flex-1">Orders</span>
-                  {ordersCount > 0 && (
-                    <span className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-foreground px-2 text-[11px] font-black text-background">
-                      {ordersCount > 99 ? "99+" : ordersCount}
-                    </span>
-                  )}
-                </Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <Link
-                  to="/cart"
-                  className="group flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-bold uppercase tracking-tight text-foreground transition-all duration-200 hover:bg-muted/50 active:scale-[0.98]"
-                >
-                  <ShoppingCart className="h-5 w-5 text-foreground/40 transition-colors group-hover:text-foreground" strokeWidth={2} />
-                  <span className="flex-1">Cart</span>
-                  {cartCount > 0 && (
-                    <span className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-foreground px-2 text-[11px] font-black text-background">
-                      {cartCount > 99 ? "99+" : cartCount}
-                    </span>
-                  )}
-                </Link>
-              </SheetClose>
+              <Link
+                to="/fave"
+                onClick={() => onOpenChange(false)}
+                className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                    <Heart className="h-5 w-5" />
+                    {favCount > 0 && (
+                      <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">
+                        {favCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-sm font-black uppercase tracking-widest text-foreground">Wishlist</span>
+                </div>
+              </Link>
+              <Link
+                to="/orders"
+                onClick={() => onOpenChange(false)}
+                className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                    <Package className="h-5 w-5" />
+                    {ordersCount > 0 && (
+                      <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">
+                        {ordersCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-sm font-black uppercase tracking-widest text-foreground">Orders</span>
+                </div>
+              </Link>
+              <Link
+                to="/cart"
+                onClick={() => onOpenChange(false)}
+                className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                    <ShoppingCart className="h-5 w-5" />
+                    {cartCount > 0 && (
+                      <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">
+                        {cartCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-sm font-black uppercase tracking-widest text-foreground">Cart</span>
+                </div>
+              </Link>
             </div>
           </div>
 
-          {isLoggedIn ? (
-            <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/50">
-                Profile
-              </p>
-              <div className="space-y-0.5">
-                <SheetClose asChild>
+          <div className="mb-10">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+              Account
+            </p>
+            <div className="space-y-1">
+              {isLoggedIn ? (
+                <>
                   <Link
                     to="/profile"
-                    className="group flex items-center gap-3.5 rounded-xl px-3.5 py-3 text-sm font-semibold text-foreground/80 transition-all duration-200 hover:bg-muted/50 hover:text-foreground"
+                    onClick={() => onOpenChange(false)}
+                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
-                    <UserCircle className="h-4 w-4 text-muted-foreground/50 transition-colors group-hover:text-foreground" strokeWidth={1.5} />
-                    My Profile
+                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                      <UserCircle className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-widest text-foreground">Profile</span>
                   </Link>
-                </SheetClose>
-                <button
-                  onClick={handleLogout}
-                  className="flex w-full items-center gap-3.5 rounded-xl px-3.5 py-3 text-sm font-semibold text-destructive/70 transition-all duration-200 hover:bg-destructive/10 hover:text-destructive"
-                >
-                  <LogOut className="h-4 w-4" strokeWidth={1.5} />
-                  Sign Out
-                </button>
-              </div>
+                  <button
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-4 rounded-none px-4 py-4 text-destructive transition-all hover:bg-destructive/5"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-destructive/10">
+                      <LogOut className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-widest">Sign Out</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    onClick={() => onOpenChange(false)}
+                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                      <LogIn className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-widest text-foreground">Sign In</span>
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => onOpenChange(false)}
+                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                      <UserCircle className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-black uppercase tracking-widest text-foreground">Join Us</span>
+                  </Link>
+                </>
+              )}
             </div>
-          ) : (
-            <div className="space-y-2.5">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/50">
-                Sign In
-              </p>
-              <SheetClose asChild>
-                <Link
-                  to="/login"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
-                >
-                  <LogIn className="h-4 w-4" />
-                  Sign In
-                </Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <Link
-                  to="/register"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-border/60 px-6 py-3 text-sm font-bold uppercase tracking-wider text-foreground/80 transition-all duration-200 hover:bg-muted/30 hover:text-foreground active:scale-[0.98]"
-                >
-                  <UserCircle className="h-4 w-4" />
-                  Create Account
-                </Link>
-              </SheetClose>
-            </div>
-          )}
-        </div>
+          </div>
 
-        <div className="border-t border-border/20 px-6 py-4">
-          <button
-            onClick={toggleTheme}
-            className="flex w-full items-center gap-3.5 rounded-xl px-3.5 py-3 text-sm font-semibold text-muted-foreground/70 transition-all duration-200 hover:bg-muted/50 hover:text-foreground"
-          >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4" strokeWidth={1.5} />
-            ) : (
-              <Moon className="h-4 w-4" strokeWidth={1.5} />
-            )}
-            <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
-          </button>
+          <div className="mb-8">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+              Preferences
+            </p>
+            <button
+              onClick={toggleTheme}
+              className="flex w-full items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30 text-foreground">
+                  {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                </div>
+                <span className="text-sm font-black uppercase tracking-widest text-foreground">
+                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                </span>
+              </div>
+            </button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

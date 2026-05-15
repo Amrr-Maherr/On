@@ -87,7 +87,7 @@ export default function ProfilePage() {
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Profile" }]} className="mb-6" />
 
-      <div className="mx-auto max-w-4xl space-y-8">
+      <div className="mx-auto space-y-8">
         <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
           <ProfileHeader user={user} />
           <div className="mb-4 md:mb-12">

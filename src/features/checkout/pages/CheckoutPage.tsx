@@ -171,7 +171,7 @@ export default function CheckoutPage() {
                     <input
                       id="address"
                       placeholder="Street name, building number"
-                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
+                      className="flex h-14 w-full rounded-none border-2 border-border/40 bg-transparent px-4 text-sm font-bold text-foreground transition-all duration-300 placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none"
                       {...register("address", { required: "Address is required" })}
                     />
                     {errors.address && (
@@ -190,7 +190,7 @@ export default function CheckoutPage() {
                     <input
                       id="city"
                       placeholder="Your City"
-                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
+                      className="flex h-14 w-full rounded-none border-2 border-border/40 bg-transparent px-4 text-sm font-bold text-foreground transition-all duration-300 placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none"
                       {...register("city", { required: "City is required" })}
                     />
                   </div>
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
                       id="phone"
                       type="tel"
                       placeholder="01000000000"
-                      className="flex h-14 w-full border-x-0 border-t-0 border-b-2 border-border/60 bg-transparent px-0 text-base font-bold placeholder:text-muted-foreground/20 focus:border-foreground focus:outline-none focus:ring-0 rounded-none"
+                      className="flex h-14 w-full rounded-none border-2 border-border/40 bg-transparent px-4 text-sm font-bold text-foreground transition-all duration-300 placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none"
                       {...register("phone", {
                         required: "Phone is required",
                         pattern: {

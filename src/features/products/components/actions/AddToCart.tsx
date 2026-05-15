@@ -33,16 +33,16 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
         disabled={isPending}
         aria-label="Add to cart"
         className={cn(
-          "flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-neutral-950 shadow-lg transition-all duration-300 hover:bg-white/90 active:scale-[0.97] disabled:opacity-50",
+          "flex w-full items-center justify-center gap-3 rounded-none bg-white px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 shadow-2xl transition-all duration-300 hover:bg-neutral-100 active:scale-[0.98] disabled:opacity-50",
           className,
         )}
       >
         {isPending ? (
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
-          <ShoppingCart className="h-3.5 w-3.5" />
+          <ShoppingCart className="h-4 w-4" />
         )}
-        {isPending ? "Adding..." : "Add to Cart"}
+        {isPending ? "Adding..." : "Add to Bag"}
       </button>
     );
   }
@@ -54,7 +54,7 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
       disabled={isPending}
       aria-label="Add to cart"
       className={cn(
-        "flex h-8 w-8 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-200 hover:bg-white hover:shadow-md active:scale-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:opacity-50",
+        "flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-white/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-white active:scale-90 focus-visible:outline-none disabled:opacity-50",
         className,
       )}
     >

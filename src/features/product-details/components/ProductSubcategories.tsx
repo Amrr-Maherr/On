@@ -13,11 +13,11 @@ const ProductSubcategories = memo(function ProductSubcategories({ subcategories 
       <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
         Categories
       </h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         {subcategories.map((sub) => (
           <span
             key={sub._id}
-            className="inline-flex items-center rounded-full bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground"
+            className="inline-flex items-center rounded-none border-2 border-border/40 bg-muted/20 px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80"
           >
             {sub.name}
           </span>

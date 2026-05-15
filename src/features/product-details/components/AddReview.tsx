@@ -19,10 +19,10 @@ const AddReview = memo(function AddReview() {
         </span>
         <h2 className="mt-2 text-2xl font-black tracking-tight">Write a Review.</h2>
       </div>
-      <form onSubmit={handleSubmit} className="rounded-2xl bg-card p-6 ring-1 ring-foreground/5 md:p-8">
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-medium text-foreground">Your Rating</span>
-          <div className="flex items-center gap-1">
+      <form onSubmit={handleSubmit} className="rounded-none border-2 border-border/40 bg-card p-6 md:p-10">
+        <div className="flex flex-col gap-3">
+          <span className="text-xs font-black uppercase tracking-widest text-foreground/60">Your Rating</span>
+          <div className="flex items-center gap-1.5">
             {Array.from({ length: 5 }, (_, i) => {
               const starValue = i + 1;
               return (
@@ -35,17 +35,18 @@ const AddReview = memo(function AddReview() {
                   className="cursor-pointer transition-transform duration-150 active:scale-90"
                 >
                   <Star
-                    className={`h-6 w-6 transition-colors ${
+                    className={`h-7 w-7 transition-colors ${
                       starValue <= (hoveredStar || rating)
                         ? "fill-amber-400 text-amber-400"
                         : "text-muted-foreground/20"
                     }`}
+                    strokeWidth={starValue <= (hoveredStar || rating) ? 0 : 2}
                   />
                 </button>
               );
             })}
             {rating > 0 && (
-              <span className="ml-2 text-sm text-muted-foreground/60">
+              <span className="ml-3 text-[10px] font-black uppercase tracking-widest text-amber-500">
                 {rating === 1 && "Poor"}
                 {rating === 2 && "Fair"}
                 {rating === 3 && "Good"}
@@ -56,27 +57,27 @@ const AddReview = memo(function AddReview() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2">
-          <label htmlFor="review-text" className="text-sm font-medium text-foreground">
+        <div className="mt-8 flex flex-col gap-3">
+          <label htmlFor="review-text" className="text-xs font-black uppercase tracking-widest text-foreground/60">
             Your Review
           </label>
           <textarea
             id="review-text"
-            rows={4}
+            rows={5}
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
             placeholder="Share your thoughts about this product..."
-            className="resize-none rounded-lg border border-border/40 bg-transparent p-4 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-1 focus:ring-foreground/20"
+            className="resize-none rounded-none border-2 border-border/40 bg-transparent p-6 text-sm font-bold leading-relaxed text-foreground placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none transition-all duration-300"
           />
         </div>
 
-        <div className="mt-6 flex flex-col items-end gap-3 sm:flex-row sm:items-center sm:justify-end">
-          <span className="text-xs text-muted-foreground/40">
+        <div className="mt-8 flex flex-col items-end gap-4 sm:flex-row sm:items-center sm:justify-end">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
             Your review will be public
           </span>
           <Button
             type="submit"
-            className="h-11 w-full cursor-pointer rounded-full bg-foreground px-6 text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97] sm:h-10 sm:w-auto"
+            className="h-14 w-full cursor-pointer px-10 text-sm font-black sm:w-auto"
           >
             Submit Review
           </Button>

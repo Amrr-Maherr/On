@@ -75,7 +75,7 @@
   --chart-3: oklch(0.45 0.01 85);
   --chart-4: oklch(0.35 0.01 85);
   --chart-5: oklch(0.25 0.01 85);
-  --radius: 0.75rem;
+  --radius: 0;
   --sidebar: oklch(0.985 0.003 85);
   --sidebar-foreground: oklch(0.12 0.008 85);
   --sidebar-primary: oklch(0.12 0.008 85);
@@ -141,7 +141,10 @@
     @apply font-sans scroll-smooth;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-heading;
   }
 

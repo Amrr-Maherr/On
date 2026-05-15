@@ -13,7 +13,7 @@ const ProductMainImage = memo(function ProductMainImage({ images }: ProductMainI
       grabCursor
       loop
       modules={[]}
-      className="rounded-xl bg-card ring-1 ring-foreground/10"
+      className="rounded-none bg-card border-2 border-border/40"
     >
       {images.map((img) => (
         <SwiperSlide key={img}>

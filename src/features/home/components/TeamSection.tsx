@@ -53,7 +53,7 @@ const TeamSection = memo(function TeamSection() {
                 }}
                 className="group flex flex-col items-center gap-6"
               >
-                <div className="w-full overflow-hidden rounded-2xl bg-muted/30">
+                <div className="w-full overflow-hidden rounded-none bg-muted/30">
                   <img
                     className="w-full transition-all duration-500 group-hover:scale-[1.02]"
                     src={member.image}

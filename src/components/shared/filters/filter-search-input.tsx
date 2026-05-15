@@ -22,10 +22,10 @@ function FilterSearchInput({
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
         className={cn(
-          "h-9 w-full rounded-xl border border-border/50 bg-transparent pl-9 pr-3 text-sm outline-none",
-          "placeholder:text-muted-foreground/50 font-medium",
-          "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
-          "transition-colors",
+          "h-11 w-full rounded-none border-2 border-border/40 bg-transparent pl-10 pr-4 text-sm font-bold outline-none",
+          "placeholder:text-muted-foreground/30",
+          "focus-visible:border-foreground",
+          "transition-all duration-300",
         )}
       />
     </div>

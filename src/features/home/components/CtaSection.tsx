@@ -11,7 +11,7 @@ const CtaSection = memo(function CtaSection() {
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
-          <div className="relative overflow-hidden rounded-3xl bg-muted/30 px-8 py-20 text-center md:px-16 md:py-28">
+          <div className="relative overflow-hidden rounded-none bg-muted/30 px-8 py-20 text-center md:px-16 md:py-28">
             <div className="relative z-10 mx-auto max-w-2xl">
               <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
                 Get Started
