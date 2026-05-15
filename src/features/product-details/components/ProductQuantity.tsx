@@ -15,16 +15,16 @@ const ProductQuantity = memo(function ProductQuantity({ quantity, available, onD
       <div className="flex items-center gap-2">
         <button
           onClick={onDecrease}
-          className="flex h-9 w-9 items-center justify-center rounded-xl border border-border transition-colors hover:bg-muted"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-border transition-colors hover:bg-muted md:h-9 md:w-9"
         >
           <Minus className="h-4 w-4" />
         </button>
-        <span className="flex h-9 w-12 items-center justify-center rounded-xl border border-border text-sm font-medium">
+        <span className="flex h-10 w-12 items-center justify-center rounded-xl border border-border text-sm font-medium md:h-9">
           {quantity}
         </span>
         <button
           onClick={onIncrease}
-          className="flex h-9 w-9 items-center justify-center rounded-xl border border-border transition-colors hover:bg-muted"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-border transition-colors hover:bg-muted md:h-9 md:w-9"
         >
           <Plus className="h-4 w-4" />
         </button>

@@ -25,7 +25,7 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
     return (
       <section>
         <h2 className="mb-6 text-xl font-light tracking-tight">Customer Reviews</h2>
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/40 bg-card py-16 text-center">
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/40 bg-card py-10 text-center md:py-16">
           <MessageSquare className="h-8 w-8 text-muted-foreground/30" />
           <div>
             <p className="text-sm font-medium text-foreground">No reviews yet</p>
@@ -63,7 +63,7 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
                         key={i}
                         className={`h-3 w-3 ${
                           i < Math.round(review.rating)
-                            ? "fill-foreground/80 text-foreground/80"
+                            ? "fill-amber-400 text-amber-400"
                             : "text-muted-foreground/20"
                         }`}
                       />

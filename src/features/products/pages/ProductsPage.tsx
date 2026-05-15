@@ -1,3 +1,5 @@
+import { useState, useMemo, useCallback, memo } from "react";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   FiltersPanel,
   FilterSection,
@@ -6,82 +8,168 @@ import {
   FilterSortDropdown,
   FilterSearchInput,
 } from "@/components/shared/filters";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useAllProducts } from "../hooks/useGetAllProducts";
+import ProductCard from "../components/ProductCard";
+import type { Category } from "@/features/products/types";
 
-const categories = [
-  { label: "Electronics", value: "electronics", count: 42 },
-  { label: "Clothing", value: "clothing", count: 28 },
-  { label: "Home & Garden", value: "home-garden", count: 15 },
-  { label: "Sports", value: "sports", count: 22 },
-  { label: "Books", value: "books", count: 34 },
+const categories: Category[] = [
+  { _id: "1", name: "Electronics", slug: "electronics", image: "", id: "1" },
+  { _id: "2", name: "Clothing", slug: "clothing", image: "", id: "2" },
+  { _id: "3", name: "Home & Garden", slug: "home-garden", image: "", id: "3" },
+  { _id: "4", name: "Sports", slug: "sports", image: "", id: "4" },
+  { _id: "5", name: "Books", slug: "books", image: "", id: "5" },
 ];
 
-const brands = [
-  { label: "Nike", value: "nike", count: 18 },
-  { label: "Apple", value: "apple", count: 12 },
-  { label: "Samsung", value: "samsung", count: 9 },
-  { label: "Sony", value: "sony", count: 7 },
-  { label: "Adidas", value: "adidas", count: 14 },
-];
-
-const placeholderProducts = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  title: `Product ${i + 1}`,
-  price: (Math.random() * 200 + 10).toFixed(2),
-}));
-
-export default function ProductsPage() {
+const SkeletonGrid = memo(function SkeletonGrid() {
   return (
-    <div className="container-layout py-8">
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold md:text-3xl">Products</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            142 products found
-          </p>
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {Array.from({ length: 8 }, (_, i) => (
+        <div key={i} className="flex flex-col">
+          <div className="aspect-[3/4] animate-pulse rounded-3xl bg-muted/50" />
+          <div className="mt-5 flex flex-col gap-2">
+            <div className="h-4 w-3/4 animate-pulse rounded bg-muted/50" />
+            <div className="h-6 w-1/4 animate-pulse rounded bg-muted/50" />
+          </div>
         </div>
-        <div className="w-full sm:w-56">
-          <FilterSortDropdown />
+      ))}
+    </div>
+  );
+});
+
+const ProductsPage = memo(function ProductsPage() {
+  const [page, setPage] = useState(1);
+  const { data, isLoading, isError, error, isFetching } = useAllProducts(page);
+
+  const totalPages = useMemo(
+    () => data?.metadata?.numberOfPages ?? 1,
+    [data],
+  );
+
+  if (isError) {
+    return (
+      <div className="container-layout flex min-h-[60vh] flex-col items-center justify-center gap-4">
+        <div className="rounded-full bg-destructive/10 p-4">
+          <span className="text-2xl">!</span>
         </div>
+        <p className="text-lg font-medium text-foreground">
+          Something went wrong
+        </p>
+        <p className="text-sm text-muted-foreground/60">
+          {(error as Error)?.message || "Failed to load products"}
+        </p>
+        <button
+          onClick={() => setPage(1)}
+          className="mt-2 h-10 cursor-pointer rounded-full bg-foreground px-6 text-sm font-medium text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+        >
+          Try again
+        </button>
       </div>
+    );
+  }
 
-      <div className="flex gap-8">
-        <FiltersPanel>
-          <FilterSearchInput placeholder="Search products..." />
+  return (
+    <div className="section-py">
+      <div className="container-layout">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Products" }]} className="mb-6" />
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl">
+              Products
+            </h1>
+            {data && (
+              <p className="mt-2 text-sm text-muted-foreground/60">
+                {data.results} {data.results === 1 ? "product" : "products"} found
+              </p>
+            )}
+          </div>
+          <div className="w-full sm:w-56">
+            <FilterSortDropdown />
+          </div>
+        </div>
 
-          <FilterSection title="Category">
-            <FilterCheckboxGroup options={categories} />
-          </FilterSection>
+        <div className="flex gap-8">
+          <FiltersPanel>
+            <FilterSearchInput placeholder="Search products..." />
 
-          <FilterSection title="Brand">
-            <FilterCheckboxGroup options={brands} />
-          </FilterSection>
+            <FilterSection title="Category">
+              <FilterCheckboxGroup
+                options={categories.map((c) => ({
+                  label: c.name,
+                  value: c.slug,
+                  count: 0,
+                }))}
+              />
+            </FilterSection>
 
-          <FilterSection title="Price Range">
-            <FilterPriceRange min={0} max={1000} />
-          </FilterSection>
-        </FiltersPanel>
+            <FilterSection title="Price Range">
+              <FilterPriceRange min={0} max={1000} />
+            </FilterSection>
+          </FiltersPanel>
 
-        <div className="flex-1">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {placeholderProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="aspect-square bg-muted" />
-                <CardHeader>
-                  <div className="h-4 w-3/4 rounded bg-muted" />
-                  <div className="mt-2 h-5 w-1/3 rounded bg-muted" />
-                </CardHeader>
-                <CardContent>
-                  <div className="h-3 w-1/2 rounded bg-muted" />
-                </CardContent>
-              </Card>
-            ))}
+          <div className="flex-1">
+            {isLoading ? (
+              <SkeletonGrid />
+            ) : data && data.data?.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {data.data.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className="mt-12 flex items-center justify-center gap-3">
+                    <button
+                      onClick={() => setPage((p) => Math.max(1, p - 1))}
+                      disabled={page <= 1}
+                      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-sm text-muted-foreground/60 transition-all duration-200 hover:bg-muted/50 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30"
+                    >
+                      ←
+                    </button>
+
+                    <div className="flex items-center gap-2">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                        (p) => (
+                          <button
+                            key={p}
+                            onClick={() => setPage(p)}
+                            className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-sm transition-all duration-200 ${
+                              p === page
+                                ? "bg-foreground text-background"
+                                : "text-muted-foreground/60 hover:bg-muted/50 hover:text-foreground"
+                            }`}
+                          >
+                            {p}
+                          </button>
+                        ),
+                      )}
+                    </div>
+
+                    <button
+                      onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={page >= totalPages}
+                      className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-sm text-muted-foreground/60 transition-all duration-200 hover:bg-muted/50 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30"
+                    >
+                      →
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3">
+                <p className="text-base font-medium text-foreground">
+                  No products found
+                </p>
+                <p className="text-sm text-muted-foreground/60">
+                  Try adjusting your search or filter criteria
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default ProductsPage;

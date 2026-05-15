@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "@/features/categories/components/CategoryCard";
 import { useAllCategories } from "@/features/all-categories/hooks/useAllCategories";
 import CategoriesLoader from "@/features/all-categories/components/CategoriesLoader";
@@ -49,6 +50,7 @@ export default function AllCategoriesPage() {
   return (
     <div className="container-layout section-py pt-8">
       <PageHelmet title="All Categories" description="Explore our product categories." />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Categories" }]} className="mb-6" />
       <div className="mb-10">
         <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Categories</h1>
         <p className="mt-2 text-sm text-muted-foreground/70">

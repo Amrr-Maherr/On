@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "@/features/brands/components/BrandCard";
 import { useAllBrands } from "@/features/all-brands/hooks/useAllBrands";
 import BrandsLoader from "@/features/all-brands/components/BrandsLoader";
@@ -38,6 +39,7 @@ export default function AllBrandsPage() {
   return (
     <div className="container-layout section-py pt-8">
       <PageHelmet title="All Brands" description="Discover our curated brands." />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Brands" }]} className="mb-6" />
       <div className="mb-10">
         <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Brands</h1>
         <p className="mt-2 text-sm text-muted-foreground/70">

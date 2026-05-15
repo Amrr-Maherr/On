@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishlistItem";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
@@ -74,6 +75,8 @@ export default function WishlistPage() {
   return (
     <div className="container-layout py-8">
       <PageHelmet title="My Wishlist" description="View your saved items." />
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} className="mb-6" />
 
       <div className="mb-8">
         <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">My Wishlist</h1>

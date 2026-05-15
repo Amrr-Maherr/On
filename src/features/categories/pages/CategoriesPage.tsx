@@ -1,3 +1,4 @@
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   FiltersPanel,
   FilterSection,
@@ -13,6 +14,7 @@ const placeholderCategories = Array.from({ length: 8 }, (_, i) => ({
 export default function CategoriesPage() {
   return (
     <div className="container-layout py-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Categories" }]} className="mb-6" />
       <div className="mb-6">
         <h1 className="text-2xl font-bold md:text-3xl">Categories</h1>
         <p className="mt-1 text-sm text-muted-foreground">

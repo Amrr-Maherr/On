@@ -11,7 +11,7 @@ const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }:
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-1.5">
-        <Star className="h-4 w-4 fill-foreground/80 text-foreground/80" />
+        <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
         <span className="text-sm font-medium">{rating}</span>
         <span className="text-sm text-muted-foreground">({ratingCount})</span>
       </div>

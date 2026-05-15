@@ -3,21 +3,14 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import bgImage from "@/assets/hero-bg.png";
+import HeroBackground from "./HeroBackground";
 
 const Hero = memo(function Hero() {
   const navigate = useNavigate();
 
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img
-          src={bgImage}
-          alt=""
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-background/5" />
-      </div>
+      <HeroBackground />
 
       <ScrollReveal className="container-layout relative z-10 w-full" distance={40}>
         <div className="max-w-2xl">

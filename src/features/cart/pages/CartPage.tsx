@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useUpdateCartItem } from "@/features/cart/hooks/useUpdateCartItem";
@@ -110,6 +111,8 @@ export default function CartPage() {
   return (
     <div className="container-layout py-8">
       <PageHelmet title="Cart" description="Review your shopping cart." />
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} className="mb-6" />
 
       <div className="mb-8 flex items-start justify-between">
         <div>

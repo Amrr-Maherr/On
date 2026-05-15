@@ -50,8 +50,8 @@ const TestimonialsSection = memo(function TestimonialsSection() {
                         size={14}
                         className={
                           i < item.rating
-                            ? "fill-foreground text-foreground"
-                            : "text-border"
+                            ? "fill-amber-400 text-amber-400"
+                            : "text-muted-foreground/20"
                         }
                       />
                     ))}

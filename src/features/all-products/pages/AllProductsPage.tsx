@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "@/features/products/components/ProductCard";
 import { useAllProducts } from "@/features/all-products/hooks/useAllProducts";
 import { useLocalSearch } from "@/shared/hooks/useLocalSearch";
@@ -156,6 +157,8 @@ export default function AllProductsPage() {
   return (
     <div className="container-layout section-py pt-8">
       <PageHelmet title="All Products" description="Browse our complete collection of products." />
+
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
 
       {searchQuery && (
         <div className="mb-6">

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { ShoppingBag, CreditCard, MapPin, Wallet } from "lucide-react";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -122,6 +123,7 @@ export default function CheckoutPage() {
       <PageHelmet title="Checkout" description="Complete your order." />
 
       <div className="mx-auto max-w-5xl">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Checkout" }]} className="mb-6" />
         <div className="mb-8">
           <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
             Checkout

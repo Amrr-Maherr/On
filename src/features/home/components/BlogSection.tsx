@@ -16,14 +16,14 @@ const BlogSection = memo(function BlogSection() {
       <ScrollReveal>
         <div className="container-layout">
           <div className="mb-12 md:mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
+            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
               Journal
             </span>
             <div className="mt-3 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:gap-12">
               <h2 className="text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Latest stories
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground/70 lg:mt-0 lg:text-right">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground/60 lg:mt-0 lg:text-right">
                 Explore insights on style, culture, and the stories behind the
                 products that define modern living.
               </p>

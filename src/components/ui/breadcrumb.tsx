@@ -39,7 +39,7 @@ const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProp
               </li>
               {!isLast && (
                 <li data-slot="breadcrumb-separator" className="[&>svg]:size-4" role="presentation">
-                  <ChevronRight />
+                  <ChevronRight className="text-muted-foreground/40" strokeWidth={1.5} />
                 </li>
               )}
             </Fragment>

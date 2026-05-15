@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Search, User, ShoppingCart, Heart, Package, Menu, X, LogOut, LogIn, UserCircle } from "lucide-react";
+import { Search, User, ShoppingCart, Heart, Package, Menu, LogOut, LogIn, UserCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -8,9 +8,10 @@ import Logo from "@/components/shared/logo/Logo";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useOrders } from "@/features/orders/hooks/useOrders";
+import MobileNavSheet from "./MobileNavSheet";
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { data: cartData } = useCart();
   const { data: wishlistData } = useWishlist();
@@ -28,10 +29,6 @@ function Navbar() {
     navigate("/login");
   }, [navigate]);
 
-  const toggleMenu = useCallback(() => {
-    setIsMenuOpen((prev) => !prev);
-  }, []);
-
   const toggleDropdown = useCallback(() => {
     setIsDropdownOpen((prev) => !prev);
   }, []);
@@ -39,17 +36,6 @@ function Navbar() {
   const closeDropdown = useCallback(() => {
     setIsDropdownOpen(false);
   }, []);
-
-  const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
-
-  const mobileLogout = useCallback(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    setIsMenuOpen(false);
-    navigate("/login");
-  }, [navigate]);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
@@ -169,91 +155,14 @@ function Navbar() {
           variant="ghost"
           size="icon"
           className="md:hidden rounded-xl text-muted-foreground/70"
-          aria-label="Toggle menu"
-          onClick={toggleMenu}
+          aria-label="Open menu"
+          onClick={() => setMobileMenuOpen(true)}
         >
-          {isMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
+          <Menu className="h-5 w-5" />
         </Button>
       </div>
 
-      {isMenuOpen && (
-        <div className="border-t border-border/40 bg-background/95 backdrop-blur-xl px-6 py-6 md:hidden">
-          <div className="relative mb-6">
-            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/50" />
-            <Input
-              placeholder="Search products..."
-              className="h-10 w-full rounded-2xl border-border/60 bg-muted/30 pl-11 text-sm"
-            />
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <ThemeToggle />
-            <Link to="/fave" onClick={closeMenu}>
-              <Button variant="ghost" size="sm" aria-label="Wishlist" className="gap-2 rounded-xl">
-                <Heart className="h-4 w-4" />
-                Wishlist
-                {favCount > 0 && (
-                  <span className="flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
-                    {favCount > 99 ? "99+" : favCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
-            <Link to="/orders" onClick={closeMenu}>
-              <Button variant="ghost" size="sm" aria-label="Orders" className="gap-2 rounded-xl">
-                <Package className="h-4 w-4" />
-                Orders
-                {ordersCount > 0 && (
-                  <span className="flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
-                    {ordersCount > 99 ? "99+" : ordersCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
-            <Link to="/cart" onClick={closeMenu}>
-              <Button variant="ghost" size="sm" aria-label="Cart" className="gap-2 rounded-xl">
-                <ShoppingCart className="h-4 w-4" />
-                Cart
-                {cartCount > 0 && (
-                  <span className="flex h-4 min-w-[14px] items-center justify-center rounded-full bg-foreground px-1 text-[9px] font-medium text-background">
-                    {cartCount > 99 ? "99+" : cartCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
-            {isLoggedIn ? (
-              <>
-                <Link to="/profile" onClick={closeMenu}>
-                  <Button variant="ghost" size="sm" aria-label="Profile" className="gap-2 rounded-xl">
-                    <UserCircle className="h-4 w-4" />
-                    Profile
-                  </Button>
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  aria-label="Logout"
-                  onClick={mobileLogout}
-                  className="gap-2 rounded-xl"
-                >
-                  <LogOut className="h-4 w-4" />
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Link to="/login" onClick={closeMenu}>
-                <Button variant="ghost" size="sm" aria-label="Account" className="gap-2 rounded-xl">
-                  <LogIn className="h-4 w-4" />
-                  Login
-                </Button>
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
+      <MobileNavSheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen} />
     </nav>
   );
 }

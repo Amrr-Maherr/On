@@ -23,15 +23,15 @@ const BannerContent = memo(function BannerContent({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex flex-col items-start gap-6 lg:w-1/2"
+      className="flex max-w-xl flex-col items-start gap-5"
     >
-      <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
+      <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
         Featured
       </span>
-      <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+      <h2 className="text-4xl font-light leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
         {data.headline}
       </h2>
-      <p className="max-w-md text-base leading-relaxed text-muted-foreground/80 sm:text-lg">
+      <p className="text-base leading-relaxed text-muted-foreground/70 sm:text-lg">
         {data.description}
       </p>
       <Button
