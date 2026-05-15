@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
@@ -55,21 +55,21 @@ export default function CartPage() {
     return <CartEmpty />;
   }
 
-  const handleUpdate = (itemId: string, count: number) => {
+  const handleUpdate = useCallback((itemId: string, count: number) => {
     if (count < 1) return;
     setUpdatingItemId(itemId);
     updateItem(
       { itemId, count },
       { onSettled: () => setUpdatingItemId(null) },
     );
-  };
+  }, [updateItem]);
 
-  const handleRemove = (itemId: string) => {
+  const handleRemove = useCallback((itemId: string) => {
     setUpdatingItemId(itemId);
     removeItem(itemId, { onSettled: () => setUpdatingItemId(null) });
-  };
+  }, [removeItem]);
 
-  const handleClearCart = () => {
+  const handleClearCart = useCallback(() => {
     toast(
       (t) => (
         <div className="flex flex-col gap-3">
@@ -99,7 +99,11 @@ export default function CartPage() {
       ),
       { duration: Infinity },
     );
-  };
+  }, [clearCartItems]);
+
+  const handleCheckout = useCallback(() => {
+    navigate("/checkout");
+  }, [navigate]);
 
   const isMutating = isUpdating || isRemoving || isClearing;
 
@@ -143,7 +147,7 @@ export default function CartPage() {
           <CartSummary
             totalCartPrice={cart.totalCartPrice}
             numOfCartItems={numOfCartItems}
-            onCheckout={() => navigate("/checkout")}
+            onCheckout={handleCheckout}
           />
         </div>
       </div>

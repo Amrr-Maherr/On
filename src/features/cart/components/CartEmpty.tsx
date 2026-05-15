@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-export default function CartEmpty() {
+const CartEmpty = memo(function CartEmpty() {
   return (
     <div className="container-layout flex flex-col items-center justify-center gap-4 py-24 text-center">
       <ShoppingCart className="h-16 w-16 text-muted-foreground/50" />
@@ -20,4 +21,6 @@ export default function CartEmpty() {
       </Link>
     </div>
   );
-}
+});
+
+export default CartEmpty;

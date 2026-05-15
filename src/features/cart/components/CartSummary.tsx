@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -8,7 +9,7 @@ interface CartSummaryProps {
   onCheckout?: () => void;
 }
 
-export default function CartSummary({
+const CartSummary = memo(function CartSummary({
   totalCartPrice,
   numOfCartItems,
   onCheckout,
@@ -53,4 +54,6 @@ export default function CartSummary({
       </CardFooter>
     </Card>
   );
-}
+});
+
+export default CartSummary;
