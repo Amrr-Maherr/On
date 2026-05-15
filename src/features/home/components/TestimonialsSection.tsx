@@ -9,12 +9,12 @@ const TestimonialsSection = memo(function TestimonialsSection() {
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
-          <div className="mb-14 text-center md:mb-18">
-            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+          <div className="mb-14 border-l-4 border-foreground pl-6 md:mb-18">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
               Testimonials
             </span>
-            <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              What our customers say
+            <h2 className="mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              What our<br />customers say.
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

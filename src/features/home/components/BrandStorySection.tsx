@@ -60,28 +60,26 @@ const BrandStorySection = memo(function BrandStorySection() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" distance={60}>
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-                Our Story
+            <div className="border-l-4 border-foreground pl-8">
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                Builder
               </span>
-              <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-              Engineered for
-                <br />
-                the Extraordinary.
+              <h2 className="mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+                ENGINEERED FOR<br />THE EXTRAORDINARY.
               </h2>
-              <p className="mt-6 leading-relaxed text-muted-foreground/70">
+              <p className="mt-8 text-lg font-medium leading-relaxed text-muted-foreground/70">
                 Born from a passion for performance, we set out to create
                 sportswear that doesn't just look good — it pushes boundaries.
                 Every stitch, every fabric, every design decision is made with
                 one goal: to help you perform at your best.
               </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground/70">
+              <p className="mt-4 text-lg font-medium leading-relaxed text-muted-foreground/70">
                 From the track to the gym, from the studio to the street, our
                 gear is built for those who refuse to settle. Join thousands of
                 athletes worldwide who trust us to deliver excellence.
               </p>
 
-              <div className="mt-8 grid grid-cols-3 gap-6 border-y border-border/50 py-6">
+              <div className="mt-10 grid grid-cols-3 gap-6 border-y border-border/50 py-8">
                 {stats.map((stat) => (
                   <div key={stat.label}>
                     <div className="text-2xl font-black text-foreground">
