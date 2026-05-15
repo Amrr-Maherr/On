@@ -1,14 +1,14 @@
-# Design System Documentation
+# Liquid Glass Commerce Design System (LGCDS)
 
-> Single source of truth for the On Storefront UI system.
-> Apple-inspired minimalism · Premium SaaS aesthetic · Editorial composition
+> **Single Source of Truth** for the On Storefront UI system.
+> Apple Store-inspired · Premium minimal · Editorial layout · Subtle glass enhancement
 
 ---
 
 ## 1. Design Philosophy
 
-### Vision
-A premium, calm, and sophisticated eCommerce experience inspired by Apple's design language. The UI should feel spacious, elegant, and refined — never loud, cluttered, or aggressive.
+### LGCDS Vision
+A premium, calm, and sophisticated eCommerce experience inspired by Apple's design language and modern SaaS dashboards. The UI should feel spacious, elegant, and refined — never loud, cluttered, or aggressive. Glassmorphism is used as a **subtle enhancement layer**, not the dominant design choice.
 
 ### Core Values
 - **Clarity over complexity** — Every element has purpose
@@ -16,95 +16,66 @@ A premium, calm, and sophisticated eCommerce experience inspired by Apple's desi
 - **Typography-led hierarchy** — Content is the hero
 - **Subtle motion** — Animation enhances, never distracts
 - **Neutral calmness** — Color recedes, content advances
+- **Glass as accent** — Used sparingly for depth, never for decoration
 
 ### Emotional Target
-The interface should make users feel: calm, sophisticated, confident, and comfortable.
+The interface should make users feel: **calm, sophisticated, confident, and comfortable** — like browsing the Apple Store online.
+
+### Apple Store-Inspired Direction
+- Product-first design philosophy
+- Large whitespace sections
+- Strong visual hierarchy
+- Minimal text density
+- Grid-based clean layouts
+- Story-driven sections
+- Smooth scroll experience
+- Focus on product imagery
 
 ---
 
-## 2. Core Principles
+## 2. Spacing System
 
-### Spacing
-- Use `py-24` / `py-32` for major section separations
-- Internal section padding: `px-6 md:px-12 lg:px-16`
-- Max content width: `max-w-7xl` (1280px)
-- Component gaps: `gap-6` / `gap-8` / `gap-12`
-- Text block spacing: `space-y-2` / `space-y-4` / `space-y-6`
-
-### Typography
-- Single typeface with weight variation
-- Generous line-height for readability
-- Editorial heading sizes (large, refined)
-- Minimal font-weight usage (300, 400, 500, 600)
-
-### Color
-- Neutral-dominant palette (gray-based)
-- Accent used sparingly for primary actions
-- Backgrounds: soft white / off-white
-- Text: near-black for primary, warm gray for secondary
-- Borders: ultra-light gray
-
-### Motion
-- Duration: 300–600ms for most transitions
-- Easing: `cubic-bezier(0.25, 0.1, 0.25, 1)` — Apple-like
-- Stagger delays: 100ms intervals
-- Reduced motion respected via `prefers-reduced-motion`
-
-### Component Consistency
-- Border radius scale: `rounded-sm` (4px) → `rounded-2xl` (16px) → `rounded-full`
-- Shadows: very subtle, never heavy
-- Hover states: opacity/transform shifts, no color jumps
-
-### Accessibility
-- Minimum contrast ratio 4.5:1 for text
-- Focus-visible rings on all interactive elements
-- ARIA labels on icon-only buttons
-- Respects `prefers-reduced-motion`
-- Semantic HTML structure
-
-### Responsiveness
-- Mobile-first approach
-- Tablet as adaptation, not breakpoint crisis
-- Desktop as spacious editorial layout
-- Never compress — stack gracefully
-
----
-
-## 3. Spacing System
-
+### Section Spacing
 | Token | Value | Usage |
 |-------|-------|-------|
 | `section-py` | `py-24 md:py-32` | Major page sections |
-| `section-px` | `px-6 md:px-12 lg:px-16` | Container padding |
-| `max-w-content` | `max-w-7xl` | Content container |
+| `section-px` | `px-6 md:px-10 lg:px-16` | Container padding |
+| `max-w-content` | `max-w-7xl` | Default content container |
 | `gap-section` | `gap-16 md:gap-24` | Between sections |
 | `gap-grid` | `gap-6 md:gap-8` | Grid item gaps |
 | `gap-stack` | `space-y-4` | Vertical text rhythm |
 | `gap-inline` | `gap-3 md:gap-4` | Horizontal element spacing |
 
 ### Container Widths
-- **Default**: `max-w-7xl mx-auto px-6 md:px-12 lg:px-16`
-- **Narrow**: `max-w-4xl` (editorial content)
+- **Default**: `max-w-7xl mx-auto px-6 md:px-10 lg:px-16`
+- **Narrow**: `max-w-4xl` (editorial content, auth)
 - **Wide**: `max-w-[90rem]` (full product grids)
 - **Full**: edge-to-edge (hero backgrounds)
 
+### Responsive Spacing
+| Screen | Padding-X | Section Py | Grid Columns |
+|--------|-----------|------------|--------------|
+| Mobile | `px-6` | `py-16` | 1 col |
+| Tablet | `px-10` | `py-20` | 2 cols |
+| Desktop | `px-16` | `py-32` | 3-4 cols |
+
 ---
 
-## 4. Typography System
+## 3. Typography System
 
-### Font Family
-- **Primary**: `"Geist Variable", sans-serif` (already in project)
-- **Fallback**: `system-ui, -apple-system, sans-serif`
+### Font Stack
+- **Primary**: `"Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
+- **Unified across entire app** — No mixed font systems
 
 ### Heading Hierarchy
-
 | Level | Size (Desktop) | Weight | Line Height | Letter Spacing |
 |-------|---------------|--------|-------------|----------------|
-| `h1` | `text-6xl md:text-7xl lg:text-8xl` | `font-light` | `leading-[1.05]` | `tracking-tight` |
-| `h2` | `text-4xl md:text-5xl lg:text-6xl` | `font-light` | `leading-[1.1]` | `tracking-tight` |
+| `h1` | `text-5xl md:text-6xl lg:text-7xl` | `font-light` | `leading-[1.05]` | `tracking-tight` |
+| `h2` | `text-4xl md:text-5xl` | `font-light` | `leading-[1.1]` | `tracking-tight` |
 | `h3` | `text-2xl md:text-3xl` | `font-medium` | `leading-[1.2]` | `tracking-normal` |
 | `h4` | `text-xl md:text-2xl` | `font-medium` | `leading-[1.3]` | `tracking-normal` |
-| `h5` | `text-lg md:text-xl` | `font-semibold` | `leading-[1.4]` | — |
+| `h5` | `text-lg md:text-xl` | `font-medium` | `leading-[1.4]` | — |
+| `h6` | `text-base md:text-lg` | `font-medium` | `leading-[1.4]` | — |
 
 ### Body Text
 | Usage | Size | Weight | Line Height |
@@ -117,99 +88,241 @@ The interface should make users feel: calm, sophisticated, confident, and comfor
 
 ### Editorial Text
 - Pull quotes: `text-2xl md:text-3xl font-light italic`
-- Section labels: `text-xs font-medium uppercase tracking-widest text-muted-foreground`
+- Section labels: `text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60`
 - Price: `text-2xl font-medium tracking-tight`
+- Feature headings: `text-3xl md:text-4xl font-light tracking-tight`
 
 ---
 
-## 5. Color System
+## 4. Color System
 
-### Neutral Palette (Light Mode)
-
+### Light Mode
 | Token | Value (oklch) | Usage |
 |-------|---------------|-------|
-| `--background` | `oklch(0.98 0.005 85)` | Page background (warm off-white) |
-| `--foreground` | `oklch(0.13 0.01 85)` | Primary text |
-| `--card` | `oklch(1 0 0)` | Card surface |
-| `--card-foreground` | `oklch(0.13 0.01 85)` | Card text |
-| `--muted` | `oklch(0.95 0.005 85)` | Muted background |
-| `--muted-foreground` | `oklch(0.55 0.01 85)` | Secondary text |
-| `--border` | `oklch(0.92 0.005 85)` | Borders, dividers |
-| `--primary` | `oklch(0.13 0.01 85)` | Primary (near-black) |
-| `--primary-foreground` | `oklch(0.98 0.005 85)` | Primary text on dark |
-| `--accent` | `oklch(0.92 0.01 85)` | Subtle accent bg |
-| `--accent-foreground` | `oklch(0.13 0.01 85)` | Accent text |
+| `--background` | `oklch(0.985 0.003 85)` | Page background (warm off-white) |
+| `--foreground` | `oklch(0.12 0.008 85)` | Primary text (near-black) |
+| `--card` | `oklch(1 0 0)` | Card surface (pure white) |
+| `--card-foreground` | `oklch(0.12 0.008 85)` | Card text |
+| `--muted` | `oklch(0.955 0.004 85)` | Muted background |
+| `--muted-foreground` | `oklch(0.55 0.01 85)` | Secondary text (warm gray) |
+| `--border` | `oklch(0.92 0.004 85)` | Borders, dividers (ultra-light) |
+| `--primary` | `oklch(0.12 0.008 85)` | Primary (near-black) |
+| `--primary-foreground` | `oklch(0.985 0.003 85)` | Primary text on dark |
+| `--accent` | `oklch(0.94 0.005 85)` | Subtle accent bg |
+| `--accent-foreground` | `oklch(0.12 0.008 85)` | Accent text |
+
+### Dark Mode
+| Token | Value (oklch) | Usage |
+|-------|---------------|-------|
+| `--background` | `oklch(0.13 0.004 85)` | Soft dark surface |
+| `--foreground` | `oklch(0.96 0.003 85)` | Primary text (off-white) |
+| `--card` | `oklch(0.16 0.004 85)` | Card surface (dark) |
+| `--border` | `oklch(1 0 0 / 6%)` | Subtle border |
 
 ### Usage Guidelines
-- **Backgrounds**: Use the warm off-white for main sections, pure white for cards
-- **Text**: Near-black for headings, warm gray (`--muted-foreground`) for body/secondary
-- **Borders**: Ultra-light gray, `1px` or `0.5px`
+- **Backgrounds**: Warm off-white for main sections, pure white for cards
+- **Text**: Near-black for headings, muted-foreground for body/secondary
+- **Borders**: Ultra-light gray, 1px or 0.5px
 - **Accent**: Use sparingly — only for primary CTAs and key interactive elements
 - **Never use**: Fully saturated colors, heavy gradients, or high-contrast borders
+- **Consistency**: Use existing CSS variable tokens ONLY — no inline hex/rgb colors
 
 ---
 
-## 6. Component Standards
+## 5. Glassmorphism Rules (LGCDS Enhancement)
+
+### Where to Use Glass
+- **Navbar backdrop**: `bg-background/80 backdrop-blur-xl` — subtle blur
+- **Modals/Overlays**: Soft backdrop blur for depth
+- **Hero overlays**: Gradient transparency overlays
+- **Mobile menus**: Backdrop blur for context preservation
+
+### Where NOT to Use Glass
+- **Product cards**: Keep clean and solid (Apple Store style)
+- **Buttons**: Solid or outline only
+- **Input fields**: Clean bordered fields
+- **Main content areas**: Solid backgrounds
+- **Footers**: Solid clean backgrounds
+
+### Blur Limitations
+- Max blur: `backdrop-blur-xl` (24px)
+- Standard blur: `backdrop-blur-lg` (16px)
+- Light blur: `backdrop-blur-sm` (8px)
+- Glass opacity: never below 80% background visibility
+- Glass should enhance readability, never reduce it
+
+---
+
+## 6. Component System
 
 ### Buttons
-
 | Variant | Style | Usage |
 |---------|-------|-------|
-| Primary | `bg-foreground text-background rounded-full px-8 py-4` | Main CTAs |
-| Outline | `border border-border bg-transparent rounded-full px-8 py-4` | Secondary actions |
-| Ghost | `hover:bg-muted/50 rounded-full` | Icon buttons |
+| Primary | `bg-foreground text-background rounded-full px-8 py-3 text-sm font-medium` | Main CTAs |
+| Outline | `border border-border bg-transparent rounded-full px-8 py-3 text-sm font-medium` | Secondary actions |
+| Ghost | `hover:bg-muted/50 rounded-xl` | Icon buttons |
 | Link | `text-foreground underline-offset-4 hover:underline` | Text links |
+| Destructive | `text-destructive bg-destructive/10 hover:bg-destructive/20 rounded-full` | Delete actions |
 
 **States**: `hover:opacity-80`, `active:scale-[0.97]`, `focus-visible:ring-2`
 **Transitions**: `duration-300 ease-out`
+**Sizing**: `h-8` (default), `h-7` (sm), `h-9` (lg), `size-8` (icon)
 
 ### Cards
-- **Border radius**: `rounded-2xl` or `rounded-3xl`
-- **Shadow**: `shadow-sm` or `shadow-md` for elevation
+- **Border radius**: `rounded-2xl` or `rounded-xl`
+- **Background**: `bg-card`
+- **Border**: `ring-1 ring-foreground/10` or `border border-border/50`
 - **Padding**: `p-6 md:p-8`
-- **Hover**: `hover:-translate-y-0.5 hover:shadow-md` with `duration-500`
+- **Hover**: `hover:-translate-y-0.5` with `duration-500`
 
-### Product Cards
-- Clean image presentation with subtle zoom on hover
-- Minimal info: name, price, quick-add
+### Product Cards (Apple-Style)
+- Clean image presentation with subtle zoom on hover (`group-hover:scale-105`)
+- Minimal info: image, name, price, quick-add
 - No badges or ribbons unless necessary
 - `group` pattern for hover interactions
+- Aspect-ratio container for images
 
 ### Inputs
-- **Border**: `border border-border rounded-2xl`
-- **Padding**: `px-5 py-3.5`
-- **Focus**: `focus:border-foreground focus:ring-0`
-- **Placeholder**: `text-muted-foreground/60`
+- **Border**: `border border-input rounded-2xl`
+- **Height**: `h-12`
+- **Padding**: `px-4 py-3`
+- **Focus**: `focus:border-foreground/40 focus:ring-0`
+- **Placeholder**: `placeholder:text-muted-foreground/40`
+- **Background**: `bg-transparent`
 
-### Sections
-- Section heading pattern: label + title + optional description
-- `py-24 md:py-32` vertical rhythm
-- ScrollReveal wrapper for entry animation
+### Modals / Dialogs
+- Centered clean overlays
+- Soft backdrop blur
+- Minimal padding, clean typography
+- Close button: top-right ghost icon
 
-### Navbar
-- Fixed/sticky top, backdrop blur
+### Navbar (Apple-Style)
+- Sticky top, `backdrop-blur-xl` with background transparency
 - Height: `h-16 md:h-20`
+- Border bottom: `border-border/40`
 - Clean dividers, minimal color
-- Icon buttons with badge indicators
+- Icon buttons with badge indicators (round, bg-foreground/text-background)
+- Search: subtle bordered field, centered
 
-### Footer
-- Multi-column layout, generous spacing
+### Footer (Apple-Style)
+- Clean structured layout with border-top
+- `bg-muted/20` background
+- Multi-column grid `gap-12`
 - Small meta text for links
-- Clean bottom bar with copyright
+- Clean bottom bar with copyright + payment methods
 
 ### Loaders
-- Skeleton approach preferred over spinners
-- Spinner only for page-level loading
-- `motion` fade-in/out for transitions
+- **Preferred**: Skeleton approach (shimmer animation)
+- **Fallback**: Minimal spinner for page-level loading
+- **Transitions**: Fade in/out for content changes
 
 ### Empty States
-- Centered illustration or icon
+- Centered layout with icon
 - Clear heading + description
-- Single CTA button
+- Single CTA button (clean ghost or outline)
+- No excessive illustration
 
 ---
 
-## 7. Motion Rules
+## 7. Feature-Specific UI Rules
+
+### Home → Storytelling Editorial Landing
+- Full-viewport hero with gradient overlay
+- Editorial section pattern: label + spacious heading + description
+- ScrollReveal animations throughout
+- Generous whitespace between sections
+- Product carousel with clean card design
+- Testimonial section with subtle card design
+- **Apple Store vibe**: Cinematic, spacious, story-driven
+
+### Products → Clean Product Grid Browsing
+- Sidebar filters (desktop) + product grid
+- `gap-8` grid spacing, 4 columns max
+- Editorial header with count
+- Clean pagination
+- Mobile filter sheet (bottom drawer)
+- **Apple Store vibe**: Browse-focused, image-forward
+
+### Product Details → Immersive Product Showcase
+- Two-column layout: sticky gallery + product info
+- Image gallery with thumbnails and lightbox
+- Clean info card: price, rating, description
+- Quantity selector + add to cart actions
+- Reviews section with rating breakdown
+- **Apple Store vibe**: Premium showcase, detailed
+
+### Categories & Brands → Spacious Gallery Grid
+- Gallery grid with `gap-8`
+- Aspect-ratio card containers
+- Gradient overlays on hover (subtle)
+- Clean grid layout, minimal text
+- **Apple Store vibe**: Visual discovery
+
+### Cart → Clean Utility
+- Two-column: items + summary sidebar
+- Item cards: image, details, quantity controls, price
+- Summary: subtotal, total, checkout CTA
+- Clear cart option (ghost destructive)
+- **Apple Store vibe**: Clean, functional, minimal
+
+### Checkout → Ultra-Minimal Distraction-Free
+- Two-column: form + order summary
+- Large clean input fields
+- Payment method toggle buttons
+- Sticky order summary sidebar
+- Single primary CTA
+- **Apple Store vibe**: Focused, trust-building
+
+### Profile → Structured Dashboard
+- Centered `max-w-4xl` layout
+- Editorial header with user info
+- Info card with clean data display
+- Action buttons (logout/edit) as clean links
+- **Apple Store vibe**: Personal, organized
+
+### Auth → Centered Clean Minimal Panel
+- Centered single-column form
+- No card wrapper — clean unboxed layout
+- `max-w-sm` form width
+- Large elegant heading
+- Muted description text
+- Clean inputs with labels
+- **Apple Store vibe**: Minimal, welcoming
+
+### Orders → Clean List History
+- Single column order cards
+- Clean card per order with status badge
+- Status color-coded indicators
+- Minimal actions per order
+- **Apple Store vibe**: Straightforward, organized
+
+---
+
+## 8. Dark Mode Rules (Apple-Level Quality)
+
+### Principles
+- **Soft dark surfaces**: `oklch(0.13 0.004 85)` — never pure black `#000`
+- **Eye-friendly contrast**: Text at `oklch(0.96 0.003 85)` on dark surfaces
+- **Smooth transitions**: CSS `transition` on color properties
+- **Consistent tokens**: Same variable names as light mode, just different values
+
+### Dark Mode Specifics
+- Background: Soft charcoal (not black)
+- Cards: Slightly lighter than background (`oklch(0.16 0.004 85)`)
+- Borders: Semi-transparent white (`oklch(1 0 0 / 6%)`)
+- Muted text: Warm gray at `oklch(0.65 0.005 85)`
+- No pure white elements (reduces eye strain)
+- All components must support both modes seamlessly
+
+### Implementation
+- Use Tailwind's `dark:` variant for overrides
+- CSS variables handle the heavy lifting
+- Components automatically adapt via variable-based classes
+- Theme toggle must animate smoothly (no instant flash)
+
+---
+
+## 9. Motion & Animation System
 
 ### Transition Defaults
 ```css
@@ -217,10 +330,10 @@ transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 ```
 
 ### Hover Behaviors
-- **Buttons**: opacity shift + subtle scale
-- **Cards**: slight translateY + shadow elevation
-- **Images**: gentle scale (105%) on zoom
-- **Links**: underline or opacity
+- **Buttons**: Opacity shift + subtle scale (`active:scale-[0.97]`)
+- **Cards**: Slight translateY (`hover:-translate-y-0.5`) + shadow elevation
+- **Images**: Gentle scale (`group-hover:scale-105` on product images)
+- **Links**: Opacity or underline transition
 
 ### Fade Animations (ScrollReveal)
 - **Initial**: `opacity: 0, y: 24`
@@ -229,91 +342,57 @@ transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 - **Easing**: `easeOut`
 - **Stagger delay**: `0.1s` between elements
 
-### Micro Interactions
-- Badge count changes: subtle scale bounce
-- Cart/Wishlist heart: gentle pop on add
-- Button click: `scale(0.97)` feedback
-
 ### Performance Rules
 - Use `transform` and `opacity` only (GPU-accelerated)
-- Avoid animating `width`, `height`, `top`, `left`
+- Never animate `width`, `height`, `top`, `left`
 - `will-change: transform` on animated elements
 - Respect `prefers-reduced-motion`
 
 ---
 
-## 8. Feature-Specific UI Direction
+## 10. Consistency Rules
 
-### Home
-- **Personality**: Cinematic, spacious, editorial landing
-- **Hero**: Full-viewport with gradient overlay, 80px+ light font weight headings, two CTAs
-- **Sections**: `section-py` (py-20 md:py-32), label + editorial heading pattern
-- **Content**: ScrollReveal animations, generous whitespace, magazine-like editorial feel
+### Naming Conventions
+- Components: PascalCase
+- Files: kebab-case
+- CSS: Tailwind utility classes only
+- Variant props: descriptive strings
 
-### Products (All Products)
-- **Personality**: Clean, editorial product grid
-- **Layout**: Sidebar filters (desktop) + product grid, `gap-8` grid spacing
-- **Header**: Editorial `text-4xl font-light tracking-tight md:text-5xl` with lighter subtitle
-- **Cards**: Image-forward with `rounded-2xl`, hover scale effect, minimal info
+### Reusable Patterns
+- `Section` wrapper for consistent section structure
+- `ScrollReveal` for entry animations
+- `cn()` utility for conditional class merging
+- `memo` for pure presentation components
+- `useCallback` for event handlers passed as props
+- `useMemo` for computed values
 
-### Product Details
-- **Personality**: Premium showcase layout
-- **Layout**: Two-column grid `gap-10 lg:gap-16` with sticky image gallery
-- **Info cards**: `rounded-2xl border border-border/50 bg-card p-6 md:p-8`
-- **Content**: Breadcrumb, gallery, rating/price card, description, quantity/actions, reviews
+### Tailwind Conventions
+- Always use Tailwind utility classes over custom CSS
+- Custom CSS only for: keyframes, complex animations
+- Group related utilities logically
+- Never use `@apply` in component files
 
-### Auth
-- **Personality**: Centered, calm, elegant minimal
-- **Layout**: Two-column (form + decorative panel), single-column on mobile
-- **Form**: No card wrapper, clean unboxed layout with `max-w-sm`
-- **Inputs**: `h-12 rounded-2xl border border-border/60` with soft focus
-- **Header**: Centered `text-3xl font-light md:text-4xl` with muted description
+### Import Order
+1. React/external libraries
+2. Internal components (`@/`)
+3. Hooks
+4. Utilities
+5. Types
+6. Assets/styles
 
-### Cart
-- **Personality**: Clean utility with refined details
-- **Layout**: Two-column (items + summary sidebar, `gap-12`)
-- **Items**: `rounded-2xl border border-border/50` cards with minimal controls
-- **CTAs**: Full-width premium checkout button, ghost delete action
-
-### Checkout
-- **Personality**: Ultra-clean, distraction-free flow
-- **Layout**: Two-column (shipping form + order summary)
-- **Inputs**: Premium `h-12 rounded-2xl border-border/60` to match auth
-- **Payment**: Toggle buttons with `rounded-2xl`, clear active state
-- **Summary**: Sticky sidebar card with clean typography
-
-### Profile
-- **Personality**: Refined dashboard
-- **Layout**: Centered `max-w-4xl` with `section-py pt-8`
-- **Header**: Editorial heading with user info
-- **Content**: Profile info card, action buttons (logout/edit)
-
-### Orders
-- **Personality**: Clean list-based history
-- **Layout**: Single column order cards
-- **Cards**: `rounded-2xl border border-border/50` with order details, items, status
-- **Status**: Color-coded indicators (paid/unpaid, delivered/processing)
-
-### Wishlist
-- **Personality**: Clean item grid/list
-- **Layout**: Single-column wishlist item cards
-- **Cards**: `rounded-2xl border border-border/50` with image, info, actions
-- **Actions**: Ghost remove button + bordered "Add to Cart" button
-
-### Categories & Brands
-- **Personality**: Spacious gallery grid
-- **Layout**: Filter sidebar + grid with `gap-8`
-- **Cards**: `rounded-2xl`, aspect-ratio containers, gradient overlays on hover
-- **Header**: Editorial style matching All Products
-
-### Footer Pages (About, Contact, Privacy, etc.)
-- **Personality**: Clean content presentation
-- **Layout**: Centered `max-w-3xl` editorial container
-- **Typography**: Large headings, comfortable reading line-height
+### Quality Checklist
+- [ ] Dark mode supported and polished
+- [ ] Responsive (mobile → desktop)
+- [ ] Smooth hover/active states
+- [ ] No hardcoded colors
+- [ ] Uses CSS variable tokens
+- [ ] Accessible (focus-visible, aria-labels)
+- [ ] Proper spacing per LGCDS
+- [ ] Inter font used consistently
 
 ---
 
-## 9. Responsive Rules
+## 11. Responsive Rules
 
 ### Breakpoints (Tailwind Default)
 - `sm`: 640px
@@ -327,61 +406,12 @@ transition: all 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
 - Two-column on tablet
 - Multi-column on desktop
 - Never horizontal scroll (except carousels)
-
-### Spacing Adaptation
-
-| Screen | Padding-X | Section Py | Grid |
-|--------|-----------|------------|------|
-| Mobile | `px-6` | `py-16` | 1 col |
-| Tablet | `px-10` | `py-20` | 2 cols |
-| Desktop | `px-16` | `py-32` | 3-4 cols |
+- Stack gracefully, never compress
 
 ### Typography Scaling
-- Mobile: headings 75% of desktop size
-- Fluid via `clamp()` or responsive classes
+- Mobile: headings ~75% of desktop size
+- Fluid via responsive classes
 - Line-height increases on mobile for readability
-
----
-
-## 10. Code/UI Consistency Rules
-
-### Naming Conventions
-- Components: PascalCase
-- Files: kebab-case
-- CSS classes: Tailwind utility classes
-- Variant props: descriptive strings
-
-### Reusable Patterns
-- `Section` wrapper for consistent section structure
-- `ScrollReveal` for entry animations
-- `cn()` utility for conditional class merging
-- `memo` for pure presentation components
-- `useCallback` for event handlers passed as props
-
-### Variant Strategy
-- Use `cva` (class-variance-authority) for multi-variant components
-- Default variants for common cases
-- Variants: `size`, `variant`, `color` where applicable
-
-### Tailwind Conventions
-- Always use Tailwind utility classes over custom CSS
-- Custom CSS only for: animations, keyframes, complex gradients
-- Use `@apply` sparingly (prefer utility classes in JSX)
-- Group related utilities logically
-
-### Animation Consistency
-- All animations via `framer-motion` or `motion` library
-- Consistent duration/easing across similar interactions
-- ScrollReveal as the standard scroll-triggered animation
-- Reduced motion hook: `useReducedMotion()` from framer-motion
-
-### Import Order
-1. React/external libraries
-2. Internal components (relative/`@/`)
-3. Hooks
-4. Utilities
-5. Types
-6. Assets/styles
 
 ---
 

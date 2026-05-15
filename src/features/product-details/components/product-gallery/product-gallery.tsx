@@ -43,7 +43,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
 
   return (
     <>
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="relative group">
           <Swiper
             onSlideChange={handleSlideChange}
@@ -51,7 +51,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             modules={[FreeMode, Thumbs]}
             grabCursor
             loop
-            className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10"
+            className="overflow-hidden rounded-2xl bg-card ring-1 ring-foreground/5"
           >
             {images.map((img) => (
               <SwiperSlide key={img}>
@@ -69,7 +69,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             type="button"
             onClick={openLightbox}
             aria-label="Open image in fullscreen"
-            className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm opacity-0 transition-all duration-200 hover:bg-white hover:scale-110 focus:opacity-100 group-hover:opacity-100"
+            className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-foreground/60 opacity-0 transition-all duration-200 hover:bg-background hover:text-foreground group-hover:opacity-100"
           >
             <Expand className="h-4 w-4" />
           </button>
@@ -89,10 +89,10 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             {images.map((img, index) => (
               <SwiperSlide key={img} className="!w-auto">
                 <span
-                  className={`block overflow-hidden rounded-lg ring-1 transition-all duration-200 ${
+                  className={`block overflow-hidden rounded-xl ring-1 transition-all duration-200 ${
                     index === activeIndex
-                      ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
-                      : "ring-foreground/10 opacity-60 hover:opacity-100"
+                      ? "ring-2 ring-foreground ring-offset-2 ring-offset-background"
+                      : "ring-foreground/5 opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img

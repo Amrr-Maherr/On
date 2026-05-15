@@ -26,13 +26,14 @@ function ProductsPagination({
   }
 
   return (
-    <nav className="mt-12 flex items-center justify-center gap-1" aria-label="Pagination">
+    <nav className="mt-12 flex items-center justify-center gap-1.5" aria-label="Pagination">
       <Button
         variant="outline"
         size="icon"
         disabled={currentPage <= 1}
         onClick={() => onPageChange(currentPage - 1)}
         aria-label="Previous page"
+        className="rounded-full"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
@@ -48,7 +49,7 @@ function ProductsPagination({
             variant={currentPage === page ? "default" : "outline"}
             size="icon"
             onClick={() => onPageChange(page as number)}
-            className={cn("h-8 w-8", currentPage === page && "cursor-default")}
+            className={cn("h-8 w-8 rounded-full", currentPage === page && "cursor-default")}
             aria-current={currentPage === page ? "page" : undefined}
           >
             {page}
@@ -62,6 +63,7 @@ function ProductsPagination({
         disabled={currentPage >= totalPages}
         onClick={() => onPageChange(currentPage + 1)}
         aria-label="Next page"
+        className="rounded-full"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>

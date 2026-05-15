@@ -8,8 +8,8 @@ const ValuesSection = memo(function ValuesSection() {
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
-          <div className="mb-12 text-center md:mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
+          <div className="mb-14 text-center md:mb-18">
+            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
               Our Ethos
             </span>
             <h2 className="mt-3 text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
@@ -30,7 +30,7 @@ const ValuesSection = memo(function ValuesSection() {
                 }}
                 className="group flex flex-col gap-6"
               >
-                <div className="overflow-hidden rounded-2xl bg-muted/30">
+                <div className="overflow-hidden rounded-2xl bg-muted/20">
                   <img
                     className="aspect-[4/3] w-full object-cover transition-all duration-500 group-hover:scale-[1.02]"
                     src={value.image}

@@ -11,16 +11,16 @@ interface ProductInfoProps {
 const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   return (
     <div>
-      <h1 className="text-2xl font-bold leading-tight md:text-3xl lg:text-4xl">
+      <h1 className="text-3xl font-light leading-tight tracking-tight md:text-4xl lg:text-5xl">
         {title}
       </h1>
       {brandName && (
-        <p className="mt-1.5 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm text-muted-foreground">
           by{" "}
           {brandSlug && brandId ? (
             <Link
               to={`/brands/${brandSlug}/${brandId}`}
-              className="font-medium text-foreground underline underline-offset-2 transition-colors hover:text-primary"
+              className="font-medium text-foreground underline underline-offset-2 transition-colors hover:text-foreground/70"
             >
               {brandName}
             </Link>

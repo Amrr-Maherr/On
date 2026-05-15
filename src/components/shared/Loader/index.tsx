@@ -8,9 +8,9 @@ interface LoaderProps {
 }
 
 const sizeMap = {
-  sm: "h-6 w-6 border-2",
-  md: "h-10 w-10 border-[2.5px]",
-  lg: "h-14 w-14 border-[3px]",
+  sm: "h-5 w-5 border-[1.5px]",
+  md: "h-8 w-8 border-2",
+  lg: "h-10 w-10 border-[2.5px]",
 };
 
 const Loader = memo(function Loader({ size = "md", className, text }: LoaderProps) {
@@ -28,7 +28,7 @@ const Loader = memo(function Loader({ size = "md", className, text }: LoaderProp
         )}
       />
       {text && (
-        <p className="text-sm text-muted-foreground/70 tracking-wide">{text}</p>
+        <p className="text-sm text-muted-foreground/50 tracking-wide">{text}</p>
       )}
     </div>
   );

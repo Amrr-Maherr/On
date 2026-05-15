@@ -49,12 +49,12 @@ const socialLinks = [
 
 const Footer = memo(function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/20">
+    <footer className="border-t border-border/30 bg-muted/10">
       <div className="container-layout py-16 md:py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <Logo />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground/70">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground/60">
               Discover premium products with a seamless shopping experience.
               Quality curated for modern living.
             </p>
@@ -64,7 +64,7 @@ const Footer = memo(function Footer() {
                   key={social.name}
                   href={social.href}
                   aria-label={social.name}
-                  className="flex h-8 w-8 items-center justify-center rounded-xl text-muted-foreground/50 transition-colors duration-200 hover:bg-muted/50 hover:text-foreground"
+                  className="flex h-8 w-8 items-center justify-center rounded-xl text-muted-foreground/40 transition-colors duration-200 hover:bg-muted/50 hover:text-foreground"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
                     <path d={social.path} />
@@ -76,7 +76,7 @@ const Footer = memo(function Footer() {
 
           {linkSections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+              <h4 className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/50">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -84,7 +84,7 @@ const Footer = memo(function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className="text-sm text-muted-foreground/70 transition-colors duration-200 hover:text-foreground"
+                      className="text-sm text-muted-foreground/60 transition-colors duration-200 hover:text-foreground"
                     >
                       {link.label}
                     </Link>
@@ -96,14 +96,14 @@ const Footer = memo(function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border/40">
+      <div className="border-t border-border/30">
         <div className="container-layout flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-muted-foreground/50">
+          <p className="text-xs text-muted-foreground/40">
             &copy; {new Date().getFullYear()} On Store. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {["Visa", "Mastercard", "PayPal"].map((method) => (
-              <span key={method} className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/30">
+              <span key={method} className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/20">
                 {method}
               </span>
             ))}

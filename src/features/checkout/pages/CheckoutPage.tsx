@@ -123,8 +123,11 @@ export default function CheckoutPage() {
 
       <div className="mx-auto max-w-5xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">Checkout</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+            Checkout
+          </span>
+          <h1 className="mt-2 text-4xl font-light tracking-tight text-foreground md:text-5xl">Checkout</h1>
+          <p className="mt-1.5 text-sm text-muted-foreground/60">
             Review your order and enter shipping details
           </p>
         </div>
@@ -305,7 +308,7 @@ export default function CheckoutPage() {
                       );
                     })}
                   </div>
-                  <Button type="submit" size="lg" className="w-full gap-2" disabled={isPending}>
+                  <Button type="submit" size="lg" className="w-full gap-2 rounded-full" disabled={isPending}>
                     {isPending ? (
                       <>Processing...</>
                     ) : (

@@ -24,12 +24,12 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
   if (reviews.length === 0) {
     return (
       <section>
-        <h2 className="mb-6 text-xl font-bold">Customer Reviews</h2>
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card py-12 text-center">
-          <MessageSquare className="h-10 w-10 text-muted-foreground/50" />
+        <h2 className="mb-6 text-xl font-light tracking-tight">Customer Reviews</h2>
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/40 bg-card py-16 text-center">
+          <MessageSquare className="h-8 w-8 text-muted-foreground/30" />
           <div>
-            <p className="font-medium">No reviews yet</p>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="text-sm font-medium text-foreground">No reviews yet</p>
+            <p className="mt-1 text-sm text-muted-foreground/70">
               Be the first to review this product.
             </p>
           </div>
@@ -41,42 +41,42 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
   return (
     <section>
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-xl font-bold">Customer Reviews</h2>
+        <h2 className="text-xl font-light tracking-tight">Customer Reviews</h2>
         <span className="text-sm text-muted-foreground">{reviews.length} reviews</span>
       </div>
       <div className="grid gap-4">
         {displayed.map((review) => (
           <div
             key={review._id}
-            className="rounded-xl bg-card p-5 ring-1 ring-foreground/10"
+            className="rounded-2xl bg-card p-6 ring-1 ring-foreground/5"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-sm font-semibold">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-sm font-medium">
                   {review.user.name.charAt(0).toUpperCase()}
                 </div>
                 <div>
                   <p className="text-sm font-medium">{review.user.name}</p>
-                  <div className="flex items-center gap-0.5">
+                  <div className="flex items-center gap-0.5 mt-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`h-3.5 w-3.5 ${
+                        className={`h-3 w-3 ${
                           i < Math.round(review.rating)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-muted-foreground/30"
+                            ? "fill-foreground/80 text-foreground/80"
+                            : "text-muted-foreground/20"
                         }`}
                       />
                     ))}
                   </div>
                 </div>
               </div>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-muted-foreground/50">
                 {formatDate(review.createdAt)}
               </span>
             </div>
             {review.review && (
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground/80">
                 {review.review}
               </p>
             )}
@@ -85,8 +85,8 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
       </div>
       {reviews.length > 3 && (
         <div className="mt-6 text-center">
-          <Button variant="outline" onClick={onToggleShowAll}>
-            {showAll ? "Show Less" : `Show More (${reviews.length - 3} more)`}
+          <Button variant="outline" className="rounded-full" onClick={onToggleShowAll}>
+            {showAll ? "Show Less" : `Show all ${reviews.length} reviews`}
           </Button>
         </div>
       )}

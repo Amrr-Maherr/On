@@ -8,15 +8,15 @@ const FeaturesSection = memo(function FeaturesSection() {
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
-          <div className="mb-12 md:mb-16">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
+          <div className="mb-14 md:mb-18">
+            <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
               Why choose us
             </span>
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+            <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
               <h2 className="text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 Start exploring.
               </h2>
-              <p className="text-lg text-muted-foreground/80 md:text-xl">
+              <p className="text-base text-muted-foreground/70 md:text-lg">
                 Good things are waiting for you
               </p>
             </div>

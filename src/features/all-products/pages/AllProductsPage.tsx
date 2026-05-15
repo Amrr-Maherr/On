@@ -158,41 +158,46 @@ export default function AllProductsPage() {
       <PageHelmet title="All Products" description="Browse our complete collection of products." />
 
       {searchQuery && (
-        <div className="mb-4">
+        <div className="mb-6">
           <p className="text-sm text-muted-foreground">
             Search results for &ldquo;{searchQuery}&rdquo;
           </p>
         </div>
       )}
 
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Products</h1>
-          <p className="mt-1 text-sm text-muted-foreground/70">
-            {resultsCount} {resultsCount === 1 ? "product" : "products"} found
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="w-full sm:w-56">
-            <FilterSortDropdown value={sort} onChange={handleSortChange} />
+      <div className="mb-8">
+        <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
+          Products
+        </span>
+        <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-light tracking-tight text-foreground md:text-5xl">All Products</h1>
           </div>
-          <div className="lg:hidden">
-            <MobileFilterSheet
-              sort={sort}
-              onSortChange={handleSortChange}
-              categories={categories}
-              categoryIn={categoryIn}
-              onCategoryChange={handleCategoryChange}
-              brands={brands}
-              brandIn={brandIn}
-              onBrandChange={handleBrandChange}
-              priceGte={priceGte}
-              priceLte={priceLte}
-              onPriceChange={handlePriceChange}
-              onReset={handleReset}
-            />
+          <div className="flex items-center gap-3">
+            <div className="w-full sm:w-56">
+              <FilterSortDropdown value={sort} onChange={handleSortChange} />
+            </div>
+            <div className="lg:hidden">
+              <MobileFilterSheet
+                sort={sort}
+                onSortChange={handleSortChange}
+                categories={categories}
+                categoryIn={categoryIn}
+                onCategoryChange={handleCategoryChange}
+                brands={brands}
+                brandIn={brandIn}
+                onBrandChange={handleBrandChange}
+                priceGte={priceGte}
+                priceLte={priceLte}
+                onPriceChange={handlePriceChange}
+                onReset={handleReset}
+              />
+            </div>
           </div>
         </div>
+        <p className="mt-1.5 text-sm text-muted-foreground/60">
+          {resultsCount} {resultsCount === 1 ? "product" : "products"} found
+        </p>
       </div>
 
       <div className="mt-8 flex gap-8">

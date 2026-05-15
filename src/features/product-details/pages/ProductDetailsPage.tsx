@@ -7,7 +7,6 @@ import ProductDetailsError from "@/features/product-details/components/ProductDe
 
 export default function ProductDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  console.log(id, "id");
 
   const { data, isLoading, error, refetch } = useProductDetails(id!);
 

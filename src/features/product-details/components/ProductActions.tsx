@@ -42,29 +42,29 @@ const ProductActions = memo(function ProductActions({ productId }: ProductAction
     <div className="flex gap-3">
       <Button
         size="lg"
-        className="gap-2 rounded-full px-8"
+        className="flex-1 gap-2 rounded-full px-6"
         onClick={handleAddToCart}
         disabled={isPending}
       >
         {isAddingToCart ? (
-          <Loader2 className="h-5 w-5 animate-spin" />
+          <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
-          <ShoppingCart className="h-5 w-5" />
+          <ShoppingCart className="h-4 w-4" />
         )}
         {isAddingToCart ? "Adding..." : "Add to Cart"}
       </Button>
       <Button
         variant="outline"
-        size="lg"
-        className="rounded-full px-4"
+        size="icon"
+        className="rounded-full"
         onClick={handleAddToFav}
         disabled={isPending}
         aria-label="Add to wishlist"
       >
         {isAddingToWishlist ? (
-          <Loader2 className="h-5 w-5 animate-spin" />
+          <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
-          <Heart className="h-5 w-5" />
+          <Heart className="h-4 w-4" />
         )}
       </Button>
     </div>

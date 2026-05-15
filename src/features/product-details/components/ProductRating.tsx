@@ -10,12 +10,12 @@ interface ProductRatingProps {
 const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }: ProductRatingProps) {
   return (
     <div className="flex items-center gap-4">
-      <div className="flex items-center gap-1">
-        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-        <span className="font-semibold">{rating}</span>
+      <div className="flex items-center gap-1.5">
+        <Star className="h-4 w-4 fill-foreground/80 text-foreground/80" />
+        <span className="text-sm font-medium">{rating}</span>
         <span className="text-sm text-muted-foreground">({ratingCount})</span>
       </div>
-      <span className="text-sm text-muted-foreground">{sold} sold</span>
+      <span className="text-xs text-muted-foreground/60">{sold} sold</span>
     </div>
   );
 });

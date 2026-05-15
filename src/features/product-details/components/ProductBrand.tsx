@@ -9,12 +9,12 @@ interface ProductBrandProps {
 const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
   return (
     <div>
-      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+      <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
         Brand
       </h3>
       <Link
         to={`/brands/${brand.slug}/${brand._id}`}
-        className="group inline-flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-colors hover:bg-muted"
+        className="group inline-flex items-center gap-3 rounded-xl border border-border/40 bg-card p-3 transition-colors hover:bg-muted/50"
       >
         <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-muted">
           <img
@@ -25,10 +25,10 @@ const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
           />
         </div>
         <div>
-          <p className="text-sm font-medium group-hover:text-primary transition-colors">
+          <p className="text-sm font-medium text-foreground group-hover:text-foreground/70 transition-colors">
             {brand.name}
           </p>
-          <p className="text-xs text-muted-foreground">View brand</p>
+          <p className="text-xs text-muted-foreground/60">View brand</p>
         </div>
       </Link>
     </div>
