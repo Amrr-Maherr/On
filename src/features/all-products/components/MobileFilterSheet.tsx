@@ -10,41 +10,11 @@ interface FilterOption {
 }
 
 interface MobileFilterSheetProps {
-  sort: string;
-  onSortChange: (value: string) => void;
   categories: FilterOption[];
-  categoryIn: string[];
-  onCategoryChange: (values: string[]) => void;
   brands: FilterOption[];
-  brandIn: string[];
-  onBrandChange: (values: string[]) => void;
-  priceGte: number;
-  priceLte: number;
-  onPriceChange: (min: number, max: number) => void;
-  onReset: () => void;
 }
 
-function MobileFilterSheet({
-  sort,
-  onSortChange,
-  categories,
-  categoryIn,
-  onCategoryChange,
-  brands,
-  brandIn,
-  onBrandChange,
-  priceGte,
-  priceLte,
-  onPriceChange,
-  onReset,
-}: MobileFilterSheetProps) {
-  const hasActiveFilters =
-    sort ||
-    categoryIn.length > 0 ||
-    brandIn.length > 0 ||
-    priceGte > 0 ||
-    priceLte < 10000;
-
+function MobileFilterSheet({ categories, brands }: MobileFilterSheetProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -57,45 +27,29 @@ function MobileFilterSheet({
         <SheetHeader className="px-6 pb-4">
           <div className="flex items-center justify-between">
             <SheetTitle>Filters & Sort</SheetTitle>
-            {hasActiveFilters && (
-              <Button variant="ghost" size="sm" className="gap-1.5 text-muted-foreground" onClick={onReset}>
-                <RotateCcw className="h-3.5 w-3.5" />
-                Reset
-              </Button>
-            )}
+            <Button variant="ghost" size="sm" className="gap-1.5 text-muted-foreground">
+              <RotateCcw className="h-3.5 w-3.5" />
+              Reset
+            </Button>
           </div>
         </SheetHeader>
 
         <div className="space-y-6 px-6">
           <div>
             <p className="mb-2 text-sm font-medium">Sort By</p>
-            <FilterSortDropdown value={sort} onChange={onSortChange} />
+            <FilterSortDropdown />
           </div>
 
           <FilterSection title="Category">
-            <FilterCheckboxGroup
-              options={categories}
-              selectedValues={categoryIn}
-              onChange={onCategoryChange}
-            />
+            <FilterCheckboxGroup options={categories} />
           </FilterSection>
 
           <FilterSection title="Brand">
-            <FilterCheckboxGroup
-              options={brands}
-              selectedValues={brandIn}
-              onChange={onBrandChange}
-            />
+            <FilterCheckboxGroup options={brands} />
           </FilterSection>
 
           <FilterSection title="Price Range">
-            <FilterPriceRange
-              min={0}
-              max={10000}
-              minValue={priceGte}
-              maxValue={priceLte}
-              onChange={onPriceChange}
-            />
+            <FilterPriceRange />
           </FilterSection>
         </div>
       </SheetContent>

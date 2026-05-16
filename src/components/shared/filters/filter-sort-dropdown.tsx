@@ -1,10 +1,8 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface FilterSortDropdownProps {
   options?: { label: string; value: string }[];
-  value?: string;
-  onChange?: (value: string) => void;
 }
 
 const defaultOptions = [
@@ -17,9 +15,9 @@ const defaultOptions = [
 
 function FilterSortDropdown({
   options = defaultOptions,
-  value = "",
-  onChange,
 }: FilterSortDropdownProps) {
+  const [value, setValue] = useState("");
+
   return (
     <div className="flex items-center gap-2">
       <label htmlFor="sort-select" className="whitespace-nowrap text-sm font-semibold text-muted-foreground">
@@ -28,7 +26,7 @@ function FilterSortDropdown({
       <select
         id="sort-select"
         value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+        onChange={(e) => setValue(e.target.value)}
         className={cn(
           "h-9 w-full rounded-xl border border-border/50 bg-transparent px-3 text-sm font-medium outline-none",
           "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
