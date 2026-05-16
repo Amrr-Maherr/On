@@ -140,21 +140,6 @@ export default function ProductsPage() {
     setPage(1);
   }, []);
 
-  if (isLoading) return <ProductsLoader />;
-
-  if (error) {
-    return (
-      <ProductsError
-        message={getErrorMessage(error)}
-        onRetry={() => refetch()}
-      />
-    );
-  }
-
-  if (!products || products.length === 0) {
-    return <ProductsEmpty />;
-  }
-
   return (
     <>
       <PageHelmet title="All Products" description="Browse our complete collection of products." />
@@ -260,7 +245,14 @@ export default function ProductsPage() {
             />
           </div>
 
-          {displayProducts.length === 0 ? (
+          {error ? (
+            <ProductsError
+              message={getErrorMessage(error)}
+              onRetry={() => refetch()}
+            />
+          ) : isLoading ? (
+            <ProductsLoader />
+          ) : displayProducts.length === 0 ? (
             <ProductsEmpty />
           ) : (
             <>
