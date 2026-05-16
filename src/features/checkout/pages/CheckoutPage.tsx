@@ -155,7 +155,7 @@ export default function CheckoutPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid gap-16 lg:grid-cols-[1fr_420px]">
             <div className="space-y-12">
-              <div>
+              <div data-tour="shipping-form">
                 <div className="mb-8 flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center bg-foreground text-background font-black text-sm">1</div>
                   <h3 className="text-xl font-black uppercase tracking-tight">Shipping Details</h3>
@@ -223,7 +223,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div>
+              <div data-tour="payment-method">
                 <div className="mb-8 flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center bg-foreground text-background font-black text-sm">2</div>
                   <h3 className="text-xl font-black uppercase tracking-tight">Payment Method</h3>
@@ -253,7 +253,7 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative" data-tour="order-summary">
               <div className="sticky top-24 border border-border/60 bg-card p-8">
                 <h3 className="text-xl font-black uppercase tracking-tight">Your Order</h3>
                 

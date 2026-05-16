@@ -27,6 +27,7 @@ const Hero = memo(function Hero() {
           </p>
           <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Button
+              data-tour="hero-cta"
               onClick={() => navigate("/products")}
               className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
             >

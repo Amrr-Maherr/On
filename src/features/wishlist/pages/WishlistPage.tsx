@@ -117,7 +117,7 @@ export default function WishlistPage() {
             {count} {count === 1 ? "item" : "items"} currently in your wishlist
           </p>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4" data-tour="wishlist-items">
           {items.map((product) => (
             <WishlistItemCard
               key={product._id}

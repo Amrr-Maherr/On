@@ -47,6 +47,7 @@ const CartSummary = memo(function CartSummary({
 
       <div className="mt-10">
         <button
+          data-tour="checkout-button"
           onClick={onCheckout}
           className="flex w-full items-center justify-center gap-3 bg-foreground px-8 py-5 text-sm font-black uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
         >

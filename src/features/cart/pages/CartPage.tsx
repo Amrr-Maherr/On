@@ -156,7 +156,7 @@ export default function CartPage() {
         </div>
 
         <div className="grid gap-16 lg:grid-cols-[1fr_400px]">
-          <div className="space-y-8">
+          <div className="space-y-8" data-tour="cart-items">
             {items.map((item) => (
               <CartItemCard
                 key={item._id}
@@ -168,7 +168,7 @@ export default function CartPage() {
             ))}
           </div>
 
-          <div className="relative">
+          <div className="relative" data-tour="cart-summary">
             <CartSummary
               totalCartPrice={cart.totalCartPrice}
               numOfCartItems={numOfCartItems}

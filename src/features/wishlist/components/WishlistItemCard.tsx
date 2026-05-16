@@ -82,7 +82,7 @@ const WishlistItemCard = memo(({
           </button>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between" data-tour="wishlist-actions">
           {product.ratingsAverage && (
             <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
               &#9733; {product.ratingsAverage.toFixed(1)} / 5

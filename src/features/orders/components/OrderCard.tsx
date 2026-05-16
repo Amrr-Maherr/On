@@ -59,7 +59,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
 
       <hr className="my-4 border-border/40" />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between" data-tour="order-status">
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1 text-xs text-muted-foreground/60">
             <CreditCard className="h-3.5 w-3.5" />

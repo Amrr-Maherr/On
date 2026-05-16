@@ -50,11 +50,11 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-20">
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="lg:sticky lg:top-24 lg:self-start" data-tour="product-gallery">
             <ProductGallery images={allImages} />
           </div>
 
-          <div className="space-y-6 md:space-y-10">
+          <div className="space-y-6 md:space-y-10" data-tour="product-info">
             <ProductInfo
               title={product.title}
               brandName={product.brand?.name}
@@ -84,7 +84,9 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
                 onDecrease={() => setQuantity(Math.max(1, quantity - 1))}
                 onIncrease={() => setQuantity(Math.min(product.quantity, quantity + 1))}
               />
-              <ProductActions productId={product.id} />
+              <div data-tour="product-actions">
+                <ProductActions productId={product.id} />
+              </div>
             </div>
 
             <ProductStockStatus
@@ -100,7 +102,7 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
           </div>
         </div>
 
-        <div className="mt-12 space-y-12 md:mt-20 md:space-y-20">
+        <div className="mt-12 space-y-12 md:mt-20 md:space-y-20" data-tour="product-reviews">
           <ProductReviews
             reviews={product.reviews ?? []}
             showAll={showAllReviews}

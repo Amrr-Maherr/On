@@ -9,6 +9,7 @@ interface SectionProps {
   slidesPerViewMobile: number;
   hideNavigation: boolean;
   children: ReactNode;
+  "data-tour"?: string;
 }
 
 const Section = memo(function Section({
@@ -18,10 +19,11 @@ const Section = memo(function Section({
   slidesPerView,
   slidesPerViewMobile,
   hideNavigation,
+  ...props
 }: SectionProps) {
   return (
     <ScrollReveal>
-      <section className="section-py">
+      <section className="section-py" {...props}>
         <div className="container-layout">
           <div className="mb-14 md:mb-18">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60">

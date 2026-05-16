@@ -65,6 +65,7 @@ const ProductsSection = memo(function ProductsSection() {
 
   return (
     <Section
+      data-tour="featured-products"
       slidesPerView={4}
       slidesPerViewMobile={1.5}
       hideNavigation={false}

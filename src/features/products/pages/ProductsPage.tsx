@@ -201,9 +201,9 @@ export default function ProductsPage() {
       </div>
 
       <div className="flex gap-16">
-        <div className="hidden w-64 shrink-0 lg:block">
+        <div className="hidden w-64 shrink-0 lg:block" data-tour="filters-panel">
           <FiltersPanel className="sticky top-24 border-0 bg-transparent p-0">
-            <FilterSection title="Sort By">
+            <FilterSection title="Sort By" data-tour="sort-dropdown">
               <FilterSortDropdown value={sort} onChange={handleSortChange} />
             </FilterSection>
 
@@ -264,7 +264,7 @@ export default function ProductsPage() {
             <ProductsEmpty />
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" data-tour="product-grid">
                 {displayProducts.map((product) => (
                   <ProductCard key={product.id || product._id} product={product} />
                 ))}

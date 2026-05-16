@@ -88,7 +88,7 @@ export default function OrdersPage() {
             {orders.length} {orders.length === 1 ? "order" : "orders"} tracked in your account
           </p>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4" data-tour="orders-list">
           {orders.map((order) => (
             <OrderCard key={order._id} order={order} />
           ))}

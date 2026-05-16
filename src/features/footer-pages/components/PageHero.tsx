@@ -3,11 +3,12 @@ import { memo } from "react";
 interface PageHeroProps {
   title: string;
   description?: string;
+  "data-tour"?: string;
 }
 
-const PageHero = memo(function PageHero({ title, description }: PageHeroProps) {
+const PageHero = memo(function PageHero({ title, description, ...props }: PageHeroProps) {
   return (
-    <div className="mb-12 border-l-4 border-foreground pl-6">
+    <div className="mb-12 border-l-4 border-foreground pl-6" {...props}>
       <span className="text-xs font-black uppercase tracking-[0.4em] text-muted-foreground/40">
         Information
       </span>

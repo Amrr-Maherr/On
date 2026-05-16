@@ -41,9 +41,10 @@ export default function AboutPage() {
       <PageHero
         title="About Us"
         description="Learn more about our story, our values, and the team behind your favourite online shopping destination."
+        data-tour="about-hero"
       />
 
-      <div className="mb-10 grid gap-6 lg:grid-cols-2">
+      <div className="mb-10 grid gap-6 lg:grid-cols-2" data-tour="about-story">
         <ContentSection title="Our Story" variant="card">
           <p>
             Founded with a passion for delivering exceptional products at fair prices, our store began as a small
@@ -86,7 +87,7 @@ export default function AboutPage() {
       </div>
 
       <div>
-        <div className="mb-12 border-l-4 border-foreground pl-6">
+        <div className="mb-12 border-l-4 border-foreground pl-6" data-tour="about-values-heading">
           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
             Principles
           </span>
@@ -94,7 +95,7 @@ export default function AboutPage() {
             OUR VALUES.
           </h2>
         </div>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" data-tour="about-values">
           {values.map((value) => (
             <InfoCard key={value.title} icon={value.icon} title={value.title} description={value.description} />
           ))}

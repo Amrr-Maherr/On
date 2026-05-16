@@ -7,17 +7,19 @@ interface FilterSectionProps {
   title: string;
   children: ReactNode;
   defaultOpen?: boolean;
+  "data-tour"?: string;
 }
 
 const FilterSection = memo(function FilterSection({
   title,
   children,
   defaultOpen = true,
+  ...props
 }: FilterSectionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border-b border-border/30 py-4 last:border-b-0">
+    <div className="border-b border-border/30 py-4 last:border-b-0" {...props}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}

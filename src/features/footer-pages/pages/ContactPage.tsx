@@ -15,11 +15,12 @@ export default function ContactPage() {
       <PageHero
         title="Contact Us"
         description="We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible."
+        data-tour="contact-hero"
       />
 
       <div className="grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <div className="border border-border/60 bg-card p-8 md:p-10">
+          <div className="border border-border/60 bg-card p-8 md:p-10" data-tour="contact-form">
             <h2 className="mb-10 text-3xl font-black uppercase tracking-tighter">Send Us a Message</h2>
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -88,7 +89,7 @@ export default function ContactPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <div className="border border-border/60 bg-card p-8 md:p-10">
+          <div className="border border-border/60 bg-card p-8 md:p-10" data-tour="contact-info">
             <h2 className="mb-10 text-3xl font-black uppercase tracking-tighter">Information</h2>
             <div className="space-y-8">
               <ContactInfo

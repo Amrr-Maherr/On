@@ -66,9 +66,10 @@ export default function HelpPage() {
       <PageHero
         title="Help Center"
         description="Find answers, manage your account, and get the support you need — all in one place."
+        data-tour="help-hero"
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-tour="help-topics">
         {topics.map((topic) => (
           <Link
             key={topic.title}
@@ -84,7 +85,7 @@ export default function HelpPage() {
         ))}
       </div>
 
-      <div className="mt-12 border border-border/60 bg-muted/50 p-10 text-center md:p-16">
+      <div className="mt-12 border border-border/60 bg-muted/50 p-10 text-center md:p-16" data-tour="help-cta">
         <h2 className="text-3xl font-black uppercase tracking-tighter">Can't find what you're looking for?</h2>
         <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/60">
           Our support team is available Monday to Friday, 9 AM to 6 PM EST.

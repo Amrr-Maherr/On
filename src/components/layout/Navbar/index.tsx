@@ -74,7 +74,7 @@ function Navbar() {
         </div>
 
         <div className="hidden flex-1 items-center justify-end px-8 md:flex">
-          <div className="relative w-full max-w-xs">
+          <div className="relative w-full max-w-xs" data-tour="search-input">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/40" />
             <Input
               placeholder="Search..."
