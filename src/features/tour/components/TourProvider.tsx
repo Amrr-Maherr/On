@@ -61,10 +61,7 @@ export default function TourProvider({ children }: TourProviderProps) {
             typeof step.element === "string"
               ? await waitForElement(step.element, STEP_DETECTION_TIMEOUT)
               : typeof step.element === "function"
-                ? await waitForElement(
-                    (step.element as () => string)(),
-                    STEP_DETECTION_TIMEOUT,
-                  )
+                ? step.element()
                 : step.element;
 
           if (el) {
