@@ -1,5 +1,15 @@
 import { useState, useCallback } from "react";
-import { Search, User, ShoppingCart, Heart, Package, Menu, LogOut, LogIn, UserCircle } from "lucide-react";
+import {
+  Search,
+  User,
+  ShoppingCart,
+  Heart,
+  Package,
+  Menu,
+  LogOut,
+  LogIn,
+  UserCircle,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -9,6 +19,7 @@ import { useCart } from "@/features/cart/hooks/useCart";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import MobileNavSheet from "./MobileNavSheet";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,15 +48,17 @@ function Navbar() {
     setIsDropdownOpen(false);
   }, []);
 
-
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
-    }
-  }, [navigate, searchQuery]);
+  const handleSearch = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter" && searchQuery.trim()) {
+        navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+        setSearchQuery("");
+      }
+    },
+    [navigate, searchQuery],
+  );
 
   const navLinks = [
     { label: "Men", href: "/categories/men" },
@@ -60,6 +73,7 @@ function Navbar() {
       <div className="container-layout flex h-16 items-center justify-between gap-4 md:h-20">
         <div className="flex items-center gap-8 lg:gap-12">
           <Logo />
+          <LanguageSwitcher />
           <div className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => (
               <Link
@@ -89,7 +103,12 @@ function Navbar() {
         <div className="hidden items-center gap-0.5 md:flex">
           <ThemeToggle />
           <Link to="/fave">
-            <Button variant="ghost" size="icon" aria-label="Wishlist" className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Wishlist"
+              className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
+            >
               <Heart className="h-5 w-5" />
               {favCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">
@@ -99,7 +118,12 @@ function Navbar() {
             </Button>
           </Link>
           <Link to="/orders">
-            <Button variant="ghost" size="icon" aria-label="Orders" className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Orders"
+              className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
+            >
               <Package className="h-5 w-5" />
               {ordersCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">
@@ -109,7 +133,12 @@ function Navbar() {
             </Button>
           </Link>
           <Link to="/cart">
-            <Button variant="ghost" size="icon" aria-label="Cart" className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Cart"
+              className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
+            >
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[14px] items-center justify-center rounded-none bg-foreground px-1 text-[9px] font-black text-background">

@@ -7,6 +7,7 @@ import "./features/tour/tour-styles.css";
 import AppProviders from "@/app/providers/AppProviders";
 import TourProvider from "@/features/tour/components/TourProvider";
 import App from "./App.tsx";
+import "./i18n";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
