@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -22,6 +23,7 @@ import type { Category } from "@/features/categories/types";
 import type { Brand } from "@/features/brands/types";
 
 export default function ProductsPage() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useQuery<ApiResponse<Product>>({
     queryKey: ["products", "all"],
     queryFn: () =>
@@ -74,7 +76,7 @@ export default function ProductsPage() {
 
   return (
     <>
-      <PageHelmet title="All Products" description="Browse our complete collection of products." />
+      <PageHelmet title={t("products.page.title")} description={t("products.page.description")} />
 
       <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
         <div
@@ -83,55 +85,55 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            Explore
+            {t("products.page.hero.subtitle")}
           </p>
           <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            Products.
+            {t("products.page.hero.title")}
           </h1>
           <p className="mt-4 max-w-lg text-lg text-white/70">
-            High-performance gear engineered for those who push boundaries.
+            {t("products.page.hero.description")}
           </p>
         </div>
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("products.page.breadcrumb.home"), href: "/" }, { label: t("products.page.breadcrumb.products") }]} className="mb-6" />
 
       <div className="mb-12 border-l-4 border-foreground pl-6">
         <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-          Catalog
+          {t("products.page.catalog.label")}
         </span>
         <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-          ALL GEAR.
+          {t("products.page.catalog.title")}
         </h1>
         <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
-          {products.length} {products.length === 1 ? "product" : "products"} available
+          {t("products.page.catalog.count", { count: products.length })}
         </p>
       </div>
 
       <div className="flex gap-16">
         <div className="hidden w-64 shrink-0 lg:block" data-tour="filters-panel">
           <FiltersPanel className="sticky top-24 border-0 bg-transparent p-0">
-            <FilterSection title="Sort By" data-tour="sort-dropdown">
+            <FilterSection title={t("products.filters.sortBy")} data-tour="sort-dropdown">
               <FilterSortDropdown />
             </FilterSection>
 
-            <FilterSection title="Categories">
+            <FilterSection title={t("products.filters.categories")}>
               <FilterCheckboxGroup options={categories} />
             </FilterSection>
 
-            <FilterSection title="Brands">
+            <FilterSection title={t("products.filters.brands")}>
               <FilterCheckboxGroup options={brands} />
             </FilterSection>
 
-            <FilterSection title="Price">
+            <FilterSection title={t("products.filters.price")}>
               <FilterPriceRange />
             </FilterSection>
 
             <button
               className="mt-8 w-full border-2 border-foreground bg-transparent py-4 text-[10px] font-black uppercase tracking-widest text-foreground transition-all hover:bg-foreground hover:text-background"
             >
-              Reset Filters
+              {t("products.filters.reset")}
             </button>
           </FiltersPanel>
         </div>
@@ -143,7 +145,7 @@ export default function ProductsPage() {
 
           {error ? (
             <ProductsError
-              message={error instanceof Error ? error.message : "An unexpected error occurred. Please try again."}
+              message={error instanceof Error ? error.message : t("products.error.defaultMessage")}
               onRetry={() => refetch()}
             />
           ) : isLoading ? (

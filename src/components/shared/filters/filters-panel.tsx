@@ -1,4 +1,5 @@
 import { memo, useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ const FiltersPanel = memo(function FiltersPanel({
   children,
   className,
 }: FiltersPanelProps) {
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -25,7 +27,7 @@ const FiltersPanel = memo(function FiltersPanel({
           className="gap-2 rounded-none border-2"
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filters
+          {t("products.filters.panel.title")}
         </Button>
       </div>
 
@@ -58,12 +60,12 @@ const FiltersPanel = memo(function FiltersPanel({
               className="fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-background shadow-xl lg:hidden"
             >
               <div className="flex items-center justify-between border-b border-border/30 px-5 py-4">
-                <span className="text-sm font-bold uppercase tracking-wider">Filters</span>
+                <span className="text-sm font-bold uppercase tracking-wider">{t("products.filters.panel.title")}</span>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Close filters"
+                  aria-label={t("products.filters.panel.close")}
                   className="rounded-none border-2 border-transparent hover:border-border/40"
                 >
                   <X className="h-4 w-4" />

@@ -1,4 +1,5 @@
 import { useCallback, type MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { Heart, Loader2 } from "lucide-react";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
@@ -8,6 +9,7 @@ interface AddToFavProps {
 }
 
 export default function AddToFav({ productId }: AddToFavProps) {
+  const { t } = useTranslation();
   const { mutate: addToWishlist, isPending } = useAddToWishlist();
 
   const handleClick = useCallback((e: MouseEvent) => {
@@ -16,18 +18,18 @@ export default function AddToFav({ productId }: AddToFavProps) {
     addToWishlist(
       { productId },
       {
-        onSuccess: () => toast.success("Added to wishlist!"),
+        onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
         onError: (err) => toast.error(err.message),
       },
     );
-  }, [addToWishlist, productId]);
+  }, [addToWishlist, productId, t]);
 
   return (
     <button
       type="button"
       onClick={handleClick}
       disabled={isPending}
-      aria-label="Add to wishlist"
+      aria-label={t("products.actions.addToWishlist")}
       className="flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-white/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-white active:scale-90 disabled:opacity-50"
     >
       {isPending ? (

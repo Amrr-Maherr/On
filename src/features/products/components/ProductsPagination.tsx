@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,7 @@ function ProductsPagination({
   totalPages,
   onPageChange,
 }: ProductsPaginationProps) {
+  const { t } = useTranslation();
   if (totalPages <= 1) return null;
 
   const pages: (number | "...")[] = [];
@@ -26,13 +28,13 @@ function ProductsPagination({
   }
 
   return (
-    <nav className="mt-12 flex items-center justify-center gap-1.5" aria-label="Pagination">
+    <nav className="mt-12 flex items-center justify-center gap-1.5" aria-label={t("products.pagination.label")}>
       <Button
         variant="outline"
         size="icon"
         disabled={currentPage <= 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label="Previous page"
+        aria-label={t("products.pagination.previous")}
         className="rounded-none border-2"
       >
         <ChevronLeft className="h-4 w-4" />
@@ -62,7 +64,7 @@ function ProductsPagination({
         size="icon"
         disabled={currentPage >= totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label="Next page"
+        aria-label={t("products.pagination.next")}
         className="rounded-none border-2"
       >
         <ChevronRight className="h-4 w-4" />

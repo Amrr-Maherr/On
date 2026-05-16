@@ -1,17 +1,19 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
 import ProductsError from "@/features/products/components/ProductsError";
 import Slider from "@/components/shared/Slider";
 
-function getErrorMessage(error: unknown): string {
+function getErrorMessage(error: unknown): string | undefined {
   if (error instanceof Error) return error.message;
   if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
+  return undefined;
 }
 
 const ProductDetailsProducts = memo(function ProductDetailsProducts() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useAllProducts(1);
 
   if (isLoading) {
@@ -19,10 +21,10 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
       <section className="section-py border-t border-border/30">
         <div className="mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            Recommendations
+            {t("products.details.recommendations.label")}
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-            You May Also Like.
+            {t("products.details.recommendations.title")}
           </h2>
         </div>
         <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation>
@@ -39,10 +41,10 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
       <section className="section-py border-t border-border/30">
         <div className="mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            Recommendations
+            {t("products.details.recommendations.label")}
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-            You May Also Like.
+            {t("products.details.recommendations.title")}
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
@@ -62,14 +64,14 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
       <section className="section-py border-t border-border/30">
         <div className="mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            Recommendations
+            {t("products.details.recommendations.label")}
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-            You May Also Like.
+            {t("products.details.recommendations.title")}
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <ProductsError message="No products available at the moment." />
+          <ProductsError message={t("products.details.recommendations.noProducts")} />
         </Slider>
       </section>
     );
@@ -79,10 +81,10 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
     <section className="section-py border-t border-border/30">
       <div className="mb-12">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-          Recommendations
+          {t("products.details.recommendations.label")}
         </span>
         <h2 className="mt-3 text-4xl font-black tracking-tight text-foreground md:text-5xl">
-          You May Also Like.
+          {t("products.details.recommendations.title")}
         </h2>
       </div>
       <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation={false}>

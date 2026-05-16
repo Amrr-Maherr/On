@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Subcategory } from "@/features/products/types";
 
 interface ProductSubcategoriesProps {
@@ -6,12 +7,13 @@ interface ProductSubcategoriesProps {
 }
 
 const ProductSubcategories = memo(function ProductSubcategories({ subcategories }: ProductSubcategoriesProps) {
+  const { t } = useTranslation();
   if (!subcategories || subcategories.length === 0) return null;
 
   return (
     <div>
       <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-        Categories
+        {t("products.details.subcategories.label")}
       </h3>
       <div className="flex flex-wrap gap-3">
         {subcategories.map((sub) => (

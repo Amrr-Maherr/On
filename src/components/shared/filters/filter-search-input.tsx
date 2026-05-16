@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -9,10 +10,12 @@ interface FilterSearchInputProps {
 }
 
 function FilterSearchInput({
-  placeholder = "Search...",
+  placeholder,
   value = "",
   onChange,
 }: FilterSearchInputProps) {
+  const { t } = useTranslation();
+  const resolvedPlaceholder = placeholder ?? t("products.filters.search");
   return (
     <div className="relative">
       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/40" />
@@ -20,7 +23,7 @@ function FilterSearchInput({
         type="text"
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
-        placeholder={placeholder}
+        placeholder={resolvedPlaceholder}
         className={cn(
           "h-11 w-full rounded-none border-2 border-border/40 bg-transparent pl-10 pr-4 text-sm font-bold outline-none",
           "placeholder:text-muted-foreground/30",

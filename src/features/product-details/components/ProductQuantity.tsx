@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Minus, Plus } from "lucide-react";
 
 interface ProductQuantityProps {
@@ -9,9 +10,10 @@ interface ProductQuantityProps {
 }
 
 const ProductQuantity = memo(function ProductQuantity({ quantity, available, onDecrease, onIncrease }: ProductQuantityProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-4">
-      <span className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Qty</span>
+      <span className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{t("products.details.quantity.label")}</span>
       <div className="flex items-center gap-2">
         <button
           onClick={onDecrease}
@@ -29,7 +31,7 @@ const ProductQuantity = memo(function ProductQuantity({ quantity, available, onD
           <Plus className="h-4 w-4" />
         </button>
       </div>
-      <span className="text-xs font-medium text-muted-foreground/60">{available} available</span>
+      <span className="text-xs font-medium text-muted-foreground/60">{t("products.details.quantity.available", { count: available })}</span>
     </div>
   );
 });

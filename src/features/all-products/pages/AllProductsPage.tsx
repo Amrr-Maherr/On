@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -22,6 +23,7 @@ import type { Category } from "@/features/all-categories/types";
 import type { Brand } from "@/features/all-brands/types";
 
 export default function AllProductsPage() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useQuery<ApiResponse<Product>>({
     queryKey: ["all-products"],
     queryFn: () =>
@@ -74,7 +76,7 @@ export default function AllProductsPage() {
 
   return (
     <>
-      <PageHelmet title="All Products" description="Browse our complete collection of products." />
+      <PageHelmet title={t("products.page.title")} description={t("products.page.description")} />
 
       <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
         <div
@@ -83,27 +85,27 @@ export default function AllProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            Explore
+            {t("products.page.hero.subtitle")}
           </p>
           <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            Products.
+            {t("products.page.hero.title")}
           </h1>
           <p className="mt-4 max-w-lg text-lg text-white/70">
-            High-performance gear engineered for those who push boundaries.
+            {t("products.page.hero.description")}
           </p>
         </div>
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("products.page.breadcrumb.home"), href: "/" }, { label: t("products.page.breadcrumb.products") }]} className="mb-6" />
 
       <div className="mb-8">
         <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-          Products
+          {t("products.page.label")}
         </span>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Products</h1>
+            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">{t("products.page.heading")}</h1>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-full sm:w-56">
@@ -115,22 +117,22 @@ export default function AllProductsPage() {
           </div>
         </div>
         <p className="mt-1.5 text-sm text-muted-foreground/60">
-          {products.length} {products.length === 1 ? "product" : "products"} found
+          {t("products.page.count", { count: products.length })}
         </p>
       </div>
 
       <div className="mt-8 flex gap-8">
         <div className="hidden lg:block">
           <FiltersPanel>
-            <FilterSection title="Category">
+            <FilterSection title={t("products.filters.category")}>
               <FilterCheckboxGroup options={categories} />
             </FilterSection>
 
-            <FilterSection title="Brand">
+            <FilterSection title={t("products.filters.brand")}>
               <FilterCheckboxGroup options={brands} />
             </FilterSection>
 
-            <FilterSection title="Price Range">
+            <FilterSection title={t("products.filters.priceRange")}>
               <FilterPriceRange />
             </FilterSection>
           </FiltersPanel>
@@ -139,7 +141,7 @@ export default function AllProductsPage() {
         <div className="min-w-0 flex-1">
           {error ? (
             <ProductsError
-              message={error instanceof Error ? error.message : "An unexpected error occurred. Please try again."}
+              message={error instanceof Error ? error.message : t("products.error.defaultMessage")}
               onRetry={() => refetch()}
             />
           ) : isLoading ? (

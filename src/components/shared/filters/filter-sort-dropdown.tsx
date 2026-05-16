@@ -1,27 +1,31 @@
 import { memo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 interface FilterSortDropdownProps {
   options?: { label: string; value: string }[];
 }
 
-const defaultOptions = [
-  { label: "Latest", value: "" },
-  { label: "Price: Low to High", value: "price" },
-  { label: "Price: High to Low", value: "-price" },
-  { label: "Name: A-Z", value: "title" },
-  { label: "Name: Z-A", value: "-title" },
-];
-
 function FilterSortDropdown({
-  options = defaultOptions,
+  options,
 }: FilterSortDropdownProps) {
+  const { t } = useTranslation();
   const [value, setValue] = useState("");
+
+  const defaultOptions = [
+    { label: t("products.filters.sort.latest"), value: "" },
+    { label: t("products.filters.sort.priceLowToHigh"), value: "price" },
+    { label: t("products.filters.sort.priceHighToLow"), value: "-price" },
+    { label: t("products.filters.sort.nameAZ"), value: "title" },
+    { label: t("products.filters.sort.nameZA"), value: "-title" },
+  ];
+
+  const resolvedOptions = options ?? defaultOptions;
 
   return (
     <div className="flex items-center gap-2">
       <label htmlFor="sort-select" className="whitespace-nowrap text-sm font-semibold text-muted-foreground">
-        Sort by:
+        {t("products.filters.sort.label")}
       </label>
       <select
         id="sort-select"
@@ -33,7 +37,7 @@ function FilterSortDropdown({
           "transition-colors cursor-pointer",
         )}
       >
-        {options.map((option) => (
+        {resolvedOptions.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>

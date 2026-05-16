@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import type { Brand } from "@/features/products/types";
 
@@ -7,10 +8,11 @@ interface ProductBrandProps {
 }
 
 const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
+  const { t } = useTranslation();
   return (
     <div>
       <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-        Brand
+        {t("products.details.brand.label")}
       </h3>
       <Link
         to={`/brands/${brand.slug}/${brand._id}`}
@@ -28,7 +30,7 @@ const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
           <p className="text-sm font-medium text-foreground group-hover:text-foreground/70 transition-colors">
             {brand.name}
           </p>
-          <p className="text-xs text-muted-foreground/60">View brand</p>
+          <p className="text-xs text-muted-foreground/60">{t("products.details.brand.view")}</p>
         </div>
       </Link>
     </div>

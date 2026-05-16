@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ProductPriceProps {
   price: number;
@@ -6,10 +7,11 @@ interface ProductPriceProps {
 }
 
 const ProductPrice = memo(function ProductPrice({ price, priceAfterDiscount }: ProductPriceProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-end gap-4">
       <div className="flex flex-col">
-        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">Price</span>
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">{t("products.details.price.label")}</span>
         <span className="text-5xl font-black tracking-tighter text-foreground">
           ${priceAfterDiscount ?? price}
         </span>
