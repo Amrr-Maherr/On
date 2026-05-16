@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Star } from "lucide-react";
 
 interface ProductRatingProps {
@@ -8,6 +9,7 @@ interface ProductRatingProps {
 }
 
 const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }: ProductRatingProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-4">
       <div className="flex items-center gap-1.5">
@@ -16,7 +18,7 @@ const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }:
         <span className="text-sm text-muted-foreground">({ratingCount})</span>
       </div>
       <span className="h-4 w-px bg-border/50" />
-      <span className="text-sm font-medium text-muted-foreground">{sold} sold</span>
+      <span className="text-sm font-medium text-muted-foreground">{sold} {t("products.details.rating.sold")}</span>
     </div>
   );
 });

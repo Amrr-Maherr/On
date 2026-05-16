@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import type { Category } from "@/features/products/types";
 
@@ -7,10 +8,11 @@ interface ProductCategoryProps {
 }
 
 const ProductCategory = memo(function ProductCategory({ category }: ProductCategoryProps) {
+  const { t } = useTranslation();
   return (
     <div>
       <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-        Category
+        {t("products.details.category.label")}
       </h3>
       <Link
         to={`/categories/${category.slug}/${category._id}`}
@@ -28,7 +30,7 @@ const ProductCategory = memo(function ProductCategory({ category }: ProductCateg
           <p className="text-sm font-medium text-foreground group-hover:text-foreground/70 transition-colors">
             {category.name}
           </p>
-          <p className="text-xs text-muted-foreground/60">View category</p>
+          <p className="text-xs text-muted-foreground/60">{t("products.details.category.view")}</p>
         </div>
       </Link>
     </div>

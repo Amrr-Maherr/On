@@ -1,4 +1,5 @@
 import { memo, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/features/products/types";
@@ -19,6 +20,7 @@ function formatDate(dateString: string): string {
 }
 
 const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
+  const { t } = useTranslation();
   const displayed = useMemo(() => showAll ? reviews : reviews.slice(0, 3), [reviews, showAll]);
 
   if (reviews.length === 0) {
@@ -26,16 +28,16 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
       <section>
         <div className="mb-8">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            Social Proof
+            {t("products.details.reviews.label")}
           </span>
-          <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">{t("products.details.reviews.title")}</h2>
         </div>
         <div className="flex flex-col items-center gap-4 rounded-none border-2 border-border/40 bg-card py-12 text-center md:py-20">
           <MessageSquare className="h-10 w-10 text-muted-foreground/30" />
           <div>
-            <p className="text-sm font-black uppercase tracking-widest text-foreground">No reviews yet</p>
+            <p className="text-sm font-black uppercase tracking-widest text-foreground">{t("products.details.reviews.emptyTitle")}</p>
             <p className="mt-2 text-sm font-bold text-muted-foreground/60">
-              Be the first to review this product.
+              {t("products.details.reviews.emptyDescription")}
             </p>
           </div>
         </div>
@@ -48,11 +50,11 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
       <div className="mb-8 flex items-end justify-between border-b-2 border-border/40 pb-6">
         <div>
           <span className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
-            Social Proof
+            {t("products.details.reviews.label")}
           </span>
-          <h2 className="mt-2 text-2xl font-black tracking-tight">Customer Reviews.</h2>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">{t("products.details.reviews.title")}</h2>
         </div>
-        <span className="text-[10px] font-black uppercase tracking-widest tabular-nums text-muted-foreground/60">{reviews.length} reviews</span>
+        <span className="text-[10px] font-black uppercase tracking-widest tabular-nums text-muted-foreground/60">{t("products.details.reviews.count", { count: reviews.length })}</span>
       </div>
       <div className="grid gap-4">
         {displayed.map((review) => (
@@ -97,7 +99,7 @@ const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggle
       {reviews.length > 3 && (
         <div className="mt-8 text-center">
           <Button variant="outline" className="h-14 px-10 text-[10px] font-black uppercase tracking-[0.2em]" onClick={onToggleShowAll}>
-            {showAll ? "Show Less" : `Show all ${reviews.length} reviews`}
+            {showAll ? t("products.details.reviews.showLess") : t("products.details.reviews.showAll", { count: reviews.length })}
           </Button>
         </div>
       )}

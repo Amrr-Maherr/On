@@ -1,37 +1,70 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Loader from "@/components/shared/Loader";
-
 // Lazy loading all feature pages
 const HomePage = lazy(() => import("@/features/home/pages/HomePage"));
 const AuthPage = lazy(() => import("@/features/auth/pages/AuthPage"));
 const LoginPage = lazy(() => import("@/features/auth/pages/LoginPage"));
 const RegisterPage = lazy(() => import("@/features/auth/pages/RegisterPage"));
-const ForgotPasswordPage = lazy(() => import("@/features/auth/pages/ForgotPasswordPage"));
-const ResetPasswordPage = lazy(() => import("@/features/auth/pages/ResetPasswordPage"));
-const AllProductsPage = lazy(() => import("@/features/products/pages/ProductsPage"));
-const ProductDetailsPage = lazy(() => import("@/features/product-details/pages/ProductDetailsPage"));
-const AllCategoriesPage = lazy(() => import("@/features/categories/pages/CategoriesPage"));
-const CategoryDetailsPage = lazy(() => import("@/features/category-details/pages/CategoryDetailsPage"));
+const ForgotPasswordPage = lazy(
+  () => import("@/features/auth/pages/ForgotPasswordPage"),
+);
+const ResetPasswordPage = lazy(
+  () => import("@/features/auth/pages/ResetPasswordPage"),
+);
+const AllProductsPage = lazy(
+  () => import("@/features/products/pages/ProductsPage"),
+);
+const ProductDetailsPage = lazy(
+  () => import("@/features/product-details/pages/ProductDetailsPage"),
+);
+const AllCategoriesPage = lazy(
+  () => import("@/features/categories/pages/CategoriesPage"),
+);
+const CategoryDetailsPage = lazy(
+  () => import("@/features/category-details/pages/CategoryDetailsPage"),
+);
 const AllBrandsPage = lazy(() => import("@/features/brands/pages/BrandsPage"));
-const BrandDetailsPage = lazy(() => import("@/features/brand-details/pages/BrandDetailsPage"));
+const BrandDetailsPage = lazy(
+  () => import("@/features/brand-details/pages/BrandDetailsPage"),
+);
 const CartPage = lazy(() => import("@/features/cart/pages/CartPage"));
-const CheckoutPage = lazy(() => import("@/features/checkout/pages/CheckoutPage"));
+const CheckoutPage = lazy(
+  () => import("@/features/checkout/pages/CheckoutPage"),
+);
 const OrdersPage = lazy(() => import("@/features/orders/pages/OrdersPage"));
 const ProfilePage = lazy(() => import("@/features/profile/pages/ProfilePage"));
-const WishlistPage = lazy(() => import("@/features/wishlist/pages/WishlistPage"));
+const WishlistPage = lazy(
+  () => import("@/features/wishlist/pages/WishlistPage"),
+);
 const AboutPage = lazy(() => import("@/features/footer-pages/pages/AboutPage"));
-const ContactPage = lazy(() => import("@/features/footer-pages/pages/ContactPage"));
-const PrivacyPage = lazy(() => import("@/features/footer-pages/pages/PrivacyPage"));
+const ContactPage = lazy(
+  () => import("@/features/footer-pages/pages/ContactPage"),
+);
+const PrivacyPage = lazy(
+  () => import("@/features/footer-pages/pages/PrivacyPage"),
+);
 const TermsPage = lazy(() => import("@/features/footer-pages/pages/TermsPage"));
 const FaqPage = lazy(() => import("@/features/footer-pages/pages/FaqPage"));
-const ShippingPage = lazy(() => import("@/features/footer-pages/pages/ShippingPage"));
-const ReturnsPage = lazy(() => import("@/features/footer-pages/pages/ReturnsPage"));
-const SizeGuidePage = lazy(() => import("@/features/footer-pages/pages/SizeGuidePage"));
+const ShippingPage = lazy(
+  () => import("@/features/footer-pages/pages/ShippingPage"),
+);
+const ReturnsPage = lazy(
+  () => import("@/features/footer-pages/pages/ReturnsPage"),
+);
+const SizeGuidePage = lazy(
+  () => import("@/features/footer-pages/pages/SizeGuidePage"),
+);
 const HelpPage = lazy(() => import("@/features/footer-pages/pages/HelpPage"));
-const SupportPolicyPage = lazy(() => import("@/features/footer-pages/pages/SupportPolicyPage"));
-const PoliciesPage = lazy(() => import("@/features/footer-pages/pages/PoliciesPage"));
-const NotFoundPage = lazy(() => import("@/features/not-found/pages/NotFoundPage"));
+const SupportPolicyPage = lazy(
+  () => import("@/features/footer-pages/pages/SupportPolicyPage"),
+);
+const PoliciesPage = lazy(
+  () => import("@/features/footer-pages/pages/PoliciesPage"),
+);
+const NotFoundPage = lazy(
+  () => import("@/features/not-found/pages/NotFoundPage"),
+);
 
 export default function AppRoutes() {
   return (

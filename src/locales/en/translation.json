@@ -1,0 +1,179 @@
+{
+  "welcome": "Welcome",
+  "categories": "Categories",
+  "addToCart": "Add To Cart",
+  "products": {
+    "page": {
+      "title": "All Products",
+      "description": "Browse our complete collection of products.",
+      "hero": {
+        "subtitle": "Explore",
+        "title": "Products.",
+        "description": "High-performance gear engineered for those who push boundaries."
+      },
+      "catalog": {
+        "label": "Catalog",
+        "title": "ALL GEAR.",
+        "count": "{{count}} product available",
+        "count_plural": "{{count}} products available"
+      },
+      "count": "{{count}} product found",
+      "count_plural": "{{count}} products found",
+      "breadcrumb": {
+        "home": "Home",
+        "products": "All Products"
+      },
+      "label": "Products",
+      "heading": "All Products"
+    },
+    "filters": {
+      "sortBy": "Sort By",
+      "categories": "Categories",
+      "brands": "Brands",
+      "price": "Price",
+      "reset": "Reset Filters",
+      "filterSort": "Filter & Sort",
+      "filtersSort": "Filters & Sort",
+      "resetShort": "Reset",
+      "category": "Category",
+      "brand": "Brand",
+      "priceRange": "Price Range",
+      "sort": {
+        "label": "Sort by:",
+        "latest": "Latest",
+        "priceLowToHigh": "Price: Low to High",
+        "priceHighToLow": "Price: High to Low",
+        "nameAZ": "Name: A-Z",
+        "nameZA": "Name: Z-A"
+      },
+      "priceRange": {
+        "min": "Min",
+        "max": "Max",
+        "separator": "—",
+        "minAria": "Minimum price",
+        "maxAria": "Maximum price"
+      },
+      "search": "Search...",
+      "panel": {
+        "title": "Filters",
+        "close": "Close filters"
+      }
+    },
+    "card": {
+      "sold": "Sold"
+    },
+    "empty": {
+      "title": "No products found",
+      "description": "There are no products available at the moment. Please check back later."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "actions": {
+      "addToCart": "Add to cart",
+      "addToBag": "Add to Bag",
+      "adding": "Adding...",
+      "addedToCart": "Added to cart!",
+      "addToWishlist": "Add to wishlist",
+      "addedToWishlist": "Added to wishlist!",
+      "favorite": "Favorite"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "Home",
+        "products": "Products"
+      },
+      "notFound": "Product not found.",
+      "info": {
+        "brand": "Brand"
+      },
+      "price": {
+        "label": "Price"
+      },
+      "rating": {
+        "sold": "sold"
+      },
+      "quantity": {
+        "label": "Qty",
+        "available": "{{count}} available"
+      },
+      "description": {
+        "label": "Description"
+      },
+      "stock": {
+        "label": "Stock Status",
+        "lowStock": "Low Stock",
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock",
+        "sold": "sold",
+        "remaining": "remaining",
+        "available": "{{count}} / {{total}} available"
+      },
+      "brand": {
+        "label": "Brand",
+        "view": "View brand"
+      },
+      "category": {
+        "label": "Category",
+        "view": "View category"
+      },
+      "subcategories": {
+        "label": "Categories"
+      },
+      "reviews": {
+        "label": "Social Proof",
+        "title": "Customer Reviews.",
+        "emptyTitle": "No reviews yet",
+        "emptyDescription": "Be the first to review this product.",
+        "count": "{{count}} reviews",
+        "showLess": "Show Less",
+        "showAll": "Show all {{count}} reviews"
+      },
+      "addReview": {
+        "label": "Your Feedback",
+        "title": "Write a Review.",
+        "rating": "Your Rating",
+        "poor": "Poor",
+        "fair": "Fair",
+        "good": "Good",
+        "veryGood": "Very Good",
+        "excellent": "Excellent",
+        "reviewLabel": "Your Review",
+        "placeholder": "Share your thoughts about this product...",
+        "publicNotice": "Your review will be public",
+        "submit": "Submit Review"
+      },
+      "qa": {
+        "label": "Support",
+        "title": "Questions & Answers.",
+        "q1": "Q: Is this product true to size?",
+        "a1": "A: Yes, it runs true to size. I recommend ordering your usual size.",
+        "q2": "Q: What material is this made from?",
+        "a2": "A: It is made from a high-quality cotton blend for durability and comfort.",
+        "answeredBy": "Answered by Store Team",
+        "placeholder": "Ask a question...",
+        "ask": "Ask"
+      },
+      "brands": {
+        "label": "Partners",
+        "title": "Shop by Brand.",
+        "noBrands": "No brands available at the moment."
+      },
+      "recommendations": {
+        "label": "Recommendations",
+        "title": "You May Also Like.",
+        "noProducts": "No products available at the moment."
+      },
+      "gallery": {
+        "openFullscreen": "Open image in fullscreen"
+      }
+    }
+  }
+}

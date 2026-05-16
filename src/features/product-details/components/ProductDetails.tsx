@@ -1,4 +1,5 @@
 import { useState, memo } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -25,6 +26,7 @@ interface ProductDetailsProps {
 }
 
 const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsProps) {
+  const { t } = useTranslation();
   const [quantity, setQuantity] = useState(1);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
@@ -42,8 +44,8 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
           </Link>
           <Breadcrumb
             items={[
-              { label: "Home", href: "/" },
-              { label: "Products", href: "/products" },
+              { label: t("products.details.breadcrumb.home"), href: "/" },
+              { label: t("products.details.breadcrumb.products"), href: "/products" },
               { label: product.category.name },
             ]}
           />

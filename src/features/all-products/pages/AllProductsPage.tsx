@@ -1,11 +1,9 @@
-import { useState, useCallback, useMemo } from "react";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "@/features/products/components/ProductCard";
-import { useAllProducts } from "@/features/all-products/hooks/useAllProducts";
-import { useLocalSearch } from "@/shared/hooks/useLocalSearch";
 import ProductsLoader from "@/features/all-products/components/ProductsLoader";
 import ProductsError from "@/features/all-products/components/ProductsError";
 import ProductsEmpty from "@/features/all-products/components/ProductsEmpty";
@@ -20,34 +18,17 @@ import {
 } from "@/components/shared/filters";
 import { api } from "@/lib";
 import type { ApiResponse } from "@/shared/types/api";
+import type { Product } from "@/features/products/types";
 import type { Category } from "@/features/all-categories/types";
 import type { Brand } from "@/features/all-brands/types";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 export default function AllProductsPage() {
-  const [searchParams] = useSearchParams();
-  const urlQuery = searchParams.get("q") || "";
-
-  const [page, setPage] = useState(1);
-  const [sort, setSort] = useState("");
-  const [priceGte, setPriceGte] = useState<number>(0);
-  const [priceLte, setPriceLte] = useState<number>(10000);
-  const [categoryIn, setCategoryIn] = useState<string[]>([]);
-  const [brandIn, setBrandIn] = useState<string[]>([]);
-
-  const { data, isLoading, error, refetch } = useAllProducts({
-    page,
-    keyword: urlQuery || undefined,
-    sort: sort || undefined,
-    priceGte: priceGte > 0 ? priceGte : undefined,
-    priceLte: priceLte < 10000 ? priceLte : undefined,
-    categoryIn: categoryIn.length > 0 ? categoryIn : undefined,
-    brandIn: brandIn.length > 0 ? brandIn : undefined,
+  const { t } = useTranslation();
+  const { data, isLoading, error, refetch } = useQuery<ApiResponse<Product>>({
+    queryKey: ["all-products"],
+    queryFn: () =>
+      api.get<ApiResponse<Product>>("/api/v1/products").then((r) => r.data),
+    staleTime: 1_000 * 60 * 2,
   });
 
   const { data: categoriesData } = useQuery<ApiResponse<Category>>({
@@ -75,10 +56,6 @@ export default function AllProductsPage() {
   const products = useMemo(() => data?.data ?? [], [data?.data]);
   const metadata = data?.metadata;
 
-  const { query: localQuery, filtered } = useLocalSearch(products);
-
-  const searchQuery = urlQuery || localQuery;
-
   const categories = useMemo(
     () =>
       categoriesData?.data.map((cat) => ({
@@ -97,67 +74,9 @@ export default function AllProductsPage() {
     [brandsData?.data],
   );
 
-  const displayProducts = useMemo(
-    () => (searchQuery ? filtered : products),
-    [searchQuery, filtered, products],
-  );
-
-  const resultsCount = useMemo(
-    () => (searchQuery ? filtered.length : data?.results) ?? products.length,
-    [searchQuery, filtered.length, data?.results, products.length],
-  );
-
-  const handleSortChange = useCallback((value: string) => {
-    setSort(value);
-  }, []);
-
-  const handleCategoryChange = useCallback((values: string[]) => {
-    setCategoryIn(values);
-    setPage(1);
-  }, []);
-
-  const handleBrandChange = useCallback((values: string[]) => {
-    setBrandIn(values);
-    setPage(1);
-  }, []);
-
-  const handlePriceChange = useCallback((min: number, max: number) => {
-    setPriceGte(min);
-    setPriceLte(max);
-    setPage(1);
-  }, []);
-
-  const handlePageChange = useCallback((p: number) => {
-    setPage(p);
-  }, []);
-
-  const handleReset = useCallback(() => {
-    setSort("");
-    setPriceGte(0);
-    setPriceLte(10000);
-    setCategoryIn([]);
-    setBrandIn([]);
-    setPage(1);
-  }, []);
-
-  if (isLoading) return <ProductsLoader />;
-
-  if (error) {
-    return (
-      <ProductsError
-        message={getErrorMessage(error)}
-        onRetry={() => refetch()}
-      />
-    );
-  }
-
-  if (!products || products.length === 0) {
-    return <ProductsEmpty />;
-  }
-
   return (
     <>
-      <PageHelmet title="All Products" description="Browse our complete collection of products." />
+      <PageHelmet title={t("products.page.title")} description={t("products.page.description")} />
 
       <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
         <div
@@ -166,111 +85,83 @@ export default function AllProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            Explore
+            {t("products.page.hero.subtitle")}
           </p>
           <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            Products.
+            {t("products.page.hero.title")}
           </h1>
           <p className="mt-4 max-w-lg text-lg text-white/70">
-            High-performance gear engineered for those who push boundaries.
+            {t("products.page.hero.description")}
           </p>
         </div>
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Products" }]} className="mb-6" />
-
-      {searchQuery && (
-        <div className="mb-6">
-          <p className="text-sm text-muted-foreground">
-            Search results for &ldquo;{searchQuery}&rdquo;
-          </p>
-        </div>
-      )}
+        <Breadcrumb items={[{ label: t("products.page.breadcrumb.home"), href: "/" }, { label: t("products.page.breadcrumb.products") }]} className="mb-6" />
 
       <div className="mb-8">
         <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-          Products
+          {t("products.page.label")}
         </span>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Products</h1>
+            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">{t("products.page.heading")}</h1>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-full sm:w-56">
-              <FilterSortDropdown value={sort} onChange={handleSortChange} />
+              <FilterSortDropdown />
             </div>
             <div className="lg:hidden">
-              <MobileFilterSheet
-                sort={sort}
-                onSortChange={handleSortChange}
-                categories={categories}
-                categoryIn={categoryIn}
-                onCategoryChange={handleCategoryChange}
-                brands={brands}
-                brandIn={brandIn}
-                onBrandChange={handleBrandChange}
-                priceGte={priceGte}
-                priceLte={priceLte}
-                onPriceChange={handlePriceChange}
-                onReset={handleReset}
-              />
+              <MobileFilterSheet categories={categories} brands={brands} />
             </div>
           </div>
         </div>
         <p className="mt-1.5 text-sm text-muted-foreground/60">
-          {resultsCount} {resultsCount === 1 ? "product" : "products"} found
+          {t("products.page.count", { count: products.length })}
         </p>
       </div>
 
       <div className="mt-8 flex gap-8">
         <div className="hidden lg:block">
           <FiltersPanel>
-            <FilterSection title="Category">
-              <FilterCheckboxGroup
-                options={categories}
-                selectedValues={categoryIn}
-                onChange={handleCategoryChange}
-              />
+            <FilterSection title={t("products.filters.category")}>
+              <FilterCheckboxGroup options={categories} />
             </FilterSection>
 
-            <FilterSection title="Brand">
-              <FilterCheckboxGroup
-                options={brands}
-                selectedValues={brandIn}
-                onChange={handleBrandChange}
-              />
+            <FilterSection title={t("products.filters.brand")}>
+              <FilterCheckboxGroup options={brands} />
             </FilterSection>
 
-            <FilterSection title="Price Range">
-              <FilterPriceRange
-                min={0}
-                max={10000}
-                minValue={priceGte}
-                maxValue={priceLte}
-                onChange={handlePriceChange}
-              />
+            <FilterSection title={t("products.filters.priceRange")}>
+              <FilterPriceRange />
             </FilterSection>
           </FiltersPanel>
         </div>
 
         <div className="min-w-0 flex-1">
-          {displayProducts.length === 0 ? (
+          {error ? (
+            <ProductsError
+              message={error instanceof Error ? error.message : t("products.error.defaultMessage")}
+              onRetry={() => refetch()}
+            />
+          ) : isLoading ? (
+            <ProductsLoader />
+          ) : products.length === 0 ? (
             <ProductsEmpty />
           ) : (
             <>
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {displayProducts.map((product) => (
+                {products.map((product) => (
                   <ProductCard key={product.id || product._id} product={product} />
                 ))}
               </div>
 
-              {!searchQuery && metadata && (
+              {metadata && (
                 <div className="mt-8">
                   <ProductsPagination
                     currentPage={metadata.currentPage}
                     totalPages={metadata.numberOfPages}
-                    onPageChange={handlePageChange}
+                    onPageChange={() => {}}
                   />
                 </div>
               )}

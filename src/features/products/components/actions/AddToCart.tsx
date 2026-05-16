@@ -1,4 +1,5 @@
 import { useCallback, type MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import toast from "react-hot-toast";
@@ -11,6 +12,7 @@ interface AddToCartProps {
 }
 
 export default function AddToCart({ productId, variant = "icon", className }: AddToCartProps) {
+  const { t } = useTranslation();
   const { mutate: addToCart, isPending } = useAddToCart();
 
   const handleClick = useCallback((e: MouseEvent) => {
@@ -19,11 +21,11 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
     addToCart(
       { productId },
       {
-        onSuccess: () => toast.success("Added to cart!"),
+        onSuccess: () => toast.success(t("products.actions.addedToCart")),
         onError: (err) => toast.error(err.message),
       },
     );
-  }, [addToCart, productId]);
+  }, [addToCart, productId, t]);
 
   if (variant === "overlay") {
     return (
@@ -31,7 +33,7 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
         type="button"
         onClick={handleClick}
         disabled={isPending}
-        aria-label="Add to cart"
+        aria-label={t("products.actions.addToCart")}
         className={cn(
           "flex w-full items-center justify-center gap-3 rounded-none bg-white px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 shadow-2xl transition-all duration-300 hover:bg-neutral-100 active:scale-[0.98] disabled:opacity-50",
           className,
@@ -42,7 +44,7 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
         ) : (
           <ShoppingCart className="h-4 w-4" />
         )}
-        {isPending ? "Adding..." : "Add to Bag"}
+        {isPending ? t("products.actions.adding") : t("products.actions.addToBag")}
       </button>
     );
   }
@@ -52,7 +54,7 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
       type="button"
       onClick={handleClick}
       disabled={isPending}
-      aria-label="Add to cart"
+      aria-label={t("products.actions.addToCart")}
       className={cn(
         "flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-white/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-white active:scale-90 focus-visible:outline-none disabled:opacity-50",
         className,

@@ -1,10 +1,12 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }: { product: Product }) {
+  const { t } = useTranslation();
   return (
     <Link
       to={`/products/${product.slug}/${product.id}`}
@@ -45,7 +47,7 @@ function ProductCard({ product }: { product: Product }) {
             &#9733; {product.ratingsAverage || "—"}
           </span>
           <span>&middot;</span>
-          <span>{product.sold} Sold</span>
+          <span>{product.sold} {t("products.card.sold")}</span>
         </div>
       </div>
     </Link>

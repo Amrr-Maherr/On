@@ -1,23 +1,18 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 
 interface FilterCheckboxGroupProps {
   options: { label: string; value: string; count?: number }[];
-  selectedValues?: string[];
-  onChange?: (values: string[]) => void;
 }
 
-function FilterCheckboxGroup({
-  options,
-  selectedValues = [],
-  onChange,
-}: FilterCheckboxGroupProps) {
+function FilterCheckboxGroup({ options }: FilterCheckboxGroupProps) {
+  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+
   const handleToggle = (value: string) => {
-    const isSelected = selectedValues.includes(value);
-    if (isSelected) {
-      onChange?.(selectedValues.filter((v) => v !== value));
-    } else {
-      onChange?.([...selectedValues, value]);
-    }
+    setSelectedValues((prev) =>
+      prev.includes(value)
+        ? prev.filter((v) => v !== value)
+        : [...prev, value],
+    );
   };
 
   return (
