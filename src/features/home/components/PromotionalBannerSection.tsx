@@ -43,7 +43,7 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
             <div className="mt-10">
               <Button
                 onClick={handleShopSale}
-                className="h-14 cursor-pointer rounded-full bg-white px-12 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all duration-300 hover:bg-white/90 active:scale-[0.97]"
+                className="h-14 cursor-pointer rounded-full bg-white px-12 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all rounded-none duration-300 hover:bg-white/90 active:scale-[0.97]"
               >
                 {t("home.sections.promotionalBanner.cta")}
                 <ArrowRight className="ml-2 h-5 w-5" />

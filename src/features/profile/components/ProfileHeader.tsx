@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { useTranslation } from "react-i18next";
 import type { User } from "../types";
 
 interface ProfileHeaderProps {
@@ -7,7 +6,6 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader = memo(function ProfileHeader({ user }: ProfileHeaderProps) {
-  const { t } = useTranslation();
   const initials = user.name
     .split(" ")
     .map((n) => n[0])

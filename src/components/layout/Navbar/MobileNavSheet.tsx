@@ -2,8 +2,6 @@ import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  Grid3X3,
-  Tag,
   Heart,
   Package,
   ShoppingCart,

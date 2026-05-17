@@ -28,7 +28,7 @@ export default function CartPage() {
   }, [navigate]);
 
   const { data, isLoading, error, refetch } = useCart();
-  const { mutate: updateItem, isPending: isUpdating } = useUpdateCartItem();
+  const { mutate: updateItem } = useUpdateCartItem();
   const { mutate: removeItem } = useRemoveCartItem();
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
 

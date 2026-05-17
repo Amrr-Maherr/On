@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { FilterSection, FilterSortDropdown } from "@/components/shared/filters";
+import { FilterSortDropdown } from "@/components/shared/filters";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
 interface FilterOption {

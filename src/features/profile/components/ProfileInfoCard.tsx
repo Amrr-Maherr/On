@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Mail, Phone, Shield, Calendar } from "lucide-react";
 import type { User } from "../types";
 
+interface ProfileInfoCardProps {
+  user: User;
+}
+
 const ProfileInfoCard = memo(function ProfileInfoCard({ user }: ProfileInfoCardProps) {
   const { t } = useTranslation();
   const infoItems = [
