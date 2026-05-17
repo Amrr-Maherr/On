@@ -175,5 +175,80 @@
         "openFullscreen": "Open image in fullscreen"
       }
     }
+  },
+  "categories": {
+    "page": {
+      "title": "All Categories",
+      "description": "Browse our complete collection of categories.",
+      "hero": {
+        "subtitle": "Browse",
+        "title": "Categories.",
+        "description": "Find your discipline. Every sport, every season, every goal."
+      },
+      "catalog": {
+        "label": "Categories",
+        "title": "ALL CATEGORIES.",
+        "count": "{{count}} category available",
+        "count_plural": "{{count}} categories available"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "categories": "All Categories"
+      }
+    },
+    "filters": {
+      "sortBy": "Sort By",
+      "reset": "Reset Filters",
+      "filterSort": "Filter & Sort",
+      "filtersSort": "Filters & Sort",
+      "resetShort": "Reset",
+      "search": "Search categories...",
+      "sort": {
+        "label": "Sort by:",
+        "nameAZ": "Name: A-Z",
+        "nameZA": "Name: Z-A",
+        "mostProducts": "Most Products"
+      }
+    },
+    "card": {
+      "explore": "Explore"
+    },
+    "empty": {
+      "title": "No categories found",
+      "description": "There are no categories available at the moment. Please check back later."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "Home",
+        "categories": "Categories"
+      },
+      "notFound": "Category not found.",
+      "info": {
+        "label": "Details"
+      },
+      "slug": {
+        "label": "Slug"
+      },
+      "activeSince": "Active Since",
+      "referenceId": "Reference ID",
+      "collection": {
+        "label": "Collection",
+        "title": "CATEGORY GEAR."
+      },
+      "products": {
+        "empty": "No products found in this category.",
+        "error": "Failed to load products"
+      }
+    }
   }
 }

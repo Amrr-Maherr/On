@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useCategoryDetails } from "@/features/category-details/hooks/useGetCategoryDetails";
@@ -8,6 +9,7 @@ import CategoryDetailsError from "@/features/category-details/components/Categor
 import CategoryProducts from "@/features/category-details/components/CategoryProducts";
 
 export default function CategoryDetailsPage() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading, error, refetch } = useCategoryDetails(id!);
@@ -26,7 +28,7 @@ export default function CategoryDetailsPage() {
   const category = data?.data;
 
   if (!category) {
-    return <CategoryDetailsError message="Category not found." />;
+    return <CategoryDetailsError message={t("categories.details.notFound")} />;
   }
 
   return (
@@ -35,17 +37,21 @@ export default function CategoryDetailsPage() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Category</p>
-          <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter text-white md:text-8xl">{category.name}.</h1>
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">
+            {t("categories.page.hero.subtitle")}
+          </p>
+          <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter text-white md:text-8xl">
+            {category.name}.
+          </h1>
         </div>
       </section>
-      <PageHelmet title={category.name} />
+      <PageHelmet title={category.name} description={t("categories.page.description")} />
       <div className="container-layout py-12">
         <Breadcrumb
           className="mb-12"
           items={[
-            { label: "Home", href: "/" },
-            { label: "Categories", href: "/categories" },
+            { label: t("categories.details.breadcrumb.home"), href: "/" },
+            { label: t("categories.details.breadcrumb.categories"), href: "/categories" },
             { label: category.name },
           ]}
         />
@@ -54,10 +60,10 @@ export default function CategoryDetailsPage() {
         <section className="section-py mt-20 border-t border-border/40">
           <div className="mb-14 border-l-4 border-foreground pl-8">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              Collection
+              {t("categories.details.collection.label")}
             </span>
             <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
-              CATEGORY GEAR.
+              {t("categories.details.collection.title")}
             </h2>
           </div>
           <CategoryProducts categoryId={category._id} />
