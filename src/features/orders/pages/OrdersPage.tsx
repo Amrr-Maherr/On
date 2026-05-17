@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -8,13 +9,8 @@ import OrdersLoader from "@/features/orders/components/OrdersLoader";
 import OrdersEmpty from "@/features/orders/components/OrdersEmpty";
 import OrdersError from "@/features/orders/components/OrdersError";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 function CampaignHeader() {
+  const { t } = useTranslation();
   return (
     <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
       <div
@@ -22,10 +18,14 @@ function CampaignHeader() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
       <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">Track</p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">Orders.</h1>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+          {t("orders.page.hero.subtitle")}
+        </p>
+        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+          {t("orders.page.hero.title")}
+        </h1>
         <p className="mt-4 max-w-lg text-lg text-white/70">
-          Your complete order history, all in one place.
+          {t("orders.page.hero.description")}
         </p>
       </div>
     </section>
@@ -33,6 +33,7 @@ function CampaignHeader() {
 }
 
 export default function OrdersPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,7 +58,10 @@ export default function OrdersPage() {
     return (
       <>
         <CampaignHeader />
-        <OrdersError message={getErrorMessage(error)} onRetry={() => refetch()} />
+        <OrdersError
+          message={error instanceof Error ? error.message : t("orders.error.defaultMessage")}
+          onRetry={() => refetch()}
+        />
       </>
     );
   }
@@ -76,16 +80,18 @@ export default function OrdersPage() {
   return (
     <>
       <CampaignHeader />
-      <PageHelmet title="My Orders" description="View your order history." />
+      <PageHelmet title={t("orders.page.title")} description={t("orders.page.description")} />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Orders" }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("orders.page.breadcrumb.home"), href: "/" }, { label: t("orders.page.breadcrumb.orders") }]} className="mb-6" />
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            History
+            {t("orders.page.catalog.label")}
           </span>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">Order History.</h2>
+          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
+            {t("orders.page.catalog.title")}
+          </h2>
           <p className="mt-1 text-sm font-medium text-muted-foreground/60">
-            {orders.length} {orders.length === 1 ? "order" : "orders"} tracked in your account
+            {t("orders.page.catalog.count", { count: orders.length })}
           </p>
         </div>
         <div className="space-y-4" data-tour="orders-list">

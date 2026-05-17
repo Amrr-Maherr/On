@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -8,24 +9,28 @@ import AuthInput from "@/features/auth/components/auth-input";
 import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
 
 export default function ForgotPasswordPage() {
+  const { t } = useTranslation();
   return (
     <AuthLayout>
-      <PageHelmet title="Forgot Password" />
+      <PageHelmet title={t("auth.page.forgotPassword.title")} />
       <AuthFormWrapper>
         <AuthHeader
-          title="Recover Access"
-          description="Enter your email and we'll send you a reset code"
+          title={t("auth.header.forgotPassword.title")}
+          description={t("auth.header.forgotPassword.description")}
         />
 
         <form className="space-y-6" noValidate>
           <AuthInput
-            label="Email Address"
+            label={t("auth.form.email")}
             type="email"
-            placeholder="example@mail.com"
+            placeholder={t("auth.form.emailPlaceholder")}
             autoComplete="email"
           />
 
-          <AuthSubmitButton label="Send Reset Code" loadingLabel="Sending..." />
+          <AuthSubmitButton
+            label={t("auth.submit.forgotPassword")}
+            loadingLabel={t("auth.submit.forgotPasswordLoading")}
+          />
         </form>
 
         <div className="mt-8 text-center">
@@ -34,7 +39,7 @@ export default function ForgotPasswordPage() {
             className="group inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to sign in
+            {t("auth.links.backToSignIn")}
           </Link>
         </div>
       </AuthFormWrapper>

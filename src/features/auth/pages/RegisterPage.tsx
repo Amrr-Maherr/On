@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,6 +13,7 @@ import { useRegister } from "@/features/auth/hooks/useRegister";
 import type { RegisterFormFields } from "@/features/auth/types/auth";
 
 export default function RegisterPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { mutate, isPending, error } = useRegister();
 
@@ -37,7 +39,7 @@ export default function RegisterPage() {
       onSuccess: (response) => {
         localStorage.setItem("token", response.token);
         localStorage.setItem("userId", response.user._id);
-        toast.success("Account created successfully!");
+        toast.success(t("auth.toast.registerSuccess"));
         navigate("/");
       },
       onError: (err) => {
@@ -48,85 +50,85 @@ export default function RegisterPage() {
 
   return (
     <AuthLayout>
-      <PageHelmet title="Create Account" description="Create your account." />
+      <PageHelmet title={t("auth.page.register.title")} description={t("auth.page.register.description")} />
       <AuthFormWrapper>
         <AuthHeader
-          title="Join Us"
-          description="Enter your details to start your journey"
+          title={t("auth.header.register.title")}
+          description={t("auth.header.register.description")}
         />
 
         <form className="space-y-6" noValidate onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <AuthInput
-              label="Full Name"
+              label={t("auth.form.fullName")}
               type="text"
-              placeholder="John Doe"
+              placeholder={t("auth.form.fullNamePlaceholder")}
               autoComplete="name"
               error={errors.name?.message}
               {...register("name", {
-                required: "Name is required",
+                required: t("auth.validation.nameRequired"),
                 minLength: {
                   value: 3,
-                  message: "Name must be at least 3 characters",
+                  message: t("auth.validation.nameMinLength"),
                 },
               })}
             />
             <AuthInput
-              label="Email Address"
+              label={t("auth.form.email")}
               type="email"
-              placeholder="example@mail.com"
+              placeholder={t("auth.form.emailPlaceholder")}
               autoComplete="email"
               error={errors.email?.message}
               {...register("email", {
-                required: "Email is required",
+                required: t("auth.validation.emailRequired"),
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address",
+                  message: t("auth.validation.emailInvalid"),
                 },
               })}
             />
           </div>
 
           <AuthInput
-            label="Phone Number"
+            label={t("auth.form.phoneNumber")}
             type="tel"
-            placeholder="01xxxxxxxxx"
+            placeholder={t("auth.form.phonePlaceholder")}
             autoComplete="tel"
             error={errors.phone?.message}
             {...register("phone", {
-              required: "Phone number is required",
+              required: t("auth.validation.phoneRequired"),
               pattern: {
                 value: /^01[0-9]{9}$/,
-                message: "Enter a valid phone number",
+                message: t("auth.validation.phoneInvalid"),
               },
             })}
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <AuthInput
-              label="Password"
+              label={t("auth.form.password")}
               type="password"
-              placeholder="Enter your password"
+              placeholder={t("auth.form.passwordPlaceholder")}
               autoComplete="new-password"
               error={errors.password?.message}
               {...register("password", {
-                required: "Password is required",
+                required: t("auth.validation.passwordRequired"),
                 minLength: {
                   value: 6,
-                  message: "Password must be at least 6 characters",
+                  message: t("auth.validation.passwordMinLength"),
                 },
               })}
             />
             <AuthInput
-              label="Confirm Password"
+              label={t("auth.form.confirmPassword")}
               type="password"
-              placeholder="Confirm your password"
+              placeholder={t("auth.form.confirmPasswordPlaceholder")}
               autoComplete="new-password"
               error={errors.confirmPassword?.message}
               {...register("confirmPassword", {
-                required: "Please confirm your password",
+                required: t("auth.validation.confirmPasswordRequired"),
                 validate: (value) =>
-                  value === password || "Passwords do not match",
+                  value === password || t("auth.validation.passwordsDoNotMatch"),
               })}
             />
           </div>
@@ -138,8 +140,8 @@ export default function RegisterPage() {
           )}
 
           <AuthSubmitButton
-            label="Create Account"
-            loadingLabel="Creating..."
+            label={t("auth.submit.register")}
+            loadingLabel={t("auth.submit.registerLoading")}
             isLoading={isPending}
           />
 
@@ -147,12 +149,12 @@ export default function RegisterPage() {
         </form>
 
         <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
-          Already have an account?{" "}
+          {t("auth.links.hasAccount")}{" "}
           <Link
             to="/login"
             className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
-            Sign in
+            {t("auth.links.signIn")}
           </Link>
         </p>
       </AuthFormWrapper>

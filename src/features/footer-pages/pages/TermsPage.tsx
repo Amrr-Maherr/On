@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
@@ -40,16 +41,18 @@ const sections = [
 ];
 
 export default function TermsPage() {
+  const { t } = useTranslation();
+
   return (
     <PageLayout>
-      <PageHelmet title="Terms &amp; Conditions" description="Terms and conditions for using our website and services." />
+      <PageHelmet title={t("footerPages.terms.page.title")} description={t("footerPages.terms.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: "Home", href: "/" },
-        { label: "Terms & Conditions" },
+        { label: t("footerPages.terms.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.terms.breadcrumb.terms") },
       ]} />
       <PageHero
-        title="Terms & Conditions"
-        description="Please read these terms carefully before using our website or placing an order."
+        title={t("footerPages.terms.hero.title")}
+        description={t("footerPages.terms.hero.description")}
       />
 
       <div className="space-y-6">

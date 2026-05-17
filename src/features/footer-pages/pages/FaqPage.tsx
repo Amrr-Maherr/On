@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -11,58 +12,59 @@ interface FaqItem {
   answer: string;
 }
 
-const faqs: FaqItem[] = [
-  {
-    question: "How do I place an order?",
-    answer: "Simply browse our catalogue, add items to your cart, and proceed to checkout. You'll need to create an account or log in, enter your shipping details, and choose a payment method. Once your order is confirmed, you'll receive an email with your order summary and tracking information.",
-  },
-  {
-    question: "What payment methods do you accept?",
-    answer: "We accept Visa, Mastercard, American Express, PayPal, Apple Pay, and Google Pay. All transactions are processed securely through encrypted payment gateways.",
-  },
-  {
-    question: "Can I modify or cancel my order after placing it?",
-    answer: "Orders can be modified or cancelled within 1 hour of placement. After that, the order enters processing and cannot be changed. Contact our support team immediately if you need assistance.",
-  },
-  {
-    question: "How long does shipping take?",
-    answer: "Standard shipping takes 5–8 business days within the continental US. Express shipping (2–3 business days) and next-day delivery are available at checkout. International orders typically arrive within 10–20 business days depending on customs.",
-  },
-  {
-    question: "Do you offer free shipping?",
-    answer: "Yes, we offer free standard shipping on all orders over $75 within the continental United States. Express and international shipping rates are calculated at checkout based on package weight and destination.",
-  },
-  {
-    question: "What is your return policy?",
-    answer: "We accept returns within 30 days of delivery for unworn, unwashed items in original condition with tags attached. Refunds are processed within 5–7 business days after we receive the return. Visit our Returns page for full details.",
-  },
-  {
-    question: "How do I track my order?",
-    answer: "Once your order ships, you'll receive a confirmation email with a tracking number. You can also view your order status and tracking details anytime in your account dashboard under 'My Orders'.",
-  },
-  {
-    question: "Do you ship internationally?",
-    answer: "Yes, we ship to over 50 countries worldwide. International shipping rates and delivery times vary by destination. Please note that customs duties, taxes, and brokerage fees may apply and are the responsibility of the recipient.",
-  },
-  {
-    question: "How can I contact customer support?",
-    answer: "You can reach us via email at support@onstore.com, by phone at +1 (555) 123-4567 (Monday–Friday, 9 AM–6 PM EST), or through our Contact page. We typically respond within 24 hours.",
-  },
-  {
-    question: "Is my personal information secure?",
-    answer: "Absolutely. We use industry-standard SSL encryption to protect your data during transmission. Your payment details are processed through PCI-compliant gateways, and we never share your personal information with third parties. See our Privacy Policy for more details.",
-  },
-];
-
-const categories = [
-  { label: "Orders", href: "/faq" },
-  { label: "Shipping", href: "/shipping" },
-  { label: "Returns", href: "/returns" },
-  { label: "Contact Us", href: "/contact" },
-];
-
 export default function FaqPage() {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs: FaqItem[] = [
+    {
+      question: t("footerPages.faq.q1.question"),
+      answer: t("footerPages.faq.q1.answer"),
+    },
+    {
+      question: t("footerPages.faq.q2.question"),
+      answer: t("footerPages.faq.q2.answer"),
+    },
+    {
+      question: t("footerPages.faq.q3.question"),
+      answer: t("footerPages.faq.q3.answer"),
+    },
+    {
+      question: t("footerPages.faq.q4.question"),
+      answer: t("footerPages.faq.q4.answer"),
+    },
+    {
+      question: t("footerPages.faq.q5.question"),
+      answer: t("footerPages.faq.q5.answer"),
+    },
+    {
+      question: t("footerPages.faq.q6.question"),
+      answer: t("footerPages.faq.q6.answer"),
+    },
+    {
+      question: t("footerPages.faq.q7.question"),
+      answer: t("footerPages.faq.q7.answer"),
+    },
+    {
+      question: t("footerPages.faq.q8.question"),
+      answer: t("footerPages.faq.q8.answer"),
+    },
+    {
+      question: t("footerPages.faq.q9.question"),
+      answer: t("footerPages.faq.q9.answer"),
+    },
+    {
+      question: t("footerPages.faq.q10.question"),
+      answer: t("footerPages.faq.q10.answer"),
+    },
+  ];
+
+  const categories = [
+    { label: t("footerPages.faq.categories.orders"), href: "/faq" },
+    { label: t("footerPages.faq.categories.shipping"), href: "/shipping" },
+    { label: t("footerPages.faq.categories.returns"), href: "/returns" },
+    { label: t("footerPages.faq.categories.contactUs"), href: "/contact" },
+  ];
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -70,14 +72,14 @@ export default function FaqPage() {
 
   return (
     <PageLayout>
-      <PageHelmet title="FAQ" description="Frequently asked questions about shopping, shipping, returns, and more." />
+      <PageHelmet title={t("footerPages.faq.page.title")} description={t("footerPages.faq.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: "Home", href: "/" },
-        { label: "FAQ" },
+        { label: t("footerPages.faq.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.faq.breadcrumb.faq") },
       ]} />
       <PageHero
-        title="Frequently Asked Questions"
-        description="Find answers to the most common questions about shopping with us. Browse by topic or search the list below."
+        title={t("footerPages.faq.hero.title")}
+        description={t("footerPages.faq.hero.description")}
       />
 
       <div className="mb-12 flex flex-wrap gap-4">
@@ -140,15 +142,15 @@ export default function FaqPage() {
       </div>
 
       <div className="mt-12 border border-border/60 bg-muted/50 p-10 text-center md:p-16">
-        <h2 className="text-3xl font-black uppercase tracking-tighter">Still have questions?</h2>
+        <h2 className="text-3xl font-black uppercase tracking-tighter">{t("footerPages.faq.cta.title")}</h2>
         <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/60">
-          Our performance support team is ready to help.
+          {t("footerPages.faq.cta.description")}
         </p>
         <Link
           to="/contact"
           className="mt-10 inline-flex h-16 items-center justify-center bg-foreground px-12 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
         >
-          Contact Support
+          {t("footerPages.faq.cta.button")}
         </Link>
       </div>
     </PageLayout>

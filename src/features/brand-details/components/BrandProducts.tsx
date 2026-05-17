@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/all-products/hooks/useAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
@@ -10,6 +11,7 @@ interface BrandProductsProps {
 }
 
 const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProps) {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useAllProducts({
     brandIn: [brandId],
     limit: 12,
@@ -28,7 +30,7 @@ const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProp
   if (error) {
     return (
       <ProductsError
-        message={error instanceof Error ? error.message : "Failed to load products"}
+        message={error instanceof Error ? error.message : t("brands.details.products.error")}
         onRetry={() => refetch()}
       />
     );
@@ -39,7 +41,7 @@ const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProp
   if (products.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border/60 py-20 text-center">
-        <p className="text-lg font-medium text-muted-foreground">No products found for this brand.</p>
+        <p className="text-lg font-medium text-muted-foreground">{t("brands.details.products.empty")}</p>
       </div>
     );
   }

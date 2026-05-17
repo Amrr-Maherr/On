@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Search,
   User,
@@ -22,6 +23,7 @@ import MobileNavSheet from "./MobileNavSheet";
 import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 function Navbar() {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { data: cartData } = useCart();
@@ -61,11 +63,11 @@ function Navbar() {
   );
 
   const navLinks = [
-    { label: "Men", href: "/categories/men" },
-    { label: "Women", href: "/categories/women" },
-    { label: "Kids", href: "/categories/kids" },
-    { label: "Sale", href: "/products?onSale=true" },
-    { label: "Brands", href: "/brands" },
+    { key: "nav.links.men", href: "/categories/men" },
+    { key: "nav.links.women", href: "/categories/women" },
+    { key: "nav.links.kids", href: "/categories/kids" },
+    { key: "nav.links.sale", href: "/products?onSale=true" },
+    { key: "nav.links.brands", href: "/brands" },
   ];
 
   return (
@@ -77,11 +79,11 @@ function Navbar() {
           <div className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.key}
                 to={link.href}
                 className="text-sm font-black uppercase tracking-[0.2em] text-foreground/70 transition-all hover:text-foreground hover:underline underline-offset-8"
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
           </div>
@@ -91,7 +93,7 @@ function Navbar() {
           <div className="relative w-full max-w-xs" data-tour="search-input">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground/40" />
             <Input
-              placeholder="Search..."
+              placeholder={t("nav.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearch}
@@ -106,7 +108,7 @@ function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Wishlist"
+              aria-label={t("nav.aria.wishlist")}
               className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
             >
               <Heart className="h-5 w-5" />
@@ -121,7 +123,7 @@ function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Orders"
+              aria-label={t("nav.aria.orders")}
               className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
             >
               <Package className="h-5 w-5" />
@@ -136,7 +138,7 @@ function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Cart"
+              aria-label={t("nav.aria.cart")}
               className="relative rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
             >
               <ShoppingCart className="h-5 w-5" />
@@ -151,7 +153,7 @@ function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Account"
+              aria-label={t("nav.aria.account")}
               onClick={toggleDropdown}
               className="rounded-none text-muted-foreground/60 hover:bg-muted/30 hover:text-foreground"
             >
@@ -169,7 +171,7 @@ function Navbar() {
                         onClick={closeDropdown}
                       >
                         <Package className="h-4 w-4" />
-                        My Orders
+                        {t("nav.dropdown.myOrders")}
                       </Link>
                       <Link
                         to="/profile"
@@ -177,7 +179,7 @@ function Navbar() {
                         onClick={closeDropdown}
                       >
                         <UserCircle className="h-4 w-4" />
-                        Profile
+                        {t("nav.dropdown.profile")}
                       </Link>
                       <hr className="my-1 border-border/40" />
                       <button
@@ -185,7 +187,7 @@ function Navbar() {
                         onClick={handleLogout}
                       >
                         <LogOut className="h-4 w-4" />
-                        Sign Out
+                        {t("nav.dropdown.signOut")}
                       </button>
                     </div>
                   ) : (
@@ -196,7 +198,7 @@ function Navbar() {
                         onClick={closeDropdown}
                       >
                         <LogIn className="h-4 w-4" />
-                        Sign In
+                        {t("nav.dropdown.signIn")}
                       </Link>
                       <Link
                         to="/register"
@@ -204,7 +206,7 @@ function Navbar() {
                         onClick={closeDropdown}
                       >
                         <UserCircle className="h-4 w-4" />
-                        Create Account
+                        {t("nav.dropdown.createAccount")}
                       </Link>
                     </div>
                   )}
@@ -218,7 +220,7 @@ function Navbar() {
           variant="ghost"
           size="icon"
           className="md:hidden rounded-none text-muted-foreground/70"
-          aria-label="Open menu"
+          aria-label={t("nav.aria.openMenu")}
           onClick={() => setMobileMenuOpen(true)}
         >
           <Menu className="h-5 w-5" />

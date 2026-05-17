@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
@@ -15,13 +16,8 @@ import CartLoader from "@/features/cart/components/CartLoader";
 import CartEmpty from "@/features/cart/components/CartEmpty";
 import CartError from "@/features/cart/components/CartError";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 export default function CartPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,16 +29,15 @@ export default function CartPage() {
 
   const { data, isLoading, error, refetch } = useCart();
   const { mutate: updateItem, isPending: isUpdating } = useUpdateCartItem();
-  const { mutate: removeItem, isPending: isRemoving } = useRemoveCartItem();
+  const { mutate: removeItem } = useRemoveCartItem();
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
-  const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
   if (isLoading) return <CartLoader />;
 
   if (error) {
     return (
       <CartError
-        message={getErrorMessage(error)}
+        message={error instanceof Error ? error.message : t("cart.error.defaultMessage")}
         onRetry={() => refetch()}
       />
     );
@@ -58,59 +53,50 @@ export default function CartPage() {
 
   const handleUpdate = useCallback((itemId: string, count: number) => {
     if (count < 1) return;
-    setUpdatingItemId(itemId);
-    updateItem(
-      { itemId, count },
-      { onSettled: () => setUpdatingItemId(null) },
-    );
+    updateItem({ itemId, count });
   }, [updateItem]);
 
   const handleRemove = useCallback((itemId: string) => {
-    setUpdatingItemId(itemId);
-    removeItem(itemId, { onSettled: () => setUpdatingItemId(null) });
+    removeItem(itemId);
   }, [removeItem]);
 
   const handleClearCart = useCallback(() => {
     toast(
-      (t) => (
+      (toastInstance) => (
         <div className="flex flex-col gap-3">
-          <p className="text-sm">
-            Are you sure you want to remove all items from your cart?
-          </p>
+          <p className="text-sm">{t("cart.actions.confirmClear")}</p>
           <div className="flex justify-end gap-2">
             <Button
               variant="outline"
               size="sm"
-              onClick={() => toast.dismiss(t.id)}
+              onClick={() => toast.dismiss(toastInstance.id)}
             >
-              Cancel
+              {t("cart.actions.cancel")}
             </Button>
             <Button
               variant="destructive"
               size="sm"
               onClick={() => {
                 clearCartItems();
-                toast.dismiss(t.id);
+                toast.dismiss(toastInstance.id);
               }}
             >
-              Delete All
+              {t("cart.actions.deleteAll")}
             </Button>
           </div>
         </div>
       ),
       { duration: Infinity },
     );
-  }, [clearCartItems]);
+  }, [clearCartItems, t]);
 
   const handleCheckout = useCallback(() => {
     navigate("/checkout");
   }, [navigate]);
 
-  const isMutating = isUpdating || isRemoving || isClearing;
-
   return (
     <>
-      <PageHelmet title="Cart" description="Review your shopping cart." />
+      <PageHelmet title={t("cart.page.title")} description={t("cart.page.description")} />
 
       <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
         <div
@@ -119,30 +105,30 @@ export default function CartPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            Review
+            {t("cart.page.hero.subtitle")}
           </p>
           <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            Your Cart.
+            {t("cart.page.hero.title")}
           </h1>
           <p className="mt-4 max-w-lg text-lg text-white/70">
-            Secure checkout. Fast delivery. Performance guaranteed.
+            {t("cart.page.hero.description")}
           </p>
         </div>
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: "/" }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
 
         <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-              Your Selection
+              {t("cart.page.catalog.label")}
             </span>
             <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              SHOPPING BAG.
+              {t("cart.page.catalog.title")}
             </h1>
             <p className="mt-2 text-sm font-bold text-muted-foreground/60">
-              {numOfCartItems} {numOfCartItems === 1 ? "ITEM" : "ITEMS"} READY FOR PERFORMANCE
+              {t("cart.page.catalog.count", { count: numOfCartItems })}
             </p>
           </div>
           <button
@@ -151,7 +137,7 @@ export default function CartPage() {
             disabled={isClearing}
           >
             <Trash2 className="h-4 w-4" />
-            {isClearing ? "CLEARING..." : "CLEAR BAG"}
+            {isClearing ? t("cart.actions.clearing") : t("cart.actions.clearBag")}
           </button>
         </div>
 
@@ -163,7 +149,6 @@ export default function CartPage() {
                 item={item}
                 onUpdate={handleUpdate}
                 onRemove={handleRemove}
-                isUpdating={isMutating && updatingItemId === item.product.id}
               />
             ))}
           </div>

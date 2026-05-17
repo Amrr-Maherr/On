@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
 import Hero from "@/components/layout/Hero";
 import ProductsSection from "../components/ProductsSection";
@@ -19,9 +20,10 @@ import PromotionalBannerSection from "../components/PromotionalBannerSection";
 import BrandStorySection from "../components/BrandStorySection";
 
 const HomePage = memo(function HomePage() {
+  const { t } = useTranslation();
   return (
     <>
-      <PageHelmet title="Home" />
+      <PageHelmet title={t("home.page.title")} />
       <Hero />
       <HeroCampaignSection />
       <ProductsSection />

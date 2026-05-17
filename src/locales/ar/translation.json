@@ -251,5 +251,586 @@
         "error": "فشل في تحميل المنتجات"
       }
     }
+  },
+  "brands": {
+    "page": {
+      "title": "جميع العلامات التجارية",
+      "description": "اكتشف علاماتنا التجارية المنسقة.",
+      "hero": {
+        "subtitle": "اكتشف",
+        "title": "علامات تجارية.",
+        "description": "الأسماء الأكثر ثقة في العالم في مجال الملابس الرياضية عالية الأداء."
+      },
+      "catalog": {
+        "label": "العلامات التجارية",
+        "title": "جميع العلامات التجارية.",
+        "count": "{{count}} علامة تجارية متاحة",
+        "count_plural": "{{count}} علامات تجارية متاحة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "brands": "جميع العلامات التجارية"
+      }
+    },
+    "card": {
+      "label": "علامة تجارية"
+    },
+    "empty": {
+      "title": "لا توجد علامات تجارية",
+      "description": "لا توجد علامات تجارية متاحة حالياً. يرجى التحقق لاحقاً."
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "pagination": {
+      "label": "التنقل بين الصفحات",
+      "previous": "الصفحة السابقة",
+      "next": "الصفحة التالية"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "brands": "العلامات التجارية"
+      },
+      "notFound": "العلامة التجارية غير موجودة.",
+      "info": {
+        "label": "التفاصيل"
+      },
+      "activeSince": "نشط منذ",
+      "referenceId": "معرف المرجع",
+      "collection": {
+        "label": "المجموعة",
+        "title": "مجموعة العلامة التجارية."
+      },
+      "products": {
+        "empty": "لا توجد منتجات لهذه العلامة التجارية.",
+        "error": "فشل في تحميل المنتجات"
+      }
+    }
+  },
+  "auth": {
+    "page": {
+      "login": {
+        "title": "تسجيل الدخول",
+        "description": "تسجيل الدخول إلى حسابك."
+      },
+      "register": {
+        "title": "إنشاء حساب",
+        "description": "إنشاء حسابك."
+      },
+      "forgotPassword": {
+        "title": "نسيت كلمة المرور"
+      },
+      "resetPassword": {
+        "title": "إعادة تعيين كلمة المرور"
+      }
+    },
+    "header": {
+      "login": {
+        "title": "مرحباً بعودتك",
+        "description": "سجل الدخول إلى حسابك للمتابعة"
+      },
+      "register": {
+        "title": "انضم إلينا",
+        "description": "أدخل بياناتك لبدء رحلتك"
+      },
+      "forgotPassword": {
+        "title": "استعادة الوصول",
+        "description": "أدخل بريدك الإلكتروني وسنرسل لك رمز إعادة التعيين"
+      },
+      "resetPassword": {
+        "title": "كلمة مرور جديدة",
+        "description": "أدخل الرمز المرسل إلى بريدك الإلكتروني وكلمة المرور الجديدة"
+      }
+    },
+    "form": {
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "example@mail.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "confirmPasswordPlaceholder": "قم بتأكيد كلمة المرور",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "John Doe",
+      "phoneNumber": "رقم الهاتف",
+      "phonePlaceholder": "01xxxxxxxxx",
+      "recoveryCode": "رمز الاسترداد",
+      "recoveryCodePlaceholder": "أدخل الرمز"
+    },
+    "validation": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMinLength": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+      "nameRequired": "الاسم مطلوب",
+      "nameMinLength": "الاسم يجب أن يكون 3 أحرف على الأقل",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "phoneInvalid": "أدخل رقم هاتف صالح",
+      "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+      "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين"
+    },
+    "submit": {
+      "login": "تسجيل الدخول",
+      "loginLoading": "جارٍ التحقق...",
+      "register": "إنشاء حساب",
+      "registerLoading": "جارٍ الإنشاء...",
+      "forgotPassword": "إرسال رمز إعادة التعيين",
+      "forgotPasswordLoading": "جارٍ الإرسال...",
+      "resetPassword": "تحديث كلمة المرور",
+      "resetPasswordLoading": "جارٍ التحديث..."
+    },
+    "links": {
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "createAccount": "إنشاء حساب",
+      "signIn": "تسجيل الدخول",
+      "backToSignIn": "العودة إلى تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "hasAccount": "لديك حساب بالفعل؟"
+    },
+    "social": {
+      "orContinueWith": "أو المتابعة باستخدام"
+    },
+    "image": {
+      "title1": "أطلق",
+      "title2": "قوتك",
+      "title3": ".",
+      "subtitle": "معدات أداء فاخرة.",
+      "features": {
+        "speed": "مصممة للسرعة",
+        "endurance": "مبنية للتحمل",
+        "champions": "موثوقة من الأبطال"
+      }
+    },
+    "toast": {
+      "loginSuccess": "تم تسجيل الدخول بنجاح!",
+      "registerSuccess": "تم إنشاء الحساب بنجاح!"
+    }
+  },
+  "cart": {
+    "page": {
+      "title": "سلة التسوق",
+      "description": "مراجعة سلة التسوق الخاصة بك.",
+      "hero": {
+        "subtitle": "مراجعة",
+        "title": "سلتك.",
+        "description": "دفع آمن. توصيل سريع. أداء مضمون."
+      },
+      "catalog": {
+        "label": "اختياراتك",
+        "title": "حقيبة التسوق.",
+        "count": "{{count}} عنصر جاهز للأداء",
+        "count_plural": "{{count}} عناصر جاهزة للأداء"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "cart": "سلة التسوق"
+      }
+    },
+    "empty": {
+      "title": "سلتك فارغة",
+      "description": "يبدو أنك لم تضف أي شيء بعد. استكشف مجموعتنا وابحث عن معداتك التالية.",
+      "shopNow": "تسوق الآن"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "item": {
+      "unitPrice": "سعر الوحدة",
+      "remove": "إزالة العنصر",
+      "decrease": "تقليل الكمية",
+      "increase": "زيادة الكمية",
+      "total": "الإجمالي"
+    },
+    "summary": {
+      "title": "ملخص الطلب",
+      "items": "العناصر",
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "free": "مجاني",
+      "total": "الإجمالي",
+      "includingVat": "شامل ضريبة القيمة المضافة",
+      "checkout": "إتمام الشراء",
+      "securePayment": "دفع آمن وتوصيل سريع"
+    },
+    "actions": {
+      "clearBag": "مسح الحقيبة",
+      "clearing": "جارٍ المسح...",
+      "cancel": "إلغاء",
+      "deleteAll": "حذف الكل",
+      "confirmClear": "هل أنت متأكد من رغبتك في إزالة جميع العناصر من سلتك؟"
+    }
+  },
+  "wishlist": {
+    "page": {
+      "title": "قائمة المفضلة",
+      "description": "عرض العناصر المحفوظة الخاصة بك.",
+      "hero": {
+        "subtitle": "محفوظ",
+        "title": "المفضلة.",
+        "description": "معداتك الأكثر طلباً، جاهزة عندما تكون."
+      },
+      "catalog": {
+        "label": "العناصر المحفوظة",
+        "title": "إجمالي العناصر.",
+        "count": "{{count}} عنصر حالياً في قائمة المفضلة",
+        "count_plural": "{{count}} عناصر حالياً في قائمة المفضلة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "wishlist": "المفضلة"
+      }
+    },
+    "empty": {
+      "title": "قائمة المفضلة فارغة",
+      "description": "احفظ عناصرك المفضلة هنا وعد إليها لاحقاً.",
+      "browse": "تصفح المنتجات"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "item": {
+      "remove": "إزالة من المفضلة",
+      "addToCart": "أضف إلى السلة",
+      "adding": "جارٍ الإضافة..."
+    },
+    "loader": {
+      "loading": "جارٍ تحميل قائمة المفضلة..."
+    },
+    "toast": {
+      "removed": "تمت الإزالة من المفضلة",
+      "addedToCart": "تمت الإضافة إلى السلة!"
+    }
+  },
+  "orders": {
+    "page": {
+      "title": "طلباتي",
+      "description": "عرض سجل طلباتك.",
+      "hero": {
+        "subtitle": "تتبع",
+        "title": "الطلبات.",
+        "description": "سجل طلباتك الكامل، كل ذلك في مكان واحد."
+      },
+      "catalog": {
+        "label": "السجل",
+        "title": "سجل الطلبات.",
+        "count": "{{count}} طلب متتبع في حسابك",
+        "count_plural": "{{count}} طلبات متتبعة في حسابك"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "orders": "الطلبات"
+      }
+    },
+    "empty": {
+      "title": "لا توجد طلبات بعد",
+      "description": "لم تقم بتقديم أي طلبات بعد. ابدأ التسوق وطلبك الأول على بعد نقرة واحدة.",
+      "shopNow": "تسوق الآن"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "فشل في تحميل الطلبات. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "card": {
+      "order": "طلب",
+      "qty": "الكمية",
+      "moreItems": "+{{count}} عناصر إضافية",
+      "cash": "نقداً",
+      "card": "بطاقة",
+      "paid": "مدفوع",
+      "unpaid": "غير مدفوع",
+      "delivered": "تم التوصيل",
+      "processing": "قيد المعالجة"
+    },
+    "pagination": {
+      "label": "التنقل بين الصفحات",
+      "previous": "الصفحة السابقة",
+      "next": "الصفحة التالية",
+      "pageOf": "الصفحة {{current}} من {{total}}"
+    }
+  },
+  "checkout": {
+    "page": {
+      "title": "إتمام الشراء",
+      "description": "أكمل طلبك.",
+      "hero": {
+        "subtitle": "دفع آمن",
+        "title": "إتمام الشراء.",
+        "description": "سريع وآمن. طلبك على بعد خطوات قليلة."
+      },
+      "catalog": {
+        "label": "عملية آمنة",
+        "title": "إتمام الشراء.",
+        "description": "أكمل طلبك وانضم إلى الحركة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "checkout": "إتمام الشراء"
+      }
+    },
+    "shipping": {
+      "title": "بيانات الشحن",
+      "streetAddress": "العنوان",
+      "addressPlaceholder": "اسم الشارع، رقم المبنى",
+      "city": "المدينة",
+      "cityPlaceholder": "مدينتك",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "01000000000",
+      "validation": {
+        "addressRequired": "العنوان مطلوب",
+        "cityRequired": "المدينة مطلوبة",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالح"
+      }
+    },
+    "payment": {
+      "title": "طريقة الدفع",
+      "cashOnDelivery": "الدفع عند الاستلام",
+      "payOnline": "الدفع عبر الإنترنت"
+    },
+    "summary": {
+      "title": "طلبك",
+      "qty": "الكمية",
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "free": "مجاني",
+      "total": "الإجمالي",
+      "includingVat": "شامل ضريبة القيمة المضافة",
+      "placeOrder": "إتمام الطلب",
+      "processing": "جارٍ المعالجة...",
+      "terms": "بإتمام الطلب فإنك توافق على شروطنا"
+    },
+    "toast": {
+      "orderPlaced": "تم تقديم الطلب بنجاح!",
+      "cartNotFound": "السلة غير موجودة"
+    }
+  },
+  "profile": {
+    "page": {
+      "title": "ملفي الشخصي",
+      "description": "إدارة معلومات حسابك.",
+      "hero": {
+        "subtitle": "الحساب",
+        "title": "ملفي الشخصي.",
+        "description": "إدارة حسابك وطلباتك وتفضيلاتك."
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "profile": "الملف الشخصي"
+      }
+    },
+    "info": {
+      "title": "معلومات الحساب",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "role": "دور الحساب",
+      "memberSince": "عضو منذ",
+      "notProvided": "غير متوفر",
+      "notAvailable": "غير متاح"
+    },
+    "actions": {
+      "editProfile": "تعديل الملف الشخصي",
+      "tourGuide": "دليل الجولة",
+      "signOut": "تسجيل الخروج"
+    },
+    "edit": {
+      "title": "تعديل الملف الشخصي.",
+      "description": "قم بتحديث معلوماتك الشخصية أدناه.",
+      "fullName": "الاسم الكامل",
+      "namePlaceholder": "اسمك",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "01000000000",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات",
+      "saving": "جارٍ الحفظ...",
+      "validation": {
+        "nameRequired": "الاسم مطلوب",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "البريد الإلكتروني غير صالح",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالح"
+      }
+    },
+    "error": {
+      "title": "فشل في تحميل الملف الشخصي",
+      "retry": "حاول مرة أخرى"
+    },
+    "toast": {
+      "loggedOut": "تم تسجيل الخروج بنجاح"
+    }
+  },
+  "notFound": {
+    "title": "404 - الصفحة غير موجودة",
+    "badge": "خطأ 404",
+    "heading": "404",
+    "message": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "backHome": "العودة إلى الرئيسية"
+  },
+  "nav": {
+    "links": {
+      "men": "رجال",
+      "women": "نساء",
+      "kids": "أطفال",
+      "sale": "تخفيضات",
+      "brands": "الماركات"
+    },
+    "searchPlaceholder": "بحث...",
+    "aria": {
+      "wishlist": "المفضلة",
+      "orders": "الطلبات",
+      "cart": "السلة",
+      "account": "الحساب",
+      "openMenu": "فتح القائمة",
+      "closeMenu": "إغلاق القائمة"
+    },
+    "dropdown": {
+      "myOrders": "طلباتي",
+      "profile": "الملف الشخصي",
+      "signOut": "تسجيل الخروج",
+      "signIn": "تسجيل الدخول",
+      "createAccount": "إنشاء حساب"
+    },
+    "mobile": {
+      "menu": "القائمة",
+      "shop": "تسوق",
+      "account": "الحساب",
+      "preferences": "التفضيلات",
+      "wishlist": "المفضلة",
+      "orders": "الطلبات",
+      "cart": "السلة",
+      "profile": "الملف الشخصي",
+      "signOut": "تسجيل الخروج",
+      "signIn": "تسجيل الدخول",
+      "joinUs": "انضم إلينا",
+      "lightMode": "الوضع النهاري",
+      "darkMode": "الوضع الليلي",
+      "searchPlaceholder": "ابحث عن منتجات..."
+    }
+  },
+  "footer": {
+    "brandStatement": "ندفع حدود الأداء والأناقة. صُمم للرياضيين الذين لا يقبلون بأقل من الأفضل. انضم إلى الحركة.",
+    "followUs": "تابع الحركة",
+    "sectionTitles": {
+      "shop": "تسوق",
+      "support": "الدعم",
+      "company": "الشركة",
+      "legal": "قانوني"
+    },
+    "links": {
+      "allProducts": "جميع المنتجات",
+      "categories": "الأقسام",
+      "brands": "الماركات",
+      "featuredGear": "معدات مميزة",
+      "newArrivals": "وصل حديثاً",
+      "salesOffers": "التخفيضات والعروض",
+      "helpCenter": "مركز المساعدة",
+      "contactUs": "اتصل بنا",
+      "trackOrder": "تتبع الطلب",
+      "shippingInfo": "معلومات الشحن",
+      "returns": "الإرجاع",
+      "sizeGuide": "دليل المقاسات",
+      "aboutUs": "من نحن",
+      "sustainability": "الاستدامة",
+      "innovation": "الابتكار",
+      "careers": "الوظائف",
+      "press": "الصحافة",
+      "affiliates": "الشركاء",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfUse": "شروط الاستخدام",
+      "storePolicies": "سياسات المتجر",
+      "cookieSettings": "إعدادات الكوكيز",
+      "compliance": "الامتثال"
+    },
+    "newsletter": {
+      "title": "اشترك في نشرتنا البريدية",
+      "description": "كن أول من يعرف عن الإصدارات الجديدة والعروض الحصرية.",
+      "placeholder": "البريد الإلكتروني",
+      "button": "انضمام"
+    },
+    "stores": {
+      "title": "متاجرنا",
+      "findStore": "ابحث عن متجر بالقرب منك",
+      "internationalShipping": "الشحن الدولي"
+    },
+    "app": {
+      "title": "دعم التطبيق",
+      "downloadOn": "تنزيل من",
+      "appStore": "آب ستور",
+      "getItOn": "احصل عليه من",
+      "googlePlay": "جوجل بلاي"
+    },
+    "bottom": {
+      "privacyPoliy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "storePolicies": "سياسات المتجر"
+    }
+  },
+  "home": {
+    "page": {
+      "title": "الرئيسية",
+      "description": "ملابس رياضية ومعدات عالية الجودة."
+    },
+    "hero": {
+      "subtitle": "مجموعة جديدة",
+      "title": "ارفع مستوى أدائك",
+      "description": "ملابس رياضية فاخرة مصممة للأداء العالي. صُممت لمن يتجاوزون الحدود.",
+      "cta": "تسوق الآن"
+    },
+    "featured": {
+      "label": "اختيار مختار",
+      "title": "منتجات مميزة.",
+      "description": "معدات مختارة بدقة تحدد الموسم",
+      "viewAll": "عرض جميع المنتجات",
+      "viewAllBtn": "عرض الكل"
+    },
+    "brands": {
+      "label": "شركاء موثوقون",
+      "title": "أفضل الماركات.",
+      "description": "الماركات التي تقود الصناعة",
+      "viewAll": "عرض جميع الماركات"
+    },
+    "newsletter": {
+      "title": "ابق على اطلاع",
+      "description": "كن أول من يعرف عن الإصدارات الجديدة والعروض الحصرية والإصدارات المحدودة.",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "button": "اشتراك"
+    },
+    "categories": {
+      "label": "تصفح حسب القسم",
+      "title": "تسوق حسب القسم.",
+      "description": "اعثر بالضبط على ما تحتاجه"
+    },
+    "features": {
+      "freeShipping": {
+        "title": "شحن مجاني",
+        "description": "على جميع الطلبات فوق $75"
+      },
+      "securePayment": {
+        "title": "دفع آمن",
+        "description": "إتمام شراء آمن 100%"
+      },
+      "support247": {
+        "title": "دعم 24/7",
+        "description": "مساعدة على مدار الساعة"
+      },
+      "easyReturns": {
+        "title": "إرجاع سهل",
+        "description": "سياسة إرجاع لمدة 30 يوماً"
+      }
+    },
+    "cta": {
+      "title": "مستعد للارتقاء؟",
+      "description": "انضم إلى آلاف الرياضيين الذين يثقون في متجر On Store لمعداتهم. اختبر الفرق الذي تصنعه الجودة الفائقة.",
+      "button": "ابدأ التسوق"
+    }
   }
 }

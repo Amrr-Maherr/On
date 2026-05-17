@@ -1,4 +1,5 @@
 import { memo, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Brand } from "@/features/brands/types";
 import { Calendar, Tag } from "lucide-react";
 
@@ -7,6 +8,7 @@ interface BrandDetailsCardProps {
 }
 
 const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
+  const { t } = useTranslation();
   const createdDate = useMemo(() => new Date(brand.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -26,7 +28,9 @@ const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsC
 
       <div className="flex flex-col justify-center gap-10">
         <div className="border-l-4 border-foreground pl-8">
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">Partner</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+            {t("brands.details.info.label")}
+          </span>
           <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter md:text-7xl">
             {brand.name}
           </h1>
@@ -41,7 +45,9 @@ const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsC
             <Calendar className="h-5 w-5" strokeWidth={2.5} />
           </div>
           <div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40">Affiliated Since</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40">
+              {t("brands.details.activeSince")}
+            </p>
             <p className="text-sm font-black uppercase tracking-tight text-foreground">{createdDate}</p>
           </div>
         </div>
@@ -49,7 +55,7 @@ const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsC
         {brand._id && (
           <div className="mt-auto">
             <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/20">
-              Merchant Code: {brand._id}
+              {t("brands.details.referenceId")}: {brand._id}
             </p>
           </div>
         )}

@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -11,13 +12,8 @@ import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
 import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
 import WishlistError from "@/features/wishlist/components/WishlistError";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 function CampaignHeader() {
+  const { t } = useTranslation();
   return (
     <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
       <div
@@ -25,10 +21,14 @@ function CampaignHeader() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
       <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">Saved</p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">Wishlist.</h1>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+          {t("wishlist.page.hero.subtitle")}
+        </p>
+        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
+          {t("wishlist.page.hero.title")}
+        </h1>
         <p className="mt-4 max-w-lg text-lg text-white/70">
-          Your most-wanted gear, ready when you are.
+          {t("wishlist.page.hero.description")}
         </p>
       </div>
     </section>
@@ -36,6 +36,7 @@ function CampaignHeader() {
 }
 
 export default function WishlistPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,7 +65,10 @@ export default function WishlistPage() {
     return (
       <>
         <CampaignHeader />
-        <WishlistError message={getErrorMessage(error)} onRetry={() => refetch()} />
+        <WishlistError
+          message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
+          onRetry={() => refetch()}
+        />
       </>
     );
   }
@@ -85,10 +89,10 @@ export default function WishlistPage() {
     setRemovingId(productId);
     removeItem(productId, {
       onSettled: () => setRemovingId(null),
-      onSuccess: () => toast.success("Removed from wishlist"),
+      onSuccess: () => toast.success(t("wishlist.toast.removed")),
       onError: (err) => toast.error(err.message),
     });
-  }, [removeItem]);
+  }, [removeItem, t]);
 
   const handleAddToCart = useCallback((productId: string) => {
     setAddingToCartId(productId);
@@ -96,25 +100,27 @@ export default function WishlistPage() {
       { productId },
       {
         onSettled: () => setAddingToCartId(null),
-        onSuccess: () => toast.success("Added to cart!"),
+        onSuccess: () => toast.success(t("wishlist.toast.addedToCart")),
         onError: (err) => toast.error(err.message),
       },
     );
-  }, [addToCart]);
+  }, [addToCart, t]);
 
   return (
     <>
       <CampaignHeader />
-      <PageHelmet title="My Wishlist" description="View your saved items." />
+      <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Wishlist" }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: "/" }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            Saved Items
+            {t("wishlist.page.catalog.label")}
           </span>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">Total Items.</h2>
+          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
+            {t("wishlist.page.catalog.title")}
+          </h2>
           <p className="mt-1 text-sm font-medium text-muted-foreground/60">
-            {count} {count === 1 ? "item" : "items"} currently in your wishlist
+            {t("wishlist.page.catalog.count", { count })}
           </p>
         </div>
         <div className="space-y-4" data-tour="wishlist-items">

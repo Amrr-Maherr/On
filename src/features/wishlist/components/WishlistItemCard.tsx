@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,7 @@ const WishlistItemCard = memo(({
   isRemoving,
   isAddingToCart,
 }: WishlistItemCardProps) => {
+  const { t } = useTranslation();
   const displayPrice = product.priceAfterDiscount ?? product.price;
   const hasDiscount = !!product.priceAfterDiscount;
 
@@ -71,7 +73,7 @@ const WishlistItemCard = memo(({
           <button
             onClick={() => onRemove(product._id)}
             disabled={isRemoving}
-            aria-label="Remove from wishlist"
+            aria-label={t("wishlist.item.remove")}
             className="flex shrink-0 items-center justify-center rounded-none border-2 border-transparent p-1.5 text-muted-foreground/40 transition-all duration-300 hover:border-destructive/20 hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
           >
             {isRemoving ? (
@@ -98,7 +100,7 @@ const WishlistItemCard = memo(({
             ) : (
               <ShoppingCart className="h-3.5 w-3.5" />
             )}
-            {isAddingToCart ? "Adding..." : "Add to Cart"}
+            {isAddingToCart ? t("wishlist.item.adding") : t("wishlist.item.addToCart")}
           </button>
         </div>
       </div>

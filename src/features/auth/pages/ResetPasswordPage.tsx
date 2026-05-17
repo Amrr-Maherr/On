@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -8,38 +9,39 @@ import AuthInput from "@/features/auth/components/auth-input";
 import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
 
 export default function ResetPasswordPage() {
+  const { t } = useTranslation();
   return (
     <AuthLayout>
-      <PageHelmet title="Reset Password" />
+      <PageHelmet title={t("auth.page.resetPassword.title")} />
       <AuthFormWrapper>
         <AuthHeader
-          title="New Password"
-          description="Enter the code sent to your email and your new password"
+          title={t("auth.header.resetPassword.title")}
+          description={t("auth.header.resetPassword.description")}
         />
 
         <form className="space-y-6" noValidate>
           <AuthInput
-            label="Recovery Code"
+            label={t("auth.form.recoveryCode")}
             type="text"
-            placeholder="Enter the code"
+            placeholder={t("auth.form.recoveryCodePlaceholder")}
             autoComplete="off"
           />
           <AuthInput
-            label="New Password"
+            label={t("auth.form.password")}
             type="password"
-            placeholder="Enter new password"
+            placeholder={t("auth.form.passwordPlaceholder")}
             autoComplete="new-password"
           />
           <AuthInput
-            label="Confirm Password"
+            label={t("auth.form.confirmPassword")}
             type="password"
-            placeholder="Confirm your password"
+            placeholder={t("auth.form.confirmPasswordPlaceholder")}
             autoComplete="new-password"
           />
 
           <AuthSubmitButton
-            label="Update Password"
-            loadingLabel="Updating..."
+            label={t("auth.submit.resetPassword")}
+            loadingLabel={t("auth.submit.resetPasswordLoading")}
           />
         </form>
 
@@ -49,7 +51,7 @@ export default function ResetPasswordPage() {
             className="group inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Back to sign in
+            {t("auth.links.backToSignIn")}
           </Link>
         </div>
       </AuthFormWrapper>
