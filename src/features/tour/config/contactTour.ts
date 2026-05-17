@@ -7,9 +7,8 @@ export const contactTour: TourConfig = {
     {
       element: "[data-tour='contact-hero']",
       popover: {
-        title: "Get in Touch",
-        description:
-          "We're here to help. Reach out to our support team with any questions, feedback, or concerns.",
+        titleKey: "tour.steps.contact.hero.title",
+        descriptionKey: "tour.steps.contact.hero.description",
         side: "bottom",
         align: "start",
       },
@@ -17,9 +16,8 @@ export const contactTour: TourConfig = {
     {
       element: "[data-tour='contact-form']",
       popover: {
-        title: "Send a Message",
-        description:
-          "Fill in your details, select a topic, and write your message. We'll get back to you as soon as possible.",
+        titleKey: "tour.steps.contact.form.title",
+        descriptionKey: "tour.steps.contact.form.description",
         side: "top",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const contactTour: TourConfig = {
     {
       element: "[data-tour='contact-info']",
       popover: {
-        title: "Contact Information",
-        description:
-          "Prefer to call or email? Find our phone number, email address, business hours, and physical location here.",
+        titleKey: "tour.steps.contact.info.title",
+        descriptionKey: "tour.steps.contact.info.description",
         side: "left",
         align: "center",
       },

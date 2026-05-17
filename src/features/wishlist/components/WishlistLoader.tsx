@@ -1,10 +1,14 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 const WishlistLoader = memo(function WishlistLoader() {
+  const { t } = useTranslation();
   return (
     <div className="container-layout py-8">
       <div className="mb-8">
-        <p className="font-semibold uppercase tracking-wider text-muted-foreground/60">Loading your wishlist...</p>
+        <p className="font-semibold uppercase tracking-wider text-muted-foreground/60">
+          {t("wishlist.loader.loading")}
+        </p>
         <div className="mt-2 h-8 w-56 animate-pulse rounded-xl bg-muted" />
       </div>
       <div className="space-y-4">

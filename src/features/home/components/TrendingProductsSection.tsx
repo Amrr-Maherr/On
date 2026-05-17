@@ -1,4 +1,5 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
@@ -8,16 +9,20 @@ import ProductsError from "@/features/products/components/ProductsError";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 const TrendingProductsSection = memo(function TrendingProductsSection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { data, isLoading, error, refetch } = useAllProducts(1);
   const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
+
+  const getErrorMessage = useCallback(
+    (error: unknown): string => {
+      if (error instanceof Error) return error.message;
+      if (typeof error === "string") return error;
+      return t("products.error.defaultMessage");
+    },
+    [t],
+  );
 
   return (
     <section className="section-py bg-background">
@@ -28,11 +33,11 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
               <div className="flex items-center gap-3">
                 <TrendingUp className="h-5 w-5 text-foreground" />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-                  Hot Right Now
+                  {t("home.sections.trending.label")}
                 </span>
               </div>
               <h2 className="font-heading mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-                Trending Now.
+                {t("home.sections.trending.title")}
               </h2>
             </div>
             <Button
@@ -40,7 +45,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
               variant="ghost"
               className="hidden cursor-pointer items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] md:flex"
             >
-              Shop All
+              {t("home.sections.trending.shopAll")}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -89,7 +94,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
                   onClick={handleViewAll}
                   className="h-16 w-full cursor-pointer rounded-none bg-foreground px-12 text-xs font-black uppercase tracking-[0.4em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
-                  View All Products
+                  {t("home.sections.trending.viewAll")}
                   <ArrowRight className="ml-4 h-5 w-5" />
                 </Button>
               </div>
@@ -99,7 +104,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
 
         {!isLoading && !error && (!data?.data || data.data.length === 0) && (
           <div className="flex justify-center">
-            <ProductsError message="No trending products available at the moment." />
+            <ProductsError message={t("home.sections.trending.noProducts")} />
           </div>
         )}
       </div>

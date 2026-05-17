@@ -1,10 +1,22 @@
 import type { DriveStep } from "driver.js";
 
+export interface TourStepPopover {
+  titleKey?: string;
+  descriptionKey?: string;
+  side?: "top" | "bottom" | "left" | "right";
+  align?: "start" | "center" | "end";
+}
+
+export interface TourStepConfig {
+  element?: DriveStep["element"];
+  popover?: TourStepPopover;
+}
+
 export interface TourConfig {
   id: string;
   route?: string;
   alternativeRoutes?: string[];
-  steps: DriveStep[];
+  steps: TourStepConfig[];
 }
 
 export interface TourContextValue {

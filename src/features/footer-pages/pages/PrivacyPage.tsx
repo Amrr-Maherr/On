@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
@@ -36,16 +37,18 @@ const sections = [
 ];
 
 export default function PrivacyPage() {
+  const { t } = useTranslation();
+
   return (
     <PageLayout>
-      <PageHelmet title="Privacy Policy" description="How we collect, use, and protect your personal information." />
+      <PageHelmet title={t("footerPages.privacy.page.title")} description={t("footerPages.privacy.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: "Home", href: "/" },
-        { label: "Privacy Policy" },
+        { label: t("footerPages.privacy.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.privacy.breadcrumb.privacy") },
       ]} />
       <PageHero
-        title="Privacy Policy"
-        description="We take your privacy seriously. This policy explains how we collect, use, and protect your personal information."
+        title={t("footerPages.privacy.hero.title")}
+        description={t("footerPages.privacy.hero.description")}
       />
 
       <div className="space-y-6">
@@ -56,7 +59,7 @@ export default function PrivacyPage() {
         ))}
       </div>
 
-      <p className="mt-6 text-xs text-muted-foreground">Effective date: May 13, 2026</p>
+      <p className="mt-6 text-xs text-muted-foreground">{t("footerPages.privacy.effectiveDate")}</p>
     </PageLayout>
   );
 }

@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Mail, Phone, Shield, Calendar } from "lucide-react";
 import type { User } from "../types";
 
@@ -7,33 +8,34 @@ interface ProfileInfoCardProps {
 }
 
 const ProfileInfoCard = memo(function ProfileInfoCard({ user }: ProfileInfoCardProps) {
+  const { t } = useTranslation();
   const infoItems = [
     {
       icon: Mail,
-      label: "Email Address",
+      label: t("profile.info.email"),
       value: user.email,
     },
     {
       icon: Phone,
-      label: "Phone Number",
-      value: user.phone || "Not provided",
+      label: t("profile.info.phone"),
+      value: user.phone || t("profile.info.notProvided"),
     },
     {
       icon: Shield,
-      label: "Account Role",
+      label: t("profile.info.role"),
       value: user.role,
     },
     {
       icon: Calendar,
-      label: "Member Since",
-      value: user.createdAt ? new Date(user.createdAt).toLocaleDateString() : "N/A",
+      label: t("profile.info.memberSince"),
+      value: user.createdAt ? new Date(user.createdAt).toLocaleDateString() : t("profile.info.notAvailable"),
     },
   ];
 
   return (
     <div className="rounded-none border-2 border-border/40 bg-card">
       <div className="border-b-2 border-border/40 px-6 py-5">
-        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">Account Information</h3>
+        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">{t("profile.info.title")}</h3>
       </div>
       <div className="grid gap-8 p-6 md:grid-cols-2">
         {infoItems.map((item, index) => (

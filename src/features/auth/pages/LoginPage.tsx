@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,6 +13,7 @@ import { useLogin } from "@/features/auth/hooks/useLogin";
 import type { LoginFormFields } from "@/features/auth/types/auth";
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { mutate, isPending, error } = useLogin();
 
@@ -31,7 +33,7 @@ export default function LoginPage() {
       onSuccess: (response) => {
         localStorage.setItem("token", response.token);
         localStorage.setItem("userId", response.user._id);
-        toast.success("Logged in successfully!");
+        toast.success(t("auth.toast.loginSuccess"));
         navigate("/");
       },
       onError: (err) => {
@@ -42,11 +44,11 @@ export default function LoginPage() {
 
   return (
     <AuthLayout>
-      <PageHelmet title="Sign In" description="Sign in to your account." />
+      <PageHelmet title={t("auth.page.login.title")} description={t("auth.page.login.description")} />
       <AuthFormWrapper>
         <AuthHeader
-          title="Welcome Back"
-          description="Sign in to your account to continue"
+          title={t("auth.header.login.title")}
+          description={t("auth.header.login.description")}
         />
 
         <form
@@ -55,31 +57,31 @@ export default function LoginPage() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <AuthInput
-            label="Email Address"
+            label={t("auth.form.email")}
             type="email"
-            placeholder="example@mail.com"
+            placeholder={t("auth.form.emailPlaceholder")}
             autoComplete="email"
             error={errors.email?.message}
             {...register("email", {
-              required: "Email is required",
+              required: t("auth.validation.emailRequired"),
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
+                message: t("auth.validation.emailInvalid"),
               },
             })}
           />
           <div className="space-y-2">
             <AuthInput
-              label="Password"
+              label={t("auth.form.password")}
               type="password"
-              placeholder="Enter your password"
+              placeholder={t("auth.form.passwordPlaceholder")}
               autoComplete="current-password"
               error={errors.password?.message}
               {...register("password", {
-                required: "Password is required",
+                required: t("auth.validation.passwordRequired"),
                 minLength: {
                   value: 6,
-                  message: "Password must be at least 6 characters",
+                  message: t("auth.validation.passwordMinLength"),
                 },
               })}
             />
@@ -88,7 +90,7 @@ export default function LoginPage() {
                 to="/forgot-password"
                 className="text-xs font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
               >
-                Forgot password?
+                {t("auth.links.forgotPassword")}
               </Link>
             </div>
           </div>
@@ -100,8 +102,8 @@ export default function LoginPage() {
           )}
 
           <AuthSubmitButton
-            label="Sign In"
-            loadingLabel="Verifying..."
+            label={t("auth.submit.login")}
+            loadingLabel={t("auth.submit.loginLoading")}
             isLoading={isPending}
           />
 
@@ -109,12 +111,12 @@ export default function LoginPage() {
         </form>
 
         <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
-          Don&apos;t have an account?{" "}
+          {t("auth.links.noAccount")}{" "}
           <Link
             to="/register"
             className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
-            Create account
+            {t("auth.links.createAccount")}
           </Link>
         </p>
       </AuthFormWrapper>

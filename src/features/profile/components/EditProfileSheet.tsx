@@ -1,4 +1,5 @@
 import { memo, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import {
   Sheet,
@@ -28,6 +29,7 @@ const EditProfileSheet = memo(function EditProfileSheet({
   isOpen,
   onClose,
 }: EditProfileSheetProps) {
+  const { t } = useTranslation();
   const { mutate, isPending } = useUpdateProfile();
   
   const {
@@ -66,10 +68,10 @@ const EditProfileSheet = memo(function EditProfileSheet({
       <SheetContent className="sm:max-w-md">
         <SheetHeader>
           <SheetTitle className="text-2xl font-black uppercase tracking-tight">
-            Edit Profile.
+            {t("profile.edit.title")}
           </SheetTitle>
           <div className="text-sm text-muted-foreground">
-            Update your personal information below.
+            {t("profile.edit.description")}
           </div>
         </SheetHeader>
 
@@ -80,11 +82,11 @@ const EditProfileSheet = memo(function EditProfileSheet({
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
-                Full Name
+                {t("profile.edit.fullName")}
               </label>
               <Input
-                {...register("name", { required: "Name is required" })}
-                placeholder="Your name"
+                {...register("name", { required: t("profile.edit.validation.nameRequired") })}
+                placeholder={t("profile.edit.namePlaceholder")}
                 className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
               {errors.name && (
@@ -94,18 +96,18 @@ const EditProfileSheet = memo(function EditProfileSheet({
 
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
-                Email Address
+                {t("profile.edit.email")}
               </label>
               <Input
                 {...register("email", {
-                  required: "Email is required",
+                  required: t("profile.edit.validation.emailRequired"),
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address",
+                    message: t("profile.edit.validation.emailInvalid"),
                   },
                 })}
                 type="email"
-                placeholder="you@example.com"
+                placeholder={t("profile.edit.emailPlaceholder")}
                 className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
               {errors.email && (
@@ -115,18 +117,18 @@ const EditProfileSheet = memo(function EditProfileSheet({
 
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80">
-                Phone Number
+                {t("profile.edit.phone")}
               </label>
               <Input
                 {...register("phone", {
-                  required: "Phone number is required",
+                  required: t("profile.edit.validation.phoneRequired"),
                   pattern: {
                     value: /^01[0-9]{9}$/,
-                    message: "Enter a valid Egyptian phone number",
+                    message: t("profile.edit.validation.phoneInvalid"),
                   },
                 })}
                 type="tel"
-                placeholder="01000000000"
+                placeholder={t("profile.edit.phonePlaceholder")}
                 className="h-14 rounded-none border-2 border-border/40 bg-background font-bold"
               />
               {errors.phone && (
@@ -142,14 +144,14 @@ const EditProfileSheet = memo(function EditProfileSheet({
               onClick={onClose}
               className="flex-1 rounded-none border-2 border-border/40 text-xs font-black uppercase tracking-widest"
             >
-              Cancel
+              {t("profile.edit.cancel")}
             </Button>
             <Button
               type="submit"
               disabled={isPending}
               className="flex-1 rounded-none bg-foreground text-xs font-black uppercase tracking-widest text-background"
             >
-              {isPending ? "Saving..." : "Save Changes"}
+              {isPending ? t("profile.edit.saving") : t("profile.edit.saveChanges")}
             </Button>
           </div>
         </form>

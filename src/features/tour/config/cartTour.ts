@@ -7,9 +7,8 @@ export const cartTour: TourConfig = {
     {
       element: "[data-tour='cart-items']",
       popover: {
-        title: "Your Shopping Bag",
-        description:
-          "Review all items in your bag. Adjust quantities or remove items you no longer want — changes update instantly.",
+        titleKey: "tour.steps.cart.items.title",
+        descriptionKey: "tour.steps.cart.items.description",
         side: "top",
         align: "center",
       },
@@ -17,9 +16,8 @@ export const cartTour: TourConfig = {
     {
       element: "[data-tour='cart-summary']",
       popover: {
-        title: "Order Summary",
-        description:
-          "See a clear breakdown of your subtotal, shipping costs, and taxes. Everything is transparent before you pay.",
+        titleKey: "tour.steps.cart.summary.title",
+        descriptionKey: "tour.steps.cart.summary.description",
         side: "left",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const cartTour: TourConfig = {
     {
       element: "[data-tour='checkout-button']",
       popover: {
-        title: "Ready to Checkout?",
-        description:
-          "When you're happy with your bag, hit checkout. You're only a few steps away from your new gear.",
+        titleKey: "tour.steps.cart.checkout.title",
+        descriptionKey: "tour.steps.cart.checkout.description",
         side: "top",
         align: "center",
       },

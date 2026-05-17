@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -17,6 +18,7 @@ const CartItemCard = memo(({
   onRemove,
   isUpdating,
 }: CartItemCardProps) => {
+  const { t } = useTranslation();
   const { product, count, price } = item;
   const itemTotal = price;
 
@@ -50,12 +52,12 @@ const CartItemCard = memo(({
               </h3>
             </Link>
             <p className="mt-1 text-sm font-bold text-muted-foreground/60">
-              UNIT PRICE: {product.price?.toLocaleString()} EGP
+              {t("cart.item.unitPrice")}: {product.price?.toLocaleString()} EGP
             </p>
           </div>
           <button
             onClick={() => onRemove(product.id)}
-            aria-label="Remove item"
+            aria-label={t("cart.item.remove")}
             className="shrink-0 rounded-none border-2 border-border/40 p-2.5 text-muted-foreground transition-all duration-300 hover:border-destructive hover:bg-destructive hover:text-white"
           >
             <Trash2 className="h-4 w-4" />
@@ -67,7 +69,7 @@ const CartItemCard = memo(({
             <button
               onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
-              aria-label="Decrease quantity"
+              aria-label={t("cart.item.decrease")}
               className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90 disabled:pointer-events-none disabled:opacity-20"
             >
               <Minus className="h-4 w-4" />
@@ -77,14 +79,16 @@ const CartItemCard = memo(({
             </span>
             <button
               onClick={() => onUpdate(product.id, count + 1)}
-              aria-label="Increase quantity"
+              aria-label={t("cart.item.increase")}
               className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90"
             >
               <Plus className="h-4 w-4" />
             </button>
           </div>
           <div className="text-right">
-            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Total</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+              {t("cart.item.total")}
+            </p>
             <p className="text-xl font-black tabular-nums text-foreground">
               {itemTotal.toLocaleString()} EGP
             </p>

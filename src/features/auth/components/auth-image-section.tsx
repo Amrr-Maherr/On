@@ -1,7 +1,9 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 const AuthImageSection = memo(function AuthImageSection() {
+  const { t } = useTranslation();
   return (
     <div className="relative hidden overflow-hidden bg-neutral-950 md:block">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-40 grayscale transition-transform duration-700 hover:scale-110" />
@@ -16,27 +18,25 @@ const AuthImageSection = memo(function AuthImageSection() {
         >
           <div className="mb-6 flex h-1 w-20 bg-white" />
           <h2 className="font-heading text-6xl font-black uppercase leading-[0.85] tracking-tighter text-white md:text-8xl">
-            Unleash
+            {t("auth.image.title1")}
             <br />
-            Your
+            {t("auth.image.title2")}
             <br />
-            Power.
+            {t("auth.image.title3")}
           </h2>
           <p className="mt-8 text-lg font-bold uppercase tracking-widest text-white/70">
-            Premium Performance Gear.
+            {t("auth.image.subtitle")}
           </p>
           <div className="mt-12 grid grid-cols-1 gap-4">
-            {[
-              "Engineered for speed",
-              "Built for endurance",
-              "Trusted by champions",
-            ].map((label) => (
+            {["speed", "endurance", "champions"].map((key) => (
               <div
-                key={label}
+                key={key}
                 className="flex items-center gap-4 group"
               >
                 <div className="h-px w-8 bg-white/30 transition-all duration-300 group-hover:w-12 group-hover:bg-white" />
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors">{label}</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors">
+                  {t(`auth.image.features.${key}`)}
+                </p>
               </div>
             ))}
           </div>

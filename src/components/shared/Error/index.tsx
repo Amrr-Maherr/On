@@ -44,7 +44,7 @@ const ErrorState = memo(function ErrorState({
       {onRetry && (
         <button
           onClick={onRetry}
-          className="inline-flex items-center gap-2 rounded-full border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
+          className="inline-flex items-center gap-2 rounded-none border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
         >
           <RefreshCw className="h-4 w-4" />
           Try Again

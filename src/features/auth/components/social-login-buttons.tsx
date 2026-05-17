@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
 const socialProviders = [
@@ -7,6 +8,7 @@ const socialProviders = [
 ] as const;
 
 const SocialLoginButtons = memo(function SocialLoginButtons() {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -18,7 +20,9 @@ const SocialLoginButtons = memo(function SocialLoginButtons() {
           <span className="w-full border-t border-border/50" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-3 text-muted-foreground/50 tracking-[0.1em]">or continue with</span>
+          <span className="bg-background px-3 text-muted-foreground/50 tracking-[0.1em]">
+            {t("auth.social.orContinueWith")}
+          </span>
         </div>
       </div>
 

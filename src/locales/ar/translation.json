@@ -176,5 +176,1278 @@
         "openFullscreen": "فتح الصورة في وضع ملء الشاشة"
       }
     }
+  },
+  "categories": {
+    "page": {
+      "title": "جميع التصنيفات",
+      "description": "تصفح مجموعتنا الكاملة من التصنيفات.",
+      "hero": {
+        "subtitle": "تصفح",
+        "title": "تصنيفات.",
+        "description": "ابحث عن مجالك. كل رياضة، كل موسم، كل هدف."
+      },
+      "catalog": {
+        "label": "التصنيفات",
+        "title": "جميع التصنيفات.",
+        "count": "{{count}} تصنيف متاح",
+        "count_plural": "{{count}} تصنيفات متاحة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "categories": "جميع التصنيفات"
+      }
+    },
+    "filters": {
+      "sortBy": "ترتيب حسب",
+      "reset": "إعادة ضبط الفلاتر",
+      "filterSort": "تصفية وترتيب",
+      "filtersSort": "تصفية وترتيب",
+      "resetShort": "إعادة ضبط",
+      "search": "ابحث عن تصنيفات...",
+      "sort": {
+        "label": "ترتيب حسب:",
+        "nameAZ": "الاسم: أ-ي",
+        "nameZA": "الاسم: ي-أ",
+        "mostProducts": "أكثر المنتجات"
+      }
+    },
+    "card": {
+      "explore": "استكشف"
+    },
+    "empty": {
+      "title": "لا توجد تصنيفات",
+      "description": "لا توجد تصنيفات متاحة حالياً. يرجى التحقق لاحقاً."
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "pagination": {
+      "label": "التنقل بين الصفحات",
+      "previous": "الصفحة السابقة",
+      "next": "الصفحة التالية"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "categories": "التصنيفات"
+      },
+      "notFound": "التصنيف غير موجود.",
+      "info": {
+        "label": "التفاصيل"
+      },
+      "slug": {
+        "label": "الرابط"
+      },
+      "activeSince": "نشط منذ",
+      "referenceId": "معرف المرجع",
+      "collection": {
+        "label": "المجموعة",
+        "title": "معدات التصنيف."
+      },
+      "products": {
+        "empty": "لا توجد منتجات في هذا التصنيف.",
+        "error": "فشل في تحميل المنتجات"
+      }
+    }
+  },
+  "brands": {
+    "page": {
+      "title": "جميع العلامات التجارية",
+      "description": "اكتشف علاماتنا التجارية المنسقة.",
+      "hero": {
+        "subtitle": "اكتشف",
+        "title": "علامات تجارية.",
+        "description": "الأسماء الأكثر ثقة في العالم في مجال الملابس الرياضية عالية الأداء."
+      },
+      "catalog": {
+        "label": "العلامات التجارية",
+        "title": "جميع العلامات التجارية.",
+        "count": "{{count}} علامة تجارية متاحة",
+        "count_plural": "{{count}} علامات تجارية متاحة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "brands": "جميع العلامات التجارية"
+      }
+    },
+    "card": {
+      "label": "علامة تجارية"
+    },
+    "empty": {
+      "title": "لا توجد علامات تجارية",
+      "description": "لا توجد علامات تجارية متاحة حالياً. يرجى التحقق لاحقاً."
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "pagination": {
+      "label": "التنقل بين الصفحات",
+      "previous": "الصفحة السابقة",
+      "next": "الصفحة التالية"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "brands": "العلامات التجارية"
+      },
+      "notFound": "العلامة التجارية غير موجودة.",
+      "info": {
+        "label": "التفاصيل"
+      },
+      "activeSince": "نشط منذ",
+      "referenceId": "معرف المرجع",
+      "collection": {
+        "label": "المجموعة",
+        "title": "مجموعة العلامة التجارية."
+      },
+      "products": {
+        "empty": "لا توجد منتجات لهذه العلامة التجارية.",
+        "error": "فشل في تحميل المنتجات"
+      }
+    }
+  },
+  "auth": {
+    "page": {
+      "login": {
+        "title": "تسجيل الدخول",
+        "description": "تسجيل الدخول إلى حسابك."
+      },
+      "register": {
+        "title": "إنشاء حساب",
+        "description": "إنشاء حسابك."
+      },
+      "forgotPassword": {
+        "title": "نسيت كلمة المرور"
+      },
+      "resetPassword": {
+        "title": "إعادة تعيين كلمة المرور"
+      }
+    },
+    "header": {
+      "login": {
+        "title": "مرحباً بعودتك",
+        "description": "سجل الدخول إلى حسابك للمتابعة"
+      },
+      "register": {
+        "title": "انضم إلينا",
+        "description": "أدخل بياناتك لبدء رحلتك"
+      },
+      "forgotPassword": {
+        "title": "استعادة الوصول",
+        "description": "أدخل بريدك الإلكتروني وسنرسل لك رمز إعادة التعيين"
+      },
+      "resetPassword": {
+        "title": "كلمة مرور جديدة",
+        "description": "أدخل الرمز المرسل إلى بريدك الإلكتروني وكلمة المرور الجديدة"
+      }
+    },
+    "form": {
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "example@mail.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "confirmPasswordPlaceholder": "قم بتأكيد كلمة المرور",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "John Doe",
+      "phoneNumber": "رقم الهاتف",
+      "phonePlaceholder": "01xxxxxxxxx",
+      "recoveryCode": "رمز الاسترداد",
+      "recoveryCodePlaceholder": "أدخل الرمز"
+    },
+    "validation": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMinLength": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+      "nameRequired": "الاسم مطلوب",
+      "nameMinLength": "الاسم يجب أن يكون 3 أحرف على الأقل",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "phoneInvalid": "أدخل رقم هاتف صالح",
+      "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+      "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين"
+    },
+    "submit": {
+      "login": "تسجيل الدخول",
+      "loginLoading": "جارٍ التحقق...",
+      "register": "إنشاء حساب",
+      "registerLoading": "جارٍ الإنشاء...",
+      "forgotPassword": "إرسال رمز إعادة التعيين",
+      "forgotPasswordLoading": "جارٍ الإرسال...",
+      "resetPassword": "تحديث كلمة المرور",
+      "resetPasswordLoading": "جارٍ التحديث..."
+    },
+    "links": {
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "createAccount": "إنشاء حساب",
+      "signIn": "تسجيل الدخول",
+      "backToSignIn": "العودة إلى تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "hasAccount": "لديك حساب بالفعل؟"
+    },
+    "social": {
+      "orContinueWith": "أو المتابعة باستخدام"
+    },
+    "image": {
+      "title1": "أطلق",
+      "title2": "قوتك",
+      "title3": ".",
+      "subtitle": "معدات أداء فاخرة.",
+      "features": {
+        "speed": "مصممة للسرعة",
+        "endurance": "مبنية للتحمل",
+        "champions": "موثوقة من الأبطال"
+      }
+    },
+    "toast": {
+      "loginSuccess": "تم تسجيل الدخول بنجاح!",
+      "registerSuccess": "تم إنشاء الحساب بنجاح!"
+    }
+  },
+  "cart": {
+    "page": {
+      "title": "سلة التسوق",
+      "description": "مراجعة سلة التسوق الخاصة بك.",
+      "hero": {
+        "subtitle": "مراجعة",
+        "title": "سلتك.",
+        "description": "دفع آمن. توصيل سريع. أداء مضمون."
+      },
+      "catalog": {
+        "label": "اختياراتك",
+        "title": "حقيبة التسوق.",
+        "count": "{{count}} عنصر جاهز للأداء",
+        "count_plural": "{{count}} عناصر جاهزة للأداء"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "cart": "سلة التسوق"
+      }
+    },
+    "empty": {
+      "title": "سلتك فارغة",
+      "description": "يبدو أنك لم تضف أي شيء بعد. استكشف مجموعتنا وابحث عن معداتك التالية.",
+      "shopNow": "تسوق الآن"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "item": {
+      "unitPrice": "سعر الوحدة",
+      "remove": "إزالة العنصر",
+      "decrease": "تقليل الكمية",
+      "increase": "زيادة الكمية",
+      "total": "الإجمالي"
+    },
+    "summary": {
+      "title": "ملخص الطلب",
+      "items": "العناصر",
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "free": "مجاني",
+      "total": "الإجمالي",
+      "includingVat": "شامل ضريبة القيمة المضافة",
+      "checkout": "إتمام الشراء",
+      "securePayment": "دفع آمن وتوصيل سريع"
+    },
+    "actions": {
+      "clearBag": "مسح الحقيبة",
+      "clearing": "جارٍ المسح...",
+      "cancel": "إلغاء",
+      "deleteAll": "حذف الكل",
+      "confirmClear": "هل أنت متأكد من رغبتك في إزالة جميع العناصر من سلتك؟"
+    }
+  },
+  "wishlist": {
+    "page": {
+      "title": "قائمة المفضلة",
+      "description": "عرض العناصر المحفوظة الخاصة بك.",
+      "hero": {
+        "subtitle": "محفوظ",
+        "title": "المفضلة.",
+        "description": "معداتك الأكثر طلباً، جاهزة عندما تكون."
+      },
+      "catalog": {
+        "label": "العناصر المحفوظة",
+        "title": "إجمالي العناصر.",
+        "count": "{{count}} عنصر حالياً في قائمة المفضلة",
+        "count_plural": "{{count}} عناصر حالياً في قائمة المفضلة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "wishlist": "المفضلة"
+      }
+    },
+    "empty": {
+      "title": "قائمة المفضلة فارغة",
+      "description": "احفظ عناصرك المفضلة هنا وعد إليها لاحقاً.",
+      "browse": "تصفح المنتجات"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "item": {
+      "remove": "إزالة من المفضلة",
+      "addToCart": "أضف إلى السلة",
+      "adding": "جارٍ الإضافة..."
+    },
+    "loader": {
+      "loading": "جارٍ تحميل قائمة المفضلة..."
+    },
+    "toast": {
+      "removed": "تمت الإزالة من المفضلة",
+      "addedToCart": "تمت الإضافة إلى السلة!"
+    }
+  },
+  "orders": {
+    "page": {
+      "title": "طلباتي",
+      "description": "عرض سجل طلباتك.",
+      "hero": {
+        "subtitle": "تتبع",
+        "title": "الطلبات.",
+        "description": "سجل طلباتك الكامل، كل ذلك في مكان واحد."
+      },
+      "catalog": {
+        "label": "السجل",
+        "title": "سجل الطلبات.",
+        "count": "{{count}} طلب متتبع في حسابك",
+        "count_plural": "{{count}} طلبات متتبعة في حسابك"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "orders": "الطلبات"
+      }
+    },
+    "empty": {
+      "title": "لا توجد طلبات بعد",
+      "description": "لم تقم بتقديم أي طلبات بعد. ابدأ التسوق وطلبك الأول على بعد نقرة واحدة.",
+      "shopNow": "تسوق الآن"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "فشل في تحميل الطلبات. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "card": {
+      "order": "طلب",
+      "qty": "الكمية",
+      "moreItems": "+{{count}} عناصر إضافية",
+      "cash": "نقداً",
+      "card": "بطاقة",
+      "paid": "مدفوع",
+      "unpaid": "غير مدفوع",
+      "delivered": "تم التوصيل",
+      "processing": "قيد المعالجة"
+    },
+    "pagination": {
+      "label": "التنقل بين الصفحات",
+      "previous": "الصفحة السابقة",
+      "next": "الصفحة التالية",
+      "pageOf": "الصفحة {{current}} من {{total}}"
+    }
+  },
+  "checkout": {
+    "page": {
+      "title": "إتمام الشراء",
+      "description": "أكمل طلبك.",
+      "hero": {
+        "subtitle": "دفع آمن",
+        "title": "إتمام الشراء.",
+        "description": "سريع وآمن. طلبك على بعد خطوات قليلة."
+      },
+      "catalog": {
+        "label": "عملية آمنة",
+        "title": "إتمام الشراء.",
+        "description": "أكمل طلبك وانضم إلى الحركة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "checkout": "إتمام الشراء"
+      }
+    },
+    "shipping": {
+      "title": "بيانات الشحن",
+      "streetAddress": "العنوان",
+      "addressPlaceholder": "اسم الشارع، رقم المبنى",
+      "city": "المدينة",
+      "cityPlaceholder": "مدينتك",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "01000000000",
+      "validation": {
+        "addressRequired": "العنوان مطلوب",
+        "cityRequired": "المدينة مطلوبة",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالح"
+      }
+    },
+    "payment": {
+      "title": "طريقة الدفع",
+      "cashOnDelivery": "الدفع عند الاستلام",
+      "payOnline": "الدفع عبر الإنترنت"
+    },
+    "summary": {
+      "title": "طلبك",
+      "qty": "الكمية",
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "free": "مجاني",
+      "total": "الإجمالي",
+      "includingVat": "شامل ضريبة القيمة المضافة",
+      "placeOrder": "إتمام الطلب",
+      "processing": "جارٍ المعالجة...",
+      "terms": "بإتمام الطلب فإنك توافق على شروطنا"
+    },
+    "toast": {
+      "orderPlaced": "تم تقديم الطلب بنجاح!",
+      "cartNotFound": "السلة غير موجودة"
+    }
+  },
+  "profile": {
+    "page": {
+      "title": "ملفي الشخصي",
+      "description": "إدارة معلومات حسابك.",
+      "hero": {
+        "subtitle": "الحساب",
+        "title": "ملفي الشخصي.",
+        "description": "إدارة حسابك وطلباتك وتفضيلاتك."
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "profile": "الملف الشخصي"
+      }
+    },
+    "info": {
+      "title": "معلومات الحساب",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "role": "دور الحساب",
+      "memberSince": "عضو منذ",
+      "notProvided": "غير متوفر",
+      "notAvailable": "غير متاح"
+    },
+    "actions": {
+      "editProfile": "تعديل الملف الشخصي",
+      "tourGuide": "دليل الجولة",
+      "signOut": "تسجيل الخروج"
+    },
+    "edit": {
+      "title": "تعديل الملف الشخصي.",
+      "description": "قم بتحديث معلوماتك الشخصية أدناه.",
+      "fullName": "الاسم الكامل",
+      "namePlaceholder": "اسمك",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "01000000000",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات",
+      "saving": "جارٍ الحفظ...",
+      "validation": {
+        "nameRequired": "الاسم مطلوب",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "البريد الإلكتروني غير صالح",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "phoneInvalid": "أدخل رقم هاتف صالح"
+      }
+    },
+    "error": {
+      "title": "فشل في تحميل الملف الشخصي",
+      "retry": "حاول مرة أخرى"
+    },
+    "toast": {
+      "loggedOut": "تم تسجيل الخروج بنجاح"
+    }
+  },
+  "notFound": {
+    "title": "404 - الصفحة غير موجودة",
+    "badge": "خطأ 404",
+    "heading": "404",
+    "message": "الصفحة غير موجودة",
+    "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "backHome": "العودة إلى الرئيسية"
+  },
+  "nav": {
+    "links": {
+      "men": "رجال",
+      "women": "نساء",
+      "kids": "أطفال",
+      "sale": "تخفيضات",
+      "brands": "الماركات"
+    },
+    "searchPlaceholder": "بحث...",
+    "aria": {
+      "wishlist": "المفضلة",
+      "orders": "الطلبات",
+      "cart": "السلة",
+      "account": "الحساب",
+      "openMenu": "فتح القائمة",
+      "closeMenu": "إغلاق القائمة"
+    },
+    "dropdown": {
+      "myOrders": "طلباتي",
+      "profile": "الملف الشخصي",
+      "signOut": "تسجيل الخروج",
+      "signIn": "تسجيل الدخول",
+      "createAccount": "إنشاء حساب"
+    },
+    "mobile": {
+      "menu": "القائمة",
+      "shop": "تسوق",
+      "account": "الحساب",
+      "preferences": "التفضيلات",
+      "wishlist": "المفضلة",
+      "orders": "الطلبات",
+      "cart": "السلة",
+      "profile": "الملف الشخصي",
+      "signOut": "تسجيل الخروج",
+      "signIn": "تسجيل الدخول",
+      "joinUs": "انضم إلينا",
+      "lightMode": "الوضع النهاري",
+      "darkMode": "الوضع الليلي",
+      "searchPlaceholder": "ابحث عن منتجات..."
+    }
+  },
+  "footer": {
+    "brandStatement": "ندفع حدود الأداء والأناقة. صُمم للرياضيين الذين لا يقبلون بأقل من الأفضل. انضم إلى الحركة.",
+    "followUs": "تابع الحركة",
+    "sectionTitles": {
+      "shop": "تسوق",
+      "support": "الدعم",
+      "company": "الشركة",
+      "legal": "قانوني"
+    },
+    "links": {
+      "allProducts": "جميع المنتجات",
+      "categories": "الأقسام",
+      "brands": "الماركات",
+      "featuredGear": "معدات مميزة",
+      "newArrivals": "وصل حديثاً",
+      "salesOffers": "التخفيضات والعروض",
+      "helpCenter": "مركز المساعدة",
+      "contactUs": "اتصل بنا",
+      "trackOrder": "تتبع الطلب",
+      "shippingInfo": "معلومات الشحن",
+      "returns": "الإرجاع",
+      "sizeGuide": "دليل المقاسات",
+      "aboutUs": "من نحن",
+      "sustainability": "الاستدامة",
+      "innovation": "الابتكار",
+      "careers": "الوظائف",
+      "press": "الصحافة",
+      "affiliates": "الشركاء",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfUse": "شروط الاستخدام",
+      "storePolicies": "سياسات المتجر",
+      "cookieSettings": "إعدادات الكوكيز",
+      "compliance": "الامتثال"
+    },
+    "newsletter": {
+      "title": "اشترك في نشرتنا البريدية",
+      "description": "كن أول من يعرف عن الإصدارات الجديدة والعروض الحصرية.",
+      "placeholder": "البريد الإلكتروني",
+      "button": "انضمام"
+    },
+    "stores": {
+      "title": "متاجرنا",
+      "findStore": "ابحث عن متجر بالقرب منك",
+      "internationalShipping": "الشحن الدولي"
+    },
+    "app": {
+      "title": "دعم التطبيق",
+      "downloadOn": "تنزيل من",
+      "appStore": "آب ستور",
+      "getItOn": "احصل عليه من",
+      "googlePlay": "جوجل بلاي"
+    },
+    "bottom": {
+      "privacyPoliy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "storePolicies": "سياسات المتجر"
+    }
+  },
+  "home": {
+    "page": {
+      "title": "الرئيسية",
+      "description": "ملابس رياضية ومعدات عالية الجودة."
+    },
+    "hero": {
+      "badge": "أداء معاد تعريفه",
+      "titleLine1": "أطلق العنان",
+      "titleLine2": "لقوتك.",
+      "description": "معدات فاخرة صُممت لمن لا يقبلون بأقل من الأفضل.",
+      "cta": "تسوق المجموعة",
+      "secondaryCta": "عرض الكل",
+      "unmute": "تشغيل الصوت",
+      "mute": "كتم الصوت"
+    },
+    "featured": {
+      "label": "اختيار مختار",
+      "title": "منتجات مميزة.",
+      "description": "معدات مختارة بدقة تحدد الموسم",
+      "viewAll": "عرض جميع المنتجات",
+      "viewAllBtn": "عرض الكل"
+    },
+    "brands": {
+      "label": "شركاء موثوقون",
+      "title": "أفضل الماركات.",
+      "description": "الماركات التي تقود الصناعة",
+      "viewAll": "عرض جميع الماركات"
+    },
+    "newsletter": {
+      "title": "ابق على اطلاع",
+      "description": "كن أول من يعرف عن الإصدارات الجديدة والعروض الحصرية والإصدارات المحدودة.",
+      "placeholder": "أدخل بريدك الإلكتروني",
+      "button": "اشتراك"
+    },
+    "categories": {
+      "label": "تصفح حسب القسم",
+      "title": "تسوق حسب القسم.",
+      "description": "اعثر بالضبط على ما تحتاجه"
+    },
+    "features": {
+      "freeShipping": {
+        "title": "شحن مجاني",
+        "description": "على جميع الطلبات فوق $75"
+      },
+      "securePayment": {
+        "title": "دفع آمن",
+        "description": "إتمام شراء آمن 100%"
+      },
+      "support247": {
+        "title": "دعم 24/7",
+        "description": "مساعدة على مدار الساعة"
+      },
+      "easyReturns": {
+        "title": "إرجاع سهل",
+        "description": "سياسة إرجاع لمدة 30 يوماً"
+      }
+    },
+    "cta": {
+      "title": "مستعد للارتقاء؟",
+      "description": "انضم إلى آلاف الرياضيين الذين يثقون في متجر On Store لمعداتهم. اختبر الفرق الذي تصنعه الجودة الفائقة.",
+      "button": "ابدأ التسوق"
+    },
+    "sections": {
+      "heroCampaign": {
+        "badge": "إصدار محدود",
+        "title": "تحرك",
+        "titleAccent": "أسرع.",
+        "description": "مصمم بقصد.",
+        "descriptionAccent": "مُهندس للاستثنائي.",
+        "shopNow": "تسوق الآن",
+        "explore": "استكشف",
+        "statProducts": "منتجات",
+        "statBrands": "علامات تجارية",
+        "statCustomers": "عملاء"
+      },
+      "featuredCollections": {
+        "label": "مجموعات",
+        "titleLine1": "اختر",
+        "titleLine2": "مجالك.",
+        "viewAll": "عرض الكل",
+        "viewAllMobile": "عرض جميع المجموعات",
+        "running": {
+          "title": "الجري",
+          "subtitle": "أداء معاد تعريفه",
+          "description": "مُهندس للسرعة، مبني على التحمل.",
+          "shopNow": "تسوق الآن"
+        },
+        "training": {
+          "title": "التمارين",
+          "subtitle": "ابنِ قوتك",
+          "description": "تجاوز حدودك مع خط تماريننا.",
+          "shopNow": "تسوق الآن"
+        },
+        "lifestyle": {
+          "title": "أسلوب الحياة",
+          "subtitle": "حيث تلتقي الراحة بالأناقة",
+          "description": "ملابس رياضية فاخرة للتميز اليومي.",
+          "shopNow": "تسوق الآن"
+        }
+      },
+      "categoryHighlights": {
+        "label": "النشاط",
+        "titleLine1": "اعثر على",
+        "titleLine2": "أدائك.",
+        "running": "الجري",
+        "trainingGym": "التمارين والجيم",
+        "yogaWellness": "اليوغا والعافية",
+        "outdoorTrail": "الخارجي والمسارات",
+        "productCount": "{{count}} منتج"
+      },
+      "products": {
+        "loadingTitle": "توصيات.",
+        "loadingDesc": "أفضل المنتجات المطابقة لك",
+        "errorDesc": "أفضل المنتجات المطابقة لك",
+        "emptyTitle": "توصيات.",
+        "emptyDesc": "أفضل المنتجات المطابقة لك",
+        "title": "مميز.",
+        "description": "موسم جديد. خطوط نظيفة، جودة دائمة. اكتشف أحدث واصلتنا.",
+        "noProducts": "لا توجد منتجات متاحة حالياً."
+      },
+      "brands": {
+        "title": "علامات تجارية.",
+        "description": "تسوق حسب العلامة التجارية",
+        "noBrands": "لا توجد علامات تجارية متاحة حالياً."
+      },
+      "categories": {
+        "title": "تصنيفات.",
+        "description": "تسوق حسب التصنيف",
+        "noCategories": "لا توجد تصنيفات متاحة حالياً."
+      },
+      "trending": {
+        "label": "رائج الآن",
+        "title": "الأكثر رواجاً.",
+        "shopAll": "تسوق الكل",
+        "viewAll": "عرض جميع المنتجات",
+        "noProducts": "لا توجد منتجات رائجة متاحة حالياً."
+      },
+      "features": {
+        "label": "لماذا تختارنا",
+        "title": "ابدأ الاستكشاف.",
+        "description": "أشياء جيدة في انتظارك",
+        "freeShipping": {
+          "title": "شحن مجاني",
+          "description": "للطلبات فوق $50.00"
+        },
+        "easyReturn": {
+          "title": "إرجاع سهل جداً",
+          "description": "فقط رقم الهاتف"
+        },
+        "worldwideDelivery": {
+          "title": "توصيل عالمي",
+          "description": "توصيل سريع حول العالم"
+        },
+        "refundsPolicy": {
+          "title": "سياسة استرداد",
+          "description": "إرجاع لمدة 60 يوماً لأي سبب"
+        }
+      },
+      "cta": {
+        "label": "انضم للحركة",
+        "titleLine1": "مستعد لرفع",
+        "titleLine2": "أناقتك؟",
+        "description": "ادفع حدودك.",
+        "button": "تسوق المجموعة"
+      },
+      "banner": {
+        "label": "وصل حديثاً",
+        "headline": "موسم جديد.",
+        "description": "خطوط نظيفة، جودة دائمة. اكتشف أحدث واصلتنا.",
+        "cta": "تسوق المجموعة",
+        "imageAlt": "تمرين Apple Fitness Plus مع المدربين"
+      },
+      "promotionalBanner": {
+        "badge": "عرض محدود",
+        "heading": "خصم يصل إلى 40%",
+        "description": "تخفيضات نهاية الموسم على معدات الأداء المختارة. ادفع حدودك دون إفلاس.",
+        "endsSoon": "العرض ينتهي قريباً",
+        "cta": "تسوق التخفيضات"
+      },
+      "brandStory": {
+        "label": "القصة",
+        "titleLine1": "مُهندس",
+        "titleLine2": "للاستثنائي.",
+        "paragraph1": "انطلقنا من شغف بالأداء، لإنشاء ملابس رياضية لا تبدو جيدة فحسب — بل تدفع الحدود.",
+        "paragraph2": "من المضمار إلى الجيم، من الاستوديو إلى الشارع، معداتنا مبنية لأولئك الذين يرفضون الاستسلام. انضم إلى آلاف الرياضيين حول العالم الذين يثقون بنا لتقديم التميز.",
+        "statYears": "سنوات النشاط",
+        "statAthletes": "رياضيون مدعومون",
+        "statCountries": "دول تم الوصول إليها",
+        "featureQuality": "جودة فاخرة",
+        "featureQualityDesc": "مُهندسة لأعلى معايير الأداء",
+        "featureDelivery": "توصيل سريع",
+        "featureDeliveryDesc": "شحن مجاني للطلبات فوق $100",
+        "featureReturns": "إرجاع لمدة 30 يوماً",
+        "featureReturnsDesc": "سياسة إرجاع بدون أسئلة",
+        "happyCustomers": "عملاء سعداء",
+        "ourGear": "معداتنا",
+        "learnStory": "تعرف على قصتنا"
+      },
+      "values": {
+        "label": "مبادئنا",
+        "title": "مصمم بقصد"
+      },
+      "team": {
+        "label": "الفريق",
+        "title": "وراء الأداء"
+      },
+      "testimonials": {
+        "label": "آراء العملاء",
+        "titleLine1": "ماذا يقول",
+        "titleLine2": "عملاؤنا."
+      },
+      "blog": {
+        "label": "المدونة",
+        "title": "أحدث القصص."
+      }
+    }
+  },
+  "footerPages": {
+    "about.page.title": "من نحن",
+    "about.page.description": "تعرف على قصتنا وقيمنا وفريقنا.",
+    "about.breadcrumb.home": "الرئيسية",
+    "about.breadcrumb.about": "من نحن",
+    "about.hero.title": "من نحن",
+    "about.hero.description": "تعرف على المزيد عن قصتنا وقيمنا والفريق الذي يقف وراء وجهة التسوق المفضلة لديك عبر الإنترنت.",
+    "about.sections.story.title": "قصتنا",
+    "about.sections.mission.title": "مهمتنا",
+    "about.sections.principlesLabel": "مبادئنا",
+    "about.sections.valuesTitle": "قيمنا.",
+    "about.values.quality.title": "الجودة",
+    "about.values.quality.description": "نحن نختار وننسق فقط أفضل المنتجات، ونضمن أن كل عنصر يلبي معاييرنا الصارمة قبل أن يصل إلى عتبة داركم.",
+    "about.values.trust.title": "الثقة",
+    "about.values.trust.description": "أسعار شفافة، وصفات منتج صادقة، وسياسة إرجاع بدون متاعب تبني أساس علاقتنا مع كل عميل.",
+    "about.values.innovation.title": "الابتكار",
+    "about.values.innovation.description": "نحن نطور منصتنا ومجموعة منتجاتنا باستمرار لنقدم لك أحدث الصيحات وأكثر تجارب التسوق ملاءمة.",
+    "about.values.sustainability.title": "الاستدامة",
+    "about.values.sustainability.description": "من التغليف الصديق للبيئة إلى شراكات التوريد الأخلاقية، نحن ملتزمون بتقليل بصمتنا البيئية.",
+    "about.buttons.getInTouch": "تواصل معنا",
+    "about.buttons.browseProducts": "تصفح المنتجات",
+    "contact.page.title": "اتصل بنا",
+    "contact.page.description": "تواصل مع فريق الدعم لدينا.",
+    "contact.breadcrumb.home": "الرئيسية",
+    "contact.breadcrumb.contact": "اتصل بنا",
+    "contact.hero.title": "اتصل بنا",
+    "contact.hero.description": "يسعدنا سماع رأيك. تواصل مع فريقنا وسنعود إليك في أقرب وقت ممكن.",
+    "contact.form.title": "أرسل لنا رسالة",
+    "contact.form.label.name": "الاسم الكامل",
+    "contact.form.placeholder.name": "اسمك",
+    "contact.form.label.email": "البريد الإلكتروني",
+    "contact.form.placeholder.email": "your@email.com",
+    "contact.form.label.subject": "الموضوع",
+    "contact.form.option.default": "اختر موضوعاً",
+    "contact.form.option.order": "استفسار عن طلب",
+    "contact.form.option.shipping": "سؤال عن الشحن",
+    "contact.form.option.returns": "الإرجاع واسترداد الأموال",
+    "contact.form.option.product": "معلومات المنتج",
+    "contact.form.option.other": "أخرى",
+    "contact.form.label.message": "الرسالة",
+    "contact.form.placeholder.message": "كيف يمكننا مساعدتك؟",
+    "contact.form.submit": "إرسال الرسالة",
+    "contact.info.title": "معلومات",
+    "contact.info.phone": "الهاتف",
+    "contact.info.phoneValue": "+1 (555) 123-4567",
+    "contact.info.email": "البريد الإلكتروني",
+    "contact.info.emailValue": "support@onstore.com",
+    "contact.info.address": "العنوان",
+    "contact.info.addressValue": "123 Commerce Street, Suite 400, New York, NY 10001",
+    "contact.info.hours": "ساعات العمل",
+    "contact.info.hoursValue": "الإثنين إلى الجمعة، 9:00 صباحاً - 6:00 مساءً بتوقيت شرق الولايات المتحدة",
+    "faq.page.title": "الأسئلة الشائعة",
+    "faq.page.description": "أسئلة متكررة حول التسوق والشحن والإرجاع والمزيد.",
+    "faq.breadcrumb.home": "الرئيسية",
+    "faq.breadcrumb.faq": "الأسئلة الشائعة",
+    "faq.hero.title": "الأسئلة الشائعة",
+    "faq.hero.description": "اعثر على إجابات للأسئلة الأكثر شيوعاً حول التسوق معنا.",
+    "faq.categories.orders": "الطلبات",
+    "faq.categories.shipping": "الشحن",
+    "faq.categories.returns": "الإرجاع",
+    "faq.categories.contactUs": "اتصل بنا",
+    "faq.q1.question": "كيف أقدم طلباً؟",
+    "faq.q1.answer": "ما عليك سوى تصفح كتالوجنا، وإضافة العناصر إلى سلة التسوق، والمتابعة إلى الدفع.",
+    "faq.q2.question": "ما هي طرق الدفع التي تقبلونها؟",
+    "faq.q2.answer": "نقبل فيزا وماستركارد وأمريكان إكسبريس وباي بال وآبل باي وجوجل باي.",
+    "faq.q3.question": "هل يمكنني تعديل أو إلغاء طلبي بعد تقديمه؟",
+    "faq.q3.answer": "يمكن تعديل الطلبات أو إلغاؤها خلال ساعة واحدة من تقديمها.",
+    "faq.q4.question": "كم تستغرق عملية الشحن؟",
+    "faq.q4.answer": "الشحن العادي يستغرق 5-8 أيام عمل داخل الولايات المتحدة القارية.",
+    "faq.q5.question": "هل تقدمون شحناً مجانياً؟",
+    "faq.q5.answer": "نعم، نقدم شحناً مجانياً على جميع الطلبات التي تزيد عن $75.",
+    "faq.q6.question": "ما هي سياسة الإرجاع الخاصة بكم؟",
+    "faq.q6.answer": "نقبل الإرجاع خلال 30 يوماً من التوصيل للعناصر غير المستخدمة في حالتها الأصلية.",
+    "faq.q7.question": "كيف أتتبع طلبي؟",
+    "faq.q7.answer": "بمجرد شحن طلبك، ستتلقى بريداً إلكترونياً للتأكيد مع رقم تتبع.",
+    "faq.q8.question": "هل تشحنون دولياً؟",
+    "faq.q8.answer": "نعم، نشحن إلى أكثر من 50 دولة حول العالم.",
+    "faq.q9.question": "كيف يمكنني الاتصال بدعم العملاء؟",
+    "faq.q9.answer": "يمكنك التواصل معنا عبر البريد الإلكتروني على support@onstore.com أو عن طريق الهاتف.",
+    "faq.q10.question": "هل معلوماتي الشخصية آمنة؟",
+    "faq.q10.answer": "بالتأكيد. نحن نستخدم تشفيراً على مستوى الصناعة لحماية بياناتك.",
+    "faq.cta.title": "لا تزال لديك أسئلة؟",
+    "faq.cta.description": "فريق الدعم المتميز لدينا جاهز للمساعدة.",
+    "faq.cta.button": "اتصل بالدعم",
+    "terms.page.title": "الشروط والأحكام",
+    "terms.page.description": "شروط وأحكام استخدام موقعنا وخدماتنا.",
+    "terms.breadcrumb.home": "الرئيسية",
+    "terms.breadcrumb.terms": "الشروط والأحكام",
+    "terms.hero.title": "الشروط والأحكام",
+    "terms.hero.description": "يرجى قراءة هذه الشروط بعناية قبل استخدام موقعنا أو تقديم طلب.",
+    "privacy.page.title": "سياسة الخصوصية",
+    "privacy.page.description": "كيف نجمع ونستخدم ونحمي معلوماتك الشخصية.",
+    "privacy.breadcrumb.home": "الرئيسية",
+    "privacy.breadcrumb.privacy": "سياسة الخصوصية",
+    "privacy.hero.title": "سياسة الخصوصية",
+    "privacy.hero.description": "نحن نأخذ خصوصيتك على محمل الجد. تشرح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك الشخصية.",
+    "privacy.effectiveDate": "تاريخ السريان: 13 مايو 2026",
+    "shipping.page.title": "الشحن والتوصيل",
+    "shipping.page.description": "طرق الشحن والأسعار وأوقات التوصيل ومعلومات التتبع.",
+    "shipping.breadcrumb.home": "الرئيسية",
+    "shipping.breadcrumb.shipping": "الشحن والتوصيل",
+    "shipping.hero.title": "الشحن والتوصيل",
+    "shipping.hero.description": "كل ما تحتاج معرفته عن كيفية وصول طلباتك إليك بسرعة وموثوقية.",
+    "shipping.methods.standard.name": "عادي",
+    "shipping.methods.standard.delivery": "5-8 أيام عمل",
+    "shipping.methods.standard.cost": "مجاني للطلبات فوق $75",
+    "shipping.methods.standard.note": "أفضل قيمة للطلبات اليومية",
+    "shipping.methods.express.name": "سريع",
+    "shipping.methods.express.delivery": "2-3 أيام عمل",
+    "shipping.methods.express.cost": "$12.99",
+    "shipping.methods.express.note": "مثالي عندما تحتاجه عاجلاً",
+    "shipping.methods.nextDay.name": "اليوم التالي",
+    "shipping.methods.nextDay.delivery": "يوم عمل واحد",
+    "shipping.methods.nextDay.cost": "$19.99",
+    "shipping.methods.nextDay.note": "اطلب قبل الساعة 2 ظهراً للتوصيل في اليوم التالي",
+    "shipping.methods.international.name": "دولي",
+    "shipping.methods.international.delivery": "10-20 يوم عمل",
+    "shipping.methods.international.cost": "يتم احتسابه عند الدفع",
+    "shipping.methods.international.note": "متاح لأكثر من 50 دولة",
+    "shipping.sections.methods.title": "طرق وأسعار الشحن",
+    "shipping.sections.processing.title": "وقت المعالجة",
+    "shipping.sections.timelineLabel": "الجدول الزمني",
+    "shipping.sections.orderJourneyTitle": "رحلة الطلب.",
+    "shipping.sections.tracking.title": "تتبع طلبك",
+    "shipping.sections.international.title": "الشحن الدولي",
+    "shipping.sections.restrictions.title": "قيود الشحن",
+    "shipping.sections.lostDamaged.title": "الطرود المفقودة أو التالفة",
+    "shipping.steps.placed.title": "تم تقديم الطلب",
+    "shipping.steps.placed.description": "تتلقى تأكيد الطلب مع رقم الطلب والملخص.",
+    "shipping.steps.processing.title": "قيد المعالجة",
+    "shipping.steps.processing.description": "فريقنا يختار ويغلف ويجهز عناصرك للشحن (1-2 يوم عمل).",
+    "shipping.steps.shipped.title": "تم الشحن",
+    "shipping.steps.shipped.description": "تتلقى تأكيد الشحن مع رقم تتبع.",
+    "shipping.steps.delivered.title": "تم التوصيل",
+    "shipping.steps.delivered.description": "يصل طردك إلى عتبة داركم. استمتع بمشترياتك!",
+    "returns.page.title": "الإرجاع واسترداد الأموال",
+    "returns.page.description": "سياسة الإرجاع الخاصة بنا، والجدول الزمني لاسترداد الأموال، وكيفية بدء الإرجاع.",
+    "returns.breadcrumb.home": "الرئيسية",
+    "returns.breadcrumb.returns": "سياسة الإرجاع واسترداد الأموال",
+    "returns.hero.title": "سياسة الإرجاع واسترداد الأموال",
+    "returns.hero.description": "نريدك أن تحب مشترياتك. إذا كان هناك شيء غير صحيح، فنحن هنا للمساعدة.",
+    "returns.sections.window.title": "فترة الإرجاع",
+    "returns.sections.howToReturn.title": "كيفية إرجاع عنصر",
+    "returns.sections.timeline.title": "الجدول الزمني لاسترداد الأموال",
+    "returns.sections.exchanges.title": "الاستبدال",
+    "returns.sections.nonReturnable.title": "العناصر غير القابلة للإرجاع",
+    "returns.sections.needHelp.title": "هل تحتاج مساعدة؟",
+    "returns.steps.initiate.title": "بدء الإرجاع",
+    "returns.steps.initiate.description": "سجل الدخول إلى حسابك وانتقل إلى 'طلباتي'.",
+    "returns.steps.pack.title": "قم بتغليف العنصر",
+    "returns.steps.pack.description": "قم بتغليف العنصر بشكل آمن في عبوته الأصلية مع جميع العلامات المرفقة.",
+    "returns.steps.ship.title": "أعد شحنه",
+    "returns.steps.ship.description": "ألصق ملصق شحن الإرجاع المدفوع مسبقاً على الطرد.",
+    "returns.steps.refund.title": "تم إصدار استرداد الأموال",
+    "returns.steps.refund.description": "بمجرد استلامنا وفحص إرجاعك، سنقوم بمعالجة استرداد أموالك خلال 5-7 أيام عمل.",
+    "returns.nonReturnable.item1": "الملابس الداخلية وملابس السباحة",
+    "returns.nonReturnable.item2": "الأقراط والمجوهرات",
+    "returns.nonReturnable.item3": "أقنعة الوجه ومنتجات النظافة",
+    "returns.nonReturnable.item4": "بطاقات الهدايا ورصيد المتجر",
+    "returns.nonReturnable.item5": "عناصر التخفيضات الموسومة 'بيع نهائي'",
+    "returns.nonReturnable.item6": "المنتجات الرقمية أو القابلة للتنزيل",
+    "returns.buttons.contactSupport": "اتصل بالدعم",
+    "help.page.title": "مركز المساعدة",
+    "help.page.description": "اعثر على إجابات، وأدر حسابك، واحصل على الدعم.",
+    "help.breadcrumb.home": "الرئيسية",
+    "help.breadcrumb.help": "مركز المساعدة",
+    "help.hero.title": "مركز المساعدة",
+    "help.hero.description": "اعثر على إجابات، وأدر حسابك، واحصل على الدعم الذي تحتاجه.",
+    "help.topics.orders.title": "الطلبات",
+    "help.topics.orders.description": "تتبع طلبك، أو تعديله أو إلغاؤه، وتعرف على حالة طلبك.",
+    "help.topics.shipping.title": "الشحن",
+    "help.topics.shipping.description": "أوقات التوصيل والتكاليف والتتبع ومعلومات الشحن الدولي.",
+    "help.topics.returns.title": "الإرجاع واسترداد الأموال",
+    "help.topics.returns.description": "كيفية إرجاع العناصر، والجداول الزمنية لاسترداد الأموال، والاستبدال، والعناصر غير القابلة للإرجاع.",
+    "help.topics.payments.title": "المدفوعات",
+    "help.topics.payments.description": "طرق الدفع المقبولة والفواتير وأمان المعاملات.",
+    "help.topics.account.title": "الحساب",
+    "help.topics.account.description": "إدارة ملفك الشخصي وكلمة المرور وقائمة المفضلة وسجل الطلبات.",
+    "help.topics.privacy.title": "الخصوصية والأمان",
+    "help.topics.privacy.description": "كيف نحمي بياناتك وممارسات الخصوصية الخاصة بنا وحقوقك.",
+    "help.topics.policies.title": "السياسات",
+    "help.topics.policies.description": "شروطنا وأحكامنا وسياسات المتجر في لمحة.",
+    "help.topics.contact.title": "اتصل بنا",
+    "help.topics.contact.description": "تواصل مع فريق الدعم لدينا. نحن هنا للمساعدة.",
+    "help.cta.title": "لا تجد ما تبحث عنه؟",
+    "help.cta.description": "فريق الدعم لدينا متاح من الإثنين إلى الجمعة، 9 صباحاً إلى 6 مساءً بتوقيت شرق الولايات المتحدة.",
+    "help.cta.button": "اتصل بالدعم",
+    "policies.page.title": "سياسات المتجر",
+    "policies.page.description": "محور مركزي لجميع سياسات متجرنا.",
+    "policies.breadcrumb.home": "الرئيسية",
+    "policies.breadcrumb.policies": "سياسات المتجر",
+    "policies.hero.title": "نظرة عامة على سياسات المتجر",
+    "policies.hero.description": "محور مركزي لجميع سياسات متجرنا. اختر سياسة لمعرفة المزيد.",
+    "policies.items.privacy.title": "سياسة الخصوصية",
+    "policies.items.privacy.description": "كيف نجمع ونستخدم ونحمي معلوماتك الشخصية.",
+    "policies.items.terms.title": "الشروط والأحكام",
+    "policies.items.terms.description": "القواعد والإرشادات لاستخدام موقعنا وخدماتنا.",
+    "policies.items.returns.title": "سياسة الإرجاع",
+    "policies.items.returns.description": "فترة الإرجاع لمدة 30 يوماً، وعملية الإرجاع خطوة بخطوة، والجداول الزمنية لاسترداد الأموال.",
+    "policies.items.shipping.title": "سياسة الشحن",
+    "policies.items.shipping.description": "طرق الشحن والأسعار وأوقات التوصيل والتتبع والشحن الدولي.",
+    "policies.items.support.title": "سياسة دعم العملاء",
+    "policies.items.support.description": "التزامنا بجودة الدعم وأوقات الاستجابة والقنوات المتاحة.",
+    "policies.items.sizeGuide.title": "دليل المقاسات",
+    "policies.items.sizeGuide.description": "جداول مقاسات مفصلة للملابس النسائية والرجالية والموحدة.",
+    "sizeGuide.page.title": "دليل المقاسات",
+    "sizeGuide.page.description": "اعثر على المقاس المثالي من خلال جداول المقاسات التفصيلية ونصائح القياس.",
+    "sizeGuide.breadcrumb.home": "الرئيسية",
+    "sizeGuide.breadcrumb.sizeGuide": "دليل المقاسات",
+    "sizeGuide.hero.title": "دليل المقاسات",
+    "sizeGuide.hero.description": "اعثر على المقاس المثالي من خلال جداول المقاسات التفصيلية ونصائح القياس.",
+    "sizeGuide.sections.howToMeasure.title": "كيفية القياس",
+    "sizeGuide.sections.howToMeasure.description": "للحصول على أفضل مقاس، استخدم شريط قياس ناعم واتبع هذه الإرشادات:",
+    "sizeGuide.sections.fitNotes.title": "ملاحظات حول المقاس",
+    "sizeGuide.measurementsPrefix": "القياسات بوحدة {{unit}}",
+    "sizeGuide.headers.size": "المقاس",
+    "sizeGuide.headers.chest": "الصدر",
+    "sizeGuide.headers.waist": "الخصر",
+    "sizeGuide.headers.hip": "الورك",
+    "sizeGuide.headers.inseam": "طول الساق الداخلي",
+    "sizeGuide.tables.womensTops.label": "البلوزات النسائية",
+    "sizeGuide.tables.womensTops.unit": "بوصة",
+    "sizeGuide.tables.mensTops.label": "البلوزات الرجالية",
+    "sizeGuide.tables.mensTops.unit": "بوصة",
+    "sizeGuide.tables.bottoms.label": "السراويل (للجنسين)",
+    "sizeGuide.tables.bottoms.unit": "بوصة",
+    "sizeGuide.tips.chest.label": "الصدر",
+    "sizeGuide.tips.chest.description": "قس حول الجزء الأكبر من صدرك، مع إبقاء الشريط موازياً للأرض.",
+    "sizeGuide.tips.waist.label": "الخصر",
+    "sizeGuide.tips.waist.description": "قس حول محيط خصرك الطبيعي، فوق زر بطنك مباشرةً.",
+    "sizeGuide.tips.hip.label": "الورك",
+    "sizeGuide.tips.hip.description": "قس حول الجزء الأكبر من وركيك، حوالي 8 بوصات أسفل خصرك.",
+    "sizeGuide.tips.inseam.label": "طول الساق الداخلي",
+    "sizeGuide.tips.inseam.description": "قس من أعلى فخذك الداخلي إلى أسفل كاحلك.",
+    "supportPolicy.page.title": "سياسة دعم العملاء",
+    "supportPolicy.page.description": "التزامنا بتقديم دعم سريع ومفيد.",
+    "supportPolicy.breadcrumb.home": "الرئيسية",
+    "supportPolicy.breadcrumb.supportPolicy": "سياسة دعم العملاء",
+    "supportPolicy.hero.title": "سياسة دعم العملاء",
+    "supportPolicy.hero.description": "نحن ملتزمون بتقديم دعم سريع ومفيد لكل عميل.",
+    "supportPolicy.sections.channels.title": "قنوات الدعم",
+    "supportPolicy.sections.responseTimes.title": "أوقات الاستجابة",
+    "supportPolicy.sections.helpWith.title": "ما يمكننا المساعدة به",
+    "supportPolicy.sections.escalation.title": "عملية التصعيد",
+    "supportPolicy.sections.quality.title": "التزام جودة الدعم",
+    "supportPolicy.cta.title": "مستعد للحصول على المساعدة؟",
+    "supportPolicy.cta.description": "فريقنا في انتظار مساعدتك.",
+    "supportPolicy.cta.button": "اتصل بالدعم"
+  },
+  "branches": {
+    "page": {
+      "title": "فروعنا",
+      "description": "اعثر على متاجرنا القريبة منك.",
+      "hero": {
+        "subtitle": "الفروع",
+        "title": "متاجرنا.",
+        "description": "اعثر على أقرب متجر لك. زرنا لتجربة تسوق كاملة."
+      },
+      "catalog": {
+        "label": "الفروع",
+        "title": "جميع الفروع.",
+        "count": "{{count}} فرع متاح",
+        "count_plural": "{{count}} فروع متاحة"
+      },
+      "breadcrumb": {
+        "home": "الرئيسية",
+        "branches": "الفروع"
+      },
+        "badge": {
+          "headquarters": "المركز الرئيسي",
+          "internationalShipping": "شحن دولي"
+        },
+      "selected": {
+        "label": "الفرع المحدد"
+      }
+    },
+    "empty": {
+      "title": "لا توجد فروع متاحة",
+      "description": "لا توجد فروع متاحة حالياً. يرجى التحقق لاحقاً."
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+      "retry": "حاول مرة أخرى"
+    },
+    "loader": {
+      "loading": "جاري تحميل الفروع..."
+    },
+    "map": {
+      "markerAria": "{{name}} في {{city}}"
+    }
+  },
+  "tour": {
+    "popover": {
+      "progress": "الخطوة {{current}} من {{total}}",
+      "next": "التالي",
+      "back": "السابق",
+      "done": "تم"
+    },
+    "resetButton": {
+      "label": "إعادة الجولة"
+    },
+    "steps": {
+      "home": {
+        "welcome": {
+          "title": "مرحباً بك في On",
+          "description": "وجهتك للملابس الرياضية الفاخرة. تصفح مجموعات للرجال والنساء والأطفال، أو اطلع على أحدث التخفيضات وأفضل الماركات."
+        },
+        "explore": {
+          "title": "ابدأ الاستكشاف",
+          "description": "اكتشف أحدث معدات الأداء لدينا. اضغط على هذا الزر لتصفح المجموعة الكاملة والعثور على ما يناسبك."
+        },
+        "featured": {
+          "title": "منتجات مميزة",
+          "description": "اختيارات منسقة من أفضل الماركات. مرر المؤشر فوق أي منتج لإضافته إلى سلة التسوق أو حفظه في المفضلة."
+        },
+        "brands": {
+          "title": "أفضل الماركات",
+          "description": "تسوق من ماركات رياضية عالمية. كل علامة تجارية تحمل إرثها الخاص من الأداء والأناقة."
+        }
+      },
+      "products": {
+        "search": {
+          "title": "البحث عن المنتجات",
+          "description": "تبحث عن شيء محدد؟ اكتب أي كلمة مفتاحية واضغط Enter للعثور عليه فوراً في جميع أنحاء كتالوجنا."
+        },
+        "filters": {
+          "title": "تحسين النتائج",
+          "description": "خصص المنتجات حسب الفئة، الماركة، نطاق السعر، والمزيد. استخدم القائمة المنسدلة للترتيب حسب الأحدث أو السعر."
+        },
+        "grid": {
+          "title": "بطاقات المنتجات",
+          "description": "كل منتج يعرض صورته، سعره، تقييمه، وخيارات سريعة. مرر المؤشر للإضافة الفورية إلى السلة أو الحفظ لوقت لاحق."
+        },
+        "sort": {
+          "title": "الترتيب والتنظيم",
+          "description": "رتب المنتجات حسب الأحدث، السعر من الأقل إلى الأعلى، أو أبجدياً للعثور على ما يناسبك بشكل أسرع."
+        }
+      },
+      "productDetails": {
+        "gallery": {
+          "title": "معرض المنتج",
+          "description": "تصفح صور متعددة للمنتج. انقر للتكبير وفحص كل التفاصيل عن قرب قبل الشراء."
+        },
+        "info": {
+          "title": "تفاصيل المنتج",
+          "description": "عرض اسم المنتج، الماركة، والسعر في لمحة. أي تخفيضات يتم إبرازها بوضوح لك."
+        },
+        "actions": {
+          "title": "إجراءات سريعة",
+          "description": "اختر الكمية، أضف إلى السلة، أو احفظ في المفضلة \u2014 كل ذلك في مكان واحد."
+        },
+        "reviews": {
+          "title": "التقييمات والمراجعات",
+          "description": "اطلع على آراء العملاء الآخرين. اقرأ مراجعات حقيقية لاتخاذ قرار شراء مدروس."
+        }
+      },
+      "cart": {
+        "items": {
+          "title": "حقيبة التسوق",
+          "description": "راجع جميع العناصر في حقيبتك. اضبط الكميات أو أزل العناصر التي لم تعد ترغب بها \u2014 التغييرات تُحدّث فوراً."
+        },
+        "summary": {
+          "title": "ملخص الطلب",
+          "description": "اطلع على تحليل واضح للمجموع الفرعي وتكاليف الشحن والضرائب. كل شيء شفاف قبل الدفع."
+        },
+        "checkout": {
+          "title": "مستعد للدفع؟",
+          "description": "عندما تكون راضياً عن حقيبتك، اضغط على إتمام الشراء. أنت على بعد خطوات قليلة من معداتك الجديدة."
+        }
+      },
+      "wishlist": {
+        "items": {
+          "title": "مفضلاتك",
+          "description": "جميع العناصر المحفوظة موجودة هنا. القلب الممتلئ يعني أنها في مفضلتك \u2014 انقر عليها للإزالة. أضف أي عنصر إلى سلة التسوق عندما تكون مستعداً للشراء."
+        }
+      },
+      "profile": {
+        "header": {
+          "title": "حسابك",
+          "description": "لوحة التحكم الشخصية الخاصة بك. عرض اسمك، بريدك الإلكتروني، ودور الحساب في مكان واحد."
+        },
+        "info": {
+          "title": "تفاصيل الحساب",
+          "description": "حافظ على تحديث معلومات الاتصال الخاصة بك لإتمام عمليات الشراء بشكل أسرع وتوصيل الطلبات بسلاسة."
+        },
+        "actions": {
+          "title": "إدارة حسابك",
+          "description": "تعديل بياناتك الشخصية في أي وقت أو تسجيل الخروج بأمان. يمكنك أيضاً إعادة تشغيل هذه الجولة من هنا."
+        }
+      },
+      "orders": {
+        "list": {
+          "title": "سجل الطلبات",
+          "description": "تتبع كل طلب قمت به. كل بطاقة تظهر العناصر، الإجمالي، والحالة الحالية في لمحة."
+        },
+        "status": {
+          "title": "حالة الطلب",
+          "description": "راقب طلبك من التأكيد إلى التوصيل. شارات الدفع والتوصيل تبقي على اطلاع دائم."
+        }
+      },
+      "checkout": {
+        "shipping": {
+          "title": "تفاصيل الشحن",
+          "description": "أدخل عنوان التوصيل ورقم هاتفك ليصل إليك طلبك دون عوائق."
+        },
+        "payment": {
+          "title": "طريقة الدفع",
+          "description": "اختر طريقة الدفع التي تفضلها \u2014 الدفع عند الاستلام أو عبر الإنترنت ببطاقتك بشكل آمن."
+        },
+        "review": {
+          "title": "مراجعة الطلب",
+          "description": "تحقق من عناصرك وإجمالياتك قبل تقديم الطلب. كل شيء واضح ومباشر."
+        }
+      },
+      "about": {
+        "hero": {
+          "title": "من نحن",
+          "description": "تعرف على قصة On \u2014 مهمتنا لتقديم ملابس رياضية فاخرة مع التركيز على الجودة والثقة والابتكار."
+        },
+        "story": {
+          "title": "قصتنا ورسالتنا",
+          "description": "اكتشف كيف بدأنا وما يدفعنا. من توفير أفضل المنتجات إلى توفير تجربة تسوق سلسة."
+        },
+        "values": {
+          "title": "قيمنا الأساسية",
+          "description": "الجودة، الثقة، الابتكار، والاستدامة ترشد كل ما نقوم به. كل قيمة تعكس التزامنا تجاهك."
+        }
+      },
+      "contact": {
+        "hero": {
+          "title": "تواصل معنا",
+          "description": "نحن هنا للمساعدة. تواصل مع فريق الدعم لدينا لأي أسئلة أو ملاحظات أو استفسارات."
+        },
+        "form": {
+          "title": "أرسل رسالة",
+          "description": "املأ بياناتك، اختر الموضوع، واكتب رسالتك. سنرد عليك في أقرب وقت ممكن."
+        },
+        "info": {
+          "title": "معلومات الاتصال",
+          "description": "تفضل بالاتصال أو الإيميل؟ ابحث عن رقم هاتفنا، بريدنا الإلكتروني، ساعات العمل، والموقع هنا."
+        }
+      },
+      "help": {
+        "hero": {
+          "title": "مركز المساعدة",
+          "description": "مصدرك الشامل للإجابات. تصفح المواضيع، ابحث عن الأدلة، واحصل على الدعم الذي تحتاجه."
+        },
+        "topics": {
+          "title": "تصفح المواضيع",
+          "description": "استكشف فئات المساعدة \u2014 الطلبات، الشحن، الإرجاع، المدفوعات، الحساب، الخصوصية، السياسات، والمزيد."
+        },
+        "cta": {
+          "title": "هل ما زلت بحاجة للمساعدة؟",
+          "description": "لم تجد ما تبحث عنه؟ تواصل مع فريق الدعم لدينا وسنعود إليك في أقرب وقت."
+        }
+      }
+    }
   }
 }

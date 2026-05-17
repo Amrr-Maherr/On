@@ -6,8 +6,9 @@ import {
   type ReactNode,
 } from "react";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { driver } from "driver.js";
-import type { Driver } from "driver.js";
+import type { Driver, DriveStep } from "driver.js";
 import { TourContext } from "./TourContext";
 import { findTourById, findTourForRoute } from "../config";
 import {
@@ -18,6 +19,7 @@ import {
   getCompletedTours,
 } from "../utils/tourStorage";
 import { waitForElement } from "../utils/elementDetection";
+import type { TourStepConfig } from "../types";
 
 const AUTO_TOUR_DELAY = 800;
 const STEP_DETECTION_TIMEOUT = 6000;
@@ -26,8 +28,54 @@ interface TourProviderProps {
   children: ReactNode;
 }
 
+function resolvePopoverSide(
+  side: "top" | "bottom" | "left" | "right" | undefined,
+  isRtl: boolean,
+): "top" | "bottom" | "left" | "right" | undefined {
+  if (!side || !isRtl) return side;
+  if (side === "left") return "right";
+  if (side === "right") return "left";
+  return side;
+}
+
+function resolvePopoverAlign(
+  align: "start" | "center" | "end" | undefined,
+  isRtl: boolean,
+): "start" | "center" | "end" | undefined {
+  if (!align || !isRtl) return align;
+  if (align === "start") return "end";
+  if (align === "end") return "start";
+  return align;
+}
+
+function buildDriveStep(
+  step: TourStepConfig,
+  t: (key: string) => string,
+  isRtl: boolean,
+): DriveStep {
+  const popover = step.popover
+    ? {
+        title: step.popover.titleKey
+          ? t(step.popover.titleKey)
+          : undefined,
+        description: step.popover.descriptionKey
+          ? t(step.popover.descriptionKey)
+          : undefined,
+        side: resolvePopoverSide(step.popover.side, isRtl),
+        align: resolvePopoverAlign(step.popover.align, isRtl),
+      }
+    : undefined;
+
+  return {
+    element: step.element,
+    popover,
+  } as DriveStep;
+}
+
 export default function TourProvider({ children }: TourProviderProps) {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.language === "ar";
   const driverRef = useRef<Driver | null>(null);
   const [activeTour, setActiveTour] = useState<string | null>(null);
   const previousPathRef = useRef(location.pathname);
@@ -53,25 +101,34 @@ export default function TourProvider({ children }: TourProviderProps) {
 
       setActiveTour(tour.id);
 
-      const resolvedSteps = [];
+      const resolvedSteps: DriveStep[] = [];
 
       for (const step of tour.steps) {
-        if (step.element) {
-          const el =
-            typeof step.element === "string"
-              ? await waitForElement(step.element, STEP_DETECTION_TIMEOUT)
-              : typeof step.element === "function"
-                ? step.element()
-                : step.element;
+        const driveStep = buildDriveStep(step, t, isRtl);
 
-          if (el) {
-            resolvedSteps.push(step);
+        if (driveStep.element) {
+          const elementSelector =
+            typeof driveStep.element === "string"
+              ? driveStep.element
+              : undefined;
+
+          if (elementSelector) {
+            const el = await waitForElement(
+              elementSelector,
+              STEP_DETECTION_TIMEOUT,
+            );
+
+            if (el) {
+              resolvedSteps.push(driveStep);
+            } else {
+              const { element: _el, ...rest } = driveStep;
+              resolvedSteps.push(rest);
+            }
           } else {
-            const { element: _el, ...rest } = step;
-            resolvedSteps.push(rest);
+            resolvedSteps.push(driveStep);
           }
         } else {
-          resolvedSteps.push(step);
+          resolvedSteps.push(driveStep);
         }
       }
 
@@ -83,10 +140,10 @@ export default function TourProvider({ children }: TourProviderProps) {
         stageRadius: 0,
         allowKeyboardControl: true,
         showProgress: true,
-        progressText: "Step {{current}} of {{total}}",
-        nextBtnText: "Next",
-        prevBtnText: "Back",
-        doneBtnText: "Done",
+        progressText: t("tour.popover.progress"),
+        nextBtnText: t("tour.popover.next"),
+        prevBtnText: t("tour.popover.back"),
+        doneBtnText: t("tour.popover.done"),
         popoverClass: "on-tour-popover",
         steps: resolvedSteps,
         onNextClick: (_element, _step, { driver: d }) => {
@@ -117,7 +174,7 @@ export default function TourProvider({ children }: TourProviderProps) {
         }
       }, 100);
     },
-    [destroyDriver],
+    [destroyDriver, t, isRtl],
   );
 
   const isCompleted = useCallback((tourId: string): boolean => {

@@ -32,7 +32,7 @@ function FilterSortDropdown({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         className={cn(
-          "h-9 w-full rounded-xl border border-border/50 bg-transparent px-3 text-sm font-medium outline-none",
+          "h-9 w-full rounded-none border border-border/50 bg-transparent px-3 text-sm font-medium outline-none",
           "focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
           "transition-colors cursor-pointer",
         )}

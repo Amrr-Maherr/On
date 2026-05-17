@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Package, CreditCard, Truck, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Order } from "@/features/orders/types/orders";
@@ -8,6 +9,7 @@ interface OrderCardProps {
 }
 
 const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
+  const { t } = useTranslation();
   const date = new Date(order.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -20,7 +22,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
         <div className="flex items-center gap-3">
           <Package className="h-4 w-4 text-muted-foreground/50" />
           <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
-            ORDER: {order._id.slice(-8).toUpperCase()}
+            {t("orders.card.order")}: {order._id.slice(-8).toUpperCase()}
           </span>
         </div>
         <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{date}</span>
@@ -42,7 +44,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
                 {item.product.title}
               </p>
               <p className="text-xs text-muted-foreground/60">
-                Qty: {item?.count} x {item?.product?.price?.toLocaleString()} EGP
+                {t("orders.card.qty")}: {item?.count} x {item?.product?.price?.toLocaleString()} EGP
               </p>
             </div>
             <p className="text-sm font-medium tabular-nums text-foreground/90">
@@ -52,7 +54,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
         ))}
         {order.cartItems.length > 3 && (
           <p className="text-xs text-muted-foreground/50">
-            +{order.cartItems.length - 3} more items
+            {t("orders.card.moreItems", { count: order.cartItems.length - 3 })}
           </p>
         )}
       </div>
@@ -63,7 +65,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1 text-xs text-muted-foreground/60">
             <CreditCard className="h-3.5 w-3.5" />
-            {order.paymentMethodType === "cash" ? "Cash" : "Card"}
+            {order.paymentMethodType === "cash" ? t("orders.card.cash") : t("orders.card.card")}
           </span>
           <span
             className={cn(
@@ -72,7 +74,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
             )}
           >
             <CheckCircle2 className="h-3.5 w-3.5" />
-            {order.isPaid ? "Paid" : "Unpaid"}
+            {order.isPaid ? t("orders.card.paid") : t("orders.card.unpaid")}
           </span>
           <span
             className={cn(
@@ -81,7 +83,7 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
             )}
           >
             <Truck className="h-3.5 w-3.5" />
-            {order.isDelivered ? "Delivered" : "Processing"}
+            {order.isDelivered ? t("orders.card.delivered") : t("orders.card.processing")}
           </span>
         </div>
         <p className="text-sm font-medium tabular-nums">

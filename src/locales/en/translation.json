@@ -175,5 +175,1278 @@
         "openFullscreen": "Open image in fullscreen"
       }
     }
+  },
+  "categories": {
+    "page": {
+      "title": "All Categories",
+      "description": "Browse our complete collection of categories.",
+      "hero": {
+        "subtitle": "Browse",
+        "title": "Categories.",
+        "description": "Find your discipline. Every sport, every season, every goal."
+      },
+      "catalog": {
+        "label": "Categories",
+        "title": "ALL CATEGORIES.",
+        "count": "{{count}} category available",
+        "count_plural": "{{count}} categories available"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "categories": "All Categories"
+      }
+    },
+    "filters": {
+      "sortBy": "Sort By",
+      "reset": "Reset Filters",
+      "filterSort": "Filter & Sort",
+      "filtersSort": "Filters & Sort",
+      "resetShort": "Reset",
+      "search": "Search categories...",
+      "sort": {
+        "label": "Sort by:",
+        "nameAZ": "Name: A-Z",
+        "nameZA": "Name: Z-A",
+        "mostProducts": "Most Products"
+      }
+    },
+    "card": {
+      "explore": "Explore"
+    },
+    "empty": {
+      "title": "No categories found",
+      "description": "There are no categories available at the moment. Please check back later."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "Home",
+        "categories": "Categories"
+      },
+      "notFound": "Category not found.",
+      "info": {
+        "label": "Details"
+      },
+      "slug": {
+        "label": "Slug"
+      },
+      "activeSince": "Active Since",
+      "referenceId": "Reference ID",
+      "collection": {
+        "label": "Collection",
+        "title": "CATEGORY GEAR."
+      },
+      "products": {
+        "empty": "No products found in this category.",
+        "error": "Failed to load products"
+      }
+    }
+  },
+  "brands": {
+    "page": {
+      "title": "All Brands",
+      "description": "Discover our curated brands.",
+      "hero": {
+        "subtitle": "Discover",
+        "title": "Brands.",
+        "description": "The world's most trusted names in performance sportswear."
+      },
+      "catalog": {
+        "label": "Brands",
+        "title": "ALL BRANDS.",
+        "count": "{{count}} brand available",
+        "count_plural": "{{count}} brands available"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "brands": "All Brands"
+      }
+    },
+    "card": {
+      "label": "Brand"
+    },
+    "empty": {
+      "title": "No brands found",
+      "description": "There are no brands available at the moment. Please check back later."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "details": {
+      "breadcrumb": {
+        "home": "Home",
+        "brands": "Brands"
+      },
+      "notFound": "Brand not found.",
+      "info": {
+        "label": "Details"
+      },
+      "activeSince": "Active Since",
+      "referenceId": "Reference ID",
+      "collection": {
+        "label": "Collection",
+        "title": "BRAND COLLECTION."
+      },
+      "products": {
+        "empty": "No products found for this brand.",
+        "error": "Failed to load products"
+      }
+    }
+  },
+  "auth": {
+    "page": {
+      "login": {
+        "title": "Sign In",
+        "description": "Sign in to your account."
+      },
+      "register": {
+        "title": "Create Account",
+        "description": "Create your account."
+      },
+      "forgotPassword": {
+        "title": "Forgot Password"
+      },
+      "resetPassword": {
+        "title": "Reset Password"
+      }
+    },
+    "header": {
+      "login": {
+        "title": "Welcome Back",
+        "description": "Sign in to your account to continue"
+      },
+      "register": {
+        "title": "Join Us",
+        "description": "Enter your details to start your journey"
+      },
+      "forgotPassword": {
+        "title": "Recover Access",
+        "description": "Enter your email and we'll send you a reset code"
+      },
+      "resetPassword": {
+        "title": "New Password",
+        "description": "Enter the code sent to your email and your new password"
+      }
+    },
+    "form": {
+      "email": "Email Address",
+      "emailPlaceholder": "example@mail.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "phoneNumber": "Phone Number",
+      "phonePlaceholder": "01xxxxxxxxx",
+      "recoveryCode": "Recovery Code",
+      "recoveryCodePlaceholder": "Enter the code"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "nameRequired": "Name is required",
+      "nameMinLength": "Name must be at least 3 characters",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Enter a valid phone number",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsDoNotMatch": "Passwords do not match"
+    },
+    "submit": {
+      "login": "Sign In",
+      "loginLoading": "Verifying...",
+      "register": "Create Account",
+      "registerLoading": "Creating...",
+      "forgotPassword": "Send Reset Code",
+      "forgotPasswordLoading": "Sending...",
+      "resetPassword": "Update Password",
+      "resetPasswordLoading": "Updating..."
+    },
+    "links": {
+      "forgotPassword": "Forgot password?",
+      "createAccount": "Create account",
+      "signIn": "Sign in",
+      "backToSignIn": "Back to sign in",
+      "noAccount": "Don't have an account?",
+      "hasAccount": "Already have an account?"
+    },
+    "social": {
+      "orContinueWith": "or continue with"
+    },
+    "image": {
+      "title1": "Unleash",
+      "title2": "Your",
+      "title3": "Power.",
+      "subtitle": "Premium Performance Gear.",
+      "features": {
+        "speed": "Engineered for speed",
+        "endurance": "Built for endurance",
+        "champions": "Trusted by champions"
+      }
+    },
+    "toast": {
+      "loginSuccess": "Logged in successfully!",
+      "registerSuccess": "Account created successfully!"
+    }
+  },
+  "cart": {
+    "page": {
+      "title": "Cart",
+      "description": "Review your shopping cart.",
+      "hero": {
+        "subtitle": "Review",
+        "title": "Your Cart.",
+        "description": "Secure checkout. Fast delivery. Performance guaranteed."
+      },
+      "catalog": {
+        "label": "Your Selection",
+        "title": "SHOPPING BAG.",
+        "count": "{{count}} ITEM READY FOR PERFORMANCE",
+        "count_plural": "{{count}} ITEMS READY FOR PERFORMANCE"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "cart": "Cart"
+      }
+    },
+    "empty": {
+      "title": "Your cart is empty",
+      "description": "Looks like you haven't added anything yet. Explore our collection and find your next gear.",
+      "shopNow": "Shop Now"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "item": {
+      "unitPrice": "UNIT PRICE",
+      "remove": "Remove item",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity",
+      "total": "Total"
+    },
+    "summary": {
+      "title": "Order Summary",
+      "items": "Items",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "free": "Free",
+      "total": "Total",
+      "includingVat": "Including VAT",
+      "checkout": "Checkout",
+      "securePayment": "Secure payment & fast delivery"
+    },
+    "actions": {
+      "clearBag": "CLEAR BAG",
+      "clearing": "CLEARING...",
+      "cancel": "Cancel",
+      "deleteAll": "Delete All",
+      "confirmClear": "Are you sure you want to remove all items from your cart?"
+    }
+  },
+  "wishlist": {
+    "page": {
+      "title": "My Wishlist",
+      "description": "View your saved items.",
+      "hero": {
+        "subtitle": "Saved",
+        "title": "Wishlist.",
+        "description": "Your most-wanted gear, ready when you are."
+      },
+      "catalog": {
+        "label": "Saved Items",
+        "title": "Total Items.",
+        "count": "{{count}} item currently in your wishlist",
+        "count_plural": "{{count}} items currently in your wishlist"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "wishlist": "Wishlist"
+      }
+    },
+    "empty": {
+      "title": "Your wishlist is empty",
+      "description": "Save your favorite items here and come back to them later.",
+      "browse": "Browse Products"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "item": {
+      "remove": "Remove from wishlist",
+      "addToCart": "Add to Cart",
+      "adding": "Adding..."
+    },
+    "loader": {
+      "loading": "Loading your wishlist..."
+    },
+    "toast": {
+      "removed": "Removed from wishlist",
+      "addedToCart": "Added to cart!"
+    }
+  },
+  "orders": {
+    "page": {
+      "title": "My Orders",
+      "description": "View your order history.",
+      "hero": {
+        "subtitle": "Track",
+        "title": "Orders.",
+        "description": "Your complete order history, all in one place."
+      },
+      "catalog": {
+        "label": "History",
+        "title": "Order History.",
+        "count": "{{count}} order tracked in your account",
+        "count_plural": "{{count}} orders tracked in your account"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "orders": "Orders"
+      }
+    },
+    "empty": {
+      "title": "No orders yet",
+      "description": "You haven't placed any orders yet. Start shopping and your first order is just a click away.",
+      "shopNow": "Shop Now"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "Failed to load orders. Please try again.",
+      "retry": "Try Again"
+    },
+    "card": {
+      "order": "ORDER",
+      "qty": "Qty",
+      "moreItems": "+{{count}} more items",
+      "cash": "Cash",
+      "card": "Card",
+      "paid": "Paid",
+      "unpaid": "Unpaid",
+      "delivered": "Delivered",
+      "processing": "Processing"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page",
+      "pageOf": "Page {{current}} of {{total}}"
+    }
+  },
+  "checkout": {
+    "page": {
+      "title": "Checkout",
+      "description": "Complete your order.",
+      "hero": {
+        "subtitle": "Secure Checkout",
+        "title": "Checkout.",
+        "description": "Fast and secure. Your order is just a few steps away."
+      },
+      "catalog": {
+        "label": "Secure Process",
+        "title": "CHECKOUT.",
+        "description": "Complete your order and join the movement"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "checkout": "Checkout"
+      }
+    },
+    "shipping": {
+      "title": "Shipping Details",
+      "streetAddress": "Street Address",
+      "addressPlaceholder": "Street name, building number",
+      "city": "City",
+      "cityPlaceholder": "Your City",
+      "phone": "Phone Number",
+      "phonePlaceholder": "01000000000",
+      "validation": {
+        "addressRequired": "Address is required",
+        "cityRequired": "City is required",
+        "phoneRequired": "Phone is required",
+        "phoneInvalid": "Enter a valid phone number"
+      }
+    },
+    "payment": {
+      "title": "Payment Method",
+      "cashOnDelivery": "Cash on Delivery",
+      "payOnline": "Pay Online"
+    },
+    "summary": {
+      "title": "Your Order",
+      "qty": "QTY",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "free": "Free",
+      "total": "Total",
+      "includingVat": "Including VAT",
+      "placeOrder": "PLACE ORDER",
+      "processing": "PROCESSING...",
+      "terms": "By placing an order you agree to our Terms"
+    },
+    "toast": {
+      "orderPlaced": "Order placed successfully!",
+      "cartNotFound": "Cart not found"
+    }
+  },
+  "profile": {
+    "page": {
+      "title": "My Profile",
+      "description": "Manage your account information.",
+      "hero": {
+        "subtitle": "Account",
+        "title": "My Profile.",
+        "description": "Manage your account, orders, and preferences."
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "profile": "Profile"
+      }
+    },
+    "info": {
+      "title": "Account Information",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "role": "Account Role",
+      "memberSince": "Member Since",
+      "notProvided": "Not provided",
+      "notAvailable": "N/A"
+    },
+    "actions": {
+      "editProfile": "Edit Profile",
+      "tourGuide": "Tour Guide",
+      "signOut": "Sign Out"
+    },
+    "edit": {
+      "title": "Edit Profile.",
+      "description": "Update your personal information below.",
+      "fullName": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "01000000000",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "validation": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Enter a valid phone number"
+      }
+    },
+    "error": {
+      "title": "Failed to load profile",
+      "retry": "Try Again"
+    },
+    "toast": {
+      "loggedOut": "Logged out successfully"
+    }
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "badge": "Error 404",
+    "heading": "404",
+    "message": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back Home"
+  },
+  "nav": {
+    "links": {
+      "men": "Men",
+      "women": "Women",
+      "kids": "Kids",
+      "sale": "Sale",
+      "brands": "Brands"
+    },
+    "searchPlaceholder": "Search...",
+    "aria": {
+      "wishlist": "Wishlist",
+      "orders": "Orders",
+      "cart": "Cart",
+      "account": "Account",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
+    },
+    "dropdown": {
+      "myOrders": "My Orders",
+      "profile": "Profile",
+      "signOut": "Sign Out",
+      "signIn": "Sign In",
+      "createAccount": "Create Account"
+    },
+    "mobile": {
+      "menu": "Menu",
+      "shop": "Shop",
+      "account": "Account",
+      "preferences": "Preferences",
+      "wishlist": "Wishlist",
+      "orders": "Orders",
+      "cart": "Cart",
+      "profile": "Profile",
+      "signOut": "Sign Out",
+      "signIn": "Sign In",
+      "joinUs": "Join Us",
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode",
+      "searchPlaceholder": "Search products..."
+    }
+  },
+  "footer": {
+    "brandStatement": "Pushing the boundaries of performance and style. Engineered for athletes who never settle for second best. Join the movement.",
+    "followUs": "Follow the movement",
+    "sectionTitles": {
+      "shop": "Shop",
+      "support": "Support",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "allProducts": "All Products",
+      "categories": "Categories",
+      "brands": "Brands",
+      "featuredGear": "Featured Gear",
+      "newArrivals": "New Arrivals",
+      "salesOffers": "Sales & Offers",
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "trackOrder": "Track Order",
+      "shippingInfo": "Shipping Info",
+      "returns": "Returns",
+      "sizeGuide": "Size Guide",
+      "aboutUs": "About Us",
+      "sustainability": "Sustainability",
+      "innovation": "Innovation",
+      "careers": "Careers",
+      "press": "Press",
+      "affiliates": "Affiliates",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfUse": "Terms of Use",
+      "storePolicies": "Store Policies",
+      "cookieSettings": "Cookie Settings",
+      "compliance": "Compliance"
+    },
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "description": "Be the first to know about new releases and exclusive offers.",
+      "placeholder": "Email Address",
+      "button": "Join"
+    },
+    "stores": {
+      "title": "Our Stores",
+      "findStore": "Find a Store Near You",
+      "internationalShipping": "International Shipping"
+    },
+    "app": {
+      "title": "App Support",
+      "downloadOn": "Download on",
+      "appStore": "App Store",
+      "getItOn": "Get it on",
+      "googlePlay": "Google Play"
+    },
+    "bottom": {
+      "privacyPoliy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "storePolicies": "Store Policies"
+    }
+  },
+  "home": {
+    "page": {
+      "title": "Home",
+      "description": "Premium sportswear and athletic gear."
+    },
+    "hero": {
+      "badge": "Performance Redefined",
+      "titleLine1": "UNLEASH",
+      "titleLine2": "POWER.",
+      "description": "Premium gear engineered for those who never settle.",
+      "cta": "Shop Collection",
+      "secondaryCta": "View All",
+      "unmute": "Unmute video",
+      "mute": "Mute video"
+    },
+    "featured": {
+      "label": "Curated Selection",
+      "title": "FEATURED PRODUCTS.",
+      "description": "Hand-picked gear that defines the season",
+      "viewAll": "View All Products",
+      "viewAllBtn": "View All"
+    },
+    "brands": {
+      "label": "Trusted Partners",
+      "title": "TOP BRANDS.",
+      "description": "The brands that drive the industry forward",
+      "viewAll": "View All Brands"
+    },
+    "newsletter": {
+      "title": "Stay in the Loop",
+      "description": "Be the first to know about new drops, exclusive offers, and limited editions.",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "categories": {
+      "label": "Browse by Category",
+      "title": "SHOP BY CATEGORY.",
+      "description": "Find exactly what you need"
+    },
+    "features": {
+      "freeShipping": {
+        "title": "Free Shipping",
+        "description": "On all orders over $75"
+      },
+      "securePayment": {
+        "title": "Secure Payment",
+        "description": "100% secure checkout"
+      },
+      "support247": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock assistance"
+      },
+      "easyReturns": {
+        "title": "Easy Returns",
+        "description": "30-day return policy"
+      }
+    },
+    "cta": {
+      "title": "Ready to Level Up?",
+      "description": "Join thousands of athletes who trust On Store for their gear. Experience the difference premium quality makes.",
+      "button": "Start Shopping"
+    },
+    "sections": {
+      "heroCampaign": {
+        "badge": "Limited Edition",
+        "title": "MOVE",
+        "titleAccent": "FASTER.",
+        "description": "Designed with intention.",
+        "descriptionAccent": "Engineered for the Extraordinary.",
+        "shopNow": "Shop Now",
+        "explore": "Explore",
+        "statProducts": "Products",
+        "statBrands": "Brands",
+        "statCustomers": "Customers"
+      },
+      "featuredCollections": {
+        "label": "Collections",
+        "titleLine1": "CHOOSE YOUR",
+        "titleLine2": "DISCIPLINE.",
+        "viewAll": "View All",
+        "viewAllMobile": "View All Collections",
+        "running": {
+          "title": "Running",
+          "subtitle": "Performance Redefined",
+          "description": "Engineered for speed, built for endurance.",
+          "shopNow": "Shop Now"
+        },
+        "training": {
+          "title": "Training",
+          "subtitle": "Forge Your Strength",
+          "description": "Push beyond your limits with our training line.",
+          "shopNow": "Shop Now"
+        },
+        "lifestyle": {
+          "title": "Lifestyle",
+          "subtitle": "Where Comfort Meets Style",
+          "description": "Premium sportswear for everyday excellence.",
+          "shopNow": "Shop Now"
+        }
+      },
+      "categoryHighlights": {
+        "label": "Activity",
+        "titleLine1": "FIND YOUR",
+        "titleLine2": "PERFORMANCE.",
+        "running": "Running",
+        "trainingGym": "Training & Gym",
+        "yogaWellness": "Yoga & Wellness",
+        "outdoorTrail": "Outdoor & Trail",
+        "productCount": "{{count}} Products"
+      },
+      "products": {
+        "loadingTitle": "Recommendations.",
+        "loadingDesc": "Best matching products for you",
+        "errorDesc": "Best matching products for you",
+        "emptyTitle": "Recommendations.",
+        "emptyDesc": "Best matching products for you",
+        "title": "Featured.",
+        "description": "New season. Clean lines, lasting quality. Discover our latest arrivals.",
+        "noProducts": "No products available at the moment."
+      },
+      "brands": {
+        "title": "Brands.",
+        "description": "Shop by brand",
+        "noBrands": "No brands available at the moment."
+      },
+      "categories": {
+        "title": "Categories.",
+        "description": "Shop by category",
+        "noCategories": "No categories available at the moment."
+      },
+      "trending": {
+        "label": "Hot Right Now",
+        "title": "Trending Now.",
+        "shopAll": "Shop All",
+        "viewAll": "View All Products",
+        "noProducts": "No trending products available at the moment."
+      },
+      "features": {
+        "label": "Why choose us",
+        "title": "START EXPLORING.",
+        "description": "Good things are waiting for you",
+        "freeShipping": {
+          "title": "Free shipping",
+          "description": "On orders over $50.00"
+        },
+        "easyReturn": {
+          "title": "Very easy to return",
+          "description": "Just phone number"
+        },
+        "worldwideDelivery": {
+          "title": "Worldwide delivery",
+          "description": "Fast delivery worldwide"
+        },
+        "refundsPolicy": {
+          "title": "Refunds policy",
+          "description": "60 days return for any reason"
+        }
+      },
+      "cta": {
+        "label": "Join the Movement",
+        "titleLine1": "Ready to elevate",
+        "titleLine2": "your style?",
+        "description": "Push your limits.",
+        "button": "Shop the collection"
+      },
+      "banner": {
+        "label": "New Arrival",
+        "headline": "New season.",
+        "description": "Clean lines, lasting quality. Discover our latest arrivals.",
+        "cta": "Shop the collection",
+        "imageAlt": "Apple Fitness Plus workout with trainers"
+      },
+      "promotionalBanner": {
+        "badge": "Limited Offer",
+        "heading": "UP TO 40% OFF",
+        "description": "Season-end sale on select performance gear. Push your limits without breaking the bank.",
+        "endsSoon": "Offer ends soon",
+        "cta": "Shop the Sale"
+      },
+      "brandStory": {
+        "label": "The Story",
+        "titleLine1": "ENGINEERED FOR",
+        "titleLine2": "THE EXTRAORDINARY.",
+        "paragraph1": "Born from a passion for performance, we set out to create sportswear that doesn't just look good — it pushes boundaries.",
+        "paragraph2": "From the track to the gym, from the studio to the street, our gear is built for those who refuse to settle. Join thousands of athletes worldwide who trust us to deliver excellence.",
+        "statYears": "Years Active",
+        "statAthletes": "Athletes Sponsored",
+        "statCountries": "Countries Reached",
+        "featureQuality": "Premium Quality",
+        "featureQualityDesc": "Engineered to the highest performance standards",
+        "featureDelivery": "Fast Delivery",
+        "featureDeliveryDesc": "Free shipping on orders over $100",
+        "featureReturns": "30-Day Returns",
+        "featureReturnsDesc": "No questions asked return policy",
+        "happyCustomers": "Happy Customers",
+        "ourGear": "Our Gear",
+        "learnStory": "Learn Our Story"
+      },
+      "values": {
+        "label": "Our Ethos",
+        "title": "Designed with intention"
+      },
+      "team": {
+        "label": "The Crew",
+        "title": "Behind the performance"
+      },
+      "testimonials": {
+        "label": "Testimonials",
+        "titleLine1": "What our",
+        "titleLine2": "customers say."
+      },
+      "blog": {
+        "label": "Journal",
+        "title": "Latest stories."
+      }
+    }
+  },
+  "footerPages": {
+    "about.page.title": "About Us",
+    "about.page.description": "Learn about our story, values, and team.",
+    "about.breadcrumb.home": "Home",
+    "about.breadcrumb.about": "About Us",
+    "about.hero.title": "About Us",
+    "about.hero.description": "Learn more about our story, our values, and the team behind your favourite online shopping destination.",
+    "about.sections.story.title": "Our Story",
+    "about.sections.mission.title": "Our Mission",
+    "about.sections.principlesLabel": "Principles",
+    "about.sections.valuesTitle": "OUR VALUES.",
+    "about.values.quality.title": "Quality",
+    "about.values.quality.description": "We source and curate only the finest products, ensuring every item meets our rigorous standards before it reaches your doorstep.",
+    "about.values.trust.title": "Trust",
+    "about.values.trust.description": "Transparent pricing, honest product descriptions, and a no-hassle return policy build the foundation of our relationship with every customer.",
+    "about.values.innovation.title": "Innovation",
+    "about.values.innovation.description": "We continuously evolve our platform and product range to bring you the latest trends and most convenient shopping experience.",
+    "about.values.sustainability.title": "Sustainability",
+    "about.values.sustainability.description": "From eco-friendly packaging to ethical sourcing partnerships, we're committed to reducing our environmental footprint.",
+    "about.buttons.getInTouch": "Get in Touch",
+    "about.buttons.browseProducts": "Browse Products",
+    "contact.page.title": "Contact Us",
+    "contact.page.description": "Get in touch with our support team.",
+    "contact.breadcrumb.home": "Home",
+    "contact.breadcrumb.contact": "Contact Us",
+    "contact.hero.title": "Contact Us",
+    "contact.hero.description": "We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible.",
+    "contact.form.title": "Send Us a Message",
+    "contact.form.label.name": "Full Name",
+    "contact.form.placeholder.name": "Your name",
+    "contact.form.label.email": "Email Address",
+    "contact.form.placeholder.email": "your@email.com",
+    "contact.form.label.subject": "Subject",
+    "contact.form.option.default": "Select a topic",
+    "contact.form.option.order": "Order Inquiry",
+    "contact.form.option.shipping": "Shipping Question",
+    "contact.form.option.returns": "Returns & Refunds",
+    "contact.form.option.product": "Product Information",
+    "contact.form.option.other": "Other",
+    "contact.form.label.message": "Message",
+    "contact.form.placeholder.message": "How can we help you?",
+    "contact.form.submit": "Send Message",
+    "contact.info.title": "Information",
+    "contact.info.phone": "Phone",
+    "contact.info.phoneValue": "+1 (555) 123-4567",
+    "contact.info.email": "Email",
+    "contact.info.emailValue": "support@onstore.com",
+    "contact.info.address": "Address",
+    "contact.info.addressValue": "123 Commerce Street, Suite 400, New York, NY 10001",
+    "contact.info.hours": "Business Hours",
+    "contact.info.hoursValue": "Monday to Friday, 9:00 AM - 6:00 PM EST",
+    "faq.page.title": "FAQ",
+    "faq.page.description": "Frequently asked questions about shopping, shipping, returns, and more.",
+    "faq.breadcrumb.home": "Home",
+    "faq.breadcrumb.faq": "FAQ",
+    "faq.hero.title": "Frequently Asked Questions",
+    "faq.hero.description": "Find answers to the most common questions about shopping with us.",
+    "faq.categories.orders": "Orders",
+    "faq.categories.shipping": "Shipping",
+    "faq.categories.returns": "Returns",
+    "faq.categories.contactUs": "Contact Us",
+    "faq.q1.question": "How do I place an order?",
+    "faq.q1.answer": "Simply browse our catalogue, add items to your cart, and proceed to checkout.",
+    "faq.q2.question": "What payment methods do you accept?",
+    "faq.q2.answer": "We accept Visa, Mastercard, American Express, PayPal, Apple Pay, and Google Pay.",
+    "faq.q3.question": "Can I modify or cancel my order after placing it?",
+    "faq.q3.answer": "Orders can be modified or cancelled within 1 hour of placement.",
+    "faq.q4.question": "How long does shipping take?",
+    "faq.q4.answer": "Standard shipping takes 5-8 business days within the continental US.",
+    "faq.q5.question": "Do you offer free shipping?",
+    "faq.q5.answer": "Yes, we offer free standard shipping on all orders over $75.",
+    "faq.q6.question": "What is your return policy?",
+    "faq.q6.answer": "We accept returns within 30 days of delivery for unworn items in original condition.",
+    "faq.q7.question": "How do I track my order?",
+    "faq.q7.answer": "Once your order ships, you'll receive a confirmation email with a tracking number.",
+    "faq.q8.question": "Do you ship internationally?",
+    "faq.q8.answer": "Yes, we ship to over 50 countries worldwide.",
+    "faq.q9.question": "How can I contact customer support?",
+    "faq.q9.answer": "You can reach us via email at support@onstore.com or by phone.",
+    "faq.q10.question": "Is my personal information secure?",
+    "faq.q10.answer": "Absolutely. We use industry-standard encryption to protect your data.",
+    "faq.cta.title": "Still have questions?",
+    "faq.cta.description": "Our performance support team is ready to help.",
+    "faq.cta.button": "Contact Support",
+    "terms.page.title": "Terms & Conditions",
+    "terms.page.description": "Terms and conditions for using our website and services.",
+    "terms.breadcrumb.home": "Home",
+    "terms.breadcrumb.terms": "Terms & Conditions",
+    "terms.hero.title": "Terms & Conditions",
+    "terms.hero.description": "Please read these terms carefully before using our website or placing an order.",
+    "privacy.page.title": "Privacy Policy",
+    "privacy.page.description": "How we collect, use, and protect your personal information.",
+    "privacy.breadcrumb.home": "Home",
+    "privacy.breadcrumb.privacy": "Privacy Policy",
+    "privacy.hero.title": "Privacy Policy",
+    "privacy.hero.description": "We take your privacy seriously. This policy explains how we collect, use, and protect your personal information.",
+    "privacy.effectiveDate": "Effective date: May 13, 2026",
+    "shipping.page.title": "Shipping & Delivery",
+    "shipping.page.description": "Shipping methods, rates, delivery times, and tracking information.",
+    "shipping.breadcrumb.home": "Home",
+    "shipping.breadcrumb.shipping": "Shipping & Delivery",
+    "shipping.hero.title": "Shipping & Delivery",
+    "shipping.hero.description": "Everything you need to know about how we get your orders to you quickly and reliably.",
+    "shipping.methods.standard.name": "Standard",
+    "shipping.methods.standard.delivery": "5-8 business days",
+    "shipping.methods.standard.cost": "Free on orders over $75",
+    "shipping.methods.standard.note": "Best value for everyday orders",
+    "shipping.methods.express.name": "Express",
+    "shipping.methods.express.delivery": "2-3 business days",
+    "shipping.methods.express.cost": "$12.99",
+    "shipping.methods.express.note": "Perfect when you need it sooner",
+    "shipping.methods.nextDay.name": "Next-Day",
+    "shipping.methods.nextDay.delivery": "1 business day",
+    "shipping.methods.nextDay.cost": "$19.99",
+    "shipping.methods.nextDay.note": "Order before 2 PM for next-day delivery",
+    "shipping.methods.international.name": "International",
+    "shipping.methods.international.delivery": "10-20 business days",
+    "shipping.methods.international.cost": "Calculated at checkout",
+    "shipping.methods.international.note": "Available to 50+ countries",
+    "shipping.sections.methods.title": "Shipping Methods & Rates",
+    "shipping.sections.processing.title": "Processing Time",
+    "shipping.sections.timelineLabel": "Timeline",
+    "shipping.sections.orderJourneyTitle": "ORDER JOURNEY.",
+    "shipping.sections.tracking.title": "Tracking Your Order",
+    "shipping.sections.international.title": "International Shipping",
+    "shipping.sections.restrictions.title": "Shipping Restrictions",
+    "shipping.sections.lostDamaged.title": "Lost or Damaged Packages",
+    "shipping.steps.placed.title": "Order Placed",
+    "shipping.steps.placed.description": "You receive an order confirmation with your order number and summary.",
+    "shipping.steps.processing.title": "Processing",
+    "shipping.steps.processing.description": "Our team picks, packs, and prepares your items for shipment (1-2 business days).",
+    "shipping.steps.shipped.title": "Shipped",
+    "shipping.steps.shipped.description": "You receive a shipping confirmation with a tracking number.",
+    "shipping.steps.delivered.title": "Delivered",
+    "shipping.steps.delivered.description": "Your package arrives at your doorstep. Enjoy your purchase!",
+    "returns.page.title": "Returns & Refunds",
+    "returns.page.description": "Our return policy, refund timeline, and how to initiate a return.",
+    "returns.breadcrumb.home": "Home",
+    "returns.breadcrumb.returns": "Returns & Refund Policy",
+    "returns.hero.title": "Returns & Refund Policy",
+    "returns.hero.description": "We want you to love your purchase. If something isn't right, we're here to help.",
+    "returns.sections.window.title": "Return Window",
+    "returns.sections.howToReturn.title": "How to Return an Item",
+    "returns.sections.timeline.title": "Refund Timeline",
+    "returns.sections.exchanges.title": "Exchanges",
+    "returns.sections.nonReturnable.title": "Non-Returnable Items",
+    "returns.sections.needHelp.title": "Need Help?",
+    "returns.steps.initiate.title": "Initiate Return",
+    "returns.steps.initiate.description": "Log into your account and navigate to 'My Orders'.",
+    "returns.steps.pack.title": "Pack Your Item",
+    "returns.steps.pack.description": "Securely pack the item in its original packaging with all tags attached.",
+    "returns.steps.ship.title": "Ship It Back",
+    "returns.steps.ship.description": "Affix the prepaid return shipping label to the package.",
+    "returns.steps.refund.title": "Refund Issued",
+    "returns.steps.refund.description": "Once we receive and inspect your return, we'll process your refund within 5-7 business days.",
+    "returns.nonReturnable.item1": "Intimate apparel and swimwear",
+    "returns.nonReturnable.item2": "Earrings and body jewellery",
+    "returns.nonReturnable.item3": "Face masks and hygiene products",
+    "returns.nonReturnable.item4": "Gift cards and store credit",
+    "returns.nonReturnable.item5": "Clearance items marked 'final sale'",
+    "returns.nonReturnable.item6": "Digital or downloadable products",
+    "returns.buttons.contactSupport": "Contact Support",
+    "help.page.title": "Help Center",
+    "help.page.description": "Find answers, manage your account, and get support.",
+    "help.breadcrumb.home": "Home",
+    "help.breadcrumb.help": "Help Center",
+    "help.hero.title": "Help Center",
+    "help.hero.description": "Find answers, manage your account, and get the support you need.",
+    "help.topics.orders.title": "Orders",
+    "help.topics.orders.description": "Track your order, modify or cancel, and understand your order status.",
+    "help.topics.shipping.title": "Shipping",
+    "help.topics.shipping.description": "Delivery times, costs, tracking, and international shipping information.",
+    "help.topics.returns.title": "Returns & Refunds",
+    "help.topics.returns.description": "How to return items, refund timelines, exchanges, and non-returnable items.",
+    "help.topics.payments.title": "Payments",
+    "help.topics.payments.description": "Accepted payment methods, billing, and transaction security.",
+    "help.topics.account.title": "Account",
+    "help.topics.account.description": "Managing your profile, password, wishlist, and order history.",
+    "help.topics.privacy.title": "Privacy & Security",
+    "help.topics.privacy.description": "How we protect your data, our privacy practices, and your rights.",
+    "help.topics.policies.title": "Policies",
+    "help.topics.policies.description": "Our terms, conditions, and store policies at a glance.",
+    "help.topics.contact.title": "Contact Us",
+    "help.topics.contact.description": "Get in touch with our support team. We are here to help.",
+    "help.cta.title": "Can't find what you're looking for?",
+    "help.cta.description": "Our support team is available Monday to Friday, 9 AM to 6 PM EST.",
+    "help.cta.button": "Contact Support",
+    "policies.page.title": "Store Policies",
+    "policies.page.description": "A central hub for all our store policies.",
+    "policies.breadcrumb.home": "Home",
+    "policies.breadcrumb.policies": "Store Policies",
+    "policies.hero.title": "Store Policies Overview",
+    "policies.hero.description": "A central hub for all our store policies. Select a policy to learn more.",
+    "policies.items.privacy.title": "Privacy Policy",
+    "policies.items.privacy.description": "How we collect, use, and protect your personal information.",
+    "policies.items.terms.title": "Terms & Conditions",
+    "policies.items.terms.description": "The rules and guidelines for using our website and services.",
+    "policies.items.returns.title": "Return Policy",
+    "policies.items.returns.description": "Our 30-day return window, step-by-step return process, and refund timelines.",
+    "policies.items.shipping.title": "Shipping Policy",
+    "policies.items.shipping.description": "Shipping methods, rates, delivery times, tracking, and international shipping.",
+    "policies.items.support.title": "Customer Support Policy",
+    "policies.items.support.description": "Our commitment to support quality, response times, available channels.",
+    "policies.items.sizeGuide.title": "Size Guide",
+    "policies.items.sizeGuide.description": "Detailed size charts for women's, men's, and unisex apparel.",
+    "sizeGuide.page.title": "Size Guide",
+    "sizeGuide.page.description": "Find your perfect fit with our detailed size charts and measuring tips.",
+    "sizeGuide.breadcrumb.home": "Home",
+    "sizeGuide.breadcrumb.sizeGuide": "Size Guide",
+    "sizeGuide.hero.title": "Size Guide",
+    "sizeGuide.hero.description": "Find your perfect fit with our detailed size charts and measuring tips.",
+    "sizeGuide.sections.howToMeasure.title": "How to Measure",
+    "sizeGuide.sections.howToMeasure.description": "For the most accurate fit, use a soft measuring tape and follow these guidelines:",
+    "sizeGuide.sections.fitNotes.title": "Fit Notes",
+    "sizeGuide.measurementsPrefix": "Measurements in {{unit}}",
+    "sizeGuide.headers.size": "Size",
+    "sizeGuide.headers.chest": "Chest",
+    "sizeGuide.headers.waist": "Waist",
+    "sizeGuide.headers.hip": "Hip",
+    "sizeGuide.headers.inseam": "Inseam",
+    "sizeGuide.tables.womensTops.label": "Women's Tops",
+    "sizeGuide.tables.womensTops.unit": "inches",
+    "sizeGuide.tables.mensTops.label": "Men's Tops",
+    "sizeGuide.tables.mensTops.unit": "inches",
+    "sizeGuide.tables.bottoms.label": "Bottoms (Unisex)",
+    "sizeGuide.tables.bottoms.unit": "inches",
+    "sizeGuide.tips.chest.label": "Chest",
+    "sizeGuide.tips.chest.description": "Measure around the fullest part of your chest, keeping the tape parallel to the floor.",
+    "sizeGuide.tips.waist.label": "Waist",
+    "sizeGuide.tips.waist.description": "Measure around your natural waistline, just above your belly button.",
+    "sizeGuide.tips.hip.label": "Hip",
+    "sizeGuide.tips.hip.description": "Measure around the fullest part of your hips, about 8 inches below your waist.",
+    "sizeGuide.tips.inseam.label": "Inseam",
+    "sizeGuide.tips.inseam.description": "Measure from the top of your inner thigh to the bottom of your ankle.",
+    "supportPolicy.page.title": "Customer Support Policy",
+    "supportPolicy.page.description": "Our commitment to providing timely, helpful support.",
+    "supportPolicy.breadcrumb.home": "Home",
+    "supportPolicy.breadcrumb.supportPolicy": "Customer Support Policy",
+    "supportPolicy.hero.title": "Customer Support Policy",
+    "supportPolicy.hero.description": "We are committed to providing timely, helpful support for every customer.",
+    "supportPolicy.sections.channels.title": "Support Channels",
+    "supportPolicy.sections.responseTimes.title": "Response Times",
+    "supportPolicy.sections.helpWith.title": "What We Can Help With",
+    "supportPolicy.sections.escalation.title": "Escalation Process",
+    "supportPolicy.sections.quality.title": "Support Quality Commitment",
+    "supportPolicy.cta.title": "Ready to get help?",
+    "supportPolicy.cta.description": "Our team is standing by to assist you.",
+    "supportPolicy.cta.button": "Contact Support"
+  },
+  "branches": {
+    "page": {
+      "title": "Store Locations",
+      "description": "Find our stores near you.",
+      "hero": {
+        "subtitle": "Locations",
+        "title": "Our Stores.",
+        "description": "Find your nearest store. Visit us for the complete experience."
+      },
+      "catalog": {
+        "label": "Branches",
+        "title": "ALL LOCATIONS.",
+        "count": "{{count}} location available",
+        "count_plural": "{{count}} locations available"
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "branches": "Store Locations"
+      },
+        "badge": {
+          "headquarters": "Headquarters",
+          "internationalShipping": "International Shipping"
+        },
+      "selected": {
+        "label": "Selected Location"
+      }
+    },
+    "empty": {
+      "title": "No locations available",
+      "description": "There are no store locations available at the moment. Please check back later."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
+    },
+    "loader": {
+      "loading": "Loading locations..."
+    },
+    "map": {
+      "markerAria": "{{name}} in {{city}}"
+    }
+  },
+  "tour": {
+    "popover": {
+      "progress": "Step {{current}} of {{total}}",
+      "next": "Next",
+      "back": "Back",
+      "done": "Done"
+    },
+    "resetButton": {
+      "label": "Replay Tour"
+    },
+    "steps": {
+      "home": {
+        "welcome": {
+          "title": "Welcome to On",
+          "description": "Your destination for premium sportswear. Browse collections for Men, Women, and Kids, or check out the latest Sale and top Brands."
+        },
+        "explore": {
+          "title": "Start Exploring",
+          "description": "Discover our latest performance gear. Hit this button to browse the full collection and find your edge."
+        },
+        "featured": {
+          "title": "Featured Products",
+          "description": "Curated picks from top brands. Hover any product to add it to your cart or save it to your wishlist."
+        },
+        "brands": {
+          "title": "Top Brands",
+          "description": "Shop from world-class sportswear brands. Each label brings its own legacy of performance and style."
+        }
+      },
+      "products": {
+        "search": {
+          "title": "Search Products",
+          "description": "Looking for something specific? Type any keyword and press Enter to find it instantly across our entire catalog."
+        },
+        "filters": {
+          "title": "Refine Your Results",
+          "description": "Narrow down products by category, brand, price range, and more. Use the sort dropdown to reorder by latest or price."
+        },
+        "grid": {
+          "title": "Product Cards",
+          "description": "Every product shows its image, price, rating, and quick actions. Hover for instant Add to Cart or save for later."
+        },
+        "sort": {
+          "title": "Sort & Organize",
+          "description": "Arrange products by newest arrivals, price low-to-high, or alphabetically to find your perfect match faster."
+        }
+      },
+      "productDetails": {
+        "gallery": {
+          "title": "Product Gallery",
+          "description": "Browse multiple product images. Click to zoom in and inspect every detail up close before you buy."
+        },
+        "info": {
+          "title": "Product Details",
+          "description": "View the product name, brand, and price at a glance. Any discounts are clearly highlighted for you."
+        },
+        "actions": {
+          "title": "Quick Actions",
+          "description": "Choose your quantity, add to cart, or save to your wishlist \u2014 all in one place."
+        },
+        "reviews": {
+          "title": "Reviews & Ratings",
+          "description": "See what other customers are saying. Read real reviews to make an informed purchase."
+        }
+      },
+      "cart": {
+        "items": {
+          "title": "Your Shopping Bag",
+          "description": "Review all items in your bag. Adjust quantities or remove items you no longer want \u2014 changes update instantly."
+        },
+        "summary": {
+          "title": "Order Summary",
+          "description": "See a clear breakdown of your subtotal, shipping costs, and taxes. Everything is transparent before you pay."
+        },
+        "checkout": {
+          "title": "Ready to Checkout?",
+          "description": "When you\u2019re happy with your bag, hit checkout. You\u2019re only a few steps away from your new gear."
+        }
+      },
+      "wishlist": {
+        "items": {
+          "title": "Your Favorites",
+          "description": "All your saved items live here. The filled heart means it\u2019s in your wishlist \u2014 click it to remove. Add any item to your cart when you\u2019re ready to buy."
+        }
+      },
+      "profile": {
+        "header": {
+          "title": "Your Account",
+          "description": "Your personal dashboard. View your name, email, and account role all in one place."
+        },
+        "info": {
+          "title": "Account Details",
+          "description": "Keep your contact info up to date for faster checkouts and smooth order deliveries."
+        },
+        "actions": {
+          "title": "Manage Your Account",
+          "description": "Edit your personal details anytime or sign out securely. You can also replay this tour from here."
+        }
+      },
+      "orders": {
+        "list": {
+          "title": "Order History",
+          "description": "Track every order you\u2019ve placed. Each card shows the items, total, and current status at a glance."
+        },
+        "status": {
+          "title": "Order Status",
+          "description": "Monitor your order from confirmation to delivery. Paid and delivered badges keep you informed."
+        }
+      },
+      "checkout": {
+        "shipping": {
+          "title": "Shipping Details",
+          "description": "Enter your delivery address and phone number so your order reaches you without a hitch."
+        },
+        "payment": {
+          "title": "Payment Method",
+          "description": "Choose how you\u2019d like to pay \u2014 cash on delivery or securely online with your card."
+        },
+        "review": {
+          "title": "Review & Place Order",
+          "description": "Double-check your items and totals before placing the order. Everything is clear and upfront."
+        }
+      },
+      "about": {
+        "hero": {
+          "title": "About Us",
+          "description": "Learn the story behind On \u2014 our mission to deliver premium sportswear with a focus on quality, trust, and innovation."
+        },
+        "story": {
+          "title": "Our Story & Mission",
+          "description": "Discover how we started and what drives us. From sourcing the finest products to providing a seamless shopping experience."
+        },
+        "values": {
+          "title": "Core Values",
+          "description": "Quality, Trust, Innovation, and Sustainability guide everything we do. Each value reflects our commitment to you."
+        }
+      },
+      "contact": {
+        "hero": {
+          "title": "Get in Touch",
+          "description": "We\u2019re here to help. Reach out to our support team with any questions, feedback, or concerns."
+        },
+        "form": {
+          "title": "Send a Message",
+          "description": "Fill in your details, select a topic, and write your message. We\u2019ll get back to you as soon as possible."
+        },
+        "info": {
+          "title": "Contact Information",
+          "description": "Prefer to call or email? Find our phone number, email address, business hours, and physical location here."
+        }
+      },
+      "help": {
+        "hero": {
+          "title": "Help Center",
+          "description": "Your one-stop resource for answers. Browse topics, find guides, and get the support you need."
+        },
+        "topics": {
+          "title": "Browse Topics",
+          "description": "Explore help categories \u2014 Orders, Shipping, Returns, Payments, Account, Privacy, Policies, and more."
+        },
+        "cta": {
+          "title": "Still Need Help?",
+          "description": "Can\u2019t find what you\u2019re looking for? Contact our support team and we\u2019ll get back to you promptly."
+        }
+      }
+    }
   }
 }

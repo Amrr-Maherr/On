@@ -7,9 +7,8 @@ export const helpTour: TourConfig = {
     {
       element: "[data-tour='help-hero']",
       popover: {
-        title: "Help Center",
-        description:
-          "Your one-stop resource for answers. Browse topics, find guides, and get the support you need.",
+        titleKey: "tour.steps.help.hero.title",
+        descriptionKey: "tour.steps.help.hero.description",
         side: "bottom",
         align: "start",
       },
@@ -17,9 +16,8 @@ export const helpTour: TourConfig = {
     {
       element: "[data-tour='help-topics']",
       popover: {
-        title: "Browse Topics",
-        description:
-          "Explore help categories — Orders, Shipping, Returns, Payments, Account, Privacy, Policies, and more.",
+        titleKey: "tour.steps.help.topics.title",
+        descriptionKey: "tour.steps.help.topics.description",
         side: "top",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const helpTour: TourConfig = {
     {
       element: "[data-tour='help-cta']",
       popover: {
-        title: "Still Need Help?",
-        description:
-          "Can't find what you're looking for? Contact our support team and we'll get back to you promptly.",
+        titleKey: "tour.steps.help.cta.title",
+        descriptionKey: "tour.steps.help.cta.description",
         side: "top",
         align: "center",
       },

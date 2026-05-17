@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Star } from "lucide-react";
@@ -9,16 +10,18 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const TestimonialsSection = memo(function TestimonialsSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="section-py overflow-hidden bg-muted/10">
       <ScrollReveal>
         <div className="container-layout">
           <div className="mb-14 border-l-8 border-foreground pl-6 md:mb-18">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              Testimonials
+              {t("home.sections.testimonials.label")}
             </span>
             <h2 className="font-heading mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              What our<br />customers say.
+              {t("home.sections.testimonials.titleLine1")}<br />{t("home.sections.testimonials.titleLine2")}
             </h2>
           </div>
 

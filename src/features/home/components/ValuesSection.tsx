@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -8,16 +9,18 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const ValuesSection = memo(function ValuesSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="section-py overflow-hidden">
       <ScrollReveal>
         <div className="container-layout">
           <div className="mb-14 text-center md:mb-18">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-              Our Ethos
+              {t("home.sections.values.label")}
             </span>
             <h2 className="font-heading mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              Designed with intention
+              {t("home.sections.values.title")}
             </h2>
           </div>
           

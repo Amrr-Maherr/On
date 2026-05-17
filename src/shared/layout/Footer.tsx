@@ -1,52 +1,7 @@
 import { memo } from "react";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/shared/logo/Logo";
-
-const linkSections = [
-  {
-    title: "Shop",
-    links: [
-      { label: "All Products", href: "/products" },
-      { label: "Categories", href: "/categories" },
-      { label: "Brands", href: "/brands" },
-      { label: "Featured Gear", href: "/products" },
-      { label: "New Arrivals", href: "/products" },
-      { label: "Sales & Offers", href: "/products" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Help Center", href: "/help" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Track Order", href: "/orders" },
-      { label: "Shipping Info", href: "/shipping" },
-      { label: "Returns", href: "/returns" },
-      { label: "Size Guide", href: "/size-guide" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
-      { label: "Sustainability", href: "/about" },
-      { label: "Innovation", href: "/about" },
-      { label: "Careers", href: "/about" },
-      { label: "Press", href: "/about" },
-      { label: "Affiliates", href: "/brands" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Use", href: "/terms" },
-      { label: "Store Policies", href: "/policies" },
-      { label: "Cookie Settings", href: "/privacy" },
-      { label: "Compliance", href: "/policies" },
-    ],
-  },
-];
 
 const socialLinks = [
   { name: "Instagram", href: "#", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.774 4.919 4.851.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.075-1.667 4.703-4.919 4.85-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.775-4.919-4.851-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.075 1.666-4.703 4.919-4.85 1.265-.058 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" },
@@ -56,6 +11,55 @@ const socialLinks = [
 ];
 
 const Footer = memo(function Footer() {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
+
+  const linkSections = [
+    {
+      titleKey: "footer.sectionTitles.shop",
+      links: [
+        { key: "footer.links.allProducts", href: `/${lang}/products` },
+        { key: "footer.links.categories", href: `/${lang}/categories` },
+        { key: "footer.links.brands", href: `/${lang}/brands` },
+        { key: "footer.links.featuredGear", href: `/${lang}/products` },
+        { key: "footer.links.newArrivals", href: `/${lang}/products` },
+        { key: "footer.links.salesOffers", href: `/${lang}/products` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.support",
+      links: [
+        { key: "footer.links.helpCenter", href: `/${lang}/help` },
+        { key: "footer.links.contactUs", href: `/${lang}/contact` },
+        { key: "footer.links.trackOrder", href: `/${lang}/orders` },
+        { key: "footer.links.shippingInfo", href: `/${lang}/shipping` },
+        { key: "footer.links.returns", href: `/${lang}/returns` },
+        { key: "footer.links.sizeGuide", href: `/${lang}/size-guide` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.company",
+      links: [
+        { key: "footer.links.aboutUs", href: `/${lang}/about` },
+        { key: "footer.links.sustainability", href: `/${lang}/about` },
+        { key: "footer.links.innovation", href: `/${lang}/about` },
+        { key: "footer.links.careers", href: `/${lang}/about` },
+        { key: "footer.links.press", href: `/${lang}/about` },
+        { key: "footer.links.affiliates", href: `/${lang}/brands` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.legal",
+      links: [
+        { key: "footer.links.privacyPolicy", href: `/${lang}/privacy` },
+        { key: "footer.links.termsOfUse", href: `/${lang}/terms` },
+        { key: "footer.links.storePolicies", href: `/${lang}/policies` },
+        { key: "footer.links.cookieSettings", href: `/${lang}/privacy` },
+        { key: "footer.links.compliance", href: `/${lang}/policies` },
+      ],
+    },
+  ];
   return (
     <footer className="border-t border-border/40 bg-neutral-950 text-white">
       <div className="container-layout py-16 md:py-24">
@@ -65,10 +69,10 @@ const Footer = memo(function Footer() {
               <Logo />
             </div>
             <p className="mt-8 max-w-sm text-base font-medium leading-relaxed text-white/50">
-              Pushing the boundaries of performance and style. Engineered for athletes who never settle for second best. Join the movement.
+              {t("footer.brandStatement")}
             </p>
             <div className="mt-10 flex flex-col gap-6">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Follow the movement</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{t("footer.followUs")}</p>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
                   <a
@@ -88,18 +92,18 @@ const Footer = memo(function Footer() {
 
           <div className="grid grid-cols-2 gap-12 lg:col-span-4 lg:grid-cols-4">
             {linkSections.map((section) => (
-              <div key={section.title}>
+              <div key={section.titleKey}>
                 <h4 className="mb-8 text-xs font-black uppercase tracking-[0.3em] text-white">
-                  {section.title}
+                  {t(section.titleKey)}
                 </h4>
                 <ul className="space-y-4">
                   {section.links.map((link) => (
-                    <li key={link.label}>
+                    <li key={link.key}>
                       <Link
                         to={link.href}
                         className="text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white"
                       >
-                        {link.label}
+                        {t(link.key)}
                       </Link>
                     </li>
                   ))}
@@ -111,41 +115,41 @@ const Footer = memo(function Footer() {
 
         <div className="mt-20 grid gap-12 border-t border-white/10 pt-16 lg:grid-cols-3">
           <div className="space-y-6">
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">Subscribe to our newsletter</h4>
-            <p className="text-sm font-medium text-white/40">Be the first to know about new releases and exclusive offers.</p>
+            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.newsletter.title")}</h4>
+            <p className="text-sm font-medium text-white/40">{t("footer.newsletter.description")}</p>
             <div className="flex gap-2">
               <input 
                 type="email" 
-                placeholder="Email Address" 
+                placeholder={t("footer.newsletter.placeholder")}
                 className="h-14 flex-1 border-2 border-white/10 bg-white/5 px-6 text-sm font-bold outline-none transition-all focus:border-white/40"
               />
               <button className="h-14 bg-white px-8 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 transition-all hover:bg-neutral-200">
-                Join
+                {t("footer.newsletter.button")}
               </button>
             </div>
           </div>
 
           <div className="lg:col-span-2 lg:flex lg:justify-end lg:gap-24">
             <div className="space-y-6">
-              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">Our Stores</h4>
-              <p className="text-sm font-bold text-white/40 transition-colors hover:text-white cursor-pointer">Find a Store Near You</p>
-              <p className="text-sm font-bold text-white/40 transition-colors hover:text-white cursor-pointer">International Shipping</p>
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.stores.title")}</h4>
+              <Link to={`/${lang}/branches`} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
+              <Link to={`/${lang}/shipping`} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
             </div>
             <div className="mt-12 space-y-6 lg:mt-0">
-              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">App Support</h4>
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.app.title")}</h4>
               <div className="flex flex-wrap gap-4">
                 <div className="flex h-12 items-center gap-3 border border-white/10 bg-white/5 px-5 transition-all hover:bg-white/10 cursor-pointer">
                   <div className="h-6 w-6 rounded-none bg-white/10" />
                   <div className="text-left">
-                    <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">Download on</p>
-                    <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">App Store</p>
+                    <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">{t("footer.app.downloadOn")}</p>
+                    <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">{t("footer.app.appStore")}</p>
                   </div>
                 </div>
                 <div className="flex h-12 items-center gap-3 border border-white/10 bg-white/5 px-5 transition-all hover:bg-white/10 cursor-pointer">
                   <div className="h-6 w-6 rounded-none bg-white/10" />
                   <div className="text-left">
-                    <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">Get it on</p>
-                    <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">Google Play</p>
+                    <p className="text-[8px] font-black uppercase tracking-tighter text-white/40 leading-none">{t("footer.app.getItOn")}</p>
+                    <p className="text-xs font-black uppercase tracking-tight text-white leading-tight">{t("footer.app.googlePlay")}</p>
                   </div>
                 </div>
               </div>
@@ -160,9 +164,9 @@ const Footer = memo(function Footer() {
             <p className="text-[10px] font-black uppercase tracking-widest">
               &copy; {new Date().getFullYear()} On Store
             </p>
-            <Link to="/privacy" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">Privacy Policy</Link>
-            <Link to="/terms" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">Terms of Service</Link>
-            <Link to="/policies" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">Store Policies</Link>
+            <Link to={`/${lang}/privacy`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.privacyPoliy")}</Link>
+            <Link to={`/${lang}/terms`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.termsOfService")}</Link>
+            <Link to={`/${lang}/policies`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.storePolicies")}</Link>
           </div>
           <div className="flex items-center gap-8">
             {["Visa", "Mastercard", "PayPal", "Apple Pay"].map((method) => (

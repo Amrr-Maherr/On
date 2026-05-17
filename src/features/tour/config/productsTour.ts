@@ -7,9 +7,8 @@ export const productsTour: TourConfig = {
     {
       element: "[data-tour='search-input']",
       popover: {
-        title: "Search Products",
-        description:
-          "Looking for something specific? Type any keyword and press Enter to find it instantly across our entire catalog.",
+        titleKey: "tour.steps.products.search.title",
+        descriptionKey: "tour.steps.products.search.description",
         side: "bottom",
         align: "center",
       },
@@ -17,9 +16,8 @@ export const productsTour: TourConfig = {
     {
       element: "[data-tour='filters-panel']",
       popover: {
-        title: "Refine Your Results",
-        description:
-          "Narrow down products by category, brand, price range, and more. Use the sort dropdown to reorder by latest or price.",
+        titleKey: "tour.steps.products.filters.title",
+        descriptionKey: "tour.steps.products.filters.description",
         side: "right",
         align: "start",
       },
@@ -27,9 +25,8 @@ export const productsTour: TourConfig = {
     {
       element: "[data-tour='product-grid']",
       popover: {
-        title: "Product Cards",
-        description:
-          "Every product shows its image, price, rating, and quick actions. Hover for instant Add to Cart or save for later.",
+        titleKey: "tour.steps.products.grid.title",
+        descriptionKey: "tour.steps.products.grid.description",
         side: "top",
         align: "center",
       },
@@ -37,9 +34,8 @@ export const productsTour: TourConfig = {
     {
       element: "[data-tour='sort-dropdown']",
       popover: {
-        title: "Sort & Organize",
-        description:
-          "Arrange products by newest arrivals, price low-to-high, or alphabetically to find your perfect match faster.",
+        titleKey: "tour.steps.products.sort.title",
+        descriptionKey: "tour.steps.products.sort.description",
         side: "bottom",
         align: "end",
       },

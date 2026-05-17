@@ -1,5 +1,5 @@
 import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const LANGUAGES = [
@@ -8,22 +8,24 @@ const LANGUAGES = [
 ] as const;
 
 const LanguageSwitcher = memo(function LanguageSwitcher() {
-  const { i18n } = useTranslation();
-  const currentLang = i18n.resolvedLanguage ?? i18n.language;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
 
   const changeLanguage = useCallback(
-    (lang: string) => {
-      if (lang !== currentLang) {
-        i18n.changeLanguage(lang);
+    (newLang: string) => {
+      if (newLang !== lang) {
+        const path = location.pathname.replace(/^\/[a-z]{2}/i, `/${newLang}`);
+        navigate(path + location.search);
       }
     },
-    [currentLang, i18n],
+    [lang, location.pathname, location.search, navigate],
   );
 
   return (
     <div className="flex items-center gap-0.5" role="group" aria-label="Language switcher">
       {LANGUAGES.map(({ code, label, ariaLabel }) => {
-        const isActive = currentLang.startsWith(code);
+        const isActive = lang === code;
         return (
           <Button
             key={code}

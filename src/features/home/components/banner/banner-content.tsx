@@ -1,4 +1,5 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -12,6 +13,7 @@ interface BannerContentProps {
 const BannerContent = memo(function BannerContent({
   data,
 }: BannerContentProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleClick = useCallback(
     () => navigate(data.ctaHref),
@@ -26,19 +28,19 @@ const BannerContent = memo(function BannerContent({
       className="flex max-w-xl flex-col items-start gap-5"
     >
       <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-        New Arrival
+        {t("home.sections.banner.label")}
       </span>
       <h2 className="font-heading text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground sm:text-6xl lg:text-7xl">
-        {data.headline}
+        {t("home.sections.banner.headline")}
       </h2>
       <p className="max-w-md text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
-        {data.description}
+        {t("home.sections.banner.description")}
       </p>
       <Button
         className="mt-4 h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
         onClick={handleClick}
       >
-        {data.ctaLabel}
+        {t("home.sections.banner.cta")}
         <ArrowRight className="ml-3 h-5 w-5" />
       </Button>
     </motion.div>

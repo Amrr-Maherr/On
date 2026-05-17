@@ -1,55 +1,32 @@
-import { useState } from "react";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "../components/BrandCard";
-import { useAllBrands } from "../hooks/useGetAllBrands";
 import BrandsLoader from "../components/BrandsLoader";
 import BrandsError from "../components/BrandsError";
 import BrandsEmpty from "../components/BrandsEmpty";
 import BrandsPagination from "../components/BrandsPagination";
-
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
+import { api } from "@/lib";
+import type { ApiResponse } from "@/shared/types/api";
+import type { Brand } from "@/features/brands/types";
 
 export default function BrandsPage() {
-  const [page, setPage] = useState(1);
-  const { data, isLoading, error, refetch } = useAllBrands(page);
+  const { t } = useTranslation();
+  const { data, isLoading, error, refetch } = useQuery<ApiResponse<Brand>>({
+    queryKey: ["brands", "all"],
+    queryFn: () =>
+      api.get<ApiResponse<Brand>>("/api/v1/brands").then((r) => r.data),
+    staleTime: 1_000 * 60 * 2,
+  });
 
-  if (isLoading) {
-    return (
-      <div className="container-layout section-py pt-8">
-        <div className="mb-10 h-8 w-48 animate-pulse rounded bg-muted" />
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <BrandsLoader key={i} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <BrandsError
-        message={getErrorMessage(error)}
-        onRetry={() => refetch()}
-      />
-    );
-  }
-
-  const brands = data?.data;
+  const brands = useMemo(() => data?.data ?? [], [data?.data]);
   const metadata = data?.metadata;
-
-  if (!brands || brands.length === 0) {
-    return <BrandsEmpty />;
-  }
 
   return (
     <>
-      <PageHelmet title="All Brands" description="Discover our curated brands." />
+      <PageHelmet title={t("brands.page.title")} description={t("brands.page.description")} />
 
       <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
         <div
@@ -58,43 +35,63 @@ export default function BrandsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            Discover
+            {t("brands.page.hero.subtitle")}
           </p>
           <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            Brands.
+            {t("brands.page.hero.title")}
           </h1>
           <p className="mt-4 max-w-lg text-lg text-white/70">
-            The world&apos;s most trusted names in performance sportswear.
+            {t("brands.page.hero.description")}
           </p>
         </div>
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Brands" }]} className="mb-6" />
-        <div className="mb-10">
-          <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground/60">
-            Brands
+        <Breadcrumb items={[{ label: t("brands.page.breadcrumb.home"), href: "/" }, { label: t("brands.page.breadcrumb.brands") }]} className="mb-6" />
+
+        <div className="mb-12 border-l-4 border-foreground pl-6">
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+            {t("brands.page.catalog.label")}
           </span>
-          <h1 className="mt-2 text-4xl font-black tracking-tight text-foreground md:text-5xl">All Brands</h1>
-          <p className="mt-1 text-sm text-muted-foreground/60">
-            {data?.results ?? brands.length} brands discovered
+          <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+            {t("brands.page.catalog.title")}
+          </h1>
+          <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+            {t("brands.page.catalog.count", { count: brands.length })}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {brands.map((brand) => (
-            <BrandCard key={brand._id} brand={brand} />
-          ))}
-        </div>
-
-        {metadata && (
-          <div className="mt-10">
-            <BrandsPagination
-              currentPage={metadata.currentPage}
-              totalPages={metadata.numberOfPages}
-              onPageChange={setPage}
-            />
+        {error ? (
+          <BrandsError
+            message={error instanceof Error ? error.message : t("brands.error.defaultMessage")}
+            onRetry={() => refetch()}
+          />
+        ) : isLoading ? (
+          <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <BrandsLoader key={i} />
+            ))}
           </div>
+        ) : brands.length === 0 ? (
+          <BrandsEmpty />
+        ) : (
+          <>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {brands.map((brand) => (
+                <BrandCard key={brand._id} brand={brand} />
+              ))}
+            </div>
+
+            {metadata && (
+              <div className="mt-16 border-t border-border/40 pt-12">
+                <BrandsPagination
+                  currentPage={metadata.currentPage}
+                  totalPages={metadata.numberOfPages}
+                  onPageChange={() => {}}
+                />
+              </div>
+            )}
+          </>
         )}
       </div>
     </>

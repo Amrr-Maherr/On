@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
@@ -7,20 +8,22 @@ import PageHero from "@/features/footer-pages/components/PageHero";
 import ContentSection from "@/features/footer-pages/components/ContentSection";
 
 export default function SupportPolicyPage() {
+  const { t } = useTranslation();
+
   return (
     <PageLayout>
-      <PageHelmet title="Customer Support Policy" description="Our commitment to providing timely, helpful support." />
+      <PageHelmet title={t("footerPages.supportPolicy.page.title")} description={t("footerPages.supportPolicy.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: "Home", href: "/" },
-        { label: "Customer Support Policy" },
+        { label: t("footerPages.supportPolicy.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.supportPolicy.breadcrumb.supportPolicy") },
       ]} />
       <PageHero
-        title="Customer Support Policy"
-        description="We are committed to providing timely, helpful support for every customer."
+        title={t("footerPages.supportPolicy.hero.title")}
+        description={t("footerPages.supportPolicy.hero.description")}
       />
 
       <div className="space-y-6">
-        <ContentSection title="Support Channels" variant="card">
+        <ContentSection title={t("footerPages.supportPolicy.sections.channels.title")} variant="card">
           <p>
             We offer multiple ways to get in touch with our team. Choose the channel that works best for you:
           </p>
@@ -32,7 +35,7 @@ export default function SupportPolicyPage() {
           </ul>
         </ContentSection>
 
-        <ContentSection title="Response Times" variant="card">
+        <ContentSection title={t("footerPages.supportPolicy.sections.responseTimes.title")} variant="card">
           <p>
             Our team strives to respond to all inquiries within the following timeframes:
           </p>
@@ -47,7 +50,7 @@ export default function SupportPolicyPage() {
           </p>
         </ContentSection>
 
-        <ContentSection title="What We Can Help With" variant="card">
+        <ContentSection title={t("footerPages.supportPolicy.sections.helpWith.title")} variant="card">
           <p>Our support team can assist you with the following:</p>
           <ul className="mt-3 list-inside list-disc space-y-1">
             <li>Order status and tracking inquiries</li>
@@ -61,7 +64,7 @@ export default function SupportPolicyPage() {
           </ul>
         </ContentSection>
 
-        <ContentSection title="Escalation Process" variant="card">
+        <ContentSection title={t("footerPages.supportPolicy.sections.escalation.title")} variant="card">
           <p>
             If your issue is not resolved to your satisfaction by our front-line support team, you may request
             escalation to a senior representative. Escalated issues are reviewed within 24 hours and receive
@@ -70,7 +73,7 @@ export default function SupportPolicyPage() {
           </p>
         </ContentSection>
 
-        <ContentSection title="Support Quality Commitment" variant="card">
+        <ContentSection title={t("footerPages.supportPolicy.sections.quality.title")} variant="card">
           <p>
             We are dedicated to providing friendly, knowledgeable, and efficient support. Every interaction
             is an opportunity to improve, and we welcome your feedback. If you feel your experience did not
@@ -79,12 +82,12 @@ export default function SupportPolicyPage() {
         </ContentSection>
 
         <div className="rounded-xl border bg-muted/30 p-6 text-center">
-          <h2 className="mb-2 text-lg font-semibold">Ready to get help?</h2>
+          <h2 className="mb-2 text-lg font-semibold">{t("footerPages.supportPolicy.cta.title")}</h2>
           <p className="mb-4 text-sm text-muted-foreground">
-            Our team is standing by to assist you.
+            {t("footerPages.supportPolicy.cta.description")}
           </p>
           <Link to="/contact">
-            <Button>Contact Support</Button>
+            <Button>{t("footerPages.supportPolicy.cta.button")}</Button>
           </Link>
         </div>
       </div>

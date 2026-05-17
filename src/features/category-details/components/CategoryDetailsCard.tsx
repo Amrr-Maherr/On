@@ -1,4 +1,5 @@
 import { memo, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import type { Category } from "@/features/categories/types";
 import { Calendar, Tag } from "lucide-react";
 
@@ -9,6 +10,7 @@ interface CategoryDetailsCardProps {
 const CategoryDetailsCard = memo(function CategoryDetailsCard({
   category,
 }: CategoryDetailsCardProps) {
+  const { t } = useTranslation();
   const createdDate = useMemo(() => new Date(category.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -28,7 +30,9 @@ const CategoryDetailsCard = memo(function CategoryDetailsCard({
 
       <div className="flex flex-col justify-center gap-10">
         <div className="border-l-4 border-foreground pl-8">
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">Details</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+            {t("categories.details.info.label")}
+          </span>
           <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter md:text-7xl">
             {category.name}
           </h1>
@@ -43,7 +47,9 @@ const CategoryDetailsCard = memo(function CategoryDetailsCard({
             <Calendar className="h-5 w-5" strokeWidth={2.5} />
           </div>
           <div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40">Active Since</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40">
+              {t("categories.details.activeSince")}
+            </p>
             <p className="text-sm font-black uppercase tracking-tight text-foreground">{createdDate}</p>
           </div>
         </div>
@@ -51,7 +57,7 @@ const CategoryDetailsCard = memo(function CategoryDetailsCard({
         {category._id && (
           <div className="mt-auto">
             <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/20">
-              Reference ID: {category._id}
+              {t("categories.details.referenceId")}: {category._id}
             </p>
           </div>
         )}

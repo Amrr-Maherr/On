@@ -7,9 +7,8 @@ export const aboutTour: TourConfig = {
     {
       element: "[data-tour='about-hero']",
       popover: {
-        title: "About Us",
-        description:
-          "Learn the story behind On — our mission to deliver premium sportswear with a focus on quality, trust, and innovation.",
+        titleKey: "tour.steps.about.hero.title",
+        descriptionKey: "tour.steps.about.hero.description",
         side: "bottom",
         align: "start",
       },
@@ -17,9 +16,8 @@ export const aboutTour: TourConfig = {
     {
       element: "[data-tour='about-story']",
       popover: {
-        title: "Our Story & Mission",
-        description:
-          "Discover how we started and what drives us. From sourcing the finest products to providing a seamless shopping experience.",
+        titleKey: "tour.steps.about.story.title",
+        descriptionKey: "tour.steps.about.story.description",
         side: "top",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const aboutTour: TourConfig = {
     {
       element: "[data-tour='about-values']",
       popover: {
-        title: "Core Values",
-        description:
-          "Quality, Trust, Innovation, and Sustainability guide everything we do. Each value reflects our commitment to you.",
+        titleKey: "tour.steps.about.values.title",
+        descriptionKey: "tour.steps.about.values.description",
         side: "top",
         align: "center",
       },

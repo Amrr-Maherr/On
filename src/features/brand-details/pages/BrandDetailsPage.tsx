@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
@@ -8,6 +9,7 @@ import BrandDetailsError from "@/features/brand-details/components/BrandDetailsE
 import BrandProducts from "@/features/brand-details/components/BrandProducts";
 
 export default function BrandDetailsPage() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading, error, refetch } = useBrandDetails(id!);
@@ -26,7 +28,7 @@ export default function BrandDetailsPage() {
   const brand = data?.data;
 
   if (!brand) {
-    return <BrandDetailsError message="Brand not found." />;
+    return <BrandDetailsError message={t("brands.details.notFound")} />;
   }
 
   return (
@@ -35,17 +37,19 @@ export default function BrandDetailsPage() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
         <div className="container-layout relative z-10">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Brand</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">
+            {t("brands.card.label")}
+          </p>
           <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter text-white md:text-8xl">{brand.name}.</h1>
         </div>
       </section>
-      <PageHelmet title={brand.name} description={`Explore products from ${brand.name}`} />
+      <PageHelmet title={brand.name} description={t("brands.page.description")} />
       <div className="container-layout py-12">
         <Breadcrumb
           className="mb-12"
           items={[
-            { label: "Home", href: "/" },
-            { label: "Brands", href: "/brands" },
+            { label: t("brands.details.breadcrumb.home"), href: "/" },
+            { label: t("brands.details.breadcrumb.brands"), href: "/brands" },
             { label: brand.name },
           ]}
         />
@@ -54,10 +58,10 @@ export default function BrandDetailsPage() {
         <section className="section-py mt-20 border-t border-border/40">
           <div className="mb-14 border-l-4 border-foreground pl-8">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              Collection
+              {t("brands.details.collection.label")}
             </span>
             <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
-              BRAND GEAR.
+              {t("brands.details.collection.title")}
             </h2>
           </div>
           <BrandProducts brandId={brand._id} />

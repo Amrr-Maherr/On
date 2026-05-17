@@ -7,9 +7,8 @@ export const homeTour: TourConfig = {
     {
       element: "nav",
       popover: {
-        title: "Welcome to On",
-        description:
-          "Your destination for premium sportswear. Browse collections for Men, Women, and Kids, or check out the latest Sale and top Brands.",
+        titleKey: "tour.steps.home.welcome.title",
+        descriptionKey: "tour.steps.home.welcome.description",
         side: "bottom",
         align: "start",
       },
@@ -17,9 +16,8 @@ export const homeTour: TourConfig = {
     {
       element: "[data-tour='hero-cta']",
       popover: {
-        title: "Start Exploring",
-        description:
-          "Discover our latest performance gear. Hit this button to browse the full collection and find your edge.",
+        titleKey: "tour.steps.home.explore.title",
+        descriptionKey: "tour.steps.home.explore.description",
         side: "bottom",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const homeTour: TourConfig = {
     {
       element: "[data-tour='featured-products']",
       popover: {
-        title: "Featured Products",
-        description:
-          "Curated picks from top brands. Hover any product to add it to your cart or save it to your wishlist.",
+        titleKey: "tour.steps.home.featured.title",
+        descriptionKey: "tour.steps.home.featured.description",
         side: "top",
         align: "center",
       },
@@ -37,9 +34,8 @@ export const homeTour: TourConfig = {
     {
       element: "[data-tour='brands-section']",
       popover: {
-        title: "Top Brands",
-        description:
-          "Shop from world-class sportswear brands. Each label brings its own legacy of performance and style.",
+        titleKey: "tour.steps.home.brands.title",
+        descriptionKey: "tour.steps.home.brands.description",
         side: "top",
         align: "center",
       },
