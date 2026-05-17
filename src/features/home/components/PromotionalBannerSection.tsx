@@ -16,7 +16,7 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
         className="absolute inset-0 bg-cover bg-fixed bg-center"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?auto=format&fit=crop&w=1920&q=80")',
+            'url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1920&q=80")',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/80 to-neutral-950/60" />
