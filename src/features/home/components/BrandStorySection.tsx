@@ -1,35 +1,37 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, Shield, Truck, RefreshCw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-const stats = [
-  { label: "Years Active", value: "12+" },
-  { label: "Athletes Sponsored", value: "500+" },
-  { label: "Countries Reached", value: "80+" },
-];
-
-const features = [
-  {
-    icon: Shield,
-    title: "Premium Quality",
-    description: "Engineered to the highest performance standards",
-  },
-  {
-    icon: Truck,
-    title: "Fast Delivery",
-    description: "Free shipping on orders over $100",
-  },
-  {
-    icon: RefreshCw,
-    title: "30-Day Returns",
-    description: "No questions asked return policy",
-  },
-];
-
 const BrandStorySection = memo(function BrandStorySection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const stats = [
+    { label: t("home.sections.brandStory.statYears"), value: "12+" },
+    { label: t("home.sections.brandStory.statAthletes"), value: "500+" },
+    { label: t("home.sections.brandStory.statCountries"), value: "80+" },
+  ];
+
+  const features = [
+    {
+      icon: Shield,
+      title: t("home.sections.brandStory.featureQuality"),
+      description: t("home.sections.brandStory.featureQualityDesc"),
+    },
+    {
+      icon: Truck,
+      title: t("home.sections.brandStory.featureDelivery"),
+      description: t("home.sections.brandStory.featureDeliveryDesc"),
+    },
+    {
+      icon: RefreshCw,
+      title: t("home.sections.brandStory.featureReturns"),
+      description: t("home.sections.brandStory.featureReturnsDesc"),
+    },
+  ];
 
   return (
     <section className="section-py bg-muted/30">
@@ -40,7 +42,7 @@ const BrandStorySection = memo(function BrandStorySection() {
               <div className="overflow-hidden rounded-none">
                 <img
                   src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80"
-                  alt="Our brand story"
+                  alt={t("home.sections.brandStory.label")}
                   loading="lazy"
                   className="h-[500px] w-full object-cover transition-all duration-700 hover:scale-105 md:h-[600px]"
                 />
@@ -51,8 +53,7 @@ const BrandStorySection = memo(function BrandStorySection() {
                     50K+
                   </div>
                   <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    Happy <br />
-                    Customers
+                    {t("home.sections.brandStory.happyCustomers")}
                   </div>
                 </div>
               </div>
@@ -62,19 +63,16 @@ const BrandStorySection = memo(function BrandStorySection() {
           <ScrollReveal direction="right" distance={60}>
             <div className="border-l-8 border-foreground pl-10">
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-                The Story
+                {t("home.sections.brandStory.label")}
               </span>
               <h2 className="font-heading mt-4 text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground md:text-7xl">
-                ENGINEERED FOR<br />THE EXTRAORDINARY.
+                {t("home.sections.brandStory.titleLine1")}<br />{t("home.sections.brandStory.titleLine2")}
               </h2>
               <p className="mt-8 text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
-                Born from a passion for performance, we set out to create
-                sportswear that doesn't just look good — it pushes boundaries.
+                {t("home.sections.brandStory.paragraph1")}
               </p>
               <p className="mt-4 text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
-                From the track to the gym, from the studio to the street, our
-                gear is built for those who refuse to settle. Join thousands of
-                athletes worldwide who trust us to deliver excellence.
+                {t("home.sections.brandStory.paragraph2")}
               </p>
 
               <div className="mt-12 grid grid-cols-3 gap-6 border-y-2 border-border/40 py-10">
@@ -95,7 +93,7 @@ const BrandStorySection = memo(function BrandStorySection() {
                   onClick={() => navigate("/products")}
                   className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
-                  Our Gear
+                  {t("home.sections.brandStory.ourGear")}
                   <ArrowRight className="ml-3 h-5 w-5" />
                 </Button>
               </div>
@@ -121,7 +119,7 @@ const BrandStorySection = memo(function BrandStorySection() {
                   onClick={() => navigate("/about")}
                   className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
                 >
-                  Learn Our Story
+                  {t("home.sections.brandStory.learnStory")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>

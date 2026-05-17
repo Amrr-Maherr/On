@@ -779,10 +779,14 @@
       "description": "Premium sportswear and athletic gear."
     },
     "hero": {
-      "subtitle": "New Collection",
-      "title": "ELEVATE YOUR GAME",
-      "description": "Premium sportswear engineered for peak performance. Designed for those who push beyond limits.",
-      "cta": "Shop Now"
+      "badge": "Performance Redefined",
+      "titleLine1": "UNLEASH",
+      "titleLine2": "POWER.",
+      "description": "Premium gear engineered for those who never settle.",
+      "cta": "Shop Collection",
+      "secondaryCta": "View All",
+      "unmute": "Unmute video",
+      "mute": "Mute video"
     },
     "featured": {
       "label": "Curated Selection",
@@ -830,392 +834,452 @@
       "title": "Ready to Level Up?",
       "description": "Join thousands of athletes who trust On Store for their gear. Experience the difference premium quality makes.",
       "button": "Start Shopping"
+    },
+    "sections": {
+      "heroCampaign": {
+        "badge": "Limited Edition",
+        "title": "MOVE",
+        "titleAccent": "FASTER.",
+        "description": "Designed with intention.",
+        "descriptionAccent": "Engineered for the Extraordinary.",
+        "shopNow": "Shop Now",
+        "explore": "Explore",
+        "statProducts": "Products",
+        "statBrands": "Brands",
+        "statCustomers": "Customers"
+      },
+      "featuredCollections": {
+        "label": "Collections",
+        "titleLine1": "CHOOSE YOUR",
+        "titleLine2": "DISCIPLINE.",
+        "viewAll": "View All",
+        "viewAllMobile": "View All Collections",
+        "running": {
+          "title": "Running",
+          "subtitle": "Performance Redefined",
+          "description": "Engineered for speed, built for endurance.",
+          "shopNow": "Shop Now"
+        },
+        "training": {
+          "title": "Training",
+          "subtitle": "Forge Your Strength",
+          "description": "Push beyond your limits with our training line.",
+          "shopNow": "Shop Now"
+        },
+        "lifestyle": {
+          "title": "Lifestyle",
+          "subtitle": "Where Comfort Meets Style",
+          "description": "Premium sportswear for everyday excellence.",
+          "shopNow": "Shop Now"
+        }
+      },
+      "categoryHighlights": {
+        "label": "Activity",
+        "titleLine1": "FIND YOUR",
+        "titleLine2": "PERFORMANCE.",
+        "running": "Running",
+        "trainingGym": "Training & Gym",
+        "yogaWellness": "Yoga & Wellness",
+        "outdoorTrail": "Outdoor & Trail",
+        "productCount": "{{count}} Products"
+      },
+      "products": {
+        "loadingTitle": "Recommendations.",
+        "loadingDesc": "Best matching products for you",
+        "errorDesc": "Best matching products for you",
+        "emptyTitle": "Recommendations.",
+        "emptyDesc": "Best matching products for you",
+        "title": "Featured.",
+        "description": "New season. Clean lines, lasting quality. Discover our latest arrivals.",
+        "noProducts": "No products available at the moment."
+      },
+      "brands": {
+        "title": "Brands.",
+        "description": "Shop by brand",
+        "noBrands": "No brands available at the moment."
+      },
+      "categories": {
+        "title": "Categories.",
+        "description": "Shop by category",
+        "noCategories": "No categories available at the moment."
+      },
+      "trending": {
+        "label": "Hot Right Now",
+        "title": "Trending Now.",
+        "shopAll": "Shop All",
+        "viewAll": "View All Products",
+        "noProducts": "No trending products available at the moment."
+      },
+      "features": {
+        "label": "Why choose us",
+        "title": "START EXPLORING.",
+        "description": "Good things are waiting for you",
+        "freeShipping": {
+          "title": "Free shipping",
+          "description": "On orders over $50.00"
+        },
+        "easyReturn": {
+          "title": "Very easy to return",
+          "description": "Just phone number"
+        },
+        "worldwideDelivery": {
+          "title": "Worldwide delivery",
+          "description": "Fast delivery worldwide"
+        },
+        "refundsPolicy": {
+          "title": "Refunds policy",
+          "description": "60 days return for any reason"
+        }
+      },
+      "cta": {
+        "label": "Join the Movement",
+        "titleLine1": "Ready to elevate",
+        "titleLine2": "your style?",
+        "description": "Push your limits.",
+        "button": "Shop the collection"
+      },
+      "banner": {
+        "label": "New Arrival",
+        "headline": "New season.",
+        "description": "Clean lines, lasting quality. Discover our latest arrivals.",
+        "cta": "Shop the collection",
+        "imageAlt": "Apple Fitness Plus workout with trainers"
+      },
+      "promotionalBanner": {
+        "badge": "Limited Offer",
+        "heading": "UP TO 40% OFF",
+        "description": "Season-end sale on select performance gear. Push your limits without breaking the bank.",
+        "endsSoon": "Offer ends soon",
+        "cta": "Shop the Sale"
+      },
+      "brandStory": {
+        "label": "The Story",
+        "titleLine1": "ENGINEERED FOR",
+        "titleLine2": "THE EXTRAORDINARY.",
+        "paragraph1": "Born from a passion for performance, we set out to create sportswear that doesn't just look good — it pushes boundaries.",
+        "paragraph2": "From the track to the gym, from the studio to the street, our gear is built for those who refuse to settle. Join thousands of athletes worldwide who trust us to deliver excellence.",
+        "statYears": "Years Active",
+        "statAthletes": "Athletes Sponsored",
+        "statCountries": "Countries Reached",
+        "featureQuality": "Premium Quality",
+        "featureQualityDesc": "Engineered to the highest performance standards",
+        "featureDelivery": "Fast Delivery",
+        "featureDeliveryDesc": "Free shipping on orders over $100",
+        "featureReturns": "30-Day Returns",
+        "featureReturnsDesc": "No questions asked return policy",
+        "happyCustomers": "Happy Customers",
+        "ourGear": "Our Gear",
+        "learnStory": "Learn Our Story"
+      },
+      "values": {
+        "label": "Our Ethos",
+        "title": "Designed with intention"
+      },
+      "team": {
+        "label": "The Crew",
+        "title": "Behind the performance"
+      },
+      "testimonials": {
+        "label": "Testimonials",
+        "titleLine1": "What our",
+        "titleLine2": "customers say."
+      },
+      "blog": {
+        "label": "Journal",
+        "title": "Latest stories."
+      }
     }
   },
   "footerPages": {
-    "about": {
-      "page": {
-        "title": "About Us",
-        "description": "Learn about our story, values, and team."
+    "about.page.title": "About Us",
+    "about.page.description": "Learn about our story, values, and team.",
+    "about.breadcrumb.home": "Home",
+    "about.breadcrumb.about": "About Us",
+    "about.hero.title": "About Us",
+    "about.hero.description": "Learn more about our story, our values, and the team behind your favourite online shopping destination.",
+    "about.sections.story.title": "Our Story",
+    "about.sections.mission.title": "Our Mission",
+    "about.sections.principlesLabel": "Principles",
+    "about.sections.valuesTitle": "OUR VALUES.",
+    "about.values.quality.title": "Quality",
+    "about.values.quality.description": "We source and curate only the finest products, ensuring every item meets our rigorous standards before it reaches your doorstep.",
+    "about.values.trust.title": "Trust",
+    "about.values.trust.description": "Transparent pricing, honest product descriptions, and a no-hassle return policy build the foundation of our relationship with every customer.",
+    "about.values.innovation.title": "Innovation",
+    "about.values.innovation.description": "We continuously evolve our platform and product range to bring you the latest trends and most convenient shopping experience.",
+    "about.values.sustainability.title": "Sustainability",
+    "about.values.sustainability.description": "From eco-friendly packaging to ethical sourcing partnerships, we're committed to reducing our environmental footprint.",
+    "about.buttons.getInTouch": "Get in Touch",
+    "about.buttons.browseProducts": "Browse Products",
+    "contact.page.title": "Contact Us",
+    "contact.page.description": "Get in touch with our support team.",
+    "contact.breadcrumb.home": "Home",
+    "contact.breadcrumb.contact": "Contact Us",
+    "contact.hero.title": "Contact Us",
+    "contact.hero.description": "We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible.",
+    "contact.form.title": "Send Us a Message",
+    "contact.form.label.name": "Full Name",
+    "contact.form.placeholder.name": "Your name",
+    "contact.form.label.email": "Email Address",
+    "contact.form.placeholder.email": "your@email.com",
+    "contact.form.label.subject": "Subject",
+    "contact.form.option.default": "Select a topic",
+    "contact.form.option.order": "Order Inquiry",
+    "contact.form.option.shipping": "Shipping Question",
+    "contact.form.option.returns": "Returns & Refunds",
+    "contact.form.option.product": "Product Information",
+    "contact.form.option.other": "Other",
+    "contact.form.label.message": "Message",
+    "contact.form.placeholder.message": "How can we help you?",
+    "contact.form.submit": "Send Message",
+    "contact.info.title": "Information",
+    "contact.info.phone": "Phone",
+    "contact.info.phoneValue": "+1 (555) 123-4567",
+    "contact.info.email": "Email",
+    "contact.info.emailValue": "support@onstore.com",
+    "contact.info.address": "Address",
+    "contact.info.addressValue": "123 Commerce Street, Suite 400, New York, NY 10001",
+    "contact.info.hours": "Business Hours",
+    "contact.info.hoursValue": "Monday to Friday, 9:00 AM - 6:00 PM EST",
+    "faq.page.title": "FAQ",
+    "faq.page.description": "Frequently asked questions about shopping, shipping, returns, and more.",
+    "faq.breadcrumb.home": "Home",
+    "faq.breadcrumb.faq": "FAQ",
+    "faq.hero.title": "Frequently Asked Questions",
+    "faq.hero.description": "Find answers to the most common questions about shopping with us.",
+    "faq.categories.orders": "Orders",
+    "faq.categories.shipping": "Shipping",
+    "faq.categories.returns": "Returns",
+    "faq.categories.contactUs": "Contact Us",
+    "faq.q1.question": "How do I place an order?",
+    "faq.q1.answer": "Simply browse our catalogue, add items to your cart, and proceed to checkout.",
+    "faq.q2.question": "What payment methods do you accept?",
+    "faq.q2.answer": "We accept Visa, Mastercard, American Express, PayPal, Apple Pay, and Google Pay.",
+    "faq.q3.question": "Can I modify or cancel my order after placing it?",
+    "faq.q3.answer": "Orders can be modified or cancelled within 1 hour of placement.",
+    "faq.q4.question": "How long does shipping take?",
+    "faq.q4.answer": "Standard shipping takes 5-8 business days within the continental US.",
+    "faq.q5.question": "Do you offer free shipping?",
+    "faq.q5.answer": "Yes, we offer free standard shipping on all orders over $75.",
+    "faq.q6.question": "What is your return policy?",
+    "faq.q6.answer": "We accept returns within 30 days of delivery for unworn items in original condition.",
+    "faq.q7.question": "How do I track my order?",
+    "faq.q7.answer": "Once your order ships, you'll receive a confirmation email with a tracking number.",
+    "faq.q8.question": "Do you ship internationally?",
+    "faq.q8.answer": "Yes, we ship to over 50 countries worldwide.",
+    "faq.q9.question": "How can I contact customer support?",
+    "faq.q9.answer": "You can reach us via email at support@onstore.com or by phone.",
+    "faq.q10.question": "Is my personal information secure?",
+    "faq.q10.answer": "Absolutely. We use industry-standard encryption to protect your data.",
+    "faq.cta.title": "Still have questions?",
+    "faq.cta.description": "Our performance support team is ready to help.",
+    "faq.cta.button": "Contact Support",
+    "terms.page.title": "Terms & Conditions",
+    "terms.page.description": "Terms and conditions for using our website and services.",
+    "terms.breadcrumb.home": "Home",
+    "terms.breadcrumb.terms": "Terms & Conditions",
+    "terms.hero.title": "Terms & Conditions",
+    "terms.hero.description": "Please read these terms carefully before using our website or placing an order.",
+    "privacy.page.title": "Privacy Policy",
+    "privacy.page.description": "How we collect, use, and protect your personal information.",
+    "privacy.breadcrumb.home": "Home",
+    "privacy.breadcrumb.privacy": "Privacy Policy",
+    "privacy.hero.title": "Privacy Policy",
+    "privacy.hero.description": "We take your privacy seriously. This policy explains how we collect, use, and protect your personal information.",
+    "privacy.effectiveDate": "Effective date: May 13, 2026",
+    "shipping.page.title": "Shipping & Delivery",
+    "shipping.page.description": "Shipping methods, rates, delivery times, and tracking information.",
+    "shipping.breadcrumb.home": "Home",
+    "shipping.breadcrumb.shipping": "Shipping & Delivery",
+    "shipping.hero.title": "Shipping & Delivery",
+    "shipping.hero.description": "Everything you need to know about how we get your orders to you quickly and reliably.",
+    "shipping.methods.standard.name": "Standard",
+    "shipping.methods.standard.delivery": "5-8 business days",
+    "shipping.methods.standard.cost": "Free on orders over $75",
+    "shipping.methods.standard.note": "Best value for everyday orders",
+    "shipping.methods.express.name": "Express",
+    "shipping.methods.express.delivery": "2-3 business days",
+    "shipping.methods.express.cost": "$12.99",
+    "shipping.methods.express.note": "Perfect when you need it sooner",
+    "shipping.methods.nextDay.name": "Next-Day",
+    "shipping.methods.nextDay.delivery": "1 business day",
+    "shipping.methods.nextDay.cost": "$19.99",
+    "shipping.methods.nextDay.note": "Order before 2 PM for next-day delivery",
+    "shipping.methods.international.name": "International",
+    "shipping.methods.international.delivery": "10-20 business days",
+    "shipping.methods.international.cost": "Calculated at checkout",
+    "shipping.methods.international.note": "Available to 50+ countries",
+    "shipping.sections.methods.title": "Shipping Methods & Rates",
+    "shipping.sections.processing.title": "Processing Time",
+    "shipping.sections.timelineLabel": "Timeline",
+    "shipping.sections.orderJourneyTitle": "ORDER JOURNEY.",
+    "shipping.sections.tracking.title": "Tracking Your Order",
+    "shipping.sections.international.title": "International Shipping",
+    "shipping.sections.restrictions.title": "Shipping Restrictions",
+    "shipping.sections.lostDamaged.title": "Lost or Damaged Packages",
+    "shipping.steps.placed.title": "Order Placed",
+    "shipping.steps.placed.description": "You receive an order confirmation with your order number and summary.",
+    "shipping.steps.processing.title": "Processing",
+    "shipping.steps.processing.description": "Our team picks, packs, and prepares your items for shipment (1-2 business days).",
+    "shipping.steps.shipped.title": "Shipped",
+    "shipping.steps.shipped.description": "You receive a shipping confirmation with a tracking number.",
+    "shipping.steps.delivered.title": "Delivered",
+    "shipping.steps.delivered.description": "Your package arrives at your doorstep. Enjoy your purchase!",
+    "returns.page.title": "Returns & Refunds",
+    "returns.page.description": "Our return policy, refund timeline, and how to initiate a return.",
+    "returns.breadcrumb.home": "Home",
+    "returns.breadcrumb.returns": "Returns & Refund Policy",
+    "returns.hero.title": "Returns & Refund Policy",
+    "returns.hero.description": "We want you to love your purchase. If something isn't right, we're here to help.",
+    "returns.sections.window.title": "Return Window",
+    "returns.sections.howToReturn.title": "How to Return an Item",
+    "returns.sections.timeline.title": "Refund Timeline",
+    "returns.sections.exchanges.title": "Exchanges",
+    "returns.sections.nonReturnable.title": "Non-Returnable Items",
+    "returns.sections.needHelp.title": "Need Help?",
+    "returns.steps.initiate.title": "Initiate Return",
+    "returns.steps.initiate.description": "Log into your account and navigate to 'My Orders'.",
+    "returns.steps.pack.title": "Pack Your Item",
+    "returns.steps.pack.description": "Securely pack the item in its original packaging with all tags attached.",
+    "returns.steps.ship.title": "Ship It Back",
+    "returns.steps.ship.description": "Affix the prepaid return shipping label to the package.",
+    "returns.steps.refund.title": "Refund Issued",
+    "returns.steps.refund.description": "Once we receive and inspect your return, we'll process your refund within 5-7 business days.",
+    "returns.nonReturnable.item1": "Intimate apparel and swimwear",
+    "returns.nonReturnable.item2": "Earrings and body jewellery",
+    "returns.nonReturnable.item3": "Face masks and hygiene products",
+    "returns.nonReturnable.item4": "Gift cards and store credit",
+    "returns.nonReturnable.item5": "Clearance items marked 'final sale'",
+    "returns.nonReturnable.item6": "Digital or downloadable products",
+    "returns.buttons.contactSupport": "Contact Support",
+    "help.page.title": "Help Center",
+    "help.page.description": "Find answers, manage your account, and get support.",
+    "help.breadcrumb.home": "Home",
+    "help.breadcrumb.help": "Help Center",
+    "help.hero.title": "Help Center",
+    "help.hero.description": "Find answers, manage your account, and get the support you need.",
+    "help.topics.orders.title": "Orders",
+    "help.topics.orders.description": "Track your order, modify or cancel, and understand your order status.",
+    "help.topics.shipping.title": "Shipping",
+    "help.topics.shipping.description": "Delivery times, costs, tracking, and international shipping information.",
+    "help.topics.returns.title": "Returns & Refunds",
+    "help.topics.returns.description": "How to return items, refund timelines, exchanges, and non-returnable items.",
+    "help.topics.payments.title": "Payments",
+    "help.topics.payments.description": "Accepted payment methods, billing, and transaction security.",
+    "help.topics.account.title": "Account",
+    "help.topics.account.description": "Managing your profile, password, wishlist, and order history.",
+    "help.topics.privacy.title": "Privacy & Security",
+    "help.topics.privacy.description": "How we protect your data, our privacy practices, and your rights.",
+    "help.topics.policies.title": "Policies",
+    "help.topics.policies.description": "Our terms, conditions, and store policies at a glance.",
+    "help.topics.contact.title": "Contact Us",
+    "help.topics.contact.description": "Get in touch with our support team. We are here to help.",
+    "help.cta.title": "Can't find what you're looking for?",
+    "help.cta.description": "Our support team is available Monday to Friday, 9 AM to 6 PM EST.",
+    "help.cta.button": "Contact Support",
+    "policies.page.title": "Store Policies",
+    "policies.page.description": "A central hub for all our store policies.",
+    "policies.breadcrumb.home": "Home",
+    "policies.breadcrumb.policies": "Store Policies",
+    "policies.hero.title": "Store Policies Overview",
+    "policies.hero.description": "A central hub for all our store policies. Select a policy to learn more.",
+    "policies.items.privacy.title": "Privacy Policy",
+    "policies.items.privacy.description": "How we collect, use, and protect your personal information.",
+    "policies.items.terms.title": "Terms & Conditions",
+    "policies.items.terms.description": "The rules and guidelines for using our website and services.",
+    "policies.items.returns.title": "Return Policy",
+    "policies.items.returns.description": "Our 30-day return window, step-by-step return process, and refund timelines.",
+    "policies.items.shipping.title": "Shipping Policy",
+    "policies.items.shipping.description": "Shipping methods, rates, delivery times, tracking, and international shipping.",
+    "policies.items.support.title": "Customer Support Policy",
+    "policies.items.support.description": "Our commitment to support quality, response times, available channels.",
+    "policies.items.sizeGuide.title": "Size Guide",
+    "policies.items.sizeGuide.description": "Detailed size charts for women's, men's, and unisex apparel.",
+    "sizeGuide.page.title": "Size Guide",
+    "sizeGuide.page.description": "Find your perfect fit with our detailed size charts and measuring tips.",
+    "sizeGuide.breadcrumb.home": "Home",
+    "sizeGuide.breadcrumb.sizeGuide": "Size Guide",
+    "sizeGuide.hero.title": "Size Guide",
+    "sizeGuide.hero.description": "Find your perfect fit with our detailed size charts and measuring tips.",
+    "sizeGuide.sections.howToMeasure.title": "How to Measure",
+    "sizeGuide.sections.howToMeasure.description": "For the most accurate fit, use a soft measuring tape and follow these guidelines:",
+    "sizeGuide.sections.fitNotes.title": "Fit Notes",
+    "sizeGuide.measurementsPrefix": "Measurements in {{unit}}",
+    "sizeGuide.headers.size": "Size",
+    "sizeGuide.headers.chest": "Chest",
+    "sizeGuide.headers.waist": "Waist",
+    "sizeGuide.headers.hip": "Hip",
+    "sizeGuide.headers.inseam": "Inseam",
+    "sizeGuide.tables.womensTops.label": "Women's Tops",
+    "sizeGuide.tables.womensTops.unit": "inches",
+    "sizeGuide.tables.mensTops.label": "Men's Tops",
+    "sizeGuide.tables.mensTops.unit": "inches",
+    "sizeGuide.tables.bottoms.label": "Bottoms (Unisex)",
+    "sizeGuide.tables.bottoms.unit": "inches",
+    "sizeGuide.tips.chest.label": "Chest",
+    "sizeGuide.tips.chest.description": "Measure around the fullest part of your chest, keeping the tape parallel to the floor.",
+    "sizeGuide.tips.waist.label": "Waist",
+    "sizeGuide.tips.waist.description": "Measure around your natural waistline, just above your belly button.",
+    "sizeGuide.tips.hip.label": "Hip",
+    "sizeGuide.tips.hip.description": "Measure around the fullest part of your hips, about 8 inches below your waist.",
+    "sizeGuide.tips.inseam.label": "Inseam",
+    "sizeGuide.tips.inseam.description": "Measure from the top of your inner thigh to the bottom of your ankle.",
+    "supportPolicy.page.title": "Customer Support Policy",
+    "supportPolicy.page.description": "Our commitment to providing timely, helpful support.",
+    "supportPolicy.breadcrumb.home": "Home",
+    "supportPolicy.breadcrumb.supportPolicy": "Customer Support Policy",
+    "supportPolicy.hero.title": "Customer Support Policy",
+    "supportPolicy.hero.description": "We are committed to providing timely, helpful support for every customer.",
+    "supportPolicy.sections.channels.title": "Support Channels",
+    "supportPolicy.sections.responseTimes.title": "Response Times",
+    "supportPolicy.sections.helpWith.title": "What We Can Help With",
+    "supportPolicy.sections.escalation.title": "Escalation Process",
+    "supportPolicy.sections.quality.title": "Support Quality Commitment",
+    "supportPolicy.cta.title": "Ready to get help?",
+    "supportPolicy.cta.description": "Our team is standing by to assist you.",
+    "supportPolicy.cta.button": "Contact Support"
+  },
+  "branches": {
+    "page": {
+      "title": "Store Locations",
+      "description": "Find our stores near you.",
+      "hero": {
+        "subtitle": "Locations",
+        "title": "Our Stores.",
+        "description": "Find your nearest store. Visit us for the complete experience."
+      },
+      "catalog": {
+        "label": "Branches",
+        "title": "ALL LOCATIONS.",
+        "count": "{{count}} location available",
+        "count_plural": "{{count}} locations available"
       },
       "breadcrumb": {
         "home": "Home",
-        "about": "About Us"
+        "branches": "Store Locations"
       },
-      "hero": {
-        "title": "About Us",
-        "description": "Learn more about our story, our values, and the team behind your favourite online shopping destination."
-      },
-      "sections": {
-        "ourStory": "Our Story",
-        "ourMission": "Our Mission"
-      },
-      "values": {
-        "principles": "Principles",
-        "title": "OUR VALUES.",
-        "quality": "Quality",
-        "qualityDesc": "We source and curate only the finest products, ensuring every item meets our rigorous standards before it reaches your doorstep.",
-        "trust": "Trust",
-        "trustDesc": "Transparent pricing, honest product descriptions, and a no-hassle return policy build the foundation of our relationship with every customer.",
-        "innovation": "Innovation",
-        "innovationDesc": "We continuously evolve our platform and product range to bring you the latest trends and most convenient shopping experience.",
-        "sustainability": "Sustainability",
-        "sustainabilityDesc": "From eco-friendly packaging to ethical sourcing partnerships, we're committed to reducing our environmental footprint."
-      },
-      "buttons": {
-        "getInTouch": "Get in Touch",
-        "browseProducts": "Browse Products"
-      }
-    },
-    "contact": {
-      "page": {
-        "title": "Contact Us",
-        "description": "Get in touch with our support team."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "contact": "Contact Us"
-      },
-      "hero": {
-        "title": "Contact Us",
-        "description": "We'd love to hear from you. Reach out to our team and we'll get back to you as soon as possible."
-      },
-      "form": {
-        "title": "Send Us a Message",
-        "fullName": "Full Name",
-        "namePlaceholder": "Your name",
-        "email": "Email Address",
-        "emailPlaceholder": "your@email.com",
-        "subject": "Subject",
-        "subjectPlaceholder": "Select a topic",
-        "subjectOptions": {
-          "order": "Order Inquiry",
-          "shipping": "Shipping Question",
-          "returns": "Returns & Refunds",
-          "product": "Product Information",
-          "other": "Other"
+        "badge": {
+          "headquarters": "Headquarters",
+          "internationalShipping": "International Shipping"
         },
-        "message": "Message",
-        "messagePlaceholder": "How can we help you?",
-        "submit": "Send Message"
-      },
-      "info": {
-        "title": "Information",
-        "phone": "Phone",
-        "phoneValue": "+1 (555) 123-4567",
-        "email": "Email",
-        "emailValue": "support@onstore.com",
-        "address": "Address",
-        "addressValue": "123 Commerce Street, Suite 400, New York, NY 10001",
-        "hours": "Business Hours",
-        "hoursValue": "Monday to Friday, 9:00 AM - 6:00 PM EST"
+      "selected": {
+        "label": "Selected Location"
       }
     },
-    "faq": {
-      "page": {
-        "title": "FAQ",
-        "description": "Frequently asked questions about shopping, shipping, returns, and more."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "faq": "FAQ"
-      },
-      "hero": {
-        "title": "Frequently Asked Questions",
-        "description": "Find answers to the most common questions about shopping with us. Browse by topic or search the list below."
-      },
-      "categories": {
-        "orders": "Orders",
-        "shipping": "Shipping",
-        "returns": "Returns",
-        "contact": "Contact Us"
-      },
-      "questions": {
-        "q1": "How do I place an order?",
-        "a1": "Simply browse our catalogue, add items to your cart, and proceed to checkout. You'll need to create an account or log in, enter your shipping details, and choose a payment method. Once your order is confirmed, you'll receive an email with your order summary and tracking information.",
-        "q2": "What payment methods do you accept?",
-        "a2": "We accept Visa, Mastercard, American Express, PayPal, Apple Pay, and Google Pay. All transactions are processed securely through encrypted payment gateways.",
-        "q3": "Can I modify or cancel my order after placing it?",
-        "a3": "Orders can be modified or cancelled within 1 hour of placement. After that, the order enters processing and cannot be changed. Contact our support team immediately if you need assistance.",
-        "q4": "How long does shipping take?",
-        "a4": "Standard shipping takes 5\u20138 business days within the continental US. Express shipping (2\u20133 business days) and next-day delivery are available at checkout. International orders typically arrive within 10\u201320 business days depending on customs.",
-        "q5": "Do you offer free shipping?",
-        "a5": "Yes, we offer free standard shipping on all orders over $75 within the continental United States. Express and international shipping rates are calculated at checkout based on package weight and destination.",
-        "q6": "What is your return policy?",
-        "a6": "We accept returns within 30 days of delivery for unworn, unwashed items in original condition with tags attached. Refunds are processed within 5\u20137 business days after we receive the return. Visit our Returns page for full details.",
-        "q7": "How do I track my order?",
-        "a7": "Once your order ships, you'll receive a confirmation email with a tracking number. You can also view your order status and tracking details anytime in your account dashboard under 'My Orders'.",
-        "q8": "Do you ship internationally?",
-        "a8": "Yes, we ship to over 50 countries worldwide. International shipping rates and delivery times vary by destination. Please note that customs duties, taxes, and brokerage fees may apply and are the responsibility of the recipient.",
-        "q9": "How can I contact customer support?",
-        "a9": "You can reach us via email at support@onstore.com, by phone at +1 (555) 123-4567 (Monday\u2013Friday, 9 AM\u20136 PM EST), or through our Contact page. We typically respond within 24 hours.",
-        "q10": "Is my personal information secure?",
-        "a10": "Absolutely. We use industry-standard SSL encryption to protect your data during transmission. Your payment details are processed through PCI-compliant gateways, and we never share your personal information with third parties. See our Privacy Policy for more details."
-      },
-      "cta": {
-        "title": "Still have questions?",
-        "description": "Our performance support team is ready to help.",
-        "button": "Contact Support"
-      }
+    "empty": {
+      "title": "No locations available",
+      "description": "There are no store locations available at the moment. Please check back later."
     },
-    "terms": {
-      "page": {
-        "title": "Terms & Conditions",
-        "description": "Terms and conditions for using our website and services."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "terms": "Terms & Conditions"
-      },
-      "hero": {
-        "title": "Terms & Conditions",
-        "description": "Please read these terms carefully before using our website or placing an order."
-      }
+    "error": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred. Please try again.",
+      "retry": "Try Again"
     },
-    "privacy": {
-      "page": {
-        "title": "Privacy Policy",
-        "description": "How we collect, use, and protect your personal information."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "privacy": "Privacy Policy"
-      },
-      "hero": {
-        "title": "Privacy Policy",
-        "description": "We take your privacy seriously. This policy explains how we collect, use, and protect your personal information."
-      },
-      "effectiveDate": "Effective date: May 13, 2026"
+    "loader": {
+      "loading": "Loading locations..."
     },
-    "shipping": {
-      "page": {
-        "title": "Shipping & Delivery",
-        "description": "Shipping methods, rates, delivery times, and tracking information."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "shipping": "Shipping & Delivery"
-      },
-      "hero": {
-        "title": "Shipping & Delivery",
-        "description": "Everything you need to know about how we get your orders to you quickly and reliably."
-      },
-      "sections": {
-        "methods": "Shipping Methods & Rates",
-        "methodsDesc": "We offer a range of shipping options to suit your needs and budget. All orders are shipped from our warehouses within the continental US.",
-        "processing": "Processing Time",
-        "timeline": "Timeline",
-        "journey": "ORDER JOURNEY.",
-        "tracking": "Tracking Your Order",
-        "international": "International Shipping",
-        "restrictions": "Shipping Restrictions",
-        "lostOrDamaged": "Lost or Damaged Packages"
-      },
-      "methods": {
-        "standard": "Standard",
-        "standardDelivery": "5\u20138 business days",
-        "standardCost": "Free on orders over $75",
-        "standardNote": "Best value for everyday orders",
-        "express": "Express",
-        "expressDelivery": "2\u20133 business days",
-        "expressCost": "$12.99",
-        "expressNote": "Perfect when you need it sooner",
-        "nextDay": "Next-Day",
-        "nextDayDelivery": "1 business day",
-        "nextDayCost": "$19.99",
-        "nextDayNote": "Order before 2 PM for next-day delivery",
-        "international": "International",
-        "internationalDelivery": "10\u201320 business days",
-        "internationalCost": "Calculated at checkout",
-        "internationalNote": "Available to 50+ countries"
-      },
-      "steps": {
-        "placed": "Order Placed",
-        "placedDesc": "You receive an order confirmation with your order number and summary.",
-        "processing": "Processing",
-        "processingDesc": "Our team picks, packs, and prepares your items for shipment (1\u20132 business days).",
-        "shipped": "Shipped",
-        "shippedDesc": "You receive a shipping confirmation with a tracking number.",
-        "delivered": "Delivered",
-        "deliveredDesc": "Your package arrives at your doorstep. Enjoy your purchase!"
-      }
-    },
-    "returns": {
-      "page": {
-        "title": "Returns & Refunds",
-        "description": "Our return policy, refund timeline, and how to initiate a return."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "returns": "Returns & Refund Policy"
-      },
-      "hero": {
-        "title": "Returns & Refund Policy",
-        "description": "We want you to love your purchase. If something isn't right, we're here to help."
-      },
-      "sections": {
-        "returnWindow": "Return Window",
-        "howToReturn": "How to Return an Item",
-        "howToReturnDesc": "Follow these simple steps to return your purchase:",
-        "refundTimeline": "Refund Timeline",
-        "exchanges": "Exchanges",
-        "nonReturnable": "Non-Returnable Items",
-        "nonReturnableDesc": "For hygiene and safety reasons, the following items are final sale and cannot be returned:",
-        "nonReturnableFooter": "Damaged or defective items are always eligible for return regardless of category.",
-        "needHelp": "Need Help?"
-      },
-      "steps": {
-        "initiate": "Initiate Return",
-        "initiateDesc": "Log into your account and navigate to 'My Orders'. Select the item you wish to return and choose a reason. Alternatively, contact our support team to start the process.",
-        "pack": "Pack Your Item",
-        "packDesc": "Securely pack the item in its original packaging with all tags attached. Include the return confirmation receipt inside the package.",
-        "ship": "Ship It Back",
-        "shipDesc": "Affix the prepaid return shipping label (provided by us) to the package. Drop it off at any designated carrier location.",
-        "refund": "Refund Issued",
-        "refundDesc": "Once we receive and inspect your return, we'll process your refund within 5\u20137 business days. Funds will be returned to your original payment method."
-      },
-      "nonReturnable": [
-        "Intimate apparel and swimwear",
-        "Earrings and body jewellery",
-        "Face masks and hygiene products",
-        "Gift cards and store credit",
-        "Clearance items marked 'final sale'",
-        "Digital or downloadable products"
-      ],
-      "buttons": {
-        "contactSupport": "Contact Support"
-      }
-    },
-    "help": {
-      "page": {
-        "title": "Help Center",
-        "description": "Find answers, manage your account, and get support."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "help": "Help Center"
-      },
-      "hero": {
-        "title": "Help Center",
-        "description": "Find answers, manage your account, and get the support you need \u2014 all in one place."
-      },
-      "topics": {
-        "orders": "Orders",
-        "ordersDesc": "Track your order, modify or cancel, and understand your order status.",
-        "shipping": "Shipping",
-        "shippingDesc": "Delivery times, costs, tracking, and international shipping information.",
-        "returns": "Returns & Refunds",
-        "returnsDesc": "How to return items, refund timelines, exchanges, and non-returnable items.",
-        "payments": "Payments",
-        "paymentsDesc": "Accepted payment methods, billing, and transaction security.",
-        "account": "Account",
-        "accountDesc": "Managing your profile, password, wishlist, and order history.",
-        "privacy": "Privacy & Security",
-        "privacyDesc": "How we protect your data, our privacy practices, and your rights.",
-        "policies": "Policies",
-        "policiesDesc": "Our terms, conditions, and store policies at a glance.",
-        "contact": "Contact Us",
-        "contactDesc": "Get in touch with our support team. We are here to help."
-      },
-      "cta": {
-        "title": "Can't find what you're looking for?",
-        "description": "Our support team is available Monday to Friday, 9 AM to 6 PM EST.",
-        "button": "Contact Support"
-      }
-    },
-    "policies": {
-      "page": {
-        "title": "Store Policies",
-        "description": "A central hub for all our store policies."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "policies": "Store Policies"
-      },
-      "hero": {
-        "title": "Store Policies Overview",
-        "description": "A central hub for all our store policies. Select a policy to learn more."
-      },
-      "items": {
-        "privacy": "Privacy Policy",
-        "privacyDesc": "How we collect, use, and protect your personal information. Learn about your data rights and our commitment to your privacy.",
-        "terms": "Terms & Conditions",
-        "termsDesc": "The rules and guidelines for using our website and services. Includes account terms, pricing, and legal information.",
-        "returns": "Return Policy",
-        "returnsDesc": "Our 30-day return window, step-by-step return process, refund timelines, and list of non-returnable items.",
-        "shipping": "Shipping Policy",
-        "shippingDesc": "Shipping methods, rates, delivery times, tracking, international shipping, and lost package procedures.",
-        "support": "Customer Support Policy",
-        "supportDesc": "Our commitment to support quality, response times, available channels, and escalation process.",
-        "sizeGuide": "Size Guide",
-        "sizeGuideDesc": "Detailed size charts for women's, men's, and unisex apparel with measuring tips and fit advice."
-      }
-    },
-    "sizeGuide": {
-      "page": {
-        "title": "Size Guide",
-        "description": "Find your perfect fit with our detailed size charts and measuring tips."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "sizeGuide": "Size Guide"
-      },
-      "hero": {
-        "title": "Size Guide",
-        "description": "Find your perfect fit with our detailed size charts and measuring tips."
-      },
-      "sections": {
-        "howToMeasure": "How to Measure",
-        "howToMeasureDesc": "For the most accurate fit, use a soft measuring tape and follow these guidelines:",
-        "fitNotes": "Fit Notes"
-      },
-      "tips": {
-        "chest": "Chest",
-        "chestDesc": "Measure around the fullest part of your chest, keeping the tape parallel to the floor.",
-        "waist": "Waist",
-        "waistDesc": "Measure around your natural waistline, just above your belly button.",
-        "hip": "Hip",
-        "hipDesc": "Measure around the fullest part of your hips, about 8 inches below your waist.",
-        "inseam": "Inseam",
-        "inseamDesc": "Measure from the top of your inner thigh to the bottom of your ankle."
-      },
-      "tables": {
-        "unit": "Measurements in {{unit}}",
-        "headers": {
-          "size": "Size",
-          "chest": "Chest",
-          "waist": "Waist",
-          "hip": "Hip",
-          "inseam": "Inseam"
-        },
-        "womensTops": "Women's Tops",
-        "mensTops": "Men's Tops",
-        "bottoms": "Bottoms (Unisex)"
-      }
-    },
-    "supportPolicy": {
-      "page": {
-        "title": "Customer Support Policy",
-        "description": "Our commitment to providing timely, helpful support."
-      },
-      "breadcrumb": {
-        "home": "Home",
-        "supportPolicy": "Customer Support Policy"
-      },
-      "hero": {
-        "title": "Customer Support Policy",
-        "description": "We are committed to providing timely, helpful support for every customer."
-      },
-      "sections": {
-        "channels": "Support Channels",
-        "responses": "Response Times",
-        "helpWith": "What We Can Help With",
-        "escalation": "Escalation Process",
-        "quality": "Support Quality Commitment",
-        "ctaTitle": "Ready to get help?",
-        "ctaDesc": "Our team is standing by to assist you.",
-        "ctaButton": "Contact Support"
-      }
+    "map": {
+      "markerAria": "{{name}} in {{city}}"
     }
   }
 }

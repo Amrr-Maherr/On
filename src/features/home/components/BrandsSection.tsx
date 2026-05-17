@@ -1,18 +1,23 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 import BrandCard from "@/features/brands/components/BrandCard";
 import BrandsLoader from "@/features/brands/components/BrandsLoader";
 import BrandsError from "@/features/brands/components/BrandsError";
 import Section from "@/components/shared/components/Section";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 const BrandsSection = memo(function BrandsSection() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useAllBrands(1);
+
+  const getErrorMessage = useCallback(
+    (error: unknown): string => {
+      if (error instanceof Error) return error.message;
+      if (typeof error === "string") return error;
+      return t("brands.error.defaultMessage");
+    },
+    [t],
+  );
 
   if (isLoading) {
     return (
@@ -20,8 +25,8 @@ const BrandsSection = memo(function BrandsSection() {
         slidesPerView={4}
         slidesPerViewMobile={1.5}
         hideNavigation
-        title="Brands."
-        description="Shop by brand"
+        title={t("home.sections.brands.title")}
+        description={t("home.sections.brands.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
           <BrandsLoader key={i} />
@@ -36,8 +41,8 @@ const BrandsSection = memo(function BrandsSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Brands."
-        description="Shop by brand"
+        title={t("home.sections.brands.title")}
+        description={t("home.sections.brands.description")}
       >
         <BrandsError
           message={getErrorMessage(error)}
@@ -55,10 +60,10 @@ const BrandsSection = memo(function BrandsSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Brands."
-        description="Shop by brand"
+        title={t("home.sections.brands.title")}
+        description={t("home.sections.brands.description")}
       >
-        <BrandsError message="No brands available at the moment." />
+        <BrandsError message={t("home.sections.brands.noBrands")} />
       </Section>
     );
   }
@@ -69,8 +74,8 @@ const BrandsSection = memo(function BrandsSection() {
       slidesPerView={4}
       slidesPerViewMobile={1.5}
       hideNavigation={false}
-      title="Brands."
-      description="Shop by brand"
+      title={t("home.sections.brands.title")}
+      description={t("home.sections.brands.description")}
     >
       {brands.map((brand) => (
         <BrandCard key={brand._id} brand={brand} />

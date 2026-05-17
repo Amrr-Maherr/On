@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +7,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import HeroBackground from "./HeroBackground";
 
 const Hero = memo(function Hero() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -15,15 +17,15 @@ const Hero = memo(function Hero() {
       <ScrollReveal className="container-layout relative z-10 w-full" distance={40}>
         <div className="max-w-2xl">
           <span className="mb-6 inline-block text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-            Performance Redefined
+            {t("home.hero.badge")}
           </span>
           <h1 className="font-heading text-7xl font-black uppercase leading-[0.85] tracking-tighter text-foreground md:text-9xl lg:text-[10rem]">
-            UNLEASH
+            {t("home.hero.titleLine1")}
             <br />
-            POWER.
+            {t("home.hero.titleLine2")}
           </h1>
           <p className="mt-8 max-w-md text-base font-bold uppercase tracking-widest text-muted-foreground/70 md:text-lg">
-            Premium gear engineered for those who never settle.
+            {t("home.hero.description")}
           </p>
           <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Button
@@ -31,7 +33,7 @@ const Hero = memo(function Hero() {
               onClick={() => navigate("/products")}
               className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
             >
-              Shop Collection
+              {t("home.hero.cta")}
               <ArrowRight className="ml-3 h-5 w-5" />
             </Button>
             <Button
@@ -39,7 +41,7 @@ const Hero = memo(function Hero() {
               onClick={() => navigate("/categories")}
               className="h-16 w-full cursor-pointer rounded-none border-2 border-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-foreground transition-all duration-500 hover:bg-foreground hover:text-background active:scale-[0.98] sm:w-auto"
             >
-              View All
+              {t("home.hero.secondaryCta")}
             </Button>
           </div>
         </div>

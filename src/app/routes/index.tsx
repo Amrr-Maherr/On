@@ -62,6 +62,9 @@ const SupportPolicyPage = lazy(
 const PoliciesPage = lazy(
   () => import("@/features/footer-pages/pages/PoliciesPage"),
 );
+const BranchesPage = lazy(
+  () => import("@/features/branches/pages/BranchesPage"),
+);
 const NotFoundPage = lazy(
   () => import("@/features/not-found/pages/NotFoundPage"),
 );
@@ -99,6 +102,7 @@ export default function AppRoutes() {
         <Route path="/help" element={<HelpPage />} />
         <Route path="/support-policy" element={<SupportPolicyPage />} />
         <Route path="/policies" element={<PoliciesPage />} />
+        <Route path="/branches" element={<BranchesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

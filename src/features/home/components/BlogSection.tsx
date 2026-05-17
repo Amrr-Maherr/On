@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { blogData } from "../utils/blog";
@@ -11,17 +12,19 @@ const formatDate = (dateStr: string) =>
   });
 
 const BlogSection = memo(function BlogSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
           <div className="mb-12 md:mb-16 border-l-4 border-foreground pl-6">
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              Journal
+              {t("home.sections.blog.label")}
             </span>
             <div className="mt-3 flex flex-col lg:flex-row lg:items-end lg:justify-between lg:gap-12">
               <h2 className="text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-                Latest stories.
+                {t("home.sections.blog.title")}
               </h2>
             </div>
           </div>

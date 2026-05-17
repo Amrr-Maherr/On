@@ -1,46 +1,51 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-const collections = [
-  {
-    title: "Running",
-    subtitle: "Performance Redefined",
-    description: "Engineered for speed, built for endurance.",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=running",
-    gradient: "from-emerald-900/80 via-emerald-800/40 to-transparent",
-  },
-  {
-    title: "Training",
-    subtitle: "Forge Your Strength",
-    description: "Push beyond your limits with our training line.",
-    image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=training",
-    gradient: "from-orange-900/80 via-orange-800/40 to-transparent",
-  },
-  {
-    title: "Lifestyle",
-    subtitle: "Where Comfort Meets Style",
-    description: "Premium sportswear for everyday excellence.",
-    image:
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=lifestyle",
-    gradient: "from-blue-900/80 via-blue-800/40 to-transparent",
-  },
-];
-
 const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
   const handleNavigate = useCallback(
     (slug: string) => navigate(slug),
     [navigate],
   );
+
+  const collections = [
+    {
+      title: t("home.sections.featuredCollections.running.title"),
+      subtitle: t("home.sections.featuredCollections.running.subtitle"),
+      description: t("home.sections.featuredCollections.running.description"),
+      shopNow: t("home.sections.featuredCollections.running.shopNow"),
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=running",
+      gradient: "from-emerald-900/80 via-emerald-800/40 to-transparent",
+    },
+    {
+      title: t("home.sections.featuredCollections.training.title"),
+      subtitle: t("home.sections.featuredCollections.training.subtitle"),
+      description: t("home.sections.featuredCollections.training.description"),
+      shopNow: t("home.sections.featuredCollections.training.shopNow"),
+      image:
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=training",
+      gradient: "from-orange-900/80 via-orange-800/40 to-transparent",
+    },
+    {
+      title: t("home.sections.featuredCollections.lifestyle.title"),
+      subtitle: t("home.sections.featuredCollections.lifestyle.subtitle"),
+      description: t("home.sections.featuredCollections.lifestyle.description"),
+      shopNow: t("home.sections.featuredCollections.lifestyle.shopNow"),
+      image:
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=lifestyle",
+      gradient: "from-blue-900/80 via-blue-800/40 to-transparent",
+    },
+  ];
 
   return (
     <section className="section-py border-y border-border/40 bg-background">
@@ -49,17 +54,17 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
           <div className="mb-14 flex items-end justify-between border-l-4 border-foreground pl-6">
             <div>
               <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-                Collections
+                {t("home.sections.featuredCollections.label")}
               </span>
               <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-                CHOOSE YOUR<br />DISCIPLINE.
+                {t("home.sections.featuredCollections.titleLine1")}<br />{t("home.sections.featuredCollections.titleLine2")}
               </h2>
             </div>
             <button
               onClick={handleViewAll}
               className="hidden cursor-pointer items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-foreground transition-all hover:translate-x-1 md:flex"
             >
-              View All
+              {t("home.sections.featuredCollections.viewAll")}
               <ArrowRight className="h-5 w-5" strokeWidth={3} />
             </button>
           </div>
@@ -94,7 +99,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
                     {collection.title}
                   </h3>
                   <div className="mt-6 inline-flex h-12 items-center justify-center bg-white px-8 text-[10px] font-black uppercase tracking-[0.3em] text-neutral-950 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                    Shop Now
+                    {collection.shopNow}
                   </div>
                 </div>
               </button>
@@ -109,7 +114,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
               variant="outline"
               className="cursor-pointer"
             >
-              View All Collections
+              {t("home.sections.featuredCollections.viewAllMobile")}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

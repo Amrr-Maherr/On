@@ -83,7 +83,7 @@ export default function SizeGuidePage() {
 
       <div className="mb-8">
         <ContentSection title={t("footerPages.sizeGuide.sections.howToMeasure.title")} variant="card">
-          <p>For the most accurate fit, use a soft measuring tape and follow these guidelines:</p>
+          <p>{t("footerPages.sizeGuide.sections.howToMeasure.description")}</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {measuringTips.map((tip) => (
               <div key={tip.label} className="flex items-start gap-3">

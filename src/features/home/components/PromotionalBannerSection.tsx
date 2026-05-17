@@ -1,10 +1,12 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const PromotionalBannerSection = memo(function PromotionalBannerSection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleShopSale = useCallback(() => navigate("/products"), [navigate]);
 
@@ -25,18 +27,17 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-none bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/80">
               <Zap className="h-3.5 w-3.5 text-amber-400" />
-              Limited Offer
+              {t("home.sections.promotionalBanner.badge")}
             </div>
             <h2 className="text-5xl font-black leading-none tracking-tight text-white md:text-7xl lg:text-8xl">
-              UP TO 40% OFF
+              {t("home.sections.promotionalBanner.heading")}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-              Season-end sale on select performance gear. Push your limits
-              without breaking the bank.
+              {t("home.sections.promotionalBanner.description")}
             </p>
             <div className="mt-4 flex items-center justify-center gap-2 text-sm text-white/50">
               <span className="inline-block h-2 w-2 bg-amber-400" />
-              Offer ends soon
+              {t("home.sections.promotionalBanner.endsSoon")}
               <span className="inline-block h-2 w-2 bg-amber-400" />
             </div>
             <div className="mt-10">
@@ -44,7 +45,7 @@ const PromotionalBannerSection = memo(function PromotionalBannerSection() {
                 onClick={handleShopSale}
                 className="h-14 cursor-pointer rounded-full bg-white px-12 text-sm font-bold uppercase tracking-widest text-neutral-950 transition-all duration-300 hover:bg-white/90 active:scale-[0.97]"
               >
-                Shop the Sale
+                {t("home.sections.promotionalBanner.cta")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>

@@ -130,8 +130,8 @@ const Footer = memo(function Footer() {
           <div className="lg:col-span-2 lg:flex lg:justify-end lg:gap-24">
             <div className="space-y-6">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.stores.title")}</h4>
-              <p className="text-sm font-bold text-white/40 transition-colors hover:text-white cursor-pointer">{t("footer.stores.findStore")}</p>
-              <p className="text-sm font-bold text-white/40 transition-colors hover:text-white cursor-pointer">{t("footer.stores.internationalShipping")}</p>
+              <Link to="/branches" className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
+              <Link to="/shipping" className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
             </div>
             <div className="mt-12 space-y-6 lg:mt-0">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.app.title")}</h4>

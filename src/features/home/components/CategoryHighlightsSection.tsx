@@ -1,44 +1,42 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-const highlights = [
-  {
-    name: "Running",
-    image:
-      "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=running",
-    count: "42 Products",
-  },
-  {
-    name: "Training & Gym",
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=training",
-    count: "38 Products",
-  },
-  {
-    name: "Yoga & Wellness",
-    image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=yoga-wellness",
-    count: "27 Products",
-  },
-  {
-    name: "Outdoor & Trail",
-    image:
-      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80",
-    slug: "/products?category=outdoor-trail",
-    count: "35 Products",
-  },
-];
-
 const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const handleNavigate = useCallback(
     (slug: string) => navigate(slug),
     [navigate],
   );
+
+  const highlights = [
+    {
+      name: t("home.sections.categoryHighlights.running"),
+      image:
+        "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=running",
+    },
+    {
+      name: t("home.sections.categoryHighlights.trainingGym"),
+      image:
+        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=training",
+    },
+    {
+      name: t("home.sections.categoryHighlights.yogaWellness"),
+      image:
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=yoga-wellness",
+    },
+    {
+      name: t("home.sections.categoryHighlights.outdoorTrail"),
+      image:
+        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80",
+      slug: "/products?category=outdoor-trail",
+    },
+  ];
 
   return (
     <section className="section-py bg-muted/50">
@@ -46,10 +44,10 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
         <ScrollReveal>
           <div className="mb-14">
             <span className="text-xs font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              Activity
+              {t("home.sections.categoryHighlights.label")}
             </span>
             <h2 className="mt-4 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              FIND YOUR<br />PERFORMANCE.
+              {t("home.sections.categoryHighlights.titleLine1")}<br />{t("home.sections.categoryHighlights.titleLine2")}
             </h2>
           </div>
         </ScrollReveal>

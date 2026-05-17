@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -27,16 +28,18 @@ const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 const TeamSection = memo(function TeamSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="section-py">
       <ScrollReveal>
         <div className="container-layout">
           <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/70">
-              The Crew
+              {t("home.sections.team.label")}
             </span>
             <h2 className="font-heading mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              Behind the performance
+              {t("home.sections.team.title")}
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
