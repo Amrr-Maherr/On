@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/shared/logo/Logo";
 
 const socialLinks = [
@@ -10,54 +10,56 @@ const socialLinks = [
   { name: "X", href: "#", path: "M18.24 3.25h2.91l-6.36 7.27 7.48 9.89h-5.86l-4.59-6-5.25 6H3.66l6.8-7.78L3.25 3.25h6l4.15 5.48zm-1.02 15.4h1.61L6.86 4.96H5.12z" },
 ];
 
-const linkSections = [
-  {
-    titleKey: "footer.sectionTitles.shop",
-    links: [
-      { key: "footer.links.allProducts", href: "/products" },
-      { key: "footer.links.categories", href: "/categories" },
-      { key: "footer.links.brands", href: "/brands" },
-      { key: "footer.links.featuredGear", href: "/products" },
-      { key: "footer.links.newArrivals", href: "/products" },
-      { key: "footer.links.salesOffers", href: "/products" },
-    ],
-  },
-  {
-    titleKey: "footer.sectionTitles.support",
-    links: [
-      { key: "footer.links.helpCenter", href: "/help" },
-      { key: "footer.links.contactUs", href: "/contact" },
-      { key: "footer.links.trackOrder", href: "/orders" },
-      { key: "footer.links.shippingInfo", href: "/shipping" },
-      { key: "footer.links.returns", href: "/returns" },
-      { key: "footer.links.sizeGuide", href: "/size-guide" },
-    ],
-  },
-  {
-    titleKey: "footer.sectionTitles.company",
-    links: [
-      { key: "footer.links.aboutUs", href: "/about" },
-      { key: "footer.links.sustainability", href: "/about" },
-      { key: "footer.links.innovation", href: "/about" },
-      { key: "footer.links.careers", href: "/about" },
-      { key: "footer.links.press", href: "/about" },
-      { key: "footer.links.affiliates", href: "/brands" },
-    ],
-  },
-  {
-    titleKey: "footer.sectionTitles.legal",
-    links: [
-      { key: "footer.links.privacyPolicy", href: "/privacy" },
-      { key: "footer.links.termsOfUse", href: "/terms" },
-      { key: "footer.links.storePolicies", href: "/policies" },
-      { key: "footer.links.cookieSettings", href: "/privacy" },
-      { key: "footer.links.compliance", href: "/policies" },
-    ],
-  },
-];
-
 const Footer = memo(function Footer() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
+
+  const linkSections = [
+    {
+      titleKey: "footer.sectionTitles.shop",
+      links: [
+        { key: "footer.links.allProducts", href: `/${lang}/products` },
+        { key: "footer.links.categories", href: `/${lang}/categories` },
+        { key: "footer.links.brands", href: `/${lang}/brands` },
+        { key: "footer.links.featuredGear", href: `/${lang}/products` },
+        { key: "footer.links.newArrivals", href: `/${lang}/products` },
+        { key: "footer.links.salesOffers", href: `/${lang}/products` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.support",
+      links: [
+        { key: "footer.links.helpCenter", href: `/${lang}/help` },
+        { key: "footer.links.contactUs", href: `/${lang}/contact` },
+        { key: "footer.links.trackOrder", href: `/${lang}/orders` },
+        { key: "footer.links.shippingInfo", href: `/${lang}/shipping` },
+        { key: "footer.links.returns", href: `/${lang}/returns` },
+        { key: "footer.links.sizeGuide", href: `/${lang}/size-guide` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.company",
+      links: [
+        { key: "footer.links.aboutUs", href: `/${lang}/about` },
+        { key: "footer.links.sustainability", href: `/${lang}/about` },
+        { key: "footer.links.innovation", href: `/${lang}/about` },
+        { key: "footer.links.careers", href: `/${lang}/about` },
+        { key: "footer.links.press", href: `/${lang}/about` },
+        { key: "footer.links.affiliates", href: `/${lang}/brands` },
+      ],
+    },
+    {
+      titleKey: "footer.sectionTitles.legal",
+      links: [
+        { key: "footer.links.privacyPolicy", href: `/${lang}/privacy` },
+        { key: "footer.links.termsOfUse", href: `/${lang}/terms` },
+        { key: "footer.links.storePolicies", href: `/${lang}/policies` },
+        { key: "footer.links.cookieSettings", href: `/${lang}/privacy` },
+        { key: "footer.links.compliance", href: `/${lang}/policies` },
+      ],
+    },
+  ];
   return (
     <footer className="border-t border-border/40 bg-neutral-950 text-white">
       <div className="container-layout py-16 md:py-24">
@@ -130,8 +132,8 @@ const Footer = memo(function Footer() {
           <div className="lg:col-span-2 lg:flex lg:justify-end lg:gap-24">
             <div className="space-y-6">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.stores.title")}</h4>
-              <Link to="/branches" className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
-              <Link to="/shipping" className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
+              <Link to={`/${lang}/branches`} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
+              <Link to={`/${lang}/shipping`} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
             </div>
             <div className="mt-12 space-y-6 lg:mt-0">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.app.title")}</h4>
@@ -162,9 +164,9 @@ const Footer = memo(function Footer() {
             <p className="text-[10px] font-black uppercase tracking-widest">
               &copy; {new Date().getFullYear()} On Store
             </p>
-            <Link to="/privacy" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.privacyPoliy")}</Link>
-            <Link to="/terms" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.termsOfService")}</Link>
-            <Link to="/policies" className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.storePolicies")}</Link>
+            <Link to={`/${lang}/privacy`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.privacyPoliy")}</Link>
+            <Link to={`/${lang}/terms`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.termsOfService")}</Link>
+            <Link to={`/${lang}/policies`} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.storePolicies")}</Link>
           </div>
           <div className="flex items-center gap-8">
             {["Visa", "Mastercard", "PayPal", "Apple Pay"].map((method) => (

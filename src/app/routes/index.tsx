@@ -1,5 +1,6 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Loader from "@/components/shared/Loader";
 // Lazy loading all feature pages
 const HomePage = lazy(() => import("@/features/home/pages/HomePage"));
@@ -69,41 +70,65 @@ const NotFoundPage = lazy(
   () => import("@/features/not-found/pages/NotFoundPage"),
 );
 
+function LangLayout() {
+  const { lang } = useParams();
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const validLang = lang === "ar" ? "ar" : "en";
+    if (validLang !== i18n.language) {
+      i18n.changeLanguage(validLang);
+    }
+    const dir = validLang === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = dir;
+    document.documentElement.lang = validLang;
+  }, [lang, i18n]);
+
+  return <Outlet />;
+}
+
 export default function AppRoutes() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/products" element={<AllProductsPage />} />
-        <Route path="/products/:slug/:id" element={<ProductDetailsPage />} />
-        <Route path="/categories" element={<AllCategoriesPage />} />
-        <Route path="/categories/:slug/:id" element={<CategoryDetailsPage />} />
-        <Route path="/brands" element={<AllBrandsPage />} />
-        <Route path="/brands/:slug/:id" element={<BrandDetailsPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/orders" element={<OrdersPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/fave" element={<WishlistPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/shipping" element={<ShippingPage />} />
-        <Route path="/returns" element={<ReturnsPage />} />
-        <Route path="/size-guide" element={<SizeGuidePage />} />
-        <Route path="/help" element={<HelpPage />} />
-        <Route path="/support-policy" element={<SupportPolicyPage />} />
-        <Route path="/policies" element={<PoliciesPage />} />
-        <Route path="/branches" element={<BranchesPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<Navigate to="/en" replace />} />
+        {["/auth", "/products", "/contact", "/login", "/register", "/forgot-password", "/about"].map(p => (
+          <Route key={p} path={p} element={<Navigate to={`/en${p}`} replace />} />
+        ))}
+        <Route path="/:lang" element={<LangLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="auth" element={<AuthPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="reset-password" element={<ResetPasswordPage />} />
+          <Route path="products" element={<AllProductsPage />} />
+          <Route path="products/:slug/:id" element={<ProductDetailsPage />} />
+          <Route path="categories" element={<AllCategoriesPage />} />
+          <Route path="categories/:slug/:id" element={<CategoryDetailsPage />} />
+          <Route path="brands" element={<AllBrandsPage />} />
+          <Route path="brands/:slug/:id" element={<BrandDetailsPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="orders" element={<OrdersPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="wishlist" element={<WishlistPage />} />
+          <Route path="fave" element={<WishlistPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="privacy" element={<PrivacyPage />} />
+          <Route path="terms" element={<TermsPage />} />
+          <Route path="faq" element={<FaqPage />} />
+          <Route path="shipping" element={<ShippingPage />} />
+          <Route path="returns" element={<ReturnsPage />} />
+          <Route path="size-guide" element={<SizeGuidePage />} />
+          <Route path="help" element={<HelpPage />} />
+          <Route path="support-policy" element={<SupportPolicyPage />} />
+          <Route path="policies" element={<PoliciesPage />} />
+          <Route path="branches" element={<BranchesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </Suspense>
   );

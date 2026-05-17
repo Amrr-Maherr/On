@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Heart,
   Package,
@@ -27,6 +27,8 @@ interface MobileNavSheetProps {
 
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
   const { data: cartData } = useCart();
   const { data: wishlistData } = useWishlist();
   const { data: ordersData } = useOrders();
@@ -41,8 +43,8 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     onOpenChange(false);
-    navigate("/login");
-  }, [navigate, onOpenChange]);
+    navigate(`/${lang}/login`);
+  }, [navigate, lang, onOpenChange]);
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -52,11 +54,11 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
 
   const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchQuery.trim()) {
-      navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+      navigate(`/${lang}/products?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
       onOpenChange(false);
     }
-  }, [navigate, searchQuery, onOpenChange]);
+  }, [navigate, lang, searchQuery, onOpenChange]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -93,11 +95,11 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               {[
-                { key: "nav.links.men", href: "/categories/men" },
-                { key: "nav.links.women", href: "/categories/women" },
-                { key: "nav.links.kids", href: "/categories/kids" },
-                { key: "nav.links.sale", href: "/products?onSale=true" },
-                { key: "nav.links.brands", href: "/brands" },
+                { key: "nav.links.men", href: `/${lang}/categories/men` },
+                { key: "nav.links.women", href: `/${lang}/categories/women` },
+                { key: "nav.links.kids", href: `/${lang}/categories/kids` },
+                { key: "nav.links.sale", href: `/${lang}/products?onSale=true` },
+                { key: "nav.links.brands", href: `/${lang}/brands` },
               ].map((link) => (
                 <Link
                   key={link.key}
@@ -125,7 +127,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               <Link
-                to="/fave"
+                to={`/${lang}/fave`}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -142,7 +144,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to="/orders"
+                to={`/${lang}/orders`}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -159,7 +161,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to="/cart"
+                to={`/${lang}/cart`}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -186,7 +188,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               {isLoggedIn ? (
                 <>
                   <Link
-                    to="/profile"
+                    to={`/${lang}/profile`}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -208,17 +210,31 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               ) : (
                 <>
                   <Link
-                    to="/login"
+                    to={`/${lang}/login`}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
-                      <LogIn className="h-5 w-5" />
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                        <LogIn className="h-5 w-5" />
+                      </div>
+                      <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.signIn")}</span>
                     </div>
-                    <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.signIn")}</span>
                   </Link>
                   <Link
-                    to="/register"
+                    to={`/${lang}/register`}
+                    onClick={() => onOpenChange(false)}
+                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
+                        <UserCircle className="h-5 w-5" />
+                      </div>
+                      <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.joinUs")}</span>
+                    </div>
+                  </Link>
+                  <Link
+                    to={`/${lang}/register`}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >

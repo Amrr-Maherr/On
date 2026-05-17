@@ -11,7 +11,7 @@ import {
   LogIn,
   UserCircle,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,6 +24,8 @@ import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 function Navbar() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { data: cartData } = useCart();
@@ -39,8 +41,8 @@ function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     setIsDropdownOpen(false);
-    navigate("/login");
-  }, [navigate]);
+    navigate(`/${lang}/login`);
+  }, [navigate, lang]);
 
   const toggleDropdown = useCallback(() => {
     setIsDropdownOpen((prev) => !prev);
@@ -55,19 +57,19 @@ function Navbar() {
   const handleSearch = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter" && searchQuery.trim()) {
-        navigate(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+        navigate(`/${lang}/products?q=${encodeURIComponent(searchQuery.trim())}`);
         setSearchQuery("");
       }
     },
-    [navigate, searchQuery],
+    [navigate, lang, searchQuery],
   );
 
   const navLinks = [
-    { key: "nav.links.men", href: "/categories/men" },
-    { key: "nav.links.women", href: "/categories/women" },
-    { key: "nav.links.kids", href: "/categories/kids" },
-    { key: "nav.links.sale", href: "/products?onSale=true" },
-    { key: "nav.links.brands", href: "/brands" },
+    { key: "nav.links.men", href: `/${lang}/categories/men` },
+    { key: "nav.links.women", href: `/${lang}/categories/women` },
+    { key: "nav.links.kids", href: `/${lang}/categories/kids` },
+    { key: "nav.links.sale", href: `/${lang}/products?onSale=true` },
+    { key: "nav.links.brands", href: `/${lang}/brands` },
   ];
 
   return (
@@ -104,7 +106,7 @@ function Navbar() {
 
         <div className="hidden items-center gap-0.5 md:flex">
           <ThemeToggle />
-          <Link to="/fave">
+          <Link to={`/${lang}/fave`}>
             <Button
               variant="ghost"
               size="icon"
@@ -119,7 +121,7 @@ function Navbar() {
               )}
             </Button>
           </Link>
-          <Link to="/orders">
+          <Link to={`/${lang}/orders`}>
             <Button
               variant="ghost"
               size="icon"
@@ -134,7 +136,7 @@ function Navbar() {
               )}
             </Button>
           </Link>
-          <Link to="/cart">
+          <Link to={`/${lang}/cart`}>
             <Button
               variant="ghost"
               size="icon"
@@ -166,7 +168,7 @@ function Navbar() {
                   {isLoggedIn ? (
                     <div className="flex flex-col gap-0.5">
                       <Link
-                        to="/orders"
+                        to={`/${lang}/orders`}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -174,7 +176,7 @@ function Navbar() {
                         {t("nav.dropdown.myOrders")}
                       </Link>
                       <Link
-                        to="/profile"
+                        to={`/${lang}/profile`}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -193,7 +195,7 @@ function Navbar() {
                   ) : (
                     <div className="flex flex-col gap-0.5">
                       <Link
-                        to="/login"
+                        to={`/${lang}/login`}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -201,7 +203,7 @@ function Navbar() {
                         {t("nav.dropdown.signIn")}
                       </Link>
                       <Link
-                        to="/register"
+                        to={`/${lang}/register`}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
