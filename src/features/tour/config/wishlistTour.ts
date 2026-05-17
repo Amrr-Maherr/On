@@ -8,9 +8,8 @@ export const wishlistTour: TourConfig = {
     {
       element: "[data-tour='wishlist-items']",
       popover: {
-        title: "Your Favorites",
-        description:
-          "All your saved items live here. The filled heart means it's in your wishlist — click it to remove. Add any item to your cart when you're ready to buy.",
+        titleKey: "tour.steps.wishlist.items.title",
+        descriptionKey: "tour.steps.wishlist.items.description",
         side: "top",
         align: "center",
       },

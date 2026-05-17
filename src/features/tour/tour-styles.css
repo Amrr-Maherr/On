@@ -133,6 +133,11 @@
   color: var(--foreground) !important;
 }
 
+[dir="rtl"] .driver-popover-close-btn {
+  right: auto !important;
+  left: 12px !important;
+}
+
 .driver-stage {
   border-radius: 0 !important;
   outline: 2px solid var(--foreground) !important;

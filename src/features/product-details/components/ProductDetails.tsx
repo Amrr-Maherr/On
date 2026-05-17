@@ -38,7 +38,7 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
         <div className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4">
           <Link
             to="/products"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground/50 transition-colors hover:bg-muted/50 hover:text-foreground"
+            className="flex h-8 w-8 items-center justify-center rounded-none text-muted-foreground/50 transition-colors hover:bg-muted/50 hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>

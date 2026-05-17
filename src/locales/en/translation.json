@@ -1282,5 +1282,172 @@
     "map": {
       "markerAria": "{{name}} in {{city}}"
     }
+  },
+  "tour": {
+    "popover": {
+      "progress": "Step {{current}} of {{total}}",
+      "next": "Next",
+      "back": "Back",
+      "done": "Done"
+    },
+    "resetButton": {
+      "label": "Replay Tour"
+    },
+    "steps": {
+      "home": {
+        "welcome": {
+          "title": "Welcome to On",
+          "description": "Your destination for premium sportswear. Browse collections for Men, Women, and Kids, or check out the latest Sale and top Brands."
+        },
+        "explore": {
+          "title": "Start Exploring",
+          "description": "Discover our latest performance gear. Hit this button to browse the full collection and find your edge."
+        },
+        "featured": {
+          "title": "Featured Products",
+          "description": "Curated picks from top brands. Hover any product to add it to your cart or save it to your wishlist."
+        },
+        "brands": {
+          "title": "Top Brands",
+          "description": "Shop from world-class sportswear brands. Each label brings its own legacy of performance and style."
+        }
+      },
+      "products": {
+        "search": {
+          "title": "Search Products",
+          "description": "Looking for something specific? Type any keyword and press Enter to find it instantly across our entire catalog."
+        },
+        "filters": {
+          "title": "Refine Your Results",
+          "description": "Narrow down products by category, brand, price range, and more. Use the sort dropdown to reorder by latest or price."
+        },
+        "grid": {
+          "title": "Product Cards",
+          "description": "Every product shows its image, price, rating, and quick actions. Hover for instant Add to Cart or save for later."
+        },
+        "sort": {
+          "title": "Sort & Organize",
+          "description": "Arrange products by newest arrivals, price low-to-high, or alphabetically to find your perfect match faster."
+        }
+      },
+      "productDetails": {
+        "gallery": {
+          "title": "Product Gallery",
+          "description": "Browse multiple product images. Click to zoom in and inspect every detail up close before you buy."
+        },
+        "info": {
+          "title": "Product Details",
+          "description": "View the product name, brand, and price at a glance. Any discounts are clearly highlighted for you."
+        },
+        "actions": {
+          "title": "Quick Actions",
+          "description": "Choose your quantity, add to cart, or save to your wishlist \u2014 all in one place."
+        },
+        "reviews": {
+          "title": "Reviews & Ratings",
+          "description": "See what other customers are saying. Read real reviews to make an informed purchase."
+        }
+      },
+      "cart": {
+        "items": {
+          "title": "Your Shopping Bag",
+          "description": "Review all items in your bag. Adjust quantities or remove items you no longer want \u2014 changes update instantly."
+        },
+        "summary": {
+          "title": "Order Summary",
+          "description": "See a clear breakdown of your subtotal, shipping costs, and taxes. Everything is transparent before you pay."
+        },
+        "checkout": {
+          "title": "Ready to Checkout?",
+          "description": "When you\u2019re happy with your bag, hit checkout. You\u2019re only a few steps away from your new gear."
+        }
+      },
+      "wishlist": {
+        "items": {
+          "title": "Your Favorites",
+          "description": "All your saved items live here. The filled heart means it\u2019s in your wishlist \u2014 click it to remove. Add any item to your cart when you\u2019re ready to buy."
+        }
+      },
+      "profile": {
+        "header": {
+          "title": "Your Account",
+          "description": "Your personal dashboard. View your name, email, and account role all in one place."
+        },
+        "info": {
+          "title": "Account Details",
+          "description": "Keep your contact info up to date for faster checkouts and smooth order deliveries."
+        },
+        "actions": {
+          "title": "Manage Your Account",
+          "description": "Edit your personal details anytime or sign out securely. You can also replay this tour from here."
+        }
+      },
+      "orders": {
+        "list": {
+          "title": "Order History",
+          "description": "Track every order you\u2019ve placed. Each card shows the items, total, and current status at a glance."
+        },
+        "status": {
+          "title": "Order Status",
+          "description": "Monitor your order from confirmation to delivery. Paid and delivered badges keep you informed."
+        }
+      },
+      "checkout": {
+        "shipping": {
+          "title": "Shipping Details",
+          "description": "Enter your delivery address and phone number so your order reaches you without a hitch."
+        },
+        "payment": {
+          "title": "Payment Method",
+          "description": "Choose how you\u2019d like to pay \u2014 cash on delivery or securely online with your card."
+        },
+        "review": {
+          "title": "Review & Place Order",
+          "description": "Double-check your items and totals before placing the order. Everything is clear and upfront."
+        }
+      },
+      "about": {
+        "hero": {
+          "title": "About Us",
+          "description": "Learn the story behind On \u2014 our mission to deliver premium sportswear with a focus on quality, trust, and innovation."
+        },
+        "story": {
+          "title": "Our Story & Mission",
+          "description": "Discover how we started and what drives us. From sourcing the finest products to providing a seamless shopping experience."
+        },
+        "values": {
+          "title": "Core Values",
+          "description": "Quality, Trust, Innovation, and Sustainability guide everything we do. Each value reflects our commitment to you."
+        }
+      },
+      "contact": {
+        "hero": {
+          "title": "Get in Touch",
+          "description": "We\u2019re here to help. Reach out to our support team with any questions, feedback, or concerns."
+        },
+        "form": {
+          "title": "Send a Message",
+          "description": "Fill in your details, select a topic, and write your message. We\u2019ll get back to you as soon as possible."
+        },
+        "info": {
+          "title": "Contact Information",
+          "description": "Prefer to call or email? Find our phone number, email address, business hours, and physical location here."
+        }
+      },
+      "help": {
+        "hero": {
+          "title": "Help Center",
+          "description": "Your one-stop resource for answers. Browse topics, find guides, and get the support you need."
+        },
+        "topics": {
+          "title": "Browse Topics",
+          "description": "Explore help categories \u2014 Orders, Shipping, Returns, Payments, Account, Privacy, Policies, and more."
+        },
+        "cta": {
+          "title": "Still Need Help?",
+          "description": "Can\u2019t find what you\u2019re looking for? Contact our support team and we\u2019ll get back to you promptly."
+        }
+      }
+    }
   }
 }

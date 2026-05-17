@@ -117,7 +117,7 @@ const BrandStorySection = memo(function BrandStorySection() {
               <div className="mt-8">
                 <Button
                   onClick={() => navigate("/about")}
-                  className="h-12 cursor-pointer rounded-full bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
+                  className="h-12 cursor-pointer rounded-none bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
                 >
                   {t("home.sections.brandStory.learnStory")}
                   <ArrowRight className="ml-2 h-4 w-4" />

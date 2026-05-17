@@ -18,7 +18,7 @@ const OrdersEmpty = memo(function OrdersEmpty() {
       </div>
       <Link
         to="/products"
-        className="inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+        className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
       >
         {t("orders.empty.shopNow")}
         <ArrowRight className="h-4 w-4" />

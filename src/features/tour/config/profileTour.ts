@@ -7,9 +7,8 @@ export const profileTour: TourConfig = {
     {
       element: "[data-tour='profile-header']",
       popover: {
-        title: "Your Account",
-        description:
-          "Your personal dashboard. View your name, email, and account role all in one place.",
+        titleKey: "tour.steps.profile.header.title",
+        descriptionKey: "tour.steps.profile.header.description",
         side: "bottom",
         align: "center",
       },
@@ -17,9 +16,8 @@ export const profileTour: TourConfig = {
     {
       element: "[data-tour='profile-info']",
       popover: {
-        title: "Account Details",
-        description:
-          "Keep your contact info up to date for faster checkouts and smooth order deliveries.",
+        titleKey: "tour.steps.profile.info.title",
+        descriptionKey: "tour.steps.profile.info.description",
         side: "top",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const profileTour: TourConfig = {
     {
       element: "[data-tour='profile-actions']",
       popover: {
-        title: "Manage Your Account",
-        description:
-          "Edit your personal details anytime or sign out securely. You can also replay this tour from here.",
+        titleKey: "tour.steps.profile.actions.title",
+        descriptionKey: "tour.steps.profile.actions.description",
         side: "left",
         align: "center",
       },

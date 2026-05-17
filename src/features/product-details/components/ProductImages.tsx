@@ -23,7 +23,7 @@ const ProductImages = memo(function ProductImages({ images, selectedImage, onSel
             <button
               key={img}
               onClick={() => onSelectImage(img)}
-              className={`shrink-0 overflow-hidden rounded-lg ring-1 transition-all ${
+              className={`shrink-0 overflow-hidden rounded-none ring-1 transition-all ${
                 selectedImage === img
                   ? "ring-primary ring-2"
                   : "ring-foreground/10"

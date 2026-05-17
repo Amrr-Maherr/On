@@ -7,9 +7,8 @@ export const productDetailsTour: TourConfig = {
     {
       element: "[data-tour='product-gallery']",
       popover: {
-        title: "Product Gallery",
-        description:
-          "Browse multiple product images. Click to zoom in and inspect every detail up close before you buy.",
+        titleKey: "tour.steps.productDetails.gallery.title",
+        descriptionKey: "tour.steps.productDetails.gallery.description",
         side: "right",
         align: "center",
       },
@@ -17,9 +16,8 @@ export const productDetailsTour: TourConfig = {
     {
       element: "[data-tour='product-info']",
       popover: {
-        title: "Product Details",
-        description:
-          "View the product name, brand, and price at a glance. Any discounts are clearly highlighted for you.",
+        titleKey: "tour.steps.productDetails.info.title",
+        descriptionKey: "tour.steps.productDetails.info.description",
         side: "left",
         align: "center",
       },
@@ -27,9 +25,8 @@ export const productDetailsTour: TourConfig = {
     {
       element: "[data-tour='product-actions']",
       popover: {
-        title: "Quick Actions",
-        description:
-          "Choose your quantity, add to cart, or save to your wishlist — all in one place.",
+        titleKey: "tour.steps.productDetails.actions.title",
+        descriptionKey: "tour.steps.productDetails.actions.description",
         side: "left",
         align: "center",
       },
@@ -37,9 +34,8 @@ export const productDetailsTour: TourConfig = {
     {
       element: "[data-tour='product-reviews']",
       popover: {
-        title: "Reviews & Ratings",
-        description:
-          "See what other customers are saying. Read real reviews to make an informed purchase.",
+        titleKey: "tour.steps.productDetails.reviews.title",
+        descriptionKey: "tour.steps.productDetails.reviews.description",
         side: "top",
         align: "center",
       },

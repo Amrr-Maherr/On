@@ -71,7 +71,7 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
             type="button"
             onClick={openLightbox}
             aria-label={t("products.details.gallery.openFullscreen")}
-            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm text-muted-foreground/40 transition-all duration-200 hover:bg-background hover:text-foreground active:scale-90 sm:right-4 sm:top-4 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100"
+            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-none bg-background/80 backdrop-blur-sm text-muted-foreground/40 transition-all duration-200 hover:bg-background hover:text-foreground active:scale-90 sm:right-4 sm:top-4 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100"
           >
             <Expand className="h-4 w-4" strokeWidth={1.5} />
           </button>

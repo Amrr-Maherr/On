@@ -64,7 +64,7 @@ export default function PoliciesPage() {
           <Link
             key={policy.title}
             to={policy.href}
-            className="group rounded-xl border bg-card p-6 transition-shadow hover:shadow-md"
+            className="group rounded-none border bg-card p-6 transition-shadow hover:shadow-md"
           >
             <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
               {policy.icon}

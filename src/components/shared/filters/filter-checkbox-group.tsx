@@ -26,7 +26,7 @@ function FilterCheckboxGroup({ options }: FilterCheckboxGroupProps) {
             type="checkbox"
             checked={selectedValues.includes(option.value)}
             onChange={() => handleToggle(option.value)}
-            className="h-4 w-4 rounded border-border/60 text-foreground accent-foreground"
+            className="h-4 w-4 rounded-none border-border/60 text-foreground accent-foreground"
           />
           <span>{option.label}</span>
           {option.count !== undefined && (
