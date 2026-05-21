@@ -1,6 +1,5 @@
-import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -22,35 +21,64 @@ import { useAllCategories } from "@/features/categories/hooks/useGetAllCategorie
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 
 export default function ProductsPage() {
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
+  const sort = searchParams.get("sort") || "";
+  const priceMin = Number(searchParams.get("priceMin")) || 0;
+  const priceMax = Number(searchParams.get("priceMax")) || 10000;
   const { t } = useTranslation();
   const location = useLocation();
   const lang = getLangFromPath(location.pathname);
-  const { data, isLoading, error, refetch } = useAllProducts(page);
+
+  const setParam = (key: string, value: string) =>
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      if (value) next.set(key, value);
+      else next.delete(key);
+      return next;
+    });
+
+  const toggleParam = (key: string, value: string) =>
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      const vals = next.getAll(key);
+      if (vals.includes(value)) {
+        next.delete(key);
+        vals.filter((v) => v !== value).forEach((v) => next.append(key, v));
+      } else {
+        next.append(key, value);
+      }
+      return next;
+    });
+
+  const clearAll = () => setSearchParams(new URLSearchParams());
+
+  const filters = {
+    page,
+    ...(searchParams.has("category") && { categoryIn: searchParams.getAll("category") }),
+    ...(searchParams.has("brand") && { brandIn: searchParams.getAll("brand") }),
+    ...(sort && { sort }),
+    ...(priceMin > 0 && { priceGte: priceMin }),
+    ...(priceMax < 10000 && { priceLte: priceMax }),
+  };
+
+  const { data, isLoading, error, refetch } = useAllProducts(filters);
 
   const { data: categoriesData } = useAllCategories({ limit: 100, page: 1 });
   const { data: brandsData } = useAllBrands(1);
 
-  const products = useMemo(() => data?.data ?? [], [data?.data]);
+  const products = data?.data ?? [];
   const metadata = data?.metadata;
 
-  const categories = useMemo(
-    () =>
-      categoriesData?.data.map((cat) => ({
-        label: cat.name,
-        value: cat._id,
-      })) ?? [],
-    [categoriesData?.data],
-  );
+  const categories = (categoriesData?.data ?? []).map((cat) => ({
+    label: cat.name,
+    value: cat._id,
+  }));
 
-  const brands = useMemo(
-    () =>
-      brandsData?.data.map((b) => ({
-        label: b.name,
-        value: b._id,
-      })) ?? [],
-    [brandsData?.data],
-  );
+  const brands = (brandsData?.data ?? []).map((b) => ({
+    label: b.name,
+    value: b._id,
+  }));
 
   return (
     <>
@@ -102,26 +130,36 @@ export default function ProductsPage() {
             data-tour="filters-panel"
           >
             <FiltersPanel className="sticky top-24 border-0 bg-transparent p-0">
-              <FilterSection
-                title={t("products.filters.sortBy")}
-                data-tour="sort-dropdown"
-              >
-                <FilterSortDropdown />
+              <FilterSection title={t("products.filters.sortBy")} data-tour="sort-dropdown">
+                <FilterSortDropdown value={sort} onChange={(v) => setParam("sort", v)} />
               </FilterSection>
 
               <FilterSection title={t("products.filters.categories")}>
-                <FilterCheckboxGroup options={categories} />
+                <FilterCheckboxGroup
+                  options={categories}
+                  selected={searchParams.getAll("category")}
+                  onToggle={(v) => toggleParam("category", v)}
+                />
               </FilterSection>
 
               <FilterSection title={t("products.filters.brands")}>
-                <FilterCheckboxGroup options={brands} />
+                <FilterCheckboxGroup
+                  options={brands}
+                  selected={searchParams.getAll("brand")}
+                  onToggle={(v) => toggleParam("brand", v)}
+                />
               </FilterSection>
 
               <FilterSection title={t("products.filters.price")}>
-                <FilterPriceRange />
+                <FilterPriceRange value={{ min: priceMin, max: priceMax }} onChange={(v) => {
+                  if (v.min > 0) setParam("priceMin", String(v.min));
+                  else setParam("priceMin", "");
+                  if (v.max < 10000) setParam("priceMax", String(v.max));
+                  else setParam("priceMax", "");
+                }} />
               </FilterSection>
 
-              <button className="mt-8 w-full border-2 border-foreground bg-transparent py-4 text-[10px] font-black uppercase tracking-widest text-foreground transition-all hover:bg-foreground hover:text-background">
+              <button onClick={clearAll} className="mt-8 w-full border-2 border-foreground bg-transparent py-4 text-[10px] font-black uppercase tracking-widest text-foreground transition-all hover:bg-foreground hover:text-background">
                 {t("products.filters.reset")}
               </button>
             </FiltersPanel>
@@ -129,7 +167,12 @@ export default function ProductsPage() {
 
           <div className="min-w-0 flex-1">
             <div className="mb-8 lg:hidden">
-              <MobileFilterSheet categories={categories} brands={brands} />
+              <MobileFilterSheet
+                categories={categories}
+                brands={brands}
+                setParam={setParam}
+                clearAll={clearAll}
+              />
             </div>
 
             {error ? (
@@ -165,7 +208,9 @@ export default function ProductsPage() {
                       currentPage={metadata.currentPage}
                       totalPages={metadata.numberOfPages}
                       onPageChange={() => {
-                        setPage(page + 1);
+                        const next = new URLSearchParams(searchParams);
+                        next.set("page", String(page + 1));
+                        setSearchParams(next);
                       }}
                     />
                   </div>
