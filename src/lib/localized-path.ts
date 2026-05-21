@@ -25,10 +25,13 @@ export function useLocalizedNavigate() {
 
   return useCallback(
     (to: string | number, options?: any) => {
-      if (typeof to === "string" && to.startsWith("/")) {
-        navigate(buildLocalizedPath(to, lang), options);
+      if (typeof to === "string") {
+        navigate(
+          to.startsWith("/") ? buildLocalizedPath(to, lang) : to,
+          options,
+        );
       } else {
-        navigate(to, options as any);
+        navigate(to);
       }
     },
     [navigate, lang],
