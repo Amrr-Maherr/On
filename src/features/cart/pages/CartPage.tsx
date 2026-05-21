@@ -1,8 +1,9 @@
 import { useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
@@ -18,14 +19,16 @@ import CartError from "@/features/cart/components/CartError";
 
 export default function CartPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data, isLoading, error, refetch } = useCart();
   const { mutate: updateItem } = useUpdateCartItem();
@@ -91,8 +94,8 @@ export default function CartPage() {
   }, [clearCartItems, t]);
 
   const handleCheckout = useCallback(() => {
-    navigate("/checkout");
-  }, [navigate]);
+    navigate(buildLocalizedPath("/checkout", lang));
+  }, [navigate, lang]);
 
   return (
     <>
@@ -117,7 +120,7 @@ export default function CartPage() {
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: "/" }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
 
         <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
           <div>

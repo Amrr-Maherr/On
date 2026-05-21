@@ -1,9 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { CreditCard, Wallet, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
@@ -20,15 +21,17 @@ interface CheckoutFormFields {
 
 export default function CheckoutPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const [paymentMethod, setPaymentMethod] = useState<string>("cash");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data: cartData, isLoading } = useCart();
   const { mutate: placeOrder, isPending: isCashing } = useCheckoutCash();
@@ -82,7 +85,7 @@ export default function CheckoutPage() {
       {
         onSuccess: () => {
           toast.success(t("checkout.toast.orderPlaced"));
-          navigate("/orders");
+          navigate(buildLocalizedPath("/orders", lang));
         },
         onError: (err) => {
           toast.error(err.message);
@@ -136,7 +139,7 @@ export default function CheckoutPage() {
 
       <div className="container-layout py-8">
         <div className="mx-auto max-w-5xl">
-          <Breadcrumb items={[{ label: t("checkout.page.breadcrumb.home"), href: "/" }, { label: t("checkout.page.breadcrumb.checkout") }]} className="mb-6" />
+          <Breadcrumb items={[{ label: t("checkout.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("checkout.page.breadcrumb.checkout") }]} className="mb-6" />
         <div className="mb-12 border-l-4 border-foreground pl-6">
           <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
             {t("checkout.page.catalog.label")}

@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -9,12 +10,14 @@ import ContentSection from "@/features/footer-pages/components/ContentSection";
 
 export default function SupportPolicyPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
 
   return (
     <PageLayout>
       <PageHelmet title={t("footerPages.supportPolicy.page.title")} description={t("footerPages.supportPolicy.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.supportPolicy.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.supportPolicy.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.supportPolicy.breadcrumb.supportPolicy") },
       ]} />
       <PageHero
@@ -86,7 +89,7 @@ export default function SupportPolicyPage() {
           <p className="mb-4 text-sm text-muted-foreground">
             {t("footerPages.supportPolicy.cta.description")}
           </p>
-          <Link to="/contact">
+          <Link to={buildLocalizedPath("/contact", lang)}>
             <Button>{t("footerPages.supportPolicy.cta.button")}</Button>
           </Link>
         </div>

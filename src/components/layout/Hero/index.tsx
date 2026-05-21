@@ -2,12 +2,15 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import HeroBackground from "./HeroBackground";
 
 const Hero = memo(function Hero() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   return (
@@ -30,7 +33,7 @@ const Hero = memo(function Hero() {
           <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Button
               data-tour="hero-cta"
-              onClick={() => navigate("/products")}
+              onClick={() => navigate(buildLocalizedPath("/products", lang))}
               className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
             >
               {t("home.hero.cta")}
@@ -38,7 +41,7 @@ const Hero = memo(function Hero() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => navigate("/categories")}
+              onClick={() => navigate(buildLocalizedPath("/categories", lang))}
               className="h-16 w-full cursor-pointer rounded-none border-2 border-foreground px-10 text-xs font-black uppercase tracking-[0.3em] text-foreground transition-all duration-500 hover:bg-foreground hover:text-background active:scale-[0.98] sm:w-auto"
             >
               {t("home.hero.secondaryCta")}

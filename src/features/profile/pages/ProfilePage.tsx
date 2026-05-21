@@ -1,7 +1,8 @@
 import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useProfile } from "../hooks/useProfile";
@@ -14,6 +15,8 @@ import EditProfileSheet from "../components/EditProfileSheet";
 
 export default function ProfilePage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const [isEditOpen, setIsEditOpen] = useState(false);
   const { data, isLoading, error, refetch } = useProfile();
@@ -21,16 +24,16 @@ export default function ProfilePage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     toast.success(t("profile.toast.loggedOut"));
-    navigate("/login");
-  }, [navigate]);
+    navigate(buildLocalizedPath("/login", lang));
+  }, [navigate, lang]);
 
   const handleEdit = useCallback(() => {
     setIsEditOpen(true);
@@ -87,7 +90,7 @@ export default function ProfilePage() {
       </section>
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: t("profile.page.breadcrumb.home"), href: "/" }, { label: t("profile.page.breadcrumb.profile") }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("profile.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("profile.page.breadcrumb.profile") }]} className="mb-6" />
 
       <div className="mx-auto space-y-8">
         <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">

@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import type { Category } from "@/features/categories/types";
 
 const CategoryCard = memo(function CategoryCard({
@@ -9,9 +10,10 @@ const CategoryCard = memo(function CategoryCard({
   category: Category;
 }) {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   return (
     <Link
-      to={`/categories/${category.slug}/${category._id}`}
+      to={buildLocalizedPath(`/categories/${category.slug}/${category._id}`, lang)}
       className="group relative block overflow-hidden bg-muted/10 transition-all duration-500"
     >
       <div className="aspect-[4/5] overflow-hidden">

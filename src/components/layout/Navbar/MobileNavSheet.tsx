@@ -1,6 +1,7 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import {
   Heart,
   Package,
@@ -27,8 +28,7 @@ interface MobileNavSheetProps {
 
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
   const { t } = useTranslation();
-  const location = useLocation();
-  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
+  const lang = useCurrentLang();
   const { data: cartData } = useCart();
   const { data: wishlistData } = useWishlist();
   const { data: ordersData } = useOrders();
@@ -43,7 +43,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     onOpenChange(false);
-    navigate(`/${lang}/login`);
+    navigate(buildLocalizedPath("/login", lang));
   }, [navigate, lang, onOpenChange]);
 
   const toggleTheme = useCallback(() => {
@@ -54,7 +54,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
 
   const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchQuery.trim()) {
-      navigate(`/${lang}/products?q=${encodeURIComponent(searchQuery.trim())}`);
+      navigate(`${buildLocalizedPath("/products", lang)}?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
       onOpenChange(false);
     }
@@ -95,11 +95,11 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               {[
-                { key: "nav.links.men", href: `/${lang}/categories/men` },
-                { key: "nav.links.women", href: `/${lang}/categories/women` },
-                { key: "nav.links.kids", href: `/${lang}/categories/kids` },
-                { key: "nav.links.sale", href: `/${lang}/products?onSale=true` },
-                { key: "nav.links.brands", href: `/${lang}/brands` },
+                { key: "nav.links.men", href: buildLocalizedPath("/categories/men", lang) },
+                { key: "nav.links.women", href: buildLocalizedPath("/categories/women", lang) },
+                { key: "nav.links.kids", href: buildLocalizedPath("/categories/kids", lang) },
+                { key: "nav.links.sale", href: `${buildLocalizedPath("/products", lang)}?onSale=true` },
+                { key: "nav.links.brands", href: buildLocalizedPath("/brands", lang) },
               ].map((link) => (
                 <Link
                   key={link.key}
@@ -127,7 +127,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               <Link
-                to={`/${lang}/fave`}
+                to={buildLocalizedPath("/fave", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -144,7 +144,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to={`/${lang}/orders`}
+                to={buildLocalizedPath("/orders", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -161,7 +161,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to={`/${lang}/cart`}
+                to={buildLocalizedPath("/cart", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -188,7 +188,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               {isLoggedIn ? (
                 <>
                   <Link
-                    to={`/${lang}/profile`}
+                    to={buildLocalizedPath("/profile", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -210,7 +210,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               ) : (
                 <>
                   <Link
-                    to={`/${lang}/login`}
+                    to={buildLocalizedPath("/login", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -222,7 +222,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                     </div>
                   </Link>
                   <Link
-                    to={`/${lang}/register`}
+                    to={buildLocalizedPath("/register", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >

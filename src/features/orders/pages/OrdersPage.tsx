@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useOrders } from "@/features/orders/hooks/useOrders";
@@ -34,14 +35,16 @@ function CampaignHeader() {
 
 export default function OrdersPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data, isLoading, error, refetch } = useOrders();
 
@@ -82,7 +85,7 @@ export default function OrdersPage() {
       <CampaignHeader />
       <PageHelmet title={t("orders.page.title")} description={t("orders.page.description")} />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: t("orders.page.breadcrumb.home"), href: "/" }, { label: t("orders.page.breadcrumb.orders") }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("orders.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("orders.page.breadcrumb.orders") }]} className="mb-6" />
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
             {t("orders.page.catalog.label")}

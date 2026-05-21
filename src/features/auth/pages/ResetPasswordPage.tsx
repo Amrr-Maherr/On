@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
@@ -10,6 +11,8 @@ import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
 
 export default function ResetPasswordPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   return (
     <AuthLayout>
       <PageHelmet title={t("auth.page.resetPassword.title")} />
@@ -47,7 +50,7 @@ export default function ResetPasswordPage() {
 
         <div className="mt-8 text-center">
           <Link
-            to="/login"
+            to={buildLocalizedPath("/login", lang)}
             className="group inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
@@ -37,14 +38,16 @@ function CampaignHeader() {
 
 export default function WishlistPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data, isLoading, error, refetch } = useWishlist();
   const { mutate: removeItem, isPending: isRemoving } = useRemoveWishlistItem();
@@ -111,7 +114,7 @@ export default function WishlistPage() {
       <CampaignHeader />
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: "/" }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
             {t("wishlist.page.catalog.label")}

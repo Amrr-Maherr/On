@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -10,6 +11,8 @@ import InfoCard from "@/features/footer-pages/components/InfoCard";
 
 export default function AboutPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
 
   const values = [
     {
@@ -38,7 +41,7 @@ export default function AboutPage() {
     <PageLayout>
       <PageHelmet title={t("footerPages.about.page.title")} description={t("footerPages.about.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.about.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.about.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.about.breadcrumb.about") },
       ]} />
       <PageHero
@@ -79,10 +82,10 @@ export default function AboutPage() {
             sell products; we build lasting relationships with our community.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Link to="/contact">
+            <Link to={buildLocalizedPath("/contact", lang)}>
               <Button variant="outline">{t("footerPages.about.buttons.getInTouch")}</Button>
             </Link>
-            <Link to="/products">
+            <Link to={buildLocalizedPath("/products", lang)}>
               <Button>{t("footerPages.about.buttons.browseProducts")}</Button>
             </Link>
           </div>

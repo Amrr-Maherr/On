@@ -1,17 +1,20 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
+  const handleViewAll = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
   const handleNavigate = useCallback(
-    (slug: string) => navigate(slug),
-    [navigate],
+    (slug: string) => navigate(buildLocalizedPath(slug, lang)),
+    [navigate, lang],
   );
 
   const collections = [

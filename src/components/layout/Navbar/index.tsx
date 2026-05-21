@@ -11,7 +11,8 @@ import {
   LogIn,
   UserCircle,
 } from "lucide-react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,8 +25,7 @@ import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 function Navbar() {
   const { t } = useTranslation();
-  const location = useLocation();
-  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
+  const lang = useCurrentLang();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { data: cartData } = useCart();
@@ -41,7 +41,7 @@ function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     setIsDropdownOpen(false);
-    navigate(`/${lang}/login`);
+    navigate(buildLocalizedPath("/login", lang));
   }, [navigate, lang]);
 
   const toggleDropdown = useCallback(() => {
@@ -57,7 +57,7 @@ function Navbar() {
   const handleSearch = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter" && searchQuery.trim()) {
-        navigate(`/${lang}/products?q=${encodeURIComponent(searchQuery.trim())}`);
+        navigate(`${buildLocalizedPath("/products", lang)}?q=${encodeURIComponent(searchQuery.trim())}`);
         setSearchQuery("");
       }
     },
@@ -65,11 +65,11 @@ function Navbar() {
   );
 
   const navLinks = [
-    { key: "nav.links.men", href: `/${lang}/categories/men` },
-    { key: "nav.links.women", href: `/${lang}/categories/women` },
-    { key: "nav.links.kids", href: `/${lang}/categories/kids` },
-    { key: "nav.links.sale", href: `/${lang}/products?onSale=true` },
-    { key: "nav.links.brands", href: `/${lang}/brands` },
+    { key: "nav.links.men", href: buildLocalizedPath("/categories/men", lang) },
+    { key: "nav.links.women", href: buildLocalizedPath("/categories/women", lang) },
+    { key: "nav.links.kids", href: buildLocalizedPath("/categories/kids", lang) },
+    { key: "nav.links.sale", href: `${buildLocalizedPath("/products", lang)}?onSale=true` },
+    { key: "nav.links.brands", href: buildLocalizedPath("/brands", lang) },
   ];
 
   return (
@@ -106,7 +106,7 @@ function Navbar() {
 
         <div className="hidden items-center gap-0.5 md:flex">
           <ThemeToggle />
-          <Link to={`/${lang}/fave`}>
+          <Link to={buildLocalizedPath("/fave", lang)}>
             <Button
               variant="ghost"
               size="icon"
@@ -121,7 +121,7 @@ function Navbar() {
               )}
             </Button>
           </Link>
-          <Link to={`/${lang}/orders`}>
+          <Link to={buildLocalizedPath("/orders", lang)}>
             <Button
               variant="ghost"
               size="icon"
@@ -136,7 +136,7 @@ function Navbar() {
               )}
             </Button>
           </Link>
-          <Link to={`/${lang}/cart`}>
+          <Link to={buildLocalizedPath("/cart", lang)}>
             <Button
               variant="ghost"
               size="icon"
@@ -168,7 +168,7 @@ function Navbar() {
                   {isLoggedIn ? (
                     <div className="flex flex-col gap-0.5">
                       <Link
-                        to={`/${lang}/orders`}
+                        to={buildLocalizedPath("/orders", lang)}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -176,7 +176,7 @@ function Navbar() {
                         {t("nav.dropdown.myOrders")}
                       </Link>
                       <Link
-                        to={`/${lang}/profile`}
+                        to={buildLocalizedPath("/profile", lang)}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -195,7 +195,7 @@ function Navbar() {
                   ) : (
                     <div className="flex flex-col gap-0.5">
                       <Link
-                        to={`/${lang}/login`}
+                        to={buildLocalizedPath("/login", lang)}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >
@@ -203,7 +203,7 @@ function Navbar() {
                         {t("nav.dropdown.signIn")}
                       </Link>
                       <Link
-                        to={`/${lang}/register`}
+                        to={buildLocalizedPath("/register", lang)}
                         className="flex items-center gap-2.5 rounded-none px-3.5 py-2.5 text-[10px] font-black uppercase tracking-widest text-muted-foreground/80 transition-all hover:bg-muted/50 hover:text-foreground"
                         onClick={closeDropdown}
                       >

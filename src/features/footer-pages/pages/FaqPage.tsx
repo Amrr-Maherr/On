@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
-import { Link } from "react-router-dom";
 
 interface FaqItem {
   question: string;
@@ -14,6 +15,8 @@ interface FaqItem {
 
 export default function FaqPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs: FaqItem[] = [
@@ -60,10 +63,10 @@ export default function FaqPage() {
   ];
 
   const categories = [
-    { label: t("footerPages.faq.categories.orders"), href: "/faq" },
-    { label: t("footerPages.faq.categories.shipping"), href: "/shipping" },
-    { label: t("footerPages.faq.categories.returns"), href: "/returns" },
-    { label: t("footerPages.faq.categories.contactUs"), href: "/contact" },
+    { label: t("footerPages.faq.categories.orders"), href: buildLocalizedPath("/faq", lang) },
+    { label: t("footerPages.faq.categories.shipping"), href: buildLocalizedPath("/shipping", lang) },
+    { label: t("footerPages.faq.categories.returns"), href: buildLocalizedPath("/returns", lang) },
+    { label: t("footerPages.faq.categories.contactUs"), href: buildLocalizedPath("/contact", lang) },
   ];
 
   const toggle = (index: number) => {
@@ -74,7 +77,7 @@ export default function FaqPage() {
     <PageLayout>
       <PageHelmet title={t("footerPages.faq.page.title")} description={t("footerPages.faq.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.faq.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.faq.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.faq.breadcrumb.faq") },
       ]} />
       <PageHero
@@ -147,7 +150,7 @@ export default function FaqPage() {
           {t("footerPages.faq.cta.description")}
         </p>
         <Link
-          to="/contact"
+          to={buildLocalizedPath("/contact", lang)}
           className="mt-10 inline-flex h-16 items-center justify-center bg-foreground px-12 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-300 hover:bg-foreground/90 active:scale-[0.98]"
         >
           {t("footerPages.faq.cta.button")}

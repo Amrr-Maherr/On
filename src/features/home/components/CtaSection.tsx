@@ -1,12 +1,15 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const CtaSection = memo(function CtaSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   return (
@@ -28,7 +31,7 @@ const CtaSection = memo(function CtaSection() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
                 <Button
-                  onClick={() => navigate("/products")}
+                  onClick={() => navigate(buildLocalizedPath("/products", lang))}
                   className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
                   {t("home.sections.cta.button")}

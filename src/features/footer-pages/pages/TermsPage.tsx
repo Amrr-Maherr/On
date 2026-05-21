@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
@@ -42,12 +44,14 @@ const sections = [
 
 export default function TermsPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
 
   return (
     <PageLayout>
       <PageHelmet title={t("footerPages.terms.page.title")} description={t("footerPages.terms.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.terms.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.terms.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.terms.breadcrumb.terms") },
       ]} />
       <PageHero

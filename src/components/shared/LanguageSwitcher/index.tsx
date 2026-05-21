@@ -1,6 +1,7 @@
 import { memo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 
 const LANGUAGES = [
   { code: "en", label: "EN", ariaLabel: "Switch to English" },
@@ -10,12 +11,12 @@ const LANGUAGES = [
 const LanguageSwitcher = memo(function LanguageSwitcher() {
   const navigate = useNavigate();
   const location = useLocation();
-  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
+  const lang = getLangFromPath(location.pathname);
 
   const changeLanguage = useCallback(
     (newLang: string) => {
       if (newLang !== lang) {
-        const path = location.pathname.replace(/^\/[a-z]{2}/i, `/${newLang}`);
+        const path = buildLocalizedPath(location.pathname.replace(/^\/(en|ar)(\/|$)/, "/"), newLang);
         navigate(path + location.search);
       }
     },

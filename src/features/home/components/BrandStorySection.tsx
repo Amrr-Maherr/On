@@ -1,12 +1,15 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Shield, Truck, RefreshCw } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const BrandStorySection = memo(function BrandStorySection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   const stats = [
@@ -90,7 +93,7 @@ const BrandStorySection = memo(function BrandStorySection() {
 
               <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
                 <Button
-                  onClick={() => navigate("/products")}
+                  onClick={() => navigate(buildLocalizedPath("/products", lang))}
                   className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
                   {t("home.sections.brandStory.ourGear")}
@@ -116,7 +119,7 @@ const BrandStorySection = memo(function BrandStorySection() {
 
               <div className="mt-8">
                 <Button
-                  onClick={() => navigate("/about")}
+                  onClick={() => navigate(buildLocalizedPath("/about", lang))}
                   className="h-12 cursor-pointer rounded-none bg-foreground px-8 text-sm font-semibold text-background transition-all duration-300 hover:opacity-90 active:scale-[0.97]"
                 >
                   {t("home.sections.brandStory.learnStory")}

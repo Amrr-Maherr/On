@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
@@ -14,6 +15,8 @@ import type { LoginFormFields } from "@/features/auth/types/auth";
 
 export default function LoginPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const { mutate, isPending, error } = useLogin();
 
@@ -34,7 +37,7 @@ export default function LoginPage() {
         localStorage.setItem("token", response.token);
         localStorage.setItem("userId", response.user._id);
         toast.success(t("auth.toast.loginSuccess"));
-        navigate("/");
+        navigate(buildLocalizedPath("/", lang));
       },
       onError: (err) => {
         toast.error(err.message);
@@ -87,7 +90,7 @@ export default function LoginPage() {
             />
             <div className="flex justify-end">
               <Link
-                to="/forgot-password"
+                to={buildLocalizedPath("/forgot-password", lang)}
                 className="text-xs font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
               >
                 {t("auth.links.forgotPassword")}
@@ -113,7 +116,7 @@ export default function LoginPage() {
         <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
           {t("auth.links.noAccount")}{" "}
           <Link
-            to="/register"
+            to={buildLocalizedPath("/register", lang)}
             className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
             {t("auth.links.createAccount")}

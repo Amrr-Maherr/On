@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -9,6 +10,8 @@ import ContentSection from "@/features/footer-pages/components/ContentSection";
 
 export default function ReturnsPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
 
   const steps = [
     { step: 1, title: t("footerPages.returns.steps.initiate.title"), description: t("footerPages.returns.steps.initiate.description") },
@@ -30,7 +33,7 @@ export default function ReturnsPage() {
     <PageLayout>
       <PageHelmet title={t("footerPages.returns.page.title")} description={t("footerPages.returns.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.returns.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.returns.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.returns.breadcrumb.returns") },
       ]} />
       <PageHero
@@ -99,7 +102,7 @@ export default function ReturnsPage() {
             through our Contact page or email returns@onstore.com.
           </p>
           <div className="mt-4">
-            <Link to="/contact">
+            <Link to={buildLocalizedPath("/contact", lang)}>
               <Button variant="outline" size="sm">{t("footerPages.returns.buttons.contactSupport")}</Button>
             </Link>
           </div>
