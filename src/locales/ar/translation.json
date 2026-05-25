@@ -684,6 +684,10 @@
       "brands": "الماركات"
     },
     "searchPlaceholder": "بحث...",
+    "search": {
+      "noResults": "لا توجد منتجات",
+      "tryAnother": "جرب كلمة بحث أخرى"
+    },
     "aria": {
       "wishlist": "المفضلة",
       "orders": "الطلبات",

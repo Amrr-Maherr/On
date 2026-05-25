@@ -683,6 +683,10 @@
       "brands": "Brands"
     },
     "searchPlaceholder": "Search...",
+    "search": {
+      "noResults": "No products found",
+      "tryAnother": "Try another search term"
+    },
     "aria": {
       "wishlist": "Wishlist",
       "orders": "Orders",
