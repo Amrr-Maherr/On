@@ -11,21 +11,28 @@ interface AddToCartProps {
   className?: string;
 }
 
-export default function AddToCart({ productId, variant = "icon", className }: AddToCartProps) {
+export default function AddToCart({
+  productId,
+  variant = "icon",
+  className,
+}: AddToCartProps) {
   const { t } = useTranslation();
   const { mutate: addToCart, isPending } = useAddToCart();
 
-  const handleClick = useCallback((e: MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    addToCart(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToCart")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToCart, productId, t]);
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+      addToCart(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToCart")),
+          onError: (err) => toast.error(err.response?.data?.message),
+        },
+      );
+    },
+    [addToCart, productId, t],
+  );
 
   if (variant === "overlay") {
     return (
@@ -44,7 +51,9 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
         ) : (
           <ShoppingCart className="h-4 w-4" />
         )}
-        {isPending ? t("products.actions.adding") : t("products.actions.addToBag")}
+        {isPending
+          ? t("products.actions.adding")
+          : t("products.actions.addToBag")}
       </button>
     );
   }

@@ -12,17 +12,20 @@ export default function AddToFav({ productId }: AddToFavProps) {
   const { t } = useTranslation();
   const { mutate: addToWishlist, isPending } = useAddToWishlist();
 
-  const handleClick = useCallback((e: MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    addToWishlist(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToWishlist, productId, t]);
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+      addToWishlist(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
+          onError: (err) => toast.error(err.response?.data?.message),
+        },
+      );
+    },
+    [addToWishlist, productId, t],
+  );
 
   return (
     <button
