@@ -10,7 +10,7 @@ interface AddToFavProps {
 
 export default function AddToFav({ productId }: AddToFavProps) {
   const { t } = useTranslation();
-  const { mutate: addToWishlist, isPending } = useAddToWishlist();
+  const { mutate: addToWishlist, isPending, isSuccess } = useAddToWishlist();
 
   const handleClick = useCallback(
     (e: MouseEvent) => {
@@ -45,7 +45,11 @@ export default function AddToFav({ productId }: AddToFavProps) {
       {isPending ? (
         <Loader2 className="h-3.5 w-3.5 animate-spin text-foreground/70" />
       ) : (
-        <Heart className="h-3.5 w-3.5 text-foreground/70 transition-colors duration-200 hover:text-red-400" />
+        <Heart
+          className={`h-3.5 w-3.5 text-foreground/70 transition-colors duration-200 hover:text-red-400 ${
+            isSuccess ? "fill-red-800" : ""
+          }`}
+        />
       )}
     </button>
   );

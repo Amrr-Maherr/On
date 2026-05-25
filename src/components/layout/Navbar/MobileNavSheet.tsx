@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import {
   Heart,
@@ -16,10 +16,9 @@ import {
 } from "lucide-react";
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { useCart } from "@/features/cart/hooks/useCart";
-import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
-import { useOrders } from "@/features/orders/hooks/useOrders";
 import { useTheme } from "@/shared/providers/theme-provider";
+import { getNavLinks } from "./constants/navbar-links";
+import { useNavbar } from "./hooks/useNavbar";
 
 interface MobileNavSheetProps {
   open: boolean;
@@ -29,22 +28,12 @@ interface MobileNavSheetProps {
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
   const { t } = useTranslation();
   const lang = useCurrentLang();
-  const { data: cartData } = useCart();
-  const { data: wishlistData } = useWishlist();
-  const { data: ordersData } = useOrders();
   const { theme, setTheme } = useTheme();
-  const cartCount = cartData?.numOfCartItems ?? 0;
-  const favCount = wishlistData?.count ?? 0;
-  const ordersCount = ordersData?.length ?? 0;
-  const isLoggedIn = !!localStorage.getItem("token");
-  const navigate = useNavigate();
+  const { cartCount, favCount, ordersCount, isLoggedIn, handleLogout, handleSearch } = useNavbar();
 
-  const handleLogout = useCallback(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    onOpenChange(false);
-    navigate(buildLocalizedPath("/login", lang));
-  }, [navigate, lang, onOpenChange]);
+  const onLogout = useCallback(() => {
+    handleLogout(() => onOpenChange(false));
+  }, [handleLogout, onOpenChange]);
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -52,13 +41,17 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      navigate(`${buildLocalizedPath("/products", lang)}?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
-      onOpenChange(false);
-    }
-  }, [navigate, lang, searchQuery, onOpenChange]);
+  const onSearchKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        handleSearch(searchQuery, () => onOpenChange(false));
+        setSearchQuery("");
+      }
+    },
+    [handleSearch, searchQuery, onOpenChange],
+  );
+
+  const navLinks = getNavLinks(lang);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -82,7 +75,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               placeholder={t("nav.mobile.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleSearch}
+              onKeyDown={onSearchKeyDown}
               className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/30 focus:border-white/40 focus:ring-0"
             />
           </div>
@@ -94,13 +87,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               {t("nav.mobile.shop")}
             </p>
             <div className="space-y-1">
-              {[
-                { key: "nav.links.men", href: buildLocalizedPath("/categories/men", lang) },
-                { key: "nav.links.women", href: buildLocalizedPath("/categories/women", lang) },
-                { key: "nav.links.kids", href: buildLocalizedPath("/categories/kids", lang) },
-                { key: "nav.links.sale", href: `${buildLocalizedPath("/products", lang)}?onSale=true` },
-                { key: "nav.links.brands", href: buildLocalizedPath("/brands", lang) },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.key}
                   to={link.href}
@@ -198,7 +185,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                     <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.profile")}</span>
                   </Link>
                   <button
-                    onClick={handleLogout}
+                    onClick={onLogout}
                     className="flex w-full items-center gap-4 rounded-none px-4 py-4 text-destructive transition-all hover:bg-destructive/5"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-none bg-destructive/10">
@@ -232,16 +219,6 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                       </div>
                       <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.joinUs")}</span>
                     </div>
-                  </Link>
-                  <Link
-                    to={`/${lang}/register`}
-                    onClick={() => onOpenChange(false)}
-                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
-                      <UserCircle className="h-5 w-5" />
-                    </div>
-                    <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.joinUs")}</span>
                   </Link>
                 </>
               )}
