@@ -4,7 +4,7 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
-
+import type { AxiosError } from "axios";
 interface AddToCartProps {
   productId: string;
   variant?: "icon" | "overlay";
@@ -27,7 +27,14 @@ export default function AddToCart({
         { productId },
         {
           onSuccess: () => toast.success(t("products.actions.addedToCart")),
-          onError: (err) => toast.error(err.response?.data?.message),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
+
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
         },
       );
     },

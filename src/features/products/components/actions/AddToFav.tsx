@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Heart, Loader2 } from "lucide-react";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
-
+import type { AxiosError } from "axios";
 interface AddToFavProps {
   productId: string;
 }
@@ -20,7 +20,14 @@ export default function AddToFav({ productId }: AddToFavProps) {
         { productId },
         {
           onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
-          onError: (err) => toast.error(err.response?.data?.message),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
+
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
         },
       );
     },
