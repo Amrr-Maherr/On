@@ -23,7 +23,7 @@ export const NavbarActions = memo(function NavbarActions({
     <div className="hidden items-center gap-0.5 md:flex">
       <ThemeToggle />
       <NavbarIconButton
-        href={buildLocalizedPath("/fave", lang)}
+        href={buildLocalizedPath("/wishlist", lang)}
         ariaLabel={t("nav.aria.wishlist")}
         icon={<Heart className="h-5 w-5" />}
         count={favCount}

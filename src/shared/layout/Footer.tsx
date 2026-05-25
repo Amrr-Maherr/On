@@ -7,10 +7,10 @@ import appStoreBadge from "@/assets/App_Store_(iOS).svg";
 import googlePlayBadge from "@/assets/google-play.png";
 
 const socialLinks = [
-  { name: "Instagram", href: "#", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.774 4.919 4.851.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.075-1.667 4.703-4.919 4.85-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.775-4.919-4.851-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.075 1.666-4.703 4.919-4.85 1.265-.058 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" },
-  { name: "Facebook", href: "#", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
-  { name: "YouTube", href: "#", path: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98l5.56 3.02z" },
-  { name: "X", href: "#", path: "M18.24 3.25h2.91l-6.36 7.27 7.48 9.89h-5.86l-4.59-6-5.25 6H3.66l6.8-7.78L3.25 3.25h6l4.15 5.48zm-1.02 15.4h1.61L6.86 4.96H5.12z" },
+  { labelKey: "footer.social.instagram", href: "#", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.774 4.919 4.851.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.075-1.667 4.703-4.919 4.85-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.775-4.919-4.851-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.075 1.666-4.703 4.919-4.85 1.265-.058 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" },
+  { labelKey: "footer.social.facebook", href: "#", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+  { labelKey: "footer.social.youtube", href: "#", path: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98l5.56 3.02z" },
+  { labelKey: "footer.social.x", href: "#", path: "M18.24 3.25h2.91l-6.36 7.27 7.48 9.89h-5.86l-4.59-6-5.25 6H3.66l6.8-7.78L3.25 3.25h6l4.15 5.48zm-1.02 15.4h1.61L6.86 4.96H5.12z" },
 ];
 
 const Footer = memo(function Footer() {
@@ -50,6 +50,7 @@ const Footer = memo(function Footer() {
         { key: "footer.links.careers", href: buildLocalizedPath("/about", lang) },
         { key: "footer.links.press", href: buildLocalizedPath("/about", lang) },
         { key: "footer.links.affiliates", href: buildLocalizedPath("/brands", lang) },
+        { key: "footer.links.storeLocation", href: buildLocalizedPath("/store-location", lang) },
       ],
     },
     {
@@ -79,9 +80,9 @@ const Footer = memo(function Footer() {
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
                   <a
-                    key={social.name}
+                    key={social.labelKey}
                     href={social.href}
-                    aria-label={social.name}
+                    aria-label={t(social.labelKey)}
                     className="flex h-12 w-12 items-center justify-center border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white hover:text-neutral-950"
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
@@ -147,7 +148,7 @@ const Footer = memo(function Footer() {
                   rel="noopener noreferrer"
                   className="transition-all duration-300 hover:scale-105 hover:opacity-80"
                 >
-                  <img src={appStoreBadge} alt="Download on the App Store" className="h-12 w-auto" />
+                  <img src={appStoreBadge} alt={t("footer.app.appStoreBadgeAlt")} className="h-12 w-auto" />
                 </a>
                 <a
                   href="#"
@@ -155,7 +156,7 @@ const Footer = memo(function Footer() {
                   rel="noopener noreferrer"
                   className="transition-all duration-300 hover:scale-105 hover:opacity-80"
                 >
-                  <img src={googlePlayBadge} alt="Get it on Google Play" className="h-12 w-auto" />
+                  <img src={googlePlayBadge} alt={t("footer.app.googlePlayBadgeAlt")} className="h-12 w-auto" />
                 </a>
               </div>
             </div>
@@ -167,16 +168,16 @@ const Footer = memo(function Footer() {
         <div className="container-layout flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
             <p className="text-[10px] font-black uppercase tracking-widest">
-              &copy; {new Date().getFullYear()} On Store
+              {t("footer.copyright", { year: new Date().getFullYear() })}
             </p>
             <Link to={buildLocalizedPath("/privacy", lang)} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.privacyPolicy")}</Link>
             <Link to={buildLocalizedPath("/terms", lang)} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.termsOfService")}</Link>
             <Link to={buildLocalizedPath("/policies", lang)} className="text-[10px] font-black uppercase tracking-widest transition-opacity hover:opacity-70">{t("footer.bottom.storePolicies")}</Link>
           </div>
           <div className="flex items-center gap-8">
-            {["Visa", "Mastercard", "PayPal", "Apple Pay"].map((method) => (
+            {(["visa", "mastercard", "paypal", "applePay"] as const).map((method) => (
               <span key={method} className="text-[10px] font-black uppercase tracking-[0.2em] opacity-30">
-                {method}
+                {t(`footer.paymentMethods.${method}`)}
               </span>
             ))}
           </div>

@@ -63,6 +63,9 @@ const SupportPolicyPage = lazy(
 const PoliciesPage = lazy(
   () => import("@/features/footer-pages/pages/PoliciesPage"),
 );
+const StoreLocationPage = lazy(
+  () => import("@/features/footer-pages/pages/StoreLocationPage"),
+);
 const BranchesPage = lazy(
   () => import("@/features/branches/pages/BranchesPage"),
 );
@@ -118,7 +121,6 @@ export default function AppRoutes() {
           <Route path="orders" element={<OrdersPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="wishlist" element={<WishlistPage />} />
-          <Route path="fave" element={<WishlistPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
@@ -130,6 +132,7 @@ export default function AppRoutes() {
           <Route path="help" element={<HelpPage />} />
           <Route path="support-policy" element={<SupportPolicyPage />} />
           <Route path="policies" element={<PoliciesPage />} />
+          <Route path="store-location" element={<StoreLocationPage />} />
           <Route path="branches" element={<BranchesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

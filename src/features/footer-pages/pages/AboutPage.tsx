@@ -52,35 +52,14 @@ export default function AboutPage() {
 
       <div className="mb-10 grid gap-6 lg:grid-cols-2" data-tour="about-story">
         <ContentSection title={t("footerPages.about.sections.story.title")} variant="card">
-          <p>
-            Founded with a passion for delivering exceptional products at fair prices, our store began as a small
-            operation with a big dream: to make quality shopping accessible to everyone. Over the years, we have grown
-            into a trusted destination for thousands of customers worldwide, but our core mission remains unchanged.
-          </p>
-          <p>
-            Every product in our catalogue is carefully selected by our dedicated curation team. We partner with
-            reputable manufacturers and artisans who share our commitment to craftsmanship, durability, and design.
-            Whether you are looking for everyday essentials or something special, we are here to help you find exactly
-            what you need.
-          </p>
-          <p>
-            Our fulfilment centres are strategically located to ensure fast, reliable delivery no matter where you are.
-            We pride ourselves on meticulous packing and real-time order tracking, so you always know when to expect
-            your order.
-          </p>
+          <p>{t("footerPages.about.sections.story.p1")}</p>
+          <p>{t("footerPages.about.sections.story.p2")}</p>
+          <p>{t("footerPages.about.sections.story.p3")}</p>
         </ContentSection>
 
         <ContentSection title={t("footerPages.about.sections.mission.title")} variant="card">
-          <p>
-            We believe shopping should be seamless, enjoyable, and secure. Our mission is to remove the friction from
-            online retail by offering intuitive browsing, transparent pricing, and a checkout experience that takes
-            seconds, not minutes.
-          </p>
-          <p>
-            Customer satisfaction is at the heart of everything we do. Our support team is available around the clock
-            to answer questions, resolve issues, and ensure every interaction leaves you feeling valued. We do not just
-            sell products; we build lasting relationships with our community.
-          </p>
+          <p>{t("footerPages.about.sections.mission.p1")}</p>
+          <p>{t("footerPages.about.sections.mission.p2")}</p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link to={buildLocalizedPath("/contact", lang)}>
               <Button variant="outline">{t("footerPages.about.buttons.getInTouch")}</Button>

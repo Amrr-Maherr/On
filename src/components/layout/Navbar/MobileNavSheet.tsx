@@ -185,7 +185,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               <Link
-                to={buildLocalizedPath("/fave", lang)}
+                to={buildLocalizedPath("/wishlist", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
