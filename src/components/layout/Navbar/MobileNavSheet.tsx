@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
@@ -10,6 +10,7 @@ import {
   LogIn,
   LogOut,
   Search,
+  X,
   Sun,
   Moon,
   ChevronRight,
@@ -19,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { useTheme } from "@/shared/providers/theme-provider";
 import { getNavLinks } from "./constants/navbar-links";
 import { useNavbar } from "./hooks/useNavbar";
+import { useSearchDropdown } from "./hooks/useSearchDropdown";
 
 interface MobileNavSheetProps {
   open: boolean;
@@ -30,6 +32,14 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
   const lang = useCurrentLang();
   const { theme, setTheme } = useTheme();
   const { cartCount, favCount, ordersCount, isLoggedIn, handleLogout, handleSearch } = useNavbar();
+  const {
+    query,
+    showDropdown,
+    filteredProducts,
+    isLoading,
+    handleInputChange,
+    clearSearch,
+  } = useSearchDropdown();
 
   const onLogout = useCallback(() => {
     handleLogout(() => onOpenChange(false));
@@ -39,17 +49,20 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
     setTheme(theme === "dark" ? "light" : "dark");
   }, [theme, setTheme]);
 
-  const [searchQuery, setSearchQuery] = useState("");
-
   const onSearchKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter") {
-        handleSearch(searchQuery, () => onOpenChange(false));
-        setSearchQuery("");
+        handleSearch(query, () => onOpenChange(false));
+        clearSearch();
       }
     },
-    [handleSearch, searchQuery, onOpenChange],
+    [handleSearch, query, onOpenChange, clearSearch],
   );
+
+  const onProductClick = useCallback(() => {
+    clearSearch();
+    onOpenChange(false);
+  }, [clearSearch, onOpenChange]);
 
   const navLinks = getNavLinks(lang);
 
@@ -73,11 +86,69 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
             <Input
               placeholder={t("nav.mobile.searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={query}
+              onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={onSearchKeyDown}
               className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/30 focus:border-white/40 focus:ring-0"
             />
+
+            {query && (
+              <button
+                type="button"
+                onClick={clearSearch}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 transition-colors hover:text-white"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            )}
+
+            {showDropdown && (
+              <div className="absolute left-0 top-full z-50 mt-2 max-h-[320px] w-full overflow-y-auto border border-white/10 bg-neutral-900 shadow-2xl">
+                {isLoading ? (
+                  <div className="flex items-center justify-center py-6">
+                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  </div>
+                ) : filteredProducts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center gap-2 py-6 text-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
+                      <Search className="h-4 w-4 text-white/50" />
+                    </div>
+                    <p className="text-sm font-semibold text-white/70">
+                      No products found
+                    </p>
+                    <span className="text-xs text-white/40">
+                      Try another search
+                    </span>
+                  </div>
+                ) : (
+                  filteredProducts.map((product) => (
+                    <Link
+                      to={buildLocalizedPath(
+                        `/products/${product.slug}/${product.id}`,
+                        lang,
+                      )}
+                      key={product.id}
+                      onClick={onProductClick}
+                      className="flex w-full items-center gap-3 border-b border-white/10 p-3 text-left transition-colors hover:bg-white/10"
+                    >
+                      <img
+                        src={product.imageCover}
+                        alt={product.title}
+                        className="h-14 w-14 shrink-0 object-cover"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-bold text-white">
+                          {product.title}
+                        </p>
+                        <p className="mt-1 text-xs text-white/60">
+                          {product.price} EGP
+                        </p>
+                      </div>
+                    </Link>
+                  ))
+                )}
+              </div>
+            )}
           </div>
         </div>
 
