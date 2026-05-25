@@ -732,6 +732,7 @@
       "newArrivals": "New Arrivals",
       "salesOffers": "Sales & Offers",
       "helpCenter": "Help Center",
+      "faq": "FAQ",
       "contactUs": "Contact Us",
       "trackOrder": "Track Order",
       "shippingInfo": "Shipping Info",
@@ -768,7 +769,7 @@
       "googlePlay": "Google Play"
     },
     "bottom": {
-      "privacyPoliy": "Privacy Policy",
+      "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service",
       "storePolicies": "Store Policies"
     }
