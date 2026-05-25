@@ -3,35 +3,15 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import OrderCard from "@/features/orders/components/OrderCard";
 import OrdersLoader from "@/features/orders/components/OrdersLoader";
 import OrdersEmpty from "@/features/orders/components/OrdersEmpty";
 import OrdersError from "@/features/orders/components/OrdersError";
-
-function CampaignHeader() {
-  const { t } = useTranslation();
-  return (
-    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-      <div
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553729459-afe8f2e2e065?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-      <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-          {t("orders.page.hero.subtitle")}
-        </p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-          {t("orders.page.hero.title")}
-        </h1>
-        <p className="mt-4 max-w-lg text-lg text-white/70">
-          {t("orders.page.hero.description")}
-        </p>
-      </div>
-    </section>
-  );
-}
+import { isAxiosError } from "axios";
 
 export default function OrdersPage() {
   const { t } = useTranslation();
@@ -51,18 +31,36 @@ export default function OrdersPage() {
   if (isLoading) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("orders.page.hero.title")}
+          subtitle={t("orders.page.hero.subtitle")}
+          description={t("orders.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <OrdersLoader />
       </>
     );
   }
 
   if (error) {
+    console.log(error);
+
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("orders.page.hero.title")}
+          subtitle={t("orders.page.hero.subtitle")}
+          description={t("orders.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <OrdersError
-          message={error instanceof Error ? error.message : t("orders.error.defaultMessage")}
+          message={
+            isAxiosError(error)
+              ? error.response?.data?.message
+              : error instanceof Error
+                ? error.message
+                : t("orders.error.defaultMessage")
+          }
           onRetry={() => refetch()}
         />
       </>
@@ -74,7 +72,12 @@ export default function OrdersPage() {
   if (orders.length === 0) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("orders.page.hero.title")}
+          subtitle={t("orders.page.hero.subtitle")}
+          description={t("orders.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <OrdersEmpty />
       </>
     );
@@ -82,10 +85,27 @@ export default function OrdersPage() {
 
   return (
     <>
-      <CampaignHeader />
-      <PageHelmet title={t("orders.page.title")} description={t("orders.page.description")} />
+      <CampaignHeader
+        title={t("orders.page.hero.title")}
+        subtitle={t("orders.page.hero.subtitle")}
+        description={t("orders.page.hero.description")}
+        videoUrl={heroVideo}
+      />
+      <PageHelmet
+        title={t("orders.page.title")}
+        description={t("orders.page.description")}
+      />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: t("orders.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("orders.page.breadcrumb.orders") }]} className="mb-6" />
+        <Breadcrumb
+          items={[
+            {
+              label: t("orders.page.breadcrumb.home"),
+              href: buildLocalizedPath("/", lang),
+            },
+            { label: t("orders.page.breadcrumb.orders") },
+          ]}
+          className="mb-6"
+        />
         <div className="mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
             {t("orders.page.catalog.label")}

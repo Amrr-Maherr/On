@@ -5,6 +5,8 @@ import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/useCart";
@@ -101,23 +103,12 @@ export default function CartPage() {
     <>
       <PageHelmet title={t("cart.page.title")} description={t("cart.page.description")} />
 
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            {t("cart.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            {t("cart.page.hero.title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-lg text-white/70">
-            {t("cart.page.hero.description")}
-          </p>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("cart.page.hero.subtitle")}
+        title={t("cart.page.hero.title")}
+        description={t("cart.page.hero.description")}
+        videoUrl={heroVideo}
+      />
 
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />

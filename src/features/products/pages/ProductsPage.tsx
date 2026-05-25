@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
 import ProductsLoader from "../components/ProductsLoader";
@@ -87,21 +89,12 @@ export default function ProductsPage() {
         description={t("products.page.description")}
       />
 
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            {t("products.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            {t("products.page.hero.title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-lg text-white/70">
-            {t("products.page.hero.description")}
-          </p>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("products.page.hero.subtitle")}
+        title={t("products.page.hero.title")}
+        description={t("products.page.hero.description")}
+        videoUrl={heroVideo}
+      />
 
       <div className="container-layout section-py pt-8">
         <Breadcrumb

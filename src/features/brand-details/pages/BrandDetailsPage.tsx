@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
@@ -33,16 +34,11 @@ export default function BrandDetailsPage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">
-            {t("brands.card.label")}
-          </p>
-          <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter text-white md:text-8xl">{brand.name}.</h1>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("brands.card.label")}
+        title={`${brand.name}.`}
+        backgroundImage="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+      />
       <PageHelmet title={brand.name} description={t("brands.page.description")} />
       <div className="container-layout py-12">
         <Breadcrumb

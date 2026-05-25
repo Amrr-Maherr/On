@@ -7,30 +7,8 @@ import { branches as branchData } from "@/features/branches/data/branches"
 import BranchMap from "@/features/branches/components/BranchMap"
 import BranchCard from "@/features/branches/components/BranchCard"
 import BranchEmpty from "@/features/branches/components/BranchEmpty"
-
-function CampaignHeader() {
-  const { t } = useTranslation()
-
-  return (
-    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-      <div
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-      <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-          {t("branches.page.hero.subtitle")}
-        </p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-          {t("branches.page.hero.title")}
-        </h1>
-        <p className="mt-4 max-w-lg text-lg text-white/70">
-          {t("branches.page.hero.description")}
-        </p>
-      </div>
-    </section>
-  )
-}
+import CampaignHeader from "@/components/shared/components/CampaignHeader"
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4"
 
 export default function BranchesPage() {
   const { t } = useTranslation()
@@ -60,7 +38,12 @@ export default function BranchesPage() {
   if (branches.length === 0) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("branches.page.hero.title")}
+          subtitle={t("branches.page.hero.subtitle")}
+          description={t("branches.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <BranchEmpty />
       </>
     )
@@ -73,7 +56,12 @@ export default function BranchesPage() {
         description={t("branches.page.description")}
       />
 
-      <CampaignHeader />
+      <CampaignHeader
+        title={t("branches.page.hero.title")}
+        subtitle={t("branches.page.hero.subtitle")}
+        description={t("branches.page.hero.description")}
+        videoUrl={heroVideo}
+      />
 
       <div className="container-layout section-py pt-8">
         <Breadcrumb

@@ -12,29 +12,8 @@ import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
 import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
 import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
 import WishlistError from "@/features/wishlist/components/WishlistError";
-
-function CampaignHeader() {
-  const { t } = useTranslation();
-  return (
-    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-      <div
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-      <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-          {t("wishlist.page.hero.subtitle")}
-        </p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-          {t("wishlist.page.hero.title")}
-        </h1>
-        <p className="mt-4 max-w-lg text-lg text-white/70">
-          {t("wishlist.page.hero.description")}
-        </p>
-      </div>
-    </section>
-  );
-}
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 
 export default function WishlistPage() {
   const { t } = useTranslation();
@@ -58,7 +37,12 @@ export default function WishlistPage() {
   if (isLoading) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistLoader />
       </>
     );
@@ -67,7 +51,12 @@ export default function WishlistPage() {
   if (error) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistError
           message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
           onRetry={() => refetch()}
@@ -82,7 +71,12 @@ export default function WishlistPage() {
   if (items.length === 0) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistEmpty />
       </>
     );
@@ -111,7 +105,12 @@ export default function WishlistPage() {
 
   return (
     <>
-      <CampaignHeader />
+      <CampaignHeader
+        title={t("wishlist.page.hero.title")}
+        subtitle={t("wishlist.page.hero.subtitle")}
+        description={t("wishlist.page.hero.description")}
+        videoUrl={heroVideo}
+      />
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">
         <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />

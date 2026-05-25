@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "../components/BrandCard";
 import BrandsLoader from "../components/BrandsLoader";
@@ -28,23 +29,12 @@ export default function BrandsPage() {
     <>
       <PageHelmet title={t("brands.page.title")} description={t("brands.page.description")} />
 
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            {t("brands.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            {t("brands.page.hero.title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-lg text-white/70">
-            {t("brands.page.hero.description")}
-          </p>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("brands.page.hero.subtitle")}
+        title={t("brands.page.hero.title")}
+        description={t("brands.page.hero.description")}
+        backgroundImage="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+      />
 
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: t("brands.page.breadcrumb.home"), href: "/" }, { label: t("brands.page.breadcrumb.brands") }]} className="mb-6" />
