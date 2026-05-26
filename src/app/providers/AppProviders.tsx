@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
 import { store } from "@/app/store";
-import i18n from "@/app/i18n";
 import { ThemeProvider } from "@/shared/providers/theme-provider";
-
+import i18n from "@/i18n";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,6 +29,7 @@ function AppProviders({ children }: AppProvidersProps) {
             <ThemeProvider>{children}</ThemeProvider>
           </HelmetProvider>
         </I18nextProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Provider>
   );

@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -12,26 +11,26 @@ const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
     const inputId = id || label.toLowerCase().replace(/\s+/g, "-");
 
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         <label
           htmlFor={inputId}
-          className="text-sm font-medium text-foreground"
+          className="text-xs font-black uppercase tracking-widest text-foreground/70"
         >
           {label}
         </label>
-        <Input
+        <input
           ref={ref}
           id={inputId}
           className={cn(
-            "h-9 w-full",
-            error && "aria-invalid:border-destructive",
+            "h-14 w-full rounded-none border-2 border-border/40 bg-transparent px-4 text-sm font-bold text-foreground transition-all duration-300 placeholder:text-muted-foreground/30 focus:border-foreground focus:outline-none",
+            error && "border-destructive",
             className,
           )}
           aria-invalid={!!error}
           {...props}
         />
         {error && (
-          <p className="text-xs text-destructive" role="alert">
+          <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-destructive" role="alert">
             {error}
           </p>
         )}

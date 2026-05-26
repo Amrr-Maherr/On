@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface AuthFormWrapperProps {
@@ -6,18 +6,20 @@ interface AuthFormWrapperProps {
   className?: string;
 }
 
-export default function AuthFormWrapper({
+const AuthFormWrapper = memo(function AuthFormWrapper({
   children,
   className,
 }: AuthFormWrapperProps) {
   return (
     <div
       className={cn(
-        "w-full max-w-md rounded-xl bg-card p-6 ring-1 ring-foreground/10 sm:p-8",
+        "w-full max-w-[440px]",
         className,
       )}
     >
       {children}
     </div>
   );
-}
+});
+
+export default AuthFormWrapper;
