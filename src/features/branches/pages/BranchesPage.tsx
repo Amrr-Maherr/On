@@ -72,17 +72,19 @@ export default function BranchesPage() {
           className="mb-6"
         />
 
-        <div className="mb-12 border-l-4 border-foreground pl-6">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-            {t("branches.page.catalog.label")}
-          </span>
-          <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-            {t("branches.page.catalog.title")}
-          </h1>
-          <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
-            {t("branches.page.catalog.count", { count: branches.length })}
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-12 border-l-4 border-foreground pl-6">
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              {t("branches.page.catalog.label")}
+            </span>
+            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              {t("branches.page.catalog.title")}
+            </h1>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+              {t("branches.page.catalog.count", { count: branches.length })}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
           <div className="h-[400px] md:h-[500px] lg:h-[600px] lg:sticky lg:top-24">

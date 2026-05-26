@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { CreditCard, Wallet, Loader2 } from "lucide-react";
@@ -146,17 +147,19 @@ export default function CheckoutPage() {
             ]}
             className="mb-6"
           />
-          <div className="mb-12 border-l-4 border-foreground pl-6">
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-              {t("checkout.page.catalog.label")}
-            </span>
-            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              {t("checkout.page.catalog.title")}
-            </h1>
-            <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
-              {t("checkout.page.catalog.description")}
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="mb-12 border-l-4 border-foreground pl-6">
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+                {t("checkout.page.catalog.label")}
+              </span>
+              <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+                {t("checkout.page.catalog.title")}
+              </h1>
+              <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+                {t("checkout.page.catalog.description")}
+              </p>
+            </div>
+          </ScrollReveal>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-16 lg:grid-cols-[1fr_420px]">

@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
@@ -114,27 +115,30 @@ export default function WishlistPage() {
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">
         <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
-        <div className="mb-10">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            {t("wishlist.page.catalog.label")}
-          </span>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
-            {t("wishlist.page.catalog.title")}
-          </h2>
-          <p className="mt-1 text-sm font-medium text-muted-foreground/60">
-            {t("wishlist.page.catalog.count", { count })}
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+              {t("wishlist.page.catalog.label")}
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
+              {t("wishlist.page.catalog.title")}
+            </h2>
+            <p className="mt-1 text-sm font-medium text-muted-foreground/60">
+              {t("wishlist.page.catalog.count", { count })}
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="space-y-4" data-tour="wishlist-items">
-          {items.map((product) => (
-            <WishlistItemCard
-              key={product._id}
-              product={product}
-              onRemove={handleRemove}
-              onAddToCart={handleAddToCart}
-              isRemoving={isRemoving && removingId === product._id}
-              isAddingToCart={isAddingToCart && addingToCartId === product._id}
-            />
+          {items.map((product, index) => (
+            <ScrollReveal key={product._id} delay={index * 0.04} direction="up" distance={16}>
+              <WishlistItemCard
+                product={product}
+                onRemove={handleRemove}
+                onAddToCart={handleAddToCart}
+                isRemoving={isRemoving && removingId === product._id}
+                isAddingToCart={isAddingToCart && addingToCartId === product._id}
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>
