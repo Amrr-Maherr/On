@@ -26,7 +26,8 @@ const Slider = memo(function Slider({
   modules = [Pagination, Autoplay],
   useFadeEffect = false,
   hideNavigation = true,
-}: SliderProps) {
+  showPagination = true,
+}: SliderProps & { showPagination?: boolean }) {
   const swiperRef = useRef<SwiperRef>(null);
 
   const effect = useMemo(
@@ -93,7 +94,7 @@ const Slider = memo(function Slider({
         spaceBetween={spaceBetween}
         autoplay={autoplayConfig}
         loop={swiperOptions.loop ?? false}
-        pagination={swiperOptions.pagination ?? false}
+        pagination={showPagination ? { clickable: true } : false}
         speed={swiperOptions.speed ?? 800}
         effect={effect}
         fadeEffect={useFadeEffect ? { crossFade: true } : undefined}
@@ -103,7 +104,7 @@ const Slider = memo(function Slider({
         allowSlideNext={true}
         allowSlidePrev={true}
         virtual={true}
-        className={`mySwiper ${className || ""}`}
+        className={`mySwiper !pb-16 ${className || ""}`}
         {...swiperOptions}
       >
         {slides}

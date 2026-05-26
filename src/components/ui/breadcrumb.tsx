@@ -1,4 +1,5 @@
-import * as React from "react"
+import { Fragment, memo } from "react"
+import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 
@@ -12,43 +13,43 @@ interface BreadcrumbProps {
   className?: string
 }
 
-function Breadcrumb({ items, className }: BreadcrumbProps) {
+const Breadcrumb = memo(function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
     <nav aria-label="breadcrumb" data-slot="breadcrumb" className={cn(className)}>
       <ol data-slot="breadcrumb-list" className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
           return (
-            <React.Fragment key={`${item.label}-${index}`}>
+            <Fragment key={`${item.label}-${index}`}>
               <li data-slot="breadcrumb-item" className="inline-flex items-center gap-1.5">
                 {isLast ? (
-                  <span data-slot="breadcrumb-current" className="text-foreground" aria-current="page">
+                  <span data-slot="breadcrumb-current" className="text-sm font-semibold text-foreground" aria-current="page">
                     {item.label}
                   </span>
                 ) : item.href ? (
-                  <a
+                  <Link
                     data-slot="breadcrumb-link"
-                    href={item.href}
-                    className="transition-colors hover:text-foreground"
+                    to={item.href}
+                    className="text-sm font-medium transition-colors hover:text-foreground"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ) : (
-                  <span className="transition-colors hover:text-foreground">{item.label}</span>
+                  <span className="text-sm font-medium transition-colors hover:text-foreground">{item.label}</span>
                 )}
               </li>
               {!isLast && (
                 <li data-slot="breadcrumb-separator" className="[&>svg]:size-4" role="presentation">
-                  <ChevronRight />
+                  <ChevronRight className="text-muted-foreground/30" strokeWidth={2} />
                 </li>
               )}
-            </React.Fragment>
+            </Fragment>
           )
         })}
       </ol>
     </nav>
   )
-}
+})
 
 export { Breadcrumb }
 export type { BreadcrumbItem }

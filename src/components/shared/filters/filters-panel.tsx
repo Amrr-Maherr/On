@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import { memo, useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,10 +10,11 @@ interface FiltersPanelProps {
   className?: string;
 }
 
-export default function FiltersPanel({
+const FiltersPanel = memo(function FiltersPanel({
   children,
   className,
 }: FiltersPanelProps) {
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -22,10 +24,10 @@ export default function FiltersPanel({
           variant="outline"
           size="sm"
           onClick={() => setMobileOpen(true)}
-          className="gap-2"
+          className="gap-2 rounded-none border-2"
         >
           <SlidersHorizontal className="h-4 w-4" />
-          Filters
+          {t("products.filters.panel.title")}
         </Button>
       </div>
 
@@ -35,7 +37,7 @@ export default function FiltersPanel({
           className,
         )}
       >
-        <div className="sticky top-24 space-y-1 rounded-xl bg-card p-5 ring-1 ring-foreground/10">
+        <div className="sticky top-24 space-y-1 rounded-none border-2 border-border/40 bg-card p-5">
           {children}
         </div>
       </aside>
@@ -57,13 +59,14 @@ export default function FiltersPanel({
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed inset-y-0 right-0 z-50 w-80 max-w-full bg-background shadow-xl lg:hidden"
             >
-              <div className="flex items-center justify-between border-b border-border px-5 py-4">
-                <span className="text-sm font-semibold">Filters</span>
+              <div className="flex items-center justify-between border-b border-border/30 px-5 py-4">
+                <span className="text-sm font-bold uppercase tracking-wider">{t("products.filters.panel.title")}</span>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Close filters"
+                  aria-label={t("products.filters.panel.close")}
+                  className="rounded-none border-2 border-transparent hover:border-border/40"
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -75,4 +78,6 @@ export default function FiltersPanel({
       </AnimatePresence>
     </>
   );
-}
+});
+
+export default FiltersPanel;
