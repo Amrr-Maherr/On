@@ -1,40 +1,43 @@
-import { Card } from "@/components/ui/card";
+import { memo } from "react";
 
-export default function CartLoader() {
+const CartLoader = memo(function CartLoader() {
   return (
     <div className="container-layout py-8">
-      <div className="mb-8 h-8 w-56 animate-pulse rounded bg-muted" />
+      <div className="mb-8 h-8 w-56 animate-pulse rounded-xl bg-muted" />
       <div className="grid gap-4 lg:grid-cols-[1fr_320px] lg:gap-8">
         <div className="space-y-4">
           {Array.from({ length: 3 }).map((_, i) => (
-            <Card key={i} className="flex-row gap-4 p-4">
-              <div className="h-24 w-24 shrink-0 animate-pulse rounded-lg bg-muted md:h-28 md:w-28" />
+            <div key={i} className="flex gap-5 rounded-2xl border border-border/50 p-5">
+              <div className="h-28 w-28 shrink-0 animate-pulse rounded-xl bg-muted md:h-32 md:w-32" />
               <div className="flex flex-1 flex-col justify-between gap-3">
-                <div className="h-4 w-3/4 animate-pulse rounded bg-muted" />
-                <div className="h-3 w-1/4 animate-pulse rounded bg-muted" />
+                <div className="h-4 w-3/4 animate-pulse rounded-lg bg-muted" />
+                <div className="h-3 w-1/4 animate-pulse rounded-lg bg-muted" />
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1">
-                    <div className="h-7 w-7 animate-pulse rounded-lg bg-muted" />
-                    <div className="h-7 w-10 animate-pulse rounded bg-muted" />
-                    <div className="h-7 w-7 animate-pulse rounded-lg bg-muted" />
+                    <div className="h-9 w-9 animate-pulse rounded-xl bg-muted" />
+                    <div className="h-9 w-12 animate-pulse rounded-lg bg-muted" />
+                    <div className="h-9 w-9 animate-pulse rounded-xl bg-muted" />
                   </div>
-                  <div className="h-5 w-16 animate-pulse rounded bg-muted" />
+                  <div className="h-5 w-20 animate-pulse rounded-lg bg-muted" />
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
         <div>
-          <Card className="p-4">
-            <div className="mb-4 h-5 w-32 animate-pulse rounded bg-muted" />
-            <div className="space-y-3">
-              <div className="h-4 w-full animate-pulse rounded bg-muted" />
-              <div className="h-4 w-full animate-pulse rounded bg-muted" />
-              <div className="h-4 w-full animate-pulse rounded bg-muted" />
+          <div className="rounded-2xl border border-border/50 p-6">
+            <div className="mb-5 h-5 w-32 animate-pulse rounded-lg bg-muted" />
+            <div className="space-y-4">
+              <div className="h-4 w-full animate-pulse rounded-lg bg-muted" />
+              <div className="h-4 w-full animate-pulse rounded-lg bg-muted" />
+              <div className="h-4 w-full animate-pulse rounded-lg bg-muted" />
+              <div className="h-8 w-full animate-pulse rounded-full bg-muted" />
             </div>
-          </Card>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+});
+
+export default CartLoader;

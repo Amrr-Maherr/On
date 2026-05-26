@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Helmet } from "react-helmet-async";
 
 interface PageHelmetProps {
@@ -7,7 +8,7 @@ interface PageHelmetProps {
 
 const APP_NAME = "On";
 
-export default function PageHelmet({ title, description }: PageHelmetProps) {
+const PageHelmet = memo(function PageHelmet({ title, description }: PageHelmetProps) {
   const fullTitle = `${title} | ${APP_NAME}`;
 
   return (
@@ -16,4 +17,6 @@ export default function PageHelmet({ title, description }: PageHelmetProps) {
       {description && <meta name="description" content={description} />}
     </Helmet>
   );
-}
+});
+
+export default PageHelmet;

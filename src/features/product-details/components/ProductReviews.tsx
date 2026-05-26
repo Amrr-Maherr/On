@@ -1,3 +1,5 @@
+import { memo, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/features/products/types";
@@ -17,19 +19,25 @@ function formatDate(dateString: string): string {
   });
 }
 
-export default function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
-  const displayed = showAll ? reviews : reviews.slice(0, 3);
+const ProductReviews = memo(function ProductReviews({ reviews, showAll, onToggleShowAll }: ProductReviewsProps) {
+  const { t } = useTranslation();
+  const displayed = useMemo(() => showAll ? reviews : reviews.slice(0, 3), [reviews, showAll]);
 
   if (reviews.length === 0) {
     return (
       <section>
-        <h2 className="mb-6 text-xl font-bold">Customer Reviews</h2>
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card py-12 text-center">
-          <MessageSquare className="h-10 w-10 text-muted-foreground/50" />
+        <div className="mb-8">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+            {t("products.details.reviews.label")}
+          </span>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">{t("products.details.reviews.title")}</h2>
+        </div>
+        <div className="flex flex-col items-center gap-4 rounded-none border-2 border-border/40 bg-card py-12 text-center md:py-20">
+          <MessageSquare className="h-10 w-10 text-muted-foreground/30" />
           <div>
-            <p className="font-medium">No reviews yet</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Be the first to review this product.
+            <p className="text-sm font-black uppercase tracking-widest text-foreground">{t("products.details.reviews.emptyTitle")}</p>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60">
+              {t("products.details.reviews.emptyDescription")}
             </p>
           </div>
         </div>
@@ -39,43 +47,49 @@ export default function ProductReviews({ reviews, showAll, onToggleShowAll }: Pr
 
   return (
     <section>
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-xl font-bold">Customer Reviews</h2>
-        <span className="text-sm text-muted-foreground">{reviews.length} reviews</span>
+      <div className="mb-8 flex items-end justify-between border-b-2 border-border/40 pb-6">
+        <div>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
+            {t("products.details.reviews.label")}
+          </span>
+          <h2 className="mt-2 text-2xl font-black tracking-tight">{t("products.details.reviews.title")}</h2>
+        </div>
+        <span className="text-[10px] font-black uppercase tracking-widest tabular-nums text-muted-foreground/60">{t("products.details.reviews.count", { count: reviews.length })}</span>
       </div>
       <div className="grid gap-4">
         {displayed.map((review) => (
           <div
             key={review._id}
-            className="rounded-xl bg-card p-5 ring-1 ring-foreground/10"
+            className="rounded-none border-2 border-border/40 bg-card p-6 transition-all duration-300 hover:border-foreground/20"
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted text-sm font-semibold">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-none bg-muted text-sm font-black">
                   {review.user.name.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                  <p className="text-sm font-medium">{review.user.name}</p>
-                  <div className="flex items-center gap-0.5">
+                  <p className="text-sm font-black uppercase tracking-tight">{review.user.name}</p>
+                  <div className="flex items-center gap-0.5 mt-1.5">
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
                         className={`h-3.5 w-3.5 ${
                           i < Math.round(review.rating)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-muted-foreground/30"
+                            ? "fill-amber-400 text-amber-400"
+                            : "text-muted-foreground/20"
                         }`}
+                        strokeWidth={i < Math.round(review.rating) ? 0 : 2}
                       />
                     ))}
                   </div>
                 </div>
               </div>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">
                 {formatDate(review.createdAt)}
               </span>
             </div>
             {review.review && (
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-sm font-bold leading-relaxed text-muted-foreground/80">
                 {review.review}
               </p>
             )}
@@ -83,12 +97,14 @@ export default function ProductReviews({ reviews, showAll, onToggleShowAll }: Pr
         ))}
       </div>
       {reviews.length > 3 && (
-        <div className="mt-6 text-center">
-          <Button variant="outline" onClick={onToggleShowAll}>
-            {showAll ? "Show Less" : `Show More (${reviews.length - 3} more)`}
+        <div className="mt-8 text-center">
+          <Button variant="outline" className="h-14 px-10 text-[10px] font-black uppercase tracking-[0.2em]" onClick={onToggleShowAll}>
+            {showAll ? t("products.details.reviews.showLess") : t("products.details.reviews.showAll", { count: reviews.length })}
           </Button>
         </div>
       )}
     </section>
   );
-}
+});
+
+export default ProductReviews;
