@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -8,7 +9,7 @@ interface CategoriesPaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export default function CategoriesPagination({
+const CategoriesPagination = memo(function CategoriesPagination({
   currentPage,
   totalPages,
   onPageChange,
@@ -66,4 +67,6 @@ export default function CategoriesPagination({
       </Button>
     </nav>
   );
-}
+});
+
+export default CategoriesPagination;

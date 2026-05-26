@@ -5,3 +5,34 @@ export interface FeatureItem {
   description: string;
   icon?: LucideIcon;
 }
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  socials: {
+    website: string;
+    linkedin: string;
+  };
+}
+
+export interface BlogPost {
+  coverImage: string;
+  title: string;
+  date: string;
+  description: string;
+}
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  avatar: string;
+  quote: string;
+  rating: number;
+}
+
+export interface Value {
+  image: string;
+  title: string;
+  description: string;
+}

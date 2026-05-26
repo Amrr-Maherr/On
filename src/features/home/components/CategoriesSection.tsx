@@ -1,17 +1,23 @@
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useAllCategories } from "@/features/categories/hooks/useGetAllCategories";
 import CategoryCard from "@/features/categories/components/CategoryCard";
 import CategoriesLoader from "@/features/categories/components/CategoriesLoader";
 import CategoriesError from "@/features/categories/components/CategoriesError";
 import Section from "@/components/shared/components/Section";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
-export default function CategoriesSection() {
+const CategoriesSection = memo(function CategoriesSection() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useAllCategories(1);
+
+  const getErrorMessage = useCallback(
+    (error: unknown): string => {
+      if (error instanceof Error) return error.message;
+      if (typeof error === "string") return error;
+      return t("categories.error.defaultMessage");
+    },
+    [t],
+  );
 
   if (isLoading) {
     return (
@@ -19,8 +25,8 @@ export default function CategoriesSection() {
         slidesPerView={4}
         slidesPerViewMobile={1.5}
         hideNavigation
-        title="Categories."
-        description="Shop by category"
+        title={t("home.sections.categories.title")}
+        description={t("home.sections.categories.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
           <CategoriesLoader key={i} />
@@ -35,8 +41,8 @@ export default function CategoriesSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Categories."
-        description="Shop by category"
+        title={t("home.sections.categories.title")}
+        description={t("home.sections.categories.description")}
       >
         <CategoriesError
           message={getErrorMessage(error)}
@@ -54,10 +60,10 @@ export default function CategoriesSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Categories."
-        description="Shop by category"
+        title={t("home.sections.categories.title")}
+        description={t("home.sections.categories.description")}
       >
-        <CategoriesError message="No categories available at the moment." />
+        <CategoriesError message={t("home.sections.categories.noCategories")} />
       </Section>
     );
   }
@@ -67,12 +73,14 @@ export default function CategoriesSection() {
       slidesPerView={4}
       slidesPerViewMobile={1.5}
       hideNavigation={false}
-      title="Categories."
-      description="Shop by category"
+      title={t("home.sections.categories.title")}
+      description={t("home.sections.categories.description")}
     >
       {categories.map((category) => (
         <CategoryCard key={category._id} category={category} />
       ))}
     </Section>
   );
-}
+});
+
+export default CategoriesSection;

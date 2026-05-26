@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 
 interface PageLayoutProps {
   children: ReactNode;
 }
 
-export default function PageLayout({ children }: PageLayoutProps) {
+const PageLayout = memo(function PageLayout({ children }: PageLayoutProps) {
   return (
     <div className="container-layout py-8">
-      <div className="mx-auto max-w-6xl">
-        {children}
-      </div>
+      {children}
     </div>
   );
-}
+});
+
+export default PageLayout;

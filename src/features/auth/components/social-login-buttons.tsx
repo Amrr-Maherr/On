@@ -1,42 +1,47 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
 const socialProviders = [
   { name: "Google", icon: "G" },
   { name: "Facebook", icon: "f" },
 ] as const;
 
-export default function SocialLoginButtons() {
+const SocialLoginButtons = memo(function SocialLoginButtons() {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+      transition={{ duration: 0.3, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="relative my-6">
+      <div className="relative my-8">
         <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t border-border" />
+          <span className="w-full border-t border-border/50" />
         </div>
         <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-card px-2 text-muted-foreground">or</span>
+          <span className="bg-background px-3 text-muted-foreground/50 tracking-[0.1em]">
+            {t("auth.social.orContinueWith")}
+          </span>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
         {socialProviders.map((provider) => (
-          <Button
+          <button
             key={provider.name}
-            variant="outline"
             type="button"
-            className="h-9 cursor-pointer gap-2 rounded-lg"
+            className="flex h-14 cursor-pointer items-center justify-center gap-3 rounded-none border-2 border-border/40 bg-transparent text-xs font-black uppercase tracking-widest text-foreground/70 transition-all duration-300 hover:border-foreground hover:bg-muted/30 hover:text-foreground active:scale-[0.98]"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-foreground/10 text-xs font-bold">
+            <span className="flex h-6 w-6 items-center justify-center bg-foreground text-[10px] font-black text-background">
               {provider.icon}
             </span>
             {provider.name}
-          </Button>
+          </button>
         ))}
       </div>
     </motion.div>
   );
-}
+});
+
+export default SocialLoginButtons;

@@ -1,5 +1,8 @@
 import { useState } from "react";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "@/features/brands/components/BrandCard";
 import { useAllBrands } from "@/features/all-brands/hooks/useAllBrands";
 import BrandsLoader from "@/features/all-brands/components/BrandsLoader";
@@ -36,30 +39,45 @@ export default function AllBrandsPage() {
   }
 
   return (
-    <div className="container-layout py-8">
+    <>
       <PageHelmet title="All Brands" description="Discover our curated brands." />
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold md:text-3xl">All Brands</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {data?.results ?? brands.length} brands
-          </p>
+
+      <CampaignHeader
+        subtitle="Discover"
+        title="Brands."
+        description="The world&apos;s most trusted names in performance sportswear."
+        backgroundImage="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80"
+      />
+
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "All Brands" }]} className="mb-6" />
+        <ScrollReveal>
+          <div className="mb-10">
+            <h1 className="text-4xl font-black tracking-tight text-foreground md:text-5xl">All Brands</h1>
+            <p className="mt-2 text-sm text-muted-foreground/70">
+              {data?.results ?? brands.length} brands
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {brands.map((brand, index) => (
+            <ScrollReveal key={brand._id} delay={index * 0.03} direction="up" distance={20}>
+              <BrandCard brand={brand} />
+            </ScrollReveal>
+          ))}
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {brands.map((brand) => (
-          <BrandCard key={brand._id} brand={brand} />
-        ))}
+        {metadata && (
+          <div className="mt-10">
+            <BrandsPagination
+              currentPage={metadata.currentPage}
+              totalPages={metadata.numberOfPages}
+              onPageChange={setPage}
+            />
+          </div>
+        )}
       </div>
-
-      {metadata && (
-        <BrandsPagination
-          currentPage={metadata.currentPage}
-          totalPages={metadata.numberOfPages}
-          onPageChange={setPage}
-        />
-      )}
-    </div>
+    </>
   );
 }

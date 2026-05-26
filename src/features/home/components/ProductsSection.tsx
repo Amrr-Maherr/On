@@ -1,17 +1,23 @@
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
 import ProductsError from "@/features/products/components/ProductsError";
 import Section from "@/components/shared/components/Section";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
-export default function ProductsSection() {
+const ProductsSection = memo(function ProductsSection() {
+  const { t } = useTranslation();
   const { data, isLoading, error, refetch } = useAllProducts(1);
+
+  const getErrorMessage = useCallback(
+    (error: unknown): string => {
+      if (error instanceof Error) return error.message;
+      if (typeof error === "string") return error;
+      return t("products.error.defaultMessage");
+    },
+    [t],
+  );
 
   if (isLoading) {
     return (
@@ -19,8 +25,8 @@ export default function ProductsSection() {
         slidesPerView={4}
         slidesPerViewMobile={1.5}
         hideNavigation
-        title="Recommendations."
-        description="Best matching products for you"
+        title={t("home.sections.products.loadingTitle")}
+        description={t("home.sections.products.loadingDesc")}
       >
         {Array.from({ length: 5 }, (_, i) => (
           <ProductsLoader key={i} />
@@ -35,8 +41,8 @@ export default function ProductsSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Recommendations."
-        description="Best matching products for you"
+        title={t("home.sections.products.loadingTitle")}
+        description={t("home.sections.products.errorDesc")}
       >
         <ProductsError
           message={getErrorMessage(error)}
@@ -54,25 +60,28 @@ export default function ProductsSection() {
         slidesPerView={1}
         slidesPerViewMobile={1}
         hideNavigation
-        title="Recommendations."
-        description="Best matching products for you"
+        title={t("home.sections.products.emptyTitle")}
+        description={t("home.sections.products.emptyDesc")}
       >
-        <ProductsError message="No products available at the moment." />
+        <ProductsError message={t("home.sections.products.noProducts")} />
       </Section>
     );
   }
 
   return (
     <Section
+      data-tour="featured-products"
       slidesPerView={4}
       slidesPerViewMobile={1.5}
       hideNavigation={false}
-      title="Recommendations."
-      description="Best matching products for you"
+      title={t("home.sections.products.title")}
+      description={t("home.sections.products.description")}
     >
       {products.slice(0, 10).map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </Section>
   );
-}
+});
+
+export default ProductsSection;
