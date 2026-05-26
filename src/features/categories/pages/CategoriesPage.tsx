@@ -1,7 +1,9 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useQuery } from "@tanstack/react-query";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "../components/CategoryCard";
 import CategoriesLoader from "../components/CategoriesLoader";
@@ -43,38 +45,29 @@ export default function CategoriesPage() {
     <>
       <PageHelmet title={t("categories.page.title")} description={t("categories.page.description")} />
 
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            {t("categories.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            {t("categories.page.hero.title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-lg text-white/70">
-            {t("categories.page.hero.description")}
-          </p>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("categories.page.hero.subtitle")}
+        title={t("categories.page.hero.title")}
+        description={t("categories.page.hero.description")}
+        backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+      />
 
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: t("categories.page.breadcrumb.home"), href: "/" }, { label: t("categories.page.breadcrumb.categories") }]} className="mb-6" />
 
-        <div className="mb-12 border-l-4 border-foreground pl-6">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-            {t("categories.page.catalog.label")}
-          </span>
-          <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-            {t("categories.page.catalog.title")}
-          </h1>
-          <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
-            {t("categories.page.catalog.count", { count: categories.length })}
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-12 border-l-4 border-foreground pl-6">
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              {t("categories.page.catalog.label")}
+            </span>
+            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              {t("categories.page.catalog.title")}
+            </h1>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+              {t("categories.page.catalog.count", { count: categories.length })}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="flex gap-16">
           <div className="hidden w-64 shrink-0 lg:block">
@@ -112,8 +105,10 @@ export default function CategoriesPage() {
             ) : (
               <>
                 <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                  {categories.map((category) => (
-                    <CategoryCard key={category.id || category._id} category={category} />
+                  {categories.map((category, index) => (
+                    <ScrollReveal key={category.id || category._id} delay={index * 0.03} direction="up" distance={20}>
+                      <CategoryCard category={category} />
+                    </ScrollReveal>
                   ))}
                 </div>
 

@@ -1,7 +1,8 @@
 import { useState, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import type { Product } from "@/features/products/types";
 import { ProductGallery } from "@/features/product-details/components/product-gallery";
@@ -27,6 +28,8 @@ interface ProductDetailsProps {
 
 const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsProps) {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const [quantity, setQuantity] = useState(1);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
@@ -37,15 +40,15 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
       <div className="container-layout">
         <div className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4">
           <Link
-            to="/products"
+            to={buildLocalizedPath("/products", lang)}
             className="flex h-8 w-8 items-center justify-center rounded-none text-muted-foreground/50 transition-colors hover:bg-muted/50 hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
           <Breadcrumb
             items={[
-              { label: t("products.details.breadcrumb.home"), href: "/" },
-              { label: t("products.details.breadcrumb.products"), href: "/products" },
+              { label: t("products.details.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
+              { label: t("products.details.breadcrumb.products"), href: buildLocalizedPath("/products", lang) },
               { label: product.category.name },
             ]}
           />

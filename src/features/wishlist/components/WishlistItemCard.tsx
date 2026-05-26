@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
@@ -21,6 +22,7 @@ const WishlistItemCard = memo(({
   isAddingToCart,
 }: WishlistItemCardProps) => {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   const displayPrice = product.priceAfterDiscount ?? product.price;
   const hasDiscount = !!product.priceAfterDiscount;
 
@@ -32,7 +34,7 @@ const WishlistItemCard = memo(({
       )}
     >
       <Link
-        to={`/products/${product.title}/${product._id}`}
+        to={buildLocalizedPath(`/products/${product.title}/${product._id}`, lang)}
         className="h-28 w-28 shrink-0 overflow-hidden rounded-none bg-muted/50 transition-opacity hover:opacity-80 md:h-32 md:w-32"
       >
         <img
@@ -47,7 +49,7 @@ const WishlistItemCard = memo(({
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             <Link
-              to={`/products/${product.title}/${product._id}`}
+              to={buildLocalizedPath(`/products/${product.title}/${product._id}`, lang)}
               className="truncate text-base font-semibold text-foreground transition-colors hover:text-muted-foreground/80"
             >
               {product.title}

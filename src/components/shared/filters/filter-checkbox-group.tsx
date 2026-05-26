@@ -1,20 +1,16 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 
 interface FilterCheckboxGroupProps {
   options: { label: string; value: string; count?: number }[];
+  selected: string[];
+  onToggle: (value: string) => void;
 }
 
-function FilterCheckboxGroup({ options }: FilterCheckboxGroupProps) {
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-
-  const handleToggle = (value: string) => {
-    setSelectedValues((prev) =>
-      prev.includes(value)
-        ? prev.filter((v) => v !== value)
-        : [...prev, value],
-    );
-  };
-
+/*
+ * Multi-select checkbox group for filters.
+ * Uses URL search params as the single source of truth (via onToggle).
+ */
+function FilterCheckboxGroup({ options, selected, onToggle }: FilterCheckboxGroupProps) {
   return (
     <div className="space-y-2">
       {options.map((option) => (
@@ -24,15 +20,13 @@ function FilterCheckboxGroup({ options }: FilterCheckboxGroupProps) {
         >
           <input
             type="checkbox"
-            checked={selectedValues.includes(option.value)}
-            onChange={() => handleToggle(option.value)}
+            checked={selected.includes(option.value)}
+            onChange={() => onToggle(option.value)}
             className="h-4 w-4 rounded-none border-border/60 text-foreground accent-foreground"
           />
           <span>{option.label}</span>
           {option.count !== undefined && (
-            <span className="ml-auto text-xs font-semibold text-muted-foreground/60">
-              {option.count}
-            </span>
+            <span className="ml-auto text-xs font-semibold text-muted-foreground/60">{option.count}</span>
           )}
         </label>
       ))}

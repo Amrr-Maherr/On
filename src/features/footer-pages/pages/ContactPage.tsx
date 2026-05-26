@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
@@ -7,12 +9,13 @@ import ContactInfo from "@/features/footer-pages/components/ContactInfo";
 
 export default function ContactPage() {
   const { t } = useTranslation();
-
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   return (
     <PageLayout>
       <PageHelmet title={t("footerPages.contact.page.title")} description={t("footerPages.contact.page.description")} />
       <Breadcrumb className="mb-6" items={[
-        { label: t("footerPages.contact.breadcrumb.home"), href: "/" },
+        { label: t("footerPages.contact.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
         { label: t("footerPages.contact.breadcrumb.contact") },
       ]} />
       <PageHero

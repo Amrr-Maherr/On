@@ -1,7 +1,8 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
@@ -11,9 +12,11 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const TrendingProductsSection = memo(function TrendingProductsSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const { data, isLoading, error, refetch } = useAllProducts(1);
-  const handleViewAll = useCallback(() => navigate("/products"), [navigate]);
+  const handleViewAll = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
 
   const getErrorMessage = useCallback(
     (error: unknown): string => {

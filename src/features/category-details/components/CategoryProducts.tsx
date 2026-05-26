@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useAllProducts } from "@/features/all-products/hooks/useAllProducts";
+import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductsLoader from "@/features/products/components/ProductsLoader";
 import ProductsError from "@/features/products/components/ProductsError";

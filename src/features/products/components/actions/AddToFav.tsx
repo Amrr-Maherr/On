@@ -3,26 +3,36 @@ import { useTranslation } from "react-i18next";
 import { Heart, Loader2 } from "lucide-react";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
-
+import type { AxiosError } from "axios";
 interface AddToFavProps {
   productId: string;
 }
 
 export default function AddToFav({ productId }: AddToFavProps) {
   const { t } = useTranslation();
-  const { mutate: addToWishlist, isPending } = useAddToWishlist();
+  const { mutate: addToWishlist, isPending, isSuccess } = useAddToWishlist();
 
-  const handleClick = useCallback((e: MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    addToWishlist(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToWishlist, productId, t]);
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+      addToWishlist(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
+
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
+        },
+      );
+    },
+    [addToWishlist, productId, t],
+  );
 
   return (
     <button
@@ -35,7 +45,11 @@ export default function AddToFav({ productId }: AddToFavProps) {
       {isPending ? (
         <Loader2 className="h-3.5 w-3.5 animate-spin text-foreground/70" />
       ) : (
-        <Heart className="h-3.5 w-3.5 text-foreground/70 transition-colors duration-200 hover:text-red-400" />
+        <Heart
+          className={`h-3.5 w-3.5 text-foreground/70 transition-colors duration-200 hover:text-red-400 ${
+            isSuccess ? "fill-red-800" : ""
+          }`}
+        />
       )}
     </button>
   );

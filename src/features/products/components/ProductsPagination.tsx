@@ -20,7 +20,11 @@ function ProductsPagination({
 
   const pages: (number | "...")[] = [];
   for (let i = 1; i <= totalPages; i++) {
-    if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+    if (
+      i === 1 ||
+      i === totalPages ||
+      (i >= currentPage - 1 && i <= currentPage + 1)
+    ) {
       pages.push(i);
     } else if (pages[pages.length - 1] !== "...") {
       pages.push("...");
@@ -28,7 +32,10 @@ function ProductsPagination({
   }
 
   return (
-    <nav className="mt-12 flex items-center justify-center gap-1.5" aria-label={t("products.pagination.label")}>
+    <nav
+      className="mt-12 flex items-center justify-center gap-1.5"
+      aria-label={t("products.pagination.label")}
+    >
       <Button
         variant="outline"
         size="icon"
@@ -42,7 +49,10 @@ function ProductsPagination({
 
       {pages.map((page, i) =>
         page === "..." ? (
-          <span key={`ellipsis-${i}`} className="flex h-10 w-10 items-center justify-center text-sm font-bold text-muted-foreground">
+          <span
+            key={`ellipsis-${i}`}
+            className="flex h-10 w-10 items-center justify-center text-sm font-bold text-muted-foreground"
+          >
             ...
           </span>
         ) : (
@@ -51,7 +61,10 @@ function ProductsPagination({
             variant={currentPage === page ? "default" : "outline"}
             size="icon"
             onClick={() => onPageChange(page as number)}
-            className={cn("h-10 w-10 rounded-none border-2", currentPage === page && "cursor-default border-foreground")}
+            className={cn(
+              "h-10 w-10 rounded-none border-2",
+              currentPage === page && "cursor-default border-foreground",
+            )}
             aria-current={currentPage === page ? "page" : undefined}
           >
             {page}

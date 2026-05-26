@@ -63,12 +63,17 @@ const SupportPolicyPage = lazy(
 const PoliciesPage = lazy(
   () => import("@/features/footer-pages/pages/PoliciesPage"),
 );
+const StoreLocationPage = lazy(
+  () => import("@/features/footer-pages/pages/StoreLocationPage"),
+);
 const BranchesPage = lazy(
   () => import("@/features/branches/pages/BranchesPage"),
 );
 const NotFoundPage = lazy(
   () => import("@/features/not-found/pages/NotFoundPage"),
 );
+
+import { useLocation } from "react-router-dom";
 
 function LangLayout() {
   const { lang } = useParams();
@@ -87,14 +92,16 @@ function LangLayout() {
   return <Outlet />;
 }
 
+function RootRedirect() {
+  const location = useLocation();
+  return <Navigate to={`/en${location.pathname}${location.search}`} replace />;
+}
+
 export default function AppRoutes() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
-        {["/auth", "/products", "/contact", "/login", "/register", "/forgot-password", "/about"].map(p => (
-          <Route key={p} path={p} element={<Navigate to={`/en${p}`} replace />} />
-        ))}
         <Route path="/:lang" element={<LangLayout />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />} />
@@ -114,7 +121,6 @@ export default function AppRoutes() {
           <Route path="orders" element={<OrdersPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="wishlist" element={<WishlistPage />} />
-          <Route path="fave" element={<WishlistPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
@@ -126,9 +132,11 @@ export default function AppRoutes() {
           <Route path="help" element={<HelpPage />} />
           <Route path="support-policy" element={<SupportPolicyPage />} />
           <Route path="policies" element={<PoliciesPage />} />
+          <Route path="store-location" element={<StoreLocationPage />} />
           <Route path="branches" element={<BranchesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="*" element={<RootRedirect />} />
       </Routes>
     </Suspense>
   );
