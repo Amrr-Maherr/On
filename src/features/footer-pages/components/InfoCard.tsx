@@ -1,5 +1,4 @@
-import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { memo, type ReactNode } from "react";
 
 interface InfoCardProps {
   icon?: ReactNode;
@@ -7,22 +6,18 @@ interface InfoCardProps {
   description: string;
 }
 
-export default function InfoCard({ icon, title, description }: InfoCardProps) {
+const InfoCard = memo(function InfoCard({ icon, title, description }: InfoCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
-      className="rounded-xl border bg-card p-6 text-center"
-    >
+    <div className="border border-border/60 bg-card p-8">
       {icon && (
-        <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mx-auto">
+        <span className="mb-6 flex h-16 w-16 items-center justify-center bg-foreground text-background">
           {icon}
         </span>
       )}
-      <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
-    </motion.div>
+      <h3 className="mb-4 text-xl font-black uppercase tracking-tight">{title}</h3>
+      <p className="text-sm font-bold leading-relaxed text-muted-foreground/60">{description}</p>
+    </div>
   );
-}
+});
+
+export default InfoCard;

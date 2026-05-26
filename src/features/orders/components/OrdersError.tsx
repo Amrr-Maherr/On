@@ -1,27 +1,36 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { AlertTriangle, RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface OrdersErrorProps {
   message?: string;
   onRetry?: () => void;
 }
 
-export default function OrdersError({ message, onRetry }: OrdersErrorProps) {
+const OrdersError = memo(function OrdersError({ message, onRetry }: OrdersErrorProps) {
+  const { t } = useTranslation();
   return (
-    <div className="container-layout flex flex-col items-center justify-center gap-4 py-24 text-center">
-      <AlertTriangle className="h-12 w-12 text-destructive" />
+    <div className="flex min-h-[40vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+        <AlertTriangle className="h-8 w-8 text-destructive" />
+      </div>
       <div>
-        <h3 className="text-lg font-semibold">Something went wrong</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {message || "Failed to load orders. Please try again."}
+        <h3 className="text-xl font-bold text-foreground">{t("orders.error.title")}</h3>
+        <p className="mt-2 text-sm text-muted-foreground/70 max-w-xs">
+          {message || t("orders.error.defaultMessage")}
         </p>
       </div>
       {onRetry && (
-        <Button variant="outline" size="sm" onClick={onRetry} className="gap-2">
+        <button
+          onClick={onRetry}
+          className="inline-flex items-center gap-2 rounded-none border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
+        >
           <RefreshCw className="h-4 w-4" />
-          Try Again
-        </Button>
+          {t("orders.error.retry")}
+        </button>
       )}
     </div>
   );
-}
+});
+
+export default OrdersError;
