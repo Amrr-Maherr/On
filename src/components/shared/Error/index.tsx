@@ -1,5 +1,5 @@
+import { memo } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface ErrorStateProps {
@@ -16,7 +16,7 @@ function getErrorMessage(error: unknown): string {
   return "An unexpected error occurred. Please try again.";
 }
 
-function ErrorState({
+const ErrorState = memo(function ErrorState({
   title = "Something went wrong",
   message,
   error,
@@ -28,25 +28,30 @@ function ErrorState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center gap-4 py-16 text-center",
+        "flex min-h-[50vh] flex-col items-center justify-center gap-6 px-6 text-center",
         className,
       )}
     >
-      <AlertTriangle className="h-12 w-12 text-destructive" />
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+        <AlertTriangle className="h-8 w-8 text-destructive" />
+      </div>
       <div>
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <h3 className="text-xl font-bold text-foreground">{title}</h3>
+        <p className="mt-2 text-sm text-muted-foreground/70 max-w-xs">
           {displayMessage || "An unexpected error occurred. Please try again."}
         </p>
       </div>
       {onRetry && (
-        <Button variant="outline" size="sm" onClick={onRetry} className="gap-2">
+        <button
+          onClick={onRetry}
+          className="inline-flex items-center gap-2 rounded-none border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
+        >
           <RefreshCw className="h-4 w-4" />
           Try Again
-        </Button>
+        </button>
       )}
     </div>
   );
-}
+});
 
 export default ErrorState;

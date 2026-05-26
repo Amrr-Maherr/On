@@ -1,25 +1,20 @@
+import { memo } from "react";
 import type { FeatureItem } from "../types";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 
-export default function FeatureCard({ title, description, icon }: FeatureItem) {
+const FeatureCard = memo(function FeatureCard({ title, description, icon }: FeatureItem) {
   const Icon = icon;
 
   return (
-    <Card className="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <div className="group rounded-none bg-card p-6 transition-all duration-500 hover:-translate-y-0.5 md:p-8">
       {Icon && (
-        <div className="mx-auto mt-6 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
-          <Icon className="h-6 w-6 text-foreground/60" aria-hidden="true" />
+        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-none bg-muted/30 transition-colors duration-300 group-hover:bg-muted/50">
+          <Icon className="h-5 w-5 text-foreground/50" aria-hidden="true" />
         </div>
       )}
-      <CardHeader className="text-center">
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-    </Card>
+      <h3 className="text-base font-semibold text-foreground">{title}</h3>
+      <p className="mt-1.5 text-sm text-muted-foreground/70">{description}</p>
+    </div>
   );
-}
+});
+
+export default FeatureCard;

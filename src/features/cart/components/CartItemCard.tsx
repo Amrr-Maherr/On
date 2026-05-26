@@ -1,7 +1,8 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { CartItem } from "@/features/cart/types/cart";
 
@@ -18,74 +19,85 @@ const CartItemCard = memo(({
   onRemove,
   isUpdating,
 }: CartItemCardProps) => {
+  const { t } = useTranslation();
+  const lang = useCurrentLang();
   const { product, count, price } = item;
   const itemTotal = price;
 
   return (
-    <Card
-      data-size="sm"
+    <div
       className={cn(
-        "flex-row gap-4 p-4",
+        "group flex gap-6 border-b border-border/40 pb-8 transition-all duration-200",
         isUpdating && "pointer-events-none opacity-60",
       )}
     >
-      <div className="h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-muted md:h-28 md:w-28">
-        <img
-          src={product.imageCover}
-          alt={product.title}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
+      <Link
+        to={buildLocalizedPath(`/products/${product.title}/${product.id}`, lang)}
+        className="shrink-0"
+      >
+        <div className="h-32 w-32 overflow-hidden bg-muted/30 md:h-40 md:w-40">
+          <img
+            src={product.imageCover}
+            alt={product.title}
+            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+            loading="lazy"
+          />
+        </div>
+      </Link>
 
-      <div className="flex flex-1 flex-col justify-between gap-2 min-w-0">
-        <div className="flex items-start justify-between gap-2">
+      <div className="flex flex-1 flex-col justify-between py-1">
+        <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h3 className="truncate text-sm font-medium">{product.title}</h3>
-            <p className="mt-0.5 text-sm text-muted-foreground">
-              {product.price} EGP
+            <Link to={buildLocalizedPath(`/products/${product.title}/${product.id}`, lang)} className="group/title">
+              <h3 className="text-lg font-black uppercase tracking-tight text-foreground transition-colors group-hover/title:text-foreground/70">
+                {product.title}
+              </h3>
+            </Link>
+            <p className="mt-1 text-sm font-bold text-muted-foreground/60">
+              {t("cart.item.unitPrice")}: {product.price?.toLocaleString()} EGP
             </p>
           </div>
-          <Button
-            variant="ghost"
-            size="icon-xs"
+          <button
             onClick={() => onRemove(product.id)}
-            aria-label="Remove item"
-            className="shrink-0 text-muted-foreground hover:text-destructive"
+            aria-label={t("cart.item.remove")}
+            className="shrink-0 rounded-none border-2 border-border/40 p-2.5 text-muted-foreground transition-all duration-300 hover:border-destructive hover:bg-destructive hover:text-white"
           >
             <Trash2 className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <Button
-              variant="outline"
-              size="icon-xs"
+        <div className="mt-6 flex items-end justify-between">
+          <div className="flex items-center rounded-none border-2 border-border/60 p-1">
+            <button
               onClick={() => onUpdate(product.id, count - 1)}
               disabled={count <= 1}
-              aria-label="Decrease quantity"
+              aria-label={t("cart.item.decrease")}
+              className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90 disabled:pointer-events-none disabled:opacity-20"
             >
-              <Minus className="h-3 w-3" />
-            </Button>
-            <span className="flex h-7 w-10 items-center justify-center text-sm font-medium tabular-nums">
+              <Minus className="h-4 w-4" />
+            </button>
+            <span className="flex h-10 w-12 items-center justify-center text-sm font-black tabular-nums text-foreground">
               {count}
             </span>
-            <Button
-              variant="outline"
-              size="icon-xs"
+            <button
               onClick={() => onUpdate(product.id, count + 1)}
-              aria-label="Increase quantity"
+              aria-label={t("cart.item.increase")}
+              className="flex h-10 w-10 items-center justify-center rounded-none text-foreground transition-all duration-200 hover:bg-muted active:scale-90"
             >
-              <Plus className="h-3 w-3" />
-            </Button>
+              <Plus className="h-4 w-4" />
+            </button>
           </div>
-          <p className="text-sm font-semibold tabular-nums">
-            {itemTotal.toLocaleString()} EGP
-          </p>
+          <div className="text-right">
+            <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+              {t("cart.item.total")}
+            </p>
+            <p className="text-xl font-black tabular-nums text-foreground">
+              {itemTotal.toLocaleString()} EGP
+            </p>
+          </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 });
 

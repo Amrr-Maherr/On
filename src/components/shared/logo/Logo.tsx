@@ -1,7 +1,10 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
-export default function Logo() {
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
+const Logo = memo(function Logo() {
+  const lang = useCurrentLang();
   return (
-    <Link to="/" className="text-xl font-bold tracking-tight">
+    <Link to={buildLocalizedPath("/", lang)} className="text-xl font-bold tracking-tight">
       <svg
         width="54"
         height="54"
@@ -16,4 +19,6 @@ export default function Logo() {
       </svg>
     </Link>
   );
-}
+});
+
+export default Logo;

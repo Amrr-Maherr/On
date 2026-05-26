@@ -1,6 +1,5 @@
-"use client";
-
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Thumbs } from "swiper/modules";
 import { Expand } from "lucide-react";
@@ -14,7 +13,8 @@ interface ProductGalleryProps {
   images: string[];
 }
 
-export default function ProductGallery({ images }: ProductGalleryProps) {
+const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryProps) {
+  const { t } = useTranslation();
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -43,15 +43,17 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
 
   return (
     <>
-      <div className="space-y-3">
-        <div className="relative group">
+      <div className="space-y-3 sm:space-y-4">
+        <div className="group relative overflow-hidden rounded-2xl bg-card ring-1 ring-foreground/5">
           <Swiper
             onSlideChange={handleSlideChange}
             thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
             modules={[FreeMode, Thumbs]}
             grabCursor
             loop
-            className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10"
+            touchRatio={1}
+            resistanceRatio={0.5}
+            className="bg-card"
           >
             {images.map((img) => (
               <SwiperSlide key={img}>
@@ -59,7 +61,7 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
                   src={img}
                   alt=""
                   loading="lazy"
-                  className="aspect-square w-full object-cover"
+                  className="aspect-square w-full touch-pan-y object-cover"
                 />
               </SwiperSlide>
             ))}
@@ -68,10 +70,10 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
           <button
             type="button"
             onClick={openLightbox}
-            aria-label="Open image in fullscreen"
-            className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm opacity-0 transition-all duration-200 hover:bg-white hover:scale-110 focus:opacity-100 group-hover:opacity-100"
+            aria-label={t("products.details.gallery.openFullscreen")}
+            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-none bg-background/80 backdrop-blur-sm text-muted-foreground/40 transition-all duration-200 hover:bg-background hover:text-foreground active:scale-90 sm:right-4 sm:top-4 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100"
           >
-            <Expand className="h-4 w-4" />
+            <Expand className="h-4 w-4" strokeWidth={1.5} />
           </button>
         </div>
 
@@ -85,21 +87,22 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             grabCursor
             modules={[FreeMode, Thumbs]}
             className="!pb-0"
+            touchRatio={0.5}
           >
             {images.map((img, index) => (
               <SwiperSlide key={img} className="!w-auto">
                 <span
-                  className={`block overflow-hidden rounded-lg ring-1 transition-all duration-200 ${
+                  className={`block overflow-hidden rounded-xl ring-1 transition-all duration-200 ${
                     index === activeIndex
-                      ? "ring-2 ring-primary ring-offset-2 ring-offset-background"
-                      : "ring-foreground/10 opacity-60 hover:opacity-100"
+                      ? "ring-2 ring-foreground ring-offset-2 ring-offset-background"
+                      : "ring-foreground/5 opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img
                     src={img}
                     alt=""
                     loading="lazy"
-                    className="h-16 w-16 object-cover sm:h-20 sm:w-20"
+                    className="h-16 w-16 touch-pan-y object-cover sm:h-20 sm:w-20"
                   />
                 </span>
               </SwiperSlide>
@@ -117,4 +120,6 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
       />
     </>
   );
-}
+});
+
+export default ProductGallery;

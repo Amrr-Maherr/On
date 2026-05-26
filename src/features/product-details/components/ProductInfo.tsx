@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 
 interface ProductInfoProps {
   title: string;
@@ -7,27 +10,32 @@ interface ProductInfoProps {
   brandId?: string;
 }
 
-export default function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
+const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   return (
-    <div>
-      <h1 className="text-2xl font-bold leading-tight md:text-3xl lg:text-4xl">
+    <div className="border-l-8 border-foreground pl-6">
+      <h1 className="text-4xl font-black uppercase leading-[0.9] tracking-tighter md:text-5xl lg:text-6xl">
         {title}
       </h1>
       {brandName && (
-        <p className="mt-1.5 text-sm text-muted-foreground">
-          by{" "}
+        <div className="mt-4 flex items-center gap-3">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground/40">{t("products.details.info.brand")}</span>
           {brandSlug && brandId ? (
             <Link
-              to={`/brands/${brandSlug}/${brandId}`}
-              className="font-medium text-foreground underline underline-offset-2 transition-colors hover:text-primary"
+              to={buildLocalizedPath(`/brands/${brandSlug}/${brandId}`, lang)}
+              className="text-xs font-black uppercase tracking-widest text-foreground transition-all hover:translate-x-1"
             >
               {brandName}
             </Link>
           ) : (
-            <span className="font-medium text-foreground">{brandName}</span>
+            <span className="text-xs font-black uppercase tracking-widest text-foreground">{brandName}</span>
           )}
-        </p>
+        </div>
       )}
     </div>
   );
-}
+});
+
+export default ProductInfo;
