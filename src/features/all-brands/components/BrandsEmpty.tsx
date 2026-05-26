@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { PackageOpen } from "lucide-react";
 
-export default function BrandsEmpty() {
+const BrandsEmpty = memo(function BrandsEmpty() {
   return (
     <div className="container-layout flex flex-col items-center justify-center gap-4 py-24 text-center">
       <PackageOpen className="h-12 w-12 text-muted-foreground" />
@@ -12,4 +13,6 @@ export default function BrandsEmpty() {
       </div>
     </div>
   );
-}
+});
+
+export default BrandsEmpty;

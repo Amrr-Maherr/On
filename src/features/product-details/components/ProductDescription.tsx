@@ -1,16 +1,22 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+
 interface ProductDescriptionProps {
   description: string;
 }
 
-export default function ProductDescription({ description }: ProductDescriptionProps) {
+const ProductDescription = memo(function ProductDescription({ description }: ProductDescriptionProps) {
+  const { t } = useTranslation();
   return (
     <div>
-      <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        Description
+      <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
+        {t("products.details.description.label")}
       </h3>
-      <div className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line md:text-base">
+      <p className="text-sm leading-relaxed text-muted-foreground/80 whitespace-pre-line md:text-base">
         {description}
-      </div>
+      </p>
     </div>
   );
-}
+});
+
+export default ProductDescription;
