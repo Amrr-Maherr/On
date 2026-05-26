@@ -8,12 +8,12 @@ export interface BannerData {
 }
 
 export const bannerData: BannerData = {
-  headline: "New Season Collection",
+  headline: "New season.",
   description:
-    "Discover our latest arrivals with premium quality and modern design. Elevate your style with our curated selection.",
-  ctaLabel: "Shop Now",
+    "Clean lines, lasting quality. Discover our latest arrivals.",
+  ctaLabel: "Shop the collection",
   ctaHref: "/products",
   imageSrc:
-    "https://images.pexels.com/photos/8386654/pexels-photo-8386654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  imageAlt: "Pink shirt hanging on clothing rack in boutique",
+    "https://www.apple.com/v/apple-fitness-plus/ac/images/overview/hero/hero__b6b2iw7uvl7m_large.jpg",
+  imageAlt: "Apple Fitness Plus workout with trainers",
 };

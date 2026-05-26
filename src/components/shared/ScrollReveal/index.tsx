@@ -10,21 +10,23 @@ interface ScrollRevealProps {
   once?: boolean;
   direction?: "up" | "down" | "left" | "right";
   className?: string;
+  distance?: number;
 }
 
 const directionOffset = {
-  up: { y: 40, x: 0 },
-  down: { y: -40, x: 0 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+  up: { y: 1, x: 0 },
+  down: { y: -1, x: 0 },
+  left: { x: 1, y: 0 },
+  right: { x: -1, y: 0 },
 } as const;
 
 const ScrollReveal = memo(function ScrollReveal({
   children,
   delay = 0,
-  duration = 0.5,
+  duration = 0.7,
   once = true,
   direction = "up",
+  distance = 24,
   className,
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -35,21 +37,21 @@ const ScrollReveal = memo(function ScrollReveal({
     return <div className={cn(className)}>{children}</div>;
   }
 
-  const offset = directionOffset[direction];
+  const dir = directionOffset[direction];
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, ...offset }}
+      initial={{ opacity: 0, y: dir.y * distance, x: dir.x * distance }}
       animate={
         isIntersecting
           ? { opacity: 1, y: 0, x: 0 }
-          : { opacity: 0, ...offset }
+          : { opacity: 0, y: dir.y * distance, x: dir.x * distance }
       }
       transition={{
         duration,
         delay,
-        ease: "easeOut",
+        ease: [0.25, 0.1, 0.25, 1],
       }}
       className={cn(className)}
     >

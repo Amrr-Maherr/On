@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import type { BannerData } from "./constants";
 
@@ -5,7 +6,7 @@ interface BannerImageProps {
   data: BannerData;
 }
 
-function BannerImage({ data }: BannerImageProps) {
+const BannerImage = memo(function BannerImage({ data }: BannerImageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -21,6 +22,6 @@ function BannerImage({ data }: BannerImageProps) {
       />
     </motion.div>
   );
-}
+});
 
 export default BannerImage;

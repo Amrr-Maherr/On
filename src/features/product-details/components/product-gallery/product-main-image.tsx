@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/thumbs";
@@ -6,13 +7,13 @@ interface ProductMainImageProps {
   images: string[];
 }
 
-export default function ProductMainImage({ images }: ProductMainImageProps) {
+const ProductMainImage = memo(function ProductMainImage({ images }: ProductMainImageProps) {
   return (
     <Swiper
       grabCursor
       loop
       modules={[]}
-      className="rounded-xl bg-card ring-1 ring-foreground/10"
+      className="rounded-none bg-card border-2 border-border/40"
     >
       {images.map((img) => (
         <SwiperSlide key={img}>
@@ -26,4 +27,6 @@ export default function ProductMainImage({ images }: ProductMainImageProps) {
       ))}
     </Swiper>
   );
-}
+});
+
+export default ProductMainImage;

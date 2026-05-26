@@ -1,64 +1,131 @@
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { useQuery } from "@tanstack/react-query";
+import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
+import CategoryCard from "../components/CategoryCard";
+import CategoriesLoader from "../components/CategoriesLoader";
+import CategoriesError from "../components/CategoriesError";
+import CategoriesEmpty from "../components/CategoriesEmpty";
+import CategoriesPagination from "../components/CategoriesPagination";
+import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
   FiltersPanel,
   FilterSection,
-  FilterSearchInput,
+  FilterSortDropdown,
 } from "@/components/shared/filters";
-import { Card } from "@/components/ui/card";
-
-const placeholderCategories = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  name: `Category ${i + 1}`,
-}));
+import { api } from "@/lib";
+import type { ApiResponse } from "@/shared/types/api";
+import type { Category } from "@/features/categories/types";
 
 export default function CategoriesPage() {
+  const { t } = useTranslation();
+  const { data, isLoading, error, refetch } = useQuery<ApiResponse<Category>>({
+    queryKey: ["categories", "all"],
+    queryFn: () =>
+      api.get<ApiResponse<Category>>("/api/v1/categories").then((r) => r.data),
+    staleTime: 1_000 * 60 * 2,
+  });
+
+  const categories = useMemo(() => data?.data ?? [], [data?.data]);
+  const metadata = data?.metadata;
+
+  const sortOptions = useMemo(
+    () => [
+      { label: t("categories.filters.sort.nameAZ"), value: "name-asc" },
+      { label: t("categories.filters.sort.nameZA"), value: "name-desc" },
+      { label: t("categories.filters.sort.mostProducts"), value: "most-products" },
+    ],
+    [t],
+  );
+
   return (
-    <div className="container-layout py-8">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold md:text-3xl">Categories</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          8 categories found
-        </p>
-      </div>
+    <>
+      <PageHelmet title={t("categories.page.title")} description={t("categories.page.description")} />
 
-      <div className="flex gap-8">
-        <FiltersPanel>
-          <FilterSearchInput placeholder="Search categories..." />
+      <CampaignHeader
+        subtitle={t("categories.page.hero.subtitle")}
+        title={t("categories.page.hero.title")}
+        description={t("categories.page.hero.description")}
+        backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+      />
 
-          <FilterSection title="Sort By">
-            <div className="space-y-2">
-              {["Name A-Z", "Name Z-A", "Most Products"].map((option) => (
-                <label
-                  key={option}
-                  className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <input
-                    type="radio"
-                    name="category-sort"
-                    className="h-4 w-4 border-border text-foreground accent-foreground"
-                  />
-                  <span>{option}</span>
-                </label>
-              ))}
-            </div>
-          </FilterSection>
-        </FiltersPanel>
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: t("categories.page.breadcrumb.home"), href: "/" }, { label: t("categories.page.breadcrumb.categories") }]} className="mb-6" />
 
-        <div className="flex-1">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {placeholderCategories.map((category) => (
-              <Card
-                key={category.id}
-                className="transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+        <ScrollReveal>
+          <div className="mb-12 border-l-4 border-foreground pl-6">
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              {t("categories.page.catalog.label")}
+            </span>
+            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              {t("categories.page.catalog.title")}
+            </h1>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+              {t("categories.page.catalog.count", { count: categories.length })}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="flex gap-16">
+          <div className="hidden w-64 shrink-0 lg:block">
+            <FiltersPanel className="sticky top-24 border-0 bg-transparent p-0">
+              <FilterSection title={t("categories.filters.sortBy")}>
+                <FilterSortDropdown options={sortOptions} />
+              </FilterSection>
+
+              <button
+                className="mt-8 w-full border-2 border-foreground bg-transparent py-4 text-[10px] font-black uppercase tracking-widest text-foreground transition-all hover:bg-foreground hover:text-background"
               >
-                <div className="aspect-square bg-muted" />
-                <div className="p-4 text-center">
-                  <div className="mx-auto h-4 w-2/3 rounded bg-muted" />
+                {t("categories.filters.reset")}
+              </button>
+            </FiltersPanel>
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="mb-8 lg:hidden">
+              <MobileFilterSheet sortOptions={sortOptions} />
+            </div>
+
+            {error ? (
+              <CategoriesError
+                message={error instanceof Error ? error.message : t("categories.error.defaultMessage")}
+                onRetry={() => refetch()}
+              />
+            ) : isLoading ? (
+              <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <CategoriesLoader key={i} />
+                ))}
+              </div>
+            ) : categories.length === 0 ? (
+              <CategoriesEmpty />
+            ) : (
+              <>
+                <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                  {categories.map((category, index) => (
+                    <ScrollReveal key={category.id || category._id} delay={index * 0.03} direction="up" distance={20}>
+                      <CategoryCard category={category} />
+                    </ScrollReveal>
+                  ))}
                 </div>
-              </Card>
-            ))}
+
+                {metadata && (
+                  <div className="mt-16 border-t border-border/40 pt-12">
+                    <CategoriesPagination
+                      currentPage={metadata.currentPage}
+                      totalPages={metadata.numberOfPages}
+                      onPageChange={() => {}}
+                    />
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
