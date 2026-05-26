@@ -16,8 +16,8 @@ const NavigationButton = memo(function NavigationButton({
   return (
     <button
       className={cn(
-        "absolute top-1/2 z-10 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white min-w-[48px] min-h-[48px] rounded-full opacity-100 transition-all duration-300 backdrop-blur-sm border border-white/20 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center touch-manipulation",
-        direction === "prev" ? "left-4" : "right-4",
+        "absolute top-1/2 z-10 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-none border-2 border-white/10 bg-black/40 text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/60 active:scale-90 focus:outline-none",
+        direction === "prev" ? "left-4 md:left-8" : "right-4 md:right-8",
       )}
       onClick={onClick}
       aria-label={ariaLabel}

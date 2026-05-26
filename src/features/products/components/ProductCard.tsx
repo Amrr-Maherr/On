@@ -1,51 +1,57 @@
 import { memo } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
-import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 
 function ProductCard({ product }: { product: Product }) {
+  const { t } = useTranslation();
+  const lang = useCurrentLang();
   return (
-    <Link to={`/products/${product.title}/${product.id}`}>
-      <Card className="group relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-        <div className="relative">
-          <img
-            src={product.imageCover}
-            alt={product.title}
-            loading="lazy"
-            className="h-60 w-full rounded-t-xl object-cover"
-          />
-          <div className="absolute left-3 right-3 top-3 flex items-start justify-between">
-            <AddToCart productId={product.id} />
-            <AddToFav productId={product.id} />
-          </div>
+    <Link
+      to={buildLocalizedPath(`/products/${product.slug}/${product.id}`, lang)}
+      className="group flex flex-col"
+    >
+      <div className="relative overflow-hidden bg-muted/30">
+        <img
+          src={product.imageCover}
+          alt={product.title}
+          loading="lazy"
+          className="aspect-[3/4] w-full object-cover transition-all duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-x-0 bottom-0 translate-y-full bg-foreground/90 p-4 transition-all duration-300 group-hover:translate-y-0">
+          <AddToCart productId={product.id} variant="overlay" />
         </div>
-        <CardHeader>
-          <CardTitle className="line-clamp-1">{product.title}</CardTitle>
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-semibold">
+        <div className="absolute right-4 top-4 z-10 scale-90 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+          <AddToFav productId={product.id} />
+        </div>
+      </div>
+      <div className="mt-5 flex flex-col gap-1.5">
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="text-sm font-bold uppercase tracking-tight text-foreground line-clamp-1">
+            {product.title}
+          </h3>
+          <div className="flex flex-col items-end">
+            <span className="text-base font-black tracking-tight text-foreground">
               ${product.priceAfterDiscount ?? product.price}
             </span>
             {product.priceAfterDiscount && (
-              <span className="text-sm text-muted-foreground line-through">
+              <span className="text-xs text-muted-foreground/40 line-through">
                 ${product.price}
               </span>
             )}
           </div>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span className="flex items-center justify-center gap-1">
-              <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              {product.ratingsAverage}
-            </span>
-            <span>({product.ratingsQuantity})</span>
-            <span className="ml-auto">{product.sold} sold</span>
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+        <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
+          <span className="inline-flex items-center gap-1">
+            &#9733; {product.ratingsAverage || "—"}
+          </span>
+          <span>&middot;</span>
+          <span>{product.sold} {t("products.card.sold")}</span>
+        </div>
+      </div>
     </Link>
   );
 }
