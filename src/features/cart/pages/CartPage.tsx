@@ -1,8 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useUpdateCartItem } from "@/features/cart/hooks/useUpdateCartItem";
@@ -14,34 +20,30 @@ import CartLoader from "@/features/cart/components/CartLoader";
 import CartEmpty from "@/features/cart/components/CartEmpty";
 import CartError from "@/features/cart/components/CartError";
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return "An unexpected error occurred. Please try again.";
-}
-
 export default function CartPage() {
+  const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data, isLoading, error, refetch } = useCart();
-  const { mutate: updateItem, isPending: isUpdating } = useUpdateCartItem();
-  const { mutate: removeItem, isPending: isRemoving } = useRemoveCartItem();
+  const { mutate: updateItem } = useUpdateCartItem();
+  const { mutate: removeItem } = useRemoveCartItem();
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
-  const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
   if (isLoading) return <CartLoader />;
 
   if (error) {
     return (
       <CartError
-        message={getErrorMessage(error)}
+        message={error instanceof Error ? error.message : t("cart.error.defaultMessage")}
         onRetry={() => refetch()}
       />
     );
@@ -55,98 +57,109 @@ export default function CartPage() {
     return <CartEmpty />;
   }
 
-  const handleUpdate = (itemId: string, count: number) => {
+  const handleUpdate = useCallback((itemId: string, count: number) => {
     if (count < 1) return;
-    setUpdatingItemId(itemId);
-    updateItem(
-      { itemId, count },
-      { onSettled: () => setUpdatingItemId(null) },
-    );
-  };
+    updateItem({ itemId, count });
+  }, [updateItem]);
 
-  const handleRemove = (itemId: string) => {
-    setUpdatingItemId(itemId);
-    removeItem(itemId, { onSettled: () => setUpdatingItemId(null) });
-  };
+  const handleRemove = useCallback((itemId: string) => {
+    removeItem(itemId);
+  }, [removeItem]);
 
-  const handleClearCart = () => {
+  const handleClearCart = useCallback(() => {
     toast(
-      (t) => (
+      (toastInstance) => (
         <div className="flex flex-col gap-3">
-          <p className="text-sm">
-            Are you sure you want to remove all items from your cart?
-          </p>
+          <p className="text-sm">{t("cart.actions.confirmClear")}</p>
           <div className="flex justify-end gap-2">
             <Button
               variant="outline"
               size="sm"
-              onClick={() => toast.dismiss(t.id)}
+              onClick={() => toast.dismiss(toastInstance.id)}
             >
-              Cancel
+              {t("cart.actions.cancel")}
             </Button>
             <Button
               variant="destructive"
               size="sm"
               onClick={() => {
                 clearCartItems();
-                toast.dismiss(t.id);
+                toast.dismiss(toastInstance.id);
               }}
             >
-              Delete All
+              {t("cart.actions.deleteAll")}
             </Button>
           </div>
         </div>
       ),
       { duration: Infinity },
     );
-  };
+  }, [clearCartItems, t]);
 
-  const isMutating = isUpdating || isRemoving || isClearing;
+  const handleCheckout = useCallback(() => {
+    navigate(buildLocalizedPath("/checkout", lang));
+  }, [navigate, lang]);
 
   return (
-    <div className="container-layout py-8">
-      <PageHelmet title="Cart" description="Review your shopping cart." />
+    <>
+      <PageHelmet title={t("cart.page.title")} description={t("cart.page.description")} />
 
-      <div className="mb-8 flex items-start justify-between">
-        <div>
-          <h1 className="text-2xl font-bold md:text-3xl">Shopping Cart</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {numOfCartItems} {numOfCartItems === 1 ? "item" : "items"}
-          </p>
+      <CampaignHeader
+        subtitle={t("cart.page.hero.subtitle")}
+        title={t("cart.page.hero.title")}
+        description={t("cart.page.hero.description")}
+        videoUrl={heroVideo}
+      />
+
+      <div className="container-layout section-py pt-8">
+        <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
+
+        <ScrollReveal>
+          <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
+            <div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+                {t("cart.page.catalog.label")}
+              </span>
+              <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+                {t("cart.page.catalog.title")}
+              </h1>
+              <p className="mt-2 text-sm font-bold text-muted-foreground/60">
+                {t("cart.page.catalog.count", { count: numOfCartItems })}
+              </p>
+            </div>
+          <button
+            className="hidden items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-destructive/60 transition-colors hover:text-destructive md:flex"
+            onClick={handleClearCart}
+            disabled={isClearing}
+          >
+            <Trash2 className="h-4 w-4" />
+            {isClearing ? t("cart.actions.clearing") : t("cart.actions.clearBag")}
+          </button>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          className="gap-2 text-destructive"
-          onClick={handleClearCart}
-          disabled={isClearing}
-        >
-          <Trash2 className="h-4 w-4" />
-          {isClearing ? "Clearing..." : "Delete All"}
-        </Button>
-      </div>
+        </ScrollReveal>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
-        <div className="space-y-4">
-          {items.map((item) => (
-            <CartItemCard
-              key={item._id}
-              item={item}
-              onUpdate={handleUpdate}
-              onRemove={handleRemove}
-              isUpdating={isMutating && updatingItemId === item.product.id}
+        <div className="grid gap-16 lg:grid-cols-[1fr_400px]">
+          <div className="space-y-8" data-tour="cart-items">
+            {items.map((item, index) => (
+              <ScrollReveal key={item._id} delay={index * 0.04} direction="up" distance={16}>
+                <CartItemCard
+                  item={item}
+                  onUpdate={handleUpdate}
+                  onRemove={handleRemove}
+                />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="relative" data-tour="cart-summary">
+            <CartSummary
+              totalCartPrice={cart.totalCartPrice}
+              numOfCartItems={numOfCartItems}
+              onCheckout={handleCheckout}
             />
-          ))}
-        </div>
-
-        <div>
-          <CartSummary
-            totalCartPrice={cart.totalCartPrice}
-            numOfCartItems={numOfCartItems}
-            onCheckout={() => navigate("/checkout")}
-          />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

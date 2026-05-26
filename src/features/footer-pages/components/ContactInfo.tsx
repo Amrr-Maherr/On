@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { memo } from "react";
 
 interface ContactInfoProps {
   icon: React.ReactNode;
@@ -6,22 +6,18 @@ interface ContactInfoProps {
   value: string;
 }
 
-export default function ContactInfo({ icon, label, value }: ContactInfoProps) {
+const ContactInfo = memo(function ContactInfo({ icon, label, value }: ContactInfoProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
-      className="flex items-start gap-3"
-    >
-      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+    <div className="flex items-center gap-5">
+      <span className="flex h-14 w-14 shrink-0 items-center justify-center bg-foreground text-background">
         {icon}
       </span>
       <div>
-        <p className="text-sm font-medium">{label}</p>
-        <p className="text-sm text-muted-foreground">{value}</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">{label}</p>
+        <p className="text-sm font-black uppercase tracking-tight text-foreground">{value}</p>
       </div>
-    </motion.div>
+    </div>
   );
-}
+});
+
+export default ContactInfo;

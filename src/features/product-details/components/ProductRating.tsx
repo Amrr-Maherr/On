@@ -1,3 +1,5 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Star } from "lucide-react";
 
 interface ProductRatingProps {
@@ -6,15 +8,19 @@ interface ProductRatingProps {
   sold: number;
 }
 
-export default function ProductRating({ rating, ratingCount, sold }: ProductRatingProps) {
+const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }: ProductRatingProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-4">
-      <div className="flex items-center gap-1">
-        <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-        <span className="font-semibold">{rating}</span>
+      <div className="flex items-center gap-1.5">
+        <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
+        <span className="text-base font-bold">{rating}</span>
         <span className="text-sm text-muted-foreground">({ratingCount})</span>
       </div>
-      <span className="text-sm text-muted-foreground">{sold} sold</span>
+      <span className="h-4 w-px bg-border/50" />
+      <span className="text-sm font-medium text-muted-foreground">{sold} {t("products.details.rating.sold")}</span>
     </div>
   );
-}
+});
+
+export default ProductRating;
