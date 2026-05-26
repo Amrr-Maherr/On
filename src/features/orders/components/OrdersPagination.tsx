@@ -1,3 +1,5 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -7,36 +9,39 @@ interface OrdersPaginationProps {
   onPageChange: (page: number) => void;
 }
 
-export default function OrdersPagination({
+const OrdersPagination = memo(function OrdersPagination({
   currentPage,
   totalPages,
   onPageChange,
 }: OrdersPaginationProps) {
+  const { t } = useTranslation();
   if (totalPages <= 1) return null;
 
   return (
-    <nav className="mt-8 flex items-center justify-center gap-2" aria-label="Pagination">
+    <nav className="mt-8 flex items-center justify-center gap-2" aria-label={t("orders.pagination.label")}>
       <Button
         variant="outline"
         size="icon"
         disabled={currentPage <= 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label="Previous page"
+        aria-label={t("orders.pagination.previous")}
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
       <span className="text-sm text-muted-foreground">
-        Page {currentPage} of {totalPages}
+        {t("orders.pagination.pageOf", { current: currentPage, total: totalPages })}
       </span>
       <Button
         variant="outline"
         size="icon"
         disabled={currentPage >= totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label="Next page"
+        aria-label={t("orders.pagination.next")}
       >
         <ChevronRight className="h-4 w-4" />
       </Button>
     </nav>
   );
-}
+});
+
+export default OrdersPagination;

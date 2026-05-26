@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
@@ -15,7 +16,7 @@ interface ProductLightboxProps {
   onIndexChange: (index: number) => void;
 }
 
-export default function ProductLightbox({
+const ProductLightbox = memo(function ProductLightbox({
   open,
   index,
   slides,
@@ -39,4 +40,6 @@ export default function ProductLightbox({
       }}
     />
   );
-}
+});
+
+export default ProductLightbox;

@@ -1,5 +1,6 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Package, CreditCard, Truck, CheckCircle2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Order } from "@/features/orders/types/orders";
 
@@ -7,7 +8,8 @@ interface OrderCardProps {
   order: Order;
 }
 
-export default function OrderCard({ order }: OrderCardProps) {
+const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
+  const { t } = useTranslation();
   const date = new Date(order.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -15,21 +17,21 @@ export default function OrderCard({ order }: OrderCardProps) {
   });
 
   return (
-    <Card data-size="sm" className="p-4">
-      <div className="mb-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Package className="h-4 w-4 text-muted-foreground" />
-          <span className="text-xs text-muted-foreground">
-            {order._id.slice(-8).toUpperCase()}
+    <div className="rounded-none border-2 border-border/40 bg-card p-6 transition-all duration-300 hover:border-foreground/20">
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Package className="h-4 w-4 text-muted-foreground/50" />
+          <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
+            {t("orders.card.order")}: {order._id.slice(-8).toUpperCase()}
           </span>
         </div>
-        <span className="text-xs text-muted-foreground">{date}</span>
+        <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">{date}</span>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {order.cartItems.slice(0, 3).map((item) => (
-          <div key={item._id} className="flex items-center gap-3">
-            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
+          <div key={item._id} className="flex items-center gap-4">
+            <div className="h-16 w-16 shrink-0 overflow-hidden rounded-none bg-muted/40 border border-border/20">
               <img
                 src={item.product.imageCover}
                 alt={item.product.title}
@@ -38,57 +40,58 @@ export default function OrderCard({ order }: OrderCardProps) {
               />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium">
+              <p className="truncate text-sm text-foreground/90">
                 {item.product.title}
               </p>
-              <p className="text-xs text-muted-foreground">
-                Qty: {item?.count} x {item?.product?.price?.toLocaleString()}{" "}
-                EGP
+              <p className="text-xs text-muted-foreground/60">
+                {t("orders.card.qty")}: {item?.count} x {item?.product?.price?.toLocaleString()} EGP
               </p>
             </div>
-            <p className="text-sm font-medium tabular-nums">
+            <p className="text-sm font-medium tabular-nums text-foreground/90">
               {item.price.toLocaleString()} EGP
             </p>
           </div>
         ))}
         {order.cartItems.length > 3 && (
-          <p className="text-xs text-muted-foreground">
-            +{order.cartItems.length - 3} more items
+          <p className="text-xs text-muted-foreground/50">
+            {t("orders.card.moreItems", { count: order.cartItems.length - 3 })}
           </p>
         )}
       </div>
 
-      <hr className="my-3 border-foreground/10" />
+      <hr className="my-4 border-border/40" />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between" data-tour="order-status">
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1 text-xs text-muted-foreground/60">
             <CreditCard className="h-3.5 w-3.5" />
-            {order.paymentMethodType === "cash" ? "Cash" : "Card"}
+            {order.paymentMethodType === "cash" ? t("orders.card.cash") : t("orders.card.card")}
           </span>
           <span
             className={cn(
               "flex items-center gap-1 text-xs",
-              order.isPaid ? "text-green-600" : "text-muted-foreground",
+              order.isPaid ? "text-green-600/80" : "text-muted-foreground/60",
             )}
           >
             <CheckCircle2 className="h-3.5 w-3.5" />
-            {order.isPaid ? "Paid" : "Unpaid"}
+            {order.isPaid ? t("orders.card.paid") : t("orders.card.unpaid")}
           </span>
           <span
             className={cn(
               "flex items-center gap-1 text-xs",
-              order.isDelivered ? "text-green-600" : "text-muted-foreground",
+              order.isDelivered ? "text-green-600/80" : "text-muted-foreground/60",
             )}
           >
             <Truck className="h-3.5 w-3.5" />
-            {order.isDelivered ? "Delivered" : "Processing"}
+            {order.isDelivered ? t("orders.card.delivered") : t("orders.card.processing")}
           </span>
         </div>
-        <p className="text-sm font-bold tabular-nums">
+        <p className="text-sm font-medium tabular-nums">
           {order.totalOrderPrice.toLocaleString()} EGP
         </p>
       </div>
-    </Card>
+    </div>
   );
-}
+});
+
+export default OrderCard;
