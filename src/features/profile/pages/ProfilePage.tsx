@@ -1,8 +1,11 @@
 import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useProfile } from "../hooks/useProfile";
 import ProfileHeader from "../components/ProfileHeader";
@@ -14,6 +17,8 @@ import EditProfileSheet from "../components/EditProfileSheet";
 
 export default function ProfilePage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const [isEditOpen, setIsEditOpen] = useState(false);
   const { data, isLoading, error, refetch } = useProfile();
@@ -21,16 +26,16 @@ export default function ProfilePage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     toast.success(t("profile.toast.loggedOut"));
-    navigate("/login");
-  }, [navigate]);
+    navigate(buildLocalizedPath("/login", lang));
+  }, [navigate, lang]);
 
   const handleEdit = useCallback(() => {
     setIsEditOpen(true);
@@ -68,40 +73,33 @@ export default function ProfilePage() {
         description={t("profile.page.description")}
       />
 
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-            {t("profile.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-            {t("profile.page.hero.title")}
-          </h1>
-          <p className="mt-4 max-w-lg text-lg text-white/70">
-            {t("profile.page.hero.description")}
-          </p>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("profile.page.hero.subtitle")}
+        title={t("profile.page.hero.title")}
+        description={t("profile.page.hero.description")}
+        backgroundImage="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80"
+      />
 
       <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: t("profile.page.breadcrumb.home"), href: "/" }, { label: t("profile.page.breadcrumb.profile") }]} className="mb-6" />
+        <Breadcrumb items={[{ label: t("profile.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("profile.page.breadcrumb.profile") }]} className="mb-6" />
 
       <div className="mx-auto space-y-8">
-        <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
-          <div data-tour="profile-header">
-            <ProfileHeader user={user} />
+        <ScrollReveal>
+          <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
+            <div data-tour="profile-header">
+              <ProfileHeader user={user} />
+            </div>
+            <div className="mb-4 md:mb-12" data-tour="profile-actions">
+              <ProfileActions onLogout={handleLogout} onEdit={handleEdit} />
+            </div>
           </div>
-          <div className="mb-4 md:mb-12" data-tour="profile-actions">
-            <ProfileActions onLogout={handleLogout} onEdit={handleEdit} />
-          </div>
-        </div>
+        </ScrollReveal>
 
-        <div data-tour="profile-info">
-          <ProfileInfoCard user={user} />
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div data-tour="profile-info">
+            <ProfileInfoCard user={user} />
+          </div>
+        </ScrollReveal>
       </div>
       </div>
       <EditProfileSheet

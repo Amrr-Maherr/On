@@ -1,13 +1,15 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import type { Brand } from "@/features/brands/types";
 
 const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   return (
     <Link
-      to={`/brands/${brand.slug}/${brand._id}`}
+      to={buildLocalizedPath(`/brands/${brand.slug}/${brand._id}`, lang)}
       className="group relative block overflow-hidden bg-muted/10 transition-all duration-500"
     >
       <div className="aspect-[4/5] overflow-hidden bg-white">

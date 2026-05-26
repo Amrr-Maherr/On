@@ -1,21 +1,30 @@
-import { memo, useState, useEffect, useCallback } from "react";
+import { memo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp } from "lucide-react";
+import { useLenis } from "lenis/react";
 
 const SCROLL_THRESHOLD = 300;
 
 const ScrollToTopButton = memo(function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
+  const lenis = useLenis();
 
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > SCROLL_THRESHOLD);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useLenis(
+    useCallback(
+      (l) => {
+        setVisible(l.scroll > SCROLL_THRESHOLD);
+      },
+      [],
+    ),
+  );
 
   const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [lenis]);
 
   return (
     <AnimatePresence>

@@ -1,7 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
@@ -11,40 +13,21 @@ import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
 import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
 import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
 import WishlistError from "@/features/wishlist/components/WishlistError";
-
-function CampaignHeader() {
-  const { t } = useTranslation();
-  return (
-    <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-      <div
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-      <div className="container-layout relative z-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
-          {t("wishlist.page.hero.subtitle")}
-        </p>
-        <h1 className="mt-3 text-5xl font-black text-white md:text-7xl">
-          {t("wishlist.page.hero.title")}
-        </h1>
-        <p className="mt-4 max-w-lg text-lg text-white/70">
-          {t("wishlist.page.hero.description")}
-        </p>
-      </div>
-    </section>
-  );
-}
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
+import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 
 export default function WishlistPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/login");
+      navigate(buildLocalizedPath("/login", lang));
     }
-  }, [navigate]);
+  }, [navigate, lang]);
 
   const { data, isLoading, error, refetch } = useWishlist();
   const { mutate: removeItem, isPending: isRemoving } = useRemoveWishlistItem();
@@ -55,7 +38,12 @@ export default function WishlistPage() {
   if (isLoading) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistLoader />
       </>
     );
@@ -64,7 +52,12 @@ export default function WishlistPage() {
   if (error) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistError
           message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
           onRetry={() => refetch()}
@@ -79,7 +72,12 @@ export default function WishlistPage() {
   if (items.length === 0) {
     return (
       <>
-        <CampaignHeader />
+        <CampaignHeader
+          title={t("wishlist.page.hero.title")}
+          subtitle={t("wishlist.page.hero.subtitle")}
+          description={t("wishlist.page.hero.description")}
+          videoUrl={heroVideo}
+        />
         <WishlistEmpty />
       </>
     );
@@ -108,31 +106,39 @@ export default function WishlistPage() {
 
   return (
     <>
-      <CampaignHeader />
+      <CampaignHeader
+        title={t("wishlist.page.hero.title")}
+        subtitle={t("wishlist.page.hero.subtitle")}
+        description={t("wishlist.page.hero.description")}
+        videoUrl={heroVideo}
+      />
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">
-        <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: "/" }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
-        <div className="mb-10">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            {t("wishlist.page.catalog.label")}
-          </span>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
-            {t("wishlist.page.catalog.title")}
-          </h2>
-          <p className="mt-1 text-sm font-medium text-muted-foreground/60">
-            {t("wishlist.page.catalog.count", { count })}
-          </p>
-        </div>
+        <Breadcrumb items={[{ label: t("wishlist.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("wishlist.page.breadcrumb.wishlist") }]} className="mb-6" />
+        <ScrollReveal>
+          <div className="mb-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+              {t("wishlist.page.catalog.label")}
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
+              {t("wishlist.page.catalog.title")}
+            </h2>
+            <p className="mt-1 text-sm font-medium text-muted-foreground/60">
+              {t("wishlist.page.catalog.count", { count })}
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="space-y-4" data-tour="wishlist-items">
-          {items.map((product) => (
-            <WishlistItemCard
-              key={product._id}
-              product={product}
-              onRemove={handleRemove}
-              onAddToCart={handleAddToCart}
-              isRemoving={isRemoving && removingId === product._id}
-              isAddingToCart={isAddingToCart && addingToCartId === product._id}
-            />
+          {items.map((product, index) => (
+            <ScrollReveal key={product._id} delay={index * 0.04} direction="up" distance={16}>
+              <WishlistItemCard
+                product={product}
+                onRemove={handleRemove}
+                onAddToCart={handleAddToCart}
+                isRemoving={isRemoving && removingId === product._id}
+                isAddingToCart={isAddingToCart && addingToCartId === product._id}
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>

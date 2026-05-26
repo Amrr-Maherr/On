@@ -1,9 +1,10 @@
 import { Toaster } from "react-hot-toast";
 import AppRoutes from "./app/routes";
-import Navbar from "./components/layout/Navbar";
-import Footer from "@/shared/layout/Footer";
 import ScrollToTopButton from "@/shared/components/ScrollToTopButton";
-
+import { lazy, Suspense } from "react";
+import Loader from "./components/shared/Loader";
+const Navbar = lazy(() => import("./components/layout/Navbar"));
+const Footer = lazy(() => import("@/shared/layout/Footer"));
 function App() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -43,11 +44,15 @@ function App() {
           },
         }}
       />
-      <Navbar />
+      <Suspense fallback={<Loader />}>
+        <Navbar />
+      </Suspense>
       <main className="flex-1">
         <AppRoutes />
       </main>
-      <Footer />
+      <Suspense fallback={<Loader />}>
+        <Footer />
+      </Suspense>
       <ScrollToTopButton />
     </div>
   );

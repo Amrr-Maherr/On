@@ -4,28 +4,42 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
-
+import type { AxiosError } from "axios";
 interface AddToCartProps {
   productId: string;
   variant?: "icon" | "overlay";
   className?: string;
 }
 
-export default function AddToCart({ productId, variant = "icon", className }: AddToCartProps) {
+export default function AddToCart({
+  productId,
+  variant = "icon",
+  className,
+}: AddToCartProps) {
   const { t } = useTranslation();
   const { mutate: addToCart, isPending } = useAddToCart();
 
-  const handleClick = useCallback((e: MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    addToCart(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToCart")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToCart, productId, t]);
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+      addToCart(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToCart")),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
+
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
+        },
+      );
+    },
+    [addToCart, productId, t],
+  );
 
   if (variant === "overlay") {
     return (
@@ -44,7 +58,9 @@ export default function AddToCart({ productId, variant = "icon", className }: Ad
         ) : (
           <ShoppingCart className="h-4 w-4" />
         )}
-        {isPending ? t("products.actions.adding") : t("products.actions.addToBag")}
+        {isPending
+          ? t("products.actions.adding")
+          : t("products.actions.addToBag")}
       </button>
     );
   }

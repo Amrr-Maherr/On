@@ -2,9 +2,11 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Package, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 
 const OrdersEmpty = memo(function OrdersEmpty() {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   return (
     <div className="flex min-h-[40vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center">
       <div className="flex h-20 w-20 items-center justify-center rounded-full bg-muted/30">
@@ -17,7 +19,7 @@ const OrdersEmpty = memo(function OrdersEmpty() {
         </p>
       </div>
       <Link
-        to="/products"
+        to={buildLocalizedPath("/products", lang)}
         className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
       >
         {t("orders.empty.shopNow")}

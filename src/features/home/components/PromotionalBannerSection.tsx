@@ -1,14 +1,17 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Zap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const PromotionalBannerSection = memo(function PromotionalBannerSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleShopSale = useCallback(() => navigate("/products"), [navigate]);
+  const handleShopSale = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
 
   return (
     <section className="relative overflow-hidden bg-neutral-950">

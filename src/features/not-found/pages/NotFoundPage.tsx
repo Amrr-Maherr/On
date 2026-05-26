@@ -1,11 +1,14 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 
 const NotFoundPage = memo(function NotFoundPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   return (
     <div className="relative min-h-[70vh] overflow-hidden bg-neutral-950 flex flex-col items-center justify-center gap-8 px-6 text-center">
       <PageHelmet title={t("notFound.title")} />
@@ -19,7 +22,7 @@ const NotFoundPage = memo(function NotFoundPage() {
         </p>
       </div>
       <Link
-        to="/"
+        to={buildLocalizedPath("/", lang)}
         className="relative z-10 inline-flex h-14 items-center gap-3 rounded-none bg-white px-10 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 transition-all duration-300 hover:bg-neutral-200 active:scale-[0.98]"
       >
         <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />

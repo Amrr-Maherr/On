@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
 import toast from "react-hot-toast";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import AuthLayout from "@/features/auth/components/auth-layout";
 import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
@@ -14,6 +15,8 @@ import type { RegisterFormFields } from "@/features/auth/types/auth";
 
 export default function RegisterPage() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const { mutate, isPending, error } = useRegister();
 
@@ -40,7 +43,7 @@ export default function RegisterPage() {
         localStorage.setItem("token", response.token);
         localStorage.setItem("userId", response.user._id);
         toast.success(t("auth.toast.registerSuccess"));
-        navigate("/");
+        navigate(buildLocalizedPath("/", lang));
       },
       onError: (err) => {
         toast.error(err.message);
@@ -151,7 +154,7 @@ export default function RegisterPage() {
         <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
           {t("auth.links.hasAccount")}{" "}
           <Link
-            to="/login"
+            to={buildLocalizedPath("/login", lang)}
             className="font-black uppercase tracking-wider text-foreground transition-colors hover:underline underline-offset-4"
           >
             {t("auth.links.signIn")}

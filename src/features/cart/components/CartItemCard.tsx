@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { CartItem } from "@/features/cart/types/cart";
@@ -19,6 +20,7 @@ const CartItemCard = memo(({
   isUpdating,
 }: CartItemCardProps) => {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   const { product, count, price } = item;
   const itemTotal = price;
 
@@ -30,7 +32,7 @@ const CartItemCard = memo(({
       )}
     >
       <Link
-        to={`/products/${product.title}/${product.id}`}
+        to={buildLocalizedPath(`/products/${product.title}/${product.id}`, lang)}
         className="shrink-0"
       >
         <div className="h-32 w-32 overflow-hidden bg-muted/30 md:h-40 md:w-40">
@@ -46,7 +48,7 @@ const CartItemCard = memo(({
       <div className="flex flex-1 flex-col justify-between py-1">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <Link to={`/products/${product.title}/${product.id}`} className="group/title">
+            <Link to={buildLocalizedPath(`/products/${product.title}/${product.id}`, lang)} className="group/title">
               <h3 className="text-lg font-black uppercase tracking-tight text-foreground transition-colors group-hover/title:text-foreground/70">
                 {product.title}
               </h3>

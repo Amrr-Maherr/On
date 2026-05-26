@@ -1,14 +1,17 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const handleNavigate = useCallback(
-    (slug: string) => navigate(slug),
-    [navigate],
+    (slug: string) => navigate(buildLocalizedPath(slug, lang)),
+    [navigate, lang],
   );
 
   const highlights = [

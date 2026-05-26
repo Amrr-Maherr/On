@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
+import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useCategoryDetails } from "@/features/category-details/hooks/useGetCategoryDetails";
 import CategoryDetailsCard from "@/features/category-details/components/CategoryDetailsCard";
@@ -33,18 +35,11 @@ export default function CategoryDetailsPage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-neutral-950 py-16 md:py-20">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
-        <div className="container-layout relative z-10">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">
-            {t("categories.page.hero.subtitle")}
-          </p>
-          <h1 className="mt-4 text-5xl font-black uppercase tracking-tighter text-white md:text-8xl">
-            {category.name}.
-          </h1>
-        </div>
-      </section>
+      <CampaignHeader
+        subtitle={t("categories.page.hero.subtitle")}
+        title={`${category.name}.`}
+        backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+      />
       <PageHelmet title={category.name} description={t("categories.page.description")} />
       <div className="container-layout py-12">
         <Breadcrumb
@@ -58,14 +53,16 @@ export default function CategoryDetailsPage() {
         <CategoryDetailsCard category={category} />
 
         <section className="section-py mt-20 border-t border-border/40">
-          <div className="mb-14 border-l-4 border-foreground pl-8">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              {t("categories.details.collection.label")}
-            </span>
-            <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
-              {t("categories.details.collection.title")}
-            </h2>
-          </div>
+          <ScrollReveal>
+            <div className="mb-14 border-l-4 border-foreground pl-8">
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                {t("categories.details.collection.label")}
+              </span>
+              <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
+                {t("categories.details.collection.title")}
+              </h2>
+            </div>
+          </ScrollReveal>
           <CategoryProducts categoryId={category._id} />
         </section>
       </div>

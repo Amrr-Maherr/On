@@ -4,12 +4,14 @@ import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
 import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 
 function ProductCard({ product }: { product: Product }) {
   const { t } = useTranslation();
+  const lang = useCurrentLang();
   return (
     <Link
-      to={`/products/${product.slug}/${product.id}`}
+      to={buildLocalizedPath(`/products/${product.slug}/${product.id}`, lang)}
       className="group flex flex-col"
     >
       <div className="relative overflow-hidden bg-muted/30">

@@ -1,6 +1,7 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import {
   Heart,
   Package,
@@ -9,16 +10,17 @@ import {
   LogIn,
   LogOut,
   Search,
+  X,
   Sun,
   Moon,
   ChevronRight,
 } from "lucide-react";
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { useCart } from "@/features/cart/hooks/useCart";
-import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
-import { useOrders } from "@/features/orders/hooks/useOrders";
 import { useTheme } from "@/shared/providers/theme-provider";
+import { getNavLinks } from "./constants/navbar-links";
+import { useNavbar } from "./hooks/useNavbar";
+import { useSearchDropdown } from "./hooks/useSearchDropdown";
 
 interface MobileNavSheetProps {
   open: boolean;
@@ -27,38 +29,42 @@ interface MobileNavSheetProps {
 
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
   const { t } = useTranslation();
-  const location = useLocation();
-  const lang = location.pathname.match(/^\/([a-z]{2})(\/|$)/)?.[1] || "en";
-  const { data: cartData } = useCart();
-  const { data: wishlistData } = useWishlist();
-  const { data: ordersData } = useOrders();
+  const lang = useCurrentLang();
   const { theme, setTheme } = useTheme();
-  const cartCount = cartData?.numOfCartItems ?? 0;
-  const favCount = wishlistData?.count ?? 0;
-  const ordersCount = ordersData?.length ?? 0;
-  const isLoggedIn = !!localStorage.getItem("token");
-  const navigate = useNavigate();
+  const { cartCount, favCount, ordersCount, isLoggedIn, handleLogout, handleSearch } = useNavbar();
+  const {
+    query,
+    showDropdown,
+    filteredProducts,
+    isLoading,
+    handleInputChange,
+    clearSearch,
+  } = useSearchDropdown();
 
-  const handleLogout = useCallback(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    onOpenChange(false);
-    navigate(`/${lang}/login`);
-  }, [navigate, lang, onOpenChange]);
+  const onLogout = useCallback(() => {
+    handleLogout(() => onOpenChange(false));
+  }, [handleLogout, onOpenChange]);
 
   const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
   }, [theme, setTheme]);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const onSearchKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        handleSearch(query, () => onOpenChange(false));
+        clearSearch();
+      }
+    },
+    [handleSearch, query, onOpenChange, clearSearch],
+  );
 
-  const handleSearch = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && searchQuery.trim()) {
-      navigate(`/${lang}/products?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery("");
-      onOpenChange(false);
-    }
-  }, [navigate, lang, searchQuery, onOpenChange]);
+  const onProductClick = useCallback(() => {
+    clearSearch();
+    onOpenChange(false);
+  }, [clearSearch, onOpenChange]);
+
+  const navLinks = getNavLinks(lang);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -80,11 +86,69 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" />
             <Input
               placeholder={t("nav.mobile.searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleSearch}
+              value={query}
+              onChange={(e) => handleInputChange(e.target.value)}
+              onKeyDown={onSearchKeyDown}
               className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/30 focus:border-white/40 focus:ring-0"
             />
+
+            {query && (
+              <button
+                type="button"
+                onClick={clearSearch}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 transition-colors hover:text-white"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            )}
+
+            {showDropdown && (
+              <div className="absolute left-0 top-full z-50 mt-2 max-h-[320px] w-full overflow-y-auto border border-white/10 bg-neutral-900 shadow-2xl">
+                {isLoading ? (
+                  <div className="flex items-center justify-center py-6">
+                    <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  </div>
+                ) : filteredProducts.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center gap-2 py-6 text-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
+                      <Search className="h-4 w-4 text-white/50" />
+                    </div>
+                    <p className="text-sm font-semibold text-white/70">
+                      No products found
+                    </p>
+                    <span className="text-xs text-white/40">
+                      Try another search
+                    </span>
+                  </div>
+                ) : (
+                  filteredProducts.map((product) => (
+                    <Link
+                      to={buildLocalizedPath(
+                        `/products/${product.slug}/${product.id}`,
+                        lang,
+                      )}
+                      key={product.id}
+                      onClick={onProductClick}
+                      className="flex w-full items-center gap-3 border-b border-white/10 p-3 text-left transition-colors hover:bg-white/10"
+                    >
+                      <img
+                        src={product.imageCover}
+                        alt={product.title}
+                        className="h-14 w-14 shrink-0 object-cover"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-bold text-white">
+                          {product.title}
+                        </p>
+                        <p className="mt-1 text-xs text-white/60">
+                          {product.price} EGP
+                        </p>
+                      </div>
+                    </Link>
+                  ))
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -94,13 +158,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               {t("nav.mobile.shop")}
             </p>
             <div className="space-y-1">
-              {[
-                { key: "nav.links.men", href: `/${lang}/categories/men` },
-                { key: "nav.links.women", href: `/${lang}/categories/women` },
-                { key: "nav.links.kids", href: `/${lang}/categories/kids` },
-                { key: "nav.links.sale", href: `/${lang}/products?onSale=true` },
-                { key: "nav.links.brands", href: `/${lang}/brands` },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.key}
                   to={link.href}
@@ -127,7 +185,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             </p>
             <div className="space-y-1">
               <Link
-                to={`/${lang}/fave`}
+                to={buildLocalizedPath("/wishlist", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -144,7 +202,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to={`/${lang}/orders`}
+                to={buildLocalizedPath("/orders", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -161,7 +219,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                 </div>
               </Link>
               <Link
-                to={`/${lang}/cart`}
+                to={buildLocalizedPath("/cart", lang)}
                 onClick={() => onOpenChange(false)}
                 className="flex items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
               >
@@ -188,7 +246,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               {isLoggedIn ? (
                 <>
                   <Link
-                    to={`/${lang}/profile`}
+                    to={buildLocalizedPath("/profile", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -198,7 +256,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                     <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.profile")}</span>
                   </Link>
                   <button
-                    onClick={handleLogout}
+                    onClick={onLogout}
                     className="flex w-full items-center gap-4 rounded-none px-4 py-4 text-destructive transition-all hover:bg-destructive/5"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-none bg-destructive/10">
@@ -210,7 +268,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               ) : (
                 <>
                   <Link
-                    to={`/${lang}/login`}
+                    to={buildLocalizedPath("/login", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -222,7 +280,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                     </div>
                   </Link>
                   <Link
-                    to={`/${lang}/register`}
+                    to={buildLocalizedPath("/register", lang)}
                     onClick={() => onOpenChange(false)}
                     className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
                   >
@@ -232,16 +290,6 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                       </div>
                       <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.joinUs")}</span>
                     </div>
-                  </Link>
-                  <Link
-                    to={`/${lang}/register`}
-                    onClick={() => onOpenChange(false)}
-                    className="flex items-center gap-4 rounded-none px-4 py-4 transition-all hover:bg-muted/50"
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30">
-                      <UserCircle className="h-5 w-5" />
-                    </div>
-                    <span className="text-sm font-black uppercase tracking-widest text-foreground">{t("nav.mobile.joinUs")}</span>
                   </Link>
                 </>
               )}

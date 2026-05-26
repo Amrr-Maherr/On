@@ -1,6 +1,7 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,10 +15,12 @@ const BannerContent = memo(function BannerContent({
   data,
 }: BannerContentProps) {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
   const handleClick = useCallback(
-    () => navigate(data.ctaHref),
-    [navigate, data.ctaHref],
+    () => navigate(buildLocalizedPath(data.ctaHref, lang)),
+    [navigate, lang, data.ctaHref],
   );
 
   return (

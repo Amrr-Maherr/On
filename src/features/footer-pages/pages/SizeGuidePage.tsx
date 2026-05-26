@@ -132,11 +132,7 @@ export default function SizeGuidePage() {
 
       <div className="mt-8">
         <ContentSection title={t("footerPages.sizeGuide.sections.fitNotes.title")} variant="card">
-          <p>
-            Our sizing runs true to standard US sizing. If you are between sizes, we recommend sizing up for a
-            more relaxed fit or sizing down for a closer fit. Still unsure? Contact our support team with your
-            measurements and we will help you choose the right size.
-          </p>
+          <p>{t("footerPages.sizeGuide.sections.fitNotes.description")}</p>
         </ContentSection>
       </div>
     </PageLayout>

@@ -1,13 +1,16 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const HeroCampaignSection = memo(function HeroCampaignSection() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleShopNow = useCallback(() => navigate("/products"), [navigate]);
-  const handleExploreCollections = useCallback(() => navigate("/categories"), [navigate]);
+  const handleShopNow = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
+  const handleExploreCollections = useCallback(() => navigate(buildLocalizedPath("/categories", lang)), [navigate, lang]);
 
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-neutral-950 md:mt-[50px]">
