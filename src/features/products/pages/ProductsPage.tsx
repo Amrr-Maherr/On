@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useLocation, useSearchParams } from "react-router-dom";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
@@ -105,17 +106,19 @@ export default function ProductsPage() {
           className="mb-6"
         />
 
-        <div className="mb-12 border-l-4 border-foreground pl-6">
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-            {t("products.page.catalog.label")}
-          </span>
-          <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-            {t("products.page.catalog.title")}
-          </h1>
-          <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
-            {t("products.page.catalog.count", { count: products.length })}
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-12 border-l-4 border-foreground pl-6">
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+              {t("products.page.catalog.label")}
+            </span>
+            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+              {t("products.page.catalog.title")}
+            </h1>
+            <p className="mt-2 text-sm font-bold text-muted-foreground/60 uppercase tracking-widest">
+              {t("products.page.catalog.count", { count: products.length })}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="flex gap-16">
           <div
@@ -187,11 +190,10 @@ export default function ProductsPage() {
                   className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
                   data-tour="product-grid"
                 >
-                  {products.map((product) => (
-                    <ProductCard
-                      key={product.id || product._id}
-                      product={product}
-                    />
+                  {products.map((product, index) => (
+                    <ScrollReveal key={product.id || product._id} delay={index * 0.03} direction="up" distance={20}>
+                      <ProductCard product={product} />
+                    </ScrollReveal>
                   ))}
                 </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
@@ -83,18 +84,22 @@ export default function ProfilePage() {
         <Breadcrumb items={[{ label: t("profile.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("profile.page.breadcrumb.profile") }]} className="mb-6" />
 
       <div className="mx-auto space-y-8">
-        <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
-          <div data-tour="profile-header">
-            <ProfileHeader user={user} />
+        <ScrollReveal>
+          <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
+            <div data-tour="profile-header">
+              <ProfileHeader user={user} />
+            </div>
+            <div className="mb-4 md:mb-12" data-tour="profile-actions">
+              <ProfileActions onLogout={handleLogout} onEdit={handleEdit} />
+            </div>
           </div>
-          <div className="mb-4 md:mb-12" data-tour="profile-actions">
-            <ProfileActions onLogout={handleLogout} onEdit={handleEdit} />
-          </div>
-        </div>
+        </ScrollReveal>
 
-        <div data-tour="profile-info">
-          <ProfileInfoCard user={user} />
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div data-tour="profile-info">
+            <ProfileInfoCard user={user} />
+          </div>
+        </ScrollReveal>
       </div>
       </div>
       <EditProfileSheet

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
@@ -106,20 +107,24 @@ export default function OrdersPage() {
           ]}
           className="mb-6"
         />
-        <div className="mb-10">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
-            {t("orders.page.catalog.label")}
-          </span>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
-            {t("orders.page.catalog.title")}
-          </h2>
-          <p className="mt-1 text-sm font-medium text-muted-foreground/60">
-            {t("orders.page.catalog.count", { count: orders.length })}
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+              {t("orders.page.catalog.label")}
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground md:text-4xl">
+              {t("orders.page.catalog.title")}
+            </h2>
+            <p className="mt-1 text-sm font-medium text-muted-foreground/60">
+              {t("orders.page.catalog.count", { count: orders.length })}
+            </p>
+          </div>
+        </ScrollReveal>
         <div className="space-y-4" data-tour="orders-list">
-          {orders.map((order) => (
-            <OrderCard key={order._id} order={order} />
+          {orders.map((order, index) => (
+            <ScrollReveal key={order._id} delay={index * 0.04} direction="up" distance={16}>
+              <OrderCard order={order} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

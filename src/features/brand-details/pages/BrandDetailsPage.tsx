@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -52,14 +53,16 @@ export default function BrandDetailsPage() {
         <BrandDetailsCard brand={brand} />
 
         <section className="section-py mt-20 border-t border-border/40">
-          <div className="mb-14 border-l-4 border-foreground pl-8">
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
-              {t("brands.details.collection.label")}
-            </span>
-            <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
-              {t("brands.details.collection.title")}
-            </h2>
-          </div>
+          <ScrollReveal>
+            <div className="mb-14 border-l-4 border-foreground pl-8">
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                {t("brands.details.collection.label")}
+              </span>
+              <h2 className="mt-4 text-4xl font-black uppercase tracking-tighter text-foreground md:text-6xl">
+                {t("brands.details.collection.title")}
+              </h2>
+            </div>
+          </ScrollReveal>
           <BrandProducts brandId={brand._id} />
         </section>
       </div>

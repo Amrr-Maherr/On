@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
@@ -113,18 +114,19 @@ export default function CartPage() {
       <div className="container-layout section-py pt-8">
         <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
 
-        <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
-          <div>
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-              {t("cart.page.catalog.label")}
-            </span>
-            <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-              {t("cart.page.catalog.title")}
-            </h1>
-            <p className="mt-2 text-sm font-bold text-muted-foreground/60">
-              {t("cart.page.catalog.count", { count: numOfCartItems })}
-            </p>
-          </div>
+        <ScrollReveal>
+          <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
+            <div>
+              <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
+                {t("cart.page.catalog.label")}
+              </span>
+              <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
+                {t("cart.page.catalog.title")}
+              </h1>
+              <p className="mt-2 text-sm font-bold text-muted-foreground/60">
+                {t("cart.page.catalog.count", { count: numOfCartItems })}
+              </p>
+            </div>
           <button
             className="hidden items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-destructive/60 transition-colors hover:text-destructive md:flex"
             onClick={handleClearCart}
@@ -134,16 +136,18 @@ export default function CartPage() {
             {isClearing ? t("cart.actions.clearing") : t("cart.actions.clearBag")}
           </button>
         </div>
+        </ScrollReveal>
 
         <div className="grid gap-16 lg:grid-cols-[1fr_400px]">
           <div className="space-y-8" data-tour="cart-items">
-            {items.map((item) => (
-              <CartItemCard
-                key={item._id}
-                item={item}
-                onUpdate={handleUpdate}
-                onRemove={handleRemove}
-              />
+            {items.map((item, index) => (
+              <ScrollReveal key={item._id} delay={index * 0.04} direction="up" distance={16}>
+                <CartItemCard
+                  item={item}
+                  onUpdate={handleUpdate}
+                  onRemove={handleRemove}
+                />
+              </ScrollReveal>
             ))}
           </div>
 
