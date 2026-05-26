@@ -80,13 +80,9 @@ function LangLayout() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const validLang = lang === "ar" ? "ar" : "en";
-    if (validLang !== i18n.language) {
-      i18n.changeLanguage(validLang);
+    if (lang && lang !== i18n.language) {
+      i18n.changeLanguage(lang);
     }
-    const dir = validLang === "ar" ? "rtl" : "ltr";
-    document.documentElement.dir = dir;
-    document.documentElement.lang = validLang;
   }, [lang, i18n]);
 
   return <Outlet />;
