@@ -97,9 +97,6 @@ function RootRedirect() {
   return <Navigate to={`/en${location.pathname}${location.search}`} replace />;
 }
 
-const AllProductsPage = lazy(() => import("@/features/all-products/pages/AllProductsPage"));
-const ProductDetailsPage = lazy(() => import("@/features/product-details/pages/ProductDetailsPage"));
-
 export default function AppRoutes() {
   return (
     <Suspense fallback={<Loader />}>
