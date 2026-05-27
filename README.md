@@ -23,6 +23,7 @@
 | **i18n** | i18next 26, react-i18next 17 |
 | **SEO** | React Helmet Async |
 | **Notifications** | React Hot Toast |
+| **OAuth** | @react-oauth/google (Google Login) |
 | **Image Lightbox** | yet-another-react-lightbox |
 | **Maps** | React Simple Maps |
 | **Product Tour** | driver.js |
@@ -229,7 +230,7 @@ interface PaginationMetadata {
 - Login, registration, forgot/reset password flows
 - Token-based auth persisted in `localStorage`
 - Axios interceptor for automatic token attachment
-- Social login UI (implementation-ready)
+- Google OAuth login via `@react-oauth/google` with JWT decoding (`jwt-decode`)
 
 ### Product Listing & Details (`features/products`, `features/product-details`)
 - Server-side pagination with query parameter filters
@@ -267,6 +268,7 @@ interface PaginationMetadata {
 ### Profile (`features/profile`)
 - View and edit personal information (name, phone, email)
 - EditProfileSheet with React Hook Form
+- Google profile data display (name, email, avatar from Google JWT)
 
 ### Homepage
 - Hero section with video background
