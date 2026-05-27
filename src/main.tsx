@@ -10,19 +10,21 @@ import TourProvider from "@/features/tour/components/TourProvider";
 import { LenisProvider } from "@/shared/providers/LenisProvider";
 import App from "./App.tsx";
 import "./i18n";
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 registerSW();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppProviders>
-      <BrowserRouter>
-        <LenisProvider>
-          <TourProvider>
-            <App />
-          </TourProvider>
-        </LenisProvider>
-      </BrowserRouter>
-    </AppProviders>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <AppProviders>
+        <BrowserRouter>
+          <LenisProvider>
+            <TourProvider>
+              <App />
+            </TourProvider>
+          </LenisProvider>
+        </BrowserRouter>
+      </AppProviders>
+    </GoogleOAuthProvider>
   </StrictMode>,
 );
