@@ -1,14 +1,15 @@
-import { useState, useCallback, useMemo, useRef } from "react"
+import { useState, useCallback, useMemo, useRef, lazy, Suspense } from "react"
 import { useTranslation } from "react-i18next"
 import PageHelmet from "@/shared/components/PageHelmet"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import ScrollReveal from "@/components/shared/ScrollReveal"
 import { branches as branchData } from "@/features/branches/data/branches"
-import BranchMap from "@/features/branches/components/BranchMap"
 import BranchCard from "@/features/branches/components/BranchCard"
 import BranchEmpty from "@/features/branches/components/BranchEmpty"
 import CampaignHeader from "@/components/shared/components/CampaignHeader"
 import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4"
+
+const BranchMap = lazy(() => import("@/features/branches/components/BranchMap"))
 
 export default function BranchesPage() {
   const { t } = useTranslation()
@@ -88,11 +89,13 @@ export default function BranchesPage() {
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
           <div className="h-[400px] md:h-[500px] lg:h-[600px] lg:sticky lg:top-24">
-            <BranchMap
-              branches={branches}
-              activeBranchId={activeBranchId}
-              onBranchSelect={handleBranchSelect}
-            />
+            <Suspense fallback={<div className="h-full w-full animate-pulse bg-muted" />}>
+              <BranchMap
+                branches={branches}
+                activeBranchId={activeBranchId}
+                onBranchSelect={handleBranchSelect}
+              />
+            </Suspense>
           </div>
 
           <div

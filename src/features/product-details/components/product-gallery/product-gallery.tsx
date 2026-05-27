@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from "react";
+import { useState, useCallback, memo, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Thumbs } from "swiper/modules";
@@ -7,7 +7,8 @@ import type { SwiperClass } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
-import ProductLightbox from "./product-lightbox";
+
+const ProductLightbox = lazy(() => import("./product-lightbox"));
 
 interface ProductGalleryProps {
   images: string[];
@@ -111,13 +112,15 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
         )}
       </div>
 
-      <ProductLightbox
-        open={lightboxOpen}
-        index={lightboxIndex}
-        slides={slides}
-        onClose={closeLightbox}
-        onIndexChange={handleLightboxIndexChange}
-      />
+      <Suspense fallback={null}>
+        <ProductLightbox
+          open={lightboxOpen}
+          index={lightboxIndex}
+          slides={slides}
+          onClose={closeLightbox}
+          onIndexChange={handleLightboxIndexChange}
+        />
+      </Suspense>
     </>
   );
 });
