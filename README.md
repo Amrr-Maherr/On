@@ -10,6 +10,7 @@
 |---|---|
 | **Core** | React 19, TypeScript 6 |
 | **Build** | Vite 8 |
+| **PWA** | vite-plugin-pwa 1 (service worker, manifest, offline support) |
 | **Routing** | React Router 7 |
 | **Server State** | TanStack Query 5 (React Query) |
 | **Client State** | Redux Toolkit (configured, extensible) |
@@ -272,6 +273,14 @@ interface PaginationMetadata {
 - Product showcase sections
 - Brand and category grids
 - Campaign banners
+
+### Progressive Web App (PWA)
+- Installable via browser prompt with web manifest (`manifest.webmanifest`)
+- Auto-updating service worker via `vite-plugin-pwa` (`registerType: 'autoUpdate'`)
+- SVG-based manifest icon using the existing brand icon
+- Offline-ready with workbox precaching of all static assets
+- Type-safe `virtual:pwa-register` integration with full TypeScript declarations
+- Lighthouse-optimized meta tags and manifest configuration
 
 ### Guided Tour (`features/tour`)
 - Route-aware product tour using driver.js
