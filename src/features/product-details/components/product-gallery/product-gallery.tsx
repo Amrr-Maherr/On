@@ -52,8 +52,7 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
             modules={[FreeMode, Thumbs]}
             grabCursor
             loop
-            touchRatio={1}
-            resistanceRatio={0.5}
+            slidesPerView={1}
             className="bg-card"
           >
             {images.map((img) => (
@@ -72,7 +71,7 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
             type="button"
             onClick={openLightbox}
             aria-label={t("products.details.gallery.openFullscreen")}
-            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-none bg-background/80 backdrop-blur-sm text-muted-foreground/40 transition-all duration-200 hover:bg-background hover:text-foreground active:scale-90 sm:right-4 sm:top-4 sm:h-9 sm:w-9 sm:opacity-0 sm:group-hover:opacity-100"
+            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-none bg-background/80 backdrop-blur-sm text-muted-foreground/40 transition-all duration-200 hover:bg-background hover:text-foreground active:scale-90 sm:right-4 sm:top-4 sm:opacity-0 sm:group-hover:opacity-100"
           >
             <Expand className="h-4 w-4" strokeWidth={1.5} />
           </button>
@@ -88,12 +87,18 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
             grabCursor
             modules={[FreeMode, Thumbs]}
             className="!pb-0"
-            touchRatio={0.5}
+            touchRatio={1}
+            breakpoints={{
+              320: { spaceBetween: 6 },
+              640: { spaceBetween: 8 },
+            }}
           >
             {images.map((img, index) => (
               <SwiperSlide key={img} className="!w-auto">
-                <span
-                  className={`block overflow-hidden rounded-xl ring-1 transition-all duration-200 ${
+                <button
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={`block rounded-xl ring-1 transition-all duration-200 ${
                     index === activeIndex
                       ? "ring-2 ring-foreground ring-offset-2 ring-offset-background"
                       : "ring-foreground/5 opacity-60 hover:opacity-100"
@@ -103,9 +108,9 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
                     src={img}
                     alt=""
                     loading="lazy"
-                    className="h-16 w-16 touch-pan-y object-cover sm:h-20 sm:w-20"
+                    className="h-16 w-16 touch-pan-y object-cover sm:h-20 sm:w-20 max-sm:h-14 max-sm:w-14"
                   />
-                </span>
+                </button>
               </SwiperSlide>
             ))}
           </Swiper>
