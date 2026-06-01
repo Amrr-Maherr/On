@@ -37,7 +37,15 @@ export default function ProfilePage() {
     if (userInfoRaw) {
       try {
         const decoded = JSON.parse(userInfoRaw);
-        return { _id: decoded.sub, id: decoded.sub, email: decoded.email, name: decoded.name, picture: decoded.picture, role: "user", active: true } as User;
+        return {
+          _id: decoded.sub,
+          id: decoded.sub,
+          email: decoded.email,
+          name: decoded.name,
+          picture: decoded.picture,
+          role: "user",
+          active: true,
+        } as User;
       } catch {
         return null;
       }
@@ -51,20 +59,27 @@ export default function ProfilePage() {
     localStorage.removeItem("user_info");
     toast.success(t("profile.toast.loggedOut"));
     navigate(buildLocalizedPath("/login", lang));
+    window.location.reload();
   }, [navigate, lang, t]);
 
   if (!user) {
     if (isLoading) return <ProfileSkeleton />;
     return (
       <div className="container-layout section-py pt-8">
-        <ProfileError message={error?.message || "User data not found"} onRetry={() => refetch()} />
+        <ProfileError
+          message={error?.message || "User data not found"}
+          onRetry={() => refetch()}
+        />
       </div>
     );
   }
 
   return (
     <>
-      <PageHelmet title={t("profile.page.title")} description={t("profile.page.description")} />
+      <PageHelmet
+        title={t("profile.page.title")}
+        description={t("profile.page.description")}
+      />
       <CampaignHeader
         subtitle={t("profile.page.hero.subtitle")}
         title={t("profile.page.hero.title")}
@@ -74,7 +89,10 @@ export default function ProfilePage() {
       <div className="container-layout section-py pt-8">
         <Breadcrumb
           items={[
-            { label: t("profile.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) },
+            {
+              label: t("profile.page.breadcrumb.home"),
+              href: buildLocalizedPath("/", lang),
+            },
             { label: t("profile.page.breadcrumb.profile") },
           ]}
           className="mb-6"
@@ -82,19 +100,30 @@ export default function ProfilePage() {
         <div className="mx-auto space-y-8">
           <ScrollReveal>
             <div className="flex flex-col items-center justify-between gap-4 border-b border-border/30 pb-8 md:flex-row md:items-end">
-              <div data-tour="profile-header"><ProfileHeader user={user} /></div>
+              <div data-tour="profile-header">
+                <ProfileHeader user={user} />
+              </div>
               <div className="mb-4 md:mb-12" data-tour="profile-actions">
-                <ProfileActions onLogout={handleLogout} onEdit={() => setIsEditOpen(true)} />
+                <ProfileActions
+                  onLogout={handleLogout}
+                  onEdit={() => setIsEditOpen(true)}
+                />
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div data-tour="profile-info"><ProfileInfoCard user={user} /></div>
+            <div data-tour="profile-info">
+              <ProfileInfoCard user={user} />
+            </div>
           </ScrollReveal>
         </div>
       </div>
       {!userInfoRaw && (
-        <EditProfileSheet user={user} isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} />
+        <EditProfileSheet
+          user={user}
+          isOpen={isEditOpen}
+          onClose={() => setIsEditOpen(false)}
+        />
       )}
     </>
   );
