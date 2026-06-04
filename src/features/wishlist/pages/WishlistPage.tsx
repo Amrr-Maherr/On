@@ -11,7 +11,7 @@ import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishli
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
 import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
-import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
+import { CampaignHeaderSkeleton } from "@/components/shared/Skeleton";
 import WishlistError from "@/features/wishlist/components/WishlistError";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
@@ -38,13 +38,27 @@ export default function WishlistPage() {
   if (isLoading) {
     return (
       <>
-        <CampaignHeader
-          title={t("wishlist.page.hero.title")}
-          subtitle={t("wishlist.page.hero.subtitle")}
-          description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
-        />
-        <WishlistLoader />
+        <CampaignHeaderSkeleton />
+        <div className="container-layout py-8">
+          <div className="mb-8">
+            <div className="h-4 w-24 animate-pulse rounded-lg bg-muted" />
+            <div className="mt-2 h-8 w-56 animate-pulse rounded-xl bg-muted" />
+          </div>
+          <div className="space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="flex gap-5 rounded-2xl border border-border/50 bg-card p-5">
+                <div className="h-28 w-28 shrink-0 animate-pulse rounded-xl bg-muted md:h-32 md:w-32" />
+                <div className="flex flex-1 flex-col justify-between gap-3">
+                  <div className="h-4 w-3/4 animate-pulse rounded-lg bg-muted" />
+                  <div className="h-3 w-1/4 animate-pulse rounded-lg bg-muted" />
+                  <div className="flex items-center justify-end">
+                    <div className="h-8 w-28 animate-pulse rounded-full bg-muted" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </>
     );
   }

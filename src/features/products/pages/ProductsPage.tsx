@@ -7,7 +7,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
-import ProductsLoader from "../components/ProductsLoader";
+import { CardSkeleton } from "@/components/shared/Skeleton";
 import ProductsError from "../components/ProductsError";
 import ProductsEmpty from "../components/ProductsEmpty";
 import ProductsPagination from "../components/ProductsPagination";
@@ -181,7 +181,7 @@ export default function ProductsPage() {
                 onRetry={() => refetch()}
               />
             ) : isLoading ? (
-              <ProductsLoader />
+              <CardSkeleton />
             ) : products.length === 0 ? (
               <ProductsEmpty />
             ) : (

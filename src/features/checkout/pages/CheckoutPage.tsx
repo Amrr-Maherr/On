@@ -11,6 +11,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 import { cn } from "@/lib/utils";
+import Skeleton from "@/components/shared/Skeleton";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useCheckoutCash } from "@/features/checkout/hooks/useCheckoutCash";
 import { useCheckoutSession } from "@/features/checkout/hooks/useCheckoutSession";
@@ -104,17 +105,14 @@ export default function CheckoutPage() {
     return (
       <div className="container-layout py-8">
         <div className="mx-auto">
-          <div className="mb-8 h-8 w-48 animate-pulse rounded bg-muted" />
+          <Skeleton width={192} height={32} className="mb-8 rounded" />
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
             <div className="space-y-4">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-16 animate-pulse rounded-lg bg-muted"
-                />
+                <Skeleton key={i} variant="rectangular" className="h-16 w-full" />
               ))}
             </div>
-            <div className="h-64 animate-pulse rounded-xl bg-muted" />
+            <Skeleton variant="rectangular" className="h-64 w-full rounded-xl" />
           </div>
         </div>
       </div>

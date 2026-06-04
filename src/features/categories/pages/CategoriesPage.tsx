@@ -6,7 +6,7 @@ import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "../components/CategoryCard";
-import CategoriesLoader from "../components/CategoriesLoader";
+import { CardSkeleton } from "@/components/shared/Skeleton";
 import CategoriesError from "../components/CategoriesError";
 import CategoriesEmpty from "../components/CategoriesEmpty";
 import CategoriesPagination from "../components/CategoriesPagination";
@@ -97,7 +97,7 @@ export default function CategoriesPage() {
             ) : isLoading ? (
               <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <CategoriesLoader key={i} />
+                  <CardSkeleton key={i} />
                 ))}
               </div>
             ) : categories.length === 0 ? (

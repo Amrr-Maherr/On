@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 import BrandCard from "@/features/brands/components/BrandCard";
-import BrandsLoader from "@/features/brands/components/BrandsLoader";
+import { CardSkeleton } from "@/components/shared/Skeleton";
 import BrandsError from "@/features/brands/components/BrandsError";
 import Section from "@/components/shared/components/Section";
 
@@ -29,7 +29,7 @@ const BrandsSection = memo(function BrandsSection() {
         description={t("home.sections.brands.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
-          <BrandsLoader key={i} />
+          <CardSkeleton key={i} />
         ))}
       </Section>
     );

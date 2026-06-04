@@ -5,7 +5,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "@/features/categories/components/CategoryCard";
 import { useAllCategories } from "@/features/all-categories/hooks/useAllCategories";
-import CategoriesLoader from "@/features/all-categories/components/CategoriesLoader";
+import { GridSkeleton } from "@/components/shared/Skeleton";
 import CategoriesError from "@/features/all-categories/components/CategoriesError";
 import CategoriesEmpty from "@/features/all-categories/components/CategoriesEmpty";
 import CategoriesPagination from "@/features/all-categories/components/CategoriesPagination";
@@ -31,7 +31,7 @@ export default function AllCategoriesPage() {
   const [page, setPage] = useState(1);
   const { data, isLoading, error, refetch } = useAllCategories(page);
 
-  if (isLoading) return <CategoriesLoader />;
+  if (isLoading) return <GridSkeleton columns={4} count={8} />;
 
   if (error) {
     return (

@@ -89,6 +89,29 @@ const GridSkeleton = memo(function GridSkeleton({
   );
 });
 
+interface CardSkeletonProps {
+  className?: string;
+  aspectRatio?: string;
+  lines?: number;
+}
+
+const CardSkeleton = memo(function CardSkeleton({
+  className,
+  aspectRatio = "aspect-[4/5]",
+  lines = 3,
+}: CardSkeletonProps) {
+  return (
+    <div className={cn("animate-pulse", className)}>
+      <div className={cn("w-full rounded-2xl bg-muted/60", aspectRatio)} />
+      <div className="mt-4 space-y-2.5">
+        {lines >= 1 && <div className="h-3.5 w-2/3 rounded-full bg-muted/60" />}
+        {lines >= 2 && <div className="h-5 w-1/3 rounded-full bg-muted/60" />}
+        {lines >= 3 && <div className="h-3 w-1/4 rounded-full bg-muted/40" />}
+      </div>
+    </div>
+  );
+});
+
 interface CampaignHeaderSkeletonProps {
   className?: string;
 }
@@ -107,5 +130,5 @@ const CampaignHeaderSkeleton = memo(function CampaignHeaderSkeleton({
   );
 });
 
-export { GridSkeleton, CampaignHeaderSkeleton };
+export { GridSkeleton, CampaignHeaderSkeleton, CardSkeleton };
 export default Skeleton;

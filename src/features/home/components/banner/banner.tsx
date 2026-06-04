@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { bannerData, type BannerData } from "./constants";
 import BannerContent from "./banner-content";
-import BannerSkeleton from "./banner-skeleton";
+import { CampaignHeaderSkeleton } from "@/components/shared/Skeleton";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 interface BannerProps {
@@ -14,7 +14,7 @@ const Banner = memo(function Banner({ data = bannerData, loading = false }: Bann
     return (
       <section className="section-py" aria-label="Loading banner">
         <div className="container-layout">
-          <BannerSkeleton />
+          <CampaignHeaderSkeleton className="rounded-none" />
         </div>
       </section>
     );
