@@ -108,7 +108,7 @@ export function NavbarSearch() {
             <p className="text-sm font-semibold text-muted-foreground">
               {t("nav.search.noResults")}
             </p>
-            <p className="text-xs text-muted-foreground/40">
+            <p className="text-xs text-muted-foreground/60">
               {t("nav.search.tryAnother")}
             </p>
           </CommandEmpty>
@@ -179,7 +179,7 @@ export function NavbarSearch() {
               handleInputChange(query);
             }
           }}
-          className="h-10 border-2 border-border/40 bg-muted/20 pl-11 text-sm font-bold placeholder:text-muted-foreground/30 focus-visible:border-foreground"
+          className="h-10 border-2 border-border/40 bg-muted/20 pl-11 text-sm font-bold placeholder:text-muted-foreground/50 focus-visible:border-foreground"
         />
         {dropdownContent}
       </div>

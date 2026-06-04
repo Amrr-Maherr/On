@@ -11,7 +11,10 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
   const location = useLocation();
   const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleViewAll = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
+  const handleViewAll = useCallback(
+    () => navigate(buildLocalizedPath("/products", lang)),
+    [navigate, lang],
+  );
   const handleNavigate = useCallback(
     (slug: string) => navigate(buildLocalizedPath(slug, lang)),
     [navigate, lang],
@@ -24,7 +27,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
       description: t("home.sections.featuredCollections.running.description"),
       shopNow: t("home.sections.featuredCollections.running.shopNow"),
       image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=450&q=75",
       slug: "/products?category=running",
       gradient: "from-emerald-900/80 via-emerald-800/40 to-transparent",
     },
@@ -34,7 +37,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
       description: t("home.sections.featuredCollections.training.description"),
       shopNow: t("home.sections.featuredCollections.training.shopNow"),
       image:
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=450&q=75",
       slug: "/products?category=training",
       gradient: "from-orange-900/80 via-orange-800/40 to-transparent",
     },
@@ -44,7 +47,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
       description: t("home.sections.featuredCollections.lifestyle.description"),
       shopNow: t("home.sections.featuredCollections.lifestyle.shopNow"),
       image:
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=450&q=75",
       slug: "/products?category=lifestyle",
       gradient: "from-blue-900/80 via-blue-800/40 to-transparent",
     },
@@ -60,7 +63,9 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
                 {t("home.sections.featuredCollections.label")}
               </span>
               <h2 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-                {t("home.sections.featuredCollections.titleLine1")}<br />{t("home.sections.featuredCollections.titleLine2")}
+                {t("home.sections.featuredCollections.titleLine1")}
+                <br />
+                {t("home.sections.featuredCollections.titleLine2")}
               </h2>
             </div>
             <button
@@ -95,7 +100,7 @@ const FeaturedCollectionsSection = memo(function FeaturedCollectionsSection() {
                 />
                 <div className="absolute inset-0 bg-neutral-950/20 transition-colors group-hover:bg-neutral-950/40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
-                
+
                 <div className="relative z-10 p-10 transition-transform duration-500 group-hover:-translate-y-2">
                   <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">
                     {collection.subtitle}

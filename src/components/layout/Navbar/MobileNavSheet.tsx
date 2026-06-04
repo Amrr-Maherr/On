@@ -89,7 +89,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
               value={query}
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={onSearchKeyDown}
-              className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/30 focus:border-white/40 focus:ring-0"
+              className="h-14 w-full border-2 border-white/10 bg-white/5 pl-11 text-sm font-bold text-white placeholder:text-white/50 focus:border-white/60 focus:ring-0"
             />
 
             {query && (
@@ -116,7 +116,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                     <p className="text-sm font-semibold text-white/70">
                       No products found
                     </p>
-                    <span className="text-xs text-white/40">
+                    <span className="text-xs text-white/60">
                       Try another search
                     </span>
                   </div>
@@ -155,7 +155,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
 
         <div className="flex-1 overflow-y-auto px-6 py-8">
           <div className="mb-10">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
               {t("nav.mobile.shop")}
             </p>
             <div className="space-y-1">
@@ -174,14 +174,14 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                       {t(link.key)}
                     </span>
                   </div>
-                  <ChevronRight className="h-4 w-4 text-muted-foreground/30" />
+                  <ChevronRight className="h-4 w-4 text-muted-foreground/50" />
                 </Link>
               ))}
             </div>
           </div>
 
           <div className="mb-10">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
               {t("nav.mobile.account")}
             </p>
             <div className="space-y-1">
@@ -240,7 +240,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
           </div>
 
           <div className="mb-10">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
               {t("nav.mobile.account")}
             </p>
             <div className="space-y-1">
@@ -298,7 +298,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
           </div>
 
           <div className="mb-8">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
               {t("nav.mobile.preferences")}
             </p>
             <button

@@ -72,11 +72,11 @@ const Footer = memo(function Footer() {
             <div className="brightness-0 invert">
               <Logo />
             </div>
-            <p className="mt-8 max-w-sm text-base font-medium leading-relaxed text-white/50">
+            <p className="mt-8 max-w-sm text-base font-medium leading-relaxed text-white/70">
               {t("footer.brandStatement")}
             </p>
             <div className="mt-10 flex flex-col gap-6">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{t("footer.followUs")}</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50">{t("footer.followUs")}</p>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
                   <a
@@ -105,7 +105,7 @@ const Footer = memo(function Footer() {
                     <li key={link.key}>
                       <Link
                         to={link.href}
-                        className="text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white"
+                        className="text-sm font-bold text-white/60 transition-all duration-200 hover:translate-x-1 hover:text-white"
                       >
                         {t(link.key)}
                       </Link>
@@ -120,7 +120,7 @@ const Footer = memo(function Footer() {
         <div className="mt-20 grid gap-12 border-t border-white/10 pt-16 lg:grid-cols-3">
           <div className="space-y-6">
             <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.newsletter.title")}</h4>
-            <p className="text-sm font-medium text-white/40">{t("footer.newsletter.description")}</p>
+            <p className="text-sm font-medium text-white/60">{t("footer.newsletter.description")}</p>
             <div className="flex gap-2">
               <input 
                 type="email" 
@@ -136,8 +136,8 @@ const Footer = memo(function Footer() {
           <div className="lg:col-span-2 lg:flex lg:justify-end lg:gap-24">
             <div className="space-y-6">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.stores.title")}</h4>
-              <Link to={buildLocalizedPath("/branches", lang)} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
-              <Link to={buildLocalizedPath("/shipping", lang)} className="block text-sm font-bold text-white/40 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
+              <Link to={buildLocalizedPath("/branches", lang)} className="block text-sm font-bold text-white/60 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.findStore")}</Link>
+              <Link to={buildLocalizedPath("/shipping", lang)} className="block text-sm font-bold text-white/60 transition-all duration-200 hover:translate-x-1 hover:text-white">{t("footer.stores.internationalShipping")}</Link>
             </div>
             <div className="mt-12 space-y-6 lg:mt-0">
               <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white">{t("footer.app.title")}</h4>
@@ -176,7 +176,7 @@ const Footer = memo(function Footer() {
           </div>
           <div className="flex items-center gap-8">
             {(["visa", "mastercard", "paypal", "applePay"] as const).map((method) => (
-              <span key={method} className="text-[10px] font-black uppercase tracking-[0.2em] opacity-30">
+              <span key={method} className="text-[10px] font-black uppercase tracking-[0.2em] opacity-60">
                 {t(`footer.paymentMethods.${method}`)}
               </span>
             ))}

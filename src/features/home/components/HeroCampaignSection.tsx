@@ -36,7 +36,7 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
             <h1 className="mt-8 text-7xl font-black leading-[0.85] tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem]">
               {t("home.sections.heroCampaign.title")}
               <br />
-              <span className="text-white/40">{t("home.sections.heroCampaign.titleAccent")}</span>
+              <span className="text-white/60">{t("home.sections.heroCampaign.titleAccent")}</span>
             </h1>
           </ScrollReveal>
 
