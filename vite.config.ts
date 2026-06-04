@@ -40,44 +40,39 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
+          if (id.includes('react-dom')) {
+            return 'vendor-react-dom'
+          }
+
+          if (id.includes('react')) {
             return 'vendor-react'
           }
-          if (id.includes('node_modules/react-router')) {
+
+          if (id.includes('react-router')) {
             return 'vendor-router'
           }
-          if (id.includes('node_modules/@tanstack/react-query')) {
+
+          if (id.includes('@tanstack/react-query')) {
             return 'vendor-query'
           }
-          if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) {
-            return 'vendor-i18n'
-          }
-          if (id.includes('node_modules/framer-motion') || id.includes('node_modules/motion')) {
+
+          if (id.includes('framer-motion')) {
             return 'vendor-motion'
           }
-          if (id.includes('node_modules/@reduxjs/toolkit') || id.includes('node_modules/react-redux')) {
-            return 'vendor-state'
-          }
-          if (id.includes('node_modules/swiper')) {
+
+          if (id.includes('swiper')) {
             return 'vendor-swiper'
           }
-          if (id.includes('node_modules/@base-ui') || id.includes('node_modules/@radix-ui')) {
-            return 'vendor-ui'
+
+          if (id.includes('node_modules')) {
+            return 'vendor'
           }
-          if (id.includes('node_modules/axios')) {
-            return 'vendor-http'
-          }
-          if (id.includes('node_modules/react-hook-form')) {
-            return 'vendor-forms'
-          }
-          if (id.includes('node_modules/lucide-react')) {
-            return 'vendor-icons'
-          }
-          if (id.includes('node_modules/react-helmet-async') || id.includes('node_modules/react-helmet')) {
-            return 'vendor-seo'
-          }
-        },
+        }
       },
     },
+    target: "esnext",
+    minify: "esbuild",
+    cssCodeSplit: true,
+    sourcemap: false,
   },
 })
