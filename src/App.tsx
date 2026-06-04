@@ -46,11 +46,9 @@ function App() {
       />
       <Suspense fallback={<Loader />}>
         <Navbar />
-      </Suspense>
-      <main className="flex-1">
-        <AppRoutes />
-      </main>
-      <Suspense fallback={<Loader />}>
+        <main className="flex-1">
+          <AppRoutes />
+        </main>
         <Footer />
       </Suspense>
       <ScrollToTopButton />
