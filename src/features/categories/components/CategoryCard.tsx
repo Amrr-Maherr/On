@@ -21,6 +21,8 @@ const CategoryCard = memo(function CategoryCard({
           src={category.image}
           alt={category.name}
           loading="lazy"
+          width={400}
+          height={500}
           className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
         />
       </div>

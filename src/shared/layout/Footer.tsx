@@ -148,7 +148,7 @@ const Footer = memo(function Footer() {
                   rel="noopener noreferrer"
                   className="transition-all duration-300 hover:scale-105 hover:opacity-80"
                 >
-                  <img src={appStoreBadge} alt={t("footer.app.appStoreBadgeAlt")} className="h-12 w-auto" />
+                  <img src={appStoreBadge} alt={t("footer.app.appStoreBadgeAlt")} loading="lazy" className="h-12 w-auto" />
                 </a>
                 <a
                   href="#"
@@ -156,7 +156,7 @@ const Footer = memo(function Footer() {
                   rel="noopener noreferrer"
                   className="transition-all duration-300 hover:scale-105 hover:opacity-80"
                 >
-                  <img src={googlePlayBadge} alt={t("footer.app.googlePlayBadgeAlt")} className="h-12 w-auto" />
+                  <img src={googlePlayBadge} alt={t("footer.app.googlePlayBadgeAlt")} loading="lazy" className="h-12 w-auto" />
                 </a>
               </div>
             </div>

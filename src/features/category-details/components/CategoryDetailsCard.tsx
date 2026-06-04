@@ -24,6 +24,8 @@ const CategoryDetailsCard = memo(function CategoryDetailsCard({
           src={category.image}
           alt={category.name}
           loading="lazy"
+          width={400}
+          height={500}
           className="aspect-[4/5] w-full object-cover"
         />
       </div>

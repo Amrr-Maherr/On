@@ -22,6 +22,8 @@ const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsC
           src={brand.image}
           alt={brand.name}
           loading="lazy"
+          width={400}
+          height={500}
           className="aspect-[4/5] w-full object-contain p-16"
         />
       </div>

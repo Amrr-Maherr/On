@@ -54,6 +54,8 @@ const BlogSection = memo(function BlogSection() {
                     src={post.coverImage}
                     alt={post.title}
                     loading="lazy"
+                    width={400}
+                    height={400}
                     className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
                   />
                 </div>

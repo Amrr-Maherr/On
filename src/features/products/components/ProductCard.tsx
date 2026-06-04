@@ -19,6 +19,8 @@ function ProductCard({ product }: { product: Product }) {
           src={product.imageCover}
           alt={product.title}
           loading="lazy"
+          width={300}
+          height={400}
           className="aspect-[3/4] w-full object-cover transition-all duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-x-0 bottom-0 translate-y-full bg-foreground/90 p-4 transition-all duration-300 group-hover:translate-y-0">

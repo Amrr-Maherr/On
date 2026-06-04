@@ -35,6 +35,8 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
               <img
                 src={item.product.imageCover}
                 alt={item.product.title}
+                width={400}
+                height={400}
                 className="h-full w-full object-cover"
                 loading="lazy"
               />

@@ -26,6 +26,8 @@ const ProductBrand = memo(function ProductBrand({ brand }: ProductBrandProps) {
             src={brand.image}
             alt={brand.name}
             loading="lazy"
+            width={400}
+            height={400}
             className="h-full w-full object-cover"
           />
         </div>

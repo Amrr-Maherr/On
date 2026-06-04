@@ -26,6 +26,8 @@ const ProductCategory = memo(function ProductCategory({ category }: ProductCateg
             src={category.image}
             alt={category.name}
             loading="lazy"
+            width={400}
+            height={400}
             className="h-full w-full object-cover"
           />
         </div>

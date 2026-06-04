@@ -321,6 +321,9 @@ export default function CheckoutPage() {
                             <img
                               src={item.product.imageCover}
                               alt={item.product.title}
+                              loading="lazy"
+                              width={400}
+                              height={400}
                               className="h-full w-full object-cover"
                             />
                           </div>

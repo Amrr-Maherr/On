@@ -46,6 +46,8 @@ const ValuesSection = memo(function ValuesSection() {
                       src={value.image}
                       alt={value.title}
                       loading="lazy"
+                      width={400}
+                      height={300}
                     />
                   </div>
                   <div className="flex flex-col gap-2">

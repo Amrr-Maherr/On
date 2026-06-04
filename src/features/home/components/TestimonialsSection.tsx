@@ -47,6 +47,8 @@ const TestimonialsSection = memo(function TestimonialsSection() {
                       src={item.avatar}
                       alt={item.name}
                       loading="lazy"
+                      width={400}
+                      height={500}
                     />
                   </div>
                   <div className="flex flex-col gap-3">

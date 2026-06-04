@@ -71,6 +71,8 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
                   src={item.image}
                   alt={item.name}
                   loading="lazy"
+                  width={400}
+                  height={400}
                   className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-neutral-950/10 transition-colors group-hover:bg-neutral-950/30" />

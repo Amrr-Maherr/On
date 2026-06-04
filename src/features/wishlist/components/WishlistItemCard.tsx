@@ -40,6 +40,8 @@ const WishlistItemCard = memo(({
         <img
           src={product.imageCover}
           alt={product.title}
+          width={400}
+          height={400}
           className="h-full w-full object-cover"
           loading="lazy"
         />

@@ -132,6 +132,7 @@ export function NavbarSearch() {
                 <img
                   src={product.imageCover}
                   alt={product.title}
+                  loading="lazy"
                   className="h-12 w-12 shrink-0 border border-border/20 object-cover"
                 />
                 <div className="min-w-0 flex-1">

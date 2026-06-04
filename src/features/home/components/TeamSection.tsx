@@ -62,6 +62,8 @@ const TeamSection = memo(function TeamSection() {
                     src={member.image}
                     alt={member.name}
                     loading="lazy"
+                    width={400}
+                    height={400}
                   />
                 </div>
                 <div className="flex flex-col items-center gap-3">

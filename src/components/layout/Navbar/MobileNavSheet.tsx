@@ -134,6 +134,7 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                       <img
                         src={product.imageCover}
                         alt={product.title}
+                        loading="lazy"
                         className="h-14 w-14 shrink-0 object-cover"
                       />
                       <div className="min-w-0 flex-1">

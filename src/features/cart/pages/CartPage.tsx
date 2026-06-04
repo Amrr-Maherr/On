@@ -38,6 +38,53 @@ export default function CartPage() {
   const { mutate: removeItem } = useRemoveCartItem();
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
 
+  const cart = data?.data;
+  const items = cart?.products ?? [];
+  const numOfCartItems = data?.numOfCartItems ?? 0;
+
+  const handleUpdate = useCallback((itemId: string, count: number) => {
+    if (count < 1) return;
+    updateItem({ itemId, count });
+  }, [updateItem]);
+
+  const handleRemove = useCallback((itemId: string) => {
+    removeItem(itemId);
+  }, [removeItem]);
+
+  const handleClearCart = useCallback(() => {
+    toast(
+      (toastInstance) => (
+        <div className="flex flex-col gap-3">
+          <p className="text-sm">{t("cart.actions.confirmClear")}</p>
+          <div className="flex justify-end gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toast.dismiss(toastInstance.id)}
+            >
+              {t("cart.actions.cancel")}
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={() => {
+                clearCartItems();
+                toast.dismiss(toastInstance.id);
+              }}
+            >
+              {t("cart.actions.deleteAll")}
+            </Button>
+          </div>
+        </div>
+      ),
+      { duration: Infinity },
+    );
+  }, [clearCartItems, t]);
+
+  const handleCheckout = useCallback(() => {
+    navigate(buildLocalizedPath("/checkout", lang));
+  }, [navigate, lang]);
+
   if (isLoading) {
     return (
       <>
@@ -90,56 +137,9 @@ export default function CartPage() {
     );
   }
 
-  const cart = data?.data;
-  const items = cart?.products ?? [];
-  const numOfCartItems = data?.numOfCartItems ?? 0;
-
   if (!cart || items.length === 0) {
     return <CartEmpty />;
   }
-
-  const handleUpdate = useCallback((itemId: string, count: number) => {
-    if (count < 1) return;
-    updateItem({ itemId, count });
-  }, [updateItem]);
-
-  const handleRemove = useCallback((itemId: string) => {
-    removeItem(itemId);
-  }, [removeItem]);
-
-  const handleClearCart = useCallback(() => {
-    toast(
-      (toastInstance) => (
-        <div className="flex flex-col gap-3">
-          <p className="text-sm">{t("cart.actions.confirmClear")}</p>
-          <div className="flex justify-end gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toast.dismiss(toastInstance.id)}
-            >
-              {t("cart.actions.cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              size="sm"
-              onClick={() => {
-                clearCartItems();
-                toast.dismiss(toastInstance.id);
-              }}
-            >
-              {t("cart.actions.deleteAll")}
-            </Button>
-          </div>
-        </div>
-      ),
-      { duration: Infinity },
-    );
-  }, [clearCartItems, t]);
-
-  const handleCheckout = useCallback(() => {
-    navigate(buildLocalizedPath("/checkout", lang));
-  }, [navigate, lang]);
 
   return (
     <>

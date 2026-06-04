@@ -61,6 +61,8 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
                   src={img}
                   alt=""
                   loading="lazy"
+                  width={400}
+                  height={400}
                   className="aspect-square w-full touch-pan-y object-cover"
                 />
               </SwiperSlide>

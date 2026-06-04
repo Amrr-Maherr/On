@@ -17,6 +17,8 @@ const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
           src={brand.image}
           alt={brand.name}
           loading="lazy"
+          width={400}
+          height={500}
           className="h-full w-full object-contain p-12 transition-all duration-1000 group-hover:scale-110"
         />
       </div>
