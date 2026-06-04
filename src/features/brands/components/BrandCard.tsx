@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import type { Brand } from "@/features/brands/types";
+import CardImage from "@/components/shared/CardImage";
 
 const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
   const { t } = useTranslation();
@@ -13,13 +14,13 @@ const BrandCard = memo(function BrandCard({ brand }: { brand: Brand }) {
       className="group relative block overflow-hidden bg-muted/10 transition-all duration-500"
     >
       <div className="aspect-[4/5] overflow-hidden bg-white">
-        <img
+        <CardImage
           src={brand.image}
           alt={brand.name}
-          loading="lazy"
           width={400}
           height={500}
-          className="h-full w-full object-contain p-12 transition-all duration-1000 group-hover:scale-110"
+          objectFit="contain"
+          className="h-full w-full p-12 transition-all duration-1000 group-hover:scale-110"
         />
       </div>
       <div className="absolute inset-0 bg-neutral-950/5 transition-colors duration-500 group-hover:bg-neutral-950/20" />

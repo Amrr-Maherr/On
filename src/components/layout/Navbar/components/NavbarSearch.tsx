@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { useNavbar } from "../hooks/useNavbar";
 import { useSearchDropdown } from "../hooks/useSearchDropdown";
+import CardImage from "@/components/shared/CardImage";
 import {
   Command,
   CommandInput,
@@ -129,11 +130,10 @@ export function NavbarSearch() {
               onClick={clearSearch}
             >
               <CommandItem selected={index === highlightedIndex}>
-                <img
+                <CardImage
                   src={product.imageCover}
                   alt={product.title}
-                  loading="lazy"
-                  className="h-12 w-12 shrink-0 border border-border/20 object-cover"
+                  className="h-12 w-12 shrink-0 border border-border/20"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-bold text-foreground">

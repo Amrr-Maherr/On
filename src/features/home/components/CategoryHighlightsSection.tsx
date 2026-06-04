@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import CardImage from "@/components/shared/CardImage";
 
 const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
   const { t } = useTranslation();
@@ -69,13 +70,12 @@ const CategoryHighlightsSection = memo(function CategoryHighlightsSection() {
                 onClick={() => handleNavigate(item.slug)}
                 className="group relative flex h-[400px] w-full cursor-pointer flex-col justify-end overflow-hidden"
               >
-                <img
+                <CardImage
                   src={item.image}
                   alt={item.name}
-                  loading="lazy"
                   width={400}
                   height={400}
-                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full transition-all duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-neutral-950/10 transition-colors group-hover:bg-neutral-950/30" />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />

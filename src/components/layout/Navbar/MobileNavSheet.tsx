@@ -2,6 +2,7 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
+import CardImage from "@/components/shared/CardImage";
 import {
   Heart,
   Package,
@@ -131,11 +132,10 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
                       onClick={onProductClick}
                       className="flex w-full items-center gap-3 border-b border-white/10 p-3 text-left transition-colors hover:bg-white/10"
                     >
-                      <img
+                      <CardImage
                         src={product.imageCover}
                         alt={product.title}
-                        loading="lazy"
-                        className="h-14 w-14 shrink-0 object-cover"
+                        className="h-14 w-14 shrink-0"
                       />
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-bold text-white">

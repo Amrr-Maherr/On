@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import CardImage from "@/components/shared/CardImage";
 
 const BrandStorySection = memo(function BrandStorySection() {
   const { t } = useTranslation();
@@ -43,11 +44,10 @@ const BrandStorySection = memo(function BrandStorySection() {
           <ScrollReveal direction="left" distance={60}>
             <div className="relative">
               <div className="overflow-hidden rounded-none">
-                <img
+                <CardImage
                   src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80"
                   alt={t("home.sections.brandStory.label")}
-                  loading="lazy"
-                  className="h-[500px] w-full object-cover transition-all duration-700 hover:scale-105 md:h-[600px]"
+                  className="h-[500px] w-full transition-all duration-700 hover:scale-105 md:h-[600px]"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 hidden rounded-none bg-background p-6 shadow-2xl lg:block">

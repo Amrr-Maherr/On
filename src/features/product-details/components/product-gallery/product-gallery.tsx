@@ -7,6 +7,7 @@ import type { SwiperClass } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
+import CardImage from "@/components/shared/CardImage";
 
 const ProductLightbox = lazy(() => import("./product-lightbox"));
 
@@ -57,13 +58,12 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
           >
             {images.map((img) => (
               <SwiperSlide key={img}>
-                <img
+                <CardImage
                   src={img}
                   alt=""
-                  loading="lazy"
                   width={400}
                   height={400}
-                  className="aspect-square w-full touch-pan-y object-cover"
+                  className="aspect-square w-full touch-pan-y"
                 />
               </SwiperSlide>
             ))}
@@ -106,11 +106,10 @@ const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryPr
                       : "ring-foreground/5 opacity-60 hover:opacity-100"
                   }`}
                 >
-                  <img
+                  <CardImage
                     src={img}
                     alt=""
-                    loading="lazy"
-                    className="h-16 w-16 touch-pan-y object-cover sm:h-20 sm:w-20 max-sm:h-14 max-sm:w-14"
+                    className="h-16 w-16 touch-pan-y sm:h-20 sm:w-20 max-sm:h-14 max-sm:w-14"
                   />
                 </button>
               </SwiperSlide>

@@ -1,5 +1,6 @@
 import { memo } from "react";
 import type { User } from "../types";
+import CardImage from "@/components/shared/CardImage";
 
 interface ProfileHeaderProps {
   user: User;
@@ -16,10 +17,10 @@ const ProfileHeader = memo(function ProfileHeader({ user }: ProfileHeaderProps) 
   return (
     <div className="flex flex-col items-center gap-6 py-10 text-center md:flex-row md:gap-10 md:py-16 md:text-left">
       {user.picture ? (
-        <img
+        <CardImage
           src={user.picture}
           alt={user.name}
-          className="h-28 w-28 object-cover md:h-40 md:w-40"
+          className="h-28 w-28 md:h-40 md:w-40"
         />
       ) : (
         <div className="flex h-28 w-28 items-center justify-center rounded-none bg-foreground text-3xl font-black text-background md:h-40 md:w-40 md:text-5xl">

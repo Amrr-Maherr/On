@@ -5,6 +5,7 @@ import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
+import CardImage from "@/components/shared/CardImage";
 
 function ProductCard({ product }: { product: Product }) {
   const { t } = useTranslation();
@@ -15,13 +16,12 @@ function ProductCard({ product }: { product: Product }) {
       className="group flex flex-col"
     >
       <div className="relative overflow-hidden bg-muted/30">
-        <img
+        <CardImage
           src={product.imageCover}
           alt={product.title}
-          loading="lazy"
           width={300}
           height={400}
-          className="aspect-[3/4] w-full object-cover transition-all duration-700 group-hover:scale-105"
+          className="aspect-[3/4] w-full transition-all duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-x-0 bottom-0 translate-y-full bg-foreground/90 p-4 transition-all duration-300 group-hover:translate-y-0">
           <AddToCart productId={product.id} variant="overlay" />

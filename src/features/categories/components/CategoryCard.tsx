@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import type { Category } from "@/features/categories/types";
+import CardImage from "@/components/shared/CardImage";
 
 const CategoryCard = memo(function CategoryCard({
   category,
@@ -17,13 +18,12 @@ const CategoryCard = memo(function CategoryCard({
       className="group relative block overflow-hidden bg-muted/10 transition-all duration-500"
     >
       <div className="aspect-[4/5] overflow-hidden">
-        <img
+        <CardImage
           src={category.image}
           alt={category.name}
-          loading="lazy"
           width={400}
           height={500}
-          className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
+          className="h-full w-full transition-all duration-1000 group-hover:scale-110"
         />
       </div>
       <div className="absolute inset-0 bg-neutral-950/10 transition-colors duration-500 group-hover:bg-neutral-950/30" />

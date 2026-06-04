@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { valuesData } from "../utils/values";
+import CardImage from "@/components/shared/CardImage";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -41,11 +42,10 @@ const ValuesSection = memo(function ValuesSection() {
               <SwiperSlide key={value.title}>
                 <div className="group flex flex-col gap-6">
                   <div className="overflow-hidden rounded-none bg-muted/20">
-                    <img
-                      className="aspect-[4/3] w-full object-cover transition-all duration-500 group-hover:scale-[1.05]"
+                    <CardImage
+                      className="aspect-[4/3] w-full transition-all duration-500 group-hover:scale-[1.05]"
                       src={value.image}
                       alt={value.title}
-                      loading="lazy"
                       width={400}
                       height={300}
                     />

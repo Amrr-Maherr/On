@@ -9,6 +9,7 @@ import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import CardImage from "@/components/shared/CardImage";
 
 import { cn } from "@/lib/utils";
 import Skeleton from "@/components/shared/Skeleton";
@@ -318,13 +319,12 @@ export default function CheckoutPage() {
                       {items.map((item) => (
                         <div key={item._id} className="flex gap-4">
                           <div className="h-16 w-16 shrink-0 overflow-hidden bg-muted/30">
-                            <img
+                            <CardImage
                               src={item.product.imageCover}
                               alt={item.product.title}
-                              loading="lazy"
                               width={400}
                               height={400}
-                              className="h-full w-full object-cover"
+                              className="h-full w-full"
                             />
                           </div>
                           <div className="flex flex-1 flex-col justify-center min-w-0">
