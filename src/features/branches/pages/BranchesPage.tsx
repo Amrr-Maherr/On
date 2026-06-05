@@ -8,7 +8,7 @@ import BranchCard from "@/features/branches/components/BranchCard"
 import BranchEmpty from "@/features/branches/components/BranchEmpty"
 import CampaignHeader from "@/components/shared/components/CampaignHeader"
 import Skeleton from "@/components/shared/Skeleton"
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4"
+import heroImage from "@/assets/imgi_1_em-emc-TRAINING-hp-tc-d.jpg"
 
 const BranchMap = lazy(() => import("@/features/branches/components/BranchMap"))
 
@@ -44,7 +44,7 @@ export default function BranchesPage() {
           title={t("branches.page.hero.title")}
           subtitle={t("branches.page.hero.subtitle")}
           description={t("branches.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
         <BranchEmpty />
       </>
@@ -62,7 +62,7 @@ export default function BranchesPage() {
         title={t("branches.page.hero.title")}
         subtitle={t("branches.page.hero.subtitle")}
         description={t("branches.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">

@@ -4,13 +4,13 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-RUNNING-hp-tc-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
 import ProductsError from "../components/ProductsError";
 import ProductsEmpty from "../components/ProductsEmpty";
-import ProductsPagination from "../components/ProductsPagination";
+import Pagination from "@/components/shared/Pagination";
 import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
   FiltersPanel,
@@ -94,7 +94,7 @@ export default function ProductsPage() {
         subtitle={t("products.page.hero.subtitle")}
         title={t("products.page.hero.title")}
         description={t("products.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">
@@ -199,7 +199,7 @@ export default function ProductsPage() {
 
                 {metadata && (
                   <div className="mt-16 border-t border-border/40 pt-12">
-                    <ProductsPagination
+                    <Pagination
                       currentPage={metadata.currentPage}
                       totalPages={metadata.numberOfPages}
                       onPageChange={() => {

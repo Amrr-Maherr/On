@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-AE-2-TC-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/useCart";
@@ -149,7 +149,7 @@ export default function CartPage() {
         subtitle={t("cart.page.hero.subtitle")}
         title={t("cart.page.hero.title")}
         description={t("cart.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">

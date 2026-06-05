@@ -9,7 +9,7 @@ import CategoryCard from "../components/CategoryCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
 import CategoriesError from "../components/CategoriesError";
 import CategoriesEmpty from "../components/CategoriesEmpty";
-import CategoriesPagination from "../components/CategoriesPagination";
+import Pagination from "@/components/shared/Pagination";
 import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
   FiltersPanel,
@@ -114,7 +114,7 @@ export default function CategoriesPage() {
 
                 {metadata && (
                   <div className="mt-16 border-t border-border/40 pt-12">
-                    <CategoriesPagination
+                    <Pagination
                       currentPage={metadata.currentPage}
                       totalPages={metadata.numberOfPages}
                       onPageChange={() => {}}

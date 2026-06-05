@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-walking-sportswear-ss26-launch-tc.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import OrderCard from "@/features/orders/components/OrderCard";
@@ -75,7 +75,7 @@ export default function OrdersPage() {
           title={t("orders.page.hero.title")}
           subtitle={t("orders.page.hero.subtitle")}
           description={t("orders.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
         <OrdersError
           message={
@@ -100,7 +100,7 @@ export default function OrdersPage() {
           title={t("orders.page.hero.title")}
           subtitle={t("orders.page.hero.subtitle")}
           description={t("orders.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
         <OrdersEmpty />
       </>
@@ -113,7 +113,7 @@ export default function OrdersPage() {
         title={t("orders.page.hero.title")}
         subtitle={t("orders.page.hero.subtitle")}
         description={t("orders.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
       <PageHelmet
         title={t("orders.page.title")}

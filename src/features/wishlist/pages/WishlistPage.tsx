@@ -14,7 +14,7 @@ import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
 import { CampaignHeaderSkeleton } from "@/components/shared/Skeleton";
 import WishlistError from "@/features/wishlist/components/WishlistError";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-FOOTBALL-hp-tc-d.jpg";
 
 export default function WishlistPage() {
   const { t } = useTranslation();
@@ -70,7 +70,7 @@ export default function WishlistPage() {
           title={t("wishlist.page.hero.title")}
           subtitle={t("wishlist.page.hero.subtitle")}
           description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
         <WishlistError
           message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
@@ -90,7 +90,7 @@ export default function WishlistPage() {
           title={t("wishlist.page.hero.title")}
           subtitle={t("wishlist.page.hero.subtitle")}
           description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
         <WishlistEmpty />
       </>
@@ -124,7 +124,7 @@ export default function WishlistPage() {
         title={t("wishlist.page.hero.title")}
         subtitle={t("wishlist.page.hero.subtitle")}
         description={t("wishlist.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">

@@ -10,7 +10,7 @@ import { GridSkeleton, CampaignHeaderSkeleton } from "@/components/shared/Skelet
 import { cn } from "@/lib/utils";
 
 const CampaignHeader = lazy(() => import("@/components/shared/components/CampaignHeader"));
-const BrandsPagination = lazy(() => import("@/features/all-brands/components/BrandsPagination"));
+const Pagination = lazy(() => import("@/components/shared/Pagination"));
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -91,7 +91,7 @@ const AllBrandsPage = memo(function AllBrandsPage() {
         {metadata && (
           <div className="mt-10">
             <Suspense fallback={<div className={cn("h-10 w-full animate-pulse bg-muted rounded-md")} />}>
-              <BrandsPagination
+              <Pagination
                 currentPage={metadata.currentPage}
                 totalPages={metadata.numberOfPages}
                 onPageChange={handlePageChange}

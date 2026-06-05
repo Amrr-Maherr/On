@@ -8,7 +8,7 @@ import { useAllCategories } from "@/features/all-categories/hooks/useAllCategori
 import { GridSkeleton } from "@/components/shared/Skeleton";
 import CategoriesError from "@/features/all-categories/components/CategoriesError";
 import CategoriesEmpty from "@/features/all-categories/components/CategoriesEmpty";
-import CategoriesPagination from "@/features/all-categories/components/CategoriesPagination";
+import Pagination from "@/components/shared/Pagination";
 import {
   FiltersPanel,
   FilterSection,
@@ -105,7 +105,7 @@ export default function AllCategoriesPage() {
 
           {metadata && (
             <div className="mt-10">
-              <CategoriesPagination
+              <Pagination
                 currentPage={metadata.currentPage}
                 totalPages={metadata.numberOfPages}
                 onPageChange={setPage}
