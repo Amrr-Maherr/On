@@ -56,7 +56,7 @@ const CardImage = memo(function CardImage({
         onError={handleError}
         className={`h-full w-full transition-opacity duration-500 ${
           objectFit === "contain" ? "object-contain" : "object-cover"
-        } ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        } ${isLoaded ? "opacity-100" : "animate-pulse bg-gray-200 dark:bg-gray-700"}`}
       />
     </div>
   );

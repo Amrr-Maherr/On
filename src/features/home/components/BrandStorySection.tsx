@@ -6,7 +6,7 @@ import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import CardImage from "@/components/shared/CardImage";
-
+import image from "../../../assets/imgi_1_em-emc-AE-2-TC-d.jpg";
 const BrandStorySection = memo(function BrandStorySection() {
   const { t } = useTranslation();
   const location = useLocation();
@@ -45,7 +45,7 @@ const BrandStorySection = memo(function BrandStorySection() {
             <div className="relative">
               <div className="overflow-hidden rounded-none">
                 <CardImage
-                  src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=1200&q=80"
+                  src={image}
                   alt={t("home.sections.brandStory.label")}
                   className="h-[500px] w-full transition-all duration-700 hover:scale-105 md:h-[600px]"
                 />
@@ -69,7 +69,9 @@ const BrandStorySection = memo(function BrandStorySection() {
                 {t("home.sections.brandStory.label")}
               </span>
               <h2 className="font-heading mt-4 text-5xl font-black uppercase leading-[0.9] tracking-tighter text-foreground md:text-7xl">
-                {t("home.sections.brandStory.titleLine1")}<br />{t("home.sections.brandStory.titleLine2")}
+                {t("home.sections.brandStory.titleLine1")}
+                <br />
+                {t("home.sections.brandStory.titleLine2")}
               </h2>
               <p className="mt-8 text-sm font-bold uppercase tracking-widest text-muted-foreground/70">
                 {t("home.sections.brandStory.paragraph1")}
@@ -93,7 +95,9 @@ const BrandStorySection = memo(function BrandStorySection() {
 
               <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
                 <Button
-                  onClick={() => navigate(buildLocalizedPath("/products", lang))}
+                  onClick={() =>
+                    navigate(buildLocalizedPath("/products", lang))
+                  }
                   className="h-16 w-full cursor-pointer rounded-none bg-foreground px-10 text-[10px] font-black uppercase tracking-[0.3em] text-background transition-all duration-500 hover:bg-foreground/90 active:scale-[0.98] sm:w-auto"
                 >
                   {t("home.sections.brandStory.ourGear")}

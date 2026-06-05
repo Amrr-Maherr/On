@@ -3,22 +3,27 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-
+import image from "../../../assets/imgi_1_eg-mr-em-TERRACE_LOWPROFILE-hp-tc-d.jpg";
 const HeroCampaignSection = memo(function HeroCampaignSection() {
   const { t } = useTranslation();
   const location = useLocation();
   const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleShopNow = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
-  const handleExploreCollections = useCallback(() => navigate(buildLocalizedPath("/categories", lang)), [navigate, lang]);
+  const handleShopNow = useCallback(
+    () => navigate(buildLocalizedPath("/products", lang)),
+    [navigate, lang],
+  );
+  const handleExploreCollections = useCallback(
+    () => navigate(buildLocalizedPath("/categories", lang)),
+    [navigate, lang],
+  );
 
   return (
     <section className="relative min-h-[80vh] overflow-hidden bg-neutral-950 md:mt-[50px]">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1920&q=80")',
+          backgroundImage: `url(${image})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent md:bg-gradient-to-r md:from-neutral-950/80 md:via-neutral-950/40 md:to-transparent" />
@@ -36,7 +41,9 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
             <h1 className="mt-8 text-7xl font-black leading-[0.85] tracking-tighter text-white sm:text-8xl md:text-9xl lg:text-[10rem]">
               {t("home.sections.heroCampaign.title")}
               <br />
-              <span className="text-white/60">{t("home.sections.heroCampaign.titleAccent")}</span>
+              <span className="text-white/60">
+                {t("home.sections.heroCampaign.titleAccent")}
+              </span>
             </h1>
           </ScrollReveal>
 
@@ -75,7 +82,9 @@ const HeroCampaignSection = memo(function HeroCampaignSection() {
               <div className="h-8 w-px bg-white/20" />
               <div className="flex items-center gap-3">
                 <span className="text-2xl font-bold text-white">50+</span>
-                <span className="text-xs uppercase tracking-wider">{t("home.sections.heroCampaign.statBrands")}</span>
+                <span className="text-xs uppercase tracking-wider">
+                  {t("home.sections.heroCampaign.statBrands")}
+                </span>
               </div>
               <div className="h-8 w-px bg-white/20" />
               <div className="flex items-center gap-3">
