@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
-import ProductsError from "@/features/products/components/ProductsError";
+import ErrorState from "@/components/shared/Error";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 interface BrandProductsProps {
@@ -29,9 +29,11 @@ const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProp
 
   if (error) {
     return (
-      <ProductsError
+      <ErrorState
+        title={t("products.error.title")}
         message={error instanceof Error ? error.message : t("brands.details.products.error")}
         onRetry={() => refetch()}
+        retryLabel={t("products.error.retry")}
       />
     );
   }

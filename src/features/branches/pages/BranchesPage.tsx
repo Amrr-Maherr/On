@@ -1,11 +1,12 @@
 import { useState, useCallback, useMemo, useRef, lazy, Suspense } from "react"
 import { useTranslation } from "react-i18next"
+import { MapPin } from "lucide-react"
 import PageHelmet from "@/shared/components/PageHelmet"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import ScrollReveal from "@/components/shared/ScrollReveal"
 import { branches as branchData } from "@/features/branches/data/branches"
 import BranchCard from "@/features/branches/components/BranchCard"
-import BranchEmpty from "@/features/branches/components/BranchEmpty"
+import EmptyState from "@/components/shared/EmptyState"
 import CampaignHeader from "@/components/shared/components/CampaignHeader"
 import Skeleton from "@/components/shared/Skeleton"
 import heroImage from "@/assets/imgi_1_em-emc-TRAINING-hp-tc-d.jpg"
@@ -46,7 +47,11 @@ export default function BranchesPage() {
           description={t("branches.page.hero.description")}
           backgroundImage={heroImage}
         />
-        <BranchEmpty />
+        <EmptyState
+          title={t("branches.empty.title")}
+          description={t("branches.empty.description")}
+          icon={<MapPin className="h-9 w-9 text-muted-foreground/40" />}
+        />
       </>
     )
   }

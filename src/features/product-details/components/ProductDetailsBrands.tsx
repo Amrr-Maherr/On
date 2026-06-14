@@ -3,14 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 import BrandCard from "@/features/brands/components/BrandCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
-import BrandsError from "@/features/brands/components/BrandsError";
+import ErrorState from "@/components/shared/Error";
 import Slider from "@/components/shared/Slider";
-
-function getErrorMessage(error: unknown): string | undefined {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return undefined;
-}
 
 const ProductDetailsBrands = memo(function ProductDetailsBrands() {
   const { t } = useTranslation();
@@ -48,9 +42,11 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <BrandsError
-            message={getErrorMessage(error)}
+          <ErrorState
+            title={t("brands.error.title")}
+            error={error}
             onRetry={() => refetch()}
+            retryLabel={t("brands.error.retry")}
           />
         </Slider>
       </section>
@@ -71,7 +67,10 @@ const ProductDetailsBrands = memo(function ProductDetailsBrands() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <BrandsError message={t("products.details.brands.noBrands")} />
+          <ErrorState
+            title={t("brands.error.title")}
+            message={t("products.details.brands.noBrands")}
+          />
         </Slider>
       </section>
     );

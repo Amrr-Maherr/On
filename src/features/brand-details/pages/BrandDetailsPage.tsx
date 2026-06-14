@@ -6,8 +6,8 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
-import { CampaignHeaderSkeleton } from "@/components/shared/Skeleton";
-import BrandDetailsError from "@/features/brand-details/components/BrandDetailsError";
+import LoadingState from "@/components/shared/LoadingState";
+import ErrorState from "@/components/shared/Error";
 import BrandProducts from "@/features/brand-details/components/BrandProducts";
 
 export default function BrandDetailsPage() {
@@ -17,40 +17,16 @@ export default function BrandDetailsPage() {
   const { data, isLoading, error, refetch } = useBrandDetails(id!);
 
   if (isLoading) {
-    return (
-      <>
-        <CampaignHeaderSkeleton />
-        <div className="container-layout py-8">
-          <div className="mb-6 h-4 w-64 animate-pulse rounded bg-muted" />
-          <div className="grid gap-16 md:grid-cols-2">
-            <div className="animate-pulse">
-              <div className="aspect-[4/5] w-full rounded-2xl bg-muted/60" />
-            </div>
-            <div className="flex flex-col justify-center gap-10">
-              <div className="space-y-4 pl-8">
-                <div className="h-3 w-16 animate-pulse rounded bg-muted/60" />
-                <div className="h-10 w-3/4 animate-pulse rounded bg-muted/60" />
-                <div className="h-4 w-1/3 animate-pulse rounded bg-muted/40" />
-              </div>
-              <div className="flex items-center gap-4 border-t border-border/40 pt-8">
-                <div className="h-12 w-12 animate-pulse bg-muted/60" />
-                <div className="space-y-2">
-                  <div className="h-3 w-20 animate-pulse rounded bg-muted/40" />
-                  <div className="h-4 w-32 animate-pulse rounded bg-muted/60" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
+    return <LoadingState variant="row" count={3} />;
   }
 
   if (error) {
     return (
-      <BrandDetailsError
+      <ErrorState
+        title={t("brands.error.title")}
         message={error instanceof Error ? error.message : undefined}
         onRetry={() => refetch()}
+        retryLabel={t("brands.error.retry")}
       />
     );
   }
@@ -58,7 +34,12 @@ export default function BrandDetailsPage() {
   const brand = data?.data;
 
   if (!brand) {
-    return <BrandDetailsError message={t("brands.details.notFound")} />;
+    return (
+      <ErrorState
+        title={t("brands.error.title")}
+        message={t("brands.details.notFound")}
+      />
+    );
   }
 
   return (

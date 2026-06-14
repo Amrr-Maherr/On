@@ -1,18 +1,19 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Heart, ArrowRight } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
+import { getLangFromPath, buildLocalizedPath, useCurrentLang } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishlistItem";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
-import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
-import { CampaignHeaderSkeleton } from "@/components/shared/Skeleton";
-import WishlistError from "@/features/wishlist/components/WishlistError";
+import LoadingState from "@/components/shared/LoadingState";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import heroImage from "@/assets/imgi_1_em-emc-FOOTBALL-hp-tc-d.jpg";
 
@@ -38,27 +39,7 @@ export default function WishlistPage() {
   if (isLoading) {
     return (
       <>
-        <CampaignHeaderSkeleton />
-        <div className="container-layout py-8">
-          <div className="mb-8">
-            <div className="h-4 w-24 animate-pulse rounded-lg bg-muted" />
-            <div className="mt-2 h-8 w-56 animate-pulse rounded-xl bg-muted" />
-          </div>
-          <div className="space-y-4">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="flex gap-5 rounded-2xl border border-border/50 bg-card p-5">
-                <div className="h-28 w-28 shrink-0 animate-pulse rounded-xl bg-muted md:h-32 md:w-32" />
-                <div className="flex flex-1 flex-col justify-between gap-3">
-                  <div className="h-4 w-3/4 animate-pulse rounded-lg bg-muted" />
-                  <div className="h-3 w-1/4 animate-pulse rounded-lg bg-muted" />
-                  <div className="flex items-center justify-end">
-                    <div className="h-8 w-28 animate-pulse rounded-full bg-muted" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <LoadingState variant="row" count={3} />
       </>
     );
   }
@@ -72,9 +53,11 @@ export default function WishlistPage() {
           description={t("wishlist.page.hero.description")}
           backgroundImage={heroImage}
         />
-        <WishlistError
+        <ErrorState
+          title={t("wishlist.error.title")}
           message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
           onRetry={() => refetch()}
+          retryLabel={t("wishlist.error.retry")}
         />
       </>
     );
@@ -82,6 +65,7 @@ export default function WishlistPage() {
 
   const items = data?.data ?? [];
   const count = data?.count ?? 0;
+  const langWishlist = useCurrentLang();
 
   if (items.length === 0) {
     return (
@@ -92,7 +76,20 @@ export default function WishlistPage() {
           description={t("wishlist.page.hero.description")}
           backgroundImage={heroImage}
         />
-        <WishlistEmpty />
+        <EmptyState
+          title={t("wishlist.empty.title")}
+          description={t("wishlist.empty.description")}
+          icon={<Heart className="h-9 w-9 text-muted-foreground/40" />}
+          action={
+            <Link
+              to={buildLocalizedPath("/products", langWishlist)}
+              className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+            >
+              {t("wishlist.empty.browse")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          }
+        />
       </>
     );
   }

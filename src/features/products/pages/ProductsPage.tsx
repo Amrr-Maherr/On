@@ -8,8 +8,8 @@ import heroImage from "@/assets/imgi_1_em-emc-RUNNING-hp-tc-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
-import ProductsError from "../components/ProductsError";
-import ProductsEmpty from "../components/ProductsEmpty";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
 import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
@@ -172,18 +172,23 @@ export default function ProductsPage() {
             </div>
 
             {error ? (
-              <ProductsError
+              <ErrorState
+                title={t("products.error.title")}
                 message={
                   error instanceof Error
                     ? error.message
                     : t("products.error.defaultMessage")
                 }
                 onRetry={() => refetch()}
+                retryLabel={t("products.error.retry")}
               />
             ) : isLoading ? (
               <CardSkeleton />
             ) : products.length === 0 ? (
-              <ProductsEmpty />
+              <EmptyState
+                title={t("products.empty.title")}
+                description={t("products.empty.description")}
+              />
             ) : (
               <>
                 <div

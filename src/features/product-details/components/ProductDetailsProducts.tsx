@@ -3,14 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
-import ProductsError from "@/features/products/components/ProductsError";
+import ErrorState from "@/components/shared/Error";
 import Slider from "@/components/shared/Slider";
-
-function getErrorMessage(error: unknown): string | undefined {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return undefined;
-}
 
 const ProductDetailsProducts = memo(function ProductDetailsProducts() {
   const { t } = useTranslation();
@@ -48,9 +42,11 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <ProductsError
-            message={getErrorMessage(error)}
+          <ErrorState
+            title={t("products.error.title")}
+            error={error}
             onRetry={() => refetch()}
+            retryLabel={t("products.error.retry")}
           />
         </Slider>
       </section>
@@ -71,7 +67,10 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <ProductsError message={t("products.details.recommendations.noProducts")} />
+          <ErrorState
+            title={t("products.error.title")}
+            message={t("products.details.recommendations.noProducts")}
+          />
         </Slider>
       </section>
     );

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
 import { CardSkeleton } from "@/components/shared/Skeleton";
-import ProductsError from "@/features/products/components/ProductsError";
+import ErrorState from "@/components/shared/Error";
 import Section from "@/components/shared/components/Section";
 
 const ProductsSection = memo(function ProductsSection() {
@@ -44,9 +44,11 @@ const ProductsSection = memo(function ProductsSection() {
         title={t("home.sections.products.loadingTitle")}
         description={t("home.sections.products.errorDesc")}
       >
-        <ProductsError
+        <ErrorState
+          title={t("products.error.title")}
           message={getErrorMessage(error)}
           onRetry={() => refetch()}
+          retryLabel={t("products.error.retry")}
         />
       </Section>
     );
@@ -63,7 +65,10 @@ const ProductsSection = memo(function ProductsSection() {
         title={t("home.sections.products.emptyTitle")}
         description={t("home.sections.products.emptyDesc")}
       >
-        <ProductsError message={t("home.sections.products.noProducts")} />
+        <ErrorState
+          title={t("products.error.title")}
+          message={t("home.sections.products.noProducts")}
+        />
       </Section>
     );
   }
