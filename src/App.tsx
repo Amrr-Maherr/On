@@ -2,8 +2,8 @@ import { Toaster } from "react-hot-toast";
 import ScrollToTopButton from "@/shared/components/ScrollToTopButton";
 import { lazy, Suspense } from "react";
 import Loader from "./components/shared/Loader";
-import Navbar from "./components/layout/Navbar";
-import Footer from "@/shared/layout/Footer";
+const Navbar = lazy(() => import("./components/layout/Navbar"));
+const Footer = lazy(() => import("@/shared/layout/Footer"));
 const AppRoutes = lazy(() => import("./app/routes"));
 function App() {
   return (
@@ -44,13 +44,17 @@ function App() {
           },
         }}
       />
-      <Navbar />
+      <Suspense fallback={<Loader />}>
+        <Navbar />
+      </Suspense>
       <main className="flex-1">
         <Suspense fallback={<Loader />}>
           <AppRoutes />
         </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<Loader />}>
+        <Footer />
+      </Suspense>
       <ScrollToTopButton />
     </div>
   );
