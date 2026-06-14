@@ -1,23 +1,86 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "../components/BrandCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
-import BrandsError from "../components/BrandsError";
-import BrandsEmpty from "../components/BrandsEmpty";
+import LoadingState from "@/components/shared/LoadingState";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
 import image from "../../../assets/imgi_1_emc-hp-gendertile-kids.jpg";
-import { useAllBrands } from "@/features/all-brands/hooks/useAllBrands";
+import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
+
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string") return error;
+  return "An unexpected error occurred. Please try again.";
+}
+
 export default function BrandsPage() {
   const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const { data, isLoading, error, refetch } = useAllBrands(page);
 
-  const brands = useMemo(() => data?.data ?? [], [data?.data]);
+  if (isLoading) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("brands.page.hero.subtitle")}
+          title={t("brands.page.hero.title")}
+          description={t("brands.page.hero.description")}
+          backgroundImage={image}
+        />
+        <div className="container-layout section-py pt-8">
+          <LoadingState variant="card" columns={3} count={6} />
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("brands.page.hero.subtitle")}
+          title={t("brands.page.hero.title")}
+          description={t("brands.page.hero.description")}
+          backgroundImage={image}
+        />
+        <div className="container-layout section-py pt-8">
+          <ErrorState
+            title={t("brands.error.title")}
+            message={getErrorMessage(error)}
+            onRetry={() => refetch()}
+            retryLabel={t("brands.error.retry")}
+          />
+        </div>
+      </>
+    );
+  }
+
+  const brands = data?.data ?? [];
   const metadata = data?.metadata;
+
+  if (brands.length === 0) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("brands.page.hero.subtitle")}
+          title={t("brands.page.hero.title")}
+          description={t("brands.page.hero.description")}
+          backgroundImage={image}
+        />
+        <div className="container-layout section-py pt-8">
+          <EmptyState
+            title={t("brands.empty.title")}
+            description={t("brands.empty.description")}
+          />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -56,48 +119,27 @@ export default function BrandsPage() {
           </div>
         </ScrollReveal>
 
-        {error ? (
-          <BrandsError
-            message={
-              error instanceof Error
-                ? error.message
-                : t("brands.error.defaultMessage")
-            }
-            onRetry={() => refetch()}
-          />
-        ) : isLoading ? (
-          <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <CardSkeleton key={i} />
-            ))}
-          </div>
-        ) : brands.length === 0 ? (
-          <BrandsEmpty />
-        ) : (
-          <>
-            <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-              {brands.map((brand, index) => (
-                <ScrollReveal
-                  key={brand._id}
-                  delay={index * 0.03}
-                  direction="up"
-                  distance={20}
-                >
-                  <BrandCard brand={brand} />
-                </ScrollReveal>
-              ))}
-            </div>
+        <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {brands.map((brand, index) => (
+            <ScrollReveal
+              key={brand._id}
+              delay={index * 0.03}
+              direction="up"
+              distance={20}
+            >
+              <BrandCard brand={brand} />
+            </ScrollReveal>
+          ))}
+        </div>
 
-            {metadata && (
-              <div className="mt-16 border-t border-border/40 pt-12">
-                <Pagination
-                  currentPage={metadata.currentPage}
-                  totalPages={metadata.numberOfPages}
-                  onPageChange={setPage}
-                />
-              </div>
-            )}
-          </>
+        {metadata && (
+          <div className="mt-16 border-t border-border/40 pt-12">
+            <Pagination
+              currentPage={metadata.currentPage}
+              totalPages={metadata.numberOfPages}
+              onPageChange={setPage}
+            />
+          </div>
         )}
       </div>
     </>

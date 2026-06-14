@@ -6,9 +6,9 @@ import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "../components/CategoryCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
-import CategoriesError from "../components/CategoriesError";
-import CategoriesEmpty from "../components/CategoriesEmpty";
+import LoadingState from "@/components/shared/LoadingState";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
 import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
@@ -19,6 +19,12 @@ import {
 import { api } from "@/lib";
 import type { ApiResponse } from "@/shared/types/api";
 import type { Category } from "@/features/categories/types";
+
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "string") return error;
+  return "An unexpected error occurred. Please try again.";
+}
 
 export default function CategoriesPage() {
   const { t } = useTranslation();
@@ -40,6 +46,62 @@ export default function CategoriesPage() {
     ],
     [t],
   );
+
+  if (isLoading) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("categories.page.hero.subtitle")}
+          title={t("categories.page.hero.title")}
+          description={t("categories.page.hero.description")}
+          backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+        />
+        <div className="container-layout section-py pt-8">
+          <LoadingState variant="card" columns={3} count={6} />
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("categories.page.hero.subtitle")}
+          title={t("categories.page.hero.title")}
+          description={t("categories.page.hero.description")}
+          backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+        />
+        <div className="container-layout section-py pt-8">
+          <ErrorState
+            title={t("categories.error.title")}
+            message={getErrorMessage(error)}
+            onRetry={() => refetch()}
+            retryLabel={t("categories.error.retry")}
+          />
+        </div>
+      </>
+    );
+  }
+
+  if (categories.length === 0) {
+    return (
+      <>
+        <CampaignHeader
+          subtitle={t("categories.page.hero.subtitle")}
+          title={t("categories.page.hero.title")}
+          description={t("categories.page.hero.description")}
+          backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
+        />
+        <div className="container-layout section-py pt-8">
+          <EmptyState
+            title={t("categories.empty.title")}
+            description={t("categories.empty.description")}
+          />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -89,39 +151,22 @@ export default function CategoriesPage() {
               <MobileFilterSheet sortOptions={sortOptions} />
             </div>
 
-            {error ? (
-              <CategoriesError
-                message={error instanceof Error ? error.message : t("categories.error.defaultMessage")}
-                onRetry={() => refetch()}
-              />
-            ) : isLoading ? (
-              <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <CardSkeleton key={i} />
-                ))}
-              </div>
-            ) : categories.length === 0 ? (
-              <CategoriesEmpty />
-            ) : (
-              <>
-                <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                  {categories.map((category, index) => (
-                    <ScrollReveal key={category.id || category._id} delay={index * 0.03} direction="up" distance={20}>
-                      <CategoryCard category={category} />
-                    </ScrollReveal>
-                  ))}
-                </div>
+            <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {categories.map((category, index) => (
+                <ScrollReveal key={category.id || category._id} delay={index * 0.03} direction="up" distance={20}>
+                  <CategoryCard category={category} />
+                </ScrollReveal>
+              ))}
+            </div>
 
-                {metadata && (
-                  <div className="mt-16 border-t border-border/40 pt-12">
-                    <Pagination
-                      currentPage={metadata.currentPage}
-                      totalPages={metadata.numberOfPages}
-                      onPageChange={() => {}}
-                    />
-                  </div>
-                )}
-              </>
+            {metadata && (
+              <div className="mt-16 border-t border-border/40 pt-12">
+                <Pagination
+                  currentPage={metadata.currentPage}
+                  totalPages={metadata.numberOfPages}
+                  onPageChange={() => {}}
+                />
+              </div>
             )}
           </div>
         </div>
