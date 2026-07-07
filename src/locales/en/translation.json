@@ -2,6 +2,11 @@
   "welcome": "Welcome",
   "categories": "Categories",
   "addToCart": "Add To Cart",
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous page",
+    "next": "Next page"
+  },
   "products": {
     "page": {
       "title": "All Products",

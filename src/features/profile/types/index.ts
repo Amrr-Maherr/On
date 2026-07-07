@@ -4,6 +4,7 @@ export interface User extends MongoDoc {
   name: string;
   email: string;
   phone?: string;
+  picture?: string;
   role: string;
   active: boolean;
   createdAt?: string;

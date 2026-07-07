@@ -2,6 +2,7 @@ import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { Category } from "@/features/categories/types";
 import { Calendar, Tag } from "lucide-react";
+import CardImage from "@/components/shared/CardImage";
 
 interface CategoryDetailsCardProps {
   category: Category;
@@ -20,11 +21,12 @@ const CategoryDetailsCard = memo(function CategoryDetailsCard({
   return (
     <div className="grid gap-16 md:grid-cols-2">
       <div className="overflow-hidden bg-muted/10">
-        <img
+        <CardImage
           src={category.image}
           alt={category.name}
-          loading="lazy"
-          className="aspect-[4/5] w-full object-cover"
+          width={400}
+          height={500}
+          className="aspect-[4/5] w-full"
         />
       </div>
 
