@@ -2,15 +2,9 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import ProductsLoader from "@/features/products/components/ProductsLoader";
-import ProductsError from "@/features/products/components/ProductsError";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
+import ErrorState from "@/components/shared/Error";
 import Slider from "@/components/shared/Slider";
-
-function getErrorMessage(error: unknown): string | undefined {
-  if (error instanceof Error) return error.message;
-  if (typeof error === "string") return error;
-  return undefined;
-}
 
 const ProductDetailsProducts = memo(function ProductDetailsProducts() {
   const { t } = useTranslation();
@@ -29,7 +23,7 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
         </div>
         <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation>
           {Array.from({ length: 5 }, (_, i) => (
-            <ProductsLoader key={i} />
+            <ProductCardSkeleton key={i} />
           ))}
         </Slider>
       </section>
@@ -48,9 +42,11 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <ProductsError
-            message={getErrorMessage(error)}
+          <ErrorState
+            title={t("products.error.title")}
+            error={error}
             onRetry={() => refetch()}
+            retryLabel={t("products.error.retry")}
           />
         </Slider>
       </section>
@@ -71,7 +67,10 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
           </h2>
         </div>
         <Slider slidesPerView={1} slidesPerViewMobile={1} hideNavigation>
-          <ProductsError message={t("products.details.recommendations.noProducts")} />
+          <ErrorState
+            title={t("products.error.title")}
+            message={t("products.details.recommendations.noProducts")}
+          />
         </Slider>
       </section>
     );
