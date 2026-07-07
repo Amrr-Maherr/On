@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Package, CreditCard, Truck, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Order } from "@/features/orders/types/orders";
+import CardImage from "@/components/shared/CardImage";
 
 interface OrderCardProps {
   order: Order;
@@ -32,11 +33,12 @@ const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
         {order.cartItems.slice(0, 3).map((item) => (
           <div key={item._id} className="flex items-center gap-4">
             <div className="h-16 w-16 shrink-0 overflow-hidden rounded-none bg-muted/40 border border-border/20">
-              <img
+              <CardImage
                 src={item.product.imageCover}
                 alt={item.product.title}
-                className="h-full w-full object-cover"
-                loading="lazy"
+                width={400}
+                height={400}
+                className="h-full w-full"
               />
             </div>
             <div className="min-w-0 flex-1">
