@@ -14,7 +14,7 @@ export function NavbarLinks() {
         <Link
           key={link.key}
           to={link.href}
-          className="text-sm font-black uppercase tracking-[0.2em] text-foreground/70 transition-all hover:text-foreground hover:underline underline-offset-8"
+          className="text-sm font-black uppercase tracking-[0.2em] text-foreground/85 transition-all hover:text-foreground hover:underline underline-offset-8"
         >
           {t(link.key)}
         </Link>

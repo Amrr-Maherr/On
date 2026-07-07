@@ -1,20 +1,21 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Heart, ArrowRight } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
+import { getLangFromPath, buildLocalizedPath, useCurrentLang } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishlistItem";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
-import WishlistEmpty from "@/features/wishlist/components/WishlistEmpty";
-import WishlistLoader from "@/features/wishlist/components/WishlistLoader";
-import WishlistError from "@/features/wishlist/components/WishlistError";
+import { WishlistPageSkeleton } from "@/features/wishlist/components/WishlistPageSkeleton";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-FOOTBALL-hp-tc-d.jpg";
 
 export default function WishlistPage() {
   const { t } = useTranslation();
@@ -36,17 +37,7 @@ export default function WishlistPage() {
   const [addingToCartId, setAddingToCartId] = useState<string | null>(null);
 
   if (isLoading) {
-    return (
-      <>
-        <CampaignHeader
-          title={t("wishlist.page.hero.title")}
-          subtitle={t("wishlist.page.hero.subtitle")}
-          description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
-        />
-        <WishlistLoader />
-      </>
-    );
+    return <WishlistPageSkeleton />;
   }
 
   if (error) {
@@ -56,11 +47,13 @@ export default function WishlistPage() {
           title={t("wishlist.page.hero.title")}
           subtitle={t("wishlist.page.hero.subtitle")}
           description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
-        <WishlistError
+        <ErrorState
+          title={t("wishlist.error.title")}
           message={error instanceof Error ? error.message : t("wishlist.error.defaultMessage")}
           onRetry={() => refetch()}
+          retryLabel={t("wishlist.error.retry")}
         />
       </>
     );
@@ -68,6 +61,7 @@ export default function WishlistPage() {
 
   const items = data?.data ?? [];
   const count = data?.count ?? 0;
+  const langWishlist = useCurrentLang();
 
   if (items.length === 0) {
     return (
@@ -76,9 +70,22 @@ export default function WishlistPage() {
           title={t("wishlist.page.hero.title")}
           subtitle={t("wishlist.page.hero.subtitle")}
           description={t("wishlist.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
-        <WishlistEmpty />
+        <EmptyState
+          title={t("wishlist.empty.title")}
+          description={t("wishlist.empty.description")}
+          icon={<Heart className="h-9 w-9 text-muted-foreground/40" />}
+          action={
+            <Link
+              to={buildLocalizedPath("/products", langWishlist)}
+              className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+            >
+              {t("wishlist.empty.browse")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          }
+        />
       </>
     );
   }
@@ -110,7 +117,7 @@ export default function WishlistPage() {
         title={t("wishlist.page.hero.title")}
         subtitle={t("wishlist.page.hero.subtitle")}
         description={t("wishlist.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
       <PageHelmet title={t("wishlist.page.title")} description={t("wishlist.page.description")} />
       <div className="container-layout py-8">

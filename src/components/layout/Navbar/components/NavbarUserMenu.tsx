@@ -33,7 +33,7 @@ export function NavbarUserMenu({ isOpen, onToggle, onClose }: NavbarUserMenuProp
       {isOpen && (
         <>
           <div className="fixed inset-0 z-10" onClick={onClose} />
-          <div className="absolute right-0 top-full mt-2 w-52 origin-top-right rounded-none border-2 border-border/40 bg-card p-1.5 shadow-xl">
+          <div className="absolute end-0 top-full mt-2 w-52 origin-top-right rtl:origin-top-left rounded-none border-2 border-border/40 bg-card p-1.5 shadow-xl">
             {isLoggedIn ? (
               <div className="flex flex-col gap-0.5">
                 <Link
