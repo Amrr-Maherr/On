@@ -55,7 +55,7 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-20">
-          <div className="lg:sticky lg:top-24 lg:self-start" data-tour="product-gallery">
+          <div className="min-w-0 lg:sticky lg:top-24 lg:self-start" data-tour="product-gallery">
             <ProductGallery images={allImages} />
           </div>
 

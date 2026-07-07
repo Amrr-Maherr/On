@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { useNavigate, useLocation } from "react-router-dom";
-import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
+import { Package, ArrowRight } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { getLangFromPath, buildLocalizedPath, useCurrentLang } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-walking-sportswear-ss26-launch-tc.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import OrderCard from "@/features/orders/components/OrderCard";
-import OrdersLoader from "@/features/orders/components/OrdersLoader";
-import OrdersEmpty from "@/features/orders/components/OrdersEmpty";
-import OrdersError from "@/features/orders/components/OrdersError";
+import { OrdersPageSkeleton } from "@/features/orders/components/OrdersPageSkeleton";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 import { isAxiosError } from "axios";
 
 export default function OrdersPage() {
@@ -30,31 +31,20 @@ export default function OrdersPage() {
   const { data, isLoading, error, refetch } = useOrders();
 
   if (isLoading) {
-    return (
-      <>
-        <CampaignHeader
-          title={t("orders.page.hero.title")}
-          subtitle={t("orders.page.hero.subtitle")}
-          description={t("orders.page.hero.description")}
-          videoUrl={heroVideo}
-        />
-        <OrdersLoader />
-      </>
-    );
+    return <OrdersPageSkeleton />;
   }
 
   if (error) {
-    console.log(error);
-
     return (
       <>
         <CampaignHeader
           title={t("orders.page.hero.title")}
           subtitle={t("orders.page.hero.subtitle")}
           description={t("orders.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
-        <OrdersError
+        <ErrorState
+          title={t("orders.error.title")}
           message={
             isAxiosError(error)
               ? error.response?.data?.message
@@ -63,12 +53,14 @@ export default function OrdersPage() {
                 : t("orders.error.defaultMessage")
           }
           onRetry={() => refetch()}
+          retryLabel={t("orders.error.retry")}
         />
       </>
     );
   }
 
   const orders = data ?? [];
+  const langOrders = useCurrentLang();
 
   if (orders.length === 0) {
     return (
@@ -77,9 +69,22 @@ export default function OrdersPage() {
           title={t("orders.page.hero.title")}
           subtitle={t("orders.page.hero.subtitle")}
           description={t("orders.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
-        <OrdersEmpty />
+        <EmptyState
+          title={t("orders.empty.title")}
+          description={t("orders.empty.description")}
+          icon={<Package className="h-9 w-9 text-muted-foreground/40" />}
+          action={
+            <Link
+              to={buildLocalizedPath("/products", langOrders)}
+              className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+            >
+              {t("orders.empty.shopNow")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          }
+        />
       </>
     );
   }
@@ -90,7 +95,7 @@ export default function OrdersPage() {
         title={t("orders.page.hero.title")}
         subtitle={t("orders.page.hero.subtitle")}
         description={t("orders.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
       <PageHelmet
         title={t("orders.page.title")}

@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useProductDetails } from "@/features/product-details/hooks/useGetProductDetails";
 import ProductDetails from "@/features/product-details/components/ProductDetails";
-import ProductDetailsLoader from "@/features/product-details/components/ProductDetailsLoader";
-import ProductDetailsError from "@/features/product-details/components/ProductDetailsError";
+import { ProductDetailsPageSkeleton } from "@/features/product-details/components/ProductDetailsSkeleton";
+import ErrorState from "@/components/shared/Error";
 
 export default function ProductDetailsPage() {
   const { t } = useTranslation();
@@ -12,13 +12,17 @@ export default function ProductDetailsPage() {
 
   const { data, isLoading, error, refetch } = useProductDetails(id!);
 
-  if (isLoading) return <ProductDetailsLoader />;
+  if (isLoading) {
+    return <ProductDetailsPageSkeleton />;
+  }
 
   if (error) {
     return (
-      <ProductDetailsError
+      <ErrorState
+        title={t("products.error.title")}
         message={error instanceof Error ? error.message : undefined}
         onRetry={() => refetch()}
+        retryLabel={t("products.error.retry")}
       />
     );
   }
@@ -26,7 +30,12 @@ export default function ProductDetailsPage() {
   const product = data?.data;
 
   if (!product) {
-    return <ProductDetailsError message={t("products.details.notFound")} />;
+    return (
+      <ErrorState
+        title={t("products.error.title")}
+        message={t("products.details.notFound")}
+      />
+    );
   }
 
   return (
