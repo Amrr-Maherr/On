@@ -4,38 +4,60 @@ import { ShoppingCart, Heart, Loader2 } from "lucide-react";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
-
+import type { AxiosError } from "axios";
 interface ProductActionsProps {
   productId: string;
 }
 
-const ProductActions = memo(function ProductActions({ productId }: ProductActionsProps) {
+const ProductActions = memo(function ProductActions({
+  productId,
+}: ProductActionsProps) {
   const { t } = useTranslation();
   const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart();
   const { mutate: addToWishlist, isPending: isAddingToWishlist } =
     useAddToWishlist();
 
-  const handleAddToCart = useCallback((e: MouseEvent) => {
-    e.preventDefault();
-    addToCart(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToCart")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToCart, productId, t]);
+  const handleAddToCart = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      addToCart(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToCart")),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
 
-  const handleAddToFav = useCallback((e: MouseEvent) => {
-    e.preventDefault();
-    addToWishlist(
-      { productId },
-      {
-        onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
-        onError: (err) => toast.error(err.message),
-      },
-    );
-  }, [addToWishlist, productId, t]);
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
+        },
+      );
+    },
+    [addToCart, productId, t],
+  );
+
+  const handleAddToFav = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      addToWishlist(
+        { productId },
+        {
+          onSuccess: () => toast.success(t("products.actions.addedToWishlist")),
+          onError: (err) => {
+            const error = err as AxiosError<{ message?: string }>;
+
+            toast.error(
+              error.response?.data?.message ||
+                t("common.errors.somethingWentWrong"),
+            );
+          },
+        },
+      );
+    },
+    [addToWishlist, productId, t],
+  );
 
   const isPending = isAddingToCart || isAddingToWishlist;
 
@@ -51,7 +73,9 @@ const ProductActions = memo(function ProductActions({ productId }: ProductAction
         ) : (
           <ShoppingCart className="h-5 w-5" strokeWidth={2.5} />
         )}
-        {isAddingToCart ? t("products.actions.adding") : t("products.actions.addToBag")}
+        {isAddingToCart
+          ? t("products.actions.adding")
+          : t("products.actions.addToBag")}
       </button>
       <button
         className="flex h-16 w-full items-center justify-center gap-3 border-2 border-foreground bg-transparent px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-foreground hover:text-background active:scale-[0.98] disabled:opacity-50"

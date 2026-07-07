@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { blogData } from "../utils/blog";
+import CardImage from "@/components/shared/CardImage";
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("en-US", {
@@ -50,11 +51,12 @@ const BlogSection = memo(function BlogSection() {
                     index === 0 ? "aspect-[4/3] sm:h-full" : "aspect-video"
                   }`}
                 >
-                  <img
+                  <CardImage
                     src={post.coverImage}
                     alt={post.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                    width={400}
+                    height={400}
+                    className="h-full w-full transition-all duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="flex flex-col gap-2">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { useNavbar } from "../hooks/useNavbar";
 import { useSearchDropdown } from "../hooks/useSearchDropdown";
+import CardImage from "@/components/shared/CardImage";
 import {
   Command,
   CommandInput,
@@ -108,7 +109,7 @@ export function NavbarSearch() {
             <p className="text-sm font-semibold text-muted-foreground">
               {t("nav.search.noResults")}
             </p>
-            <p className="text-xs text-muted-foreground/40">
+            <p className="text-xs text-muted-foreground/60">
               {t("nav.search.tryAnother")}
             </p>
           </CommandEmpty>
@@ -129,10 +130,10 @@ export function NavbarSearch() {
               onClick={clearSearch}
             >
               <CommandItem selected={index === highlightedIndex}>
-                <img
+                <CardImage
                   src={product.imageCover}
                   alt={product.title}
-                  className="h-12 w-12 shrink-0 border border-border/20 object-cover"
+                  className="h-12 w-12 shrink-0 border border-border/20"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-bold text-foreground">
@@ -178,7 +179,7 @@ export function NavbarSearch() {
               handleInputChange(query);
             }
           }}
-          className="h-10 border-2 border-border/40 bg-muted/20 pl-11 text-sm font-bold placeholder:text-muted-foreground/30 focus-visible:border-foreground"
+          className="h-10 border-2 border-border/40 bg-muted/20 pl-11 text-sm font-bold placeholder:text-muted-foreground/50 focus-visible:border-foreground"
         />
         {dropdownContent}
       </div>

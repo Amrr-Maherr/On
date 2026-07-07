@@ -1,14 +1,17 @@
-import { useState, useCallback, useMemo, useRef } from "react"
+import { useState, useCallback, useMemo, useRef, lazy, Suspense } from "react"
 import { useTranslation } from "react-i18next"
+import { MapPin } from "lucide-react"
 import PageHelmet from "@/shared/components/PageHelmet"
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import ScrollReveal from "@/components/shared/ScrollReveal"
 import { branches as branchData } from "@/features/branches/data/branches"
-import BranchMap from "@/features/branches/components/BranchMap"
 import BranchCard from "@/features/branches/components/BranchCard"
-import BranchEmpty from "@/features/branches/components/BranchEmpty"
+import EmptyState from "@/components/shared/EmptyState"
 import CampaignHeader from "@/components/shared/components/CampaignHeader"
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4"
+import { BranchMapSkeleton } from "@/features/branches/components/BranchMapSkeleton"
+import heroImage from "@/assets/imgi_1_em-emc-TRAINING-hp-tc-d.jpg"
+
+const BranchMap = lazy(() => import("@/features/branches/components/BranchMap"))
 
 export default function BranchesPage() {
   const { t } = useTranslation()
@@ -42,9 +45,13 @@ export default function BranchesPage() {
           title={t("branches.page.hero.title")}
           subtitle={t("branches.page.hero.subtitle")}
           description={t("branches.page.hero.description")}
-          videoUrl={heroVideo}
+          backgroundImage={heroImage}
         />
-        <BranchEmpty />
+        <EmptyState
+          title={t("branches.empty.title")}
+          description={t("branches.empty.description")}
+          icon={<MapPin className="h-9 w-9 text-muted-foreground/40" />}
+        />
       </>
     )
   }
@@ -60,7 +67,7 @@ export default function BranchesPage() {
         title={t("branches.page.hero.title")}
         subtitle={t("branches.page.hero.subtitle")}
         description={t("branches.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">
@@ -88,11 +95,13 @@ export default function BranchesPage() {
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
           <div className="h-[400px] md:h-[500px] lg:h-[600px] lg:sticky lg:top-24">
-            <BranchMap
-              branches={branches}
-              activeBranchId={activeBranchId}
-              onBranchSelect={handleBranchSelect}
-            />
+            <Suspense fallback={<BranchMapSkeleton />}>
+              <BranchMap
+                branches={branches}
+                activeBranchId={activeBranchId}
+                onBranchSelect={handleBranchSelect}
+              />
+            </Suspense>
           </div>
 
           <div

@@ -2,8 +2,8 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllBrands } from "@/features/brands/hooks/useGetAllBrands";
 import BrandCard from "@/features/brands/components/BrandCard";
-import BrandsLoader from "@/features/brands/components/BrandsLoader";
-import BrandsError from "@/features/brands/components/BrandsError";
+import { BrandCardSkeleton } from "@/features/brands/components/BrandCardSkeleton";
+import ErrorState from "@/components/shared/Error";
 import Section from "@/components/shared/components/Section";
 
 const BrandsSection = memo(function BrandsSection() {
@@ -29,7 +29,7 @@ const BrandsSection = memo(function BrandsSection() {
         description={t("home.sections.brands.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
-          <BrandsLoader key={i} />
+          <BrandCardSkeleton key={i} />
         ))}
       </Section>
     );
@@ -44,9 +44,11 @@ const BrandsSection = memo(function BrandsSection() {
         title={t("home.sections.brands.title")}
         description={t("home.sections.brands.description")}
       >
-        <BrandsError
+        <ErrorState
+          title={t("brands.error.title")}
           message={getErrorMessage(error)}
           onRetry={() => refetch()}
+          retryLabel={t("brands.error.retry")}
         />
       </Section>
     );
@@ -63,7 +65,10 @@ const BrandsSection = memo(function BrandsSection() {
         title={t("home.sections.brands.title")}
         description={t("home.sections.brands.description")}
       >
-        <BrandsError message={t("home.sections.brands.noBrands")} />
+        <ErrorState
+          title={t("brands.error.title")}
+          message={t("home.sections.brands.noBrands")}
+        />
       </Section>
     );
   }
