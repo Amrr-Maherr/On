@@ -5,21 +5,23 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-
+import image from "../../../assets/imgi_1_emc-hp-gendertile-kids.jpg";
 const PromotionalBannerSection = memo(function PromotionalBannerSection() {
   const { t } = useTranslation();
   const location = useLocation();
   const lang = getLangFromPath(location.pathname);
   const navigate = useNavigate();
-  const handleShopSale = useCallback(() => navigate(buildLocalizedPath("/products", lang)), [navigate, lang]);
+  const handleShopSale = useCallback(
+    () => navigate(buildLocalizedPath("/products", lang)),
+    [navigate, lang],
+  );
 
   return (
     <section className="relative overflow-hidden bg-neutral-950">
       <div
         className="absolute inset-0 bg-cover bg-fixed bg-center"
         style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1920&q=80")',
+          backgroundImage: `url(${image})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/80 to-neutral-950/60" />

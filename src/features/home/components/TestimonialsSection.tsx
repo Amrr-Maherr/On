@@ -5,6 +5,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Star } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { testimonialsData } from "../utils/testimonials";
+import CardImage from "@/components/shared/CardImage";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -42,11 +43,12 @@ const TestimonialsSection = memo(function TestimonialsSection() {
               <SwiperSlide key={item.name}>
                 <div className="group flex flex-col gap-6">
                   <div className="overflow-hidden rounded-none bg-muted/20">
-                    <img
-                      className="aspect-[4/5] w-full object-cover transition-all duration-500 group-hover:scale-[1.05]"
+                    <CardImage
+                      className="aspect-[4/5] w-full transition-all duration-500 group-hover:scale-[1.05]"
                       src={item.avatar}
                       alt={item.name}
-                      loading="lazy"
+                      width={400}
+                      height={500}
                     />
                   </div>
                   <div className="flex flex-col gap-3">
