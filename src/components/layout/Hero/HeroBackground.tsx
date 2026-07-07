@@ -42,7 +42,7 @@ const HeroBackground = memo(function HeroBackground() {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         onCanPlay={() => setLoaded(true)}
         onError={() => setLoaded(false)}
         className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
