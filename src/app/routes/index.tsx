@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Loader from "@/components/shared/Loader";
+import { Skeleton } from "@/components/ui/skeleton";
+import { HomePageSkeleton } from "@/features/home/components/HomePageSkeleton";
 // Lazy loading all feature pages
 const HomePage = lazy(() => import("@/features/home/pages/HomePage"));
 const AuthPage = lazy(() => import("@/features/auth/pages/AuthPage"));
@@ -95,12 +96,12 @@ function RootRedirect() {
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Skeleton className="h-screen w-full rounded-none" />}>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="/:lang" element={<LangLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage />} />
+          <Route index element={<Suspense fallback={<HomePageSkeleton />}><HomePage /></Suspense>} />
+          <Route path="home" element={<Suspense fallback={<HomePageSkeleton />}><HomePage /></Suspense>} />
           <Route path="auth" element={<AuthPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />

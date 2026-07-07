@@ -5,8 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import ProductsLoader from "@/features/products/components/ProductsLoader";
-import ProductsError from "@/features/products/components/ProductsError";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
+import ErrorState from "@/components/shared/Error";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
@@ -57,16 +57,18 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
         {isLoading && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 4 }, (_, i) => (
-              <ProductsLoader key={i} />
+              <ProductCardSkeleton key={i} />
             ))}
           </div>
         )}
 
         {error && (
           <div className="flex justify-center">
-            <ProductsError
+            <ErrorState
+              title={t("products.error.title")}
               message={getErrorMessage(error)}
               onRetry={() => refetch()}
+              retryLabel={t("products.error.retry")}
             />
           </div>
         )}
@@ -107,7 +109,10 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
 
         {!isLoading && !error && (!data?.data || data.data.length === 0) && (
           <div className="flex justify-center">
-            <ProductsError message={t("home.sections.trending.noProducts")} />
+            <ErrorState
+              title={t("products.error.title")}
+              message={t("home.sections.trending.noProducts")}
+            />
           </div>
         )}
       </div>

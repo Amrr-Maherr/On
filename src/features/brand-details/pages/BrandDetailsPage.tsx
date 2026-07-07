@@ -6,8 +6,8 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
-import BrandDetailsLoader from "@/features/brand-details/components/BrandDetailsLoader";
-import BrandDetailsError from "@/features/brand-details/components/BrandDetailsError";
+import { BrandDetailsPageSkeleton } from "@/features/brand-details/components/BrandDetailsSkeleton";
+import ErrorState from "@/components/shared/Error";
 import BrandProducts from "@/features/brand-details/components/BrandProducts";
 
 export default function BrandDetailsPage() {
@@ -16,13 +16,17 @@ export default function BrandDetailsPage() {
 
   const { data, isLoading, error, refetch } = useBrandDetails(id!);
 
-  if (isLoading) return <BrandDetailsLoader />;
+  if (isLoading) {
+    return <BrandDetailsPageSkeleton />;
+  }
 
   if (error) {
     return (
-      <BrandDetailsError
+      <ErrorState
+        title={t("brands.error.title")}
         message={error instanceof Error ? error.message : undefined}
         onRetry={() => refetch()}
+        retryLabel={t("brands.error.retry")}
       />
     );
   }
@@ -30,7 +34,12 @@ export default function BrandDetailsPage() {
   const brand = data?.data;
 
   if (!brand) {
-    return <BrandDetailsError message={t("brands.details.notFound")} />;
+    return (
+      <ErrorState
+        title={t("brands.error.title")}
+        message={t("brands.details.notFound")}
+      />
+    );
   }
 
   return (
