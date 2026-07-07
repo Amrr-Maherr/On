@@ -9,8 +9,10 @@ import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import CardImage from "@/components/shared/CardImage";
 
 import { cn } from "@/lib/utils";
+import { CheckoutPageSkeleton } from "@/features/checkout/components/CheckoutSkeleton";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useCheckoutCash } from "@/features/checkout/hooks/useCheckoutCash";
 import { useCheckoutSession } from "@/features/checkout/hooks/useCheckoutSession";
@@ -101,24 +103,7 @@ export default function CheckoutPage() {
   );
 
   if (isLoading) {
-    return (
-      <div className="container-layout py-8">
-        <div className="mx-auto">
-          <div className="mb-8 h-8 w-48 animate-pulse rounded bg-muted" />
-          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-            <div className="space-y-4">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-16 animate-pulse rounded-lg bg-muted"
-                />
-              ))}
-            </div>
-            <div className="h-64 animate-pulse rounded-xl bg-muted" />
-          </div>
-        </div>
-      </div>
-    );
+    return <CheckoutPageSkeleton />;
   }
 
   return (
@@ -320,10 +305,12 @@ export default function CheckoutPage() {
                       {items.map((item) => (
                         <div key={item._id} className="flex gap-4">
                           <div className="h-16 w-16 shrink-0 overflow-hidden bg-muted/30">
-                            <img
+                            <CardImage
                               src={item.product.imageCover}
                               alt={item.product.title}
-                              className="h-full w-full object-cover"
+                              width={400}
+                              height={400}
+                              className="h-full w-full"
                             />
                           </div>
                           <div className="flex flex-1 flex-col justify-center min-w-0">

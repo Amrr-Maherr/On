@@ -2,6 +2,11 @@
   "welcome": "مرحبا",
   "categories": "التصنيفات",
   "addToCart": "أضف للسلة",
+  "pagination": {
+    "label": "التنقل بين الصفحات",
+    "previous": "الصفحة السابقة",
+    "next": "الصفحة التالية"
+  },
   "products": {
     "page": {
       "title": "جميع المنتجات",

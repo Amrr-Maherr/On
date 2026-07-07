@@ -2,6 +2,7 @@ import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { Brand } from "@/features/brands/types";
 import { Calendar, Tag } from "lucide-react";
+import CardImage from "@/components/shared/CardImage";
 
 interface BrandDetailsCardProps {
   brand: Brand;
@@ -18,11 +19,13 @@ const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsC
   return (
     <div className="grid gap-16 md:grid-cols-2">
       <div className="overflow-hidden bg-white ring-1 ring-border/40">
-        <img
+        <CardImage
           src={brand.image}
           alt={brand.name}
-          loading="lazy"
-          className="aspect-[4/5] w-full object-contain p-16"
+          width={400}
+          height={500}
+          objectFit="contain"
+          className="aspect-[4/5] w-full p-16"
         />
       </div>
 

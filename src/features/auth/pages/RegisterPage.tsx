@@ -9,7 +9,7 @@ import AuthFormWrapper from "@/features/auth/components/auth-form-wrapper";
 import AuthHeader from "@/features/auth/components/auth-header";
 import AuthInput from "@/features/auth/components/auth-input";
 import AuthSubmitButton from "@/features/auth/components/auth-submit-button";
-import SocialLoginButtons from "@/features/auth/components/social-login-buttons";
+import GoogleAuthButton from "@/features/auth/components/GoogleAuthButton";
 import { useRegister } from "@/features/auth/hooks/useRegister";
 import type { RegisterFormFields } from "@/features/auth/types/auth";
 
@@ -148,7 +148,20 @@ export default function RegisterPage() {
             isLoading={isPending}
           />
 
-          <SocialLoginButtons />
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border/50" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-3 text-muted-foreground/50 tracking-[0.1em]">
+                {t("auth.social.orContinueWith")}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <GoogleAuthButton />
+          </div>
         </form>
 
         <p className="mt-8 text-center text-sm font-medium text-muted-foreground">
