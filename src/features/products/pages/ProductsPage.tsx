@@ -41,25 +41,12 @@ export default function ProductsPage() {
       return next;
     });
 
-  const toggleParam = (key: string, value: string) =>
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev);
-      const vals = next.getAll(key);
-      if (vals.includes(value)) {
-        next.delete(key);
-        vals.filter((v) => v !== value).forEach((v) => next.append(key, v));
-      } else {
-        next.append(key, value);
-      }
-      return next;
-    });
-
   const clearAll = () => setSearchParams(new URLSearchParams());
 
   const filters = {
     page,
-    ...(searchParams.has("category") && { categoryIn: searchParams.getAll("category") }),
-    ...(searchParams.has("brand") && { brandIn: searchParams.getAll("brand") }),
+    ...(searchParams.has("category") && { categoryIn: [searchParams.get("category")!] }),
+    ...(searchParams.has("brand") && { brandIn: [searchParams.get("brand")!] }),
     ...(sort && { sort }),
     ...(priceMin > 0 && { priceGte: priceMin }),
     ...(priceMax < 10000 && { priceLte: priceMax }),
@@ -133,16 +120,16 @@ export default function ProductsPage() {
               <FilterSection title={t("products.filters.categories")}>
                 <FilterCheckboxGroup
                   options={categories}
-                  selected={searchParams.getAll("category")}
-                  onToggle={(v) => toggleParam("category", v)}
+                  selected={searchParams.get("category")}
+                  onChange={(v) => setParam("category", v)}
                 />
               </FilterSection>
 
               <FilterSection title={t("products.filters.brands")}>
                 <FilterCheckboxGroup
                   options={brands}
-                  selected={searchParams.getAll("brand")}
-                  onToggle={(v) => toggleParam("brand", v)}
+                  selected={searchParams.get("brand")}
+                  onChange={(v) => setParam("brand", v)}
                 />
               </FilterSection>
 
