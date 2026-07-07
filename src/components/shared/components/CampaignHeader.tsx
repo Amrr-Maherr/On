@@ -47,11 +47,11 @@ const CampaignHeader = memo(function CampaignHeader({
         </video>
       ) : backgroundImage ? (
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
+          className="absolute inset-0 bg-cover bg-center opacity-50"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" />
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/95 to-neutral-950/80" /> */}
       <div className="container-layout relative z-10">
         <ScrollReveal>
           {badge && <div className="mb-4">{badge}</div>}
