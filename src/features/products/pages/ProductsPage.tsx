@@ -7,7 +7,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import heroImage from "@/assets/imgi_1_em-emc-RUNNING-hp-tc-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { ProductsPageSkeleton } from "../components/ProductsPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
@@ -170,7 +170,7 @@ export default function ProductsPage() {
                 retryLabel={t("products.error.retry")}
               />
             ) : isLoading ? (
-              <CardSkeleton />
+              <ProductsPageSkeleton />
             ) : products.length === 0 ? (
               <EmptyState
                 title={t("products.empty.title")}

@@ -6,7 +6,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { BrandDetailsPageSkeleton } from "@/features/brand-details/components/BrandDetailsSkeleton";
 import ErrorState from "@/components/shared/Error";
 import BrandProducts from "@/features/brand-details/components/BrandProducts";
 
@@ -17,7 +17,7 @@ export default function BrandDetailsPage() {
   const { data, isLoading, error, refetch } = useBrandDetails(id!);
 
   if (isLoading) {
-    return <LoadingState variant="row" count={3} />;
+    return <BrandDetailsPageSkeleton />;
   }
 
   if (error) {

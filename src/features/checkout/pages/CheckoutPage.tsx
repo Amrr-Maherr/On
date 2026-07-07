@@ -12,7 +12,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CardImage from "@/components/shared/CardImage";
 
 import { cn } from "@/lib/utils";
-import Skeleton from "@/components/shared/Skeleton";
+import { CheckoutPageSkeleton } from "@/features/checkout/components/CheckoutSkeleton";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useCheckoutCash } from "@/features/checkout/hooks/useCheckoutCash";
 import { useCheckoutSession } from "@/features/checkout/hooks/useCheckoutSession";
@@ -103,21 +103,7 @@ export default function CheckoutPage() {
   );
 
   if (isLoading) {
-    return (
-      <div className="container-layout py-8">
-        <div className="mx-auto">
-          <Skeleton width={192} height={32} className="mb-8 rounded" />
-          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-            <div className="space-y-4">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} variant="rectangular" className="h-16 w-full" />
-              ))}
-            </div>
-            <Skeleton variant="rectangular" className="h-64 w-full rounded-xl" />
-          </div>
-        </div>
-      </div>
-    );
+    return <CheckoutPageSkeleton />;
   }
 
   return (

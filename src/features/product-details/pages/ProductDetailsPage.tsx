@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import PageHelmet from "@/shared/components/PageHelmet";
 import { useProductDetails } from "@/features/product-details/hooks/useGetProductDetails";
 import ProductDetails from "@/features/product-details/components/ProductDetails";
-import LoadingState from "@/components/shared/LoadingState";
+import { ProductDetailsPageSkeleton } from "@/features/product-details/components/ProductDetailsSkeleton";
 import ErrorState from "@/components/shared/Error";
 
 export default function ProductDetailsPage() {
@@ -13,7 +13,7 @@ export default function ProductDetailsPage() {
   const { data, isLoading, error, refetch } = useProductDetails(id!);
 
   if (isLoading) {
-    return <LoadingState variant="row" count={3} />;
+    return <ProductDetailsPageSkeleton />;
   }
 
   if (error) {

@@ -6,7 +6,7 @@ import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import CategoryCard from "../components/CategoryCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { CategoriesPageSkeleton } from "../components/CategoriesPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
@@ -48,19 +48,7 @@ export default function CategoriesPage() {
   );
 
   if (isLoading) {
-    return (
-      <>
-        <CampaignHeader
-          subtitle={t("categories.page.hero.subtitle")}
-          title={t("categories.page.hero.title")}
-          description={t("categories.page.hero.description")}
-          backgroundImage="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1920&q=80"
-        />
-        <div className="container-layout section-py pt-8">
-          <LoadingState variant="card" columns={3} count={6} />
-        </div>
-      </>
-    );
+    return <CategoriesPageSkeleton />;
   }
 
   if (error) {

@@ -8,7 +8,7 @@ import { branches as branchData } from "@/features/branches/data/branches"
 import BranchCard from "@/features/branches/components/BranchCard"
 import EmptyState from "@/components/shared/EmptyState"
 import CampaignHeader from "@/components/shared/components/CampaignHeader"
-import Skeleton from "@/components/shared/Skeleton"
+import { BranchMapSkeleton } from "@/features/branches/components/BranchMapSkeleton"
 import heroImage from "@/assets/imgi_1_em-emc-TRAINING-hp-tc-d.jpg"
 
 const BranchMap = lazy(() => import("@/features/branches/components/BranchMap"))
@@ -95,7 +95,7 @@ export default function BranchesPage() {
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
           <div className="h-[400px] md:h-[500px] lg:h-[600px] lg:sticky lg:top-24">
-            <Suspense fallback={<Skeleton variant="rectangular" className="h-full w-full" />}>
+            <Suspense fallback={<BranchMapSkeleton />}>
               <BranchMap
                 branches={branches}
                 activeBranchId={activeBranchId}

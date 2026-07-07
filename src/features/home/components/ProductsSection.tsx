@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
 import ErrorState from "@/components/shared/Error";
 import Section from "@/components/shared/components/Section";
 
@@ -29,7 +29,7 @@ const ProductsSection = memo(function ProductsSection() {
         description={t("home.sections.products.loadingDesc")}
       >
         {Array.from({ length: 5 }, (_, i) => (
-          <CardSkeleton key={i} />
+          <ProductCardSkeleton key={i} />
         ))}
       </Section>
     );

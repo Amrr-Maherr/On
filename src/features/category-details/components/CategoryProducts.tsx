@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
 import ErrorState from "@/components/shared/Error";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
@@ -21,7 +21,7 @@ const CategoryProducts = memo(function CategoryProducts({ categoryId }: Category
     return (
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }, (_, i) => (
-          <CardSkeleton key={i} />
+          <ProductCardSkeleton key={i} />
         ))}
       </div>
     );

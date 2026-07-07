@@ -11,7 +11,7 @@ import { useProfile } from "../hooks/useProfile";
 import ProfileHeader from "../components/ProfileHeader";
 import ProfileInfoCard from "../components/ProfileInfoCard";
 import ProfileActions from "../components/ProfileActions";
-import LoadingState from "@/components/shared/LoadingState";
+import { ProfilePageSkeleton } from "@/features/profile/components/ProfileSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EditProfileSheet from "../components/EditProfileSheet";
 import type { User } from "../types";
@@ -64,7 +64,7 @@ export default function ProfilePage() {
 
   if (!user) {
     if (isLoading) {
-      return <LoadingState variant="text" count={8} className="container-layout py-8" />;
+      return <ProfilePageSkeleton />;
     }
     return (
       <div className="container-layout section-py pt-8">

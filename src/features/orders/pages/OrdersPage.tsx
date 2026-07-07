@@ -10,7 +10,7 @@ import heroImage from "@/assets/imgi_1_em-walking-sportswear-ss26-launch-tc.jpg"
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import OrderCard from "@/features/orders/components/OrderCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { OrdersPageSkeleton } from "@/features/orders/components/OrdersPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import { isAxiosError } from "axios";
@@ -31,11 +31,7 @@ export default function OrdersPage() {
   const { data, isLoading, error, refetch } = useOrders();
 
   if (isLoading) {
-    return (
-      <>
-        <LoadingState variant="row" count={4} />
-      </>
-    );
+    return <OrdersPageSkeleton />;
   }
 
   if (error) {

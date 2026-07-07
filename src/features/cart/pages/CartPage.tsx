@@ -16,7 +16,7 @@ import { useRemoveCartItem } from "@/features/cart/hooks/useRemoveCartItem";
 import { useClearCart } from "@/features/cart/hooks/useClearCart";
 import CartItemCard from "@/features/cart/components/CartItemCard";
 import CartSummary from "@/features/cart/components/CartSummary";
-import LoadingState from "@/components/shared/LoadingState";
+import { CartPageSkeleton } from "@/features/cart/components/CartPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 
@@ -86,11 +86,7 @@ export default function CartPage() {
   }, [navigate, lang]);
 
   if (isLoading) {
-    return (
-      <>
-        <LoadingState variant="row" count={3} />
-      </>
-    );
+    return <CartPageSkeleton />;
   }
 
   if (error) {

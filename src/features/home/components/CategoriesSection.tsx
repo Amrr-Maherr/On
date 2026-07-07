@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllCategories } from "@/features/categories/hooks/useGetAllCategories";
 import CategoryCard from "@/features/categories/components/CategoryCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { CategoryCardSkeleton } from "@/features/categories/components/CategoryCardSkeleton";
 import ErrorState from "@/components/shared/Error";
 import Section from "@/components/shared/components/Section";
 
@@ -29,7 +29,7 @@ const CategoriesSection = memo(function CategoriesSection() {
         description={t("home.sections.categories.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
-          <CardSkeleton key={i} />
+          <CategoryCardSkeleton key={i} />
         ))}
       </Section>
     );

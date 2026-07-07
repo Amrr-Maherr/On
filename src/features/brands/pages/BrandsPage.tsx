@@ -5,7 +5,7 @@ import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import BrandCard from "../components/BrandCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { BrandsPageSkeleton } from "../components/BrandsPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import Pagination from "@/components/shared/Pagination";
@@ -24,19 +24,7 @@ export default function BrandsPage() {
   const { data, isLoading, error, refetch } = useAllBrands(page);
 
   if (isLoading) {
-    return (
-      <>
-        <CampaignHeader
-          subtitle={t("brands.page.hero.subtitle")}
-          title={t("brands.page.hero.title")}
-          description={t("brands.page.hero.description")}
-          backgroundImage={image}
-        />
-        <div className="container-layout section-py pt-8">
-          <LoadingState variant="card" columns={3} count={6} />
-        </div>
-      </>
-    );
+    return <BrandsPageSkeleton />;
   }
 
   if (error) {

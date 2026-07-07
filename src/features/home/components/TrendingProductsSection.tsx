@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
 import ErrorState from "@/components/shared/Error";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -57,7 +57,7 @@ const TrendingProductsSection = memo(function TrendingProductsSection() {
         {isLoading && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 4 }, (_, i) => (
-              <CardSkeleton key={i} />
+              <ProductCardSkeleton key={i} />
             ))}
           </div>
         )}

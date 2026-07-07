@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import { CardSkeleton } from "@/components/shared/Skeleton";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
 import ErrorState from "@/components/shared/Error";
 import Slider from "@/components/shared/Slider";
 
@@ -23,7 +23,7 @@ const ProductDetailsProducts = memo(function ProductDetailsProducts() {
         </div>
         <Slider slidesPerView={4} slidesPerViewMobile={1.5} hideNavigation>
           {Array.from({ length: 5 }, (_, i) => (
-            <CardSkeleton key={i} />
+            <ProductCardSkeleton key={i} />
           ))}
         </Slider>
       </section>

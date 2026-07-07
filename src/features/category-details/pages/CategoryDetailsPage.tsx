@@ -6,7 +6,7 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useCategoryDetails } from "@/features/category-details/hooks/useGetCategoryDetails";
 import CategoryDetailsCard from "@/features/category-details/components/CategoryDetailsCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { CategoryDetailsPageSkeleton } from "@/features/category-details/components/CategoryDetailsSkeleton";
 import ErrorState from "@/components/shared/Error";
 import CategoryProducts from "@/features/category-details/components/CategoryProducts";
 
@@ -17,7 +17,7 @@ export default function CategoryDetailsPage() {
   const { data, isLoading, error, refetch } = useCategoryDetails(id!);
 
   if (isLoading) {
-    return <LoadingState variant="row" count={3} />;
+    return <CategoryDetailsPageSkeleton />;
   }
 
   if (error) {

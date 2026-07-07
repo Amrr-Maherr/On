@@ -11,7 +11,7 @@ import { useWishlist } from "@/features/wishlist/hooks/useWishlist";
 import { useRemoveWishlistItem } from "@/features/wishlist/hooks/useRemoveWishlistItem";
 import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import WishlistItemCard from "@/features/wishlist/components/WishlistItemCard";
-import LoadingState from "@/components/shared/LoadingState";
+import { WishlistPageSkeleton } from "@/features/wishlist/components/WishlistPageSkeleton";
 import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
@@ -37,11 +37,7 @@ export default function WishlistPage() {
   const [addingToCartId, setAddingToCartId] = useState<string | null>(null);
 
   if (isLoading) {
-    return (
-      <>
-        <LoadingState variant="row" count={3} />
-      </>
-    );
+    return <WishlistPageSkeleton />;
   }
 
   if (error) {
