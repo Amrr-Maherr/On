@@ -5,6 +5,7 @@ import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { CartItem } from "@/features/cart/types/cart";
+import CardImage from "@/components/shared/CardImage";
 
 interface CartItemCardProps {
   item: CartItem;
@@ -36,11 +37,12 @@ const CartItemCard = memo(({
         className="shrink-0"
       >
         <div className="h-32 w-32 overflow-hidden bg-muted/30 md:h-40 md:w-40">
-          <img
+          <CardImage
             src={product.imageCover}
             alt={product.title}
-            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
-            loading="lazy"
+            width={400}
+            height={400}
+            className="h-full w-full transition-all duration-700 group-hover:scale-110"
           />
         </div>
       </Link>

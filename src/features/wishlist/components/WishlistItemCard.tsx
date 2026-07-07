@@ -5,6 +5,7 @@ import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Heart, ShoppingCart, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
+import CardImage from "@/components/shared/CardImage";
 
 interface WishlistItemCardProps {
   product: WishlistProduct;
@@ -37,11 +38,12 @@ const WishlistItemCard = memo(({
         to={buildLocalizedPath(`/products/${product.title}/${product._id}`, lang)}
         className="h-28 w-28 shrink-0 overflow-hidden rounded-none bg-muted/50 transition-opacity hover:opacity-80 md:h-32 md:w-32"
       >
-        <img
+        <CardImage
           src={product.imageCover}
           alt={product.title}
-          className="h-full w-full object-cover"
-          loading="lazy"
+          width={400}
+          height={400}
+          className="h-full w-full"
         />
       </Link>
 
