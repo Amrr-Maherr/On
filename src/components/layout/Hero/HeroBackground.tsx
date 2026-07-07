@@ -1,7 +1,7 @@
 import { memo, useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Volume2, VolumeX } from "lucide-react";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroVideo from "@/assets/hero-bg.mp4";
 
 function prefersReducedMotion(): boolean {
   if (typeof window === "undefined") return false;

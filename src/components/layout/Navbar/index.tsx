@@ -20,7 +20,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 border-b-2 border-border/40 bg-background/90 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b-2 border-border/40 bg-background backdrop-blur-xl">
       <div className="container-layout flex h-16 items-center justify-between gap-4 md:h-20">
         <div className="flex items-center gap-8 lg:gap-12">
           <Logo />

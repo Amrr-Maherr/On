@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export function NavbarSkeleton() {
   return (
-    <div className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
+    <div className="sticky top-0 z-50 border-b border-border/50 bg-background backdrop-blur-md">
       <div className="container-layout flex h-16 items-center justify-between md:h-20">
         <div className="flex items-center gap-6">
           <Skeleton className="h-8 w-24" />

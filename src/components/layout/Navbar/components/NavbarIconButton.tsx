@@ -17,7 +17,7 @@ export function NavbarIconButton({ href, ariaLabel, icon, count }: NavbarIconBut
         variant="ghost"
         size="icon"
         aria-label={ariaLabel}
-        className="relative rounded-none text-muted-foreground/80 hover:bg-muted/30 hover:text-foreground"
+        className="relative rounded-none text-muted-foreground hover:bg-muted/30 hover:text-foreground"
       >
         {icon}
         {count != null && count > 0 && (
