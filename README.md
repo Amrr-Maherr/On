@@ -10,6 +10,7 @@
 |---|---|
 | **Core** | React 19, TypeScript 6 |
 | **Build** | Vite 8 |
+| **PWA** | vite-plugin-pwa 1 (service worker, manifest, offline support) |
 | **Routing** | React Router 7 |
 | **Server State** | TanStack Query 5 (React Query) |
 | **Client State** | Redux Toolkit (configured, extensible) |
@@ -22,6 +23,7 @@
 | **i18n** | i18next 26, react-i18next 17 |
 | **SEO** | React Helmet Async |
 | **Notifications** | React Hot Toast |
+| **OAuth** | @react-oauth/google (Google Login) |
 | **Image Lightbox** | yet-another-react-lightbox |
 | **Maps** | React Simple Maps |
 | **Product Tour** | driver.js |
@@ -228,7 +230,7 @@ interface PaginationMetadata {
 - Login, registration, forgot/reset password flows
 - Token-based auth persisted in `localStorage`
 - Axios interceptor for automatic token attachment
-- Social login UI (implementation-ready)
+- Google OAuth login via `@react-oauth/google` with JWT decoding (`jwt-decode`)
 
 ### Product Listing & Details (`features/products`, `features/product-details`)
 - Server-side pagination with query parameter filters
@@ -266,12 +268,21 @@ interface PaginationMetadata {
 ### Profile (`features/profile`)
 - View and edit personal information (name, phone, email)
 - EditProfileSheet with React Hook Form
+- Google profile data display (name, email, avatar from Google JWT)
 
 ### Homepage
 - Hero section with video background
 - Product showcase sections
 - Brand and category grids
 - Campaign banners
+
+### Progressive Web App (PWA)
+- Installable via browser prompt with web manifest (`manifest.webmanifest`)
+- Auto-updating service worker via `vite-plugin-pwa` (`registerType: 'autoUpdate'`)
+- SVG-based manifest icon using the existing brand icon
+- Offline-ready with workbox precaching of all static assets
+- Type-safe `virtual:pwa-register` integration with full TypeScript declarations
+- Lighthouse-optimized meta tags and manifest configuration
 
 ### Guided Tour (`features/tour`)
 - Route-aware product tour using driver.js

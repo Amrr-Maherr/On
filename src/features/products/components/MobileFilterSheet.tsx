@@ -24,6 +24,7 @@ function MobileFilterSheet({ categories, brands, setParam, clearAll }: MobileFil
   const [searchParams] = useSearchParams();
   const sort = searchParams.get("sort") || "";
 
+
   return (
     <Sheet>
       <SheetTrigger asChild>

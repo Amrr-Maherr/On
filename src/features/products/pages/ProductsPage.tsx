@@ -4,13 +4,13 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-RUNNING-hp-tc-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ProductCard from "../components/ProductCard";
-import ProductsLoader from "../components/ProductsLoader";
-import ProductsError from "../components/ProductsError";
-import ProductsEmpty from "../components/ProductsEmpty";
-import ProductsPagination from "../components/ProductsPagination";
+import { ProductsPageSkeleton } from "../components/ProductsPageSkeleton";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
+import Pagination from "@/components/shared/Pagination";
 import MobileFilterSheet from "../components/MobileFilterSheet";
 import {
   FiltersPanel,
@@ -41,25 +41,12 @@ export default function ProductsPage() {
       return next;
     });
 
-  const toggleParam = (key: string, value: string) =>
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev);
-      const vals = next.getAll(key);
-      if (vals.includes(value)) {
-        next.delete(key);
-        vals.filter((v) => v !== value).forEach((v) => next.append(key, v));
-      } else {
-        next.append(key, value);
-      }
-      return next;
-    });
-
   const clearAll = () => setSearchParams(new URLSearchParams());
 
   const filters = {
     page,
-    ...(searchParams.has("category") && { categoryIn: searchParams.getAll("category") }),
-    ...(searchParams.has("brand") && { brandIn: searchParams.getAll("brand") }),
+    ...(searchParams.has("category") && { categoryIn: [searchParams.get("category")!] }),
+    ...(searchParams.has("brand") && { brandIn: [searchParams.get("brand")!] }),
     ...(sort && { sort }),
     ...(priceMin > 0 && { priceGte: priceMin }),
     ...(priceMax < 10000 && { priceLte: priceMax }),
@@ -94,7 +81,7 @@ export default function ProductsPage() {
         subtitle={t("products.page.hero.subtitle")}
         title={t("products.page.hero.title")}
         description={t("products.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">
@@ -133,16 +120,16 @@ export default function ProductsPage() {
               <FilterSection title={t("products.filters.categories")}>
                 <FilterCheckboxGroup
                   options={categories}
-                  selected={searchParams.getAll("category")}
-                  onToggle={(v) => toggleParam("category", v)}
+                  selected={searchParams.get("category")}
+                  onChange={(v) => setParam("category", v)}
                 />
               </FilterSection>
 
               <FilterSection title={t("products.filters.brands")}>
                 <FilterCheckboxGroup
                   options={brands}
-                  selected={searchParams.getAll("brand")}
-                  onToggle={(v) => toggleParam("brand", v)}
+                  selected={searchParams.get("brand")}
+                  onChange={(v) => setParam("brand", v)}
                 />
               </FilterSection>
 
@@ -172,18 +159,23 @@ export default function ProductsPage() {
             </div>
 
             {error ? (
-              <ProductsError
+              <ErrorState
+                title={t("products.error.title")}
                 message={
                   error instanceof Error
                     ? error.message
                     : t("products.error.defaultMessage")
                 }
                 onRetry={() => refetch()}
+                retryLabel={t("products.error.retry")}
               />
             ) : isLoading ? (
-              <ProductsLoader />
+              <ProductsPageSkeleton />
             ) : products.length === 0 ? (
-              <ProductsEmpty />
+              <EmptyState
+                title={t("products.empty.title")}
+                description={t("products.empty.description")}
+              />
             ) : (
               <>
                 <div
@@ -199,7 +191,7 @@ export default function ProductsPage() {
 
                 {metadata && (
                   <div className="mt-16 border-t border-border/40 pt-12">
-                    <ProductsPagination
+                    <Pagination
                       currentPage={metadata.currentPage}
                       totalPages={metadata.numberOfPages}
                       onPageChange={() => {

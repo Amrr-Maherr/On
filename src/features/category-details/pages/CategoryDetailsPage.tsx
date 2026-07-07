@@ -6,8 +6,8 @@ import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { useCategoryDetails } from "@/features/category-details/hooks/useGetCategoryDetails";
 import CategoryDetailsCard from "@/features/category-details/components/CategoryDetailsCard";
-import CategoryDetailsLoader from "@/features/category-details/components/CategoryDetailsLoader";
-import CategoryDetailsError from "@/features/category-details/components/CategoryDetailsError";
+import { CategoryDetailsPageSkeleton } from "@/features/category-details/components/CategoryDetailsSkeleton";
+import ErrorState from "@/components/shared/Error";
 import CategoryProducts from "@/features/category-details/components/CategoryProducts";
 
 export default function CategoryDetailsPage() {
@@ -16,13 +16,17 @@ export default function CategoryDetailsPage() {
 
   const { data, isLoading, error, refetch } = useCategoryDetails(id!);
 
-  if (isLoading) return <CategoryDetailsLoader />;
+  if (isLoading) {
+    return <CategoryDetailsPageSkeleton />;
+  }
 
   if (error) {
     return (
-      <CategoryDetailsError
+      <ErrorState
+        title={t("categories.error.title")}
         message={error instanceof Error ? error.message : undefined}
         onRetry={() => refetch()}
+        retryLabel={t("categories.error.retry")}
       />
     );
   }
@@ -30,7 +34,12 @@ export default function CategoryDetailsPage() {
   const category = data?.data;
 
   if (!category) {
-    return <CategoryDetailsError message={t("categories.details.notFound")} />;
+    return (
+      <ErrorState
+        title={t("categories.error.title")}
+        message={t("categories.details.notFound")}
+      />
+    );
   }
 
   return (
