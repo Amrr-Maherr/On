@@ -4,23 +4,25 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { Product } from "@/features/products/types";
+import LazySection from "@/shared/components/LazySection";
 import { ProductGallery } from "@/features/product-details/components/product-gallery";
-import ProductDetailsBrands from "./ProductDetailsBrands";
-import ProductDetailsProducts from "./ProductDetailsProducts";
 import ProductInfo from "./ProductInfo";
 import ProductRating from "./ProductRating";
 import ProductPrice from "./ProductPrice";
 import ProductDescription from "./ProductDescription";
 import ProductQuantity from "./ProductQuantity";
 import ProductActions from "./ProductActions";
-import ProductReviews from "./ProductReviews";
-import AddReview from "./AddReview";
-import ProductQA from "./ProductQA";
 import ProductSubcategories from "./ProductSubcategories";
 import ProductCategory from "./ProductCategory";
 import ProductBrand from "./ProductBrand";
 import ProductStockStatus from "./ProductStockStatus";
+import ProductReviews from "./ProductReviews";
+import AddReview from "./AddReview";
+import ProductQA from "./ProductQA";
+import ProductDetailsBrands from "./ProductDetailsBrands";
+import ProductDetailsProducts from "./ProductDetailsProducts";
 
 interface ProductDetailsProps {
   product: Product;
@@ -108,18 +110,28 @@ const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsP
         </div>
 
         <div className="mt-12 space-y-12 md:mt-20 md:space-y-20" data-tour="product-reviews">
-          <ProductReviews
-            reviews={product.reviews ?? []}
-            showAll={showAllReviews}
-            onToggleShowAll={() => setShowAllReviews(!showAllReviews)}
-          />
-          <AddReview />
-          <ProductQA />
+          <LazySection fallback={<Skeleton className="h-64 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <ProductReviews
+              reviews={product.reviews ?? []}
+              showAll={showAllReviews}
+              onToggleShowAll={() => setShowAllReviews(!showAllReviews)}
+            />
+          </LazySection>
+          <LazySection fallback={<Skeleton className="h-48 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <AddReview />
+          </LazySection>
+          <LazySection fallback={<Skeleton className="h-48 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <ProductQA />
+          </LazySection>
         </div>
 
         <div className="mt-12 space-y-12 md:mt-20 md:space-y-20">
-          <ProductDetailsBrands />
-          <ProductDetailsProducts />
+          <LazySection fallback={<Skeleton className="h-80 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <ProductDetailsBrands />
+          </LazySection>
+          <LazySection fallback={<Skeleton className="h-80 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <ProductDetailsProducts />
+          </LazySection>
         </div>
       </div>
     </div>

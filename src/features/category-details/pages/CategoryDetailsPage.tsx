@@ -4,6 +4,8 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { Skeleton } from "@/components/ui/skeleton";
+import LazySection from "@/shared/components/LazySection";
 import { useCategoryDetails } from "@/features/category-details/hooks/useGetCategoryDetails";
 import CategoryDetailsCard from "@/features/category-details/components/CategoryDetailsCard";
 import { CategoryDetailsPageSkeleton } from "@/features/category-details/components/CategoryDetailsSkeleton";
@@ -72,7 +74,9 @@ export default function CategoryDetailsPage() {
               </h2>
             </div>
           </ScrollReveal>
-          <CategoryProducts categoryId={category._id} />
+          <LazySection fallback={<Skeleton className="h-96 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <CategoryProducts categoryId={category._id} />
+          </LazySection>
         </section>
       </div>
     </div>

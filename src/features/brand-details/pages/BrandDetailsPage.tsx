@@ -4,6 +4,8 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { Skeleton } from "@/components/ui/skeleton";
+import LazySection from "@/shared/components/LazySection";
 import { useBrandDetails } from "@/features/brand-details/hooks/useGetBrandDetails";
 import BrandDetailsCard from "@/features/brand-details/components/BrandDetailsCard";
 import { BrandDetailsPageSkeleton } from "@/features/brand-details/components/BrandDetailsSkeleton";
@@ -72,7 +74,9 @@ export default function BrandDetailsPage() {
               </h2>
             </div>
           </ScrollReveal>
-          <BrandProducts brandId={brand._id} />
+          <LazySection fallback={<Skeleton className="h-96 w-full rounded-none" />} rootMargin="0px 0px 100px 0px">
+            <BrandProducts brandId={brand._id} />
+          </LazySection>
         </section>
       </div>
     </div>
