@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, type ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +7,8 @@ interface ErrorStateProps {
   message?: string;
   error?: unknown;
   onRetry?: () => void;
+  retryLabel?: string;
+  icon?: ReactNode;
   className?: string;
 }
 
@@ -21,6 +23,8 @@ const ErrorState = memo(function ErrorState({
   message,
   error,
   onRetry,
+  retryLabel = "Try Again",
+  icon,
   className,
 }: ErrorStateProps) {
   const displayMessage = message || (error ? getErrorMessage(error) : undefined);
@@ -33,12 +37,12 @@ const ErrorState = memo(function ErrorState({
       )}
     >
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
-        <AlertTriangle className="h-8 w-8 text-destructive" />
+        {icon || <AlertTriangle className="h-8 w-8 text-destructive" />}
       </div>
       <div>
         <h3 className="text-xl font-bold text-foreground">{title}</h3>
         <p className="mt-2 text-sm text-muted-foreground/70 max-w-xs">
-          {displayMessage || "An unexpected error occurred. Please try again."}
+          {displayMessage || "An unexpected error occurred."}
         </p>
       </div>
       {onRetry && (
@@ -47,7 +51,7 @@ const ErrorState = memo(function ErrorState({
           className="inline-flex items-center gap-2 rounded-none border border-border/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted/30 active:scale-[0.98]"
         >
           <RefreshCw className="h-4 w-4" />
-          Try Again
+          {retryLabel}
         </button>
       )}
     </div>

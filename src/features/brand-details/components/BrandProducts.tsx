@@ -2,8 +2,8 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllProducts } from "@/features/products/hooks/useGetAllProducts";
 import ProductCard from "@/features/products/components/ProductCard";
-import ProductsLoader from "@/features/products/components/ProductsLoader";
-import ProductsError from "@/features/products/components/ProductsError";
+import { ProductCardSkeleton } from "@/features/products/components/ProductCardSkeleton";
+import ErrorState from "@/components/shared/Error";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 interface BrandProductsProps {
@@ -21,7 +21,7 @@ const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProp
     return (
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {Array.from({ length: 4 }, (_, i) => (
-          <ProductsLoader key={i} />
+          <ProductCardSkeleton key={i} />
         ))}
       </div>
     );
@@ -29,9 +29,11 @@ const BrandProducts = memo(function BrandProducts({ brandId }: BrandProductsProp
 
   if (error) {
     return (
-      <ProductsError
+      <ErrorState
+        title={t("products.error.title")}
         message={error instanceof Error ? error.message : t("brands.details.products.error")}
         onRetry={() => refetch()}
+        retryLabel={t("products.error.retry")}
       />
     );
   }
