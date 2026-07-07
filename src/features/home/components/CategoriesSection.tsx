@@ -2,8 +2,8 @@ import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useAllCategories } from "@/features/categories/hooks/useGetAllCategories";
 import CategoryCard from "@/features/categories/components/CategoryCard";
-import CategoriesLoader from "@/features/categories/components/CategoriesLoader";
-import CategoriesError from "@/features/categories/components/CategoriesError";
+import { CategoryCardSkeleton } from "@/features/categories/components/CategoryCardSkeleton";
+import ErrorState from "@/components/shared/Error";
 import Section from "@/components/shared/components/Section";
 
 const CategoriesSection = memo(function CategoriesSection() {
@@ -29,7 +29,7 @@ const CategoriesSection = memo(function CategoriesSection() {
         description={t("home.sections.categories.description")}
       >
         {Array.from({ length: 5 }, (_, i) => (
-          <CategoriesLoader key={i} />
+          <CategoryCardSkeleton key={i} />
         ))}
       </Section>
     );
@@ -44,9 +44,11 @@ const CategoriesSection = memo(function CategoriesSection() {
         title={t("home.sections.categories.title")}
         description={t("home.sections.categories.description")}
       >
-        <CategoriesError
+        <ErrorState
+          title={t("categories.error.title")}
           message={getErrorMessage(error)}
           onRetry={() => refetch()}
+          retryLabel={t("categories.error.retry")}
         />
       </Section>
     );
@@ -63,7 +65,10 @@ const CategoriesSection = memo(function CategoriesSection() {
         title={t("home.sections.categories.title")}
         description={t("home.sections.categories.description")}
       >
-        <CategoriesError message={t("home.sections.categories.noCategories")} />
+        <ErrorState
+          title={t("categories.error.title")}
+          message={t("home.sections.categories.noCategories")}
+        />
       </Section>
     );
   }

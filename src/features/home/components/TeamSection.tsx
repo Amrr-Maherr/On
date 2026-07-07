@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Globe } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { teamData } from "../utils/team";
+import CardImage from "@/components/shared/CardImage";
 
 const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -57,11 +58,12 @@ const TeamSection = memo(function TeamSection() {
                 className="group flex flex-col items-center gap-6"
               >
                 <div className="w-full overflow-hidden rounded-none bg-muted/30">
-                  <img
+                  <CardImage
                     className="w-full transition-all duration-500 group-hover:scale-[1.02]"
                     src={member.image}
                     alt={member.name}
-                    loading="lazy"
+                    width={400}
+                    height={400}
                   />
                 </div>
                 <div className="flex flex-col items-center gap-3">

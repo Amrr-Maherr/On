@@ -38,7 +38,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
             className={`rounded-none text-[10px] font-black tracking-widest transition-all ${
               isActive
                 ? "border-2 border-foreground text-foreground"
-                : "border-2 border-transparent text-muted-foreground/60 hover:border-border/40 hover:bg-muted/30 hover:text-foreground"
+                : "border-2 border-transparent text-muted-foreground/80 hover:border-border/40 hover:bg-muted/30 hover:text-foreground"
             }`}
           >
             {label}
