@@ -1,13 +1,13 @@
 import { useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Trash2 } from "lucide-react";
+import { ShoppingCart, ArrowRight, Trash2 } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
+import { getLangFromPath, buildLocalizedPath, useCurrentLang } from "@/lib/localized-path";
 import PageHelmet from "@/shared/components/PageHelmet";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroVideo from "@/assets/adidas_-_you_got_this (1080p).mp4";
+import heroImage from "@/assets/imgi_1_em-emc-AE-2-TC-d.jpg";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/hooks/useCart";
@@ -16,9 +16,9 @@ import { useRemoveCartItem } from "@/features/cart/hooks/useRemoveCartItem";
 import { useClearCart } from "@/features/cart/hooks/useClearCart";
 import CartItemCard from "@/features/cart/components/CartItemCard";
 import CartSummary from "@/features/cart/components/CartSummary";
-import CartLoader from "@/features/cart/components/CartLoader";
-import CartEmpty from "@/features/cart/components/CartEmpty";
-import CartError from "@/features/cart/components/CartError";
+import { CartPageSkeleton } from "@/features/cart/components/CartPageSkeleton";
+import ErrorState from "@/components/shared/Error";
+import EmptyState from "@/components/shared/EmptyState";
 
 export default function CartPage() {
   const { t } = useTranslation();
@@ -38,24 +38,9 @@ export default function CartPage() {
   const { mutate: removeItem } = useRemoveCartItem();
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
 
-  if (isLoading) return <CartLoader />;
-
-  if (error) {
-    return (
-      <CartError
-        message={error instanceof Error ? error.message : t("cart.error.defaultMessage")}
-        onRetry={() => refetch()}
-      />
-    );
-  }
-
   const cart = data?.data;
   const items = cart?.products ?? [];
   const numOfCartItems = data?.numOfCartItems ?? 0;
-
-  if (!cart || items.length === 0) {
-    return <CartEmpty />;
-  }
 
   const handleUpdate = useCallback((itemId: string, count: number) => {
     if (count < 1) return;
@@ -100,6 +85,41 @@ export default function CartPage() {
     navigate(buildLocalizedPath("/checkout", lang));
   }, [navigate, lang]);
 
+  if (isLoading) {
+    return <CartPageSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <ErrorState
+        title={t("cart.error.title")}
+        message={error instanceof Error ? error.message : t("cart.error.defaultMessage")}
+        onRetry={() => refetch()}
+        retryLabel={t("cart.error.retry")}
+      />
+    );
+  }
+
+  if (!cart || items.length === 0) {
+    const langCart = useCurrentLang();
+    return (
+      <EmptyState
+        title={t("cart.empty.title")}
+        description={t("cart.empty.description")}
+        icon={<ShoppingCart className="h-9 w-9 text-muted-foreground/40" />}
+        action={
+          <Link
+            to={buildLocalizedPath("/products", langCart)}
+            className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
+          >
+            {t("cart.empty.shopNow")}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        }
+      />
+    );
+  }
+
   return (
     <>
       <PageHelmet title={t("cart.page.title")} description={t("cart.page.description")} />
@@ -108,7 +128,7 @@ export default function CartPage() {
         subtitle={t("cart.page.hero.subtitle")}
         title={t("cart.page.hero.title")}
         description={t("cart.page.hero.description")}
-        videoUrl={heroVideo}
+        backgroundImage={heroImage}
       />
 
       <div className="container-layout section-py pt-8">
