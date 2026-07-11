@@ -133,10 +133,10 @@ export default function FeaturesPage() {
                         <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border/60 bg-background transition-all duration-300 group-hover:border-background group-hover:bg-background">
                           <Icon className="h-5 w-5 text-foreground transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
                         </div>
-                        <h3 className="mb-2 text-lg font-black uppercase tracking-tight text-foreground">
+                        <h3 className="mb-2 text-lg font-black uppercase tracking-tight text-foreground transition-colors duration-300 group-hover:text-background">
                           {t(feature.titleKey)}
                         </h3>
-                        <p className="text-sm font-bold leading-relaxed text-muted-foreground/60">
+                        <p className="text-sm font-bold leading-relaxed text-muted-foreground/60 transition-colors duration-300 group-hover:text-background/70">
                           {t(feature.descriptionKey)}
                         </p>
                         <div className="mt-6 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/40 transition-colors duration-300 group-hover:text-background/60">
