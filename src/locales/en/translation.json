@@ -88,7 +88,9 @@
       "addedToCart": "Added to cart!",
       "addToWishlist": "Add to wishlist",
       "addedToWishlist": "Added to wishlist!",
-      "favorite": "Favorite"
+      "favorite": "Favorite",
+      "quickView": "Quick view",
+      "viewDetails": "View Details"
     },
     "details": {
       "breadcrumb": {

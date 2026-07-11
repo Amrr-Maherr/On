@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { Product } from "@/features/products/types";
 import AddToCart from "./actions/AddToCart";
 import AddToFav from "./actions/AddToFav";
+import QuickViewDialog from "./QuickViewDialog";
 import { Link } from "react-router-dom";
 import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import CardImage from "@/components/shared/CardImage";
@@ -26,8 +27,9 @@ function ProductCard({ product }: { product: Product }) {
         <div className="absolute inset-x-0 bottom-0 translate-y-full bg-foreground/90 p-4 transition-all duration-300 group-hover:translate-y-0">
           <AddToCart productId={product.id} variant="overlay" />
         </div>
-        <div className="absolute right-4 top-4 z-10 scale-90 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+        <div className="absolute right-4 top-4 z-10 flex flex-col gap-2 scale-90 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
           <AddToFav productId={product.id} />
+          <QuickViewDialog product={product} />
         </div>
       </div>
       <div className="mt-5 flex flex-col gap-1.5">

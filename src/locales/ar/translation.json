@@ -88,7 +88,9 @@
       "addedToCart": "تمت الإضافة إلى السلة!",
       "addToWishlist": "أضف إلى المفضلة",
       "addedToWishlist": "تمت الإضافة إلى المفضلة!",
-      "favorite": "المفضلة"
+      "favorite": "المفضلة",
+      "quickView": "عرض سريع",
+      "viewDetails": "عرض التفاصيل"
     },
     "details": {
       "breadcrumb": {
