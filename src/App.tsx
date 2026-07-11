@@ -3,7 +3,7 @@ import ScrollToTopButton from "@/shared/components/ScrollToTopButton";
 import { lazy, Suspense } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "@/shared/layout/Footer";
-import { ProductsPageSkeleton } from "./features/products/components/ProductsPageSkeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 const AppRoutes = lazy(() => import("./app/routes"));
 function App() {
   return (
@@ -46,7 +46,9 @@ function App() {
       />
       <Navbar />
       <main className="flex-1">
-        <Suspense fallback={<ProductsPageSkeleton />}>
+        <Suspense
+          fallback={<Skeleton className="h-screen w-full rounded-none" />}
+        >
           <AppRoutes />
         </Suspense>
       </main>
