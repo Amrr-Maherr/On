@@ -2,12 +2,12 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Minus, Plus } from "lucide-react";
 
-interface ProductQuantityProps {
+type ProductQuantityProps = {
   quantity: number;
   available: number;
   onDecrease: () => void;
   onIncrease: () => void;
-}
+};
 
 const ProductQuantity = memo(function ProductQuantity({ quantity, available, onDecrease, onIncrease }: ProductQuantityProps) {
   const { t } = useTranslation();

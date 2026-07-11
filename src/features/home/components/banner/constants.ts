@@ -1,11 +1,11 @@
-export interface BannerData {
+export type BannerData = {
   headline: string;
   description: string;
   ctaLabel: string;
   ctaHref: string;
   imageSrc: string;
   imageAlt: string;
-}
+};
 
 import bannerImg from "@/assets/imgi_1_hero__b6b2iw7uvl7m_large.jpeg";
 

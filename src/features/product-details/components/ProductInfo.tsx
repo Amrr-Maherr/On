@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 
-interface ProductInfoProps {
+type ProductInfoProps = {
   title: string;
   brandName?: string;
   brandSlug?: string;
   brandId?: string;
-}
+};
 
 const ProductInfo = memo(function ProductInfo({ title, brandName, brandSlug, brandId }: ProductInfoProps) {
   const { t } = useTranslation();

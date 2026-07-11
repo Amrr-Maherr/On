@@ -8,10 +8,10 @@ import PageHelmet from "@/shared/components/PageHelmet";
 import PageLayout from "@/features/footer-pages/components/PageLayout";
 import PageHero from "@/features/footer-pages/components/PageHero";
 
-interface FaqItem {
+type FaqItem = {
   question: string;
   answer: string;
-}
+};
 
 export default function FaqPage() {
   const { t } = useTranslation();

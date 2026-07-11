@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-interface AuthInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type AuthInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   error?: string;
-}
+};
 
 const AuthInput = forwardRef<HTMLInputElement, AuthInputProps>(
   ({ label, error, className, id, ...props }, ref) => {

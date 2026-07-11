@@ -1,13 +1,13 @@
 import * as React from "react";
 
-export interface ThemeToggleCircularProps {
+export type ThemeToggleCircularProps = {
   children: React.ReactNode;
   onToggle?: () => void;
   theme?: "light" | "dark";
   className?: string;
   speed?: number;
   blur?: number;
-}
+};
 
 export function ThemeToggleCircular({
   children,

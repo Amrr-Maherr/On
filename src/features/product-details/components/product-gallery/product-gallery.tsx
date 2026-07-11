@@ -11,9 +11,9 @@ import CardImage from "@/components/shared/CardImage";
 
 const ProductLightbox = lazy(() => import("./product-lightbox"));
 
-interface ProductGalleryProps {
+type ProductGalleryProps = {
   images: string[];
-}
+};
 
 const ProductGallery = memo(function ProductGallery({ images }: ProductGalleryProps) {
   const { t } = useTranslation();

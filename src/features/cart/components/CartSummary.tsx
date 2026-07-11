@@ -2,11 +2,11 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ShoppingBag } from "lucide-react";
 
-interface CartSummaryProps {
+type CartSummaryProps = {
   totalCartPrice: number;
   numOfCartItems: number;
   onCheckout?: () => void;
-}
+};
 
 const CartSummary = memo(function CartSummary({
   totalCartPrice,

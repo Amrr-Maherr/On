@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { FilterSortDropdown } from "@/components/shared/filters";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
-interface FilterOption {
+type FilterOption = {
   label: string;
   value: string;
-}
+};
 
-interface MobileFilterSheetProps {
+type MobileFilterSheetProps = {
   sortOptions: FilterOption[];
-}
+};
 
 function MobileFilterSheet({ sortOptions }: MobileFilterSheetProps) {
   const { t } = useTranslation();

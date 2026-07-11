@@ -1,9 +1,9 @@
 import { api } from "@/lib";
 import type { WishlistResponse } from "@/features/wishlist/types/wishlist";
 
-export interface AddToWishlistPayload {
+export type AddToWishlistPayload = {
   productId: string;
-}
+};
 
 export async function postAddToWishlist(
   data: AddToWishlistPayload,

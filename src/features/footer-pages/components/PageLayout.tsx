@@ -1,8 +1,8 @@
 import { memo, type ReactNode } from "react";
 
-interface PageLayoutProps {
+type PageLayoutProps = {
   children: ReactNode;
-}
+};
 
 const PageLayout = memo(function PageLayout({ children }: PageLayoutProps) {
   return (

@@ -1,6 +1,6 @@
 import { memo, useState, useCallback } from "react";
 
-interface CardImageProps {
+type CardImageProps = {
   src: string;
   alt: string;
   className?: string;
@@ -8,7 +8,7 @@ interface CardImageProps {
   height?: number;
   priority?: boolean;
   objectFit?: "cover" | "contain";
-}
+};
 
 const CardImage = memo(function CardImage({
   src,

@@ -6,11 +6,11 @@ import { NavbarIconButton } from "./NavbarIconButton";
 import { NavbarUserMenu } from "./NavbarUserMenu";
 import { useNavbar } from "../hooks/useNavbar";
 
-interface NavbarActionsProps {
+type NavbarActionsProps = {
   isDropdownOpen: boolean;
   onToggleDropdown: () => void;
   onCloseDropdown: () => void;
-}
+};
 
 export const NavbarActions = memo(function NavbarActions({
   isDropdownOpen,

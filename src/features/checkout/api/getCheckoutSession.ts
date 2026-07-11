@@ -1,11 +1,11 @@
 import { api } from "@/lib";
 
-export interface CheckoutSessionResponse {
+export type CheckoutSessionResponse = {
   status: string;
   session: {
     url: string;
   };
-}
+};
 
 export async function getCheckoutSession(
   cartId: string,

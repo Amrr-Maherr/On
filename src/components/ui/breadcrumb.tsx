@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 
-interface BreadcrumbItem {
+type BreadcrumbItem = {
   label: string
   href?: string
 }
 
-interface BreadcrumbProps {
+type BreadcrumbProps = {
   items: BreadcrumbItem[]
   className?: string
 }

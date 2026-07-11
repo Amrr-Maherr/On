@@ -1,12 +1,12 @@
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-interface FilterPriceRangeProps {
+type FilterPriceRangeProps = {
   min?: number;
   max?: number;
   value?: { min: number; max: number };
   onChange?: (value: { min: number; max: number }) => void;
-}
+};
 
 function FilterPriceRange({ min = 0, max = 10000, value: controlledValue, onChange }: FilterPriceRangeProps) {
   const { t } = useTranslation();

@@ -8,7 +8,7 @@ import {
   Virtual,
 } from "swiper/modules";
 
-export interface SliderProps {
+export type SliderProps = {
   children: ReactNode;
   slidesPerView?: number;
   slidesPerViewMobile?: number;
@@ -24,4 +24,4 @@ export interface SliderProps {
   )[];
   useFadeEffect?: boolean;
   hideNavigation?: boolean;
-}
+};

@@ -7,17 +7,17 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { FilterSection, FilterPriceRange, FilterSortDropdown } from "@/components/shared/filters";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
-interface FilterOption {
+type FilterOption = {
   label: string;
   value: string;
-}
+};
 
-interface MobileFilterSheetProps {
+type MobileFilterSheetProps = {
   categories: FilterOption[];
   brands: FilterOption[];
   setParam: (key: string, value: string) => void;
   clearAll: () => void;
-}
+};
 
 function MobileFilterSheet({ categories, brands, setParam, clearAll }: MobileFilterSheetProps) {
   const { t } = useTranslation();

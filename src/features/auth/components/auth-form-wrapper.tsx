@@ -1,10 +1,10 @@
 import { memo, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface AuthFormWrapperProps {
+type AuthFormWrapperProps = {
   children: ReactNode;
   className?: string;
-}
+};
 
 const AuthFormWrapper = memo(function AuthFormWrapper({
   children,

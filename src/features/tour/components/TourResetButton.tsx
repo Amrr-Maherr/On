@@ -2,11 +2,11 @@ import { useTranslation } from "react-i18next";
 import { RotateCcw } from "lucide-react";
 import { useTour } from "../hooks/useTour";
 
-interface TourResetButtonProps {
+type TourResetButtonProps = {
   tourId: string;
   label?: string;
   variant?: "icon" | "text";
-}
+};
 
 export default function TourResetButton({
   tourId,

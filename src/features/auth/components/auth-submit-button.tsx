@@ -2,11 +2,11 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
-interface AuthSubmitButtonProps {
+type AuthSubmitButtonProps = {
   isLoading?: boolean;
   label?: string;
   loadingLabel?: string;
-}
+};
 
 const AuthSubmitButton = memo(function AuthSubmitButton({
   isLoading = false,

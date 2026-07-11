@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface FilterSectionProps {
+type FilterSectionProps = {
   title: string;
   children: ReactNode;
   defaultOpen?: boolean;
   "data-tour"?: string;
-}
+};
 
 const FilterSection = memo(function FilterSection({
   title,

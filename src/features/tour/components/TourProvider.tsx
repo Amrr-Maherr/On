@@ -25,9 +25,9 @@ import type { TourStepConfig } from "../types";
 const AUTO_TOUR_DELAY = 800;
 const STEP_DETECTION_TIMEOUT = 6000;
 
-interface TourProviderProps {
+type TourProviderProps = {
   children: ReactNode;
-}
+};
 
 function resolvePopoverSide(
   side: "top" | "bottom" | "left" | "right" | undefined,

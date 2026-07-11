@@ -6,9 +6,9 @@ import { ProductCardSkeleton } from "@/features/products/components/ProductCardS
 import ErrorState from "@/components/shared/Error";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-interface CategoryProductsProps {
+type CategoryProductsProps = {
   categoryId: string;
-}
+};
 
 const CategoryProducts = memo(function CategoryProducts({ categoryId }: CategoryProductsProps) {
   const { t } = useTranslation();

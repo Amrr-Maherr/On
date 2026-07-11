@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import type { Order } from "@/features/orders/types/orders";
 import CardImage from "@/components/shared/CardImage";
 
-interface OrderCardProps {
+type OrderCardProps = {
   order: Order;
-}
+};
 
 const OrderCard = memo(function OrderCard({ order }: OrderCardProps) {
   const { t } = useTranslation();

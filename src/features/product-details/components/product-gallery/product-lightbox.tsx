@@ -8,13 +8,13 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/counter.css";
 
-interface ProductLightboxProps {
+type ProductLightboxProps = {
   open: boolean;
   index: number;
   slides: { src: string }[];
   onClose: () => void;
   onIndexChange: (index: number) => void;
-}
+};
 
 const ProductLightbox = memo(function ProductLightbox({
   open,

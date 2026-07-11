@@ -1,24 +1,24 @@
 import type { MongoDoc } from "@/shared/types/api";
 
-export interface Subcategory extends MongoDoc {
+export type Subcategory = MongoDoc & {
   name: string;
   slug: string;
   category: string;
-}
+};
 
-export interface Category extends MongoDoc {
+export type Category = MongoDoc & {
   name: string;
   slug: string;
   image: string;
-}
+};
 
-export interface Brand extends MongoDoc {
+export type Brand = MongoDoc & {
   name: string;
   slug: string;
   image: string;
-}
+};
 
-export interface Review {
+export type Review = {
   _id: string;
   review?: string;
   rating: number;
@@ -28,9 +28,9 @@ export interface Review {
   };
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface Product extends MongoDoc {
+export type Product = MongoDoc & {
   title: string;
   slug: string;
   description: string;
@@ -48,4 +48,4 @@ export interface Product extends MongoDoc {
   createdAt: string;
   updatedAt: string;
   reviews?: Review[];
-}
+};

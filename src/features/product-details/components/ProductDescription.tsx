@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-interface ProductDescriptionProps {
+type ProductDescriptionProps = {
   description: string;
-}
+};
 
 const ProductDescription = memo(function ProductDescription({ description }: ProductDescriptionProps) {
   const { t } = useTranslation();

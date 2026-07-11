@@ -1,22 +1,22 @@
 import { api } from "@/lib";
 
-export interface ShippingAddress {
+export type ShippingAddress = {
   details: string;
   phone: string;
   city: string;
-}
+};
 
-export interface CheckoutCashPayload {
+export type CheckoutCashPayload = {
   cartId: string;
   shippingAddress: ShippingAddress;
-}
+};
 
-export interface CheckoutCashResponse {
+export type CheckoutCashResponse = {
   status: string;
   data: {
     _id: string;
   };
-}
+};
 
 export async function postCheckoutCash({
   cartId,

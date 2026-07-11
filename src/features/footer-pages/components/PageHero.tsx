@@ -2,11 +2,11 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-interface PageHeroProps {
+type PageHeroProps = {
   title: string;
   description?: string;
   "data-tour"?: string;
-}
+};
 
 const PageHero = memo(function PageHero({ title, description, ...props }: PageHeroProps) {
   const { t } = useTranslation();

@@ -24,9 +24,9 @@ import ProductQA from "./ProductQA";
 import ProductDetailsBrands from "./ProductDetailsBrands";
 import ProductDetailsProducts from "./ProductDetailsProducts";
 
-interface ProductDetailsProps {
+type ProductDetailsProps = {
   product: Product;
-}
+};
 
 const ProductDetails = memo(function ProductDetails({ product }: ProductDetailsProps) {
   const { t } = useTranslation();

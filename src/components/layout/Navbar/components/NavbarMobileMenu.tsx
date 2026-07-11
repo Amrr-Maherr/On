@@ -2,9 +2,9 @@ import { Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 
-interface NavbarMobileMenuProps {
+type NavbarMobileMenuProps = {
   onClick: () => void;
-}
+};
 
 export function NavbarMobileMenu({ onClick }: NavbarMobileMenuProps) {
   const { t } = useTranslation();

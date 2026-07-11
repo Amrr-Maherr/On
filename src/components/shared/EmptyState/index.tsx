@@ -2,13 +2,13 @@ import { memo, type ReactNode } from "react";
 import { PackageOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface EmptyStateProps {
+type EmptyStateProps = {
   title?: string;
   description?: string;
   action?: ReactNode;
   icon?: ReactNode;
   className?: string;
-}
+};
 
 const EmptyState = memo(function EmptyState({
   title = "Nothing here yet",

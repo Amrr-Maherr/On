@@ -1,4 +1,4 @@
-export interface CartProduct {
+export type CartProduct = {
   _id: string;
   id: string;
   title: string;
@@ -6,31 +6,31 @@ export interface CartProduct {
   price: number;
   ratingsAverage?: number;
   ratingsQuantity?: number;
-}
+};
 
-export interface CartItem {
+export type CartItem = {
   _id: string;
   count: number;
   product: CartProduct;
   price: number;
-}
+};
 
-export interface CartData {
+export type CartData = {
   _id: string;
   cartOwner?: string;
   products: CartItem[];
   totalCartPrice: number;
   createdAt?: string;
   updatedAt?: string;
-}
+};
 
-export interface CartResponse {
+export type CartResponse = {
   status: string;
   numOfCartItems: number;
   data: CartData;
-}
+};
 
-export interface UpdateCartPayload {
+export type UpdateCartPayload = {
   itemId: string;
   count: number;
-}
+};

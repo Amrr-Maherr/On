@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Slider from "../Slider";
 
-interface SectionProps {
+type SectionProps = {
   title: string;
   description?: ReactNode;
   slidesPerView: number;
@@ -11,7 +11,7 @@ interface SectionProps {
   hideNavigation: boolean;
   children: ReactNode;
   "data-tour"?: string;
-}
+};
 
 const Section = memo(function Section({
   title,

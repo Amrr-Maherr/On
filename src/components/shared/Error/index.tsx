@@ -2,7 +2,7 @@ import { memo, type ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface ErrorStateProps {
+type ErrorStateProps = {
   title?: string;
   message?: string;
   error?: unknown;
@@ -10,7 +10,7 @@ interface ErrorStateProps {
   retryLabel?: string;
   icon?: ReactNode;
   className?: string;
-}
+};
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;

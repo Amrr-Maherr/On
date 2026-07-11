@@ -2,9 +2,9 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { Subcategory } from "@/features/products/types";
 
-interface ProductSubcategoriesProps {
+type ProductSubcategoriesProps = {
   subcategories: Subcategory[];
-}
+};
 
 const ProductSubcategories = memo(function ProductSubcategories({ subcategories }: ProductSubcategoriesProps) {
   const { t } = useTranslation();

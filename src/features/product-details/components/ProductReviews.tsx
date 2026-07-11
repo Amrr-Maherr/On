@@ -4,11 +4,11 @@ import { Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Review } from "@/features/products/types";
 
-interface ProductReviewsProps {
+type ProductReviewsProps = {
   reviews: Review[];
   showAll: boolean;
   onToggleShowAll: () => void;
-}
+};
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);

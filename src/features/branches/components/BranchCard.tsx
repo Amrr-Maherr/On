@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import type { Branch } from "@/features/branches/types"
 
-interface BranchCardProps {
+type BranchCardProps = {
   branch: Branch
   isActive: boolean
   onSelect: (branchId: string) => void
-}
+};
 
 const BranchCard = memo(function BranchCard({
   branch,

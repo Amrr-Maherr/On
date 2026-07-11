@@ -1,12 +1,12 @@
 import { memo } from "react";
 import { cn } from "@/lib/utils";
 
-interface LoadingStateProps {
+type LoadingStateProps = {
   className?: string;
   count?: number;
   variant?: "card" | "row" | "text";
   columns?: number;
-}
+};
 
 const cardSkeleton = (key: number) => (
   <div key={key} className="animate-pulse">

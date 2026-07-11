@@ -1,12 +1,12 @@
 import { memo, type ReactNode } from "react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-interface ContentSectionProps {
+type ContentSectionProps = {
   title?: string;
   children: ReactNode;
   className?: string;
   variant?: "default" | "card";
-}
+};
 
 const ContentSection = memo(function ContentSection({
   title,

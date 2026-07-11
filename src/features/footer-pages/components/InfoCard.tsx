@@ -1,10 +1,10 @@
 import { memo, type ReactNode } from "react";
 
-interface InfoCardProps {
+type InfoCardProps = {
   icon?: ReactNode;
   title: string;
   description: string;
-}
+};
 
 const InfoCard = memo(function InfoCard({ icon, title, description }: InfoCardProps) {
   return (

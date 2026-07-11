@@ -1,25 +1,25 @@
-export interface OrderProduct {
+export type OrderProduct = {
   _id: string;
   id: string;
   title: string;
   imageCover: string;
   price: number;
-}
+};
 
-export interface OrderCartItem {
+export type OrderCartItem = {
   _id: string;
   product: OrderProduct;
   price: number;
   count: number;
-}
+};
 
-export interface ShippingAddress {
+export type ShippingAddress = {
   details?: string;
   phone: string;
   city: string;
-}
+};
 
-export interface Order {
+export type Order = {
   _id: string;
   id: number;
   user: {
@@ -40,6 +40,6 @@ export interface Order {
   deliveredAt: string | null;
   createdAt: string;
   updatedAt: string;
-}
+};
 
 export type OrdersResponse = Order[];

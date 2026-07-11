@@ -5,17 +5,17 @@ import toast from "react-hot-toast";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 
-interface GoogleJwtPayload {
+type GoogleJwtPayload = {
   sub: string;
   name: string;
   email: string;
   picture?: string;
-}
+};
 
-interface GoogleAuthButtonProps {
+type GoogleAuthButtonProps = {
   onSuccess?: (credential: string) => void;
   onError?: () => void;
-}
+};
 
 const GoogleAuthButton = memo(function GoogleAuthButton({
   onSuccess,

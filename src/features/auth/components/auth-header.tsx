@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 
-interface AuthHeaderProps {
+type AuthHeaderProps = {
   title: string;
   description?: string;
-}
+};
 
 const AuthHeader = memo(function AuthHeader({ title, description }: AuthHeaderProps) {
   return (

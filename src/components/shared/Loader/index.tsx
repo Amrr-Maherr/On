@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { cn } from "@/lib/utils";
 
-interface LoaderProps {
+type LoaderProps = {
   size?: "sm" | "md" | "lg";
   className?: string;
   text?: string;
-}
+};
 
 const sizeMap = {
   sm: "h-5 w-5 border-[1.5px]",

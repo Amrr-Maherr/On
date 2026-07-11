@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { LogOut, UserPen, RotateCcw } from "lucide-react";
 import { useTour } from "@/features/tour/hooks/useTour";
 
-interface ProfileActionsProps {
+type ProfileActionsProps = {
   onLogout: () => void;
   onEdit: () => void;
-}
+};
 
 const ProfileActions = memo(function ProfileActions({ onLogout, onEdit }: ProfileActionsProps) {
   const { t } = useTranslation();

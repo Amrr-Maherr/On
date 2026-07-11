@@ -4,9 +4,9 @@ import type { Brand } from "@/features/brands/types";
 import { Calendar, Tag } from "lucide-react";
 import CardImage from "@/components/shared/CardImage";
 
-interface BrandDetailsCardProps {
+type BrandDetailsCardProps = {
   brand: Brand;
-}
+};
 
 const BrandDetailsCard = memo(function BrandDetailsCard({ brand }: BrandDetailsCardProps) {
   const { t } = useTranslation();

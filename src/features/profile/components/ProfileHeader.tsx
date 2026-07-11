@@ -2,9 +2,9 @@ import { memo } from "react";
 import type { User } from "../types";
 import CardImage from "@/components/shared/CardImage";
 
-interface ProfileHeaderProps {
+type ProfileHeaderProps = {
   user: User;
-}
+};
 
 const ProfileHeader = memo(function ProfileHeader({ user }: ProfileHeaderProps) {
   const initials = user.name

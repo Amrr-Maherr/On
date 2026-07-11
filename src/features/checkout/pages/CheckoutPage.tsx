@@ -17,11 +17,11 @@ import { useCart } from "@/features/cart/hooks/useCart";
 import { useCheckoutCash } from "@/features/checkout/hooks/useCheckoutCash";
 import { useCheckoutSession } from "@/features/checkout/hooks/useCheckoutSession";
 
-interface CheckoutFormFields {
+type CheckoutFormFields = {
   phone: string;
   address: string;
   city: string;
-}
+};
 
 export default function CheckoutPage() {
   const { t } = useTranslation();

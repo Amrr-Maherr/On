@@ -2,11 +2,11 @@ import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SelectRoot, SelectTrigger, SelectValue, SelectPopup, SelectList, SelectItem } from "@/components/ui/select";
 
-interface FilterSortDropdownProps {
+type FilterSortDropdownProps = {
   options?: { label: string; value: string }[];
   value?: string;
   onChange?: (value: string) => void;
-}
+};
 
 function FilterSortDropdown({
   options,

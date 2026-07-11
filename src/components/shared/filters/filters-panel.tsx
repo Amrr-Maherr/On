@@ -5,10 +5,10 @@ import { SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface FiltersPanelProps {
+type FiltersPanelProps = {
   children: ReactNode;
   className?: string;
-}
+};
 
 const FiltersPanel = memo(function FiltersPanel({
   children,

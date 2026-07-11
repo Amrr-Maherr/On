@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-interface FilterCheckboxGroupProps {
+type FilterCheckboxGroupProps = {
   options: { label: string; value: string; count?: number }[];
   selected: string | null;
   onChange: (value: string) => void;
-}
+};
 
 function FilterCheckboxGroup({ options, selected, onChange }: FilterCheckboxGroupProps) {
   return (

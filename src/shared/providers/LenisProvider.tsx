@@ -4,9 +4,9 @@ import { ReactLenis, useLenis } from "lenis/react";
 import type Lenis from "lenis";
 import { LenisScrollContext } from "@/shared/hooks/useLenisScroll";
 
-interface LenisProviderProps {
+type LenisProviderProps = {
   children: ReactNode;
-}
+};
 
 function LenisScrollManager({ children }: { children: ReactNode }) {
   const location = useLocation();

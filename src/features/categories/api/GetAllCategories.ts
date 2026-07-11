@@ -2,12 +2,12 @@ import { api } from "@/lib";
 import type { ApiResponse } from "@/shared/types/api";
 import type { Category } from "@/features/categories/types";
 
-export interface CategoryFilters {
+export type CategoryFilters = {
   keyword?: string;
   sort?: string;
   page?: number;
   limit?: number;
-}
+};
 
 export async function getAllCategories(
   filters: CategoryFilters | number = {},

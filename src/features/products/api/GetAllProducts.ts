@@ -2,7 +2,7 @@ import { api } from "@/lib";
 import type { ApiResponse } from "@/shared/types/api";
 import type { Product } from "@/features/products/types";
 
-export interface ProductFilters {
+export type ProductFilters = {
   keyword?: string;
   sort?: string;
   page?: number;
@@ -11,7 +11,7 @@ export interface ProductFilters {
   priceLte?: number;
   categoryIn?: string[];
   brandIn?: string[];
-}
+};
 
 export async function getAllProducts(
   filters: ProductFilters | number = {},

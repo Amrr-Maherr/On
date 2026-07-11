@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { formatBadgeCount } from "../utils";
 
-interface NavbarIconButtonProps {
+type NavbarIconButtonProps = {
   href: string;
   ariaLabel: string;
   icon: ReactNode;
   count?: number;
-}
+};
 
 export function NavbarIconButton({ href, ariaLabel, icon, count }: NavbarIconButtonProps) {
   return (

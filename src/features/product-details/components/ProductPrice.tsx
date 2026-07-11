@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-interface ProductPriceProps {
+type ProductPriceProps = {
   price: number;
   priceAfterDiscount?: number;
-}
+};
 
 const ProductPrice = memo(function ProductPrice({ price, priceAfterDiscount }: ProductPriceProps) {
   const { t } = useTranslation();

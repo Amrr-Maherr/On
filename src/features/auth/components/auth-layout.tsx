@@ -1,9 +1,9 @@
 import { memo, type ReactNode } from "react";
 import AuthImageSection from "./auth-image-section";
 
-interface AuthLayoutProps {
+type AuthLayoutProps = {
   children: ReactNode;
-}
+};
 
 const AuthLayout = memo(function AuthLayout({ children }: AuthLayoutProps) {
   return (

@@ -1,12 +1,12 @@
 import type { LucideIcon } from "lucide-react";
 
-export interface FeatureItem {
+export type FeatureItem = {
   title: string;
   description: string;
   icon?: LucideIcon;
-}
+};
 
-export interface TeamMember {
+export type TeamMember = {
   name: string;
   role: string;
   image: string;
@@ -14,25 +14,25 @@ export interface TeamMember {
     website: string;
     linkedin: string;
   };
-}
+};
 
-export interface BlogPost {
+export type BlogPost = {
   coverImage: string;
   title: string;
   date: string;
   description: string;
-}
+};
 
-export interface Testimonial {
+export type Testimonial = {
   name: string;
   role: string;
   avatar: string;
   quote: string;
   rating: number;
-}
+};
 
-export interface Value {
+export type Value = {
   image: string;
   title: string;
   description: string;
-}
+};

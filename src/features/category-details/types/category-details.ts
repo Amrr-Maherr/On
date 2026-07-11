@@ -1,5 +1,5 @@
 import type { Category } from "@/features/categories/types";
 
-export interface CategoryDetailsResponse {
+export type CategoryDetailsResponse = {
   data: Category;
-}
+};

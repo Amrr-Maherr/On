@@ -5,9 +5,9 @@ import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import { useAddToWishlist } from "@/features/wishlist/hooks/useAddToWishlist";
 import toast from "react-hot-toast";
 import type { AxiosError } from "axios";
-interface ProductActionsProps {
+type ProductActionsProps = {
   productId: string;
-}
+};
 
 const ProductActions = memo(function ProductActions({
   productId,

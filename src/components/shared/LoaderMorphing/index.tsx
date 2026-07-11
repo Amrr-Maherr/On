@@ -2,12 +2,12 @@ import * as React from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-export interface LoaderMorphingProps
-  extends Omit<React.ComponentProps<typeof motion.div>, "children"> {
+export type LoaderMorphingProps =
+  Omit<React.ComponentProps<typeof motion.div>, "children"> & {
   size?: number;
   color?: string;
   duration?: number;
-}
+};
 
 export function LoaderMorphing({
   className,

@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-interface LenisScrollContextValue {
+type LenisScrollContextValue = {
   scrollToTop: (options?: { immediate?: boolean; duration?: number }) => void;
   scrollTo: (
     target: string | number | HTMLElement,
@@ -12,7 +12,7 @@ interface LenisScrollContextValue {
       force?: boolean;
     },
   ) => void;
-}
+};
 
 export const LenisScrollContext = createContext<LenisScrollContextValue>({
   scrollToTop: () => {},

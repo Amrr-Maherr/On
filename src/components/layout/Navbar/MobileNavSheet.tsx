@@ -24,10 +24,10 @@ import { getNavLinks } from "./constants/navbar-links";
 import { useNavbar } from "./hooks/useNavbar";
 import { useSearchDropdown } from "./hooks/useSearchDropdown";
 
-interface MobileNavSheetProps {
+type MobileNavSheetProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-}
+};
 
 const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: MobileNavSheetProps) {
   const { t } = useTranslation();

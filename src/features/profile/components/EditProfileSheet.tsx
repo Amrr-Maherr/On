@@ -12,17 +12,17 @@ import { Input } from "@/components/ui/input";
 import type { User } from "../types";
 import { useUpdateProfile } from "../hooks/useUpdateProfile";
 
-interface EditProfileSheetProps {
+type EditProfileSheetProps = {
   user: User;
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
-interface EditProfileFormFields {
+type EditProfileFormFields = {
   name: string;
   email: string;
   phone: string;
-}
+};
 
 const EditProfileSheet = memo(function EditProfileSheet({
   user,

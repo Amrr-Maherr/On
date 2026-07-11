@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-interface CampaignHeaderProps {
+type CampaignHeaderProps = {
   title: ReactNode;
   subtitle?: ReactNode;
   description?: ReactNode;
@@ -15,7 +15,7 @@ interface CampaignHeaderProps {
     onClick: () => void;
   };
   className?: string;
-}
+};
 
 const CampaignHeader = memo(function CampaignHeader({
   title,

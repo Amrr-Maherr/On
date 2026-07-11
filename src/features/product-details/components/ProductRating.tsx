@@ -2,11 +2,11 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Star } from "lucide-react";
 
-interface ProductRatingProps {
+type ProductRatingProps = {
   rating: number;
   ratingCount: number;
   sold: number;
-}
+};
 
 const ProductRating = memo(function ProductRating({ rating, ratingCount, sold }: ProductRatingProps) {
   const { t } = useTranslation();

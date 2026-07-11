@@ -5,11 +5,11 @@ import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import type { AxiosError } from "axios";
-interface AddToCartProps {
+type AddToCartProps = {
   productId: string;
   variant?: "icon" | "overlay";
   className?: string;
-}
+};
 
 export default function AddToCart({
   productId,

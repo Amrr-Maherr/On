@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { BannerData } from "./constants";
 
-interface BannerContentProps {
+type BannerContentProps = {
   data: BannerData;
-}
+};
 
 const BannerContent = memo(function BannerContent({
   data,

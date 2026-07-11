@@ -22,9 +22,9 @@ const SheetOverlay = forwardRef<
 ));
 SheetOverlay.displayName = "SheetOverlay";
 
-interface SheetContentProps extends ComponentPropsWithoutRef<typeof Dialog.Content> {
+type SheetContentProps = ComponentPropsWithoutRef<typeof Dialog.Content> & {
   side?: "top" | "bottom" | "left" | "right";
-}
+};
 
 const SheetContent = forwardRef<
   ElementRef<typeof Dialog.Content>,

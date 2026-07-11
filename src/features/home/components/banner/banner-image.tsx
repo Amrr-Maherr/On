@@ -2,9 +2,9 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import type { BannerData } from "./constants";
 
-interface BannerImageProps {
+type BannerImageProps = {
   data: BannerData;
-}
+};
 
 const BannerImage = memo(function BannerImage({ data }: BannerImageProps) {
   return (

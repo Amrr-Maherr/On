@@ -5,11 +5,11 @@ import { useCurrentLang, buildLocalizedPath } from "@/lib/localized-path";
 import { Button } from "@/components/ui/button";
 import { useNavbar } from "../hooks/useNavbar";
 
-interface NavbarUserMenuProps {
+type NavbarUserMenuProps = {
   isOpen: boolean;
   onToggle: () => void;
   onClose: () => void;
-}
+};
 
 export function NavbarUserMenu({ isOpen, onToggle, onClose }: NavbarUserMenuProps) {
   const { t, isLoggedIn, handleLogout } = useNavbar();

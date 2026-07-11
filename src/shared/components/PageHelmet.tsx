@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { Helmet } from "react-helmet-async";
 
-interface PageHelmetProps {
+type PageHelmetProps = {
   title: string;
   description?: string;
-}
+};
 
 const APP_NAME = "On";
 

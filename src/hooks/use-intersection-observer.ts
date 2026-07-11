@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 
-interface UseIntersectionObserverOptions {
+type UseIntersectionObserverOptions = {
   threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
-}
+};
 
 export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
   threshold = 0.1,

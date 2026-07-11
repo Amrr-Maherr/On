@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 import type { CartItem } from "@/features/cart/types/cart";
 import CardImage from "@/components/shared/CardImage";
 
-interface CartItemCardProps {
+type CartItemCardProps = {
   item: CartItem;
   onUpdate: (itemId: string, count: number) => void;
   onRemove: (itemId: string) => void;
   isUpdating?: boolean;
-}
+};
 
 const CartItemCard = memo(({
   item,

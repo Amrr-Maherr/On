@@ -5,9 +5,9 @@ import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import type { Category } from "@/features/products/types";
 import CardImage from "@/components/shared/CardImage";
 
-interface ProductCategoryProps {
+type ProductCategoryProps = {
   category: Category;
-}
+};
 
 const ProductCategory = memo(function ProductCategory({ category }: ProductCategoryProps) {
   const { t } = useTranslation();

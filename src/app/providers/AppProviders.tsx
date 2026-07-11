@@ -20,9 +20,9 @@ const queryClient = new QueryClient({
   },
 });
 
-interface AppProvidersProps {
+type AppProvidersProps = {
   children: ReactNode;
-}
+};
 
 function AppProviders({ children }: AppProvidersProps) {
   return (

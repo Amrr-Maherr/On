@@ -1,9 +1,9 @@
 import type { MongoDoc } from "@/shared/types/api";
 
-export interface Category extends MongoDoc {
+export type Category = MongoDoc & {
   name: string;
   slug: string;
   image: string;
   createdAt: string;
   updatedAt: string;
-}
+};

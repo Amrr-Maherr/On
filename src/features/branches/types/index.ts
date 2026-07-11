@@ -1,9 +1,9 @@
-export interface Coordinates {
+export type Coordinates = {
   lng: number
   lat: number
-}
+};
 
-export interface Branch {
+export type Branch = {
   id: string
   name: string
   city: string
@@ -14,4 +14,4 @@ export interface Branch {
   isHeadquarters?: boolean
   offersInternationalShipping?: boolean
   image?: string
-}
+};

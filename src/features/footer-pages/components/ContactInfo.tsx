@@ -1,10 +1,10 @@
 import { memo } from "react";
 
-interface ContactInfoProps {
+type ContactInfoProps = {
   icon: React.ReactNode;
   label: string;
   value: string;
-}
+};
 
 const ContactInfo = memo(function ContactInfo({ icon, label, value }: ContactInfoProps) {
   return (

@@ -4,9 +4,9 @@ import type { Category } from "@/features/categories/types";
 import { Calendar, Tag } from "lucide-react";
 import CardImage from "@/components/shared/CardImage";
 
-interface CategoryDetailsCardProps {
+type CategoryDetailsCardProps = {
   category: Category;
-}
+};
 
 const CategoryDetailsCard = memo(function CategoryDetailsCard({
   category,

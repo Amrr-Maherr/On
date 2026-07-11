@@ -1,10 +1,10 @@
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-interface ProductStockStatusProps {
+type ProductStockStatusProps = {
   quantity: number;
   sold: number;
-}
+};
 
 const ProductStockStatus = memo(function ProductStockStatus({ quantity, sold }: ProductStockStatusProps) {
   const { t } = useTranslation();

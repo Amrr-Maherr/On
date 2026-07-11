@@ -12,11 +12,11 @@ import type { Branch } from "@/features/branches/types"
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
-interface BranchMapProps {
+type BranchMapProps = {
   branches: Branch[]
   activeBranchId: string | null
   onBranchSelect: (branchId: string) => void
-}
+};
 
 const BranchMap = memo(function BranchMap({
   branches,

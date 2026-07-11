@@ -1,9 +1,9 @@
 import { api } from "@/lib";
 import type { CartResponse } from "@/features/cart/types/cart";
 
-export interface AddToCartPayload {
+export type AddToCartPayload = {
   productId: string;
-}
+};
 
 export async function postAddToCart(
   data: AddToCartPayload,

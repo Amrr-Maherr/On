@@ -1,17 +1,17 @@
-export interface MongoDoc {
+export type MongoDoc = {
   _id: string;
   id: string;
-}
+};
 
-export interface PaginationMetadata {
+export type PaginationMetadata = {
   currentPage: number;
   numberOfPages: number;
   limit: number;
   nextPage: number | null;
-}
+};
 
-export interface ApiResponse<T> {
+export type ApiResponse<T> = {
   results: number;
   metadata: PaginationMetadata;
   data: T[];
-}
+};

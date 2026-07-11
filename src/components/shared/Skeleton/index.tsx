@@ -1,14 +1,14 @@
 import { memo } from "react";
 import { cn } from "@/lib/utils";
 
-interface SkeletonProps {
+type SkeletonProps = {
   className?: string;
   variant?: "text" | "rectangular" | "circular" | "card";
   width?: string | number;
   height?: string | number;
   count?: number;
   containerClassName?: string;
-}
+};
 
 const variantClasses = {
   text: "h-4 w-full rounded",
@@ -59,12 +59,12 @@ const gridCols: Record<number, string> = {
   4: "lg:grid-cols-4",
 };
 
-interface GridSkeletonProps {
+type GridSkeletonProps = {
   columns?: number;
   count?: number;
   aspectRatio?: string;
   titleWidth?: number;
-}
+};
 
 const GridSkeleton = memo(function GridSkeleton({
   columns = 4,
@@ -89,11 +89,11 @@ const GridSkeleton = memo(function GridSkeleton({
   );
 });
 
-interface CardSkeletonProps {
+type CardSkeletonProps = {
   className?: string;
   aspectRatio?: string;
   lines?: number;
-}
+};
 
 const CardSkeleton = memo(function CardSkeleton({
   className,
@@ -112,9 +112,9 @@ const CardSkeleton = memo(function CardSkeleton({
   );
 });
 
-interface CampaignHeaderSkeletonProps {
+type CampaignHeaderSkeletonProps = {
   className?: string;
-}
+};
 
 const CampaignHeaderSkeleton = memo(function CampaignHeaderSkeleton({
   className,

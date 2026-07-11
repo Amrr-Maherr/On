@@ -63,9 +63,9 @@ const CommandList = forwardRef<
 ));
 CommandList.displayName = "CommandList";
 
-interface CommandItemProps extends React.HTMLAttributes<HTMLDivElement> {
+type CommandItemProps = React.HTMLAttributes<HTMLDivElement> & {
   selected?: boolean;
-}
+};
 
 const CommandItem = forwardRef<HTMLDivElement, CommandItemProps>(
   ({ className, selected, ...props }, ref) => (

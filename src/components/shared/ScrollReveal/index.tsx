@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { cn } from "@/lib/utils";
 
-interface ScrollRevealProps {
+type ScrollRevealProps = {
   children: ReactNode;
   delay?: number;
   duration?: number;
@@ -11,7 +11,7 @@ interface ScrollRevealProps {
   direction?: "up" | "down" | "left" | "right";
   className?: string;
   distance?: number;
-}
+};
 
 const directionOffset = {
   up: { y: 1, x: 0 },

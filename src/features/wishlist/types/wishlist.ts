@@ -1,4 +1,4 @@
-export interface WishlistProduct {
+export type WishlistProduct = {
   _id: string;
   title: string;
   imageCover: string;
@@ -6,10 +6,10 @@ export interface WishlistProduct {
   priceAfterDiscount?: number;
   ratingsAverage?: number;
   ratingsQuantity?: number;
-}
+};
 
-export interface WishlistResponse {
+export type WishlistResponse = {
   status: string;
   count?: number;
   data: WishlistProduct[];
-}
+};

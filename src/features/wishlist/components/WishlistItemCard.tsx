@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils";
 import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
 import CardImage from "@/components/shared/CardImage";
 
-interface WishlistItemCardProps {
+type WishlistItemCardProps = {
   product: WishlistProduct;
   onRemove: (productId: string) => void;
   onAddToCart: (productId: string) => void;
   isRemoving?: boolean;
   isAddingToCart?: boolean;
-}
+};
 
 const WishlistItemCard = memo(({
   product,

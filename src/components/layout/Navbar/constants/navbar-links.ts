@@ -1,9 +1,9 @@
 import { buildLocalizedPath } from "@/lib/localized-path";
 
-export interface NavLink {
+export type NavLink = {
   key: string;
   href: string;
-}
+};
 
 export function getNavLinks(lang: string): NavLink[] {
   return [

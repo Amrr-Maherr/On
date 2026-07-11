@@ -29,13 +29,13 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import type { ComponentType } from "react";
 
-interface Feature {
+type Feature = {
   titleKey: string;
   descriptionKey: string;
   icon: ComponentType<{ className?: string; strokeWidth?: number }>;
   href: string;
   category: string;
-}
+};
 
 const features: Feature[] = [
   { titleKey: "features.items.home.title", descriptionKey: "features.items.home.description", icon: Home, href: "/", category: "core" },

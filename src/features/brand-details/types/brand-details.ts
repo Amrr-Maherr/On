@@ -1,5 +1,5 @@
 import type { Brand } from "@/features/brands/types";
 
-export interface BrandDetailsResponse {
+export type BrandDetailsResponse = {
   data: Brand;
-}
+};

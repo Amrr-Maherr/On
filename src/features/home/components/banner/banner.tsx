@@ -4,10 +4,10 @@ import BannerContent from "./banner-content";
 import { CampaignHeaderSkeleton } from "@/components/shared/components/CampaignHeaderSkeleton";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
-interface BannerProps {
+type BannerProps = {
   data?: BannerData;
   loading?: boolean;
-}
+};
 
 const Banner = memo(function Banner({ data = bannerData, loading = false }: BannerProps) {
   if (loading) {

@@ -1,6 +1,6 @@
 import type { MongoDoc } from "@/shared/types/api";
 
-export interface User extends MongoDoc {
+export type User = MongoDoc & {
   name: string;
   email: string;
   phone?: string;
@@ -8,8 +8,8 @@ export interface User extends MongoDoc {
   role: string;
   active: boolean;
   createdAt?: string;
-}
+};
 
-export interface ProfileResponse {
+export type ProfileResponse = {
   data: User;
-}
+};

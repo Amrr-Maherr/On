@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface FilterSearchInputProps {
+type FilterSearchInputProps = {
   placeholder?: string;
   value?: string;
   onChange?: (value: string) => void;
-}
+};
 
 function FilterSearchInput({
   placeholder,

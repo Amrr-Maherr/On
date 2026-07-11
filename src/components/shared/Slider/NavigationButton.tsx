@@ -2,11 +2,11 @@ import { memo } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface NavigationButtonProps {
+type NavigationButtonProps = {
   direction: "prev" | "next";
   onClick: () => void;
   ariaLabel: string;
-}
+};
 
 const NavigationButton = memo(function NavigationButton({
   direction,
