@@ -1,8 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Skeleton } from "@/components/ui/skeleton";
-import { HomePageSkeleton } from "@/features/home/components/HomePageSkeleton";
+import { PageLoader } from "@/components/shared/PageLoader";
 
 const HomePage = lazy(() => import("@/app/pages/Home"));
 const AuthPage = lazy(() => import("@/app/pages/Auth"));
@@ -59,12 +58,12 @@ function RootRedirect() {
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<Skeleton className="h-screen w-full rounded-none" />}>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="/:lang" element={<LangLayout />}>
-          <Route index element={<Suspense fallback={<HomePageSkeleton />}><HomePage /></Suspense>} />
-          <Route path="home" element={<Suspense fallback={<HomePageSkeleton />}><HomePage /></Suspense>} />
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="auth" element={<AuthPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
@@ -73,7 +72,10 @@ export default function AppRoutes() {
           <Route path="products" element={<ProductsPage />} />
           <Route path="products/:slug/:id" element={<ProductDetailsPage />} />
           <Route path="categories" element={<CategoriesPage />} />
-          <Route path="categories/:slug/:id" element={<CategoryDetailsPage />} />
+          <Route
+            path="categories/:slug/:id"
+            element={<CategoryDetailsPage />}
+          />
           <Route path="brands" element={<BrandsPage />} />
           <Route path="brands/:slug/:id" element={<BrandDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
