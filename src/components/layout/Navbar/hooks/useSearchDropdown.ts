@@ -26,7 +26,7 @@ export function useSearchDropdown() {
       setShowDropdown(false);
       setFilteredProducts([]);
     }
-  }, []);
+  }, [allProducts]);
 
   const clearSearch = useCallback(() => {
     setQuery("");
