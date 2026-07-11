@@ -11,7 +11,7 @@ import ErrorState from "@/components/shared/Error";
 import BrandProducts from "@/features/brand-details/components/BrandProducts";
 import type { Brand } from "@/features/brands/types";
 
-interface BrandDetailsViewProps {
+type BrandDetailsViewProps = {
   brand: Brand | undefined;
   isLoading: boolean;
   error: Error | null;

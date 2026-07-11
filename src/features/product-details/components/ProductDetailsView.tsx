@@ -5,7 +5,7 @@ import { ProductDetailsPageSkeleton } from "@/features/product-details/component
 import ErrorState from "@/components/shared/Error";
 import type { Product } from "@/features/products/types";
 
-interface ProductDetailsViewProps {
+type ProductDetailsViewProps = {
   product: Product | undefined;
   isLoading: boolean;
   error: Error | null;

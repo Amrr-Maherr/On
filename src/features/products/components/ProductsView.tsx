@@ -20,12 +20,12 @@ import {
 } from "@/components/shared/filters";
 import type { Product } from "@/features/products/types";
 
-interface FilterOption {
+type FilterOption = {
   label: string;
   value: string;
 }
 
-interface ProductsViewProps {
+type ProductsViewProps = {
   products: Product[];
   metadata?: { currentPage: number; numberOfPages: number };
   categories: FilterOption[];

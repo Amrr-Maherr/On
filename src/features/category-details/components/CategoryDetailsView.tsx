@@ -11,7 +11,7 @@ import ErrorState from "@/components/shared/Error";
 import CategoryProducts from "@/features/category-details/components/CategoryProducts";
 import type { Category } from "@/features/categories/types";
 
-interface CategoryDetailsViewProps {
+type CategoryDetailsViewProps = {
   category: Category | undefined;
   isLoading: boolean;
   error: Error | null;

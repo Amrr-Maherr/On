@@ -1,24 +1,13 @@
 import { useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import ScrollReveal from "@/components/shared/ScrollReveal";
-import { ShoppingCart, ArrowRight, Trash2 } from "lucide-react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import { getLangFromPath, buildLocalizedPath, useCurrentLang } from "@/lib/localized-path";
-import PageHelmet from "@/shared/components/PageHelmet";
-import CampaignHeader from "@/components/shared/components/CampaignHeader";
-import heroImage from "@/assets/imgi_1_em-emc-AE-2-TC-d.jpg";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
+import { getLangFromPath, buildLocalizedPath } from "@/lib/localized-path";
 import { useCart } from "@/features/cart/hooks/useCart";
 import { useUpdateCartItem } from "@/features/cart/hooks/useUpdateCartItem";
 import { useRemoveCartItem } from "@/features/cart/hooks/useRemoveCartItem";
 import { useClearCart } from "@/features/cart/hooks/useClearCart";
-import CartItemCard from "@/features/cart/components/CartItemCard";
-import CartSummary from "@/features/cart/components/CartSummary";
-import { CartPageSkeleton } from "@/features/cart/components/CartPageSkeleton";
-import ErrorState from "@/components/shared/Error";
-import EmptyState from "@/components/shared/EmptyState";
+import CartView from "@/features/cart/components/CartView";
 
 export default function CartPage() {
   const { t } = useTranslation();
@@ -39,7 +28,6 @@ export default function CartPage() {
   const { mutate: clearCartItems, isPending: isClearing } = useClearCart();
 
   const cart = data?.data;
-  const items = cart?.products ?? [];
   const numOfCartItems = data?.numOfCartItems ?? 0;
 
   const handleUpdate = useCallback((itemId: string, count: number) => {
@@ -57,23 +45,21 @@ export default function CartPage() {
         <div className="flex flex-col gap-3">
           <p className="text-sm">{t("cart.actions.confirmClear")}</p>
           <div className="flex justify-end gap-2">
-            <Button
-              variant="outline"
-              size="sm"
+            <button
+              className="rounded-none border border-border px-3 py-1 text-xs font-bold"
               onClick={() => toast.dismiss(toastInstance.id)}
             >
               {t("cart.actions.cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              size="sm"
+            </button>
+            <button
+              className="rounded-none bg-destructive px-3 py-1 text-xs font-bold text-white"
               onClick={() => {
                 clearCartItems();
                 toast.dismiss(toastInstance.id);
               }}
             >
               {t("cart.actions.deleteAll")}
-            </Button>
+            </button>
           </div>
         </div>
       ),
@@ -85,101 +71,19 @@ export default function CartPage() {
     navigate(buildLocalizedPath("/checkout", lang));
   }, [navigate, lang]);
 
-  if (isLoading) {
-    return <CartPageSkeleton />;
-  }
-
-  if (error) {
-    return (
-      <ErrorState
-        title={t("cart.error.title")}
-        message={error instanceof Error ? error.message : t("cart.error.defaultMessage")}
-        onRetry={() => refetch()}
-        retryLabel={t("cart.error.retry")}
-      />
-    );
-  }
-
-  if (!cart || items.length === 0) {
-    const langCart = useCurrentLang();
-    return (
-      <EmptyState
-        title={t("cart.empty.title")}
-        description={t("cart.empty.description")}
-        icon={<ShoppingCart className="h-9 w-9 text-muted-foreground/40" />}
-        action={
-          <Link
-            to={buildLocalizedPath("/products", langCart)}
-            className="inline-flex items-center gap-2 rounded-none bg-foreground px-8 py-3 text-sm font-bold uppercase tracking-wider text-background transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
-          >
-            {t("cart.empty.shopNow")}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        }
-      />
-    );
-  }
-
   return (
-    <>
-      <PageHelmet title={t("cart.page.title")} description={t("cart.page.description")} />
-
-      <CampaignHeader
-        subtitle={t("cart.page.hero.subtitle")}
-        title={t("cart.page.hero.title")}
-        description={t("cart.page.hero.description")}
-        backgroundImage={heroImage}
-      />
-
-      <div className="container-layout section-py pt-8">
-        <Breadcrumb items={[{ label: t("cart.page.breadcrumb.home"), href: buildLocalizedPath("/", lang) }, { label: t("cart.page.breadcrumb.cart") }]} className="mb-6" />
-
-        <ScrollReveal>
-          <div className="mb-12 flex items-end justify-between border-l-4 border-foreground pl-6">
-            <div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground/40">
-                {t("cart.page.catalog.label")}
-              </span>
-              <h1 className="mt-3 text-5xl font-black uppercase tracking-tighter text-foreground md:text-7xl">
-                {t("cart.page.catalog.title")}
-              </h1>
-              <p className="mt-2 text-sm font-bold text-muted-foreground/60">
-                {t("cart.page.catalog.count", { count: numOfCartItems })}
-              </p>
-            </div>
-          <button
-            className="hidden items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-destructive/60 transition-colors hover:text-destructive md:flex"
-            onClick={handleClearCart}
-            disabled={isClearing}
-          >
-            <Trash2 className="h-4 w-4" />
-            {isClearing ? t("cart.actions.clearing") : t("cart.actions.clearBag")}
-          </button>
-        </div>
-        </ScrollReveal>
-
-        <div className="grid gap-16 lg:grid-cols-[1fr_400px]">
-          <div className="space-y-8" data-tour="cart-items">
-            {items.map((item, index) => (
-              <ScrollReveal key={item._id} delay={index * 0.04} direction="up" distance={16}>
-                <CartItemCard
-                  item={item}
-                  onUpdate={handleUpdate}
-                  onRemove={handleRemove}
-                />
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="relative" data-tour="cart-summary">
-            <CartSummary
-              totalCartPrice={cart.totalCartPrice}
-              numOfCartItems={numOfCartItems}
-              onCheckout={handleCheckout}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+    <CartView
+      cart={cart}
+      numOfCartItems={numOfCartItems}
+      lang={lang}
+      isLoading={isLoading}
+      error={error}
+      isClearing={isClearing}
+      onUpdate={handleUpdate}
+      onRemove={handleRemove}
+      onClearCart={handleClearCart}
+      onCheckout={handleCheckout}
+      onRetry={() => refetch()}
+    />
   );
 }
