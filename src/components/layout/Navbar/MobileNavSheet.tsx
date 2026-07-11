@@ -19,6 +19,7 @@ import {
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/shared/providers/theme-provider";
+import { ThemeToggleCircular } from "@/components/shared/ThemeToggleCircular";
 import { getNavLinks } from "./constants/navbar-links";
 import { useNavbar } from "./hooks/useNavbar";
 import { useSearchDropdown } from "./hooks/useSearchDropdown";
@@ -47,8 +48,15 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
   }, [handleLogout, onOpenChange]);
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [theme, setTheme]);
+    const isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      setTheme("light");
+    } else {
+      document.documentElement.classList.add("dark");
+      setTheme("dark");
+    }
+  }, [setTheme]);
 
   const onSearchKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -301,19 +309,20 @@ const MobileNavSheet = memo(function MobileNavSheet({ open, onOpenChange }: Mobi
             <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/60">
               {t("nav.mobile.preferences")}
             </p>
-            <button
-              onClick={toggleTheme}
-              className="flex w-full items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30 text-foreground">
-                  {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            <ThemeToggleCircular onToggle={toggleTheme}>
+              <button
+                className="flex w-full items-center justify-between rounded-none px-4 py-4 transition-all hover:bg-muted/50"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-none bg-muted/30 text-foreground">
+                    {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                  </div>
+                  <span className="text-sm font-black uppercase tracking-widest text-foreground">
+                    {theme === "dark" ? t("nav.mobile.lightMode") : t("nav.mobile.darkMode")}
+                  </span>
                 </div>
-                <span className="text-sm font-black uppercase tracking-widest text-foreground">
-                  {theme === "dark" ? t("nav.mobile.lightMode") : t("nav.mobile.darkMode")}
-                </span>
-              </div>
-            </button>
+              </button>
+            </ThemeToggleCircular>
           </div>
         </div>
       </SheetContent>

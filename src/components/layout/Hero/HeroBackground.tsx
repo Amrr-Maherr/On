@@ -51,7 +51,7 @@ const HeroBackground = memo(function HeroBackground() {
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-background/5" />
+      <div className="absolute inset-0 hidden bg-gradient-to-r from-background/85 via-background/30 to-background/5 dark:block" />
       
       {/* Audio Toggle Button */}
       {loaded && (
