@@ -758,7 +758,8 @@
       "storePolicies": "Store Policies",
       "cookieSettings": "Cookie Settings",
       "compliance": "Compliance",
-      "storeLocation": "Store Location"
+      "storeLocation": "Store Location",
+      "features": "Features"
     },
     "newsletter": {
       "title": "Subscribe to our newsletter",
@@ -1380,10 +1381,10 @@
         "home": "Home",
         "branches": "Store Locations"
       },
-        "badge": {
-          "headquarters": "Headquarters",
-          "internationalShipping": "International Shipping"
-        },
+      "badge": {
+        "headquarters": "Headquarters",
+        "internationalShipping": "International Shipping"
+      },
       "selected": {
         "label": "Selected Location"
       }

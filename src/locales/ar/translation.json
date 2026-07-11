@@ -758,7 +758,8 @@
       "storePolicies": "سياسات المتجر",
       "cookieSettings": "إعدادات الكوكيز",
       "compliance": "الامتثال",
-      "storeLocation": "موقع المتجر"
+      "storeLocation": "موقع المتجر",
+      "features": "الميزات"
     },
     "newsletter": {
       "title": "اشترك في نشرتنا البريدية",
@@ -1380,10 +1381,10 @@
         "home": "الرئيسية",
         "branches": "الفروع"
       },
-        "badge": {
-          "headquarters": "المركز الرئيسي",
-          "internationalShipping": "شحن دولي"
-        },
+      "badge": {
+        "headquarters": "المركز الرئيسي",
+        "internationalShipping": "شحن دولي"
+      },
       "selected": {
         "label": "الفرع المحدد"
       }
