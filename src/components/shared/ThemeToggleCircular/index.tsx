@@ -12,7 +12,6 @@ export interface ThemeToggleCircularProps {
 export function ThemeToggleCircular({
   children,
   onToggle,
-  theme,
   className,
   speed = 0.5,
   blur = 0,
@@ -44,10 +43,7 @@ export function ThemeToggleCircular({
       "--transition-blur",
       `${blur}px`,
     );
-    document.documentElement.setAttribute(
-      "data-theme-transition",
-      targetTheme,
-    );
+    document.documentElement.setAttribute("data-theme-transition", targetTheme);
 
     try {
       const transition = document.startViewTransition(() => {
