@@ -13,7 +13,6 @@
 | **PWA** | vite-plugin-pwa 1 (service worker, manifest, offline support) |
 | **Routing** | React Router 7 |
 | **Server State** | TanStack Query 5 (React Query) |
-| **Client State** | Redux Toolkit (configured, extensible) |
 | **HTTP Client** | Axios 1 (interceptors for auth token) |
 | **Styling** | Tailwind CSS 4 |
 | **UI Primitives** | shadcn/ui (base-nova style) + @base-ui/react |
@@ -42,9 +41,8 @@ The project is organized around **feature modules**, each encapsulating its own 
 ```
 src/
 ├── app/                       # Global configuration
-│   ├── providers/             # App-wide providers (Redux, Query, i18n, Theme, Helmet)
-│   ├── routes/                # Lazy-loaded route definitions (35+ routes)
-│   └── store.ts               # Redux store (typed, extensible)
+│   ├── providers/             # App-wide providers (Query, i18n, Theme, Helmet)
+│   └── routes/                # Lazy-loaded route definitions (35+ routes)
 │
 ├── components/                # UI Components
 │   ├── layout/                # Global layout (Navbar, Hero, Footer)
@@ -87,7 +85,7 @@ src/
 ### Component Hierarchy
 
 ```
-<AppProviders>                  # Redux, Query, i18n, Theme, Helmet
+<AppProviders>                  # Query, i18n, Theme, Helmet
   <BrowserRouter>
     <TourProvider>              # driver.js guided tour
       <App>
@@ -122,7 +120,6 @@ feature/
 | Concern | Tool | Rationale |
 |---|---|---|
 | **Server state** | TanStack Query 5 | Automatic caching, background refetching, stale-while-revalidate |
-| **Client state** | Redux Toolkit | Configured store ready for cross-cutting state (user session, UI preferences) |
 | **Form state** | React Hook Form | Uncontrolled inputs with minimal re-renders |
 | **Theme** | React Context + localStorage | Persisted dark/light/system preference |
 | **Auth token** | Axios interceptor + localStorage | Token attached to all requests; auto-cleared on 401 |
