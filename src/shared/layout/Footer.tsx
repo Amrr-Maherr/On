@@ -44,6 +44,7 @@ const Footer = memo(function Footer() {
     {
       titleKey: "footer.sectionTitles.company",
       links: [
+        { key: "footer.links.features", href: buildLocalizedPath("/features", lang) },
         { key: "footer.links.aboutUs", href: buildLocalizedPath("/about", lang) },
         { key: "footer.links.sustainability", href: buildLocalizedPath("/about", lang) },
         { key: "footer.links.innovation", href: buildLocalizedPath("/about", lang) },

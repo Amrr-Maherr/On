@@ -70,6 +70,9 @@ const StoreLocationPage = lazy(
 const BranchesPage = lazy(
   () => import("@/features/branches/pages/BranchesPage"),
 );
+const FeaturesPage = lazy(
+  () => import("@/features/platform/pages/FeaturesPage"),
+);
 const NotFoundPage = lazy(
   () => import("@/features/not-found/pages/NotFoundPage"),
 );
@@ -131,6 +134,7 @@ export default function AppRoutes() {
           <Route path="policies" element={<PoliciesPage />} />
           <Route path="store-location" element={<StoreLocationPage />} />
           <Route path="branches" element={<BranchesPage />} />
+          <Route path="features" element={<FeaturesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
         <Route path="*" element={<RootRedirect />} />
