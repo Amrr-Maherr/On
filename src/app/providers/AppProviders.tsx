@@ -2,6 +2,7 @@ import { lazy, type ReactNode } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { I18nextProvider } from "react-i18next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ThemeProvider } from "@/shared/providers/theme-provider";
 import i18n from "@/i18n";
 
@@ -33,6 +34,7 @@ function AppProviders({ children }: AppProvidersProps) {
         </HelmetProvider>
       </I18nextProvider>
       {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+      <SpeedInsights />
     </QueryClientProvider>
   );
 }
