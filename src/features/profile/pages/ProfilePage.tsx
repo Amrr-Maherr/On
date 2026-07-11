@@ -55,7 +55,6 @@ export default function ProfilePage() {
   return (
     <ProfileView
       user={user}
-      lang={lang}
       isLoading={isLoading}
       error={error}
       isEditOpen={isEditOpen}

@@ -14,7 +14,6 @@ import type { Order } from "@/features/orders/types";
 
 type OrdersViewProps = {
   orders: Order[];
-  lang: string;
   isLoading: boolean;
   error: Error | null;
   onRetry: () => void;
@@ -22,7 +21,6 @@ type OrdersViewProps = {
 
 export default function OrdersView({
   orders,
-  lang,
   isLoading,
   error,
   onRetry,

@@ -21,7 +21,6 @@ export default function OrdersPage() {
   return (
     <OrdersView
       orders={data ?? []}
-      lang={lang}
       isLoading={isLoading}
       error={error}
       onRetry={() => refetch()}

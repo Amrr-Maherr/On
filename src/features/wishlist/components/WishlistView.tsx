@@ -10,12 +10,11 @@ import ErrorState from "@/components/shared/Error";
 import EmptyState from "@/components/shared/EmptyState";
 import CampaignHeader from "@/components/shared/components/CampaignHeader";
 import heroImage from "@/assets/imgi_1_em-emc-FOOTBALL-hp-tc-d.jpg";
-import type { Product } from "@/features/products/types";
+import type { WishlistProduct } from "@/features/wishlist/types/wishlist";
 
 type WishlistViewProps = {
-  items: Product[];
+  items: WishlistProduct[];
   count: number;
-  lang: string;
   isLoading: boolean;
   error: Error | null;
   removingId: string | null;
@@ -30,7 +29,6 @@ type WishlistViewProps = {
 export default function WishlistView({
   items,
   count,
-  lang,
   isLoading,
   error,
   removingId,

@@ -75,7 +75,6 @@ export default function CartPage() {
     <CartView
       cart={cart}
       numOfCartItems={numOfCartItems}
-      lang={lang}
       isLoading={isLoading}
       error={error}
       isClearing={isClearing}

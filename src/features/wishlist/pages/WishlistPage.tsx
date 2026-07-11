@@ -55,7 +55,6 @@ export default function WishlistPage() {
     <WishlistView
       items={items}
       count={count}
-      lang={lang}
       isLoading={isLoading}
       error={error}
       removingId={removingId}

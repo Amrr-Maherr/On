@@ -19,7 +19,6 @@ type CartViewProps = {
     totalCartPrice: number;
   } | undefined;
   numOfCartItems: number;
-  lang: string;
   isLoading: boolean;
   error: Error | null;
   isClearing: boolean;
@@ -33,7 +32,6 @@ type CartViewProps = {
 export default function CartView({
   cart,
   numOfCartItems,
-  lang,
   isLoading,
   error,
   isClearing,

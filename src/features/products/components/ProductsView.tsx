@@ -35,7 +35,6 @@ type ProductsViewProps = {
   sort: string;
   searchParams: URLSearchParams;
   lang: string;
-  page: number;
   priceMin: number;
   priceMax: number;
   onFilterChange: (key: string, value: string) => void;
@@ -54,7 +53,6 @@ export default function ProductsView({
   sort,
   searchParams,
   lang,
-  page,
   priceMin,
   priceMax,
   onFilterChange,

@@ -68,7 +68,6 @@ export default function ProductsPage() {
       sort={sort}
       searchParams={searchParams}
       lang={lang}
-      page={page}
       priceMin={priceMin}
       priceMax={priceMax}
       onFilterChange={setParam}

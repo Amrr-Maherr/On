@@ -13,7 +13,6 @@ import type { User } from "../types";
 
 type ProfileViewProps = {
   user: User | null;
-  lang: string;
   isLoading: boolean;
   error: Error | null;
   isEditOpen: boolean;
@@ -26,7 +25,6 @@ type ProfileViewProps = {
 
 export default function ProfileView({
   user,
-  lang,
   isLoading,
   error,
   isEditOpen,

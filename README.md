@@ -18,7 +18,7 @@
 | **Styling** | Tailwind CSS 4 |
 | **UI Primitives** | shadcn/ui (base-nova style) + @base-ui/react |
 | **Icons** | Lucide React 1 |
-| **Animations** | Framer Motion 12, Swiper 12 |
+| **Animations** | Framer Motion 12, Swiper 12, @animbits (ThemeToggleCircular, LoaderMorphing, ExpandingCard) |
 | **Forms** | React Hook Form 7 |
 | **i18n** | i18next 26, react-i18next 17 |
 | **SEO** | React Helmet Async |
@@ -49,26 +49,28 @@ src/
 ├── components/                # UI Components
 │   ├── layout/                # Global layout (Navbar, Hero, Footer)
 │   │   └── Navbar/            # Navbar with sub-components, hooks, constants, utils
-│   ├── shared/                # Reusable components (Loader, ErrorState, ScrollReveal,
-│   │                          # ThemeToggle, LanguageSwitcher, Logo, Slider, Filters)
+│   ├── shared/                # Reusable components (ErrorState, EmptyState, ScrollReveal,
+│   │                          # ThemeToggle, LanguageSwitcher, Logo, Slider, Filters,
+│   │                          # PageLoader, QuickViewDialog, ExpandingCard)
 │   └── ui/                    # shadcn/ui primitives (button, card, input, badge,
 │                              # select, sheet, breadcrumb, radio-group)
 │
-├── features/                  # Feature modules (21 modules)
-│   ├── auth/                  # Login, Register, Password Reset
-│   ├── cart/                  # Cart CRUD, summary
+├── features/                  # Feature modules (22 modules)
+│   ├── auth/                  # Login, Register, Password Reset (container/presentational)
+│   ├── cart/                  # Cart CRUD, summary (container/presentational)
 │   ├── checkout/              # Checkout session, cash-on-delivery
-│   ├── products/              # Product listing, filtering, pagination
-│   ├── product-details/       # Product gallery, reviews, actions
-│   ├── categories/            # Category listing
-│   ├── category-details/      # Category detail
-│   ├── brands/                # Brand listing
-│   ├── brand-details/         # Brand detail
-│   ├── wishlist/              # Wishlist CRUD
-│   ├── orders/                # Order history
-│   ├── profile/               # User profile management
+│   ├── products/              # Product listing, filtering, pagination, quick view
+│   ├── product-details/       # Product gallery, reviews, actions (container/presentational)
+│   ├── categories/            # Category listing (container/presentational)
+│   ├── category-details/      # Category detail (container/presentational)
+│   ├── brands/                # Brand listing (container/presentational)
+│   ├── brand-details/         # Brand detail (container/presentational)
+│   ├── wishlist/              # Wishlist CRUD (container/presentational)
+│   ├── orders/                # Order history (container/presentational)
+│   ├── profile/               # User profile management (container/presentational)
 │   ├── home/                  # Homepage sections
 │   ├── footer-pages/          # Static pages (About, Contact, FAQ, Terms, etc.)
+│   ├── platform/              # Features page (24 feature cards across 5 categories)
 │   ├── tour/                  # Guided product tour
 │   ├── not-found/             # 404 page
 │   ├── all-brands/            # All brands grid
@@ -92,7 +94,7 @@ src/
         <Toaster />             # react-hot-toast
         <Navbar />              # Sticky, responsive, with search dropdown
         <main>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<PageLoader />}>
             <AppRoutes />       # 35+ lazy-loaded routes
         <Footer />              # Static pages links, social, newsletter
         <ScrollToTopButton />
@@ -219,6 +221,7 @@ interface PaginationMetadata {
 | `/:lang/orders` | Order history |
 | `/:lang/profile` | User profile |
 | `/:lang/about`, `contact`, `privacy`, `terms`, `faq`, `shipping`, `returns`, `size-guide`, `help`, `support-policy`, `policies` | Footer static pages |
+| `/:lang/features` | Platform features showcase |
 | `/:lang/branches` | Store locator |
 | `/:lang/*` | 404 Not Found |
 
@@ -238,6 +241,7 @@ interface PaginationMetadata {
 - Product gallery with image lightbox (yet-another-react-lightbox)
 - Review system with star ratings
 - Stock status indicators (sold percentage, low stock badge)
+- Quick view dialog on product cards (eye icon, horizontal layout, mobile-responsive)
 
 ### Cart (`features/cart`)
 - Full CRUD: add, update quantity, remove items, clear cart
@@ -305,7 +309,8 @@ interface PaginationMetadata {
 | **Memoization** | 138 `React.memo()` wrappers; 113+ `useMemo`/`useCallback` instances |
 | **React Compiler** | Babel plugin auto-memoizes components at build time |
 | **Animation Efficiency** | `ScrollReveal` respects `prefers-reduced-motion`; `IntersectionObserver`-driven |
-| **Image Optimization** | Lightbox lazy-loads full-resolution images |
+| **Image Optimization** | `CardImage` with lazy loading, skeleton placeholder, error fallback |
+| **Loading UX** | `PageLoader` (LoaderMorphing) as Suspense fallback; per-feature skeleton loaders |
 
 ---
 
@@ -317,15 +322,34 @@ interface PaginationMetadata {
 - **Bold Typography**: Heavy font weights (Bold/Black), wide letter spacing
 - **Conversion Focused**: Prominent CTAs with high visual weight
 
+### Container/Presentational Pattern
+
+All feature pages follow a container/presentational split:
+- **Containers** (e.g., `ProductsPage.tsx`): Data fetching, hooks, event handlers, side effects
+- **Views** (e.g., `ProductsView.tsx`): Pure UI rendering, receives props from container
+
+This pattern is applied to: auth, cart, orders, profile, wishlist, products, product-details, categories, category-details, brands, brand-details.
+
+### Loading & Error States
+
+- **PageLoader**: Full-screen morphing loader (`@animbits/loaders-morphing`) as Suspense fallback
+- **ErrorState**: Retry-capable error display with localized messages
+- **EmptyState**: Empty list states with actionable CTAs
+- **Skeleton components**: Per-feature skeleton loaders (CartPageSkeleton, OrdersPageSkeleton, etc.)
+
 ### Theming
+
 - Full dark/light mode with `localStorage` persistence
 - CSS custom properties with oklch color space
+- View Transitions API via `@animbits/theme-toggle-circular` for smooth theme switching
 - RTL-aware typography adjustments (Arabic font weight reductions)
 
 ### Key Components
-- **shadcn/ui primitives**: button, card, input, badge, select, sheet, breadcrumb, radio-group (styled with zero radius)
-- **Shared components**: ErrorState, Loader, ScrollReveal (IntersectionObserver + Framer Motion), Swiper-based Slider, filter widgets
+- **shadcn/ui primitives**: button, card, input, badge, select, sheet, breadcrumb, radio-group, dialog (styled with zero radius)
+- **Shared components**: ErrorState, EmptyState, ScrollReveal (IntersectionObserver + Framer Motion), Swiper-based Slider, filter widgets, PageLoader (LoaderMorphing)
+- **Product actions**: AddToCart, AddToFav, QuickViewDialog (eye icon with horizontal dialog)
 - **Layout**: Sticky Navbar with search dropdown and mobile drawer, responsive Footer with 13+ link pages
+- **Animations**: @animbits (ThemeToggleCircular, LoaderMorphing, ExpandingCard)
 
 ---
 
