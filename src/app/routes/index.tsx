@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomePageSkeleton } from "@/features/home/components/HomePageSkeleton";
+import { PageTransition } from "@/components/shared/PageTransition";
 
 const HomePage = lazy(() => import("@/app/pages/Home"));
 const AuthPage = lazy(() => import("@/app/pages/Auth"));
@@ -49,7 +50,11 @@ function LangLayout() {
     }
   }, [lang, i18n]);
 
-  return <Outlet />;
+  return (
+    <PageTransition>
+      <Outlet />
+    </PageTransition>
+  );
 }
 
 function RootRedirect() {
