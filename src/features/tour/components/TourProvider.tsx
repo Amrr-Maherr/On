@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { driver } from "driver.js";
 import type { Driver, DriveStep } from "driver.js";
+import "../tour-styles.css";
 import { TourContext } from "./TourContext";
 import { findTourById, findTourForRoute } from "../config";
 import {
