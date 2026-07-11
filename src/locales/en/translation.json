@@ -1571,5 +1571,131 @@
         }
       }
     }
+  },
+  "features": {
+    "page": {
+      "title": "Features",
+      "description": "Explore all features available in the ON premium sportswear store."
+    },
+    "hero": {
+      "subtitle": "Platform",
+      "title": "ALL FEATURES",
+      "description": "A complete overview of every feature and page available in the ON premium sportswear eCommerce platform."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "features": "Features"
+    },
+    "heading": {
+      "label": "Platform Overview",
+      "title": "FEATURES",
+      "count": "{{features}} features across {{categories}} categories"
+    },
+    "categories": {
+      "core": "Core Features",
+      "commerce": "Commerce",
+      "account": "Account",
+      "info": "Information",
+      "legal": "Legal"
+    },
+    "items": {
+      "home": {
+        "title": "Home",
+        "description": "Hero section, featured products, trending items, categories, brands, testimonials, and more."
+      },
+      "products": {
+        "title": "Products",
+        "description": "Browse all products with filters for category, brand, price range, and sorting options."
+      },
+      "productDetails": {
+        "title": "Product Details",
+        "description": "Full product page with gallery, reviews, ratings, Q&A, related products, and add to cart/wishlist."
+      },
+      "categories": {
+        "title": "Categories",
+        "description": "Explore product categories with filtering and pagination."
+      },
+      "brands": {
+        "title": "Brands",
+        "description": "Browse all brands and view brand-specific product collections."
+      },
+      "cart": {
+        "title": "Shopping Cart",
+        "description": "Manage your cart items, update quantities, remove items, and proceed to checkout."
+      },
+      "checkout": {
+        "title": "Checkout",
+        "description": "Complete your order with cash on delivery or online card payment via Stripe."
+      },
+      "orders": {
+        "title": "Orders",
+        "description": "View your order history with detailed order information and status."
+      },
+      "wishlist": {
+        "title": "Wishlist",
+        "description": "Save your favorite products and quickly add them to your cart."
+      },
+      "profile": {
+        "title": "User Profile",
+        "description": "View and edit your profile information including name, email, and phone number."
+      },
+      "auth": {
+        "title": "Authentication",
+        "description": "Login, register, forgot password, and reset password with Google OAuth support."
+      },
+      "storeLocation": {
+        "title": "Store Locations",
+        "description": "Find physical store locations on an interactive map."
+      },
+      "branches": {
+        "title": "Branches",
+        "description": "View all branches with an interactive map and branch cards."
+      },
+      "about": {
+        "title": "About Us",
+        "description": "Learn about our story, mission, and values."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "Get in touch with our team for support and inquiries."
+      },
+      "faq": {
+        "title": "FAQ",
+        "description": "Frequently asked questions about our products and services."
+      },
+      "shipping": {
+        "title": "Shipping Info",
+        "description": "Details about shipping methods, costs, and delivery times."
+      },
+      "returns": {
+        "title": "Returns",
+        "description": "Return policy, process, and eligibility information."
+      },
+      "sizeGuide": {
+        "title": "Size Guide",
+        "description": "Comprehensive sizing chart to help you find the perfect fit."
+      },
+      "help": {
+        "title": "Help Center",
+        "description": "Support articles and resources to help you with any issues."
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "description": "How we collect, use, and protect your personal data."
+      },
+      "terms": {
+        "title": "Terms & Conditions",
+        "description": "Terms of service governing your use of our platform."
+      },
+      "policies": {
+        "title": "Policies",
+        "description": "Our store policies for a safe and fair shopping experience."
+      },
+      "supportPolicy": {
+        "title": "Support Policy",
+        "description": "Customer support guidelines and service level commitments."
+      }
+    },
+    "explore": "Explore"
   }
 }
