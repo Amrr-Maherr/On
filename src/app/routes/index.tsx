@@ -60,7 +60,7 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        <Route path="/" element={<Navigate to="/en" replace />} />
+        {/* <Route path="/" element={<Navigate to="/en" replace />} /> */}
         <Route path="/:lang" element={<LangLayout />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />} />
@@ -99,7 +99,7 @@ export default function AppRoutes() {
           <Route path="features" element={<FeaturesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<RootRedirect />} />
+        {/* <Route path="*" element={<RootRedirect />} /> */}
       </Routes>
     </Suspense>
   );
