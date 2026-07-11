@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, Navigate, Outlet, useParams } from "react-router-dom";
+import { Routes, Route, Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PageLoader } from "@/components/shared/PageLoader";
 
@@ -36,8 +36,6 @@ const BranchesPage = lazy(() => import("@/app/pages/Branches"));
 const FeaturesPage = lazy(() => import("@/app/pages/Features"));
 const NotFoundPage = lazy(() => import("@/app/pages/NotFound"));
 
-import { useLocation } from "react-router-dom";
-
 function LangLayout() {
   const { lang } = useParams();
   const { i18n } = useTranslation();
@@ -51,16 +49,10 @@ function LangLayout() {
   return <Outlet />;
 }
 
-function RootRedirect() {
-  const location = useLocation();
-  return <Navigate to={`/en${location.pathname}${location.search}`} replace />;
-}
-
 export default function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/en" replace />} /> */}
         <Route path="/:lang" element={<LangLayout />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<HomePage />} />
@@ -99,7 +91,6 @@ export default function AppRoutes() {
           <Route path="features" element={<FeaturesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        {/* <Route path="*" element={<RootRedirect />} /> */}
       </Routes>
     </Suspense>
   );
