@@ -49,7 +49,7 @@ export default function AddToCart({
         disabled={isPending}
         aria-label={t("products.actions.addToCart")}
         className={cn(
-          "flex w-full items-center justify-center gap-3 rounded-none bg-white px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-950 shadow-2xl transition-all duration-300 hover:bg-neutral-100 active:scale-[0.98] disabled:opacity-50",
+          "flex w-full items-center justify-center gap-3 rounded-none bg-background px-6 py-4 text-[10px] font-black uppercase tracking-[0.2em] text-foreground shadow-2xl transition-all duration-300 hover:bg-muted active:scale-[0.98] disabled:opacity-50",
           className,
         )}
       >
@@ -72,7 +72,7 @@ export default function AddToCart({
       disabled={isPending}
       aria-label={t("products.actions.addToCart")}
       className={cn(
-        "flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-white/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-white active:scale-90 focus-visible:outline-none disabled:opacity-50",
+        "flex h-10 w-10 items-center justify-center rounded-none border-2 border-border/20 bg-background/95 text-foreground shadow-xl backdrop-blur-sm transition-all duration-300 hover:border-foreground hover:bg-background active:scale-90 focus-visible:outline-none disabled:opacity-50",
         className,
       )}
     >
