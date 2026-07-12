@@ -12,7 +12,7 @@ function App() {
       <BlobCursor
         blobType="circle"
         fillColor="#ffffff"
-        trailCount={5}
+        trailCount={3}
         sizes={[60, 125, 75]}
         innerSizes={[20, 35, 25]}
         innerColor="#000000"
