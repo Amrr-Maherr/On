@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, Outlet, useParams } from "react-router-dom";
+import { Routes, Route, Outlet, useParams, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PageLoader } from "@/components/shared/PageLoader";
 
@@ -49,49 +49,49 @@ function LangLayout() {
   return <Outlet />;
 }
 
+function SuspenseWrap({ children }: { children: React.ReactNode }) {
+  return <Suspense fallback={<PageLoader />}>{children}</Suspense>;
+}
+
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        <Route path="/:lang" element={<LangLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage />} />
-          <Route path="auth" element={<AuthPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="reset-password" element={<ResetPasswordPage />} />
-          <Route path="products" element={<ProductsPage />} />
-          <Route path="products/:slug/:id" element={<ProductDetailsPage />} />
-          <Route path="categories" element={<CategoriesPage />} />
-          <Route
-            path="categories/:slug/:id"
-            element={<CategoryDetailsPage />}
-          />
-          <Route path="brands" element={<BrandsPage />} />
-          <Route path="brands/:slug/:id" element={<BrandDetailsPage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="checkout" element={<CheckoutPage />} />
-          <Route path="orders" element={<OrdersPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="wishlist" element={<WishlistPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="privacy" element={<PrivacyPage />} />
-          <Route path="terms" element={<TermsPage />} />
-          <Route path="faq" element={<FaqPage />} />
-          <Route path="shipping" element={<ShippingPage />} />
-          <Route path="returns" element={<ReturnsPage />} />
-          <Route path="size-guide" element={<SizeGuidePage />} />
-          <Route path="help" element={<HelpPage />} />
-          <Route path="support-policy" element={<SupportPolicyPage />} />
-          <Route path="policies" element={<PoliciesPage />} />
-          <Route path="store-location" element={<StoreLocationPage />} />
-          <Route path="branches" element={<BranchesPage />} />
-          <Route path="features" element={<FeaturesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Navigate to="/en" replace />} />
+      <Route path="/:lang" element={<LangLayout />}>
+        <Route index element={<SuspenseWrap><HomePage /></SuspenseWrap>} />
+        <Route path="home" element={<SuspenseWrap><HomePage /></SuspenseWrap>} />
+        <Route path="auth" element={<SuspenseWrap><AuthPage /></SuspenseWrap>} />
+        <Route path="login" element={<SuspenseWrap><LoginPage /></SuspenseWrap>} />
+        <Route path="register" element={<SuspenseWrap><RegisterPage /></SuspenseWrap>} />
+        <Route path="forgot-password" element={<SuspenseWrap><ForgotPasswordPage /></SuspenseWrap>} />
+        <Route path="reset-password" element={<SuspenseWrap><ResetPasswordPage /></SuspenseWrap>} />
+        <Route path="products" element={<SuspenseWrap><ProductsPage /></SuspenseWrap>} />
+        <Route path="products/:slug/:id" element={<SuspenseWrap><ProductDetailsPage /></SuspenseWrap>} />
+        <Route path="categories" element={<SuspenseWrap><CategoriesPage /></SuspenseWrap>} />
+        <Route path="categories/:slug/:id" element={<SuspenseWrap><CategoryDetailsPage /></SuspenseWrap>} />
+        <Route path="brands" element={<SuspenseWrap><BrandsPage /></SuspenseWrap>} />
+        <Route path="brands/:slug/:id" element={<SuspenseWrap><BrandDetailsPage /></SuspenseWrap>} />
+        <Route path="cart" element={<SuspenseWrap><CartPage /></SuspenseWrap>} />
+        <Route path="checkout" element={<SuspenseWrap><CheckoutPage /></SuspenseWrap>} />
+        <Route path="orders" element={<SuspenseWrap><OrdersPage /></SuspenseWrap>} />
+        <Route path="profile" element={<SuspenseWrap><ProfilePage /></SuspenseWrap>} />
+        <Route path="wishlist" element={<SuspenseWrap><WishlistPage /></SuspenseWrap>} />
+        <Route path="about" element={<SuspenseWrap><AboutPage /></SuspenseWrap>} />
+        <Route path="contact" element={<SuspenseWrap><ContactPage /></SuspenseWrap>} />
+        <Route path="privacy" element={<SuspenseWrap><PrivacyPage /></SuspenseWrap>} />
+        <Route path="terms" element={<SuspenseWrap><TermsPage /></SuspenseWrap>} />
+        <Route path="faq" element={<SuspenseWrap><FaqPage /></SuspenseWrap>} />
+        <Route path="shipping" element={<SuspenseWrap><ShippingPage /></SuspenseWrap>} />
+        <Route path="returns" element={<SuspenseWrap><ReturnsPage /></SuspenseWrap>} />
+        <Route path="size-guide" element={<SuspenseWrap><SizeGuidePage /></SuspenseWrap>} />
+        <Route path="help" element={<SuspenseWrap><HelpPage /></SuspenseWrap>} />
+        <Route path="support-policy" element={<SuspenseWrap><SupportPolicyPage /></SuspenseWrap>} />
+        <Route path="policies" element={<SuspenseWrap><PoliciesPage /></SuspenseWrap>} />
+        <Route path="store-location" element={<SuspenseWrap><StoreLocationPage /></SuspenseWrap>} />
+        <Route path="branches" element={<SuspenseWrap><BranchesPage /></SuspenseWrap>} />
+        <Route path="features" element={<SuspenseWrap><FeaturesPage /></SuspenseWrap>} />
+        <Route path="*" element={<SuspenseWrap><NotFoundPage /></SuspenseWrap>} />
+      </Route>
+    </Routes>
   );
 }
