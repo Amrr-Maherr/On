@@ -1,10 +1,13 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
-type TickerProps = {
-  messages: string[];
-};
-
-const Ticker = memo(function Ticker({ messages }: TickerProps) {
+const Ticker = memo(function Ticker() {
+  const { t } = useTranslation();
+  const messages = [
+    t("nav.ticker.freeShipping"),
+    t("nav.ticker.newArrivals"),
+    t("nav.ticker.sale"),
+  ];
   const repeated = [...messages, ...messages, ...messages];
 
   return (

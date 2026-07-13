@@ -724,6 +724,11 @@
       "lightMode": "Light Mode",
       "darkMode": "Dark Mode",
       "searchPlaceholder": "Search products..."
+    },
+    "ticker": {
+      "freeShipping": "Free shipping on orders over $100",
+      "newArrivals": "New arrivals every week",
+      "sale": "Up to 50% off select styles"
     }
   },
   "footer": {
