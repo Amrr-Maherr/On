@@ -4,24 +4,12 @@ import { lazy, Suspense } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "@/shared/layout/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import AnimatedCursor from "react-animated-cursor";
+import MotionCursor from "@/components/shared/MotionCursor";
 const AppRoutes = lazy(() => import("./app/routes"));
 function App() {
   return (
     <div className="flex min-h-screen flex-col">
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={35}
-        innerScale={1}
-        outerScale={2}
-        outerAlpha={0}
-        outerStyle={{
-          border: "3px solid var(--foreground)",
-        }}
-        innerStyle={{
-          backgroundColor: "var(--foreground)",
-        }}
-      />
+      <MotionCursor />
       <Toaster
         position="bottom-right"
         toastOptions={{
