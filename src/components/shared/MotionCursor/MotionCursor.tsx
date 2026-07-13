@@ -79,6 +79,8 @@ export default function MotionCursor() {
   const innerSize = hovering ? INNER_SIZE * 0.8 : INNER_SIZE;
   const outerBorderColor = "#fff";
   const innerBg = "#fff";
+  const outerHalf = outerSize / 2;
+  const innerHalf = innerSize / 2;
 
   return createPortal(
     <div
@@ -93,14 +95,16 @@ export default function MotionCursor() {
       <motion.div
         style={{
           position: "absolute",
+          left: 0,
+          top: 0,
+          marginLeft: -outerHalf,
+          marginTop: -outerHalf,
           x: outerX,
           y: outerY,
           width: outerSize,
           height: outerSize,
           borderRadius: "50%",
           border: `${BORDER_WIDTH}px solid ${outerBorderColor}`,
-          translateX: "-50%",
-          translateY: "-50%",
           opacity: visible ? 1 : 0,
         }}
         animate={{
@@ -117,14 +121,16 @@ export default function MotionCursor() {
       <motion.div
         style={{
           position: "absolute",
+          left: 0,
+          top: 0,
+          marginLeft: -innerHalf,
+          marginTop: -innerHalf,
           x: innerX,
           y: innerY,
           width: innerSize,
           height: innerSize,
           borderRadius: "50%",
           backgroundColor: innerBg,
-          translateX: "-50%",
-          translateY: "-50%",
           opacity: visible ? 1 : 0,
         }}
         animate={{
