@@ -71,30 +71,30 @@ const HomePage = memo(function HomePage() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal direction="up" distance={40} delay={0.6}>
-        <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">200+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              {t("home.sections.heroCampaign.statProducts")}
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">50+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              {t("home.sections.heroCampaign.statBrands")}
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">10K+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              {t("home.sections.heroCampaign.statCustomers")}
-            </span>
-          </div>
+      {/* <ScrollReveal direction="up" distance={40} delay={0.6}> */}
+      <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">200+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            {t("home.sections.heroCampaign.statProducts")}
+          </span>
         </div>
-      </ScrollReveal>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">50+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            {t("home.sections.heroCampaign.statBrands")}
+          </span>
+        </div>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">10K+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            {t("home.sections.heroCampaign.statCustomers")}
+          </span>
+        </div>
+      </div>
+      {/* </ScrollReveal> */}
     </div>
   );
 
@@ -138,30 +138,30 @@ const HomePage = memo(function HomePage() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal direction="up" distance={40} delay={0.6}>
-        <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">150+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Running Shoes
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">30+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Pro Athletes
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">5K+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Reviews
-            </span>
-          </div>
+      {/* <ScrollReveal direction="up" distance={40} delay={0.6}> */}
+      <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">150+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Running Shoes
+          </span>
         </div>
-      </ScrollReveal>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">30+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Pro Athletes
+          </span>
+        </div>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">5K+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Reviews
+          </span>
+        </div>
+      </div>
+      {/* </ScrollReveal> */}
     </div>
   );
 
@@ -205,30 +205,32 @@ const HomePage = memo(function HomePage() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal direction="up" distance={40} delay={0.6}>
-        <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">80+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Kits Available
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">25+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Club Partners
-            </span>
-          </div>
-          <div className="hidden h-8 w-px bg-white/20 sm:block" />
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-xl font-bold text-white sm:text-2xl">100K+</span>
-            <span className="text-[10px] uppercase tracking-wider sm:text-xs">
-              Fans
-            </span>
-          </div>
+      {/* <ScrollReveal direction="up" distance={40} delay={0.6}> */}
+      <div className="mt-10 flex flex-wrap items-center gap-4 text-white/50 sm:mt-16 sm:gap-8">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">80+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Kits Available
+          </span>
         </div>
-      </ScrollReveal>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">25+</span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Club Partners
+          </span>
+        </div>
+        <div className="hidden h-8 w-px bg-white/20 sm:block" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-xl font-bold text-white sm:text-2xl">
+            100K+
+          </span>
+          <span className="text-[10px] uppercase tracking-wider sm:text-xs">
+            Fans
+          </span>
+        </div>
+      </div>
+      {/* </ScrollReveal> */}
     </div>
   );
 

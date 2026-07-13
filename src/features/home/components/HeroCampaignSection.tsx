@@ -20,7 +20,7 @@ const HeroCampaignSection = memo(function HeroCampaignSection({
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent md:bg-gradient-to-r md:from-neutral-950/80 md:via-neutral-950/40 md:to-transparent" />
       </div>
 
-      <div className="container-layout relative z-10 flex min-h-[60vh] items-center pt-16 pb-12 md:min-h-[80vh] md:pt-0 md:pb-0">
+      <div className="container-layout relative z-10 flex min-h-[60vh] items-center pt-16 pb-12 md:min-h-[100vh] md:pt-0 md:pb-0">
         {children}
       </div>
     </section>
