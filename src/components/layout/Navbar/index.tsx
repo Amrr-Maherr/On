@@ -6,6 +6,7 @@ import { NavbarSearch } from "./components/NavbarSearch";
 import { NavbarActions } from "./components/NavbarActions";
 import { NavbarMobileMenu } from "./components/NavbarMobileMenu";
 import MobileNavSheet from "./MobileNavSheet";
+import Ticker from "./Ticker";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,6 +22,13 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 border-b-2 border-border/40 bg-background backdrop-blur-xl">
+      <Ticker
+        messages={[
+          "Free shipping on orders over $100",
+          "New arrivals every week",
+          "Up to 50% off select styles",
+        ]}
+      />
       <div className="container-layout flex h-16 items-center justify-between gap-4 md:h-20">
         <div className="flex items-center gap-8 lg:gap-12">
           <Logo />

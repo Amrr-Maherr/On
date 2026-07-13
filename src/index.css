@@ -74,6 +74,20 @@
       clip-path: circle(0% at var(--x) var(--y));
     }
   }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-33.3333%);
+    }
+  }
+}
+
+.ticker-track {
+  animation: ticker 30s linear infinite;
 }
 
 html[lang="ar"] {
