@@ -77,8 +77,8 @@ export default function MotionCursor() {
 
   const outerSize = hovering ? OUTER_SIZE * 1.5 : OUTER_SIZE;
   const innerSize = hovering ? INNER_SIZE * 0.8 : INNER_SIZE;
-  const outerBorderColor = "var(--foreground)";
-  const innerBg = "var(--foreground)";
+  const outerBorderColor = "#fff";
+  const innerBg = "#fff";
 
   return createPortal(
     <div
@@ -87,6 +87,7 @@ export default function MotionCursor() {
         inset: 0,
         zIndex: 2147483647,
         pointerEvents: "none",
+        mixBlendMode: "difference",
       }}
     >
       <motion.div
