@@ -4,28 +4,24 @@ import { lazy, Suspense } from "react";
 import Navbar from "./components/layout/Navbar";
 import Footer from "@/shared/layout/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
-import BlobCursor from "@/components/shared/BlobCursor";
+import AnimatedCursor from "react-animated-cursor";
 const AppRoutes = lazy(() => import("./app/routes"));
 function App() {
   return (
     <div className="flex min-h-screen flex-col">
-      <BlobCursor
-        blobType="circle"
-        fillColor="#ffffff"
-        trailCount={3}
-        sizes={[60, 125, 75]}
-        innerSizes={[20, 35, 25]}
-        innerColor="#000000"
-        opacities={[0.6, 0.6, 0.6]}
-        shadowColor="rgba(0,0,0,0.75)"
-        shadowBlur={5}
-        shadowOffsetX={10}
-        shadowOffsetY={10}
-        filterStdDeviation={30}
-        useFilter={true}
-        fastDuration={0.1}
-        slowDuration={0.5}
-        zIndex={2147483647}
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={35}
+        innerScale={1}
+        outerScale={2}
+        outerAlpha={0}
+        hasBlendMode={true}
+        outerStyle={{
+          border: "3px solid var(--foreground)",
+        }}
+        innerStyle={{
+          backgroundColor: "var(--foreground)",
+        }}
       />
       <Toaster
         position="bottom-right"
