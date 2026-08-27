@@ -709,6 +709,37 @@
       "signIn": "Sign In",
       "createAccount": "Create Account"
     },
+    "miniCart": {
+      "title": "Your Bag",
+      "count": "{{count}} Item",
+      "count_plural": "{{count}} Items",
+      "empty": "Your bag is empty",
+      "emptyAction": "Shop Now",
+      "subtotal": "Subtotal",
+      "viewBag": "View Bag",
+      "remove": "Remove item",
+      "loading": "Loading your bag..."
+    },
+    "miniWishlist": {
+      "title": "Your Wishlist",
+      "count": "{{count}} Item",
+      "count_plural": "{{count}} Items",
+      "empty": "Your wishlist is empty",
+      "emptyAction": "Explore Products",
+      "loading": "Loading your wishlist...",
+      "viewAll": "View All Wishlist"
+    },
+    "miniOrders": {
+      "title": "Your Orders",
+      "count": "{{count}} Order",
+      "count_plural": "{{count}} Orders",
+      "items": "item",
+      "items_plural": "items",
+      "empty": "No orders yet",
+      "emptyAction": "Shop Now",
+      "loading": "Loading your orders...",
+      "viewAll": "View All Orders"
+    },
     "mobile": {
       "menu": "Menu",
       "shop": "Shop",

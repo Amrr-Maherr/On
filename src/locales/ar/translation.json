@@ -710,6 +710,37 @@
       "signIn": "تسجيل الدخول",
       "createAccount": "إنشاء حساب"
     },
+    "miniCart": {
+      "title": "حقيبتك",
+      "count": "عنصر {{count}}",
+      "count_plural": "عناصر {{count}}",
+      "empty": "حقيبتك فارغة",
+      "emptyAction": "تسوق الآن",
+      "subtotal": "المجموع الفرعي",
+      "viewBag": "عرض الحقيبة",
+      "remove": "إزالة العنصر",
+      "loading": "جارٍ تحميل حقيبتك..."
+    },
+    "miniWishlist": {
+      "title": "مفضلتك",
+      "count": "عنصر {{count}}",
+      "count_plural": "عناصر {{count}}",
+      "empty": "قائمة المفضلة فارغة",
+      "emptyAction": "استكشف المنتجات",
+      "loading": "جارٍ تحميل المفضلة...",
+      "viewAll": "عرض كل المفضلة"
+    },
+    "miniOrders": {
+      "title": "طلباتك",
+      "count": "طلب {{count}}",
+      "count_plural": "طلبات {{count}}",
+      "items": "عنصر",
+      "items_plural": "عناصر",
+      "empty": "لا توجد طلبات بعد",
+      "emptyAction": "تسوق الآن",
+      "loading": "جارٍ تحميل طلباتك...",
+      "viewAll": "عرض كل الطلبات"
+    },
     "mobile": {
       "menu": "القائمة",
       "shop": "تسوق",
