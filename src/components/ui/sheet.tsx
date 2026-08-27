@@ -24,14 +24,15 @@ SheetOverlay.displayName = "SheetOverlay";
 
 type SheetContentProps = ComponentPropsWithoutRef<typeof Dialog.Content> & {
   side?: "top" | "bottom" | "left" | "right";
+  overlayClassName?: string;
 };
 
 const SheetContent = forwardRef<
   ElementRef<typeof Dialog.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
+>(({ side = "right", overlayClassName, className, children, ...props }, ref) => (
   <Dialog.Portal>
-    <SheetOverlay />
+    <SheetOverlay className={overlayClassName} />
     <Dialog.Content
       ref={ref}
       className={cn(
