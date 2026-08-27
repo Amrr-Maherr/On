@@ -11,13 +11,52 @@ import Ticker from "./Ticker";
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [isOrdersOpen, setIsOrdersOpen] = useState(false);
 
   const toggleDropdown = useCallback(() => {
+    setIsMiniCartOpen(false);
+    setIsWishlistOpen(false);
+    setIsOrdersOpen(false);
     setIsDropdownOpen((prev) => !prev);
   }, []);
 
   const closeDropdown = useCallback(() => {
     setIsDropdownOpen(false);
+  }, []);
+
+  const toggleMiniCart = useCallback(() => {
+    setIsDropdownOpen(false);
+    setIsWishlistOpen(false);
+    setIsOrdersOpen(false);
+    setIsMiniCartOpen((prev) => !prev);
+  }, []);
+
+  const closeMiniCart = useCallback(() => {
+    setIsMiniCartOpen(false);
+  }, []);
+
+  const toggleWishlist = useCallback(() => {
+    setIsDropdownOpen(false);
+    setIsMiniCartOpen(false);
+    setIsOrdersOpen(false);
+    setIsWishlistOpen((prev) => !prev);
+  }, []);
+
+  const closeWishlist = useCallback(() => {
+    setIsWishlistOpen(false);
+  }, []);
+
+  const toggleOrders = useCallback(() => {
+    setIsDropdownOpen(false);
+    setIsMiniCartOpen(false);
+    setIsWishlistOpen(false);
+    setIsOrdersOpen((prev) => !prev);
+  }, []);
+
+  const closeOrders = useCallback(() => {
+    setIsOrdersOpen(false);
   }, []);
 
   return (
@@ -34,8 +73,17 @@ function Navbar() {
 
         <NavbarActions
           isDropdownOpen={isDropdownOpen}
+          isMiniCartOpen={isMiniCartOpen}
+          isWishlistOpen={isWishlistOpen}
+          isOrdersOpen={isOrdersOpen}
           onToggleDropdown={toggleDropdown}
           onCloseDropdown={closeDropdown}
+          onToggleMiniCart={toggleMiniCart}
+          onCloseMiniCart={closeMiniCart}
+          onToggleWishlist={toggleWishlist}
+          onCloseWishlist={closeWishlist}
+          onToggleOrders={toggleOrders}
+          onCloseOrders={closeOrders}
         />
 
         <NavbarMobileMenu onClick={() => setMobileMenuOpen(true)} />

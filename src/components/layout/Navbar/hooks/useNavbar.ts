@@ -25,7 +25,7 @@ export function useNavbar() {
     (onLogout?: () => void) => {
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
-      window.location.reload()
+      window.location.reload();
       onLogout?.();
       navigate(buildLocalizedPath("/login", lang));
     },
@@ -47,8 +47,11 @@ export function useNavbar() {
   return {
     t,
     lang,
+    cartData,
     cartCount,
+    wishlistData,
     favCount,
+    ordersData,
     ordersCount,
     isLoggedIn,
     handleLogout,

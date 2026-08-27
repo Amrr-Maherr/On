@@ -1,44 +1,56 @@
 import { memo } from "react";
-import { Heart, Package, ShoppingCart } from "lucide-react";
-import { buildLocalizedPath } from "@/lib/localized-path";
 import ThemeToggle from "@/components/shared/ThemeToggle";
-import { NavbarIconButton } from "./NavbarIconButton";
 import { NavbarUserMenu } from "./NavbarUserMenu";
-import { useNavbar } from "../hooks/useNavbar";
+import { MiniCart } from "./MiniCart";
+import { MiniWishlist } from "./MiniWishlist";
+import { MiniOrders } from "./MiniOrders";
 
 type NavbarActionsProps = {
   isDropdownOpen: boolean;
+  isMiniCartOpen: boolean;
+  isWishlistOpen: boolean;
+  isOrdersOpen: boolean;
   onToggleDropdown: () => void;
   onCloseDropdown: () => void;
+  onToggleMiniCart: () => void;
+  onCloseMiniCart: () => void;
+  onToggleWishlist: () => void;
+  onCloseWishlist: () => void;
+  onToggleOrders: () => void;
+  onCloseOrders: () => void;
 };
 
 export const NavbarActions = memo(function NavbarActions({
   isDropdownOpen,
+  isMiniCartOpen,
+  isWishlistOpen,
+  isOrdersOpen,
   onToggleDropdown,
   onCloseDropdown,
+  onToggleMiniCart,
+  onCloseMiniCart,
+  onToggleWishlist,
+  onCloseWishlist,
+  onToggleOrders,
+  onCloseOrders,
 }: NavbarActionsProps) {
-  const { t, lang, favCount, ordersCount, cartCount } = useNavbar();
-
   return (
     <div className="hidden items-center gap-0.5 md:flex">
       <ThemeToggle />
-      <NavbarIconButton
-        href={buildLocalizedPath("/wishlist", lang)}
-        ariaLabel={t("nav.aria.wishlist")}
-        icon={<Heart className="h-5 w-5" />}
-        count={favCount}
+      <MiniWishlist
+        isOpen={isWishlistOpen}
+        onToggle={onToggleWishlist}
+        onClose={onCloseWishlist}
       />
-      <NavbarIconButton
-        href={buildLocalizedPath("/orders", lang)}
-        ariaLabel={t("nav.aria.orders")}
-        icon={<Package className="h-5 w-5" />}
-        count={ordersCount}
+      <MiniOrders
+        isOpen={isOrdersOpen}
+        onToggle={onToggleOrders}
+        onClose={onCloseOrders}
       />
-      <NavbarIconButton
-        href={buildLocalizedPath("/cart", lang)}
-        ariaLabel={t("nav.aria.cart")}
-        icon={<ShoppingCart className="h-5 w-5" />}
-        count={cartCount}
+      <MiniCart
+        isOpen={isMiniCartOpen}
+        onToggle={onToggleMiniCart}
+        onClose={onCloseMiniCart}
       />
       <NavbarUserMenu
         isOpen={isDropdownOpen}
