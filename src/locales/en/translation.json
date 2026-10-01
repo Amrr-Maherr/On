@@ -92,6 +92,10 @@
       "quickView": "Quick view",
       "viewDetails": "View Details"
     },
+    "quickView": {
+      "details": "Product Details",
+      "image": "Product image {{index}}"
+    },
     "details": {
       "breadcrumb": {
         "home": "Home",

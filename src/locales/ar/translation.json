@@ -92,6 +92,10 @@
       "quickView": "عرض سريع",
       "viewDetails": "عرض التفاصيل"
     },
+    "quickView": {
+      "details": "تفاصيل المنتج",
+      "image": "صورة المنتج {{index}}"
+    },
     "details": {
       "breadcrumb": {
         "home": "الرئيسية",
