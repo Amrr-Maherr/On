@@ -23,6 +23,9 @@ The app is a **client-only frontend**. All commerce data (products, cart, orders
 ### Authentication & Authorization
 
 - **Email/password login and registration** against `POST /api/v1/auth/signin` and `/signup` (register also sends `rePassword`).
+
+  <img src="docs/screenshots/login.svg" alt="On sign-in page" width="480">
+
 - **Token-based session** stored in `localStorage` (`token`, `userId`).
 - **Google OAuth one-tap sign-in** via `@react-oauth/google`; the credential JWT is decoded client-side with `jwt-decode`. Google sessions are simulated locally (`token = "google_oauth"`, `userId = decoded.sub`, full payload in `user_info`); there is no server-side Google token verification.
 - **Route protection** — cart, checkout, orders, profile and wishlist pages redirect to `/login` when no token exists.
@@ -32,14 +35,26 @@ The app is a **client-only frontend**. All commerce data (products, cart, orders
 ### Product Catalog
 
 - **Server-paginated listing** (`/products`) with query-parameter filters: category, brand, price range, sort, and keyword.
+
+  <img src="docs/screenshots/products.svg" alt="On product listing with filter panel" width="480">
+
 - **Filter UI** — sticky desktop filter panel (checkboxes, price range, sort dropdown) plus a mobile bottom filter sheet.
 - **Numbered pagination** with ellipsis (first/last/current±1 pages).
 - **Product detail page** (`/products/:slug/:id`) with image gallery + lightbox, ratings, review list, stock status, price/discount display, quantity stepper, add-to-cart/wishlist actions, and static Q&A/review-submission sections (display only).
+
+  <img src="docs/screenshots/product-details.svg" alt="On product detail page with gallery, rating, stock and add to bag" width="480">
+
 - **Quick-view dialog** on product cards.
 
 ### Categories & Brands
 
 - Dedicated listing pages (`/categories`, `/brands`) and detail pages (`/categories/:slug/:id`, `/brands/:slug/:id`) driven by the API.
+
+  <img src="docs/screenshots/categories.svg" alt="On categories page" width="480">
+
+
+  <img src="docs/screenshots/brands.svg" alt="On brands page" width="480">
+
 
 ### Cart
 
@@ -77,6 +92,9 @@ The app is a **client-only frontend**. All commerce data (products, cart, orders
 ### Store Locator
 
 - **Branches page** (`/branches`) with interactive world map (React Simple Maps) and marker/card cross-navigation. Branch data is **hard-coded** in `src/features/branches/data/branches.ts` (10 fictional branches) — not fetched from the API.
+
+  <img src="docs/screenshots/branches.svg" alt="On store locator with world map and branch cards" width="480">
+
 
 ### Guided Tour
 
